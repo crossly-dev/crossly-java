@@ -1,0 +1,69 @@
+{
+  "lang": "java",
+  "vendor": [
+    {
+      "from": "webhooks/java/CrosslyWebhooks.java",
+      "to": "seller/src/main/java/net/crossly/CrosslyWebhooks.java"
+    },
+    {
+      "from": "extras/java/CrosslyWebhookFilter.java",
+      "to": "seller/src/main/java/net/crossly/CrosslyWebhookFilter.java"
+    },
+    {
+      "from": "extras/java/CrosslyWebhook.java",
+      "to": "seller/src/main/java/net/crossly/CrosslyWebhook.java"
+    },
+    {
+      "from": "extras/java/CrosslyWebhookArgumentResolver.java",
+      "to": "seller/src/main/java/net/crossly/CrosslyWebhookArgumentResolver.java"
+    },
+    {
+      "from": "extras/java/CrosslyHttp.java",
+      "to": "seller/src/main/java/net/crossly/CrosslyHttp.java"
+    },
+    {
+      "from": "extras/java/CrosslyException.java",
+      "to": "seller/src/main/java/net/crossly/CrosslyException.java"
+    },
+    {
+      "from": "extras/java/Pages.java",
+      "to": "seller/src/main/java/net/crossly/Pages.java"
+    },
+    {
+      "from": "extras/java/Crossly.java",
+      "to": "seller/src/main/java/net/crossly/Crossly.java"
+    },
+    {
+      "from": "webhooks/java/CrosslyWebhooks.java",
+      "to": "buyer/src/main/java/net/crossly/CrosslyWebhooks.java"
+    },
+    {
+      "from": "extras/java/CrosslyWebhookFilter.java",
+      "to": "buyer/src/main/java/net/crossly/CrosslyWebhookFilter.java"
+    },
+    {
+      "from": "extras/java/CrosslyWebhook.java",
+      "to": "buyer/src/main/java/net/crossly/CrosslyWebhook.java"
+    },
+    {
+      "from": "extras/java/CrosslyWebhookArgumentResolver.java",
+      "to": "buyer/src/main/java/net/crossly/CrosslyWebhookArgumentResolver.java"
+    },
+    {
+      "from": "extras/java/CrosslyHttp.java",
+      "to": "buyer/src/main/java/net/crossly/CrosslyHttp.java"
+    },
+    {
+      "from": "extras/java/CrosslyException.java",
+      "to": "buyer/src/main/java/net/crossly/CrosslyException.java"
+    },
+    {
+      "from": "extras/java/Pages.java",
+      "to": "buyer/src/main/java/net/crossly/Pages.java"
+    },
+    {
+      "from": "extras/java/CrosslyBuyer.java",
+      "to": "buyer/src/main/java/net/crossly/buyer/CrosslyBuyer.java"
+    }
+  ]
+}
