@@ -30,30 +30,53 @@ import org.openapitools.jackson.nullable.JsonNullable;
 /**
  * CreateBuyerSellerClubJoinResponseDataMember
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-11T23:47:29.843Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-27T19:58:46.962Z[Etc/UTC]")
 public class CreateBuyerSellerClubJoinResponseDataMember {
+  public static final String SERIALIZED_NAME_SPEND_CENTS = "spendCents";
+  @SerializedName(SERIALIZED_NAME_SPEND_CENTS)
+  private BigDecimal spendCents;
+
   public static final String SERIALIZED_NAME_TIER = "tier";
   @SerializedName(SERIALIZED_NAME_TIER)
   private String tier;
-
-  public static final String SERIALIZED_NAME_JOINED_AT = "joinedAt";
-  @SerializedName(SERIALIZED_NAME_JOINED_AT)
-  private String joinedAt;
 
   public static final String SERIALIZED_NAME_DISCOUNT_BPS = "discountBps";
   @SerializedName(SERIALIZED_NAME_DISCOUNT_BPS)
   private BigDecimal discountBps;
 
-  public static final String SERIALIZED_NAME_SPEND_CENTS = "spendCents";
-  @SerializedName(SERIALIZED_NAME_SPEND_CENTS)
-  private BigDecimal spendCents;
-
   public static final String SERIALIZED_NAME_NEXT = "next";
   @SerializedName(SERIALIZED_NAME_NEXT)
   private CreateBuyerSellerClubJoinResponseDataMemberNext next;
 
+  public static final String SERIALIZED_NAME_JOINED_AT = "joinedAt";
+  @SerializedName(SERIALIZED_NAME_JOINED_AT)
+  private String joinedAt;
+
   public CreateBuyerSellerClubJoinResponseDataMember() { 
   }
+
+  public CreateBuyerSellerClubJoinResponseDataMember spendCents(BigDecimal spendCents) {
+    
+    this.spendCents = spendCents;
+    return this;
+  }
+
+   /**
+   * Get spendCents
+   * @return spendCents
+  **/
+  @javax.annotation.Nonnull
+  @ApiModelProperty(required = true, value = "")
+
+  public BigDecimal getSpendCents() {
+    return spendCents;
+  }
+
+
+  public void setSpendCents(BigDecimal spendCents) {
+    this.spendCents = spendCents;
+  }
+
 
   public CreateBuyerSellerClubJoinResponseDataMember tier(String tier) {
     
@@ -75,29 +98,6 @@ public class CreateBuyerSellerClubJoinResponseDataMember {
 
   public void setTier(String tier) {
     this.tier = tier;
-  }
-
-
-  public CreateBuyerSellerClubJoinResponseDataMember joinedAt(String joinedAt) {
-    
-    this.joinedAt = joinedAt;
-    return this;
-  }
-
-   /**
-   * Get joinedAt
-   * @return joinedAt
-  **/
-  @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "")
-
-  public String getJoinedAt() {
-    return joinedAt;
-  }
-
-
-  public void setJoinedAt(String joinedAt) {
-    this.joinedAt = joinedAt;
   }
 
 
@@ -124,29 +124,6 @@ public class CreateBuyerSellerClubJoinResponseDataMember {
   }
 
 
-  public CreateBuyerSellerClubJoinResponseDataMember spendCents(BigDecimal spendCents) {
-    
-    this.spendCents = spendCents;
-    return this;
-  }
-
-   /**
-   * Get spendCents
-   * @return spendCents
-  **/
-  @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "")
-
-  public BigDecimal getSpendCents() {
-    return spendCents;
-  }
-
-
-  public void setSpendCents(BigDecimal spendCents) {
-    this.spendCents = spendCents;
-  }
-
-
   public CreateBuyerSellerClubJoinResponseDataMember next(CreateBuyerSellerClubJoinResponseDataMemberNext next) {
     
     this.next = next;
@@ -170,6 +147,29 @@ public class CreateBuyerSellerClubJoinResponseDataMember {
   }
 
 
+  public CreateBuyerSellerClubJoinResponseDataMember joinedAt(String joinedAt) {
+    
+    this.joinedAt = joinedAt;
+    return this;
+  }
+
+   /**
+   * Get joinedAt
+   * @return joinedAt
+  **/
+  @javax.annotation.Nonnull
+  @ApiModelProperty(required = true, value = "")
+
+  public String getJoinedAt() {
+    return joinedAt;
+  }
+
+
+  public void setJoinedAt(String joinedAt) {
+    this.joinedAt = joinedAt;
+  }
+
+
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -179,11 +179,11 @@ public class CreateBuyerSellerClubJoinResponseDataMember {
       return false;
     }
     CreateBuyerSellerClubJoinResponseDataMember createBuyerSellerClubJoinResponseDataMember = (CreateBuyerSellerClubJoinResponseDataMember) o;
-    return Objects.equals(this.tier, createBuyerSellerClubJoinResponseDataMember.tier) &&
-        Objects.equals(this.joinedAt, createBuyerSellerClubJoinResponseDataMember.joinedAt) &&
+    return Objects.equals(this.spendCents, createBuyerSellerClubJoinResponseDataMember.spendCents) &&
+        Objects.equals(this.tier, createBuyerSellerClubJoinResponseDataMember.tier) &&
         Objects.equals(this.discountBps, createBuyerSellerClubJoinResponseDataMember.discountBps) &&
-        Objects.equals(this.spendCents, createBuyerSellerClubJoinResponseDataMember.spendCents) &&
-        Objects.equals(this.next, createBuyerSellerClubJoinResponseDataMember.next);
+        Objects.equals(this.next, createBuyerSellerClubJoinResponseDataMember.next) &&
+        Objects.equals(this.joinedAt, createBuyerSellerClubJoinResponseDataMember.joinedAt);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -192,7 +192,7 @@ public class CreateBuyerSellerClubJoinResponseDataMember {
 
   @Override
   public int hashCode() {
-    return Objects.hash(tier, joinedAt, discountBps, spendCents, next);
+    return Objects.hash(spendCents, tier, discountBps, next, joinedAt);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -206,11 +206,11 @@ public class CreateBuyerSellerClubJoinResponseDataMember {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class CreateBuyerSellerClubJoinResponseDataMember {\n");
-    sb.append("    tier: ").append(toIndentedString(tier)).append("\n");
-    sb.append("    joinedAt: ").append(toIndentedString(joinedAt)).append("\n");
-    sb.append("    discountBps: ").append(toIndentedString(discountBps)).append("\n");
     sb.append("    spendCents: ").append(toIndentedString(spendCents)).append("\n");
+    sb.append("    tier: ").append(toIndentedString(tier)).append("\n");
+    sb.append("    discountBps: ").append(toIndentedString(discountBps)).append("\n");
     sb.append("    next: ").append(toIndentedString(next)).append("\n");
+    sb.append("    joinedAt: ").append(toIndentedString(joinedAt)).append("\n");
     sb.append("}");
     return sb.toString();
   }

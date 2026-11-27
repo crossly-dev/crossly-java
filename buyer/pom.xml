@@ -1,33 +1,33 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    <groupId>org.openapitools</groupId>
-    <artifactId>openapi-java-client</artifactId>
+    <groupId>net.crossly</groupId>
+    <artifactId>crossly-buyer</artifactId>
     <packaging>jar</packaging>
-    <name>openapi-java-client</name>
-    <version>1.0.0</version>
-    <url>https://github.com/openapitools/openapi-generator</url>
-    <description>OpenAPI Java</description>
+    <name>Crossly Java SDK (buyer)</name>
+    <version>0.2.0</version>
+    <description>Official Java client for the Crossly buyer API (shopping: cart, orders, wishlists, offers), generated from the public OpenAPI spec, with retries, auto-pagination and the webhook verifier.</description>
+    <url>https://github.com/crossly-dev/crossly-java</url>
     <scm>
-        <connection>scm:git:git@github.com:openapitools/openapi-generator.git</connection>
-        <developerConnection>scm:git:git@github.com:openapitools/openapi-generator.git</developerConnection>
-        <url>https://github.com/openapitools/openapi-generator</url>
+        <connection>scm:git:https://github.com/crossly-dev/crossly-java.git</connection>
+        <developerConnection>scm:git:https://github.com/crossly-dev/crossly-java.git</developerConnection>
+        <url>https://github.com/crossly-dev/crossly-java</url>
     </scm>
 
     <licenses>
         <license>
-            <name>Unlicense</name>
-            <url>http://unlicense.org</url>
+            <name>MIT License</name>
+            <url>https://opensource.org/licenses/MIT</url>
             <distribution>repo</distribution>
         </license>
     </licenses>
 
     <developers>
         <developer>
-            <name>OpenAPI-Generator Contributors</name>
-            <email>team@openapitools.org</email>
-            <organization>OpenAPITools.org</organization>
-            <organizationUrl>http://openapitools.org</organizationUrl>
+            <id>crossly</id>
+            <name>Crossly</name>
+            <organization>Crossly</organization>
+            <organizationUrl>https://crossly.net</organizationUrl>
         </developer>
     </developers>
 
@@ -40,9 +40,9 @@
                 <configuration>
                     <fork>true</fork>
                     <meminitial>128m</meminitial>
-                    <maxmem>512m</maxmem>
+                    <maxmem>6144m</maxmem>
                     <compilerArgs>
-                        <arg>-Xlint:all</arg>
+                        <arg>-nowarn</arg>
                         <arg>-J-Xss4m</arg><!-- Compiling the generated JSON.java file may require larger stack size. -->
                     </compilerArgs>
                 </configuration>
@@ -110,6 +110,11 @@
                     </execution>
                 </executions>
                 <configuration>
+                    <archive>
+                        <manifest>
+                            <addDefaultImplementationEntries>true</addDefaultImplementationEntries>
+                        </manifest>
+                    </archive>
                 </configuration>
             </plugin>
             <plugin>
@@ -156,6 +161,9 @@
                     </execution>
                 </executions>
                 <configuration>
+                    <failOnError>false</failOnError>
+                    <quiet>true</quiet>
+                    <maxmemory>6g</maxmemory>
                     <doclint>none</doclint>
                     <tags>
                         <tag>
@@ -300,6 +308,21 @@
             <groupId>org.openapitools</groupId>
             <artifactId>jackson-databind-nullable</artifactId>
             <version>${jackson-databind-nullable-version}</version>
+        </dependency>
+        <!-- Webhook middleware (net.crossly.webhooks): compiled against, never brought in. -->
+        <dependency>
+            <groupId>jakarta.servlet</groupId>
+            <artifactId>jakarta.servlet-api</artifactId>
+            <version>6.0.0</version>
+            <scope>provided</scope>
+            <optional>true</optional>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-webmvc</artifactId>
+            <version>6.1.14</version>
+            <scope>provided</scope>
+            <optional>true</optional>
         </dependency>
         <!-- test dependencies -->
         <dependency>

@@ -28,7 +28,7 @@ import org.openapitools.jackson.nullable.JsonNullable;
 /**
  * GetPayoutConnectResponseData
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-11T23:44:48.922Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-27T19:42:43.186Z[Etc/UTC]")
 public class GetPayoutConnectResponseData {
   public static final String SERIALIZED_NAME_STATUS = "status";
   @SerializedName(SERIALIZED_NAME_STATUS)
@@ -37,6 +37,10 @@ public class GetPayoutConnectResponseData {
   public static final String SERIALIZED_NAME_DEFAULT_COUNTRY = "defaultCountry";
   @SerializedName(SERIALIZED_NAME_DEFAULT_COUNTRY)
   private String defaultCountry;
+
+  public static final String SERIALIZED_NAME_ACCOUNT_SOURCE = "accountSource";
+  @SerializedName(SERIALIZED_NAME_ACCOUNT_SOURCE)
+  private String accountSource;
 
   public static final String SERIALIZED_NAME_PAYOUTS_ENABLED = "payoutsEnabled";
   @SerializedName(SERIALIZED_NAME_PAYOUTS_ENABLED)
@@ -175,6 +179,29 @@ public class GetPayoutConnectResponseData {
 
   public void setDefaultCountry(String defaultCountry) {
     this.defaultCountry = defaultCountry;
+  }
+
+
+  public GetPayoutConnectResponseData accountSource(String accountSource) {
+    
+    this.accountSource = accountSource;
+    return this;
+  }
+
+   /**
+   * Get accountSource
+   * @return accountSource
+  **/
+  @javax.annotation.Nonnull
+  @ApiModelProperty(required = true, value = "")
+
+  public String getAccountSource() {
+    return accountSource;
+  }
+
+
+  public void setAccountSource(String accountSource) {
+    this.accountSource = accountSource;
   }
 
 
@@ -442,6 +469,7 @@ public class GetPayoutConnectResponseData {
     GetPayoutConnectResponseData getPayoutConnectResponseData = (GetPayoutConnectResponseData) o;
     return Objects.equals(this.status, getPayoutConnectResponseData.status) &&
         Objects.equals(this.defaultCountry, getPayoutConnectResponseData.defaultCountry) &&
+        Objects.equals(this.accountSource, getPayoutConnectResponseData.accountSource) &&
         Objects.equals(this.payoutsEnabled, getPayoutConnectResponseData.payoutsEnabled) &&
         Objects.equals(this.chargesEnabled, getPayoutConnectResponseData.chargesEnabled) &&
         Objects.equals(this.transfersActive, getPayoutConnectResponseData.transfersActive) &&
@@ -461,7 +489,7 @@ public class GetPayoutConnectResponseData {
 
   @Override
   public int hashCode() {
-    return Objects.hash(status, defaultCountry, payoutsEnabled, chargesEnabled, transfersActive, detailsSubmitted, taxReporting1099kReady, country, agreement, defaultCurrency, accountId, payoutsSupported, message);
+    return Objects.hash(status, defaultCountry, accountSource, payoutsEnabled, chargesEnabled, transfersActive, detailsSubmitted, taxReporting1099kReady, country, agreement, defaultCurrency, accountId, payoutsSupported, message);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -477,6 +505,7 @@ public class GetPayoutConnectResponseData {
     sb.append("class GetPayoutConnectResponseData {\n");
     sb.append("    status: ").append(toIndentedString(status)).append("\n");
     sb.append("    defaultCountry: ").append(toIndentedString(defaultCountry)).append("\n");
+    sb.append("    accountSource: ").append(toIndentedString(accountSource)).append("\n");
     sb.append("    payoutsEnabled: ").append(toIndentedString(payoutsEnabled)).append("\n");
     sb.append("    chargesEnabled: ").append(toIndentedString(chargesEnabled)).append("\n");
     sb.append("    transfersActive: ").append(toIndentedString(transfersActive)).append("\n");

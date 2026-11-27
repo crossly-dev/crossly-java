@@ -27,20 +27,16 @@ import java.io.IOException;
 /**
  * CreateBuyerScanResponseIdentifier
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-11T23:47:29.843Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-27T19:58:46.962Z[Etc/UTC]")
 public class CreateBuyerScanResponseIdentifier {
-  public static final String SERIALIZED_NAME_VALUE = "value";
-  @SerializedName(SERIALIZED_NAME_VALUE)
-  private String value;
-
   /**
    * Gets or Sets ns
    */
   @JsonAdapter(NsEnum.Adapter.class)
   public enum NsEnum {
-    STYLE_CODE("style_code"),
-    
     GTIN("gtin"),
+    
+    STYLE_CODE("style_code"),
     
     LEGO_SET("lego_set"),
     
@@ -92,31 +88,12 @@ public class CreateBuyerScanResponseIdentifier {
   @SerializedName(SERIALIZED_NAME_NS)
   private NsEnum ns;
 
+  public static final String SERIALIZED_NAME_VALUE = "value";
+  @SerializedName(SERIALIZED_NAME_VALUE)
+  private String value;
+
   public CreateBuyerScanResponseIdentifier() { 
   }
-
-  public CreateBuyerScanResponseIdentifier value(String value) {
-    
-    this.value = value;
-    return this;
-  }
-
-   /**
-   * Get value
-   * @return value
-  **/
-  @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "")
-
-  public String getValue() {
-    return value;
-  }
-
-
-  public void setValue(String value) {
-    this.value = value;
-  }
-
 
   public CreateBuyerScanResponseIdentifier ns(NsEnum ns) {
     
@@ -141,6 +118,29 @@ public class CreateBuyerScanResponseIdentifier {
   }
 
 
+  public CreateBuyerScanResponseIdentifier value(String value) {
+    
+    this.value = value;
+    return this;
+  }
+
+   /**
+   * Get value
+   * @return value
+  **/
+  @javax.annotation.Nonnull
+  @ApiModelProperty(required = true, value = "")
+
+  public String getValue() {
+    return value;
+  }
+
+
+  public void setValue(String value) {
+    this.value = value;
+  }
+
+
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -150,21 +150,21 @@ public class CreateBuyerScanResponseIdentifier {
       return false;
     }
     CreateBuyerScanResponseIdentifier createBuyerScanResponseIdentifier = (CreateBuyerScanResponseIdentifier) o;
-    return Objects.equals(this.value, createBuyerScanResponseIdentifier.value) &&
-        Objects.equals(this.ns, createBuyerScanResponseIdentifier.ns);
+    return Objects.equals(this.ns, createBuyerScanResponseIdentifier.ns) &&
+        Objects.equals(this.value, createBuyerScanResponseIdentifier.value);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(value, ns);
+    return Objects.hash(ns, value);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class CreateBuyerScanResponseIdentifier {\n");
-    sb.append("    value: ").append(toIndentedString(value)).append("\n");
     sb.append("    ns: ").append(toIndentedString(ns)).append("\n");
+    sb.append("    value: ").append(toIndentedString(value)).append("\n");
     sb.append("}");
     return sb.toString();
   }

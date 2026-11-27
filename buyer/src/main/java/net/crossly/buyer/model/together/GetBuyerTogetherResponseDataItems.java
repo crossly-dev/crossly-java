@@ -29,23 +29,19 @@ import org.openapitools.jackson.nullable.JsonNullable;
 /**
  * GetBuyerTogetherResponseDataItems
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-11T23:47:29.843Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-27T19:58:46.962Z[Etc/UTC]")
 public class GetBuyerTogetherResponseDataItems {
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
   private String id;
 
-  public static final String SERIALIZED_NAME_AVAILABLE = "available";
-  @SerializedName(SERIALIZED_NAME_AVAILABLE)
-  private Boolean available;
+  public static final String SERIALIZED_NAME_SLUG = "slug";
+  @SerializedName(SERIALIZED_NAME_SLUG)
+  private String slug;
 
   public static final String SERIALIZED_NAME_TITLE = "title";
   @SerializedName(SERIALIZED_NAME_TITLE)
   private String title;
-
-  public static final String SERIALIZED_NAME_SLUG = "slug";
-  @SerializedName(SERIALIZED_NAME_SLUG)
-  private String slug;
 
   public static final String SERIALIZED_NAME_PRICE_CENTS = "priceCents";
   @SerializedName(SERIALIZED_NAME_PRICE_CENTS)
@@ -54,6 +50,10 @@ public class GetBuyerTogetherResponseDataItems {
   public static final String SERIALIZED_NAME_IMAGE = "image";
   @SerializedName(SERIALIZED_NAME_IMAGE)
   private String image;
+
+  public static final String SERIALIZED_NAME_AVAILABLE = "available";
+  @SerializedName(SERIALIZED_NAME_AVAILABLE)
+  private Boolean available;
 
   public static final String SERIALIZED_NAME_ADDED_BY = "addedBy";
   @SerializedName(SERIALIZED_NAME_ADDED_BY)
@@ -97,26 +97,26 @@ public class GetBuyerTogetherResponseDataItems {
   }
 
 
-  public GetBuyerTogetherResponseDataItems available(Boolean available) {
+  public GetBuyerTogetherResponseDataItems slug(String slug) {
     
-    this.available = available;
+    this.slug = slug;
     return this;
   }
 
    /**
-   * Get available
-   * @return available
+   * Get slug
+   * @return slug
   **/
   @javax.annotation.Nonnull
   @ApiModelProperty(required = true, value = "")
 
-  public Boolean getAvailable() {
-    return available;
+  public String getSlug() {
+    return slug;
   }
 
 
-  public void setAvailable(Boolean available) {
-    this.available = available;
+  public void setSlug(String slug) {
+    this.slug = slug;
   }
 
 
@@ -140,29 +140,6 @@ public class GetBuyerTogetherResponseDataItems {
 
   public void setTitle(String title) {
     this.title = title;
-  }
-
-
-  public GetBuyerTogetherResponseDataItems slug(String slug) {
-    
-    this.slug = slug;
-    return this;
-  }
-
-   /**
-   * Get slug
-   * @return slug
-  **/
-  @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "")
-
-  public String getSlug() {
-    return slug;
-  }
-
-
-  public void setSlug(String slug) {
-    this.slug = slug;
   }
 
 
@@ -209,6 +186,29 @@ public class GetBuyerTogetherResponseDataItems {
 
   public void setImage(String image) {
     this.image = image;
+  }
+
+
+  public GetBuyerTogetherResponseDataItems available(Boolean available) {
+    
+    this.available = available;
+    return this;
+  }
+
+   /**
+   * Get available
+   * @return available
+  **/
+  @javax.annotation.Nonnull
+  @ApiModelProperty(required = true, value = "")
+
+  public Boolean getAvailable() {
+    return available;
+  }
+
+
+  public void setAvailable(Boolean available) {
+    this.available = available;
   }
 
 
@@ -314,11 +314,11 @@ public class GetBuyerTogetherResponseDataItems {
     }
     GetBuyerTogetherResponseDataItems getBuyerTogetherResponseDataItems = (GetBuyerTogetherResponseDataItems) o;
     return Objects.equals(this.id, getBuyerTogetherResponseDataItems.id) &&
-        Objects.equals(this.available, getBuyerTogetherResponseDataItems.available) &&
-        Objects.equals(this.title, getBuyerTogetherResponseDataItems.title) &&
         Objects.equals(this.slug, getBuyerTogetherResponseDataItems.slug) &&
+        Objects.equals(this.title, getBuyerTogetherResponseDataItems.title) &&
         Objects.equals(this.priceCents, getBuyerTogetherResponseDataItems.priceCents) &&
         Objects.equals(this.image, getBuyerTogetherResponseDataItems.image) &&
+        Objects.equals(this.available, getBuyerTogetherResponseDataItems.available) &&
         Objects.equals(this.addedBy, getBuyerTogetherResponseDataItems.addedBy) &&
         Objects.equals(this.up, getBuyerTogetherResponseDataItems.up) &&
         Objects.equals(this.down, getBuyerTogetherResponseDataItems.down) &&
@@ -331,7 +331,7 @@ public class GetBuyerTogetherResponseDataItems {
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, available, title, slug, priceCents, image, addedBy, up, down, myVote);
+    return Objects.hash(id, slug, title, priceCents, image, available, addedBy, up, down, myVote);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -346,11 +346,11 @@ public class GetBuyerTogetherResponseDataItems {
     StringBuilder sb = new StringBuilder();
     sb.append("class GetBuyerTogetherResponseDataItems {\n");
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
-    sb.append("    available: ").append(toIndentedString(available)).append("\n");
-    sb.append("    title: ").append(toIndentedString(title)).append("\n");
     sb.append("    slug: ").append(toIndentedString(slug)).append("\n");
+    sb.append("    title: ").append(toIndentedString(title)).append("\n");
     sb.append("    priceCents: ").append(toIndentedString(priceCents)).append("\n");
     sb.append("    image: ").append(toIndentedString(image)).append("\n");
+    sb.append("    available: ").append(toIndentedString(available)).append("\n");
     sb.append("    addedBy: ").append(toIndentedString(addedBy)).append("\n");
     sb.append("    up: ").append(toIndentedString(up)).append("\n");
     sb.append("    down: ").append(toIndentedString(down)).append("\n");

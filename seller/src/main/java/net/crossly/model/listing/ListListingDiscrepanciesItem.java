@@ -30,7 +30,7 @@ import org.threeten.bp.OffsetDateTime;
 /**
  * ListListingDiscrepanciesItem
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-11T23:44:48.922Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-27T19:42:43.186Z[Etc/UTC]")
 public class ListListingDiscrepanciesItem {
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
@@ -48,17 +48,13 @@ public class ListListingDiscrepanciesItem {
   @SerializedName(SERIALIZED_NAME_USER_ID)
   private String userId;
 
-  public static final String SERIALIZED_NAME_SOURCE = "source";
-  @SerializedName(SERIALIZED_NAME_SOURCE)
-  private String source;
-
   public static final String SERIALIZED_NAME_PLATFORM = "platform";
   @SerializedName(SERIALIZED_NAME_PLATFORM)
   private String platform;
 
-  public static final String SERIALIZED_NAME_LISTING_ID = "listingId";
-  @SerializedName(SERIALIZED_NAME_LISTING_ID)
-  private String listingId;
+  public static final String SERIALIZED_NAME_ACCOUNT_SLOT = "accountSlot";
+  @SerializedName(SERIALIZED_NAME_ACCOUNT_SLOT)
+  private BigDecimal accountSlot;
 
   public static final String SERIALIZED_NAME_MARKETPLACE_ID = "marketplaceId";
   @SerializedName(SERIALIZED_NAME_MARKETPLACE_ID)
@@ -68,9 +64,13 @@ public class ListListingDiscrepanciesItem {
   @SerializedName(SERIALIZED_NAME_LAST_ERROR)
   private String lastError;
 
-  public static final String SERIALIZED_NAME_ACCOUNT_SLOT = "accountSlot";
-  @SerializedName(SERIALIZED_NAME_ACCOUNT_SLOT)
-  private BigDecimal accountSlot;
+  public static final String SERIALIZED_NAME_SOURCE = "source";
+  @SerializedName(SERIALIZED_NAME_SOURCE)
+  private String source;
+
+  public static final String SERIALIZED_NAME_LISTING_ID = "listingId";
+  @SerializedName(SERIALIZED_NAME_LISTING_ID)
+  private String listingId;
 
   public static final String SERIALIZED_NAME_FIELD = "field";
   @SerializedName(SERIALIZED_NAME_FIELD)
@@ -195,29 +195,6 @@ public class ListListingDiscrepanciesItem {
   }
 
 
-  public ListListingDiscrepanciesItem source(String source) {
-    
-    this.source = source;
-    return this;
-  }
-
-   /**
-   * Get source
-   * @return source
-  **/
-  @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "")
-
-  public String getSource() {
-    return source;
-  }
-
-
-  public void setSource(String source) {
-    this.source = source;
-  }
-
-
   public ListListingDiscrepanciesItem platform(String platform) {
     
     this.platform = platform;
@@ -241,26 +218,26 @@ public class ListListingDiscrepanciesItem {
   }
 
 
-  public ListListingDiscrepanciesItem listingId(String listingId) {
+  public ListListingDiscrepanciesItem accountSlot(BigDecimal accountSlot) {
     
-    this.listingId = listingId;
+    this.accountSlot = accountSlot;
     return this;
   }
 
    /**
-   * Get listingId
-   * @return listingId
+   * Get accountSlot
+   * @return accountSlot
   **/
   @javax.annotation.Nonnull
   @ApiModelProperty(required = true, value = "")
 
-  public String getListingId() {
-    return listingId;
+  public BigDecimal getAccountSlot() {
+    return accountSlot;
   }
 
 
-  public void setListingId(String listingId) {
-    this.listingId = listingId;
+  public void setAccountSlot(BigDecimal accountSlot) {
+    this.accountSlot = accountSlot;
   }
 
 
@@ -310,26 +287,49 @@ public class ListListingDiscrepanciesItem {
   }
 
 
-  public ListListingDiscrepanciesItem accountSlot(BigDecimal accountSlot) {
+  public ListListingDiscrepanciesItem source(String source) {
     
-    this.accountSlot = accountSlot;
+    this.source = source;
     return this;
   }
 
    /**
-   * Get accountSlot
-   * @return accountSlot
+   * Get source
+   * @return source
   **/
   @javax.annotation.Nonnull
   @ApiModelProperty(required = true, value = "")
 
-  public BigDecimal getAccountSlot() {
-    return accountSlot;
+  public String getSource() {
+    return source;
   }
 
 
-  public void setAccountSlot(BigDecimal accountSlot) {
-    this.accountSlot = accountSlot;
+  public void setSource(String source) {
+    this.source = source;
+  }
+
+
+  public ListListingDiscrepanciesItem listingId(String listingId) {
+    
+    this.listingId = listingId;
+    return this;
+  }
+
+   /**
+   * Get listingId
+   * @return listingId
+  **/
+  @javax.annotation.Nonnull
+  @ApiModelProperty(required = true, value = "")
+
+  public String getListingId() {
+    return listingId;
+  }
+
+
+  public void setListingId(String listingId) {
+    this.listingId = listingId;
   }
 
 
@@ -507,12 +507,12 @@ public class ListListingDiscrepanciesItem {
         Objects.equals(this.createdAt, listListingDiscrepanciesItem.createdAt) &&
         Objects.equals(this.updatedAt, listListingDiscrepanciesItem.updatedAt) &&
         Objects.equals(this.userId, listListingDiscrepanciesItem.userId) &&
-        Objects.equals(this.source, listListingDiscrepanciesItem.source) &&
         Objects.equals(this.platform, listListingDiscrepanciesItem.platform) &&
-        Objects.equals(this.listingId, listListingDiscrepanciesItem.listingId) &&
+        Objects.equals(this.accountSlot, listListingDiscrepanciesItem.accountSlot) &&
         Objects.equals(this.marketplaceId, listListingDiscrepanciesItem.marketplaceId) &&
         Objects.equals(this.lastError, listListingDiscrepanciesItem.lastError) &&
-        Objects.equals(this.accountSlot, listListingDiscrepanciesItem.accountSlot) &&
+        Objects.equals(this.source, listListingDiscrepanciesItem.source) &&
+        Objects.equals(this.listingId, listListingDiscrepanciesItem.listingId) &&
         Objects.equals(this.field, listListingDiscrepanciesItem.field) &&
         Objects.equals(this.ourValue, listListingDiscrepanciesItem.ourValue) &&
         Objects.equals(this.remoteValue, listListingDiscrepanciesItem.remoteValue) &&
@@ -528,7 +528,7 @@ public class ListListingDiscrepanciesItem {
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, createdAt, updatedAt, userId, source, platform, listingId, marketplaceId, lastError, accountSlot, field, ourValue, remoteValue, firstDetectedAt, lastDetectedAt, dismissedAt, dismissedRemoteValue);
+    return Objects.hash(id, createdAt, updatedAt, userId, platform, accountSlot, marketplaceId, lastError, source, listingId, field, ourValue, remoteValue, firstDetectedAt, lastDetectedAt, dismissedAt, dismissedRemoteValue);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -546,12 +546,12 @@ public class ListListingDiscrepanciesItem {
     sb.append("    createdAt: ").append(toIndentedString(createdAt)).append("\n");
     sb.append("    updatedAt: ").append(toIndentedString(updatedAt)).append("\n");
     sb.append("    userId: ").append(toIndentedString(userId)).append("\n");
-    sb.append("    source: ").append(toIndentedString(source)).append("\n");
     sb.append("    platform: ").append(toIndentedString(platform)).append("\n");
-    sb.append("    listingId: ").append(toIndentedString(listingId)).append("\n");
+    sb.append("    accountSlot: ").append(toIndentedString(accountSlot)).append("\n");
     sb.append("    marketplaceId: ").append(toIndentedString(marketplaceId)).append("\n");
     sb.append("    lastError: ").append(toIndentedString(lastError)).append("\n");
-    sb.append("    accountSlot: ").append(toIndentedString(accountSlot)).append("\n");
+    sb.append("    source: ").append(toIndentedString(source)).append("\n");
+    sb.append("    listingId: ").append(toIndentedString(listingId)).append("\n");
     sb.append("    field: ").append(toIndentedString(field)).append("\n");
     sb.append("    ourValue: ").append(toIndentedString(ourValue)).append("\n");
     sb.append("    remoteValue: ").append(toIndentedString(remoteValue)).append("\n");

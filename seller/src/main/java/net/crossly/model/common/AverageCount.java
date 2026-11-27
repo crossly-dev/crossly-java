@@ -27,9 +27,10 @@ import java.math.BigDecimal;
 import org.openapitools.jackson.nullable.JsonNullable;
 
 /**
- * AverageCount
+ * 1172 ratings: average stars (null before the first) and how many.
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-11T23:44:48.922Z[Etc/UTC]")
+@ApiModel(description = "1172 ratings: average stars (null before the first) and how many.")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-27T19:42:43.186Z[Etc/UTC]")
 public class AverageCount {
   public static final String SERIALIZED_NAME_AVERAGE = "average";
   @SerializedName(SERIALIZED_NAME_AVERAGE)

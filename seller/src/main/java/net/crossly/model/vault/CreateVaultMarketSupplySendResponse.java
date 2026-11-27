@@ -25,43 +25,67 @@ import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-import net.crossly.model.vault.CreateVaultMarketPartnerBatchResponseLabel;
-import net.crossly.model.vault.CreateVaultMarketSupplySendResponseCreated;
-import net.crossly.model.vault.CreateVaultMarketSupplySendResponseSkipped;
+import net.crossly.model.common.InventoryItemIdReason;
 import org.openapitools.jackson.nullable.JsonNullable;
 
 /**
  * CreateVaultMarketSupplySendResponse
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-11T23:44:48.922Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-27T19:42:43.186Z[Etc/UTC]")
 public class CreateVaultMarketSupplySendResponse {
+  public static final String SERIALIZED_NAME_BATCH_ID = "batchId";
+  @SerializedName(SERIALIZED_NAME_BATCH_ID)
+  private Object batchId = null;
+
   public static final String SERIALIZED_NAME_CREATED = "created";
   @SerializedName(SERIALIZED_NAME_CREATED)
-  private List<CreateVaultMarketSupplySendResponseCreated> created = new ArrayList<CreateVaultMarketSupplySendResponseCreated>();
+  private Object created = null;
 
   public static final String SERIALIZED_NAME_SKIPPED = "skipped";
   @SerializedName(SERIALIZED_NAME_SKIPPED)
-  private List<CreateVaultMarketSupplySendResponseSkipped> skipped = new ArrayList<CreateVaultMarketSupplySendResponseSkipped>();
+  private List<InventoryItemIdReason> skipped = new ArrayList<InventoryItemIdReason>();
 
   public static final String SERIALIZED_NAME_LABEL = "label";
   @SerializedName(SERIALIZED_NAME_LABEL)
-  private CreateVaultMarketPartnerBatchResponseLabel label;
+  private Object label = null;
 
   public static final String SERIALIZED_NAME_LABEL_ERROR = "labelError";
   @SerializedName(SERIALIZED_NAME_LABEL_ERROR)
-  private String labelError;
+  private Object labelError = null;
+
+  public static final String SERIALIZED_NAME_STOREFRONT_ID = "storefrontId";
+  @SerializedName(SERIALIZED_NAME_STOREFRONT_ID)
+  private String storefrontId;
 
   public CreateVaultMarketSupplySendResponse() { 
   }
 
-  public CreateVaultMarketSupplySendResponse created(List<CreateVaultMarketSupplySendResponseCreated> created) {
+  public CreateVaultMarketSupplySendResponse batchId(Object batchId) {
     
-    this.created = created;
+    this.batchId = batchId;
     return this;
   }
 
-  public CreateVaultMarketSupplySendResponse addCreatedItem(CreateVaultMarketSupplySendResponseCreated createdItem) {
-    this.created.add(createdItem);
+   /**
+   * Get batchId
+   * @return batchId
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public Object getBatchId() {
+    return batchId;
+  }
+
+
+  public void setBatchId(Object batchId) {
+    this.batchId = batchId;
+  }
+
+
+  public CreateVaultMarketSupplySendResponse created(Object created) {
+    
+    this.created = created;
     return this;
   }
 
@@ -69,26 +93,26 @@ public class CreateVaultMarketSupplySendResponse {
    * Get created
    * @return created
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   @ApiModelProperty(required = true, value = "")
 
-  public List<CreateVaultMarketSupplySendResponseCreated> getCreated() {
+  public Object getCreated() {
     return created;
   }
 
 
-  public void setCreated(List<CreateVaultMarketSupplySendResponseCreated> created) {
+  public void setCreated(Object created) {
     this.created = created;
   }
 
 
-  public CreateVaultMarketSupplySendResponse skipped(List<CreateVaultMarketSupplySendResponseSkipped> skipped) {
+  public CreateVaultMarketSupplySendResponse skipped(List<InventoryItemIdReason> skipped) {
     
     this.skipped = skipped;
     return this;
   }
 
-  public CreateVaultMarketSupplySendResponse addSkippedItem(CreateVaultMarketSupplySendResponseSkipped skippedItem) {
+  public CreateVaultMarketSupplySendResponse addSkippedItem(InventoryItemIdReason skippedItem) {
     this.skipped.add(skippedItem);
     return this;
   }
@@ -100,17 +124,17 @@ public class CreateVaultMarketSupplySendResponse {
   @javax.annotation.Nonnull
   @ApiModelProperty(required = true, value = "")
 
-  public List<CreateVaultMarketSupplySendResponseSkipped> getSkipped() {
+  public List<InventoryItemIdReason> getSkipped() {
     return skipped;
   }
 
 
-  public void setSkipped(List<CreateVaultMarketSupplySendResponseSkipped> skipped) {
+  public void setSkipped(List<InventoryItemIdReason> skipped) {
     this.skipped = skipped;
   }
 
 
-  public CreateVaultMarketSupplySendResponse label(CreateVaultMarketPartnerBatchResponseLabel label) {
+  public CreateVaultMarketSupplySendResponse label(Object label) {
     
     this.label = label;
     return this;
@@ -123,17 +147,17 @@ public class CreateVaultMarketSupplySendResponse {
   @javax.annotation.Nullable
   @ApiModelProperty(value = "")
 
-  public CreateVaultMarketPartnerBatchResponseLabel getLabel() {
+  public Object getLabel() {
     return label;
   }
 
 
-  public void setLabel(CreateVaultMarketPartnerBatchResponseLabel label) {
+  public void setLabel(Object label) {
     this.label = label;
   }
 
 
-  public CreateVaultMarketSupplySendResponse labelError(String labelError) {
+  public CreateVaultMarketSupplySendResponse labelError(Object labelError) {
     
     this.labelError = labelError;
     return this;
@@ -146,13 +170,36 @@ public class CreateVaultMarketSupplySendResponse {
   @javax.annotation.Nullable
   @ApiModelProperty(value = "")
 
-  public String getLabelError() {
+  public Object getLabelError() {
     return labelError;
   }
 
 
-  public void setLabelError(String labelError) {
+  public void setLabelError(Object labelError) {
     this.labelError = labelError;
+  }
+
+
+  public CreateVaultMarketSupplySendResponse storefrontId(String storefrontId) {
+    
+    this.storefrontId = storefrontId;
+    return this;
+  }
+
+   /**
+   * Get storefrontId
+   * @return storefrontId
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public String getStorefrontId() {
+    return storefrontId;
+  }
+
+
+  public void setStorefrontId(String storefrontId) {
+    this.storefrontId = storefrontId;
   }
 
 
@@ -165,10 +212,12 @@ public class CreateVaultMarketSupplySendResponse {
       return false;
     }
     CreateVaultMarketSupplySendResponse createVaultMarketSupplySendResponse = (CreateVaultMarketSupplySendResponse) o;
-    return Objects.equals(this.created, createVaultMarketSupplySendResponse.created) &&
+    return Objects.equals(this.batchId, createVaultMarketSupplySendResponse.batchId) &&
+        Objects.equals(this.created, createVaultMarketSupplySendResponse.created) &&
         Objects.equals(this.skipped, createVaultMarketSupplySendResponse.skipped) &&
         Objects.equals(this.label, createVaultMarketSupplySendResponse.label) &&
-        Objects.equals(this.labelError, createVaultMarketSupplySendResponse.labelError);
+        Objects.equals(this.labelError, createVaultMarketSupplySendResponse.labelError) &&
+        Objects.equals(this.storefrontId, createVaultMarketSupplySendResponse.storefrontId);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -177,7 +226,7 @@ public class CreateVaultMarketSupplySendResponse {
 
   @Override
   public int hashCode() {
-    return Objects.hash(created, skipped, label, labelError);
+    return Objects.hash(batchId, created, skipped, label, labelError, storefrontId);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -191,10 +240,12 @@ public class CreateVaultMarketSupplySendResponse {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class CreateVaultMarketSupplySendResponse {\n");
+    sb.append("    batchId: ").append(toIndentedString(batchId)).append("\n");
     sb.append("    created: ").append(toIndentedString(created)).append("\n");
     sb.append("    skipped: ").append(toIndentedString(skipped)).append("\n");
     sb.append("    label: ").append(toIndentedString(label)).append("\n");
     sb.append("    labelError: ").append(toIndentedString(labelError)).append("\n");
+    sb.append("    storefrontId: ").append(toIndentedString(storefrontId)).append("\n");
     sb.append("}");
     return sb.toString();
   }

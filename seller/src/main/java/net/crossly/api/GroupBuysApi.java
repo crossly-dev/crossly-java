@@ -28,7 +28,14 @@ import java.io.IOException;
 
 
 import net.crossly.model.breaks.CreateBreakResponse;
+import net.crossly.model.group.CreateGroupBuyCancelResponse;
+import net.crossly.model.group.CreateGroupBuyCloseResponse;
+import net.crossly.model.group.CreateGroupBuyExtendResponse;
+import net.crossly.model.group.CreateGroupBuyMessageResponse;
 import net.crossly.model.common.Error;
+import net.crossly.model.group.GetGroupBuyResponse;
+import net.crossly.model.group.ListGroupBuysResponse;
+import net.crossly.model.group.UpdateGroupBuyResponse;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
@@ -146,7 +153,7 @@ public class GroupBuysApi {
     }
 
     /**
-     * Run a group buy on a listing with stock: price tiers by buyer count, a minimum, up to 6 days. Below the minimum nobody pays.
+     * Run a group buy on a listing with stock: price tiers by committed quantity, a goal and minimum to proceed, a per-buyer max, a deadline, authorize-now or pay-now-refund-the-difference, a goal-miss policy (cancel, proceed, extend once), visibility, placement and share copy. The original body (tiers by buyer count, minBuyers, days) is still accepted.
      * 
      * @return CreateBreakResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -168,7 +175,7 @@ public class GroupBuysApi {
     }
 
     /**
-     * Run a group buy on a listing with stock: price tiers by buyer count, a minimum, up to 6 days. Below the minimum nobody pays.
+     * Run a group buy on a listing with stock: price tiers by committed quantity, a goal and minimum to proceed, a per-buyer max, a deadline, authorize-now or pay-now-refund-the-difference, a goal-miss policy (cancel, proceed, extend once), visibility, placement and share copy. The original body (tiers by buyer count, minBuyers, days) is still accepted.
      * 
      * @return ApiResponse&lt;CreateBreakResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -191,7 +198,7 @@ public class GroupBuysApi {
     }
 
     /**
-     * Run a group buy on a listing with stock: price tiers by buyer count, a minimum, up to 6 days. Below the minimum nobody pays. (asynchronously)
+     * Run a group buy on a listing with stock: price tiers by committed quantity, a goal and minimum to proceed, a per-buyer max, a deadline, authorize-now or pay-now-refund-the-difference, a goal-miss policy (cancel, proceed, extend once), visibility, placement and share copy. The original body (tiers by buyer count, minBuyers, days) is still accepted. (asynchronously)
      * 
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -212,6 +219,1212 @@ public class GroupBuysApi {
 
         okhttp3.Call localVarCall = createGroupBuyValidateBeforeCall(_callback);
         Type localVarReturnType = new TypeToken<CreateBreakResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for createGroupBuyCancel
+     * @param id  (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call createGroupBuyCancelCall(String id, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/v1/group-buys/{id}/cancel"
+            .replaceAll("\\{" + "id" + "\\}", localVarApiClient.escapeString(id.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "PersonalAccessToken" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call createGroupBuyCancelValidateBeforeCall(String id, final ApiCallback _callback) throws ApiException {
+        
+        // verify the required parameter 'id' is set
+        if (id == null) {
+            throw new ApiException("Missing the required parameter 'id' when calling createGroupBuyCancel(Async)");
+        }
+        
+
+        okhttp3.Call localVarCall = createGroupBuyCancelCall(id, _callback);
+        return localVarCall;
+
+    }
+
+    /**
+     * Cancel a group buy: every hold is released and every charge refunded.
+     * 
+     * @param id  (required)
+     * @return CreateGroupBuyCancelResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public CreateGroupBuyCancelResponse createGroupBuyCancel(String id) throws ApiException {
+        ApiResponse<CreateGroupBuyCancelResponse> localVarResp = createGroupBuyCancelWithHttpInfo(id);
+        return localVarResp.getData();
+    }
+
+    /**
+     * Cancel a group buy: every hold is released and every charge refunded.
+     * 
+     * @param id  (required)
+     * @return ApiResponse&lt;CreateGroupBuyCancelResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<CreateGroupBuyCancelResponse> createGroupBuyCancelWithHttpInfo(String id) throws ApiException {
+        okhttp3.Call localVarCall = createGroupBuyCancelValidateBeforeCall(id, null);
+        Type localVarReturnType = new TypeToken<CreateGroupBuyCancelResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Cancel a group buy: every hold is released and every charge refunded. (asynchronously)
+     * 
+     * @param id  (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call createGroupBuyCancelAsync(String id, final ApiCallback<CreateGroupBuyCancelResponse> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = createGroupBuyCancelValidateBeforeCall(id, _callback);
+        Type localVarReturnType = new TypeToken<CreateGroupBuyCancelResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for createGroupBuyClose
+     * @param id  (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call createGroupBuyCloseCall(String id, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/v1/group-buys/{id}/close"
+            .replaceAll("\\{" + "id" + "\\}", localVarApiClient.escapeString(id.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "PersonalAccessToken" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call createGroupBuyCloseValidateBeforeCall(String id, final ApiCallback _callback) throws ApiException {
+        
+        // verify the required parameter 'id' is set
+        if (id == null) {
+            throw new ApiException("Missing the required parameter 'id' when calling createGroupBuyClose(Async)");
+        }
+        
+
+        okhttp3.Call localVarCall = createGroupBuyCloseCall(id, _callback);
+        return localVarCall;
+
+    }
+
+    /**
+     * Close a group buy now: every buyer pays the price reached (the minimum and goal-miss policy still apply).
+     * 
+     * @param id  (required)
+     * @return CreateGroupBuyCloseResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public CreateGroupBuyCloseResponse createGroupBuyClose(String id) throws ApiException {
+        ApiResponse<CreateGroupBuyCloseResponse> localVarResp = createGroupBuyCloseWithHttpInfo(id);
+        return localVarResp.getData();
+    }
+
+    /**
+     * Close a group buy now: every buyer pays the price reached (the minimum and goal-miss policy still apply).
+     * 
+     * @param id  (required)
+     * @return ApiResponse&lt;CreateGroupBuyCloseResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<CreateGroupBuyCloseResponse> createGroupBuyCloseWithHttpInfo(String id) throws ApiException {
+        okhttp3.Call localVarCall = createGroupBuyCloseValidateBeforeCall(id, null);
+        Type localVarReturnType = new TypeToken<CreateGroupBuyCloseResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Close a group buy now: every buyer pays the price reached (the minimum and goal-miss policy still apply). (asynchronously)
+     * 
+     * @param id  (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call createGroupBuyCloseAsync(String id, final ApiCallback<CreateGroupBuyCloseResponse> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = createGroupBuyCloseValidateBeforeCall(id, _callback);
+        Type localVarReturnType = new TypeToken<CreateGroupBuyCloseResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for createGroupBuyExtend
+     * @param id  (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call createGroupBuyExtendCall(String id, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/v1/group-buys/{id}/extend"
+            .replaceAll("\\{" + "id" + "\\}", localVarApiClient.escapeString(id.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "PersonalAccessToken" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call createGroupBuyExtendValidateBeforeCall(String id, final ApiCallback _callback) throws ApiException {
+        
+        // verify the required parameter 'id' is set
+        if (id == null) {
+            throw new ApiException("Missing the required parameter 'id' when calling createGroupBuyExtend(Async)");
+        }
+        
+
+        okhttp3.Call localVarCall = createGroupBuyExtendCall(id, _callback);
+        return localVarCall;
+
+    }
+
+    /**
+     * Move the deadline later by N days (authorize-now pools run at most 6 days, pay-now pools 30).
+     * 
+     * @param id  (required)
+     * @return CreateGroupBuyExtendResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public CreateGroupBuyExtendResponse createGroupBuyExtend(String id) throws ApiException {
+        ApiResponse<CreateGroupBuyExtendResponse> localVarResp = createGroupBuyExtendWithHttpInfo(id);
+        return localVarResp.getData();
+    }
+
+    /**
+     * Move the deadline later by N days (authorize-now pools run at most 6 days, pay-now pools 30).
+     * 
+     * @param id  (required)
+     * @return ApiResponse&lt;CreateGroupBuyExtendResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<CreateGroupBuyExtendResponse> createGroupBuyExtendWithHttpInfo(String id) throws ApiException {
+        okhttp3.Call localVarCall = createGroupBuyExtendValidateBeforeCall(id, null);
+        Type localVarReturnType = new TypeToken<CreateGroupBuyExtendResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Move the deadline later by N days (authorize-now pools run at most 6 days, pay-now pools 30). (asynchronously)
+     * 
+     * @param id  (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call createGroupBuyExtendAsync(String id, final ApiCallback<CreateGroupBuyExtendResponse> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = createGroupBuyExtendValidateBeforeCall(id, _callback);
+        Type localVarReturnType = new TypeToken<CreateGroupBuyExtendResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for createGroupBuyMessage
+     * @param id  (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call createGroupBuyMessageCall(String id, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/v1/group-buys/{id}/message"
+            .replaceAll("\\{" + "id" + "\\}", localVarApiClient.escapeString(id.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "PersonalAccessToken" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call createGroupBuyMessageValidateBeforeCall(String id, final ApiCallback _callback) throws ApiException {
+        
+        // verify the required parameter 'id' is set
+        if (id == null) {
+            throw new ApiException("Missing the required parameter 'id' when calling createGroupBuyMessage(Async)");
+        }
+        
+
+        okhttp3.Call localVarCall = createGroupBuyMessageCall(id, _callback);
+        return localVarCall;
+
+    }
+
+    /**
+     * Send a notification to every buyer committed to the group buy.
+     * 
+     * @param id  (required)
+     * @return CreateGroupBuyMessageResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public CreateGroupBuyMessageResponse createGroupBuyMessage(String id) throws ApiException {
+        ApiResponse<CreateGroupBuyMessageResponse> localVarResp = createGroupBuyMessageWithHttpInfo(id);
+        return localVarResp.getData();
+    }
+
+    /**
+     * Send a notification to every buyer committed to the group buy.
+     * 
+     * @param id  (required)
+     * @return ApiResponse&lt;CreateGroupBuyMessageResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<CreateGroupBuyMessageResponse> createGroupBuyMessageWithHttpInfo(String id) throws ApiException {
+        okhttp3.Call localVarCall = createGroupBuyMessageValidateBeforeCall(id, null);
+        Type localVarReturnType = new TypeToken<CreateGroupBuyMessageResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Send a notification to every buyer committed to the group buy. (asynchronously)
+     * 
+     * @param id  (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call createGroupBuyMessageAsync(String id, final ApiCallback<CreateGroupBuyMessageResponse> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = createGroupBuyMessageValidateBeforeCall(id, _callback);
+        Type localVarReturnType = new TypeToken<CreateGroupBuyMessageResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for getGroupBuy
+     * @param id  (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getGroupBuyCall(String id, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/v1/group-buys/{id}"
+            .replaceAll("\\{" + "id" + "\\}", localVarApiClient.escapeString(id.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "PersonalAccessToken" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call getGroupBuyValidateBeforeCall(String id, final ApiCallback _callback) throws ApiException {
+        
+        // verify the required parameter 'id' is set
+        if (id == null) {
+            throw new ApiException("Missing the required parameter 'id' when calling getGroupBuy(Async)");
+        }
+        
+
+        okhttp3.Call localVarCall = getGroupBuyCall(id, _callback);
+        return localVarCall;
+
+    }
+
+    /**
+     * One group buy: progress towards each tier, committed buyers (masked), time left, revenue at the current tier and the activity feed.
+     * 
+     * @param id  (required)
+     * @return GetGroupBuyResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public GetGroupBuyResponse getGroupBuy(String id) throws ApiException {
+        ApiResponse<GetGroupBuyResponse> localVarResp = getGroupBuyWithHttpInfo(id);
+        return localVarResp.getData();
+    }
+
+    /**
+     * One group buy: progress towards each tier, committed buyers (masked), time left, revenue at the current tier and the activity feed.
+     * 
+     * @param id  (required)
+     * @return ApiResponse&lt;GetGroupBuyResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<GetGroupBuyResponse> getGroupBuyWithHttpInfo(String id) throws ApiException {
+        okhttp3.Call localVarCall = getGroupBuyValidateBeforeCall(id, null);
+        Type localVarReturnType = new TypeToken<GetGroupBuyResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * One group buy: progress towards each tier, committed buyers (masked), time left, revenue at the current tier and the activity feed. (asynchronously)
+     * 
+     * @param id  (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getGroupBuyAsync(String id, final ApiCallback<GetGroupBuyResponse> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = getGroupBuyValidateBeforeCall(id, _callback);
+        Type localVarReturnType = new TypeToken<GetGroupBuyResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for getGroupBuyParticipantsCsv
+     * @param id  (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getGroupBuyParticipantsCsvCall(String id, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/v1/group-buys/{id}/participants.csv"
+            .replaceAll("\\{" + "id" + "\\}", localVarApiClient.escapeString(id.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "PersonalAccessToken" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call getGroupBuyParticipantsCsvValidateBeforeCall(String id, final ApiCallback _callback) throws ApiException {
+        
+        // verify the required parameter 'id' is set
+        if (id == null) {
+            throw new ApiException("Missing the required parameter 'id' when calling getGroupBuyParticipantsCsv(Async)");
+        }
+        
+
+        okhttp3.Call localVarCall = getGroupBuyParticipantsCsvCall(id, _callback);
+        return localVarCall;
+
+    }
+
+    /**
+     * Every participant of a group buy as CSV: quantity, status, amounts and ship-to.
+     * 
+     * @param id  (required)
+     * @return String
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public String getGroupBuyParticipantsCsv(String id) throws ApiException {
+        ApiResponse<String> localVarResp = getGroupBuyParticipantsCsvWithHttpInfo(id);
+        return localVarResp.getData();
+    }
+
+    /**
+     * Every participant of a group buy as CSV: quantity, status, amounts and ship-to.
+     * 
+     * @param id  (required)
+     * @return ApiResponse&lt;String&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<String> getGroupBuyParticipantsCsvWithHttpInfo(String id) throws ApiException {
+        okhttp3.Call localVarCall = getGroupBuyParticipantsCsvValidateBeforeCall(id, null);
+        Type localVarReturnType = new TypeToken<String>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Every participant of a group buy as CSV: quantity, status, amounts and ship-to. (asynchronously)
+     * 
+     * @param id  (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getGroupBuyParticipantsCsvAsync(String id, final ApiCallback<String> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = getGroupBuyParticipantsCsvValidateBeforeCall(id, _callback);
+        Type localVarReturnType = new TypeToken<String>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for listGroupBuys
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call listGroupBuysCall(final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/v1/group-buys";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "PersonalAccessToken" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call listGroupBuysValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        
+
+        okhttp3.Call localVarCall = listGroupBuysCall(_callback);
+        return localVarCall;
+
+    }
+
+    /**
+     * Your group buys, open ones first: tiers, buyers joined, the price reached and when it ends.
+     * 
+     * @return ListGroupBuysResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public ListGroupBuysResponse listGroupBuys() throws ApiException {
+        ApiResponse<ListGroupBuysResponse> localVarResp = listGroupBuysWithHttpInfo();
+        return localVarResp.getData();
+    }
+
+    /**
+     * Your group buys, open ones first: tiers, buyers joined, the price reached and when it ends.
+     * 
+     * @return ApiResponse&lt;ListGroupBuysResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<ListGroupBuysResponse> listGroupBuysWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = listGroupBuysValidateBeforeCall(null);
+        Type localVarReturnType = new TypeToken<ListGroupBuysResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Your group buys, open ones first: tiers, buyers joined, the price reached and when it ends. (asynchronously)
+     * 
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call listGroupBuysAsync(final ApiCallback<ListGroupBuysResponse> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = listGroupBuysValidateBeforeCall(_callback);
+        Type localVarReturnType = new TypeToken<ListGroupBuysResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for updateGroupBuy
+     * @param id  (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call updateGroupBuyCall(String id, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/v1/group-buys/{id}"
+            .replaceAll("\\{" + "id" + "\\}", localVarApiClient.escapeString(id.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "PersonalAccessToken" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "PATCH", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call updateGroupBuyValidateBeforeCall(String id, final ApiCallback _callback) throws ApiException {
+        
+        // verify the required parameter 'id' is set
+        if (id == null) {
+            throw new ApiException("Missing the required parameter 'id' when calling updateGroupBuy(Async)");
+        }
+        
+
+        okhttp3.Call localVarCall = updateGroupBuyCall(id, _callback);
+        return localVarCall;
+
+    }
+
+    /**
+     * Edit a group buy. Copy, visibility, placement and the per-buyer max change any time; tiers, goal, minimum, payment mode and goal-miss policy only before anyone commits.
+     * 
+     * @param id  (required)
+     * @return UpdateGroupBuyResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public UpdateGroupBuyResponse updateGroupBuy(String id) throws ApiException {
+        ApiResponse<UpdateGroupBuyResponse> localVarResp = updateGroupBuyWithHttpInfo(id);
+        return localVarResp.getData();
+    }
+
+    /**
+     * Edit a group buy. Copy, visibility, placement and the per-buyer max change any time; tiers, goal, minimum, payment mode and goal-miss policy only before anyone commits.
+     * 
+     * @param id  (required)
+     * @return ApiResponse&lt;UpdateGroupBuyResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<UpdateGroupBuyResponse> updateGroupBuyWithHttpInfo(String id) throws ApiException {
+        okhttp3.Call localVarCall = updateGroupBuyValidateBeforeCall(id, null);
+        Type localVarReturnType = new TypeToken<UpdateGroupBuyResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Edit a group buy. Copy, visibility, placement and the per-buyer max change any time; tiers, goal, minimum, payment mode and goal-miss policy only before anyone commits. (asynchronously)
+     * 
+     * @param id  (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call updateGroupBuyAsync(String id, final ApiCallback<UpdateGroupBuyResponse> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = updateGroupBuyValidateBeforeCall(id, _callback);
+        Type localVarReturnType = new TypeToken<UpdateGroupBuyResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }

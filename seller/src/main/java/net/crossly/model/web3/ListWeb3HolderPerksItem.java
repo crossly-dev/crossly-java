@@ -29,7 +29,7 @@ import org.openapitools.jackson.nullable.JsonNullable;
 /**
  * ListWeb3HolderPerksItem
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-11T23:44:48.922Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-27T19:42:43.186Z[Etc/UTC]")
 public class ListWeb3HolderPerksItem {
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
@@ -40,8 +40,6 @@ public class ListWeb3HolderPerksItem {
    */
   @JsonAdapter(ChainEnum.Adapter.class)
   public enum ChainEnum {
-    SOLANA("solana"),
-    
     ETHEREUM("ethereum"),
     
     BASE("base"),
@@ -50,7 +48,9 @@ public class ListWeb3HolderPerksItem {
     
     ARBITRUM("arbitrum"),
     
-    OPTIMISM("optimism");
+    OPTIMISM("optimism"),
+    
+    SOLANA("solana");
 
     private String value;
 

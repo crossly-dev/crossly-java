@@ -29,15 +29,15 @@ import org.openapitools.jackson.nullable.JsonNullable;
 /**
  * GetBuyerListingBoughtTogetherResponseDataItems
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-11T23:47:29.843Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-27T19:58:46.962Z[Etc/UTC]")
 public class GetBuyerListingBoughtTogetherResponseDataItems {
-  public static final String SERIALIZED_NAME_TITLE = "title";
-  @SerializedName(SERIALIZED_NAME_TITLE)
-  private String title;
-
   public static final String SERIALIZED_NAME_SLUG = "slug";
   @SerializedName(SERIALIZED_NAME_SLUG)
   private String slug;
+
+  public static final String SERIALIZED_NAME_TITLE = "title";
+  @SerializedName(SERIALIZED_NAME_TITLE)
+  private String title;
 
   public static final String SERIALIZED_NAME_PRICE_CENTS = "priceCents";
   @SerializedName(SERIALIZED_NAME_PRICE_CENTS)
@@ -53,29 +53,6 @@ public class GetBuyerListingBoughtTogetherResponseDataItems {
 
   public GetBuyerListingBoughtTogetherResponseDataItems() { 
   }
-
-  public GetBuyerListingBoughtTogetherResponseDataItems title(String title) {
-    
-    this.title = title;
-    return this;
-  }
-
-   /**
-   * Get title
-   * @return title
-  **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
-
-  public String getTitle() {
-    return title;
-  }
-
-
-  public void setTitle(String title) {
-    this.title = title;
-  }
-
 
   public GetBuyerListingBoughtTogetherResponseDataItems slug(String slug) {
     
@@ -97,6 +74,29 @@ public class GetBuyerListingBoughtTogetherResponseDataItems {
 
   public void setSlug(String slug) {
     this.slug = slug;
+  }
+
+
+  public GetBuyerListingBoughtTogetherResponseDataItems title(String title) {
+    
+    this.title = title;
+    return this;
+  }
+
+   /**
+   * Get title
+   * @return title
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public String getTitle() {
+    return title;
+  }
+
+
+  public void setTitle(String title) {
+    this.title = title;
   }
 
 
@@ -178,8 +178,8 @@ public class GetBuyerListingBoughtTogetherResponseDataItems {
       return false;
     }
     GetBuyerListingBoughtTogetherResponseDataItems getBuyerListingBoughtTogetherResponseDataItems = (GetBuyerListingBoughtTogetherResponseDataItems) o;
-    return Objects.equals(this.title, getBuyerListingBoughtTogetherResponseDataItems.title) &&
-        Objects.equals(this.slug, getBuyerListingBoughtTogetherResponseDataItems.slug) &&
+    return Objects.equals(this.slug, getBuyerListingBoughtTogetherResponseDataItems.slug) &&
+        Objects.equals(this.title, getBuyerListingBoughtTogetherResponseDataItems.title) &&
         Objects.equals(this.priceCents, getBuyerListingBoughtTogetherResponseDataItems.priceCents) &&
         Objects.equals(this.image, getBuyerListingBoughtTogetherResponseDataItems.image) &&
         Objects.equals(this.sameSeller, getBuyerListingBoughtTogetherResponseDataItems.sameSeller);
@@ -191,7 +191,7 @@ public class GetBuyerListingBoughtTogetherResponseDataItems {
 
   @Override
   public int hashCode() {
-    return Objects.hash(title, slug, priceCents, image, sameSeller);
+    return Objects.hash(slug, title, priceCents, image, sameSeller);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -205,8 +205,8 @@ public class GetBuyerListingBoughtTogetherResponseDataItems {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class GetBuyerListingBoughtTogetherResponseDataItems {\n");
-    sb.append("    title: ").append(toIndentedString(title)).append("\n");
     sb.append("    slug: ").append(toIndentedString(slug)).append("\n");
+    sb.append("    title: ").append(toIndentedString(title)).append("\n");
     sb.append("    priceCents: ").append(toIndentedString(priceCents)).append("\n");
     sb.append("    image: ").append(toIndentedString(image)).append("\n");
     sb.append("    sameSeller: ").append(toIndentedString(sameSeller)).append("\n");

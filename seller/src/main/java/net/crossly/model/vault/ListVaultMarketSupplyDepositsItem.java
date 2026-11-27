@@ -30,11 +30,15 @@ import org.openapitools.jackson.nullable.JsonNullable;
 /**
  * ListVaultMarketSupplyDepositsItem
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-11T23:44:48.922Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-27T19:42:43.186Z[Etc/UTC]")
 public class ListVaultMarketSupplyDepositsItem {
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
   private String id;
+
+  public static final String SERIALIZED_NAME_STOREFRONT_ID = "storefrontId";
+  @SerializedName(SERIALIZED_NAME_STOREFRONT_ID)
+  private String storefrontId;
 
   public static final String SERIALIZED_NAME_VAULT_ITEM_ID = "vaultItemId";
   @SerializedName(SERIALIZED_NAME_VAULT_ITEM_ID)
@@ -63,17 +67,17 @@ public class ListVaultMarketSupplyDepositsItem {
   public enum StatusEnum {
     STORED("stored"),
     
+    CANCELLED("cancelled"),
+    
     LISTED("listed"),
+    
+    SHIPPED("shipped"),
     
     INBOUND("inbound"),
     
-    CANCELLED("cancelled"),
-    
     SOLD_ON_BOOK("sold_on_book"),
     
-    CHANNEL_SOLD("channel_sold"),
-    
-    SHIPPED("shipped");
+    CHANNEL_SOLD("channel_sold");
 
     private String value;
 
@@ -196,6 +200,29 @@ public class ListVaultMarketSupplyDepositsItem {
 
   public void setId(String id) {
     this.id = id;
+  }
+
+
+  public ListVaultMarketSupplyDepositsItem storefrontId(String storefrontId) {
+    
+    this.storefrontId = storefrontId;
+    return this;
+  }
+
+   /**
+   * Get storefrontId
+   * @return storefrontId
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public String getStorefrontId() {
+    return storefrontId;
+  }
+
+
+  public void setStorefrontId(String storefrontId) {
+    this.storefrontId = storefrontId;
   }
 
 
@@ -669,6 +696,7 @@ public class ListVaultMarketSupplyDepositsItem {
     }
     ListVaultMarketSupplyDepositsItem listVaultMarketSupplyDepositsItem = (ListVaultMarketSupplyDepositsItem) o;
     return Objects.equals(this.id, listVaultMarketSupplyDepositsItem.id) &&
+        Objects.equals(this.storefrontId, listVaultMarketSupplyDepositsItem.storefrontId) &&
         Objects.equals(this.vaultItemId, listVaultMarketSupplyDepositsItem.vaultItemId) &&
         Objects.equals(this.inventoryItemId, listVaultMarketSupplyDepositsItem.inventoryItemId) &&
         Objects.equals(this.batchId, listVaultMarketSupplyDepositsItem.batchId) &&
@@ -697,7 +725,7 @@ public class ListVaultMarketSupplyDepositsItem {
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, vaultItemId, inventoryItemId, batchId, partnerId, bookKey, status, unitStatus, lendEnabled, name, imageUrl, variantLabel, autoListBps, lendWhenIdle, setupNote, setUpAt, channelPlatform, channelSoldAt, outboundTracking, exit, createdAt);
+    return Objects.hash(id, storefrontId, vaultItemId, inventoryItemId, batchId, partnerId, bookKey, status, unitStatus, lendEnabled, name, imageUrl, variantLabel, autoListBps, lendWhenIdle, setupNote, setUpAt, channelPlatform, channelSoldAt, outboundTracking, exit, createdAt);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -712,6 +740,7 @@ public class ListVaultMarketSupplyDepositsItem {
     StringBuilder sb = new StringBuilder();
     sb.append("class ListVaultMarketSupplyDepositsItem {\n");
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
+    sb.append("    storefrontId: ").append(toIndentedString(storefrontId)).append("\n");
     sb.append("    vaultItemId: ").append(toIndentedString(vaultItemId)).append("\n");
     sb.append("    inventoryItemId: ").append(toIndentedString(inventoryItemId)).append("\n");
     sb.append("    batchId: ").append(toIndentedString(batchId)).append("\n");

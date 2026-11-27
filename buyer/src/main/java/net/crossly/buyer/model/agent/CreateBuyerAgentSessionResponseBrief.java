@@ -35,7 +35,7 @@ import org.openapitools.jackson.nullable.JsonNullable;
 /**
  * CreateBuyerAgentSessionResponseBrief
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-11T23:47:29.843Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-27T19:58:46.962Z[Etc/UTC]")
 public class CreateBuyerAgentSessionResponseBrief {
   public static final String SERIALIZED_NAME_WANT = "want";
   @SerializedName(SERIALIZED_NAME_WANT)

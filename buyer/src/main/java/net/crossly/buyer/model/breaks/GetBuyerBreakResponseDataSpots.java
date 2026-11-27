@@ -29,31 +29,19 @@ import org.openapitools.jackson.nullable.JsonNullable;
 /**
  * GetBuyerBreakResponseDataSpots
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-11T23:47:29.843Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-27T19:58:46.962Z[Etc/UTC]")
 public class GetBuyerBreakResponseDataSpots {
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
   private String id;
 
-  public static final String SERIALIZED_NAME_LABEL = "label";
-  @SerializedName(SERIALIZED_NAME_LABEL)
-  private String label;
-
   public static final String SERIALIZED_NAME_POSITION = "position";
   @SerializedName(SERIALIZED_NAME_POSITION)
   private BigDecimal position;
 
-  public static final String SERIALIZED_NAME_HELD_UNTIL = "heldUntil";
-  @SerializedName(SERIALIZED_NAME_HELD_UNTIL)
-  private String heldUntil;
-
-  public static final String SERIALIZED_NAME_HITS = "hits";
-  @SerializedName(SERIALIZED_NAME_HITS)
-  private String hits;
-
-  public static final String SERIALIZED_NAME_BUYER = "buyer";
-  @SerializedName(SERIALIZED_NAME_BUYER)
-  private String buyer;
+  public static final String SERIALIZED_NAME_LABEL = "label";
+  @SerializedName(SERIALIZED_NAME_LABEL)
+  private String label;
 
   public static final String SERIALIZED_NAME_TAKEN = "taken";
   @SerializedName(SERIALIZED_NAME_TAKEN)
@@ -70,6 +58,18 @@ public class GetBuyerBreakResponseDataSpots {
   public static final String SERIALIZED_NAME_HELD_BY_OTHER = "heldByOther";
   @SerializedName(SERIALIZED_NAME_HELD_BY_OTHER)
   private Boolean heldByOther;
+
+  public static final String SERIALIZED_NAME_HELD_UNTIL = "heldUntil";
+  @SerializedName(SERIALIZED_NAME_HELD_UNTIL)
+  private String heldUntil;
+
+  public static final String SERIALIZED_NAME_BUYER = "buyer";
+  @SerializedName(SERIALIZED_NAME_BUYER)
+  private String buyer;
+
+  public static final String SERIALIZED_NAME_HITS = "hits";
+  @SerializedName(SERIALIZED_NAME_HITS)
+  private String hits;
 
   public GetBuyerBreakResponseDataSpots() { 
   }
@@ -97,29 +97,6 @@ public class GetBuyerBreakResponseDataSpots {
   }
 
 
-  public GetBuyerBreakResponseDataSpots label(String label) {
-    
-    this.label = label;
-    return this;
-  }
-
-   /**
-   * Get label
-   * @return label
-  **/
-  @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "")
-
-  public String getLabel() {
-    return label;
-  }
-
-
-  public void setLabel(String label) {
-    this.label = label;
-  }
-
-
   public GetBuyerBreakResponseDataSpots position(BigDecimal position) {
     
     this.position = position;
@@ -143,72 +120,26 @@ public class GetBuyerBreakResponseDataSpots {
   }
 
 
-  public GetBuyerBreakResponseDataSpots heldUntil(String heldUntil) {
+  public GetBuyerBreakResponseDataSpots label(String label) {
     
-    this.heldUntil = heldUntil;
+    this.label = label;
     return this;
   }
 
    /**
-   * Get heldUntil
-   * @return heldUntil
+   * Get label
+   * @return label
   **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
+  @javax.annotation.Nonnull
+  @ApiModelProperty(required = true, value = "")
 
-  public String getHeldUntil() {
-    return heldUntil;
+  public String getLabel() {
+    return label;
   }
 
 
-  public void setHeldUntil(String heldUntil) {
-    this.heldUntil = heldUntil;
-  }
-
-
-  public GetBuyerBreakResponseDataSpots hits(String hits) {
-    
-    this.hits = hits;
-    return this;
-  }
-
-   /**
-   * Get hits
-   * @return hits
-  **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
-
-  public String getHits() {
-    return hits;
-  }
-
-
-  public void setHits(String hits) {
-    this.hits = hits;
-  }
-
-
-  public GetBuyerBreakResponseDataSpots buyer(String buyer) {
-    
-    this.buyer = buyer;
-    return this;
-  }
-
-   /**
-   * Get buyer
-   * @return buyer
-  **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
-
-  public String getBuyer() {
-    return buyer;
-  }
-
-
-  public void setBuyer(String buyer) {
-    this.buyer = buyer;
+  public void setLabel(String label) {
+    this.label = label;
   }
 
 
@@ -304,6 +235,75 @@ public class GetBuyerBreakResponseDataSpots {
   }
 
 
+  public GetBuyerBreakResponseDataSpots heldUntil(String heldUntil) {
+    
+    this.heldUntil = heldUntil;
+    return this;
+  }
+
+   /**
+   * Get heldUntil
+   * @return heldUntil
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public String getHeldUntil() {
+    return heldUntil;
+  }
+
+
+  public void setHeldUntil(String heldUntil) {
+    this.heldUntil = heldUntil;
+  }
+
+
+  public GetBuyerBreakResponseDataSpots buyer(String buyer) {
+    
+    this.buyer = buyer;
+    return this;
+  }
+
+   /**
+   * Get buyer
+   * @return buyer
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public String getBuyer() {
+    return buyer;
+  }
+
+
+  public void setBuyer(String buyer) {
+    this.buyer = buyer;
+  }
+
+
+  public GetBuyerBreakResponseDataSpots hits(String hits) {
+    
+    this.hits = hits;
+    return this;
+  }
+
+   /**
+   * Get hits
+   * @return hits
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public String getHits() {
+    return hits;
+  }
+
+
+  public void setHits(String hits) {
+    this.hits = hits;
+  }
+
+
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -314,15 +314,15 @@ public class GetBuyerBreakResponseDataSpots {
     }
     GetBuyerBreakResponseDataSpots getBuyerBreakResponseDataSpots = (GetBuyerBreakResponseDataSpots) o;
     return Objects.equals(this.id, getBuyerBreakResponseDataSpots.id) &&
-        Objects.equals(this.label, getBuyerBreakResponseDataSpots.label) &&
         Objects.equals(this.position, getBuyerBreakResponseDataSpots.position) &&
-        Objects.equals(this.heldUntil, getBuyerBreakResponseDataSpots.heldUntil) &&
-        Objects.equals(this.hits, getBuyerBreakResponseDataSpots.hits) &&
-        Objects.equals(this.buyer, getBuyerBreakResponseDataSpots.buyer) &&
+        Objects.equals(this.label, getBuyerBreakResponseDataSpots.label) &&
         Objects.equals(this.taken, getBuyerBreakResponseDataSpots.taken) &&
         Objects.equals(this.mine, getBuyerBreakResponseDataSpots.mine) &&
         Objects.equals(this.heldByMe, getBuyerBreakResponseDataSpots.heldByMe) &&
-        Objects.equals(this.heldByOther, getBuyerBreakResponseDataSpots.heldByOther);
+        Objects.equals(this.heldByOther, getBuyerBreakResponseDataSpots.heldByOther) &&
+        Objects.equals(this.heldUntil, getBuyerBreakResponseDataSpots.heldUntil) &&
+        Objects.equals(this.buyer, getBuyerBreakResponseDataSpots.buyer) &&
+        Objects.equals(this.hits, getBuyerBreakResponseDataSpots.hits);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -331,7 +331,7 @@ public class GetBuyerBreakResponseDataSpots {
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, label, position, heldUntil, hits, buyer, taken, mine, heldByMe, heldByOther);
+    return Objects.hash(id, position, label, taken, mine, heldByMe, heldByOther, heldUntil, buyer, hits);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -346,15 +346,15 @@ public class GetBuyerBreakResponseDataSpots {
     StringBuilder sb = new StringBuilder();
     sb.append("class GetBuyerBreakResponseDataSpots {\n");
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
-    sb.append("    label: ").append(toIndentedString(label)).append("\n");
     sb.append("    position: ").append(toIndentedString(position)).append("\n");
-    sb.append("    heldUntil: ").append(toIndentedString(heldUntil)).append("\n");
-    sb.append("    hits: ").append(toIndentedString(hits)).append("\n");
-    sb.append("    buyer: ").append(toIndentedString(buyer)).append("\n");
+    sb.append("    label: ").append(toIndentedString(label)).append("\n");
     sb.append("    taken: ").append(toIndentedString(taken)).append("\n");
     sb.append("    mine: ").append(toIndentedString(mine)).append("\n");
     sb.append("    heldByMe: ").append(toIndentedString(heldByMe)).append("\n");
     sb.append("    heldByOther: ").append(toIndentedString(heldByOther)).append("\n");
+    sb.append("    heldUntil: ").append(toIndentedString(heldUntil)).append("\n");
+    sb.append("    buyer: ").append(toIndentedString(buyer)).append("\n");
+    sb.append("    hits: ").append(toIndentedString(hits)).append("\n");
     sb.append("}");
     return sb.toString();
   }

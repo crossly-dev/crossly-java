@@ -29,14 +29,16 @@ import java.io.IOException;
 
 import net.crossly.model.common.Error;
 import net.crossly.model.brand.GetBrandResponse;
-import net.crossly.model.common.GetCategoryResponse;
+import net.crossly.model.category.GetCategoryResponse;
 import net.crossly.model.common.GetDepartmentResponse;
 import net.crossly.model.common.GetGenderResponse;
 import net.crossly.model.common.GetPatternResponse;
+import net.crossly.model.common.GetReferencePostalResponse;
 import net.crossly.model.common.GetSizeSystemResponse;
 import net.crossly.model.common.GetStyleResponse;
 import net.crossly.model.common.GetTypeResponse;
 import net.crossly.model.common.ListReferenceCountriesResponse;
+import net.crossly.model.common.ListReferenceMetrosResponse;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
@@ -792,6 +794,168 @@ public class ReferenceApi {
         return localVarCall;
     }
     /**
+     * Build call for getReferencePostal
+     * @param country  (required)
+     * @param code  (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getReferencePostalCall(String country, String code, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/v1/reference/postal/{country}/{code}"
+            .replaceAll("\\{" + "country" + "\\}", localVarApiClient.escapeString(country.toString()))
+            .replaceAll("\\{" + "code" + "\\}", localVarApiClient.escapeString(code.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "PersonalAccessToken" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call getReferencePostalValidateBeforeCall(String country, String code, final ApiCallback _callback) throws ApiException {
+        
+        // verify the required parameter 'country' is set
+        if (country == null) {
+            throw new ApiException("Missing the required parameter 'country' when calling getReferencePostal(Async)");
+        }
+        
+        // verify the required parameter 'code' is set
+        if (code == null) {
+            throw new ApiException("Missing the required parameter 'code' when calling getReferencePostal(Async)");
+        }
+        
+
+        okhttp3.Call localVarCall = getReferencePostalCall(country, code, _callback);
+        return localVarCall;
+
+    }
+
+    /**
+     * Look up a postal code: canonical shape, state and US metro areas.
+     * Every country gets its canonical shape and &#x60;valid&#x60;. A US ZIP (territories normalize to country US with &#x60;territory&#x60;) also gets state, county FIPS and CBSA/CSA. &#x60;metroStatus&#x60; is known (the ZIP is mapped), unmapped (a ZIP with no metro mapping: it matches no metro rule) or no_zip.
+     * @param country  (required)
+     * @param code  (required)
+     * @return GetReferencePostalResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public GetReferencePostalResponse getReferencePostal(String country, String code) throws ApiException {
+        ApiResponse<GetReferencePostalResponse> localVarResp = getReferencePostalWithHttpInfo(country, code);
+        return localVarResp.getData();
+    }
+
+    /**
+     * Look up a postal code: canonical shape, state and US metro areas.
+     * Every country gets its canonical shape and &#x60;valid&#x60;. A US ZIP (territories normalize to country US with &#x60;territory&#x60;) also gets state, county FIPS and CBSA/CSA. &#x60;metroStatus&#x60; is known (the ZIP is mapped), unmapped (a ZIP with no metro mapping: it matches no metro rule) or no_zip.
+     * @param country  (required)
+     * @param code  (required)
+     * @return ApiResponse&lt;GetReferencePostalResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<GetReferencePostalResponse> getReferencePostalWithHttpInfo(String country, String code) throws ApiException {
+        okhttp3.Call localVarCall = getReferencePostalValidateBeforeCall(country, code, null);
+        Type localVarReturnType = new TypeToken<GetReferencePostalResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Look up a postal code: canonical shape, state and US metro areas. (asynchronously)
+     * Every country gets its canonical shape and &#x60;valid&#x60;. A US ZIP (territories normalize to country US with &#x60;territory&#x60;) also gets state, county FIPS and CBSA/CSA. &#x60;metroStatus&#x60; is known (the ZIP is mapped), unmapped (a ZIP with no metro mapping: it matches no metro rule) or no_zip.
+     * @param country  (required)
+     * @param code  (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getReferencePostalAsync(String country, String code, final ApiCallback<GetReferencePostalResponse> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = getReferencePostalValidateBeforeCall(country, code, _callback);
+        Type localVarReturnType = new TypeToken<GetReferencePostalResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
      * Build call for getSizeSystem
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -1356,6 +1520,169 @@ public class ReferenceApi {
 
         okhttp3.Call localVarCall = listReferenceCountriesValidateBeforeCall(_callback);
         Type localVarReturnType = new TypeToken<ListReferenceCountriesResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for listReferenceMetros
+     * @param q  (required)
+     * @param limit  (optional, default to 20)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call listReferenceMetrosCall(String q, Integer limit, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/v1/reference/metros";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        if (q != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("q", q));
+        }
+
+        if (limit != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("limit", limit));
+        }
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "PersonalAccessToken" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call listReferenceMetrosValidateBeforeCall(String q, Integer limit, final ApiCallback _callback) throws ApiException {
+        
+        // verify the required parameter 'q' is set
+        if (q == null) {
+            throw new ApiException("Missing the required parameter 'q' when calling listReferenceMetros(Async)");
+        }
+        
+
+        okhttp3.Call localVarCall = listReferenceMetrosCall(q, limit, _callback);
+        return localVarCall;
+
+    }
+
+    /**
+     * Search US metro areas (CSA / CBSA) for location rules.
+     * Combined Statistical Areas first, then Core-Based Statistical Areas, matched on title (or an exact code); at most 20. &#x60;q&#x60; needs 2+ characters. &#x60;meta.datasetAvailable&#x60; is false when the census dataset is not loaded, in which case no metro rule can match.
+     * @param q  (required)
+     * @param limit  (optional, default to 20)
+     * @return ListReferenceMetrosResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public ListReferenceMetrosResponse listReferenceMetros(String q, Integer limit) throws ApiException {
+        ApiResponse<ListReferenceMetrosResponse> localVarResp = listReferenceMetrosWithHttpInfo(q, limit);
+        return localVarResp.getData();
+    }
+
+    /**
+     * Search US metro areas (CSA / CBSA) for location rules.
+     * Combined Statistical Areas first, then Core-Based Statistical Areas, matched on title (or an exact code); at most 20. &#x60;q&#x60; needs 2+ characters. &#x60;meta.datasetAvailable&#x60; is false when the census dataset is not loaded, in which case no metro rule can match.
+     * @param q  (required)
+     * @param limit  (optional, default to 20)
+     * @return ApiResponse&lt;ListReferenceMetrosResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<ListReferenceMetrosResponse> listReferenceMetrosWithHttpInfo(String q, Integer limit) throws ApiException {
+        okhttp3.Call localVarCall = listReferenceMetrosValidateBeforeCall(q, limit, null);
+        Type localVarReturnType = new TypeToken<ListReferenceMetrosResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Search US metro areas (CSA / CBSA) for location rules. (asynchronously)
+     * Combined Statistical Areas first, then Core-Based Statistical Areas, matched on title (or an exact code); at most 20. &#x60;q&#x60; needs 2+ characters. &#x60;meta.datasetAvailable&#x60; is false when the census dataset is not loaded, in which case no metro rule can match.
+     * @param q  (required)
+     * @param limit  (optional, default to 20)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call listReferenceMetrosAsync(String q, Integer limit, final ApiCallback<ListReferenceMetrosResponse> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = listReferenceMetrosValidateBeforeCall(q, limit, _callback);
+        Type localVarReturnType = new TypeToken<ListReferenceMetrosResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }

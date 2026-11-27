@@ -28,18 +28,18 @@ import java.math.BigDecimal;
 /**
  * CreateBuyerAgentSessionActResponseQuotePriceCheck
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-11T23:47:29.843Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-27T19:58:46.962Z[Etc/UTC]")
 public class CreateBuyerAgentSessionActResponseQuotePriceCheck {
   /**
    * Gets or Sets verdict
    */
   @JsonAdapter(VerdictEnum.Adapter.class)
   public enum VerdictEnum {
-    HIGH("high"),
+    GOOD("good"),
     
     FAIR("fair"),
     
-    GOOD("good"),
+    HIGH("high"),
     
     GREAT("great");
 

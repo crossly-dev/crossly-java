@@ -33,6 +33,10 @@ public enum CreateMeTemplateRenderResponseTokensUsedItem {
   
   BRAND("brand"),
   
+  CATEGORY("category"),
+  
+  MONTH("month"),
+  
   SKU("sku"),
   
   CONDITION("condition"),
@@ -47,15 +51,11 @@ public enum CreateMeTemplateRenderResponseTokensUsedItem {
   
   PRICE("price"),
   
-  CATEGORY("category"),
-  
   YEAR("year"),
   
   MODEL("model"),
   
-  ITEM_NAME("item_name"),
-  
-  MONTH("month");
+  ITEM_NAME("item_name");
 
   private String value;
 

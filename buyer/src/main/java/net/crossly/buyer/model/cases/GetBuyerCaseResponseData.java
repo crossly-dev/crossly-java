@@ -34,15 +34,15 @@ import org.openapitools.jackson.nullable.JsonNullable;
 /**
  * GetBuyerCaseResponseData
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-11T23:47:29.843Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-27T19:58:46.962Z[Etc/UTC]")
 public class GetBuyerCaseResponseData {
-  public static final String SERIALIZED_NAME_MESSAGES = "messages";
-  @SerializedName(SERIALIZED_NAME_MESSAGES)
-  private List<GetBuyerCaseResponseDataMessages> messages = new ArrayList<GetBuyerCaseResponseDataMessages>();
-
   public static final String SERIALIZED_NAME_CASE = "case";
   @SerializedName(SERIALIZED_NAME_CASE)
   private GetBuyerCaseResponseDataCase _case;
+
+  public static final String SERIALIZED_NAME_MESSAGES = "messages";
+  @SerializedName(SERIALIZED_NAME_MESSAGES)
+  private List<GetBuyerCaseResponseDataMessages> messages = new ArrayList<GetBuyerCaseResponseDataMessages>();
 
   public static final String SERIALIZED_NAME_PURCHASE = "purchase";
   @SerializedName(SERIALIZED_NAME_PURCHASE)
@@ -54,6 +54,29 @@ public class GetBuyerCaseResponseData {
 
   public GetBuyerCaseResponseData() { 
   }
+
+  public GetBuyerCaseResponseData _case(GetBuyerCaseResponseDataCase _case) {
+    
+    this._case = _case;
+    return this;
+  }
+
+   /**
+   * Get _case
+   * @return _case
+  **/
+  @javax.annotation.Nonnull
+  @ApiModelProperty(required = true, value = "")
+
+  public GetBuyerCaseResponseDataCase getCase() {
+    return _case;
+  }
+
+
+  public void setCase(GetBuyerCaseResponseDataCase _case) {
+    this._case = _case;
+  }
+
 
   public GetBuyerCaseResponseData messages(List<GetBuyerCaseResponseDataMessages> messages) {
     
@@ -80,29 +103,6 @@ public class GetBuyerCaseResponseData {
 
   public void setMessages(List<GetBuyerCaseResponseDataMessages> messages) {
     this.messages = messages;
-  }
-
-
-  public GetBuyerCaseResponseData _case(GetBuyerCaseResponseDataCase _case) {
-    
-    this._case = _case;
-    return this;
-  }
-
-   /**
-   * Get _case
-   * @return _case
-  **/
-  @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "")
-
-  public GetBuyerCaseResponseDataCase getCase() {
-    return _case;
-  }
-
-
-  public void setCase(GetBuyerCaseResponseDataCase _case) {
-    this._case = _case;
   }
 
 
@@ -161,8 +161,8 @@ public class GetBuyerCaseResponseData {
       return false;
     }
     GetBuyerCaseResponseData getBuyerCaseResponseData = (GetBuyerCaseResponseData) o;
-    return Objects.equals(this.messages, getBuyerCaseResponseData.messages) &&
-        Objects.equals(this._case, getBuyerCaseResponseData._case) &&
+    return Objects.equals(this._case, getBuyerCaseResponseData._case) &&
+        Objects.equals(this.messages, getBuyerCaseResponseData.messages) &&
         Objects.equals(this.purchase, getBuyerCaseResponseData.purchase) &&
         Objects.equals(this.returnShipment, getBuyerCaseResponseData.returnShipment);
   }
@@ -173,7 +173,7 @@ public class GetBuyerCaseResponseData {
 
   @Override
   public int hashCode() {
-    return Objects.hash(messages, _case, purchase, returnShipment);
+    return Objects.hash(_case, messages, purchase, returnShipment);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -187,8 +187,8 @@ public class GetBuyerCaseResponseData {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class GetBuyerCaseResponseData {\n");
-    sb.append("    messages: ").append(toIndentedString(messages)).append("\n");
     sb.append("    _case: ").append(toIndentedString(_case)).append("\n");
+    sb.append("    messages: ").append(toIndentedString(messages)).append("\n");
     sb.append("    purchase: ").append(toIndentedString(purchase)).append("\n");
     sb.append("    returnShipment: ").append(toIndentedString(returnShipment)).append("\n");
     sb.append("}");

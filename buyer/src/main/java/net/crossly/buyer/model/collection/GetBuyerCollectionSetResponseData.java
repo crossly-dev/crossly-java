@@ -34,31 +34,23 @@ import org.openapitools.jackson.nullable.JsonNullable;
 /**
  * GetBuyerCollectionSetResponseData
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-11T23:47:29.843Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-27T19:58:46.962Z[Etc/UTC]")
 public class GetBuyerCollectionSetResponseData {
   public static final String SERIALIZED_NAME_GROUP = "group";
   @SerializedName(SERIALIZED_NAME_GROUP)
   private GetBuyerCollectionSetResponseDataGroup group;
 
-  public static final String SERIALIZED_NAME_LEADERBOARD = "leaderboard";
-  @SerializedName(SERIALIZED_NAME_LEADERBOARD)
-  private List<GetBuyerCollectionSetResponseDataLeaderboard> leaderboard = new ArrayList<GetBuyerCollectionSetResponseDataLeaderboard>();
-
-  public static final String SERIALIZED_NAME_MISSING = "missing";
-  @SerializedName(SERIALIZED_NAME_MISSING)
-  private BigDecimal missing;
+  public static final String SERIALIZED_NAME_PCT = "pct";
+  @SerializedName(SERIALIZED_NAME_PCT)
+  private BigDecimal pct;
 
   public static final String SERIALIZED_NAME_PIECES = "pieces";
   @SerializedName(SERIALIZED_NAME_PIECES)
   private List<GetBuyerCollectionSetResponseDataPieces> pieces = new ArrayList<GetBuyerCollectionSetResponseDataPieces>();
 
-  public static final String SERIALIZED_NAME_LEADERBOARD_OPT_IN = "leaderboardOptIn";
-  @SerializedName(SERIALIZED_NAME_LEADERBOARD_OPT_IN)
-  private Boolean leaderboardOptIn;
-
-  public static final String SERIALIZED_NAME_PCT = "pct";
-  @SerializedName(SERIALIZED_NAME_PCT)
-  private BigDecimal pct;
+  public static final String SERIALIZED_NAME_MISSING = "missing";
+  @SerializedName(SERIALIZED_NAME_MISSING)
+  private BigDecimal missing;
 
   public static final String SERIALIZED_NAME_MISSING_COST_CENTS = "missingCostCents";
   @SerializedName(SERIALIZED_NAME_MISSING_COST_CENTS)
@@ -68,9 +60,17 @@ public class GetBuyerCollectionSetResponseData {
   @SerializedName(SERIALIZED_NAME_MISSING_UNPRICED)
   private BigDecimal missingUnpriced;
 
+  public static final String SERIALIZED_NAME_LEADERBOARD = "leaderboard";
+  @SerializedName(SERIALIZED_NAME_LEADERBOARD)
+  private List<GetBuyerCollectionSetResponseDataLeaderboard> leaderboard = new ArrayList<GetBuyerCollectionSetResponseDataLeaderboard>();
+
   public static final String SERIALIZED_NAME_MY_RANK = "myRank";
   @SerializedName(SERIALIZED_NAME_MY_RANK)
   private BigDecimal myRank;
+
+  public static final String SERIALIZED_NAME_LEADERBOARD_OPT_IN = "leaderboardOptIn";
+  @SerializedName(SERIALIZED_NAME_LEADERBOARD_OPT_IN)
+  private Boolean leaderboardOptIn;
 
   public GetBuyerCollectionSetResponseData() { 
   }
@@ -98,54 +98,26 @@ public class GetBuyerCollectionSetResponseData {
   }
 
 
-  public GetBuyerCollectionSetResponseData leaderboard(List<GetBuyerCollectionSetResponseDataLeaderboard> leaderboard) {
+  public GetBuyerCollectionSetResponseData pct(BigDecimal pct) {
     
-    this.leaderboard = leaderboard;
-    return this;
-  }
-
-  public GetBuyerCollectionSetResponseData addLeaderboardItem(GetBuyerCollectionSetResponseDataLeaderboard leaderboardItem) {
-    this.leaderboard.add(leaderboardItem);
+    this.pct = pct;
     return this;
   }
 
    /**
-   * Get leaderboard
-   * @return leaderboard
+   * Get pct
+   * @return pct
   **/
   @javax.annotation.Nonnull
   @ApiModelProperty(required = true, value = "")
 
-  public List<GetBuyerCollectionSetResponseDataLeaderboard> getLeaderboard() {
-    return leaderboard;
+  public BigDecimal getPct() {
+    return pct;
   }
 
 
-  public void setLeaderboard(List<GetBuyerCollectionSetResponseDataLeaderboard> leaderboard) {
-    this.leaderboard = leaderboard;
-  }
-
-
-  public GetBuyerCollectionSetResponseData missing(BigDecimal missing) {
-    
-    this.missing = missing;
-    return this;
-  }
-
-   /**
-   * Get missing
-   * @return missing
-  **/
-  @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "")
-
-  public BigDecimal getMissing() {
-    return missing;
-  }
-
-
-  public void setMissing(BigDecimal missing) {
-    this.missing = missing;
+  public void setPct(BigDecimal pct) {
+    this.pct = pct;
   }
 
 
@@ -177,49 +149,26 @@ public class GetBuyerCollectionSetResponseData {
   }
 
 
-  public GetBuyerCollectionSetResponseData leaderboardOptIn(Boolean leaderboardOptIn) {
+  public GetBuyerCollectionSetResponseData missing(BigDecimal missing) {
     
-    this.leaderboardOptIn = leaderboardOptIn;
+    this.missing = missing;
     return this;
   }
 
    /**
-   * Get leaderboardOptIn
-   * @return leaderboardOptIn
+   * Get missing
+   * @return missing
   **/
   @javax.annotation.Nonnull
   @ApiModelProperty(required = true, value = "")
 
-  public Boolean getLeaderboardOptIn() {
-    return leaderboardOptIn;
+  public BigDecimal getMissing() {
+    return missing;
   }
 
 
-  public void setLeaderboardOptIn(Boolean leaderboardOptIn) {
-    this.leaderboardOptIn = leaderboardOptIn;
-  }
-
-
-  public GetBuyerCollectionSetResponseData pct(BigDecimal pct) {
-    
-    this.pct = pct;
-    return this;
-  }
-
-   /**
-   * Get pct
-   * @return pct
-  **/
-  @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "")
-
-  public BigDecimal getPct() {
-    return pct;
-  }
-
-
-  public void setPct(BigDecimal pct) {
-    this.pct = pct;
+  public void setMissing(BigDecimal missing) {
+    this.missing = missing;
   }
 
 
@@ -269,6 +218,34 @@ public class GetBuyerCollectionSetResponseData {
   }
 
 
+  public GetBuyerCollectionSetResponseData leaderboard(List<GetBuyerCollectionSetResponseDataLeaderboard> leaderboard) {
+    
+    this.leaderboard = leaderboard;
+    return this;
+  }
+
+  public GetBuyerCollectionSetResponseData addLeaderboardItem(GetBuyerCollectionSetResponseDataLeaderboard leaderboardItem) {
+    this.leaderboard.add(leaderboardItem);
+    return this;
+  }
+
+   /**
+   * Get leaderboard
+   * @return leaderboard
+  **/
+  @javax.annotation.Nonnull
+  @ApiModelProperty(required = true, value = "")
+
+  public List<GetBuyerCollectionSetResponseDataLeaderboard> getLeaderboard() {
+    return leaderboard;
+  }
+
+
+  public void setLeaderboard(List<GetBuyerCollectionSetResponseDataLeaderboard> leaderboard) {
+    this.leaderboard = leaderboard;
+  }
+
+
   public GetBuyerCollectionSetResponseData myRank(BigDecimal myRank) {
     
     this.myRank = myRank;
@@ -292,6 +269,29 @@ public class GetBuyerCollectionSetResponseData {
   }
 
 
+  public GetBuyerCollectionSetResponseData leaderboardOptIn(Boolean leaderboardOptIn) {
+    
+    this.leaderboardOptIn = leaderboardOptIn;
+    return this;
+  }
+
+   /**
+   * Get leaderboardOptIn
+   * @return leaderboardOptIn
+  **/
+  @javax.annotation.Nonnull
+  @ApiModelProperty(required = true, value = "")
+
+  public Boolean getLeaderboardOptIn() {
+    return leaderboardOptIn;
+  }
+
+
+  public void setLeaderboardOptIn(Boolean leaderboardOptIn) {
+    this.leaderboardOptIn = leaderboardOptIn;
+  }
+
+
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -302,14 +302,14 @@ public class GetBuyerCollectionSetResponseData {
     }
     GetBuyerCollectionSetResponseData getBuyerCollectionSetResponseData = (GetBuyerCollectionSetResponseData) o;
     return Objects.equals(this.group, getBuyerCollectionSetResponseData.group) &&
-        Objects.equals(this.leaderboard, getBuyerCollectionSetResponseData.leaderboard) &&
-        Objects.equals(this.missing, getBuyerCollectionSetResponseData.missing) &&
-        Objects.equals(this.pieces, getBuyerCollectionSetResponseData.pieces) &&
-        Objects.equals(this.leaderboardOptIn, getBuyerCollectionSetResponseData.leaderboardOptIn) &&
         Objects.equals(this.pct, getBuyerCollectionSetResponseData.pct) &&
+        Objects.equals(this.pieces, getBuyerCollectionSetResponseData.pieces) &&
+        Objects.equals(this.missing, getBuyerCollectionSetResponseData.missing) &&
         Objects.equals(this.missingCostCents, getBuyerCollectionSetResponseData.missingCostCents) &&
         Objects.equals(this.missingUnpriced, getBuyerCollectionSetResponseData.missingUnpriced) &&
-        Objects.equals(this.myRank, getBuyerCollectionSetResponseData.myRank);
+        Objects.equals(this.leaderboard, getBuyerCollectionSetResponseData.leaderboard) &&
+        Objects.equals(this.myRank, getBuyerCollectionSetResponseData.myRank) &&
+        Objects.equals(this.leaderboardOptIn, getBuyerCollectionSetResponseData.leaderboardOptIn);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -318,7 +318,7 @@ public class GetBuyerCollectionSetResponseData {
 
   @Override
   public int hashCode() {
-    return Objects.hash(group, leaderboard, missing, pieces, leaderboardOptIn, pct, missingCostCents, missingUnpriced, myRank);
+    return Objects.hash(group, pct, pieces, missing, missingCostCents, missingUnpriced, leaderboard, myRank, leaderboardOptIn);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -333,14 +333,14 @@ public class GetBuyerCollectionSetResponseData {
     StringBuilder sb = new StringBuilder();
     sb.append("class GetBuyerCollectionSetResponseData {\n");
     sb.append("    group: ").append(toIndentedString(group)).append("\n");
-    sb.append("    leaderboard: ").append(toIndentedString(leaderboard)).append("\n");
-    sb.append("    missing: ").append(toIndentedString(missing)).append("\n");
-    sb.append("    pieces: ").append(toIndentedString(pieces)).append("\n");
-    sb.append("    leaderboardOptIn: ").append(toIndentedString(leaderboardOptIn)).append("\n");
     sb.append("    pct: ").append(toIndentedString(pct)).append("\n");
+    sb.append("    pieces: ").append(toIndentedString(pieces)).append("\n");
+    sb.append("    missing: ").append(toIndentedString(missing)).append("\n");
     sb.append("    missingCostCents: ").append(toIndentedString(missingCostCents)).append("\n");
     sb.append("    missingUnpriced: ").append(toIndentedString(missingUnpriced)).append("\n");
+    sb.append("    leaderboard: ").append(toIndentedString(leaderboard)).append("\n");
     sb.append("    myRank: ").append(toIndentedString(myRank)).append("\n");
+    sb.append("    leaderboardOptIn: ").append(toIndentedString(leaderboardOptIn)).append("\n");
     sb.append("}");
     return sb.toString();
   }

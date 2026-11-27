@@ -32,23 +32,27 @@ import net.crossly.buyer.model.together.GetBuyerTogetherResponseDataMessages;
 /**
  * GetBuyerTogetherResponseData
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-11T23:47:29.843Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-27T19:58:46.962Z[Etc/UTC]")
 public class GetBuyerTogetherResponseData {
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
   private String id;
 
+  public static final String SERIALIZED_NAME_CODE = "code";
+  @SerializedName(SERIALIZED_NAME_CODE)
+  private String code;
+
   public static final String SERIALIZED_NAME_NAME = "name";
   @SerializedName(SERIALIZED_NAME_NAME)
   private String name;
 
+  public static final String SERIALIZED_NAME_IS_HOST = "isHost";
+  @SerializedName(SERIALIZED_NAME_IS_HOST)
+  private Boolean isHost;
+
   public static final String SERIALIZED_NAME_ENDS_AT = "endsAt";
   @SerializedName(SERIALIZED_NAME_ENDS_AT)
   private String endsAt;
-
-  public static final String SERIALIZED_NAME_CODE = "code";
-  @SerializedName(SERIALIZED_NAME_CODE)
-  private String code;
 
   public static final String SERIALIZED_NAME_MEMBERS = "members";
   @SerializedName(SERIALIZED_NAME_MEMBERS)
@@ -61,10 +65,6 @@ public class GetBuyerTogetherResponseData {
   public static final String SERIALIZED_NAME_MESSAGES = "messages";
   @SerializedName(SERIALIZED_NAME_MESSAGES)
   private List<GetBuyerTogetherResponseDataMessages> messages = new ArrayList<GetBuyerTogetherResponseDataMessages>();
-
-  public static final String SERIALIZED_NAME_IS_HOST = "isHost";
-  @SerializedName(SERIALIZED_NAME_IS_HOST)
-  private Boolean isHost;
 
   public GetBuyerTogetherResponseData() { 
   }
@@ -92,6 +92,29 @@ public class GetBuyerTogetherResponseData {
   }
 
 
+  public GetBuyerTogetherResponseData code(String code) {
+    
+    this.code = code;
+    return this;
+  }
+
+   /**
+   * Get code
+   * @return code
+  **/
+  @javax.annotation.Nonnull
+  @ApiModelProperty(required = true, value = "")
+
+  public String getCode() {
+    return code;
+  }
+
+
+  public void setCode(String code) {
+    this.code = code;
+  }
+
+
   public GetBuyerTogetherResponseData name(String name) {
     
     this.name = name;
@@ -115,6 +138,29 @@ public class GetBuyerTogetherResponseData {
   }
 
 
+  public GetBuyerTogetherResponseData isHost(Boolean isHost) {
+    
+    this.isHost = isHost;
+    return this;
+  }
+
+   /**
+   * Get isHost
+   * @return isHost
+  **/
+  @javax.annotation.Nonnull
+  @ApiModelProperty(required = true, value = "")
+
+  public Boolean getIsHost() {
+    return isHost;
+  }
+
+
+  public void setIsHost(Boolean isHost) {
+    this.isHost = isHost;
+  }
+
+
   public GetBuyerTogetherResponseData endsAt(String endsAt) {
     
     this.endsAt = endsAt;
@@ -135,29 +181,6 @@ public class GetBuyerTogetherResponseData {
 
   public void setEndsAt(String endsAt) {
     this.endsAt = endsAt;
-  }
-
-
-  public GetBuyerTogetherResponseData code(String code) {
-    
-    this.code = code;
-    return this;
-  }
-
-   /**
-   * Get code
-   * @return code
-  **/
-  @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "")
-
-  public String getCode() {
-    return code;
-  }
-
-
-  public void setCode(String code) {
-    this.code = code;
   }
 
 
@@ -245,29 +268,6 @@ public class GetBuyerTogetherResponseData {
   }
 
 
-  public GetBuyerTogetherResponseData isHost(Boolean isHost) {
-    
-    this.isHost = isHost;
-    return this;
-  }
-
-   /**
-   * Get isHost
-   * @return isHost
-  **/
-  @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "")
-
-  public Boolean getIsHost() {
-    return isHost;
-  }
-
-
-  public void setIsHost(Boolean isHost) {
-    this.isHost = isHost;
-  }
-
-
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -278,18 +278,18 @@ public class GetBuyerTogetherResponseData {
     }
     GetBuyerTogetherResponseData getBuyerTogetherResponseData = (GetBuyerTogetherResponseData) o;
     return Objects.equals(this.id, getBuyerTogetherResponseData.id) &&
-        Objects.equals(this.name, getBuyerTogetherResponseData.name) &&
-        Objects.equals(this.endsAt, getBuyerTogetherResponseData.endsAt) &&
         Objects.equals(this.code, getBuyerTogetherResponseData.code) &&
+        Objects.equals(this.name, getBuyerTogetherResponseData.name) &&
+        Objects.equals(this.isHost, getBuyerTogetherResponseData.isHost) &&
+        Objects.equals(this.endsAt, getBuyerTogetherResponseData.endsAt) &&
         Objects.equals(this.members, getBuyerTogetherResponseData.members) &&
         Objects.equals(this.items, getBuyerTogetherResponseData.items) &&
-        Objects.equals(this.messages, getBuyerTogetherResponseData.messages) &&
-        Objects.equals(this.isHost, getBuyerTogetherResponseData.isHost);
+        Objects.equals(this.messages, getBuyerTogetherResponseData.messages);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, name, endsAt, code, members, items, messages, isHost);
+    return Objects.hash(id, code, name, isHost, endsAt, members, items, messages);
   }
 
   @Override
@@ -297,13 +297,13 @@ public class GetBuyerTogetherResponseData {
     StringBuilder sb = new StringBuilder();
     sb.append("class GetBuyerTogetherResponseData {\n");
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
-    sb.append("    name: ").append(toIndentedString(name)).append("\n");
-    sb.append("    endsAt: ").append(toIndentedString(endsAt)).append("\n");
     sb.append("    code: ").append(toIndentedString(code)).append("\n");
+    sb.append("    name: ").append(toIndentedString(name)).append("\n");
+    sb.append("    isHost: ").append(toIndentedString(isHost)).append("\n");
+    sb.append("    endsAt: ").append(toIndentedString(endsAt)).append("\n");
     sb.append("    members: ").append(toIndentedString(members)).append("\n");
     sb.append("    items: ").append(toIndentedString(items)).append("\n");
     sb.append("    messages: ").append(toIndentedString(messages)).append("\n");
-    sb.append("    isHost: ").append(toIndentedString(isHost)).append("\n");
     sb.append("}");
     return sb.toString();
   }

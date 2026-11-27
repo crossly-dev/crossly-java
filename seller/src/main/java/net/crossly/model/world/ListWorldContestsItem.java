@@ -30,7 +30,7 @@ import org.threeten.bp.OffsetDateTime;
 /**
  * ListWorldContestsItem
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-11T23:44:48.922Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-27T19:42:43.186Z[Etc/UTC]")
 public class ListWorldContestsItem {
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
@@ -45,9 +45,9 @@ public class ListWorldContestsItem {
    */
   @JsonAdapter(StatusEnum.Adapter.class)
   public enum StatusEnum {
-    OPEN("open"),
-    
     CANCELLED("cancelled"),
+    
+    OPEN("open"),
     
     SETTLED("settled");
 
@@ -93,6 +93,10 @@ public class ListWorldContestsItem {
   @SerializedName(SERIALIZED_NAME_STATUS)
   private StatusEnum status;
 
+  public static final String SERIALIZED_NAME_OWNER_USER_ID = "ownerUserId";
+  @SerializedName(SERIALIZED_NAME_OWNER_USER_ID)
+  private String ownerUserId;
+
   public static final String SERIALIZED_NAME_ENDS_AT = "endsAt";
   @SerializedName(SERIALIZED_NAME_ENDS_AT)
   private OffsetDateTime endsAt;
@@ -104,10 +108,6 @@ public class ListWorldContestsItem {
   public static final String SERIALIZED_NAME_FEE_CENTS = "feeCents";
   @SerializedName(SERIALIZED_NAME_FEE_CENTS)
   private BigDecimal feeCents;
-
-  public static final String SERIALIZED_NAME_OWNER_USER_ID = "ownerUserId";
-  @SerializedName(SERIALIZED_NAME_OWNER_USER_ID)
-  private String ownerUserId;
 
   public static final String SERIALIZED_NAME_SETTLED_AT = "settledAt";
   @SerializedName(SERIALIZED_NAME_SETTLED_AT)
@@ -128,9 +128,9 @@ public class ListWorldContestsItem {
   public enum EntryModeEnum {
     FREE("free"),
     
-    SPONSORED("sponsored"),
+    PAID("paid"),
     
-    PAID("paid");
+    SPONSORED("sponsored");
 
     private String value;
 
@@ -297,6 +297,29 @@ public class ListWorldContestsItem {
   }
 
 
+  public ListWorldContestsItem ownerUserId(String ownerUserId) {
+    
+    this.ownerUserId = ownerUserId;
+    return this;
+  }
+
+   /**
+   * Get ownerUserId
+   * @return ownerUserId
+  **/
+  @javax.annotation.Nonnull
+  @ApiModelProperty(required = true, value = "")
+
+  public String getOwnerUserId() {
+    return ownerUserId;
+  }
+
+
+  public void setOwnerUserId(String ownerUserId) {
+    this.ownerUserId = ownerUserId;
+  }
+
+
   public ListWorldContestsItem endsAt(OffsetDateTime endsAt) {
     
     this.endsAt = endsAt;
@@ -363,29 +386,6 @@ public class ListWorldContestsItem {
 
   public void setFeeCents(BigDecimal feeCents) {
     this.feeCents = feeCents;
-  }
-
-
-  public ListWorldContestsItem ownerUserId(String ownerUserId) {
-    
-    this.ownerUserId = ownerUserId;
-    return this;
-  }
-
-   /**
-   * Get ownerUserId
-   * @return ownerUserId
-  **/
-  @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "")
-
-  public String getOwnerUserId() {
-    return ownerUserId;
-  }
-
-
-  public void setOwnerUserId(String ownerUserId) {
-    this.ownerUserId = ownerUserId;
   }
 
 
@@ -516,10 +516,10 @@ public class ListWorldContestsItem {
     return Objects.equals(this.id, listWorldContestsItem.id) &&
         Objects.equals(this.createdAt, listWorldContestsItem.createdAt) &&
         Objects.equals(this.status, listWorldContestsItem.status) &&
+        Objects.equals(this.ownerUserId, listWorldContestsItem.ownerUserId) &&
         Objects.equals(this.endsAt, listWorldContestsItem.endsAt) &&
         Objects.equals(this.startsAt, listWorldContestsItem.startsAt) &&
         Objects.equals(this.feeCents, listWorldContestsItem.feeCents) &&
-        Objects.equals(this.ownerUserId, listWorldContestsItem.ownerUserId) &&
         Objects.equals(this.settledAt, listWorldContestsItem.settledAt) &&
         Objects.equals(this.gamePlace, listWorldContestsItem.gamePlace) &&
         Objects.equals(this.gameObject, listWorldContestsItem.gameObject) &&
@@ -533,7 +533,7 @@ public class ListWorldContestsItem {
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, createdAt, status, endsAt, startsAt, feeCents, ownerUserId, settledAt, gamePlace, gameObject, entryMode, scoreOrder);
+    return Objects.hash(id, createdAt, status, ownerUserId, endsAt, startsAt, feeCents, settledAt, gamePlace, gameObject, entryMode, scoreOrder);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -550,10 +550,10 @@ public class ListWorldContestsItem {
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    createdAt: ").append(toIndentedString(createdAt)).append("\n");
     sb.append("    status: ").append(toIndentedString(status)).append("\n");
+    sb.append("    ownerUserId: ").append(toIndentedString(ownerUserId)).append("\n");
     sb.append("    endsAt: ").append(toIndentedString(endsAt)).append("\n");
     sb.append("    startsAt: ").append(toIndentedString(startsAt)).append("\n");
     sb.append("    feeCents: ").append(toIndentedString(feeCents)).append("\n");
-    sb.append("    ownerUserId: ").append(toIndentedString(ownerUserId)).append("\n");
     sb.append("    settledAt: ").append(toIndentedString(settledAt)).append("\n");
     sb.append("    gamePlace: ").append(toIndentedString(gamePlace)).append("\n");
     sb.append("    gameObject: ").append(toIndentedString(gameObject)).append("\n");

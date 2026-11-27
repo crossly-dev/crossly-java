@@ -30,7 +30,7 @@ import net.crossly.model.world.GetWorldCapabilityCatalogueResponseDataKindsClien
 /**
  * GetWorldCapabilityCatalogueResponseDataKinds
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-11T23:44:48.922Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-27T19:42:43.186Z[Etc/UTC]")
 public class GetWorldCapabilityCatalogueResponseDataKinds {
   public static final String SERIALIZED_NAME_SUMMARY = "summary";
   @SerializedName(SERIALIZED_NAME_SUMMARY)
@@ -47,9 +47,9 @@ public class GetWorldCapabilityCatalogueResponseDataKinds {
   public enum ReviewEnum {
     ALWAYS("always"),
     
-    ASSET("asset"),
+    NEVER("never"),
     
-    NEVER("never");
+    ASSET("asset");
 
     private String value;
 
@@ -104,11 +104,15 @@ public class GetWorldCapabilityCatalogueResponseDataKinds {
   public enum KindEnum {
     PORTAL("portal"),
     
-    DISPLAY("display"),
+    INTERACTIVE("interactive"),
     
     PLACE("place"),
     
+    DISPLAY("display"),
+    
     BADGE("badge"),
+    
+    PERK("perk"),
     
     WEAR("wear"),
     
@@ -122,11 +126,7 @@ public class GetWorldCapabilityCatalogueResponseDataKinds {
     
     QUEST("quest"),
     
-    GAME_PASS("game_pass"),
-    
-    PERK("perk"),
-    
-    INTERACTIVE("interactive");
+    GAME_PASS("game_pass");
 
     private String value;
 

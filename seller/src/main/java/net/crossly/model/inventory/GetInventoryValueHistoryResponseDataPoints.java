@@ -30,7 +30,7 @@ import org.threeten.bp.OffsetDateTime;
 /**
  * GetInventoryValueHistoryResponseDataPoints
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-11T23:44:48.922Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-27T19:42:43.186Z[Etc/UTC]")
 public class GetInventoryValueHistoryResponseDataPoints {
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
@@ -71,6 +71,18 @@ public class GetInventoryValueHistoryResponseDataPoints {
   public static final String SERIALIZED_NAME_STUCK_COST_CENTS = "stuckCostCents";
   @SerializedName(SERIALIZED_NAME_STUCK_COST_CENTS)
   private BigDecimal stuckCostCents;
+
+  public static final String SERIALIZED_NAME_OVER90_COST_CENTS = "over90CostCents";
+  @SerializedName(SERIALIZED_NAME_OVER90_COST_CENTS)
+  private BigDecimal over90CostCents;
+
+  public static final String SERIALIZED_NAME_COST_KNOWN_ITEMS = "costKnownItems";
+  @SerializedName(SERIALIZED_NAME_COST_KNOWN_ITEMS)
+  private BigDecimal costKnownItems;
+
+  public static final String SERIALIZED_NAME_RECONSTRUCTED = "reconstructed";
+  @SerializedName(SERIALIZED_NAME_RECONSTRUCTED)
+  private Boolean reconstructed;
 
   public GetInventoryValueHistoryResponseDataPoints() { 
   }
@@ -305,6 +317,75 @@ public class GetInventoryValueHistoryResponseDataPoints {
   }
 
 
+  public GetInventoryValueHistoryResponseDataPoints over90CostCents(BigDecimal over90CostCents) {
+    
+    this.over90CostCents = over90CostCents;
+    return this;
+  }
+
+   /**
+   * Get over90CostCents
+   * @return over90CostCents
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public BigDecimal getOver90CostCents() {
+    return over90CostCents;
+  }
+
+
+  public void setOver90CostCents(BigDecimal over90CostCents) {
+    this.over90CostCents = over90CostCents;
+  }
+
+
+  public GetInventoryValueHistoryResponseDataPoints costKnownItems(BigDecimal costKnownItems) {
+    
+    this.costKnownItems = costKnownItems;
+    return this;
+  }
+
+   /**
+   * Get costKnownItems
+   * @return costKnownItems
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public BigDecimal getCostKnownItems() {
+    return costKnownItems;
+  }
+
+
+  public void setCostKnownItems(BigDecimal costKnownItems) {
+    this.costKnownItems = costKnownItems;
+  }
+
+
+  public GetInventoryValueHistoryResponseDataPoints reconstructed(Boolean reconstructed) {
+    
+    this.reconstructed = reconstructed;
+    return this;
+  }
+
+   /**
+   * Get reconstructed
+   * @return reconstructed
+  **/
+  @javax.annotation.Nonnull
+  @ApiModelProperty(required = true, value = "")
+
+  public Boolean getReconstructed() {
+    return reconstructed;
+  }
+
+
+  public void setReconstructed(Boolean reconstructed) {
+    this.reconstructed = reconstructed;
+  }
+
+
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -323,7 +404,10 @@ public class GetInventoryValueHistoryResponseDataPoints {
         Objects.equals(this.costCents, getInventoryValueHistoryResponseDataPoints.costCents) &&
         Objects.equals(this.retailCents, getInventoryValueHistoryResponseDataPoints.retailCents) &&
         Objects.equals(this.marketCents, getInventoryValueHistoryResponseDataPoints.marketCents) &&
-        Objects.equals(this.stuckCostCents, getInventoryValueHistoryResponseDataPoints.stuckCostCents);
+        Objects.equals(this.stuckCostCents, getInventoryValueHistoryResponseDataPoints.stuckCostCents) &&
+        Objects.equals(this.over90CostCents, getInventoryValueHistoryResponseDataPoints.over90CostCents) &&
+        Objects.equals(this.costKnownItems, getInventoryValueHistoryResponseDataPoints.costKnownItems) &&
+        Objects.equals(this.reconstructed, getInventoryValueHistoryResponseDataPoints.reconstructed);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -332,7 +416,7 @@ public class GetInventoryValueHistoryResponseDataPoints {
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, createdAt, userId, snapshotDate, itemCount, unitCount, costCents, retailCents, marketCents, stuckCostCents);
+    return Objects.hash(id, createdAt, userId, snapshotDate, itemCount, unitCount, costCents, retailCents, marketCents, stuckCostCents, over90CostCents, costKnownItems, reconstructed);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -356,6 +440,9 @@ public class GetInventoryValueHistoryResponseDataPoints {
     sb.append("    retailCents: ").append(toIndentedString(retailCents)).append("\n");
     sb.append("    marketCents: ").append(toIndentedString(marketCents)).append("\n");
     sb.append("    stuckCostCents: ").append(toIndentedString(stuckCostCents)).append("\n");
+    sb.append("    over90CostCents: ").append(toIndentedString(over90CostCents)).append("\n");
+    sb.append("    costKnownItems: ").append(toIndentedString(costKnownItems)).append("\n");
+    sb.append("    reconstructed: ").append(toIndentedString(reconstructed)).append("\n");
     sb.append("}");
     return sb.toString();
   }

@@ -24,16 +24,21 @@ import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 import java.math.BigDecimal;
+import org.openapitools.jackson.nullable.JsonNullable;
 import org.threeten.bp.OffsetDateTime;
 
 /**
  * ListBuyerOrdersItem
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-11T23:47:29.843Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-27T19:58:46.962Z[Etc/UTC]")
 public class ListBuyerOrdersItem {
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
   private String id;
+
+  public static final String SERIALIZED_NAME_ORDER_NUMBER = "orderNumber";
+  @SerializedName(SERIALIZED_NAME_ORDER_NUMBER)
+  private String orderNumber;
 
   public static final String SERIALIZED_NAME_STATUS = "status";
   @SerializedName(SERIALIZED_NAME_STATUS)
@@ -70,6 +75,29 @@ public class ListBuyerOrdersItem {
 
   public void setId(String id) {
     this.id = id;
+  }
+
+
+  public ListBuyerOrdersItem orderNumber(String orderNumber) {
+    
+    this.orderNumber = orderNumber;
+    return this;
+  }
+
+   /**
+   * Get orderNumber
+   * @return orderNumber
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public String getOrderNumber() {
+    return orderNumber;
+  }
+
+
+  public void setOrderNumber(String orderNumber) {
+    this.orderNumber = orderNumber;
   }
 
 
@@ -152,14 +180,26 @@ public class ListBuyerOrdersItem {
     }
     ListBuyerOrdersItem listBuyerOrdersItem = (ListBuyerOrdersItem) o;
     return Objects.equals(this.id, listBuyerOrdersItem.id) &&
+        Objects.equals(this.orderNumber, listBuyerOrdersItem.orderNumber) &&
         Objects.equals(this.status, listBuyerOrdersItem.status) &&
         Objects.equals(this.buyerPaidCents, listBuyerOrdersItem.buyerPaidCents) &&
         Objects.equals(this.createdAt, listBuyerOrdersItem.createdAt);
   }
 
+  private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+    return a == b || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
+  }
+
   @Override
   public int hashCode() {
-    return Objects.hash(id, status, buyerPaidCents, createdAt);
+    return Objects.hash(id, orderNumber, status, buyerPaidCents, createdAt);
+  }
+
+  private static <T> int hashCodeNullable(JsonNullable<T> a) {
+    if (a == null) {
+      return 1;
+    }
+    return a.isPresent() ? Arrays.deepHashCode(new Object[]{a.get()}) : 31;
   }
 
   @Override
@@ -167,6 +207,7 @@ public class ListBuyerOrdersItem {
     StringBuilder sb = new StringBuilder();
     sb.append("class ListBuyerOrdersItem {\n");
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
+    sb.append("    orderNumber: ").append(toIndentedString(orderNumber)).append("\n");
     sb.append("    status: ").append(toIndentedString(status)).append("\n");
     sb.append("    buyerPaidCents: ").append(toIndentedString(buyerPaidCents)).append("\n");
     sb.append("    createdAt: ").append(toIndentedString(createdAt)).append("\n");

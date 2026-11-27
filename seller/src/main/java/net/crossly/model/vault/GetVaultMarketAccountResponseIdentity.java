@@ -28,7 +28,7 @@ import org.openapitools.jackson.nullable.JsonNullable;
 /**
  * GetVaultMarketAccountResponseIdentity
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-11T23:44:48.922Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-27T19:42:43.186Z[Etc/UTC]")
 public class GetVaultMarketAccountResponseIdentity {
   public static final String SERIALIZED_NAME_VERIFIED = "verified";
   @SerializedName(SERIALIZED_NAME_VERIFIED)
@@ -37,6 +37,10 @@ public class GetVaultMarketAccountResponseIdentity {
   public static final String SERIALIZED_NAME_STATUS = "status";
   @SerializedName(SERIALIZED_NAME_STATUS)
   private String status;
+
+  public static final String SERIALIZED_NAME_RETRY = "retry";
+  @SerializedName(SERIALIZED_NAME_RETRY)
+  private Boolean retry;
 
   public GetVaultMarketAccountResponseIdentity() { 
   }
@@ -87,6 +91,29 @@ public class GetVaultMarketAccountResponseIdentity {
   }
 
 
+  public GetVaultMarketAccountResponseIdentity retry(Boolean retry) {
+    
+    this.retry = retry;
+    return this;
+  }
+
+   /**
+   * Get retry
+   * @return retry
+  **/
+  @javax.annotation.Nonnull
+  @ApiModelProperty(required = true, value = "")
+
+  public Boolean getRetry() {
+    return retry;
+  }
+
+
+  public void setRetry(Boolean retry) {
+    this.retry = retry;
+  }
+
+
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -97,7 +124,8 @@ public class GetVaultMarketAccountResponseIdentity {
     }
     GetVaultMarketAccountResponseIdentity getVaultMarketAccountResponseIdentity = (GetVaultMarketAccountResponseIdentity) o;
     return Objects.equals(this.verified, getVaultMarketAccountResponseIdentity.verified) &&
-        Objects.equals(this.status, getVaultMarketAccountResponseIdentity.status);
+        Objects.equals(this.status, getVaultMarketAccountResponseIdentity.status) &&
+        Objects.equals(this.retry, getVaultMarketAccountResponseIdentity.retry);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -106,7 +134,7 @@ public class GetVaultMarketAccountResponseIdentity {
 
   @Override
   public int hashCode() {
-    return Objects.hash(verified, status);
+    return Objects.hash(verified, status, retry);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -122,6 +150,7 @@ public class GetVaultMarketAccountResponseIdentity {
     sb.append("class GetVaultMarketAccountResponseIdentity {\n");
     sb.append("    verified: ").append(toIndentedString(verified)).append("\n");
     sb.append("    status: ").append(toIndentedString(status)).append("\n");
+    sb.append("    retry: ").append(toIndentedString(retry)).append("\n");
     sb.append("}");
     return sb.toString();
   }

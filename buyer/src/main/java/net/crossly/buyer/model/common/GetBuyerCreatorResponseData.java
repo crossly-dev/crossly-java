@@ -31,7 +31,7 @@ import net.crossly.buyer.model.common.GetBuyerCreatorResponseDataCreator;
 /**
  * GetBuyerCreatorResponseData
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-11T23:47:29.843Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-27T19:58:46.962Z[Etc/UTC]")
 public class GetBuyerCreatorResponseData {
   public static final String SERIALIZED_NAME_CREATOR = "creator";
   @SerializedName(SERIALIZED_NAME_CREATOR)

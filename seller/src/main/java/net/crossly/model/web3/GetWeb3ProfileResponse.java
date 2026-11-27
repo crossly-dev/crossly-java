@@ -32,7 +32,7 @@ import net.crossly.model.web3.ListWeb3ActivityItem;
 /**
  * GetWeb3ProfileResponse
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-11T23:44:48.922Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-27T19:42:43.186Z[Etc/UTC]")
 public class GetWeb3ProfileResponse {
   public static final String SERIALIZED_NAME_ADDRESS = "address";
   @SerializedName(SERIALIZED_NAME_ADDRESS)
@@ -43,9 +43,9 @@ public class GetWeb3ProfileResponse {
    */
   @JsonAdapter(FamilyEnum.Adapter.class)
   public enum FamilyEnum {
-    EVM("evm"),
+    SOLANA("solana"),
     
-    SOLANA("solana");
+    EVM("evm");
 
     private String value;
 

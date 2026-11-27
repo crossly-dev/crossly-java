@@ -29,15 +29,15 @@ import org.openapitools.jackson.nullable.JsonNullable;
 /**
  * ListBuyerAuctionBidsItem
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-11T23:47:29.843Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-27T19:58:46.962Z[Etc/UTC]")
 public class ListBuyerAuctionBidsItem {
-  public static final String SERIALIZED_NAME_AMOUNT_CENTS = "amountCents";
-  @SerializedName(SERIALIZED_NAME_AMOUNT_CENTS)
-  private BigDecimal amountCents;
-
   public static final String SERIALIZED_NAME_BIDDER = "bidder";
   @SerializedName(SERIALIZED_NAME_BIDDER)
   private String bidder;
+
+  public static final String SERIALIZED_NAME_AMOUNT_CENTS = "amountCents";
+  @SerializedName(SERIALIZED_NAME_AMOUNT_CENTS)
+  private BigDecimal amountCents;
 
   public static final String SERIALIZED_NAME_PLACED_AT = "placedAt";
   @SerializedName(SERIALIZED_NAME_PLACED_AT)
@@ -45,29 +45,6 @@ public class ListBuyerAuctionBidsItem {
 
   public ListBuyerAuctionBidsItem() { 
   }
-
-  public ListBuyerAuctionBidsItem amountCents(BigDecimal amountCents) {
-    
-    this.amountCents = amountCents;
-    return this;
-  }
-
-   /**
-   * Get amountCents
-   * @return amountCents
-  **/
-  @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "")
-
-  public BigDecimal getAmountCents() {
-    return amountCents;
-  }
-
-
-  public void setAmountCents(BigDecimal amountCents) {
-    this.amountCents = amountCents;
-  }
-
 
   public ListBuyerAuctionBidsItem bidder(String bidder) {
     
@@ -89,6 +66,29 @@ public class ListBuyerAuctionBidsItem {
 
   public void setBidder(String bidder) {
     this.bidder = bidder;
+  }
+
+
+  public ListBuyerAuctionBidsItem amountCents(BigDecimal amountCents) {
+    
+    this.amountCents = amountCents;
+    return this;
+  }
+
+   /**
+   * Get amountCents
+   * @return amountCents
+  **/
+  @javax.annotation.Nonnull
+  @ApiModelProperty(required = true, value = "")
+
+  public BigDecimal getAmountCents() {
+    return amountCents;
+  }
+
+
+  public void setAmountCents(BigDecimal amountCents) {
+    this.amountCents = amountCents;
   }
 
 
@@ -124,8 +124,8 @@ public class ListBuyerAuctionBidsItem {
       return false;
     }
     ListBuyerAuctionBidsItem listBuyerAuctionBidsItem = (ListBuyerAuctionBidsItem) o;
-    return Objects.equals(this.amountCents, listBuyerAuctionBidsItem.amountCents) &&
-        Objects.equals(this.bidder, listBuyerAuctionBidsItem.bidder) &&
+    return Objects.equals(this.bidder, listBuyerAuctionBidsItem.bidder) &&
+        Objects.equals(this.amountCents, listBuyerAuctionBidsItem.amountCents) &&
         Objects.equals(this.placedAt, listBuyerAuctionBidsItem.placedAt);
   }
 
@@ -135,7 +135,7 @@ public class ListBuyerAuctionBidsItem {
 
   @Override
   public int hashCode() {
-    return Objects.hash(amountCents, bidder, placedAt);
+    return Objects.hash(bidder, amountCents, placedAt);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -149,8 +149,8 @@ public class ListBuyerAuctionBidsItem {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class ListBuyerAuctionBidsItem {\n");
-    sb.append("    amountCents: ").append(toIndentedString(amountCents)).append("\n");
     sb.append("    bidder: ").append(toIndentedString(bidder)).append("\n");
+    sb.append("    amountCents: ").append(toIndentedString(amountCents)).append("\n");
     sb.append("    placedAt: ").append(toIndentedString(placedAt)).append("\n");
     sb.append("}");
     return sb.toString();

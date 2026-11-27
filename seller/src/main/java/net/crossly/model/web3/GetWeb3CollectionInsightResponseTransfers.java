@@ -28,20 +28,20 @@ import org.openapitools.jackson.nullable.JsonNullable;
 /**
  * GetWeb3CollectionInsightResponseTransfers
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-11T23:44:48.922Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-27T19:42:43.186Z[Etc/UTC]")
 public class GetWeb3CollectionInsightResponseTransfers {
   /**
    * Gets or Sets kind
    */
   @JsonAdapter(KindEnum.Adapter.class)
   public enum KindEnum {
-    TRANSFER("transfer"),
+    SALE("sale"),
     
     LISTING("listing"),
     
-    SALE("sale"),
-    
     MINT("mint"),
+    
+    TRANSFER("transfer"),
     
     BURN("burn");
 

@@ -29,7 +29,7 @@ import org.openapitools.jackson.nullable.JsonNullable;
 /**
  * GetBuyerCatalogListingShippingResponseServices
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-11T23:47:29.843Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-27T19:58:46.962Z[Etc/UTC]")
 public class GetBuyerCatalogListingShippingResponseServices {
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
@@ -58,6 +58,18 @@ public class GetBuyerCatalogListingShippingResponseServices {
   public static final String SERIALIZED_NAME_MAX_DAYS = "maxDays";
   @SerializedName(SERIALIZED_NAME_MAX_DAYS)
   private BigDecimal maxDays;
+
+  public static final String SERIALIZED_NAME_CARRIER = "carrier";
+  @SerializedName(SERIALIZED_NAME_CARRIER)
+  private String carrier;
+
+  public static final String SERIALIZED_NAME_CARRIER_SERVICE = "carrierService";
+  @SerializedName(SERIALIZED_NAME_CARRIER_SERVICE)
+  private String carrierService;
+
+  public static final String SERIALIZED_NAME_HANDLING_FEE_CENTS = "handlingFeeCents";
+  @SerializedName(SERIALIZED_NAME_HANDLING_FEE_CENTS)
+  private BigDecimal handlingFeeCents;
 
   public GetBuyerCatalogListingShippingResponseServices() { 
   }
@@ -223,6 +235,75 @@ public class GetBuyerCatalogListingShippingResponseServices {
   }
 
 
+  public GetBuyerCatalogListingShippingResponseServices carrier(String carrier) {
+    
+    this.carrier = carrier;
+    return this;
+  }
+
+   /**
+   * Buyer pays: calculated: the carrier and service token the label is bought with, and the handling fee inside &#x60;cents&#x60;.
+   * @return carrier
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "Buyer pays: calculated: the carrier and service token the label is bought with, and the handling fee inside `cents`.")
+
+  public String getCarrier() {
+    return carrier;
+  }
+
+
+  public void setCarrier(String carrier) {
+    this.carrier = carrier;
+  }
+
+
+  public GetBuyerCatalogListingShippingResponseServices carrierService(String carrierService) {
+    
+    this.carrierService = carrierService;
+    return this;
+  }
+
+   /**
+   * Get carrierService
+   * @return carrierService
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public String getCarrierService() {
+    return carrierService;
+  }
+
+
+  public void setCarrierService(String carrierService) {
+    this.carrierService = carrierService;
+  }
+
+
+  public GetBuyerCatalogListingShippingResponseServices handlingFeeCents(BigDecimal handlingFeeCents) {
+    
+    this.handlingFeeCents = handlingFeeCents;
+    return this;
+  }
+
+   /**
+   * Get handlingFeeCents
+   * @return handlingFeeCents
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public BigDecimal getHandlingFeeCents() {
+    return handlingFeeCents;
+  }
+
+
+  public void setHandlingFeeCents(BigDecimal handlingFeeCents) {
+    this.handlingFeeCents = handlingFeeCents;
+  }
+
+
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -238,7 +319,10 @@ public class GetBuyerCatalogListingShippingResponseServices {
         Objects.equals(this.scope, getBuyerCatalogListingShippingResponseServices.scope) &&
         Objects.equals(this.costType, getBuyerCatalogListingShippingResponseServices.costType) &&
         Objects.equals(this.minDays, getBuyerCatalogListingShippingResponseServices.minDays) &&
-        Objects.equals(this.maxDays, getBuyerCatalogListingShippingResponseServices.maxDays);
+        Objects.equals(this.maxDays, getBuyerCatalogListingShippingResponseServices.maxDays) &&
+        Objects.equals(this.carrier, getBuyerCatalogListingShippingResponseServices.carrier) &&
+        Objects.equals(this.carrierService, getBuyerCatalogListingShippingResponseServices.carrierService) &&
+        Objects.equals(this.handlingFeeCents, getBuyerCatalogListingShippingResponseServices.handlingFeeCents);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -247,7 +331,7 @@ public class GetBuyerCatalogListingShippingResponseServices {
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, name, cents, scope, costType, minDays, maxDays);
+    return Objects.hash(id, name, cents, scope, costType, minDays, maxDays, carrier, carrierService, handlingFeeCents);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -268,6 +352,9 @@ public class GetBuyerCatalogListingShippingResponseServices {
     sb.append("    costType: ").append(toIndentedString(costType)).append("\n");
     sb.append("    minDays: ").append(toIndentedString(minDays)).append("\n");
     sb.append("    maxDays: ").append(toIndentedString(maxDays)).append("\n");
+    sb.append("    carrier: ").append(toIndentedString(carrier)).append("\n");
+    sb.append("    carrierService: ").append(toIndentedString(carrierService)).append("\n");
+    sb.append("    handlingFeeCents: ").append(toIndentedString(handlingFeeCents)).append("\n");
     sb.append("}");
     return sb.toString();
   }

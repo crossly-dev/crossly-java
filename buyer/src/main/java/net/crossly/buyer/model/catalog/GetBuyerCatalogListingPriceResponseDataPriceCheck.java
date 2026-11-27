@@ -28,18 +28,18 @@ import java.math.BigDecimal;
 /**
  * GetBuyerCatalogListingPriceResponseDataPriceCheck
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-11T23:47:29.843Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-27T19:58:46.962Z[Etc/UTC]")
 public class GetBuyerCatalogListingPriceResponseDataPriceCheck {
   /**
    * Gets or Sets verdict
    */
   @JsonAdapter(VerdictEnum.Adapter.class)
   public enum VerdictEnum {
-    HIGH("high"),
+    GOOD("good"),
     
     FAIR("fair"),
     
-    GOOD("good"),
+    HIGH("high"),
     
     GREAT("great");
 
@@ -85,17 +85,9 @@ public class GetBuyerCatalogListingPriceResponseDataPriceCheck {
   @SerializedName(SERIALIZED_NAME_VERDICT)
   private VerdictEnum verdict;
 
-  public static final String SERIALIZED_NAME_SALES = "sales";
-  @SerializedName(SERIALIZED_NAME_SALES)
-  private BigDecimal sales;
-
   public static final String SERIALIZED_NAME_MEDIAN_CENTS = "medianCents";
   @SerializedName(SERIALIZED_NAME_MEDIAN_CENTS)
   private BigDecimal medianCents;
-
-  public static final String SERIALIZED_NAME_DAYS = "days";
-  @SerializedName(SERIALIZED_NAME_DAYS)
-  private BigDecimal days;
 
   public static final String SERIALIZED_NAME_LOW_CENTS = "lowCents";
   @SerializedName(SERIALIZED_NAME_LOW_CENTS)
@@ -104,6 +96,14 @@ public class GetBuyerCatalogListingPriceResponseDataPriceCheck {
   public static final String SERIALIZED_NAME_HIGH_CENTS = "highCents";
   @SerializedName(SERIALIZED_NAME_HIGH_CENTS)
   private BigDecimal highCents;
+
+  public static final String SERIALIZED_NAME_SALES = "sales";
+  @SerializedName(SERIALIZED_NAME_SALES)
+  private BigDecimal sales;
+
+  public static final String SERIALIZED_NAME_DAYS = "days";
+  @SerializedName(SERIALIZED_NAME_DAYS)
+  private BigDecimal days;
 
   public static final String SERIALIZED_NAME_LAST_SOLD_AT = "lastSoldAt";
   @SerializedName(SERIALIZED_NAME_LAST_SOLD_AT)
@@ -135,29 +135,6 @@ public class GetBuyerCatalogListingPriceResponseDataPriceCheck {
   }
 
 
-  public GetBuyerCatalogListingPriceResponseDataPriceCheck sales(BigDecimal sales) {
-    
-    this.sales = sales;
-    return this;
-  }
-
-   /**
-   * Get sales
-   * @return sales
-  **/
-  @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "")
-
-  public BigDecimal getSales() {
-    return sales;
-  }
-
-
-  public void setSales(BigDecimal sales) {
-    this.sales = sales;
-  }
-
-
   public GetBuyerCatalogListingPriceResponseDataPriceCheck medianCents(BigDecimal medianCents) {
     
     this.medianCents = medianCents;
@@ -178,29 +155,6 @@ public class GetBuyerCatalogListingPriceResponseDataPriceCheck {
 
   public void setMedianCents(BigDecimal medianCents) {
     this.medianCents = medianCents;
-  }
-
-
-  public GetBuyerCatalogListingPriceResponseDataPriceCheck days(BigDecimal days) {
-    
-    this.days = days;
-    return this;
-  }
-
-   /**
-   * Get days
-   * @return days
-  **/
-  @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "")
-
-  public BigDecimal getDays() {
-    return days;
-  }
-
-
-  public void setDays(BigDecimal days) {
-    this.days = days;
   }
 
 
@@ -250,6 +204,52 @@ public class GetBuyerCatalogListingPriceResponseDataPriceCheck {
   }
 
 
+  public GetBuyerCatalogListingPriceResponseDataPriceCheck sales(BigDecimal sales) {
+    
+    this.sales = sales;
+    return this;
+  }
+
+   /**
+   * Get sales
+   * @return sales
+  **/
+  @javax.annotation.Nonnull
+  @ApiModelProperty(required = true, value = "")
+
+  public BigDecimal getSales() {
+    return sales;
+  }
+
+
+  public void setSales(BigDecimal sales) {
+    this.sales = sales;
+  }
+
+
+  public GetBuyerCatalogListingPriceResponseDataPriceCheck days(BigDecimal days) {
+    
+    this.days = days;
+    return this;
+  }
+
+   /**
+   * Get days
+   * @return days
+  **/
+  @javax.annotation.Nonnull
+  @ApiModelProperty(required = true, value = "")
+
+  public BigDecimal getDays() {
+    return days;
+  }
+
+
+  public void setDays(BigDecimal days) {
+    this.days = days;
+  }
+
+
   public GetBuyerCatalogListingPriceResponseDataPriceCheck lastSoldAt(String lastSoldAt) {
     
     this.lastSoldAt = lastSoldAt;
@@ -283,17 +283,17 @@ public class GetBuyerCatalogListingPriceResponseDataPriceCheck {
     }
     GetBuyerCatalogListingPriceResponseDataPriceCheck getBuyerCatalogListingPriceResponseDataPriceCheck = (GetBuyerCatalogListingPriceResponseDataPriceCheck) o;
     return Objects.equals(this.verdict, getBuyerCatalogListingPriceResponseDataPriceCheck.verdict) &&
-        Objects.equals(this.sales, getBuyerCatalogListingPriceResponseDataPriceCheck.sales) &&
         Objects.equals(this.medianCents, getBuyerCatalogListingPriceResponseDataPriceCheck.medianCents) &&
-        Objects.equals(this.days, getBuyerCatalogListingPriceResponseDataPriceCheck.days) &&
         Objects.equals(this.lowCents, getBuyerCatalogListingPriceResponseDataPriceCheck.lowCents) &&
         Objects.equals(this.highCents, getBuyerCatalogListingPriceResponseDataPriceCheck.highCents) &&
+        Objects.equals(this.sales, getBuyerCatalogListingPriceResponseDataPriceCheck.sales) &&
+        Objects.equals(this.days, getBuyerCatalogListingPriceResponseDataPriceCheck.days) &&
         Objects.equals(this.lastSoldAt, getBuyerCatalogListingPriceResponseDataPriceCheck.lastSoldAt);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(verdict, sales, medianCents, days, lowCents, highCents, lastSoldAt);
+    return Objects.hash(verdict, medianCents, lowCents, highCents, sales, days, lastSoldAt);
   }
 
   @Override
@@ -301,11 +301,11 @@ public class GetBuyerCatalogListingPriceResponseDataPriceCheck {
     StringBuilder sb = new StringBuilder();
     sb.append("class GetBuyerCatalogListingPriceResponseDataPriceCheck {\n");
     sb.append("    verdict: ").append(toIndentedString(verdict)).append("\n");
-    sb.append("    sales: ").append(toIndentedString(sales)).append("\n");
     sb.append("    medianCents: ").append(toIndentedString(medianCents)).append("\n");
-    sb.append("    days: ").append(toIndentedString(days)).append("\n");
     sb.append("    lowCents: ").append(toIndentedString(lowCents)).append("\n");
     sb.append("    highCents: ").append(toIndentedString(highCents)).append("\n");
+    sb.append("    sales: ").append(toIndentedString(sales)).append("\n");
+    sb.append("    days: ").append(toIndentedString(days)).append("\n");
     sb.append("    lastSoldAt: ").append(toIndentedString(lastSoldAt)).append("\n");
     sb.append("}");
     return sb.toString();

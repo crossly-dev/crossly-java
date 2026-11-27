@@ -27,10 +27,9 @@ import java.math.BigDecimal;
 import org.openapitools.jackson.nullable.JsonNullable;
 
 /**
- * The context the bare rate can&#39;t carry. &#x60;tooYoungToJudge&#x60; is the important one: a cohort measured the day its window closed has had no time to sell, and a low number there means \&quot;wait\&quot;, not \&quot;bad buys\&quot; — a seller acting on it would stop sourcing for no reason.
+ * GetAnalyticDashboardResponseSellThrough
  */
-@ApiModel(description = "The context the bare rate can't carry. `tooYoungToJudge` is the important one: a cohort measured the day its window closed has had no time to sell, and a low number there means \"wait\", not \"bad buys\" — a seller acting on it would stop sourcing for no reason.")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-11T23:44:48.922Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-27T19:42:43.186Z[Etc/UTC]")
 public class GetAnalyticDashboardResponseSellThrough {
   public static final String SERIALIZED_NAME_RATE = "rate";
   @SerializedName(SERIALIZED_NAME_RATE)
@@ -51,6 +50,10 @@ public class GetAnalyticDashboardResponseSellThrough {
   public static final String SERIALIZED_NAME_TOO_YOUNG_TO_JUDGE = "tooYoungToJudge";
   @SerializedName(SERIALIZED_NAME_TOO_YOUNG_TO_JUDGE)
   private Boolean tooYoungToJudge;
+
+  public static final String SERIALIZED_NAME_IMMATURE = "immature";
+  @SerializedName(SERIALIZED_NAME_IMMATURE)
+  private BigDecimal immature;
 
   public GetAnalyticDashboardResponseSellThrough() { 
   }
@@ -170,6 +173,29 @@ public class GetAnalyticDashboardResponseSellThrough {
   }
 
 
+  public GetAnalyticDashboardResponseSellThrough immature(BigDecimal immature) {
+    
+    this.immature = immature;
+    return this;
+  }
+
+   /**
+   * Get immature
+   * @return immature
+  **/
+  @javax.annotation.Nonnull
+  @ApiModelProperty(required = true, value = "")
+
+  public BigDecimal getImmature() {
+    return immature;
+  }
+
+
+  public void setImmature(BigDecimal immature) {
+    this.immature = immature;
+  }
+
+
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -183,7 +209,8 @@ public class GetAnalyticDashboardResponseSellThrough {
         Objects.equals(this.cohortSize, getAnalyticDashboardResponseSellThrough.cohortSize) &&
         Objects.equals(this.cohortSold, getAnalyticDashboardResponseSellThrough.cohortSold) &&
         Objects.equals(this.maturityDays, getAnalyticDashboardResponseSellThrough.maturityDays) &&
-        Objects.equals(this.tooYoungToJudge, getAnalyticDashboardResponseSellThrough.tooYoungToJudge);
+        Objects.equals(this.tooYoungToJudge, getAnalyticDashboardResponseSellThrough.tooYoungToJudge) &&
+        Objects.equals(this.immature, getAnalyticDashboardResponseSellThrough.immature);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -192,7 +219,7 @@ public class GetAnalyticDashboardResponseSellThrough {
 
   @Override
   public int hashCode() {
-    return Objects.hash(rate, cohortSize, cohortSold, maturityDays, tooYoungToJudge);
+    return Objects.hash(rate, cohortSize, cohortSold, maturityDays, tooYoungToJudge, immature);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -211,6 +238,7 @@ public class GetAnalyticDashboardResponseSellThrough {
     sb.append("    cohortSold: ").append(toIndentedString(cohortSold)).append("\n");
     sb.append("    maturityDays: ").append(toIndentedString(maturityDays)).append("\n");
     sb.append("    tooYoungToJudge: ").append(toIndentedString(tooYoungToJudge)).append("\n");
+    sb.append("    immature: ").append(toIndentedString(immature)).append("\n");
     sb.append("}");
     return sb.toString();
   }

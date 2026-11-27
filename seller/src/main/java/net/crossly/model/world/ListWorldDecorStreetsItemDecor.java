@@ -28,7 +28,7 @@ import org.openapitools.jackson.nullable.JsonNullable;
 /**
  * ListWorldDecorStreetsItemDecor
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-11T23:44:48.922Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-27T19:42:43.186Z[Etc/UTC]")
 public class ListWorldDecorStreetsItemDecor {
   public static final String SERIALIZED_NAME_LAMP = "lamp";
   @SerializedName(SERIALIZED_NAME_LAMP)
@@ -43,21 +43,21 @@ public class ListWorldDecorStreetsItemDecor {
    */
   @JsonAdapter(BannerColourEnum.Adapter.class)
   public enum BannerColourEnum {
-    RED("red"),
+    BLUE("blue"),
     
     GREEN("green"),
     
-    TEAL("teal"),
-    
-    BLUE("blue"),
-    
     PURPLE("purple"),
+    
+    RED("red"),
+    
+    TEAL("teal"),
     
     CREAM("cream"),
     
-    AMBER("amber"),
+    INK("ink"),
     
-    INK("ink");
+    AMBER("amber");
 
     private String value;
 

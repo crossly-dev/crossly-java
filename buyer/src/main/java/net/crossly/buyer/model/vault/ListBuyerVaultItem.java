@@ -29,27 +29,23 @@ import org.openapitools.jackson.nullable.JsonNullable;
 /**
  * ListBuyerVaultItem
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-11T23:47:29.843Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-27T19:58:46.962Z[Etc/UTC]")
 public class ListBuyerVaultItem {
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
   private String id;
 
-  public static final String SERIALIZED_NAME_CONDITION = "condition";
-  @SerializedName(SERIALIZED_NAME_CONDITION)
-  private String condition;
-
-  public static final String SERIALIZED_NAME_GRADE_KEY = "gradeKey";
-  @SerializedName(SERIALIZED_NAME_GRADE_KEY)
-  private String gradeKey;
-
   public static final String SERIALIZED_NAME_STATUS = "status";
   @SerializedName(SERIALIZED_NAME_STATUS)
   private String status;
 
-  public static final String SERIALIZED_NAME_RECEIVED_AT = "receivedAt";
-  @SerializedName(SERIALIZED_NAME_RECEIVED_AT)
-  private String receivedAt;
+  public static final String SERIALIZED_NAME_SKU_ID = "skuId";
+  @SerializedName(SERIALIZED_NAME_SKU_ID)
+  private String skuId;
+
+  public static final String SERIALIZED_NAME_SKU_NAME = "skuName";
+  @SerializedName(SERIALIZED_NAME_SKU_NAME)
+  private String skuName;
 
   public static final String SERIALIZED_NAME_IMAGE_URL = "imageUrl";
   @SerializedName(SERIALIZED_NAME_IMAGE_URL)
@@ -59,13 +55,29 @@ public class ListBuyerVaultItem {
   @SerializedName(SERIALIZED_NAME_VARIANT_ID)
   private String variantId;
 
+  public static final String SERIALIZED_NAME_VARIANT_LABEL = "variantLabel";
+  @SerializedName(SERIALIZED_NAME_VARIANT_LABEL)
+  private String variantLabel;
+
+  public static final String SERIALIZED_NAME_CONDITION = "condition";
+  @SerializedName(SERIALIZED_NAME_CONDITION)
+  private String condition;
+
+  public static final String SERIALIZED_NAME_GRADE_KEY = "gradeKey";
+  @SerializedName(SERIALIZED_NAME_GRADE_KEY)
+  private String gradeKey;
+
+  public static final String SERIALIZED_NAME_LOCATION = "location";
+  @SerializedName(SERIALIZED_NAME_LOCATION)
+  private String location;
+
   public static final String SERIALIZED_NAME_LAST_SALE_CENTS = "lastSaleCents";
   @SerializedName(SERIALIZED_NAME_LAST_SALE_CENTS)
   private BigDecimal lastSaleCents;
 
-  public static final String SERIALIZED_NAME_SKU_ID = "skuId";
-  @SerializedName(SERIALIZED_NAME_SKU_ID)
-  private String skuId;
+  public static final String SERIALIZED_NAME_ASK_PRICE_CENTS = "askPriceCents";
+  @SerializedName(SERIALIZED_NAME_ASK_PRICE_CENTS)
+  private BigDecimal askPriceCents;
 
   public static final String SERIALIZED_NAME_WITHDRAW_SPEED = "withdrawSpeed";
   @SerializedName(SERIALIZED_NAME_WITHDRAW_SPEED)
@@ -75,21 +87,9 @@ public class ListBuyerVaultItem {
   @SerializedName(SERIALIZED_NAME_WITHDRAW_TRACKING)
   private String withdrawTracking;
 
-  public static final String SERIALIZED_NAME_LOCATION = "location";
-  @SerializedName(SERIALIZED_NAME_LOCATION)
-  private String location;
-
-  public static final String SERIALIZED_NAME_SKU_NAME = "skuName";
-  @SerializedName(SERIALIZED_NAME_SKU_NAME)
-  private String skuName;
-
-  public static final String SERIALIZED_NAME_VARIANT_LABEL = "variantLabel";
-  @SerializedName(SERIALIZED_NAME_VARIANT_LABEL)
-  private String variantLabel;
-
-  public static final String SERIALIZED_NAME_ASK_PRICE_CENTS = "askPriceCents";
-  @SerializedName(SERIALIZED_NAME_ASK_PRICE_CENTS)
-  private BigDecimal askPriceCents;
+  public static final String SERIALIZED_NAME_RECEIVED_AT = "receivedAt";
+  @SerializedName(SERIALIZED_NAME_RECEIVED_AT)
+  private String receivedAt;
 
   public static final String SERIALIZED_NAME_SITUATION = "situation";
   @SerializedName(SERIALIZED_NAME_SITUATION)
@@ -125,52 +125,6 @@ public class ListBuyerVaultItem {
   }
 
 
-  public ListBuyerVaultItem condition(String condition) {
-    
-    this.condition = condition;
-    return this;
-  }
-
-   /**
-   * Get condition
-   * @return condition
-  **/
-  @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "")
-
-  public String getCondition() {
-    return condition;
-  }
-
-
-  public void setCondition(String condition) {
-    this.condition = condition;
-  }
-
-
-  public ListBuyerVaultItem gradeKey(String gradeKey) {
-    
-    this.gradeKey = gradeKey;
-    return this;
-  }
-
-   /**
-   * Get gradeKey
-   * @return gradeKey
-  **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
-
-  public String getGradeKey() {
-    return gradeKey;
-  }
-
-
-  public void setGradeKey(String gradeKey) {
-    this.gradeKey = gradeKey;
-  }
-
-
   public ListBuyerVaultItem status(String status) {
     
     this.status = status;
@@ -194,26 +148,49 @@ public class ListBuyerVaultItem {
   }
 
 
-  public ListBuyerVaultItem receivedAt(String receivedAt) {
+  public ListBuyerVaultItem skuId(String skuId) {
     
-    this.receivedAt = receivedAt;
+    this.skuId = skuId;
     return this;
   }
 
    /**
-   * Get receivedAt
-   * @return receivedAt
+   * Get skuId
+   * @return skuId
+  **/
+  @javax.annotation.Nonnull
+  @ApiModelProperty(required = true, value = "")
+
+  public String getSkuId() {
+    return skuId;
+  }
+
+
+  public void setSkuId(String skuId) {
+    this.skuId = skuId;
+  }
+
+
+  public ListBuyerVaultItem skuName(String skuName) {
+    
+    this.skuName = skuName;
+    return this;
+  }
+
+   /**
+   * Get skuName
+   * @return skuName
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "")
 
-  public String getReceivedAt() {
-    return receivedAt;
+  public String getSkuName() {
+    return skuName;
   }
 
 
-  public void setReceivedAt(String receivedAt) {
-    this.receivedAt = receivedAt;
+  public void setSkuName(String skuName) {
+    this.skuName = skuName;
   }
 
 
@@ -263,6 +240,98 @@ public class ListBuyerVaultItem {
   }
 
 
+  public ListBuyerVaultItem variantLabel(String variantLabel) {
+    
+    this.variantLabel = variantLabel;
+    return this;
+  }
+
+   /**
+   * Get variantLabel
+   * @return variantLabel
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public String getVariantLabel() {
+    return variantLabel;
+  }
+
+
+  public void setVariantLabel(String variantLabel) {
+    this.variantLabel = variantLabel;
+  }
+
+
+  public ListBuyerVaultItem condition(String condition) {
+    
+    this.condition = condition;
+    return this;
+  }
+
+   /**
+   * Get condition
+   * @return condition
+  **/
+  @javax.annotation.Nonnull
+  @ApiModelProperty(required = true, value = "")
+
+  public String getCondition() {
+    return condition;
+  }
+
+
+  public void setCondition(String condition) {
+    this.condition = condition;
+  }
+
+
+  public ListBuyerVaultItem gradeKey(String gradeKey) {
+    
+    this.gradeKey = gradeKey;
+    return this;
+  }
+
+   /**
+   * Get gradeKey
+   * @return gradeKey
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public String getGradeKey() {
+    return gradeKey;
+  }
+
+
+  public void setGradeKey(String gradeKey) {
+    this.gradeKey = gradeKey;
+  }
+
+
+  public ListBuyerVaultItem location(String location) {
+    
+    this.location = location;
+    return this;
+  }
+
+   /**
+   * Get location
+   * @return location
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public String getLocation() {
+    return location;
+  }
+
+
+  public void setLocation(String location) {
+    this.location = location;
+  }
+
+
   public ListBuyerVaultItem lastSaleCents(BigDecimal lastSaleCents) {
     
     this.lastSaleCents = lastSaleCents;
@@ -286,26 +355,26 @@ public class ListBuyerVaultItem {
   }
 
 
-  public ListBuyerVaultItem skuId(String skuId) {
+  public ListBuyerVaultItem askPriceCents(BigDecimal askPriceCents) {
     
-    this.skuId = skuId;
+    this.askPriceCents = askPriceCents;
     return this;
   }
 
    /**
-   * Get skuId
-   * @return skuId
+   * Get askPriceCents
+   * @return askPriceCents
   **/
-  @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "")
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
 
-  public String getSkuId() {
-    return skuId;
+  public BigDecimal getAskPriceCents() {
+    return askPriceCents;
   }
 
 
-  public void setSkuId(String skuId) {
-    this.skuId = skuId;
+  public void setAskPriceCents(BigDecimal askPriceCents) {
+    this.askPriceCents = askPriceCents;
   }
 
 
@@ -355,95 +424,26 @@ public class ListBuyerVaultItem {
   }
 
 
-  public ListBuyerVaultItem location(String location) {
+  public ListBuyerVaultItem receivedAt(String receivedAt) {
     
-    this.location = location;
+    this.receivedAt = receivedAt;
     return this;
   }
 
    /**
-   * Get location
-   * @return location
+   * Get receivedAt
+   * @return receivedAt
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "")
 
-  public String getLocation() {
-    return location;
+  public String getReceivedAt() {
+    return receivedAt;
   }
 
 
-  public void setLocation(String location) {
-    this.location = location;
-  }
-
-
-  public ListBuyerVaultItem skuName(String skuName) {
-    
-    this.skuName = skuName;
-    return this;
-  }
-
-   /**
-   * Get skuName
-   * @return skuName
-  **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
-
-  public String getSkuName() {
-    return skuName;
-  }
-
-
-  public void setSkuName(String skuName) {
-    this.skuName = skuName;
-  }
-
-
-  public ListBuyerVaultItem variantLabel(String variantLabel) {
-    
-    this.variantLabel = variantLabel;
-    return this;
-  }
-
-   /**
-   * Get variantLabel
-   * @return variantLabel
-  **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
-
-  public String getVariantLabel() {
-    return variantLabel;
-  }
-
-
-  public void setVariantLabel(String variantLabel) {
-    this.variantLabel = variantLabel;
-  }
-
-
-  public ListBuyerVaultItem askPriceCents(BigDecimal askPriceCents) {
-    
-    this.askPriceCents = askPriceCents;
-    return this;
-  }
-
-   /**
-   * Get askPriceCents
-   * @return askPriceCents
-  **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
-
-  public BigDecimal getAskPriceCents() {
-    return askPriceCents;
-  }
-
-
-  public void setAskPriceCents(BigDecimal askPriceCents) {
-    this.askPriceCents = askPriceCents;
+  public void setReceivedAt(String receivedAt) {
+    this.receivedAt = receivedAt;
   }
 
 
@@ -503,20 +503,20 @@ public class ListBuyerVaultItem {
     }
     ListBuyerVaultItem listBuyerVaultItem = (ListBuyerVaultItem) o;
     return Objects.equals(this.id, listBuyerVaultItem.id) &&
-        Objects.equals(this.condition, listBuyerVaultItem.condition) &&
-        Objects.equals(this.gradeKey, listBuyerVaultItem.gradeKey) &&
         Objects.equals(this.status, listBuyerVaultItem.status) &&
-        Objects.equals(this.receivedAt, listBuyerVaultItem.receivedAt) &&
+        Objects.equals(this.skuId, listBuyerVaultItem.skuId) &&
+        Objects.equals(this.skuName, listBuyerVaultItem.skuName) &&
         Objects.equals(this.imageUrl, listBuyerVaultItem.imageUrl) &&
         Objects.equals(this.variantId, listBuyerVaultItem.variantId) &&
+        Objects.equals(this.variantLabel, listBuyerVaultItem.variantLabel) &&
+        Objects.equals(this.condition, listBuyerVaultItem.condition) &&
+        Objects.equals(this.gradeKey, listBuyerVaultItem.gradeKey) &&
+        Objects.equals(this.location, listBuyerVaultItem.location) &&
         Objects.equals(this.lastSaleCents, listBuyerVaultItem.lastSaleCents) &&
-        Objects.equals(this.skuId, listBuyerVaultItem.skuId) &&
+        Objects.equals(this.askPriceCents, listBuyerVaultItem.askPriceCents) &&
         Objects.equals(this.withdrawSpeed, listBuyerVaultItem.withdrawSpeed) &&
         Objects.equals(this.withdrawTracking, listBuyerVaultItem.withdrawTracking) &&
-        Objects.equals(this.location, listBuyerVaultItem.location) &&
-        Objects.equals(this.skuName, listBuyerVaultItem.skuName) &&
-        Objects.equals(this.variantLabel, listBuyerVaultItem.variantLabel) &&
-        Objects.equals(this.askPriceCents, listBuyerVaultItem.askPriceCents) &&
+        Objects.equals(this.receivedAt, listBuyerVaultItem.receivedAt) &&
         Objects.equals(this.situation, listBuyerVaultItem.situation) &&
         Objects.equals(this.earlyWithdrawFeeCents, listBuyerVaultItem.earlyWithdrawFeeCents);
   }
@@ -527,7 +527,7 @@ public class ListBuyerVaultItem {
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, condition, gradeKey, status, receivedAt, imageUrl, variantId, lastSaleCents, skuId, withdrawSpeed, withdrawTracking, location, skuName, variantLabel, askPriceCents, situation, earlyWithdrawFeeCents);
+    return Objects.hash(id, status, skuId, skuName, imageUrl, variantId, variantLabel, condition, gradeKey, location, lastSaleCents, askPriceCents, withdrawSpeed, withdrawTracking, receivedAt, situation, earlyWithdrawFeeCents);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -542,20 +542,20 @@ public class ListBuyerVaultItem {
     StringBuilder sb = new StringBuilder();
     sb.append("class ListBuyerVaultItem {\n");
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
-    sb.append("    condition: ").append(toIndentedString(condition)).append("\n");
-    sb.append("    gradeKey: ").append(toIndentedString(gradeKey)).append("\n");
     sb.append("    status: ").append(toIndentedString(status)).append("\n");
-    sb.append("    receivedAt: ").append(toIndentedString(receivedAt)).append("\n");
+    sb.append("    skuId: ").append(toIndentedString(skuId)).append("\n");
+    sb.append("    skuName: ").append(toIndentedString(skuName)).append("\n");
     sb.append("    imageUrl: ").append(toIndentedString(imageUrl)).append("\n");
     sb.append("    variantId: ").append(toIndentedString(variantId)).append("\n");
+    sb.append("    variantLabel: ").append(toIndentedString(variantLabel)).append("\n");
+    sb.append("    condition: ").append(toIndentedString(condition)).append("\n");
+    sb.append("    gradeKey: ").append(toIndentedString(gradeKey)).append("\n");
+    sb.append("    location: ").append(toIndentedString(location)).append("\n");
     sb.append("    lastSaleCents: ").append(toIndentedString(lastSaleCents)).append("\n");
-    sb.append("    skuId: ").append(toIndentedString(skuId)).append("\n");
+    sb.append("    askPriceCents: ").append(toIndentedString(askPriceCents)).append("\n");
     sb.append("    withdrawSpeed: ").append(toIndentedString(withdrawSpeed)).append("\n");
     sb.append("    withdrawTracking: ").append(toIndentedString(withdrawTracking)).append("\n");
-    sb.append("    location: ").append(toIndentedString(location)).append("\n");
-    sb.append("    skuName: ").append(toIndentedString(skuName)).append("\n");
-    sb.append("    variantLabel: ").append(toIndentedString(variantLabel)).append("\n");
-    sb.append("    askPriceCents: ").append(toIndentedString(askPriceCents)).append("\n");
+    sb.append("    receivedAt: ").append(toIndentedString(receivedAt)).append("\n");
     sb.append("    situation: ").append(toIndentedString(situation)).append("\n");
     sb.append("    earlyWithdrawFeeCents: ").append(toIndentedString(earlyWithdrawFeeCents)).append("\n");
     sb.append("}");

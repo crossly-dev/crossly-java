@@ -25,14 +25,19 @@ Method | HTTP request | Description
 [**createBuyerCatalogListingRental**](BuyerApi.md#createBuyerCatalogListingRental) | **POST** /v1/buyer/catalog/listings/{slug}/rental | Book a rental. Returns a Stripe PaymentIntent client secret for rent + shipping both ways + deposit; the dates are held 30 minutes for payment. Crossly buys both labels; the deposit comes back after the item does.
 [**createBuyerCatalogListingRentalQuote**](BuyerApi.md#createBuyerCatalogListingRentalQuote) | **POST** /v1/buyer/catalog/listings/{slug}/rental/quote | Price a rental: rent (the cheaper of by-the-day and by-the-week), both shipping legs once a ship-to is given, and the deposit. &#x60;problem&#x60; says why the dates can’t be booked.
 [**createBuyerCatalogListingVideoRequest**](BuyerApi.md#createBuyerCatalogListingVideoRequest) | **POST** /v1/buyer/catalog/listings/{slug}/video-requests | Ask the seller for a video of an item (one open request per item). The seller is notified; their answer appears on the listing for every buyer.
+[**createBuyerCompany**](BuyerApi.md#createBuyerCompany) | **POST** /v1/buyer/company | Create a buyer company: name, taxId?, website?. You become its owner; a user is in at most one company.
+[**createBuyerCompanyApproval**](BuyerApi.md#createBuyerCompanyApproval) | **POST** /v1/buyer/company/approvals | Ask for approval of a trade order above your limit: sellerUserId, amountCents, note?, poReference?. Good for 7 days, used once at checkout.
+[**createBuyerCompanyApprovalDecide**](BuyerApi.md#createBuyerCompanyApprovalDecide) | **POST** /v1/buyer/company/approvals/{id}/decide | Approve or decline a pending request (owner, accounts payable): decision approved | declined, note?.
+[**createBuyerCompanyMember**](BuyerApi.md#createBuyerCompanyMember) | **POST** /v1/buyer/company/members | Invite a teammate by email (owner): role owner | buyer | accounts_payable | viewer, approvalLimitCents for a buyer (orders above it need an approval).
 [**createBuyerConversationInvite**](BuyerApi.md#createBuyerConversationInvite) | **POST** /v1/buyer/conversations/{id}/invite | Invite a friend into a chat with a seller: a single-use link (7 days) that makes whoever opens it a guest who can read and post. Only the thread’s buyer can invite; at most 5 guests.
 [**createBuyerConversationJoin**](BuyerApi.md#createBuyerConversationJoin) | **POST** /v1/buyer/conversations/join/{token} | Join a chat you were invited into, as a guest.
+[**createBuyerEventRsvp**](BuyerApi.md#createBuyerEventRsvp) | **POST** /v1/buyer/events/{slug}/rsvp | RSVP to an event: going (counts against its capacity) or interested.
 [**createBuyerFeedback**](BuyerApi.md#createBuyerFeedback) | **POST** /v1/buyer/feedback | Leave feedback on up to 25 orders at once, with optional detailed seller ratings.
 [**createBuyerFitRef**](BuyerApi.md#createBuyerFitRef) | **POST** /v1/buyer/fit/refs | Save a reference garment (flat measurements, inches) to compare listings against.
 [**createBuyerFollowingSellerSeen**](BuyerApi.md#createBuyerFollowingSellerSeen) | **POST** /v1/buyer/following/sellers/seen | Clear the \&quot;new listings\&quot; count on a followed seller, or on all of them.
 [**createBuyerGiftCard**](BuyerApi.md#createBuyerGiftCard) | **POST** /v1/buyer/gift-cards | Start a gift card purchase.
 [**createBuyerGiftCardRedeem**](BuyerApi.md#createBuyerGiftCardRedeem) | **POST** /v1/buyer/gift-cards/redeem | Redeem a gift card code into your own balance.
-[**createBuyerGroupBuyJoin**](BuyerApi.md#createBuyerGroupBuyJoin) | **POST** /v1/buyer/group-buys/{id}/join | Join a group buy: a hold at the starting price, captured at the price the group reaches. Checked against this key’s spending controls; send an Idempotency-Key.
+[**createBuyerGroupBuyJoin**](BuyerApi.md#createBuyerGroupBuyJoin) | **POST** /v1/buyer/group-buys/{id}/join | Join a group buy with a quantity (up to its per-buyer max): a hold (or, for pay-now pools, a charge refunded the difference) at the starting price, settled at the price the group reaches. &#x60;linkToken&#x60; opens a link-only pool. Checked against this key’s spending controls; send an Idempotency-Key.
 [**createBuyerGroupBuyLeave**](BuyerApi.md#createBuyerGroupBuyLeave) | **POST** /v1/buyer/group-buys/{id}/leave | Leave a group buy and release your hold.
 [**createBuyerHunt**](BuyerApi.md#createBuyerHunt) | **POST** /v1/buyer/hunts | Start a buyer-agent hunt — over a search (filters), or auto-buy on one listing (listingSlug: buy it once its price, sale applied, is within maxPriceCents). &#x60;offer&#x60; and &#x60;buy&#x60; modes also need buyer:checkout:write, and the budget is checked against this key’s spending controls.
 [**createBuyerInstantOfferAccept**](BuyerApi.md#createBuyerInstantOfferAccept) | **POST** /v1/buyer/instant-offers/{id}/accept | Accept Crossly’s instant offer on a collection item. Ops then send a prepaid label; the store credit is paid once the item arrives and checks out.
@@ -53,22 +58,28 @@ Method | HTTP request | Description
 [**createBuyerPackFairnessRotate**](BuyerApi.md#createBuyerPackFairnessRotate) | **POST** /v1/buyer/packs/fairness/rotate | Reveal your current server seed and start a new one (optionally with your own client seed). Refused while an opening is awaiting payment.
 [**createBuyerPackOpen**](BuyerApi.md#createBuyerPackOpen) | **POST** /v1/buyer/packs/{slug}/open | Open a pack. SPENDS MONEY: charges the pack price to your saved card, then pulls one real item by the published odds (provably fair: see /buyer/packs/fairness) into your Crossly vault. confirmAdult must be true. Checked against this key’s spending controls; send an Idempotency-Key.
 [**createBuyerPackOpeningSellBack**](BuyerApi.md#createBuyerPackOpeningSellBack) | **POST** /v1/buyer/pack-openings/{id}/sell-back | Sell a pull straight back for Crossly credit at the pack’s buyback rate, within its window, while it is still in your vault.
-[**createBuyerPassportClaim**](BuyerApi.md#createBuyerPassportClaim) | **POST** /v1/buyer/passports/{code}/claim | Claim a passport as the item’s current owner (the buyer of its latest sale) — shown as “in its owner’s hands” until it sells again.
+[**createBuyerPassportClaim**](BuyerApi.md#createBuyerPassportClaim) | **POST** /v1/buyer/passports/{code}/claim | Claim a passport as the item’s current owner — the buyer of its latest Crossly sale, or (after a sale on another marketplace) with the transfer code from the card in the box — shown as “in its owner’s hands” until it sells again.
 [**createBuyerProtectionPlanCancel**](BuyerApi.md#createBuyerProtectionPlanCancel) | **POST** /v1/buyer/protection-plans/{id}/cancel | Cancel a protection plan. The insurer decides what is refundable (pro-rata after the free-look window); that amount goes back to the card.
-[**createBuyerPurchaseDownload**](BuyerApi.md#createBuyerPurchaseDownload) | **POST** /v1/buyer/purchases/{id}/download | A ten-minute link to a digital purchase’s file; each call uses one of its downloads.
 [**createBuyerPurchaseFit**](BuyerApi.md#createBuyerPurchaseFit) | **POST** /v1/buyer/purchases/{id}/fit | Say how a delivered purchase fit: true_to_size, small or large. It teaches your size memory and, pooled with other buyers, how the brand runs.
 [**createBuyerPurchaseReturn**](BuyerApi.md#createBuyerPurchaseReturn) | **POST** /v1/buyer/purchases/{id}/return | Return a purchase under the seller’s policy, or send back a try-at-home item. With reason doesnt_fit, &#x60;fit&#x60; (small | large) says which way, and it feeds your size memory.
 [**createBuyerRegistry**](BuyerApi.md#createBuyerRegistry) | **POST** /v1/buyer/registries | Start a gift registry (wedding, baby, birthday, housewarming, graduation, other). Items are added like any wishlist item; set shipAddressId to one of your saved addresses so guests can buy — they never see it.
 [**createBuyerRegistryGiftThanked**](BuyerApi.md#createBuyerRegistryGiftThanked) | **POST** /v1/buyer/registries/{id}/gifts/{giftId}/thanked | Tick a gift as thanked (or untick it).
 [**createBuyerRentalArrivalPhoto**](BuyerApi.md#createBuyerRentalArrivalPhoto) | **POST** /v1/buyer/rentals/{id}/arrival-photos | Photograph a rental on arrival (URLs you uploaded): your side of the condition record.
+[**createBuyerRentalBuyout**](BuyerApi.md#createBuyerRentalBuyout) | **POST** /v1/buyer/rentals/{id}/buyout | Buy the item you are renting: the price less the rent-to-own credit → clientSecret.
 [**createBuyerRentalCancel**](BuyerApi.md#createBuyerRentalCancel) | **POST** /v1/buyer/rentals/{id}/cancel | Cancel a rental that has not shipped: everything is refunded.
 [**createBuyerRentalClaimResponse**](BuyerApi.md#createBuyerRentalClaimResponse) | **POST** /v1/buyer/rentals/{id}/claim-response | Answer a deposit claim: accept (the claim is paid, the rest refunded) or dispute (Crossly decides).
+[**createBuyerRentalDelivered**](BuyerApi.md#createBuyerRentalDelivered) | **POST** /v1/buyer/rentals/{id}/delivered | Confirm your rental arrived.
+[**createBuyerRentalExtension**](BuyerApi.md#createBuyerRentalExtension) | **POST** /v1/buyer/rentals/{id}/extensions | Ask for more days. Auto-approved extensions return a clientSecret to pay with Stripe.
+[**createBuyerRentalExtensionPay**](BuyerApi.md#createBuyerRentalExtensionPay) | **POST** /v1/buyer/rentals/{id}/extensions/{extensionId}/pay | Pay for an extension the seller approved → clientSecret.
 [**createBuyerRentalIdentityStart**](BuyerApi.md#createBuyerRentalIdentityStart) | **POST** /v1/buyer/rentals/identity/start | Start the ID check renting needs (Stripe Identity: photo ID + selfie). Open &#x60;url&#x60; (hosted) or use &#x60;clientSecret&#x60; with Stripe.js.
+[**createBuyerRentalReturnShipped**](BuyerApi.md#createBuyerRentalReturnShipped) | **POST** /v1/buyer/rentals/{id}/return-shipped | Say you sent your rental back (optionally with photos).
 [**createBuyerReturnCancel**](BuyerApi.md#createBuyerReturnCancel) | **POST** /v1/buyer/returns/{id}/cancel | Cancel a return before it ships.
 [**createBuyerReturnTracking**](BuyerApi.md#createBuyerReturnTracking) | **POST** /v1/buyer/returns/{id}/tracking | Add tracking to a return you shipped on your own label.
 [**createBuyerSellerClubJoin**](BuyerApi.md#createBuyerSellerClubJoin) | **POST** /v1/buyer/sellers/{sellerUserId}/club/join | Join a seller’s loyalty club (free). Your tier’s discount then applies to their items — the best of it and any other rate you have with them, never stacked.
+[**createBuyerSellerLoyaltyJoin**](BuyerApi.md#createBuyerSellerLoyaltyJoin) | **POST** /v1/buyer/sellers/{sellerUserId}/loyalty/join | Join a seller’s loyalty club. Invite-only clubs take only invited buyers. Your tier and its perks are granted at once.
 [**createBuyerSellerReport**](BuyerApi.md#createBuyerSellerReport) | **POST** /v1/buyer/sellers/{username}/report | Report a seller to Crossly’s trust team.
 [**createBuyerSplitCancel**](BuyerApi.md#createBuyerSplitCancel) | **POST** /v1/buyer/splits/{id}/cancel | Cancel a split you organised; every held share is released.
+[**createBuyerStoreReport**](BuyerApi.md#createBuyerStoreReport) | **POST** /v1/buyer/stores/{slug}/report | Report a store to Crossly’s trust team.
 [**createBuyerTogether**](BuyerApi.md#createBuyerTogether) | **POST** /v1/buyer/together | Start a shop-together room.
 [**createBuyerTogetherItem**](BuyerApi.md#createBuyerTogetherItem) | **POST** /v1/buyer/together/{code}/items | Add a listing to a shop-together board.
 [**createBuyerTogetherItemVote**](BuyerApi.md#createBuyerTogetherItemVote) | **POST** /v1/buyer/together/{code}/items/{id}/vote | Vote an item on a room’s board up (1), down (-1) or clear (0).
@@ -79,6 +90,14 @@ Method | HTTP request | Description
 [**createBuyerVaultList**](BuyerApi.md#createBuyerVaultList) | **POST** /v1/buyer/vault/{id}/list | Sell a vault item on the market at your price. It is already authenticated, so when it sells nothing ships in: the buyer keeps it vaulted or it ships straight to them.
 [**createBuyerVaultUnlist**](BuyerApi.md#createBuyerVaultUnlist) | **POST** /v1/buyer/vault/{id}/unlist | Take a vault item off the market; it stays stored.
 [**createBuyerVaultWithdraw**](BuyerApi.md#createBuyerVaultWithdraw) | **POST** /v1/buyer/vault/{id}/withdraw | Ship a vault item home, standard or expedited. The shipping, any storage it owes and the early-withdrawal fee (within 90 days of arriving) are charged to your saved card now, all checked against this key’s spending controls; send an Idempotency-Key.
+[**createBuyerWholesaleCatalogApply**](BuyerApi.md#createBuyerWholesaleCatalogApply) | **POST** /v1/buyer/wholesale/catalogs/{storeSlug}/{catalogSlug}/apply | Apply to a store&#39;s wholesale catalog: { message?, answers [{ id, value }], resaleCertUrl?, resaleCertState?, taxId?, businessInfo? }. The seller&#39;s requirements are enforced (400 trade_apply_requirements names the first one missing); the seller reviews the request.
+[**createBuyerWholesaleFreightRequest**](BuyerApi.md#createBuyerWholesaleFreightRequest) | **POST** /v1/buyer/wholesale/freight-requests | Ask a seller to quote freight for their lines in your cart (an order over their pallet threshold): { sellerUserId, weightLbs?, shipTo? { postalCode, country, city?, region?, liftgate?, dock? }, note? }. One open request per seller.
+[**createBuyerWholesaleInvoicePayLink**](BuyerApi.md#createBuyerWholesaleInvoicePayLink) | **POST** /v1/buyer/wholesale/invoices/{id}/pay-link | A hosted payment page for an on-account invoice: amountCents? (part of the balance, at least $1), method? card | ach. Nothing is charged until the buyer completes the page.
+[**createBuyerWholesaleOrderSheet**](BuyerApi.md#createBuyerWholesaleOrderSheet) | **POST** /v1/buyer/wholesale/order-sheets | Save an order sheet: name, lines [{ platformListingId, listingVariantId?, catalogId?, quantity }] from one seller, optional catalogId, poReference, note.
+[**createBuyerWholesaleQuote**](BuyerApi.md#createBuyerWholesaleQuote) | **POST** /v1/buyer/wholesale/quotes | Ask one seller for a quote: items [{ platformListingId, listingVariantId?, quantity, targetUnitPriceCents? }] (one seller per quote), optional catalogId, note, poReference.
+[**createBuyerWholesaleQuoteAccept**](BuyerApi.md#createBuyerWholesaleQuoteAccept) | **POST** /v1/buyer/wholesale/quotes/{id}/accept | Accept an answered quote: its priced items go into your cart at the quoted quantities, locked at the quoted prices until the quote expires (changing a line&#39;s quantity drops the lock). Paying happens at checkout on Crossly.
+[**createBuyerWholesaleQuoteWithdraw**](BuyerApi.md#createBuyerWholesaleQuoteWithdraw) | **POST** /v1/buyer/wholesale/quotes/{id}/withdraw | Withdraw a quote request that is still requested or answered.
+[**createBuyerWholesaleUploadValidate**](BuyerApi.md#createBuyerWholesaleUploadValidate) | **POST** /v1/buyer/wholesale/upload/validate | Validate a CSV / PO against one catalog: rows [{ line, sku, quantity }] are matched by SKU (item or option SKU, or listing slug), merged per item and priced today; unmatched rows come back by line.
 [**createBuyerWishlist**](BuyerApi.md#createBuyerWishlist) | **POST** /v1/buyer/wishlists | Create a wishlist.
 [**createBuyerWishlistInvite**](BuyerApi.md#createBuyerWishlistInvite) | **POST** /v1/buyer/wishlists/{id}/invite | Share a wishlist with a co-editor: a single-use link (14 days). Members add and remove items; only the owner renames, deletes or removes members. At most 20.
 [**createBuyerWishlistItem**](BuyerApi.md#createBuyerWishlistItem) | **POST** /v1/buyer/wishlists/{id}/items | Add a listing to a wishlist.
@@ -89,8 +108,12 @@ Method | HTTP request | Description
 [**deleteBuyerBreakSpotHold**](BuyerApi.md#deleteBuyerBreakSpotHold) | **DELETE** /v1/buyer/breaks/{id}/spots/{spotId}/hold | Release a break spot you hold.
 [**deleteBuyerCartItem**](BuyerApi.md#deleteBuyerCartItem) | **DELETE** /v1/buyer/cart/items/{id} | Remove a line from your cart.
 [**deleteBuyerCartSaved**](BuyerApi.md#deleteBuyerCartSaved) | **DELETE** /v1/buyer/cart/saved/{id} | Remove an item from saved-for-later. Returns the remaining list.
+[**deleteBuyerCompanyMember**](BuyerApi.md#deleteBuyerCompanyMember) | **DELETE** /v1/buyer/company/members/{id} | Remove a member or cancel an invite (owner), or leave the company (your own member id).
 [**deleteBuyerConversationGuest**](BuyerApi.md#deleteBuyerConversationGuest) | **DELETE** /v1/buyer/conversations/{id}/guests/{userId} | Remove a guest (the thread’s buyer), or leave (a guest, with your own user id).
+[**deleteBuyerCreationReview**](BuyerApi.md#deleteBuyerCreationReview) | **DELETE** /v1/buyer/creations/{format}/{id}/review | Remove your review of a creation (its vote leaves the rating with it).
+[**deleteBuyerEventRsvp**](BuyerApi.md#deleteBuyerEventRsvp) | **DELETE** /v1/buyer/events/{slug}/rsvp | Take back your RSVP.
 [**deleteBuyerFitRef**](BuyerApi.md#deleteBuyerFitRef) | **DELETE** /v1/buyer/fit/refs/{id} | Delete a reference garment.
+[**deleteBuyerHomeGuestbook**](BuyerApi.md#deleteBuyerHomeGuestbook) | **DELETE** /v1/buyer/home/guestbook/{id} | Hide a line from your home’s guestbook.
 [**deleteBuyerMarketBid**](BuyerApi.md#deleteBuyerMarketBid) | **DELETE** /v1/buyer/market/bids/{id} | Cancel a resting market bid.
 [**deleteBuyerMarketWatch**](BuyerApi.md#deleteBuyerMarketWatch) | **DELETE** /v1/buyer/market/watches/{id} | Stop watching a market variant.
 [**deleteBuyerOffer**](BuyerApi.md#deleteBuyerOffer) | **DELETE** /v1/buyer/offers/{id} | Withdraw an offer you made that the seller has not answered.
@@ -98,9 +121,11 @@ Method | HTTP request | Description
 [**deleteBuyerRecentlyViewed2**](BuyerApi.md#deleteBuyerRecentlyViewed2) | **DELETE** /v1/buyer/recently-viewed | Clear your recently viewed list.
 [**deleteBuyerRegistry**](BuyerApi.md#deleteBuyerRegistry) | **DELETE** /v1/buyer/registries/{id} | Delete a registry (and the wishlist behind it).
 [**deleteBuyerSellerClubJoin**](BuyerApi.md#deleteBuyerSellerClubJoin) | **DELETE** /v1/buyer/sellers/{sellerUserId}/club/join | Leave a seller’s loyalty club.
+[**deleteBuyerSellerLoyaltyJoin**](BuyerApi.md#deleteBuyerSellerLoyaltyJoin) | **DELETE** /v1/buyer/sellers/{sellerUserId}/loyalty/join | Leave a seller’s loyalty club.
 [**deleteBuyerTogetherItem**](BuyerApi.md#deleteBuyerTogetherItem) | **DELETE** /v1/buyer/together/{code}/items/{id} | Take an item you added off a room’s board.
 [**deleteBuyerTotalRequest**](BuyerApi.md#deleteBuyerTotalRequest) | **DELETE** /v1/buyer/total-requests/{id} | Cancel a total request you made.
 [**deleteBuyerTryOn**](BuyerApi.md#deleteBuyerTryOn) | **DELETE** /v1/buyer/try-ons/{id} | Delete a try-on and its images — or pass &#x60;all&#x60; to delete every photo and result.
+[**deleteBuyerWholesaleOrderSheet**](BuyerApi.md#deleteBuyerWholesaleOrderSheet) | **DELETE** /v1/buyer/wholesale/order-sheets/{id} | Delete an order sheet.
 [**deleteBuyerWishlist**](BuyerApi.md#deleteBuyerWishlist) | **DELETE** /v1/buyer/wishlists/{id} | Delete a wishlist and everything on it.
 [**deleteBuyerWishlistItem**](BuyerApi.md#deleteBuyerWishlistItem) | **DELETE** /v1/buyer/wishlists/{id}/items/{slug} | Take a listing off a wishlist.
 [**deleteBuyerWishlistMember**](BuyerApi.md#deleteBuyerWishlistMember) | **DELETE** /v1/buyer/wishlists/{id}/members/{userId} | Remove a co-editor (the owner), or leave a list shared with you (your own user id).
@@ -116,9 +141,14 @@ Method | HTTP request | Description
 [**getBuyerCheckoutUsdc**](BuyerApi.md#getBuyerCheckoutUsdc) | **GET** /v1/buyer/checkout/usdc | Whether Crossly takes USDC (Stripe stablecoin payments: Solana, Ethereum, Base, Polygon), and its per-order limit. Paying needs the buyer’s wallet, so it happens in the browser checkout, never unattended.
 [**getBuyerCollectionOffer**](BuyerApi.md#getBuyerCollectionOffer) | **GET** /v1/buyer/collection/{id}/offer | What an item in your collection would fetch now: the top open bid on the market for the same variant, condition and grade, and Crossly’s instant offer in store credit when that is switched on (a quote valid for a limited time).
 [**getBuyerCollectionSet**](BuyerApi.md#getBuyerCollectionSet) | **GET** /v1/buyer/collection/sets/{category}/{brand}/{model} | One set: every piece (owned or missing, with its lowest ask on the market), what completing it would cost now, and the leaderboard of collectors who opted in, with your rank.
+[**getBuyerCompany**](BuyerApi.md#getBuyerCompany) | **GET** /v1/buyer/company | Your buyer company (members, roles, approval limits, shared addresses), or null when you are in none.
+[**getBuyerCreation**](BuyerApi.md#getBuyerCreation) | **GET** /v1/buyer/creations/{format}/{id} | A live creation&#39;s public page: its rating breakdown, recent reviews and whether you can review it.
 [**getBuyerCreator**](BuyerApi.md#getBuyerCreator) | **GET** /v1/buyer/creators/{handle} | A creator storefront: profile, affiliate code, and shelves of live picks.
+[**getBuyerEvent**](BuyerApi.md#getBuyerEvent) | **GET** /v1/buyer/events/{slug} | A seller event: schedule, location, host, linked listings, live show, promo code, RSVP counts and your own RSVP.
 [**getBuyerFitVocabulary**](BuyerApi.md#getBuyerFitVocabulary) | **GET** /v1/buyer/fit/vocabulary | Garment kinds and the measurements each takes.
 [**getBuyerGiftFinderOption**](BuyerApi.md#getBuyerGiftFinderOption) | **GET** /v1/buyer/gift-finder/options | The gift finder’s questions: recipients, interests, budgets.
+[**getBuyerHome**](BuyerApi.md#getBuyerHome) | **GET** /v1/buyer/home | Your home in Crossly World (made on first read).
+[**getBuyerHomePlaceable**](BuyerApi.md#getBuyerHomePlaceable) | **GET** /v1/buyer/home/placeable | What you could place in your home: your items and delivered furniture.
 [**getBuyerImpact**](BuyerApi.md#getBuyerImpact) | **GET** /v1/buyer/impact | The sourced footprint your secondhand purchases avoided.
 [**getBuyerLayaway**](BuyerApi.md#getBuyerLayaway) | **GET** /v1/buyer/layaways/{id} | One layaway and its schedule.
 [**getBuyerListingAudioSummary**](BuyerApi.md#getBuyerListingAudioSummary) | **GET** /v1/buyer/listings/{slug}/audio-summary | A spoken summary of a listing (accessibility): the text, built only from the listing’s own fields and the seller’s description, and the recording of it when one exists.
@@ -139,7 +169,7 @@ Method | HTTP request | Description
 [**getBuyerPack**](BuyerApi.md#getBuyerPack) | **GET** /v1/buyer/packs/{slug} | One pack: tiers and odds, items left, expected value, the chase items still in it.
 [**getBuyerPackFairness**](BuyerApi.md#getBuyerPackFairness) | **GET** /v1/buyer/packs/fairness | Your provably-fair seeds: the active server-seed commitment (sha256), your client seed and nonce, and every retired seed in full so past openings can be re-run.
 [**getBuyerParty**](BuyerApi.md#getBuyerParty) | **GET** /v1/buyer/parties/{slug} | One shopping party.
-[**getBuyerPassport**](BuyerApi.md#getBuyerPassport) | **GET** /v1/buyer/passports/{code} | What a product passport tag opens: the item, whether it was authenticated, how many owners on Crossly and since when — never who or for how much.
+[**getBuyerPassport**](BuyerApi.md#getBuyerPassport) | **GET** /v1/buyer/passports/{code} | What a product passport tag opens: the item, the verify verdict (registered, tag bound, tag matches with ?uid&#x3D;, authenticated, graded, in its owner’s hands), how many owners and since when — never who or for how much.
 [**getBuyerPreference**](BuyerApi.md#getBuyerPreference) | **GET** /v1/buyer/preferences | The shopping profile derived from that activity.
 [**getBuyerPriceGuide**](BuyerApi.md#getBuyerPriceGuide) | **GET** /v1/buyer/price-guide | What matching items actually sold for on Crossly: median, quartiles, by month, and recent sales. Needs q, brand or category.
 [**getBuyerProfile**](BuyerApi.md#getBuyerProfile) | **GET** /v1/buyer/profile | Your Crossly shopping profile — name, email, saved address, Bucks balance.
@@ -149,14 +179,38 @@ Method | HTTP request | Description
 [**getBuyerPurchaseStory**](BuyerApi.md#getBuyerPurchaseStory) | **GET** /v1/buyer/purchases/{id}/story | Your owner story on a purchase, passed on to the next owner if you resell it.
 [**getBuyerRegistry**](BuyerApi.md#getBuyerRegistry) | **GET** /v1/buyer/registries/{id} | One of your registries: items with how many are wanted and bought.
 [**getBuyerRegistryByToken**](BuyerApi.md#getBuyerRegistryByToken) | **GET** /v1/buyer/registry/{token} | A registry as a guest sees it: items, how many are still wanted, and whether it can ship. Never the address.
+[**getBuyerRental**](BuyerApi.md#getBuyerRental) | **GET** /v1/buyer/rentals/{id} | One of your rentals: timeline, payments, the return label, extension and buy-out terms.
 [**getBuyerRentalEligibility**](BuyerApi.md#getBuyerRentalEligibility) | **GET** /v1/buyer/rentals/eligibility | Can you rent right now: ID-verified (a photo ID and a matching selfie, once), the verified name rentals ship to, and your standing (one rental at a time until your first comes back; none after one that never did).
 [**getBuyerSellerClub**](BuyerApi.md#getBuyerSellerClub) | **GET** /v1/buyer/sellers/{sellerUserId}/club | A seller’s loyalty club: its tiers (spend threshold, discount, perks) and your standing. null when the seller has none.
+[**getBuyerSellerLoyalty**](BuyerApi.md#getBuyerSellerLoyalty) | **GET** /v1/buyer/sellers/{sellerUserId}/loyalty | A seller’s loyalty club with its typed perks per tier, its join mode (automatic, opt-in, invite-only) and your standing. null when they run none.
 [**getBuyerSellerTrust**](BuyerApi.md#getBuyerSellerTrust) | **GET** /v1/buyer/sellers/{username}/trust | Seller at a glance: member since, completed sales, independent rating, typical handling time, dispute rate, trust tier, badges — and the plain sentences the profile shows.
 [**getBuyerTogether**](BuyerApi.md#getBuyerTogether) | **GET** /v1/buyer/together/{code} | A shop-together room: members, the board with votes, and chat.
 [**getBuyerVaultMarketHistory**](BuyerApi.md#getBuyerVaultMarketHistory) | **GET** /v1/buyer/vault-markets/history | Your Vault Markets value by day at the marks (oldest first, today live) over &#x60;days&#x60; (default 90), and today’s change against yesterday’s close.
 [**getBuyerVaultMarketIndex**](BuyerApi.md#getBuyerVaultMarketIndex) | **GET** /v1/buyer/vault-markets/indexes/{slug} | One index with its published daily closes (oldest first, &#x60;days&#x60; default 365) and its level now.
 [**getBuyerVaultMarketInstantExit**](BuyerApi.md#getBuyerVaultMarketInstantExit) | **GET** /v1/buyer/vault-markets/instant-exit/{id} | The Instant Exit quote for one vault unit you hold, and whether it can be sold now.
+[**getBuyerVaultMarketOptionAnalytic**](BuyerApi.md#getBuyerVaultMarketOptionAnalytic) | **GET** /v1/buyer/vault-markets/options/analytics/{underlying} | Options analytics on an underlying: vol surface and smile, IV rank and percentile, open interest and volume by strike and expiry, put/call ratios, expected move and historical vol. Derived, display only. Read only.
+[**getBuyerVaultMarketOptionChain**](BuyerApi.md#getBuyerVaultMarketOptionChain) | **GET** /v1/buyer/vault-markets/options/chain/{underlying} | The option chain for an underlying (index slug or book key): expiries, and for one expiry each strike’s call and put with bid / ask, last, open interest, theoretical price, implied vol (display only) and Greeks. Prices are cents per contract.
+[**getBuyerVaultMarketOptionIv**](BuyerApi.md#getBuyerVaultMarketOptionIv) | **GET** /v1/buyer/vault-markets/options/iv/{underlying} | The at-the-money implied vol on an underlying’s nearest expiry, for display: derived from the options book, quality C, never a mark.
+[**getBuyerVaultMarketOptionPosition**](BuyerApi.md#getBuyerVaultMarketOptionPosition) | **GET** /v1/buyer/vault-markets/options/positions | Your fractional options positions with their marks, P&amp;L and Greeks (open by default; &#x60;status&#x60; all for closed and settled too). Read only.
+[**getBuyerVaultMarketOptionRisk**](BuyerApi.md#getBuyerVaultMarketOptionRisk) | **GET** /v1/buyer/vault-markets/options/risk | Your options portfolio Greeks, a scenario&#39;s P&amp;L (&#x60;priceShift&#x60;, &#x60;volShift&#x60;, &#x60;daysForward&#x60;) and the beta-weighted delta against an index. Read only.
+[**getBuyerVaultMarketPredictionBoard**](BuyerApi.md#getBuyerVaultMarketPredictionBoard) | **GET** /v1/buyer/vault-markets/predictions/board | The busiest open prediction markets and their odds (the Trading Floor board). Anonymous.
+[**getBuyerVaultMarketPredictionEvent**](BuyerApi.md#getBuyerVaultMarketPredictionEvent) | **GET** /v1/buyer/vault-markets/predictions/events/{id} | One expiry’s markets with your holdings in each and their real worst and best case across them.
+[**getBuyerVaultMarketPredictionLeaderboard**](BuyerApi.md#getBuyerVaultMarketPredictionLeaderboard) | **GET** /v1/buyer/vault-markets/predictions/leaderboard | Opt-in forecaster leaderboards (&#x60;period&#x60; week | month | all; &#x60;metric&#x60; pnl | accuracy | brier; &#x60;venue&#x60; live | paper).
+[**getBuyerVaultMarketPredictionMarket**](BuyerApi.md#getBuyerVaultMarketPredictionMarket) | **GET** /v1/buyer/vault-markets/predictions/markets/{id} | One prediction market: terms, the Yes ladder (live and practice), recent trades, settlement history and the series rules with their hash.
+[**getBuyerVaultMarketPredictionMarketHistory**](BuyerApi.md#getBuyerVaultMarketPredictionMarketHistory) | **GET** /v1/buyer/vault-markets/predictions/markets/{id}/history | A prediction market’s probability over time (display only, never a mark), candles on the Yes price, volume and open interest (&#x60;range&#x60; 1d, 1w, 1m, all; &#x60;venue&#x60; live or paper).
+[**getBuyerVaultMarketShare**](BuyerApi.md#getBuyerVaultMarketShare) | **GET** /v1/buyer/vault-markets/shares | Your Vault Shares: shares and percent of each item, cost, implied value at the last share price (display only, never a mark), subscriptions and payouts.
+[**getBuyerVaultMarketShareBasket**](BuyerApi.md#getBuyerVaultMarketShareBasket) | **GET** /v1/buyer/vault-markets/shares/baskets/{id} | One theme basket: its series, weights and prices, and your holdings against them.
+[**getBuyerVaultMarketShareSery**](BuyerApi.md#getBuyerVaultMarketShareSery) | **GET** /v1/buyer/vault-markets/shares/series/{id} | One Vault Shares series: the offering, the share book, the latest fills, holders as percentages (nobody named) and buyouts.
+[**getBuyerVaultMarketShareSeryHistory**](BuyerApi.md#getBuyerVaultMarketShareSeryHistory) | **GET** /v1/buyer/vault-markets/shares/series/{id}/history | A Vault Shares series’ full price history (candles), the offering price and the appraisal history. Display only, never a mark.
+[**getBuyerVaultMarketShareSeryPerk**](BuyerApi.md#getBuyerVaultMarketShareSeryPerk) | **GET** /v1/buyer/vault-markets/shares/series/{id}/perks | Your holder perks on a series: badge, visit links, viewing days and your bookings.
 [**getBuyerVaultMarketWorth**](BuyerApi.md#getBuyerVaultMarketWorth) | **GET** /v1/buyer/vault-markets/worth | What your vault is worth now: value at the market prices (marks come only from trades) split into reliable and indicative marks, cost and P&amp;L, today’s change, and an estimate of what the units free to sell would fetch from the bids resting on the book now. Read only.
+[**getBuyerWholesaleCart**](BuyerApi.md#getBuyerWholesaleCart) | **GET** /v1/buyer/wholesale/cart | Your cart grouped per seller: trade terms, the order-minimum progress, every rule the cart breaks (the messages checkout would refuse with), PO reference, quote-locked lines, and the checkout methods, deposit and freight threshold for each group.
+[**getBuyerWholesaleCatalogApply**](BuyerApi.md#getBuyerWholesaleCatalogApply) | **GET** /v1/buyer/wholesale/catalogs/{storeSlug}/{catalogSlug}/apply | The application form for a store&#39;s wholesale catalog: the seller&#39;s requirements (resale certificate and accepted states, tax id, their custom questions) and your business info pre-filled. applicable&#x3D;false for a catalog you cannot apply to.
+[**getBuyerWholesaleDrop**](BuyerApi.md#getBuyerWholesaleDrop) | **GET** /v1/buyer/wholesale/drops/{id} | One trade drop open to you: its listings once live (add one to your cart to reserve or buy it), and your reservations in it. 404 for a drop not open to you.
+[**getBuyerWholesaleInvoicePayQuote**](BuyerApi.md#getBuyerWholesaleInvoicePayQuote) | **GET** /v1/buyer/wholesale/invoices/{id}/pay-quote | What paying an on-account invoice costs now: balance due, the early-pay discount if still open, the minimum part payment and the methods (card, ach).
+[**getBuyerWholesaleOrderSheet**](BuyerApi.md#getBuyerWholesaleOrderSheet) | **GET** /v1/buyer/wholesale/order-sheets/{id} | One order sheet priced TODAY at its quantities, with stock, trade terms and flags (unavailable, out_of_stock, short_stock, price_hidden, needs_option).
+[**getBuyerWholesaleQuote**](BuyerApi.md#getBuyerWholesaleQuote) | **GET** /v1/buyer/wholesale/quotes/{id} | One of your quotes with its items, the seller&#39;s prices and expiry.
+[**getBuyerWholesaleReorder**](BuyerApi.md#getBuyerWholesaleReorder) | **GET** /v1/buyer/wholesale/reorder/{id} | Buy again: a past wholesale order (purchase or order id) as order-sheet lines at the same quantities, priced today, out-of-stock flagged.
 [**listBuyerActivity**](BuyerApi.md#listBuyerActivity) | **GET** /v1/buyer/activity | What this buyer has compared lately.
 [**listBuyerAuctionBids**](BuyerApi.md#listBuyerAuctionBids) | **GET** /v1/buyer/auctions/{slug}/bids | An auction’s bid history, highest first, bidders anonymised.
 [**listBuyerAuctions**](BuyerApi.md#listBuyerAuctions) | **GET** /v1/buyer/auctions | Auctions you have bid in — bidding, won or lost (last 100).
@@ -170,8 +224,11 @@ Method | HTTP request | Description
 [**listBuyerCatalogListingVideos**](BuyerApi.md#listBuyerCatalogListingVideos) | **GET** /v1/buyer/catalog/listings/{slug}/videos | Videos the seller recorded for this item on request, newest first, with the question each one answers.
 [**listBuyerClubs**](BuyerApi.md#listBuyerClubs) | **GET** /v1/buyer/clubs | Sellers’ loyalty clubs you belong to: your spend with each, your tier and its discount, and the next tier.
 [**listBuyerCollectionSets**](BuyerApi.md#listBuyerCollectionSets) | **GET** /v1/buyer/collection/sets | Sets you are collecting — a catalogue brand + model you own at least two pieces of — with owned / total and percent complete, most complete first; and whether you show on set leaderboards.
+[**listBuyerCompanyApprovals**](BuyerApi.md#listBuyerCompanyApprovals) | **GET** /v1/buyer/company/approvals | Spend approval requests (owners and accounts payable see all; others their own). ?status&#x3D;pending|approved|declined|used|expired.
 [**listBuyerConsolidations**](BuyerApi.md#listBuyerConsolidations) | **GET** /v1/buyer/consolidations | Your ship-together orders: parcels at the hub, and the one box out.
 [**listBuyerConversationGuests**](BuyerApi.md#listBuyerConversationGuests) | **GET** /v1/buyer/conversations/{id}/guests | Guests in a chat.
+[**listBuyerCreationReviewable**](BuyerApi.md#listBuyerCreationReviewable) | **GET** /v1/buyer/creations/reviewable | Creations you bought (decor, wearables, interactive objects, cards from packs) and your review of each.
+[**listBuyerEvents**](BuyerApi.md#listBuyerEvents) | **GET** /v1/buyer/events | Upcoming and live seller events across Crossly, soonest first.
 [**listBuyerFeedback**](BuyerApi.md#listBuyerFeedback) | **GET** /v1/buyer/feedback | Feedback you have left sellers, newest first — with the ids you revise by.
 [**listBuyerFeedbackPending**](BuyerApi.md#listBuyerFeedbackPending) | **GET** /v1/buyer/feedback/pending | Orders from the last 60 days that are on their way or arrived and still need your feedback.
 [**listBuyerFitRefs**](BuyerApi.md#listBuyerFitRefs) | **GET** /v1/buyer/fit/refs | Your saved reference garments for fit comparison.
@@ -180,6 +237,8 @@ Method | HTTP request | Description
 [**listBuyerGiftCards**](BuyerApi.md#listBuyerGiftCards) | **GET** /v1/buyer/gift-cards | Gift cards you bought, newest first.
 [**listBuyerGiftFinder**](BuyerApi.md#listBuyerGiftFinder) | **GET** /v1/buyer/gift-finder | Live listings for a recipient, interest and budget.
 [**listBuyerGiftSent**](BuyerApi.md#listBuyerGiftSent) | **GET** /v1/buyer/gifts/sent | Items you sent as gifts: whether the teaser went out, whether it arrived and was opened, and any thank-you. Send one with &#x60;gift&#x60; on checkout.
+[**listBuyerHomeBuilders**](BuyerApi.md#listBuyerHomeBuilders) | **GET** /v1/buyer/home/builders | Your co-builders: friends who may arrange your home with you.
+[**listBuyerHomeBuilding**](BuyerApi.md#listBuyerHomeBuilding) | **GET** /v1/buyer/homes/building | The homes you co-build, to visit and arrange.
 [**listBuyerHotspots**](BuyerApi.md#listBuyerHotspots) | **GET** /v1/buyer/hotspots | Shop-the-look tags on a story or lookbook photo: each tagged listing and where it sits on the image (x, y as fractions).
 [**listBuyerHunts**](BuyerApi.md#listBuyerHunts) | **GET** /v1/buyer/hunts | Your buyer-agent hunts and what they did.
 [**listBuyerInstantOffers**](BuyerApi.md#listBuyerInstantOffers) | **GET** /v1/buyer/instant-offers | Your instant offers: live quotes, accepted ones awaiting a label, approved ones (with the prepaid label) and paid ones.
@@ -188,6 +247,7 @@ Method | HTTP request | Description
 [**listBuyerListingSellerReviews**](BuyerApi.md#listBuyerListingSellerReviews) | **GET** /v1/buyer/listings/{slug}/seller-reviews | The seller’s public reviews: summary, text, photos, replies.
 [**listBuyerLiveShipments**](BuyerApi.md#listBuyerLiveShipments) | **GET** /v1/buyer/live-shipments | Your one-box-per-show shipments: every order won in a show ships together, and postage is charged once (the rest refunded when it ships).
 [**listBuyerLiveStreamLineup**](BuyerApi.md#listBuyerLiveStreamLineup) | **GET** /v1/buyer/live-streams/{id}/lineup | What a live show will sell, in order: each item, its price, and whether it is still available.
+[**listBuyerLoyalty**](BuyerApi.md#listBuyerLoyalty) | **GET** /v1/buyer/loyalty | Your loyalty clubs: the tier you hold, progress and how to reach the next tier, the typed perks you hold now, and your history.
 [**listBuyerMarketBids**](BuyerApi.md#listBuyerMarketBids) | **GET** /v1/buyer/market/bids | Your resting market bids.
 [**listBuyerMarketWatches**](BuyerApi.md#listBuyerMarketWatches) | **GET** /v1/buyer/market/watches | Market variants you watch, with the price you are waiting for.
 [**listBuyerOffers**](BuyerApi.md#listBuyerOffers) | **GET** /v1/buyer/offers | Offers you have made, newest first (last 100).
@@ -196,6 +256,7 @@ Method | HTTP request | Description
 [**listBuyerPacks**](BuyerApi.md#listBuyerPacks) | **GET** /v1/buyer/packs | Packs you can open: price, every tier with its published odds, what is left in it and its value range, and the expected value of one opening.
 [**listBuyerParties**](BuyerApi.md#listBuyerParties) | **GET** /v1/buyer/parties | Themed shopping parties, live and upcoming.
 [**listBuyerPartyListings**](BuyerApi.md#listBuyerPartyListings) | **GET** /v1/buyer/parties/{slug}/listings | Listings shared to a party, featured first.
+[**listBuyerPaymentMethods**](BuyerApi.md#listBuyerPaymentMethods) | **GET** /v1/buyer/payment-methods | Your saved cards, the default first.
 [**listBuyerPickupPoints**](BuyerApi.md#listBuyerPickupPoints) | **GET** /v1/buyer/pickup-points | Carrier pickup points (UPS Access Point / FedEx Hold at Location) near an address; pass one as &#x60;pickupPoint&#x60; to POST /v1/buyer/checkout.
 [**listBuyerProtectionPlans**](BuyerApi.md#listBuyerProtectionPlans) | **GET** /v1/buyer/protection-plans | Your protection plans (bought at checkout with &#x60;protection&#x60;): status, term, coverage, contract id, and any refund.
 [**listBuyerRegistries**](BuyerApi.md#listBuyerRegistries) | **GET** /v1/buyer/registries | Your gift registries.
@@ -205,6 +266,7 @@ Method | HTTP request | Description
 [**listBuyerSizeMemoryPrompts**](BuyerApi.md#listBuyerSizeMemoryPrompts) | **GET** /v1/buyer/size-memory/prompts | Delivered orders with a size that you haven’t said how they fit (the last 60 days).
 [**listBuyerSizeMemorySizes**](BuyerApi.md#listBuyerSizeMemorySizes) | **GET** /v1/buyer/size-memory/sizes | The sizes learned from what you bought and kept, by kind of item (shoes, tops, bottoms, dresses, outerwear) and department.
 [**listBuyerSplits**](BuyerApi.md#listBuyerSplits) | **GET** /v1/buyer/splits | Purchases you split, with each share’s status.
+[**listBuyerStoreListings**](BuyerApi.md#listBuyerStoreListings) | **GET** /v1/buyer/stores/{slug}/listings | A store&#39;s live listings, filtered by tag, category, text and program chips (f: on_sale, discount_eligible, code_eligible, group_buy_active, rentable, wholesale_available…; all must hold), sorted; each card carries its program badges.
 [**listBuyerSubscriptions**](BuyerApi.md#listBuyerSubscriptions) | **GET** /v1/buyer/subscriptions | Your subscribe &amp; save standing orders.
 [**listBuyerTogether**](BuyerApi.md#listBuyerTogether) | **GET** /v1/buyer/together | Shop-together rooms you are in.
 [**listBuyerTotalRequests**](BuyerApi.md#listBuyerTotalRequests) | **GET** /v1/buyer/total-requests | Your combined-shipping total requests, newest per seller.
@@ -213,20 +275,51 @@ Method | HTTP request | Description
 [**listBuyerVaultMarketHoldings**](BuyerApi.md#listBuyerVaultMarketHoldings) | **GET** /v1/buyer/vault-markets/holdings | Each unit you hold in the vault at its market price, with the mark’s quality (A or B reliable, C indicative, none), cost, P&amp;L and where it stands (stored, listed, lent, pledged, at the grader); &#x60;meta&#x60; carries the totals and the units you have out on loan.
 [**listBuyerVaultMarketIndexes**](BuyerApi.md#listBuyerVaultMarketIndexes) | **GET** /v1/buyer/vault-markets/indexes | Crossly indexes over vault book keys (category, brand, curated, composite, segment, and your own), each with its level now and change since the last daily close. Index levels are valued only from the book’s marks.
 [**listBuyerVaultMarketInstantExit**](BuyerApi.md#listBuyerVaultMarketInstantExit) | **GET** /v1/buyer/vault-markets/instant-exit | Instant Exit quotes for what you hold, one per book key: the best resting bid (yours left out), its share of the mark, the bid levels, units held and which are free to sell, and why a key cannot be sold instantly. A quote, not an order.
+[**listBuyerVaultMarketOptionCombos**](BuyerApi.md#listBuyerVaultMarketOptionCombos) | **GET** /v1/buyer/vault-markets/options/combos | Your options strategies (working by default) with their legs, net price per unit and fills. Read only.
+[**listBuyerVaultMarketOptionNotices**](BuyerApi.md#listBuyerVaultMarketOptionNotices) | **GET** /v1/buyer/vault-markets/options/notices | Your options notices: expiry warnings, auto-closes, exercises, assignments, expiries worthless and rolls. Read only.
+[**listBuyerVaultMarketOptionSeries**](BuyerApi.md#listBuyerVaultMarketOptionSeries) | **GET** /v1/buyer/vault-markets/options/series | Fractional options series on Crossly prices (indexes, and tier A item keys with 90 days of reliable marks): underlying, status and eligibility. Read only.
+[**listBuyerVaultMarketOptionStrategies**](BuyerApi.md#listBuyerVaultMarketOptionStrategies) | **GET** /v1/buyer/vault-markets/options/strategies | The options strategies the picker builds (vertical, calendar, diagonal, straddle, strangle, butterfly, iron condor, collar) and what each does. Read only.
+[**listBuyerVaultMarketPredictionComments**](BuyerApi.md#listBuyerVaultMarketPredictionComments) | **GET** /v1/buyer/vault-markets/predictions/comments | A prediction market’s (or series’) discussion thread. Read only.
+[**listBuyerVaultMarketPredictionMarkets**](BuyerApi.md#listBuyerVaultMarketPredictionMarkets) | **GET** /v1/buyer/vault-markets/predictions/markets | \&quot;Will it hit?\&quot; prediction markets on Crossly prices (filter by book key, index slug, kind, status, expiry or text): strike, expiry, best Yes bid and ask, last price and the probability (the market&#39;s own price, display only).
+[**listBuyerVaultMarketPredictionPositions**](BuyerApi.md#listBuyerVaultMarketPredictionPositions) | **GET** /v1/buyer/vault-markets/predictions/positions | Your prediction positions (practice and live): side, contracts, cost, value at the last price, payout or refund once settled.
+[**listBuyerVaultMarketShareAutoInvest**](BuyerApi.md#listBuyerVaultMarketShareAutoInvest) | **GET** /v1/buyer/vault-markets/shares/auto-invest | Your recurring Vault Shares auto-invest plans.
+[**listBuyerVaultMarketShareBaskets**](BuyerApi.md#listBuyerVaultMarketShareBaskets) | **GET** /v1/buyer/vault-markets/shares/baskets | Theme baskets: model portfolios of Vault Shares series you would own directly, never a fund.
+[**listBuyerVaultMarketShareDrops**](BuyerApi.md#listBuyerVaultMarketShareDrops) | **GET** /v1/buyer/vault-markets/shares/drops | Upcoming and open Vault Shares drops: phase, countdown, allocation (first come, pro-rata or lottery), your Crossly One early-access time (never a better price).
+[**listBuyerVaultMarketShareGifts**](BuyerApi.md#listBuyerVaultMarketShareGifts) | **GET** /v1/buyer/vault-markets/shares/gifts | Vault Shares gifts you sent or were offered.
+[**listBuyerVaultMarketShareSeries**](BuyerApi.md#listBuyerVaultMarketShareSeries) | **GET** /v1/buyer/vault-markets/shares/series | Vault Shares series: open offerings first, then trading. Terms, progress, last share price and implied item value, and your holding.
 [**listBuyerVaultMarketWatchlist**](BuyerApi.md#listBuyerVaultMarketWatchlist) | **GET** /v1/buyer/vault-markets/watchlist | The book keys you watch, with mark and its quality, 24 h and 7 d change, and the last 30 daily marks.
 [**listBuyerVideoRequests**](BuyerApi.md#listBuyerVideoRequests) | **GET** /v1/buyer/video-requests | Your video requests and their answers.
+[**listBuyerWalletPerks**](BuyerApi.md#listBuyerWalletPerks) | **GET** /v1/buyer/wallet/perks | The perks your wallets unlock: each Collection holders deal (a shop’s percent off for holders of a collection) and creator shop perk on a collection a linked wallet or your Crossly wallet holds, best first. Checkout applies the best one; perks never stack with each other.
+[**listBuyerWholesaleDrops**](BuyerApi.md#listBuyerWholesaleDrops) | **GET** /v1/buyer/wholesale/drops | Upcoming and live trade drops open to you: drops sellers release only to their approved trade buyers or to a catalog audience. kind prebook &#x3D; reserve quantity now with a deposit (depositBps) at checkout; the balance is invoiced when the seller releases the stock.
+[**listBuyerWholesaleFreightRequests**](BuyerApi.md#listBuyerWholesaleFreightRequests) | **GET** /v1/buyer/wholesale/freight-requests | Your freight (LTL) quote requests to sellers, with the seller&#39;s figure in cents once quoted.
+[**listBuyerWholesaleOrderSheets**](BuyerApi.md#listBuyerWholesaleOrderSheets) | **GET** /v1/buyer/wholesale/order-sheets | Your saved wholesale order sheets (one seller each), newest first.
+[**listBuyerWholesaleOrders**](BuyerApi.md#listBuyerWholesaleOrders) | **GET** /v1/buyer/wholesale/orders | Your past wholesale orders (trade-priced or on account), newest first — the starting point for reorder.
+[**listBuyerWholesalePrebooks**](BuyerApi.md#listBuyerWholesalePrebooks) | **GET** /v1/buyer/wholesale/prebooks | Your pre-books: the drop, item, quantity, deposit paid, balance, status (awaiting_release, invoiced, paid, cancelled, failed) and the balance invoice once the seller released the stock.
+[**listBuyerWholesaleQuotes**](BuyerApi.md#listBuyerWholesaleQuotes) | **GET** /v1/buyer/wholesale/quotes | Your requests for a quote (RFQ) to wholesale sellers. ?status&#x3D;open|all|requested|answered|accepted|declined|withdrawn|expired. An answered or accepted quote past expiresAt reads expired.
+[**listBuyerWholesaleStatement**](BuyerApi.md#listBuyerWholesaleStatement) | **GET** /v1/buyer/wholesale/statement | Your open trade balances per seller in aging buckets (current, 1-30, 31-60, 61-90, 90+ days past due), with the invoices behind them.
+[**listBuyerWholesaleSuppliers**](BuyerApi.md#listBuyerWholesaleSuppliers) | **GET** /v1/buyer/wholesale/suppliers | The sellers you trade with: catalogs you can open, your terms (net days, credit limit, discount), customer groups, and what you owe each.
 [**listBuyerWishlistItems**](BuyerApi.md#listBuyerWishlistItems) | **GET** /v1/buyer/wishlists/{id}/items | What is on one wishlist.
 [**listBuyerWishlistMembers**](BuyerApi.md#listBuyerWishlistMembers) | **GET** /v1/buyer/wishlists/{id}/members | Co-editors of a shared wishlist.
 [**listBuyerWishlists**](BuyerApi.md#listBuyerWishlists) | **GET** /v1/buyer/wishlists | Your wishlists.
 [**updateBuyerBoard**](BuyerApi.md#updateBuyerBoard) | **PATCH** /v1/buyer/boards/{id} | Rename a board, change its description, or make it public / private.
 [**updateBuyerBoardLayout**](BuyerApi.md#updateBuyerBoardLayout) | **PUT** /v1/buyer/boards/{id}/layout | Replace a board’s layout: items by platform listing id or slug, with x, y, w (0–1) and z. At most 40.
 [**updateBuyerCollectionSetLeaderboard**](BuyerApi.md#updateBuyerCollectionSetLeaderboard) | **PUT** /v1/buyer/collection/sets/leaderboard | Show or hide yourself (by your public handle) on set leaderboards.
+[**updateBuyerCompany**](BuyerApi.md#updateBuyerCompany) | **PATCH** /v1/buyer/company | Rename the company or change its tax id / website (owner).
+[**updateBuyerCompanyAddress**](BuyerApi.md#updateBuyerCompanyAddress) | **PUT** /v1/buyer/company/addresses | Replace the shared address book (owner): addresses [{ id, label, name, line1, line2?, city, region, postalCode, country, phone?, isDefault? }], at most 20.
+[**updateBuyerCompanyMember**](BuyerApi.md#updateBuyerCompanyMember) | **PATCH** /v1/buyer/company/members/{id} | Change a member&#39;s role or approval limit (owner). The last owner stays an owner.
+[**updateBuyerCreationReview**](BuyerApi.md#updateBuyerCreationReview) | **PUT** /v1/buyer/creations/{format}/{id}/review | Review a creation you bought (or change your review): 1-5 stars and an optional comment.
 [**updateBuyerFeedback**](BuyerApi.md#updateBuyerFeedback) | **PATCH** /v1/buyer/feedback/{id} | Revise feedback you left, within 60 days.
+[**updateBuyerHome**](BuyerApi.md#updateBuyerHome) | **PATCH** /v1/buyer/home | Who may walk in (privacy), the lighting (theme), wallpaper/floor/mood decor and whether visitors see your vault wall values.
+[**updateBuyerHomeBuilder**](BuyerApi.md#updateBuyerHomeBuilder) | **PUT** /v1/buyer/home/builders | Set your co-builders (friends only, at most 4).
+[**updateBuyerHomeLayout**](BuyerApi.md#updateBuyerHomeLayout) | **PUT** /v1/buyer/home/layout | Arrange your home: the whole layout, checked against what you own.
 [**updateBuyerHunt**](BuyerApi.md#updateBuyerHunt) | **PATCH** /v1/buyer/hunts/{id} | Pause, resume or stop a hunt.
+[**updateBuyerPaymentMethodDefault**](BuyerApi.md#updateBuyerPaymentMethodDefault) | **PUT** /v1/buyer/payment-methods/{id}/default | Make one of your saved cards the default.
 [**updateBuyerPurchaseStory**](BuyerApi.md#updateBuyerPurchaseStory) | **PUT** /v1/buyer/purchases/{id}/story | Write your owner story (280 characters); it travels with the item if you resell it.
 [**updateBuyerRegistry**](BuyerApi.md#updateBuyerRegistry) | **PATCH** /v1/buyer/registries/{id} | Edit a registry: title, kind, date, message, ship-to address.
 [**updateBuyerRegistryItem**](BuyerApi.md#updateBuyerRegistryItem) | **PUT** /v1/buyer/registries/{id}/items/{platformListingId} | How many of an item you want (1–50).
 [**updateBuyerSubscription**](BuyerApi.md#updateBuyerSubscription) | **PATCH** /v1/buyer/subscriptions/{id} | Pause, resume, skip the next delivery, change the interval, or cancel.
+[**updateBuyerWholesaleCartPo**](BuyerApi.md#updateBuyerWholesaleCartPo) | **PUT** /v1/buyer/wholesale/cart/po | Set the PO reference for one seller&#39;s group of your cart: { sellerUserId, poReference } (empty clears it).
+[**updateBuyerWholesaleOrderSheet**](BuyerApi.md#updateBuyerWholesaleOrderSheet) | **PATCH** /v1/buyer/wholesale/order-sheets/{id} | Rename an order sheet, change its PO reference or note, or replace its lines.
 [**updateBuyerWishlist**](BuyerApi.md#updateBuyerWishlist) | **PATCH** /v1/buyer/wishlists/{id} | Rename a wishlist, or make it public / private.
 
 
@@ -1743,6 +1836,278 @@ Name | Type | Description  | Notes
 **429** | Error |  -  |
 **500** | Error |  -  |
 
+<a name="createBuyerCompany"></a>
+# **createBuyerCompany**
+> BuyerCompanyResponse createBuyerCompany()
+
+Create a buyer company: name, taxId?, website?. You become its owner; a user is in at most one company.
+
+### Example
+```java
+// Import classes:
+import net.crossly.buyer.ApiClient;
+import net.crossly.buyer.ApiException;
+import net.crossly.buyer.Configuration;
+import net.crossly.buyer.auth.*;
+import net.crossly.buyer.models.*;
+import net.crossly.buyer.api.BuyerApi;
+
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("https://crossly.net/api");
+    
+    // Configure HTTP bearer authorization: BuyerOAuth
+    HttpBearerAuth BuyerOAuth = (HttpBearerAuth) defaultClient.getAuthentication("BuyerOAuth");
+    BuyerOAuth.setBearerToken("BEARER TOKEN");
+
+    BuyerApi apiInstance = new BuyerApi(defaultClient);
+    try {
+      BuyerCompanyResponse result = apiInstance.createBuyerCompany();
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling BuyerApi#createBuyerCompany");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+### Parameters
+This endpoint does not need any parameter.
+
+### Return type
+
+**BuyerCompanyResponse**
+
+### Authorization
+
+[BuyerOAuth](../README.md#BuyerOAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**400** | Error |  -  |
+**401** | Error |  -  |
+**403** | Error |  -  |
+**404** | Error |  -  |
+**429** | Error |  -  |
+**500** | Error |  -  |
+
+<a name="createBuyerCompanyApproval"></a>
+# **createBuyerCompanyApproval**
+> CreateBuyerCompanyApprovalResponse createBuyerCompanyApproval()
+
+Ask for approval of a trade order above your limit: sellerUserId, amountCents, note?, poReference?. Good for 7 days, used once at checkout.
+
+### Example
+```java
+// Import classes:
+import net.crossly.buyer.ApiClient;
+import net.crossly.buyer.ApiException;
+import net.crossly.buyer.Configuration;
+import net.crossly.buyer.auth.*;
+import net.crossly.buyer.models.*;
+import net.crossly.buyer.api.BuyerApi;
+
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("https://crossly.net/api");
+    
+    // Configure HTTP bearer authorization: BuyerOAuth
+    HttpBearerAuth BuyerOAuth = (HttpBearerAuth) defaultClient.getAuthentication("BuyerOAuth");
+    BuyerOAuth.setBearerToken("BEARER TOKEN");
+
+    BuyerApi apiInstance = new BuyerApi(defaultClient);
+    try {
+      CreateBuyerCompanyApprovalResponse result = apiInstance.createBuyerCompanyApproval();
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling BuyerApi#createBuyerCompanyApproval");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+### Parameters
+This endpoint does not need any parameter.
+
+### Return type
+
+**CreateBuyerCompanyApprovalResponse**
+
+### Authorization
+
+[BuyerOAuth](../README.md#BuyerOAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**400** | Error |  -  |
+**401** | Error |  -  |
+**403** | Error |  -  |
+**404** | Error |  -  |
+**429** | Error |  -  |
+**500** | Error |  -  |
+
+<a name="createBuyerCompanyApprovalDecide"></a>
+# **createBuyerCompanyApprovalDecide**
+> CreateBuyerCompanyApprovalResponse createBuyerCompanyApprovalDecide(id)
+
+Approve or decline a pending request (owner, accounts payable): decision approved | declined, note?.
+
+### Example
+```java
+// Import classes:
+import net.crossly.buyer.ApiClient;
+import net.crossly.buyer.ApiException;
+import net.crossly.buyer.Configuration;
+import net.crossly.buyer.auth.*;
+import net.crossly.buyer.models.*;
+import net.crossly.buyer.api.BuyerApi;
+
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("https://crossly.net/api");
+    
+    // Configure HTTP bearer authorization: BuyerOAuth
+    HttpBearerAuth BuyerOAuth = (HttpBearerAuth) defaultClient.getAuthentication("BuyerOAuth");
+    BuyerOAuth.setBearerToken("BEARER TOKEN");
+
+    BuyerApi apiInstance = new BuyerApi(defaultClient);
+    String id = "id_example"; // String | 
+    try {
+      CreateBuyerCompanyApprovalResponse result = apiInstance.createBuyerCompanyApprovalDecide(id);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling BuyerApi#createBuyerCompanyApprovalDecide");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **String**|  |
+
+### Return type
+
+**CreateBuyerCompanyApprovalResponse**
+
+### Authorization
+
+[BuyerOAuth](../README.md#BuyerOAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**400** | Error |  -  |
+**401** | Error |  -  |
+**403** | Error |  -  |
+**404** | Error |  -  |
+**429** | Error |  -  |
+**500** | Error |  -  |
+
+<a name="createBuyerCompanyMember"></a>
+# **createBuyerCompanyMember**
+> BuyerCompanyResponse createBuyerCompanyMember()
+
+Invite a teammate by email (owner): role owner | buyer | accounts_payable | viewer, approvalLimitCents for a buyer (orders above it need an approval).
+
+### Example
+```java
+// Import classes:
+import net.crossly.buyer.ApiClient;
+import net.crossly.buyer.ApiException;
+import net.crossly.buyer.Configuration;
+import net.crossly.buyer.auth.*;
+import net.crossly.buyer.models.*;
+import net.crossly.buyer.api.BuyerApi;
+
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("https://crossly.net/api");
+    
+    // Configure HTTP bearer authorization: BuyerOAuth
+    HttpBearerAuth BuyerOAuth = (HttpBearerAuth) defaultClient.getAuthentication("BuyerOAuth");
+    BuyerOAuth.setBearerToken("BEARER TOKEN");
+
+    BuyerApi apiInstance = new BuyerApi(defaultClient);
+    try {
+      BuyerCompanyResponse result = apiInstance.createBuyerCompanyMember();
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling BuyerApi#createBuyerCompanyMember");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+### Parameters
+This endpoint does not need any parameter.
+
+### Return type
+
+**BuyerCompanyResponse**
+
+### Authorization
+
+[BuyerOAuth](../README.md#BuyerOAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**400** | Error |  -  |
+**401** | Error |  -  |
+**403** | Error |  -  |
+**404** | Error |  -  |
+**429** | Error |  -  |
+**500** | Error |  -  |
+
 <a name="createBuyerConversationInvite"></a>
 # **createBuyerConversationInvite**
 > CreateBuyerWishlistInviteResponse createBuyerConversationInvite(id)
@@ -1864,6 +2229,77 @@ Name | Type | Description  | Notes
 ### Return type
 
 **CreateBuyerConversationJoinResponse**
+
+### Authorization
+
+[BuyerOAuth](../README.md#BuyerOAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**400** | Error |  -  |
+**401** | Error |  -  |
+**403** | Error |  -  |
+**404** | Error |  -  |
+**429** | Error |  -  |
+**500** | Error |  -  |
+
+<a name="createBuyerEventRsvp"></a>
+# **createBuyerEventRsvp**
+> CreateBuyerEventRsvpResponse createBuyerEventRsvp(slug)
+
+RSVP to an event: going (counts against its capacity) or interested.
+
+### Example
+```java
+// Import classes:
+import net.crossly.buyer.ApiClient;
+import net.crossly.buyer.ApiException;
+import net.crossly.buyer.Configuration;
+import net.crossly.buyer.auth.*;
+import net.crossly.buyer.models.*;
+import net.crossly.buyer.api.BuyerApi;
+
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("https://crossly.net/api");
+    
+    // Configure HTTP bearer authorization: BuyerOAuth
+    HttpBearerAuth BuyerOAuth = (HttpBearerAuth) defaultClient.getAuthentication("BuyerOAuth");
+    BuyerOAuth.setBearerToken("BEARER TOKEN");
+
+    BuyerApi apiInstance = new BuyerApi(defaultClient);
+    String slug = "slug_example"; // String | 
+    try {
+      CreateBuyerEventRsvpResponse result = apiInstance.createBuyerEventRsvp(slug);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling BuyerApi#createBuyerEventRsvp");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **slug** | **String**|  |
+
+### Return type
+
+**CreateBuyerEventRsvpResponse**
 
 ### Authorization
 
@@ -2246,7 +2682,7 @@ Name | Type | Description  | Notes
 # **createBuyerGroupBuyJoin**
 > CreateBuyerGroupBuyJoinResponse createBuyerGroupBuyJoin(id)
 
-Join a group buy: a hold at the starting price, captured at the price the group reaches. Checked against this key’s spending controls; send an Idempotency-Key.
+Join a group buy with a quantity (up to its per-buyer max): a hold (or, for pay-now pools, a charge refunded the difference) at the starting price, settled at the price the group reaches. &#x60;linkToken&#x60; opens a link-only pool. Checked against this key’s spending controls; send an Idempotency-Key.
 
 ### Example
 ```java
@@ -3735,7 +4171,7 @@ Name | Type | Description  | Notes
 # **createBuyerPassportClaim**
 > GetBuyerPassportResponse createBuyerPassportClaim(code)
 
-Claim a passport as the item’s current owner (the buyer of its latest sale) — shown as “in its owner’s hands” until it sells again.
+Claim a passport as the item’s current owner — the buyer of its latest Crossly sale, or (after a sale on another marketplace) with the transfer code from the card in the box — shown as “in its owner’s hands” until it sells again.
 
 ### Example
 ```java
@@ -3852,77 +4288,6 @@ Name | Type | Description  | Notes
 ### Return type
 
 **CreateBuyerProtectionPlanCancelResponse**
-
-### Authorization
-
-[BuyerOAuth](../README.md#BuyerOAuth)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** | OK |  -  |
-**400** | Error |  -  |
-**401** | Error |  -  |
-**403** | Error |  -  |
-**404** | Error |  -  |
-**429** | Error |  -  |
-**500** | Error |  -  |
-
-<a name="createBuyerPurchaseDownload"></a>
-# **createBuyerPurchaseDownload**
-> CreateBuyerPurchaseDownloadResponse createBuyerPurchaseDownload(id)
-
-A ten-minute link to a digital purchase’s file; each call uses one of its downloads.
-
-### Example
-```java
-// Import classes:
-import net.crossly.buyer.ApiClient;
-import net.crossly.buyer.ApiException;
-import net.crossly.buyer.Configuration;
-import net.crossly.buyer.auth.*;
-import net.crossly.buyer.models.*;
-import net.crossly.buyer.api.BuyerApi;
-
-public class Example {
-  public static void main(String[] args) {
-    ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("https://crossly.net/api");
-    
-    // Configure HTTP bearer authorization: BuyerOAuth
-    HttpBearerAuth BuyerOAuth = (HttpBearerAuth) defaultClient.getAuthentication("BuyerOAuth");
-    BuyerOAuth.setBearerToken("BEARER TOKEN");
-
-    BuyerApi apiInstance = new BuyerApi(defaultClient);
-    String id = "id_example"; // String | 
-    try {
-      CreateBuyerPurchaseDownloadResponse result = apiInstance.createBuyerPurchaseDownload(id);
-      System.out.println(result);
-    } catch (ApiException e) {
-      System.err.println("Exception when calling BuyerApi#createBuyerPurchaseDownload");
-      System.err.println("Status code: " + e.getCode());
-      System.err.println("Reason: " + e.getResponseBody());
-      System.err.println("Response headers: " + e.getResponseHeaders());
-      e.printStackTrace();
-    }
-  }
-}
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **id** | **String**|  |
-
-### Return type
-
-**CreateBuyerPurchaseDownloadResponse**
 
 ### Authorization
 
@@ -4228,7 +4593,7 @@ Name | Type | Description  | Notes
 
 <a name="createBuyerRentalArrivalPhoto"></a>
 # **createBuyerRentalArrivalPhoto**
-> CreateBuyerRentalArrivalPhotoResponse createBuyerRentalArrivalPhoto(id)
+> BuyerRentalResponse createBuyerRentalArrivalPhoto(id)
 
 Photograph a rental on arrival (URLs you uploaded): your side of the condition record.
 
@@ -4254,7 +4619,7 @@ public class Example {
     BuyerApi apiInstance = new BuyerApi(defaultClient);
     String id = "id_example"; // String | 
     try {
-      CreateBuyerRentalArrivalPhotoResponse result = apiInstance.createBuyerRentalArrivalPhoto(id);
+      BuyerRentalResponse result = apiInstance.createBuyerRentalArrivalPhoto(id);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling BuyerApi#createBuyerRentalArrivalPhoto");
@@ -4275,7 +4640,78 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**CreateBuyerRentalArrivalPhotoResponse**
+**BuyerRentalResponse**
+
+### Authorization
+
+[BuyerOAuth](../README.md#BuyerOAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**400** | Error |  -  |
+**401** | Error |  -  |
+**403** | Error |  -  |
+**404** | Error |  -  |
+**429** | Error |  -  |
+**500** | Error |  -  |
+
+<a name="createBuyerRentalBuyout"></a>
+# **createBuyerRentalBuyout**
+> CreateBuyerRentalBuyoutResponse createBuyerRentalBuyout(id)
+
+Buy the item you are renting: the price less the rent-to-own credit → clientSecret.
+
+### Example
+```java
+// Import classes:
+import net.crossly.buyer.ApiClient;
+import net.crossly.buyer.ApiException;
+import net.crossly.buyer.Configuration;
+import net.crossly.buyer.auth.*;
+import net.crossly.buyer.models.*;
+import net.crossly.buyer.api.BuyerApi;
+
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("https://crossly.net/api");
+    
+    // Configure HTTP bearer authorization: BuyerOAuth
+    HttpBearerAuth BuyerOAuth = (HttpBearerAuth) defaultClient.getAuthentication("BuyerOAuth");
+    BuyerOAuth.setBearerToken("BEARER TOKEN");
+
+    BuyerApi apiInstance = new BuyerApi(defaultClient);
+    String id = "id_example"; // String | 
+    try {
+      CreateBuyerRentalBuyoutResponse result = apiInstance.createBuyerRentalBuyout(id);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling BuyerApi#createBuyerRentalBuyout");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **String**|  |
+
+### Return type
+
+**CreateBuyerRentalBuyoutResponse**
 
 ### Authorization
 
@@ -4439,6 +4875,221 @@ Name | Type | Description  | Notes
 **429** | Error |  -  |
 **500** | Error |  -  |
 
+<a name="createBuyerRentalDelivered"></a>
+# **createBuyerRentalDelivered**
+> BuyerRentalResponse createBuyerRentalDelivered(id)
+
+Confirm your rental arrived.
+
+### Example
+```java
+// Import classes:
+import net.crossly.buyer.ApiClient;
+import net.crossly.buyer.ApiException;
+import net.crossly.buyer.Configuration;
+import net.crossly.buyer.auth.*;
+import net.crossly.buyer.models.*;
+import net.crossly.buyer.api.BuyerApi;
+
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("https://crossly.net/api");
+    
+    // Configure HTTP bearer authorization: BuyerOAuth
+    HttpBearerAuth BuyerOAuth = (HttpBearerAuth) defaultClient.getAuthentication("BuyerOAuth");
+    BuyerOAuth.setBearerToken("BEARER TOKEN");
+
+    BuyerApi apiInstance = new BuyerApi(defaultClient);
+    String id = "id_example"; // String | 
+    try {
+      BuyerRentalResponse result = apiInstance.createBuyerRentalDelivered(id);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling BuyerApi#createBuyerRentalDelivered");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **String**|  |
+
+### Return type
+
+**BuyerRentalResponse**
+
+### Authorization
+
+[BuyerOAuth](../README.md#BuyerOAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**400** | Error |  -  |
+**401** | Error |  -  |
+**403** | Error |  -  |
+**404** | Error |  -  |
+**429** | Error |  -  |
+**500** | Error |  -  |
+
+<a name="createBuyerRentalExtension"></a>
+# **createBuyerRentalExtension**
+> CreateBuyerRentalExtensionResponse createBuyerRentalExtension(id)
+
+Ask for more days. Auto-approved extensions return a clientSecret to pay with Stripe.
+
+### Example
+```java
+// Import classes:
+import net.crossly.buyer.ApiClient;
+import net.crossly.buyer.ApiException;
+import net.crossly.buyer.Configuration;
+import net.crossly.buyer.auth.*;
+import net.crossly.buyer.models.*;
+import net.crossly.buyer.api.BuyerApi;
+
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("https://crossly.net/api");
+    
+    // Configure HTTP bearer authorization: BuyerOAuth
+    HttpBearerAuth BuyerOAuth = (HttpBearerAuth) defaultClient.getAuthentication("BuyerOAuth");
+    BuyerOAuth.setBearerToken("BEARER TOKEN");
+
+    BuyerApi apiInstance = new BuyerApi(defaultClient);
+    String id = "id_example"; // String | 
+    try {
+      CreateBuyerRentalExtensionResponse result = apiInstance.createBuyerRentalExtension(id);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling BuyerApi#createBuyerRentalExtension");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **String**|  |
+
+### Return type
+
+**CreateBuyerRentalExtensionResponse**
+
+### Authorization
+
+[BuyerOAuth](../README.md#BuyerOAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**400** | Error |  -  |
+**401** | Error |  -  |
+**403** | Error |  -  |
+**404** | Error |  -  |
+**429** | Error |  -  |
+**500** | Error |  -  |
+
+<a name="createBuyerRentalExtensionPay"></a>
+# **createBuyerRentalExtensionPay**
+> CreateBuyerRentalExtensionPayResponse createBuyerRentalExtensionPay(id, extensionId)
+
+Pay for an extension the seller approved → clientSecret.
+
+### Example
+```java
+// Import classes:
+import net.crossly.buyer.ApiClient;
+import net.crossly.buyer.ApiException;
+import net.crossly.buyer.Configuration;
+import net.crossly.buyer.auth.*;
+import net.crossly.buyer.models.*;
+import net.crossly.buyer.api.BuyerApi;
+
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("https://crossly.net/api");
+    
+    // Configure HTTP bearer authorization: BuyerOAuth
+    HttpBearerAuth BuyerOAuth = (HttpBearerAuth) defaultClient.getAuthentication("BuyerOAuth");
+    BuyerOAuth.setBearerToken("BEARER TOKEN");
+
+    BuyerApi apiInstance = new BuyerApi(defaultClient);
+    String id = "id_example"; // String | 
+    String extensionId = "extensionId_example"; // String | 
+    try {
+      CreateBuyerRentalExtensionPayResponse result = apiInstance.createBuyerRentalExtensionPay(id, extensionId);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling BuyerApi#createBuyerRentalExtensionPay");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **String**|  |
+ **extensionId** | **String**|  |
+
+### Return type
+
+**CreateBuyerRentalExtensionPayResponse**
+
+### Authorization
+
+[BuyerOAuth](../README.md#BuyerOAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**400** | Error |  -  |
+**401** | Error |  -  |
+**403** | Error |  -  |
+**404** | Error |  -  |
+**429** | Error |  -  |
+**500** | Error |  -  |
+
 <a name="createBuyerRentalIdentityStart"></a>
 # **createBuyerRentalIdentityStart**
 > CreateBuyerRentalIdentityStartResponse createBuyerRentalIdentityStart()
@@ -4485,6 +5136,77 @@ This endpoint does not need any parameter.
 ### Return type
 
 **CreateBuyerRentalIdentityStartResponse**
+
+### Authorization
+
+[BuyerOAuth](../README.md#BuyerOAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**400** | Error |  -  |
+**401** | Error |  -  |
+**403** | Error |  -  |
+**404** | Error |  -  |
+**429** | Error |  -  |
+**500** | Error |  -  |
+
+<a name="createBuyerRentalReturnShipped"></a>
+# **createBuyerRentalReturnShipped**
+> BuyerRentalResponse createBuyerRentalReturnShipped(id)
+
+Say you sent your rental back (optionally with photos).
+
+### Example
+```java
+// Import classes:
+import net.crossly.buyer.ApiClient;
+import net.crossly.buyer.ApiException;
+import net.crossly.buyer.Configuration;
+import net.crossly.buyer.auth.*;
+import net.crossly.buyer.models.*;
+import net.crossly.buyer.api.BuyerApi;
+
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("https://crossly.net/api");
+    
+    // Configure HTTP bearer authorization: BuyerOAuth
+    HttpBearerAuth BuyerOAuth = (HttpBearerAuth) defaultClient.getAuthentication("BuyerOAuth");
+    BuyerOAuth.setBearerToken("BEARER TOKEN");
+
+    BuyerApi apiInstance = new BuyerApi(defaultClient);
+    String id = "id_example"; // String | 
+    try {
+      BuyerRentalResponse result = apiInstance.createBuyerRentalReturnShipped(id);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling BuyerApi#createBuyerRentalReturnShipped");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **String**|  |
+
+### Return type
+
+**BuyerRentalResponse**
 
 ### Authorization
 
@@ -4719,9 +5441,80 @@ Name | Type | Description  | Notes
 **429** | Error |  -  |
 **500** | Error |  -  |
 
+<a name="createBuyerSellerLoyaltyJoin"></a>
+# **createBuyerSellerLoyaltyJoin**
+> GetBuyerSellerLoyaltyResponse createBuyerSellerLoyaltyJoin(sellerUserId)
+
+Join a seller’s loyalty club. Invite-only clubs take only invited buyers. Your tier and its perks are granted at once.
+
+### Example
+```java
+// Import classes:
+import net.crossly.buyer.ApiClient;
+import net.crossly.buyer.ApiException;
+import net.crossly.buyer.Configuration;
+import net.crossly.buyer.auth.*;
+import net.crossly.buyer.models.*;
+import net.crossly.buyer.api.BuyerApi;
+
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("https://crossly.net/api");
+    
+    // Configure HTTP bearer authorization: BuyerOAuth
+    HttpBearerAuth BuyerOAuth = (HttpBearerAuth) defaultClient.getAuthentication("BuyerOAuth");
+    BuyerOAuth.setBearerToken("BEARER TOKEN");
+
+    BuyerApi apiInstance = new BuyerApi(defaultClient);
+    String sellerUserId = "sellerUserId_example"; // String | 
+    try {
+      GetBuyerSellerLoyaltyResponse result = apiInstance.createBuyerSellerLoyaltyJoin(sellerUserId);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling BuyerApi#createBuyerSellerLoyaltyJoin");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **sellerUserId** | **String**|  |
+
+### Return type
+
+**GetBuyerSellerLoyaltyResponse**
+
+### Authorization
+
+[BuyerOAuth](../README.md#BuyerOAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**400** | Error |  -  |
+**401** | Error |  -  |
+**403** | Error |  -  |
+**404** | Error |  -  |
+**429** | Error |  -  |
+**500** | Error |  -  |
+
 <a name="createBuyerSellerReport"></a>
 # **createBuyerSellerReport**
-> CreateBuyerSellerReportResponse createBuyerSellerReport(username, createBuyerSellerReportRequest)
+> CreateBuyerStoreReportResponse createBuyerSellerReport(username, createBuyerSellerReportRequest)
 
 Report a seller to Crossly’s trust team.
 
@@ -4750,7 +5543,7 @@ public class Example {
     String username = "username_example"; // String | The seller’s shop handle.
     CreateBuyerSellerReportRequest createBuyerSellerReportRequest = new CreateBuyerSellerReportRequest(); // CreateBuyerSellerReportRequest | 
     try {
-      CreateBuyerSellerReportResponse result = apiInstance.createBuyerSellerReport(username, createBuyerSellerReportRequest);
+      CreateBuyerStoreReportResponse result = apiInstance.createBuyerSellerReport(username, createBuyerSellerReportRequest);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling BuyerApi#createBuyerSellerReport");
@@ -4772,7 +5565,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**CreateBuyerSellerReportResponse**
+**CreateBuyerStoreReportResponse**
 
 ### Authorization
 
@@ -4852,6 +5645,81 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**400** | Error |  -  |
+**401** | Error |  -  |
+**403** | Error |  -  |
+**404** | Error |  -  |
+**429** | Error |  -  |
+**500** | Error |  -  |
+
+<a name="createBuyerStoreReport"></a>
+# **createBuyerStoreReport**
+> CreateBuyerStoreReportResponse createBuyerStoreReport(slug, createBuyerSellerReportRequest)
+
+Report a store to Crossly’s trust team.
+
+Files against whoever runs the store. A second report while your first is still under review updates that report instead of filing another. &#x60;purchaseId&#x60; is attached only if it is your order from this seller.
+
+### Example
+```java
+// Import classes:
+import net.crossly.buyer.ApiClient;
+import net.crossly.buyer.ApiException;
+import net.crossly.buyer.Configuration;
+import net.crossly.buyer.auth.*;
+import net.crossly.buyer.models.*;
+import net.crossly.buyer.api.BuyerApi;
+
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("https://crossly.net/api");
+    
+    // Configure HTTP bearer authorization: BuyerOAuth
+    HttpBearerAuth BuyerOAuth = (HttpBearerAuth) defaultClient.getAuthentication("BuyerOAuth");
+    BuyerOAuth.setBearerToken("BEARER TOKEN");
+
+    BuyerApi apiInstance = new BuyerApi(defaultClient);
+    String slug = "slug_example"; // String | The store’s slug (its /shop/s/<slug> address).
+    CreateBuyerSellerReportRequest createBuyerSellerReportRequest = new CreateBuyerSellerReportRequest(); // CreateBuyerSellerReportRequest | 
+    try {
+      CreateBuyerStoreReportResponse result = apiInstance.createBuyerStoreReport(slug, createBuyerSellerReportRequest);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling BuyerApi#createBuyerStoreReport");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **slug** | **String**| The store’s slug (its /shop/s/&lt;slug&gt; address). |
+ **createBuyerSellerReportRequest** | **CreateBuyerSellerReportRequest**|  |
+
+### Return type
+
+**CreateBuyerStoreReportResponse**
+
+### Authorization
+
+[BuyerOAuth](../README.md#BuyerOAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 ### HTTP response details
@@ -5554,6 +6422,560 @@ Name | Type | Description  | Notes
 ### Return type
 
 **CreateBuyerVaultWithdrawResponse**
+
+### Authorization
+
+[BuyerOAuth](../README.md#BuyerOAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**400** | Error |  -  |
+**401** | Error |  -  |
+**403** | Error |  -  |
+**404** | Error |  -  |
+**429** | Error |  -  |
+**500** | Error |  -  |
+
+<a name="createBuyerWholesaleCatalogApply"></a>
+# **createBuyerWholesaleCatalogApply**
+> CreateBuyerWholesaleCatalogApplyResponse createBuyerWholesaleCatalogApply(storeSlug, catalogSlug)
+
+Apply to a store&#39;s wholesale catalog: { message?, answers [{ id, value }], resaleCertUrl?, resaleCertState?, taxId?, businessInfo? }. The seller&#39;s requirements are enforced (400 trade_apply_requirements names the first one missing); the seller reviews the request.
+
+### Example
+```java
+// Import classes:
+import net.crossly.buyer.ApiClient;
+import net.crossly.buyer.ApiException;
+import net.crossly.buyer.Configuration;
+import net.crossly.buyer.auth.*;
+import net.crossly.buyer.models.*;
+import net.crossly.buyer.api.BuyerApi;
+
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("https://crossly.net/api");
+    
+    // Configure HTTP bearer authorization: BuyerOAuth
+    HttpBearerAuth BuyerOAuth = (HttpBearerAuth) defaultClient.getAuthentication("BuyerOAuth");
+    BuyerOAuth.setBearerToken("BEARER TOKEN");
+
+    BuyerApi apiInstance = new BuyerApi(defaultClient);
+    String storeSlug = "storeSlug_example"; // String | 
+    String catalogSlug = "catalogSlug_example"; // String | 
+    try {
+      CreateBuyerWholesaleCatalogApplyResponse result = apiInstance.createBuyerWholesaleCatalogApply(storeSlug, catalogSlug);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling BuyerApi#createBuyerWholesaleCatalogApply");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **storeSlug** | **String**|  |
+ **catalogSlug** | **String**|  |
+
+### Return type
+
+**CreateBuyerWholesaleCatalogApplyResponse**
+
+### Authorization
+
+[BuyerOAuth](../README.md#BuyerOAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**400** | Error |  -  |
+**401** | Error |  -  |
+**403** | Error |  -  |
+**404** | Error |  -  |
+**429** | Error |  -  |
+**500** | Error |  -  |
+
+<a name="createBuyerWholesaleFreightRequest"></a>
+# **createBuyerWholesaleFreightRequest**
+> CreateBuyerWholesaleFreightRequestResponse createBuyerWholesaleFreightRequest()
+
+Ask a seller to quote freight for their lines in your cart (an order over their pallet threshold): { sellerUserId, weightLbs?, shipTo? { postalCode, country, city?, region?, liftgate?, dock? }, note? }. One open request per seller.
+
+### Example
+```java
+// Import classes:
+import net.crossly.buyer.ApiClient;
+import net.crossly.buyer.ApiException;
+import net.crossly.buyer.Configuration;
+import net.crossly.buyer.auth.*;
+import net.crossly.buyer.models.*;
+import net.crossly.buyer.api.BuyerApi;
+
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("https://crossly.net/api");
+    
+    // Configure HTTP bearer authorization: BuyerOAuth
+    HttpBearerAuth BuyerOAuth = (HttpBearerAuth) defaultClient.getAuthentication("BuyerOAuth");
+    BuyerOAuth.setBearerToken("BEARER TOKEN");
+
+    BuyerApi apiInstance = new BuyerApi(defaultClient);
+    try {
+      CreateBuyerWholesaleFreightRequestResponse result = apiInstance.createBuyerWholesaleFreightRequest();
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling BuyerApi#createBuyerWholesaleFreightRequest");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+### Parameters
+This endpoint does not need any parameter.
+
+### Return type
+
+**CreateBuyerWholesaleFreightRequestResponse**
+
+### Authorization
+
+[BuyerOAuth](../README.md#BuyerOAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**400** | Error |  -  |
+**401** | Error |  -  |
+**403** | Error |  -  |
+**404** | Error |  -  |
+**429** | Error |  -  |
+**500** | Error |  -  |
+
+<a name="createBuyerWholesaleInvoicePayLink"></a>
+# **createBuyerWholesaleInvoicePayLink**
+> CreateBuyerWholesaleInvoicePayLinkResponse createBuyerWholesaleInvoicePayLink(id)
+
+A hosted payment page for an on-account invoice: amountCents? (part of the balance, at least $1), method? card | ach. Nothing is charged until the buyer completes the page.
+
+### Example
+```java
+// Import classes:
+import net.crossly.buyer.ApiClient;
+import net.crossly.buyer.ApiException;
+import net.crossly.buyer.Configuration;
+import net.crossly.buyer.auth.*;
+import net.crossly.buyer.models.*;
+import net.crossly.buyer.api.BuyerApi;
+
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("https://crossly.net/api");
+    
+    // Configure HTTP bearer authorization: BuyerOAuth
+    HttpBearerAuth BuyerOAuth = (HttpBearerAuth) defaultClient.getAuthentication("BuyerOAuth");
+    BuyerOAuth.setBearerToken("BEARER TOKEN");
+
+    BuyerApi apiInstance = new BuyerApi(defaultClient);
+    String id = "id_example"; // String | 
+    try {
+      CreateBuyerWholesaleInvoicePayLinkResponse result = apiInstance.createBuyerWholesaleInvoicePayLink(id);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling BuyerApi#createBuyerWholesaleInvoicePayLink");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **String**|  |
+
+### Return type
+
+**CreateBuyerWholesaleInvoicePayLinkResponse**
+
+### Authorization
+
+[BuyerOAuth](../README.md#BuyerOAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**400** | Error |  -  |
+**401** | Error |  -  |
+**403** | Error |  -  |
+**404** | Error |  -  |
+**429** | Error |  -  |
+**500** | Error |  -  |
+
+<a name="createBuyerWholesaleOrderSheet"></a>
+# **createBuyerWholesaleOrderSheet**
+> BuyerWholesaleOrderSheetResponse createBuyerWholesaleOrderSheet()
+
+Save an order sheet: name, lines [{ platformListingId, listingVariantId?, catalogId?, quantity }] from one seller, optional catalogId, poReference, note.
+
+### Example
+```java
+// Import classes:
+import net.crossly.buyer.ApiClient;
+import net.crossly.buyer.ApiException;
+import net.crossly.buyer.Configuration;
+import net.crossly.buyer.auth.*;
+import net.crossly.buyer.models.*;
+import net.crossly.buyer.api.BuyerApi;
+
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("https://crossly.net/api");
+    
+    // Configure HTTP bearer authorization: BuyerOAuth
+    HttpBearerAuth BuyerOAuth = (HttpBearerAuth) defaultClient.getAuthentication("BuyerOAuth");
+    BuyerOAuth.setBearerToken("BEARER TOKEN");
+
+    BuyerApi apiInstance = new BuyerApi(defaultClient);
+    try {
+      BuyerWholesaleOrderSheetResponse result = apiInstance.createBuyerWholesaleOrderSheet();
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling BuyerApi#createBuyerWholesaleOrderSheet");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+### Parameters
+This endpoint does not need any parameter.
+
+### Return type
+
+**BuyerWholesaleOrderSheetResponse**
+
+### Authorization
+
+[BuyerOAuth](../README.md#BuyerOAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**400** | Error |  -  |
+**401** | Error |  -  |
+**403** | Error |  -  |
+**404** | Error |  -  |
+**429** | Error |  -  |
+**500** | Error |  -  |
+
+<a name="createBuyerWholesaleQuote"></a>
+# **createBuyerWholesaleQuote**
+> BuyerWholesaleQuoteResponse createBuyerWholesaleQuote()
+
+Ask one seller for a quote: items [{ platformListingId, listingVariantId?, quantity, targetUnitPriceCents? }] (one seller per quote), optional catalogId, note, poReference.
+
+### Example
+```java
+// Import classes:
+import net.crossly.buyer.ApiClient;
+import net.crossly.buyer.ApiException;
+import net.crossly.buyer.Configuration;
+import net.crossly.buyer.auth.*;
+import net.crossly.buyer.models.*;
+import net.crossly.buyer.api.BuyerApi;
+
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("https://crossly.net/api");
+    
+    // Configure HTTP bearer authorization: BuyerOAuth
+    HttpBearerAuth BuyerOAuth = (HttpBearerAuth) defaultClient.getAuthentication("BuyerOAuth");
+    BuyerOAuth.setBearerToken("BEARER TOKEN");
+
+    BuyerApi apiInstance = new BuyerApi(defaultClient);
+    try {
+      BuyerWholesaleQuoteResponse result = apiInstance.createBuyerWholesaleQuote();
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling BuyerApi#createBuyerWholesaleQuote");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+### Parameters
+This endpoint does not need any parameter.
+
+### Return type
+
+**BuyerWholesaleQuoteResponse**
+
+### Authorization
+
+[BuyerOAuth](../README.md#BuyerOAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**400** | Error |  -  |
+**401** | Error |  -  |
+**403** | Error |  -  |
+**404** | Error |  -  |
+**429** | Error |  -  |
+**500** | Error |  -  |
+
+<a name="createBuyerWholesaleQuoteAccept"></a>
+# **createBuyerWholesaleQuoteAccept**
+> CreateBuyerWholesaleQuoteAcceptResponse createBuyerWholesaleQuoteAccept(id)
+
+Accept an answered quote: its priced items go into your cart at the quoted quantities, locked at the quoted prices until the quote expires (changing a line&#39;s quantity drops the lock). Paying happens at checkout on Crossly.
+
+### Example
+```java
+// Import classes:
+import net.crossly.buyer.ApiClient;
+import net.crossly.buyer.ApiException;
+import net.crossly.buyer.Configuration;
+import net.crossly.buyer.auth.*;
+import net.crossly.buyer.models.*;
+import net.crossly.buyer.api.BuyerApi;
+
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("https://crossly.net/api");
+    
+    // Configure HTTP bearer authorization: BuyerOAuth
+    HttpBearerAuth BuyerOAuth = (HttpBearerAuth) defaultClient.getAuthentication("BuyerOAuth");
+    BuyerOAuth.setBearerToken("BEARER TOKEN");
+
+    BuyerApi apiInstance = new BuyerApi(defaultClient);
+    String id = "id_example"; // String | 
+    try {
+      CreateBuyerWholesaleQuoteAcceptResponse result = apiInstance.createBuyerWholesaleQuoteAccept(id);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling BuyerApi#createBuyerWholesaleQuoteAccept");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **String**|  |
+
+### Return type
+
+**CreateBuyerWholesaleQuoteAcceptResponse**
+
+### Authorization
+
+[BuyerOAuth](../README.md#BuyerOAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**400** | Error |  -  |
+**401** | Error |  -  |
+**403** | Error |  -  |
+**404** | Error |  -  |
+**429** | Error |  -  |
+**500** | Error |  -  |
+
+<a name="createBuyerWholesaleQuoteWithdraw"></a>
+# **createBuyerWholesaleQuoteWithdraw**
+> BuyerWholesaleQuoteResponse createBuyerWholesaleQuoteWithdraw(id)
+
+Withdraw a quote request that is still requested or answered.
+
+### Example
+```java
+// Import classes:
+import net.crossly.buyer.ApiClient;
+import net.crossly.buyer.ApiException;
+import net.crossly.buyer.Configuration;
+import net.crossly.buyer.auth.*;
+import net.crossly.buyer.models.*;
+import net.crossly.buyer.api.BuyerApi;
+
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("https://crossly.net/api");
+    
+    // Configure HTTP bearer authorization: BuyerOAuth
+    HttpBearerAuth BuyerOAuth = (HttpBearerAuth) defaultClient.getAuthentication("BuyerOAuth");
+    BuyerOAuth.setBearerToken("BEARER TOKEN");
+
+    BuyerApi apiInstance = new BuyerApi(defaultClient);
+    String id = "id_example"; // String | 
+    try {
+      BuyerWholesaleQuoteResponse result = apiInstance.createBuyerWholesaleQuoteWithdraw(id);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling BuyerApi#createBuyerWholesaleQuoteWithdraw");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **String**|  |
+
+### Return type
+
+**BuyerWholesaleQuoteResponse**
+
+### Authorization
+
+[BuyerOAuth](../README.md#BuyerOAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**400** | Error |  -  |
+**401** | Error |  -  |
+**403** | Error |  -  |
+**404** | Error |  -  |
+**429** | Error |  -  |
+**500** | Error |  -  |
+
+<a name="createBuyerWholesaleUploadValidate"></a>
+# **createBuyerWholesaleUploadValidate**
+> CreateBuyerWholesaleUploadValidateResponse createBuyerWholesaleUploadValidate()
+
+Validate a CSV / PO against one catalog: rows [{ line, sku, quantity }] are matched by SKU (item or option SKU, or listing slug), merged per item and priced today; unmatched rows come back by line.
+
+### Example
+```java
+// Import classes:
+import net.crossly.buyer.ApiClient;
+import net.crossly.buyer.ApiException;
+import net.crossly.buyer.Configuration;
+import net.crossly.buyer.auth.*;
+import net.crossly.buyer.models.*;
+import net.crossly.buyer.api.BuyerApi;
+
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("https://crossly.net/api");
+    
+    // Configure HTTP bearer authorization: BuyerOAuth
+    HttpBearerAuth BuyerOAuth = (HttpBearerAuth) defaultClient.getAuthentication("BuyerOAuth");
+    BuyerOAuth.setBearerToken("BEARER TOKEN");
+
+    BuyerApi apiInstance = new BuyerApi(defaultClient);
+    try {
+      CreateBuyerWholesaleUploadValidateResponse result = apiInstance.createBuyerWholesaleUploadValidate();
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling BuyerApi#createBuyerWholesaleUploadValidate");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+### Parameters
+This endpoint does not need any parameter.
+
+### Return type
+
+**CreateBuyerWholesaleUploadValidateResponse**
 
 ### Authorization
 
@@ -6294,6 +7716,77 @@ Name | Type | Description  | Notes
 **429** | Error |  -  |
 **500** | Error |  -  |
 
+<a name="deleteBuyerCompanyMember"></a>
+# **deleteBuyerCompanyMember**
+> BuyerCompanyResponse deleteBuyerCompanyMember(id)
+
+Remove a member or cancel an invite (owner), or leave the company (your own member id).
+
+### Example
+```java
+// Import classes:
+import net.crossly.buyer.ApiClient;
+import net.crossly.buyer.ApiException;
+import net.crossly.buyer.Configuration;
+import net.crossly.buyer.auth.*;
+import net.crossly.buyer.models.*;
+import net.crossly.buyer.api.BuyerApi;
+
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("https://crossly.net/api");
+    
+    // Configure HTTP bearer authorization: BuyerOAuth
+    HttpBearerAuth BuyerOAuth = (HttpBearerAuth) defaultClient.getAuthentication("BuyerOAuth");
+    BuyerOAuth.setBearerToken("BEARER TOKEN");
+
+    BuyerApi apiInstance = new BuyerApi(defaultClient);
+    String id = "id_example"; // String | 
+    try {
+      BuyerCompanyResponse result = apiInstance.deleteBuyerCompanyMember(id);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling BuyerApi#deleteBuyerCompanyMember");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **String**|  |
+
+### Return type
+
+**BuyerCompanyResponse**
+
+### Authorization
+
+[BuyerOAuth](../README.md#BuyerOAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**400** | Error |  -  |
+**401** | Error |  -  |
+**403** | Error |  -  |
+**404** | Error |  -  |
+**429** | Error |  -  |
+**500** | Error |  -  |
+
 <a name="deleteBuyerConversationGuest"></a>
 # **deleteBuyerConversationGuest**
 > BuyerResponse deleteBuyerConversationGuest(id, userId)
@@ -6342,6 +7835,150 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **String**|  |
  **userId** | **String**|  |
+
+### Return type
+
+**BuyerResponse**
+
+### Authorization
+
+[BuyerOAuth](../README.md#BuyerOAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**400** | Error |  -  |
+**401** | Error |  -  |
+**403** | Error |  -  |
+**404** | Error |  -  |
+**429** | Error |  -  |
+**500** | Error |  -  |
+
+<a name="deleteBuyerCreationReview"></a>
+# **deleteBuyerCreationReview**
+> BuyerResponse deleteBuyerCreationReview(format, id)
+
+Remove your review of a creation (its vote leaves the rating with it).
+
+### Example
+```java
+// Import classes:
+import net.crossly.buyer.ApiClient;
+import net.crossly.buyer.ApiException;
+import net.crossly.buyer.Configuration;
+import net.crossly.buyer.auth.*;
+import net.crossly.buyer.models.*;
+import net.crossly.buyer.api.BuyerApi;
+
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("https://crossly.net/api");
+    
+    // Configure HTTP bearer authorization: BuyerOAuth
+    HttpBearerAuth BuyerOAuth = (HttpBearerAuth) defaultClient.getAuthentication("BuyerOAuth");
+    BuyerOAuth.setBearerToken("BEARER TOKEN");
+
+    BuyerApi apiInstance = new BuyerApi(defaultClient);
+    String format = "wearable"; // String | The creation format.
+    String id = "id_example"; // String | The creation id (a card is <setId>.<slug>).
+    try {
+      BuyerResponse result = apiInstance.deleteBuyerCreationReview(format, id);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling BuyerApi#deleteBuyerCreationReview");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **format** | **String**| The creation format. | [enum: wearable, decor, interactive, card]
+ **id** | **String**| The creation id (a card is &lt;setId&gt;.&lt;slug&gt;). |
+
+### Return type
+
+**BuyerResponse**
+
+### Authorization
+
+[BuyerOAuth](../README.md#BuyerOAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**400** | Error |  -  |
+**401** | Error |  -  |
+**403** | Error |  -  |
+**404** | Error |  -  |
+**429** | Error |  -  |
+**500** | Error |  -  |
+
+<a name="deleteBuyerEventRsvp"></a>
+# **deleteBuyerEventRsvp**
+> BuyerResponse deleteBuyerEventRsvp(slug)
+
+Take back your RSVP.
+
+### Example
+```java
+// Import classes:
+import net.crossly.buyer.ApiClient;
+import net.crossly.buyer.ApiException;
+import net.crossly.buyer.Configuration;
+import net.crossly.buyer.auth.*;
+import net.crossly.buyer.models.*;
+import net.crossly.buyer.api.BuyerApi;
+
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("https://crossly.net/api");
+    
+    // Configure HTTP bearer authorization: BuyerOAuth
+    HttpBearerAuth BuyerOAuth = (HttpBearerAuth) defaultClient.getAuthentication("BuyerOAuth");
+    BuyerOAuth.setBearerToken("BEARER TOKEN");
+
+    BuyerApi apiInstance = new BuyerApi(defaultClient);
+    String slug = "slug_example"; // String | 
+    try {
+      BuyerResponse result = apiInstance.deleteBuyerEventRsvp(slug);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling BuyerApi#deleteBuyerEventRsvp");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **slug** | **String**|  |
 
 ### Return type
 
@@ -6431,6 +8068,76 @@ Name | Type | Description  | Notes
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | OK |  -  |
+**400** | Error |  -  |
+**401** | Error |  -  |
+**403** | Error |  -  |
+**404** | Error |  -  |
+**429** | Error |  -  |
+**500** | Error |  -  |
+
+<a name="deleteBuyerHomeGuestbook"></a>
+# **deleteBuyerHomeGuestbook**
+> deleteBuyerHomeGuestbook(id)
+
+Hide a line from your home’s guestbook.
+
+### Example
+```java
+// Import classes:
+import net.crossly.buyer.ApiClient;
+import net.crossly.buyer.ApiException;
+import net.crossly.buyer.Configuration;
+import net.crossly.buyer.auth.*;
+import net.crossly.buyer.models.*;
+import net.crossly.buyer.api.BuyerApi;
+
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("https://crossly.net/api");
+    
+    // Configure HTTP bearer authorization: BuyerOAuth
+    HttpBearerAuth BuyerOAuth = (HttpBearerAuth) defaultClient.getAuthentication("BuyerOAuth");
+    BuyerOAuth.setBearerToken("BEARER TOKEN");
+
+    BuyerApi apiInstance = new BuyerApi(defaultClient);
+    String id = "id_example"; // String | 
+    try {
+      apiInstance.deleteBuyerHomeGuestbook(id);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling BuyerApi#deleteBuyerHomeGuestbook");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **String**|  |
+
+### Return type
+
+null (empty response body)
+
+### Authorization
+
+[BuyerOAuth](../README.md#BuyerOAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**204** | No Content — the request succeeded and there is no body. |  -  |
 **400** | Error |  -  |
 **401** | Error |  -  |
 **403** | Error |  -  |
@@ -6935,6 +8642,77 @@ Name | Type | Description  | Notes
 **429** | Error |  -  |
 **500** | Error |  -  |
 
+<a name="deleteBuyerSellerLoyaltyJoin"></a>
+# **deleteBuyerSellerLoyaltyJoin**
+> BuyerResponse deleteBuyerSellerLoyaltyJoin(sellerUserId)
+
+Leave a seller’s loyalty club.
+
+### Example
+```java
+// Import classes:
+import net.crossly.buyer.ApiClient;
+import net.crossly.buyer.ApiException;
+import net.crossly.buyer.Configuration;
+import net.crossly.buyer.auth.*;
+import net.crossly.buyer.models.*;
+import net.crossly.buyer.api.BuyerApi;
+
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("https://crossly.net/api");
+    
+    // Configure HTTP bearer authorization: BuyerOAuth
+    HttpBearerAuth BuyerOAuth = (HttpBearerAuth) defaultClient.getAuthentication("BuyerOAuth");
+    BuyerOAuth.setBearerToken("BEARER TOKEN");
+
+    BuyerApi apiInstance = new BuyerApi(defaultClient);
+    String sellerUserId = "sellerUserId_example"; // String | 
+    try {
+      BuyerResponse result = apiInstance.deleteBuyerSellerLoyaltyJoin(sellerUserId);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling BuyerApi#deleteBuyerSellerLoyaltyJoin");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **sellerUserId** | **String**|  |
+
+### Return type
+
+**BuyerResponse**
+
+### Authorization
+
+[BuyerOAuth](../README.md#BuyerOAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**400** | Error |  -  |
+**401** | Error |  -  |
+**403** | Error |  -  |
+**404** | Error |  -  |
+**429** | Error |  -  |
+**500** | Error |  -  |
+
 <a name="deleteBuyerTogetherItem"></a>
 # **deleteBuyerTogetherItem**
 > BuyerResponse deleteBuyerTogetherItem(code, id)
@@ -7129,6 +8907,77 @@ Name | Type | Description  | Notes
 ### Return type
 
 **DeleteBuyerTryOnResponse**
+
+### Authorization
+
+[BuyerOAuth](../README.md#BuyerOAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**400** | Error |  -  |
+**401** | Error |  -  |
+**403** | Error |  -  |
+**404** | Error |  -  |
+**429** | Error |  -  |
+**500** | Error |  -  |
+
+<a name="deleteBuyerWholesaleOrderSheet"></a>
+# **deleteBuyerWholesaleOrderSheet**
+> DeleteBuyerWholesaleOrderSheetResponse deleteBuyerWholesaleOrderSheet(id)
+
+Delete an order sheet.
+
+### Example
+```java
+// Import classes:
+import net.crossly.buyer.ApiClient;
+import net.crossly.buyer.ApiException;
+import net.crossly.buyer.Configuration;
+import net.crossly.buyer.auth.*;
+import net.crossly.buyer.models.*;
+import net.crossly.buyer.api.BuyerApi;
+
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("https://crossly.net/api");
+    
+    // Configure HTTP bearer authorization: BuyerOAuth
+    HttpBearerAuth BuyerOAuth = (HttpBearerAuth) defaultClient.getAuthentication("BuyerOAuth");
+    BuyerOAuth.setBearerToken("BEARER TOKEN");
+
+    BuyerApi apiInstance = new BuyerApi(defaultClient);
+    String id = "id_example"; // String | 
+    try {
+      DeleteBuyerWholesaleOrderSheetResponse result = apiInstance.deleteBuyerWholesaleOrderSheet(id);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling BuyerApi#deleteBuyerWholesaleOrderSheet");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **String**|  |
+
+### Return type
+
+**DeleteBuyerWholesaleOrderSheetResponse**
 
 ### Authorization
 
@@ -8215,6 +10064,146 @@ Name | Type | Description  | Notes
 **429** | Error |  -  |
 **500** | Error |  -  |
 
+<a name="getBuyerCompany"></a>
+# **getBuyerCompany**
+> BuyerCompanyResponse getBuyerCompany()
+
+Your buyer company (members, roles, approval limits, shared addresses), or null when you are in none.
+
+### Example
+```java
+// Import classes:
+import net.crossly.buyer.ApiClient;
+import net.crossly.buyer.ApiException;
+import net.crossly.buyer.Configuration;
+import net.crossly.buyer.auth.*;
+import net.crossly.buyer.models.*;
+import net.crossly.buyer.api.BuyerApi;
+
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("https://crossly.net/api");
+    
+    // Configure HTTP bearer authorization: BuyerOAuth
+    HttpBearerAuth BuyerOAuth = (HttpBearerAuth) defaultClient.getAuthentication("BuyerOAuth");
+    BuyerOAuth.setBearerToken("BEARER TOKEN");
+
+    BuyerApi apiInstance = new BuyerApi(defaultClient);
+    try {
+      BuyerCompanyResponse result = apiInstance.getBuyerCompany();
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling BuyerApi#getBuyerCompany");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+### Parameters
+This endpoint does not need any parameter.
+
+### Return type
+
+**BuyerCompanyResponse**
+
+### Authorization
+
+[BuyerOAuth](../README.md#BuyerOAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**400** | Error |  -  |
+**401** | Error |  -  |
+**403** | Error |  -  |
+**404** | Error |  -  |
+**429** | Error |  -  |
+**500** | Error |  -  |
+
+<a name="getBuyerCreation"></a>
+# **getBuyerCreation**
+> GetBuyerCreationResponse getBuyerCreation(format, id)
+
+A live creation&#39;s public page: its rating breakdown, recent reviews and whether you can review it.
+
+### Example
+```java
+// Import classes:
+import net.crossly.buyer.ApiClient;
+import net.crossly.buyer.ApiException;
+import net.crossly.buyer.Configuration;
+import net.crossly.buyer.auth.*;
+import net.crossly.buyer.models.*;
+import net.crossly.buyer.api.BuyerApi;
+
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("https://crossly.net/api");
+    
+    // Configure HTTP bearer authorization: BuyerOAuth
+    HttpBearerAuth BuyerOAuth = (HttpBearerAuth) defaultClient.getAuthentication("BuyerOAuth");
+    BuyerOAuth.setBearerToken("BEARER TOKEN");
+
+    BuyerApi apiInstance = new BuyerApi(defaultClient);
+    String format = "wearable"; // String | The creation format.
+    String id = "id_example"; // String | The creation id (a card is <setId>.<slug>).
+    try {
+      GetBuyerCreationResponse result = apiInstance.getBuyerCreation(format, id);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling BuyerApi#getBuyerCreation");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **format** | **String**| The creation format. | [enum: wearable, decor, interactive, card]
+ **id** | **String**| The creation id (a card is &lt;setId&gt;.&lt;slug&gt;). |
+
+### Return type
+
+**GetBuyerCreationResponse**
+
+### Authorization
+
+[BuyerOAuth](../README.md#BuyerOAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**400** | Error |  -  |
+**401** | Error |  -  |
+**403** | Error |  -  |
+**404** | Error |  -  |
+**429** | Error |  -  |
+**500** | Error |  -  |
+
 <a name="getBuyerCreator"></a>
 # **getBuyerCreator**
 > GetBuyerCreatorResponse getBuyerCreator(handle)
@@ -8265,6 +10254,77 @@ Name | Type | Description  | Notes
 ### Return type
 
 **GetBuyerCreatorResponse**
+
+### Authorization
+
+[BuyerOAuth](../README.md#BuyerOAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**400** | Error |  -  |
+**401** | Error |  -  |
+**403** | Error |  -  |
+**404** | Error |  -  |
+**429** | Error |  -  |
+**500** | Error |  -  |
+
+<a name="getBuyerEvent"></a>
+# **getBuyerEvent**
+> GetBuyerEventResponse getBuyerEvent(slug)
+
+A seller event: schedule, location, host, linked listings, live show, promo code, RSVP counts and your own RSVP.
+
+### Example
+```java
+// Import classes:
+import net.crossly.buyer.ApiClient;
+import net.crossly.buyer.ApiException;
+import net.crossly.buyer.Configuration;
+import net.crossly.buyer.auth.*;
+import net.crossly.buyer.models.*;
+import net.crossly.buyer.api.BuyerApi;
+
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("https://crossly.net/api");
+    
+    // Configure HTTP bearer authorization: BuyerOAuth
+    HttpBearerAuth BuyerOAuth = (HttpBearerAuth) defaultClient.getAuthentication("BuyerOAuth");
+    BuyerOAuth.setBearerToken("BEARER TOKEN");
+
+    BuyerApi apiInstance = new BuyerApi(defaultClient);
+    String slug = "slug_example"; // String | 
+    try {
+      GetBuyerEventResponse result = apiInstance.getBuyerEvent(slug);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling BuyerApi#getBuyerEvent");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **slug** | **String**|  |
+
+### Return type
+
+**GetBuyerEventResponse**
 
 ### Authorization
 
@@ -8399,6 +10459,140 @@ This endpoint does not need any parameter.
 ### Return type
 
 **GetBuyerGiftFinderOptionResponse**
+
+### Authorization
+
+[BuyerOAuth](../README.md#BuyerOAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**400** | Error |  -  |
+**401** | Error |  -  |
+**403** | Error |  -  |
+**404** | Error |  -  |
+**429** | Error |  -  |
+**500** | Error |  -  |
+
+<a name="getBuyerHome"></a>
+# **getBuyerHome**
+> BuyerHomeResponse getBuyerHome()
+
+Your home in Crossly World (made on first read).
+
+### Example
+```java
+// Import classes:
+import net.crossly.buyer.ApiClient;
+import net.crossly.buyer.ApiException;
+import net.crossly.buyer.Configuration;
+import net.crossly.buyer.auth.*;
+import net.crossly.buyer.models.*;
+import net.crossly.buyer.api.BuyerApi;
+
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("https://crossly.net/api");
+    
+    // Configure HTTP bearer authorization: BuyerOAuth
+    HttpBearerAuth BuyerOAuth = (HttpBearerAuth) defaultClient.getAuthentication("BuyerOAuth");
+    BuyerOAuth.setBearerToken("BEARER TOKEN");
+
+    BuyerApi apiInstance = new BuyerApi(defaultClient);
+    try {
+      BuyerHomeResponse result = apiInstance.getBuyerHome();
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling BuyerApi#getBuyerHome");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+### Parameters
+This endpoint does not need any parameter.
+
+### Return type
+
+**BuyerHomeResponse**
+
+### Authorization
+
+[BuyerOAuth](../README.md#BuyerOAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**400** | Error |  -  |
+**401** | Error |  -  |
+**403** | Error |  -  |
+**404** | Error |  -  |
+**429** | Error |  -  |
+**500** | Error |  -  |
+
+<a name="getBuyerHomePlaceable"></a>
+# **getBuyerHomePlaceable**
+> GetBuyerHomePlaceableResponse getBuyerHomePlaceable()
+
+What you could place in your home: your items and delivered furniture.
+
+### Example
+```java
+// Import classes:
+import net.crossly.buyer.ApiClient;
+import net.crossly.buyer.ApiException;
+import net.crossly.buyer.Configuration;
+import net.crossly.buyer.auth.*;
+import net.crossly.buyer.models.*;
+import net.crossly.buyer.api.BuyerApi;
+
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("https://crossly.net/api");
+    
+    // Configure HTTP bearer authorization: BuyerOAuth
+    HttpBearerAuth BuyerOAuth = (HttpBearerAuth) defaultClient.getAuthentication("BuyerOAuth");
+    BuyerOAuth.setBearerToken("BEARER TOKEN");
+
+    BuyerApi apiInstance = new BuyerApi(defaultClient);
+    try {
+      GetBuyerHomePlaceableResponse result = apiInstance.getBuyerHomePlaceable();
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling BuyerApi#getBuyerHomePlaceable");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+### Parameters
+This endpoint does not need any parameter.
+
+### Return type
+
+**GetBuyerHomePlaceableResponse**
 
 ### Authorization
 
@@ -9838,7 +12032,7 @@ Name | Type | Description  | Notes
 # **getBuyerPassport**
 > GetBuyerPassportResponse getBuyerPassport(code)
 
-What a product passport tag opens: the item, whether it was authenticated, how many owners on Crossly and since when — never who or for how much.
+What a product passport tag opens: the item, the verify verdict (registered, tag bound, tag matches with ?uid&#x3D;, authenticated, graded, in its owner’s hands), how many owners and since when — never who or for how much.
 
 ### Example
 ```java
@@ -10534,6 +12728,77 @@ Name | Type | Description  | Notes
 **429** | Error |  -  |
 **500** | Error |  -  |
 
+<a name="getBuyerRental"></a>
+# **getBuyerRental**
+> GetBuyerRentalResponse getBuyerRental(id)
+
+One of your rentals: timeline, payments, the return label, extension and buy-out terms.
+
+### Example
+```java
+// Import classes:
+import net.crossly.buyer.ApiClient;
+import net.crossly.buyer.ApiException;
+import net.crossly.buyer.Configuration;
+import net.crossly.buyer.auth.*;
+import net.crossly.buyer.models.*;
+import net.crossly.buyer.api.BuyerApi;
+
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("https://crossly.net/api");
+    
+    // Configure HTTP bearer authorization: BuyerOAuth
+    HttpBearerAuth BuyerOAuth = (HttpBearerAuth) defaultClient.getAuthentication("BuyerOAuth");
+    BuyerOAuth.setBearerToken("BEARER TOKEN");
+
+    BuyerApi apiInstance = new BuyerApi(defaultClient);
+    String id = "id_example"; // String | 
+    try {
+      GetBuyerRentalResponse result = apiInstance.getBuyerRental(id);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling BuyerApi#getBuyerRental");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **String**|  |
+
+### Return type
+
+**GetBuyerRentalResponse**
+
+### Authorization
+
+[BuyerOAuth](../README.md#BuyerOAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**400** | Error |  -  |
+**401** | Error |  -  |
+**403** | Error |  -  |
+**404** | Error |  -  |
+**429** | Error |  -  |
+**500** | Error |  -  |
+
 <a name="getBuyerRentalEligibility"></a>
 # **getBuyerRentalEligibility**
 > GetBuyerRentalEligibilityResponse getBuyerRentalEligibility()
@@ -10651,6 +12916,77 @@ Name | Type | Description  | Notes
 ### Return type
 
 **GetBuyerSellerClubResponse**
+
+### Authorization
+
+[BuyerOAuth](../README.md#BuyerOAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**400** | Error |  -  |
+**401** | Error |  -  |
+**403** | Error |  -  |
+**404** | Error |  -  |
+**429** | Error |  -  |
+**500** | Error |  -  |
+
+<a name="getBuyerSellerLoyalty"></a>
+# **getBuyerSellerLoyalty**
+> GetBuyerSellerLoyaltyResponse getBuyerSellerLoyalty(sellerUserId)
+
+A seller’s loyalty club with its typed perks per tier, its join mode (automatic, opt-in, invite-only) and your standing. null when they run none.
+
+### Example
+```java
+// Import classes:
+import net.crossly.buyer.ApiClient;
+import net.crossly.buyer.ApiException;
+import net.crossly.buyer.Configuration;
+import net.crossly.buyer.auth.*;
+import net.crossly.buyer.models.*;
+import net.crossly.buyer.api.BuyerApi;
+
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("https://crossly.net/api");
+    
+    // Configure HTTP bearer authorization: BuyerOAuth
+    HttpBearerAuth BuyerOAuth = (HttpBearerAuth) defaultClient.getAuthentication("BuyerOAuth");
+    BuyerOAuth.setBearerToken("BEARER TOKEN");
+
+    BuyerApi apiInstance = new BuyerApi(defaultClient);
+    String sellerUserId = "sellerUserId_example"; // String | 
+    try {
+      GetBuyerSellerLoyaltyResponse result = apiInstance.getBuyerSellerLoyalty(sellerUserId);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling BuyerApi#getBuyerSellerLoyalty");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **sellerUserId** | **String**|  |
+
+### Return type
+
+**GetBuyerSellerLoyaltyResponse**
 
 ### Authorization
 
@@ -11023,6 +13359,1051 @@ Name | Type | Description  | Notes
 **429** | Error |  -  |
 **500** | Error |  -  |
 
+<a name="getBuyerVaultMarketOptionAnalytic"></a>
+# **getBuyerVaultMarketOptionAnalytic**
+> GetBuyerVaultMarketOptionAnalyticResponse getBuyerVaultMarketOptionAnalytic(underlying)
+
+Options analytics on an underlying: vol surface and smile, IV rank and percentile, open interest and volume by strike and expiry, put/call ratios, expected move and historical vol. Derived, display only. Read only.
+
+### Example
+```java
+// Import classes:
+import net.crossly.buyer.ApiClient;
+import net.crossly.buyer.ApiException;
+import net.crossly.buyer.Configuration;
+import net.crossly.buyer.auth.*;
+import net.crossly.buyer.models.*;
+import net.crossly.buyer.api.BuyerApi;
+
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("https://crossly.net/api");
+    
+    // Configure HTTP bearer authorization: BuyerOAuth
+    HttpBearerAuth BuyerOAuth = (HttpBearerAuth) defaultClient.getAuthentication("BuyerOAuth");
+    BuyerOAuth.setBearerToken("BEARER TOKEN");
+
+    BuyerApi apiInstance = new BuyerApi(defaultClient);
+    String underlying = "underlying_example"; // String | 
+    try {
+      GetBuyerVaultMarketOptionAnalyticResponse result = apiInstance.getBuyerVaultMarketOptionAnalytic(underlying);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling BuyerApi#getBuyerVaultMarketOptionAnalytic");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **underlying** | **String**|  |
+
+### Return type
+
+**GetBuyerVaultMarketOptionAnalyticResponse**
+
+### Authorization
+
+[BuyerOAuth](../README.md#BuyerOAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**400** | Error |  -  |
+**401** | Error |  -  |
+**403** | Error |  -  |
+**404** | Error |  -  |
+**429** | Error |  -  |
+**500** | Error |  -  |
+
+<a name="getBuyerVaultMarketOptionChain"></a>
+# **getBuyerVaultMarketOptionChain**
+> GetBuyerVaultMarketOptionChainResponse getBuyerVaultMarketOptionChain(underlying)
+
+The option chain for an underlying (index slug or book key): expiries, and for one expiry each strike’s call and put with bid / ask, last, open interest, theoretical price, implied vol (display only) and Greeks. Prices are cents per contract.
+
+### Example
+```java
+// Import classes:
+import net.crossly.buyer.ApiClient;
+import net.crossly.buyer.ApiException;
+import net.crossly.buyer.Configuration;
+import net.crossly.buyer.auth.*;
+import net.crossly.buyer.models.*;
+import net.crossly.buyer.api.BuyerApi;
+
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("https://crossly.net/api");
+    
+    // Configure HTTP bearer authorization: BuyerOAuth
+    HttpBearerAuth BuyerOAuth = (HttpBearerAuth) defaultClient.getAuthentication("BuyerOAuth");
+    BuyerOAuth.setBearerToken("BEARER TOKEN");
+
+    BuyerApi apiInstance = new BuyerApi(defaultClient);
+    String underlying = "underlying_example"; // String | 
+    try {
+      GetBuyerVaultMarketOptionChainResponse result = apiInstance.getBuyerVaultMarketOptionChain(underlying);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling BuyerApi#getBuyerVaultMarketOptionChain");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **underlying** | **String**|  |
+
+### Return type
+
+**GetBuyerVaultMarketOptionChainResponse**
+
+### Authorization
+
+[BuyerOAuth](../README.md#BuyerOAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**400** | Error |  -  |
+**401** | Error |  -  |
+**403** | Error |  -  |
+**404** | Error |  -  |
+**429** | Error |  -  |
+**500** | Error |  -  |
+
+<a name="getBuyerVaultMarketOptionIv"></a>
+# **getBuyerVaultMarketOptionIv**
+> GetBuyerVaultMarketOptionIvResponse getBuyerVaultMarketOptionIv(underlying)
+
+The at-the-money implied vol on an underlying’s nearest expiry, for display: derived from the options book, quality C, never a mark.
+
+### Example
+```java
+// Import classes:
+import net.crossly.buyer.ApiClient;
+import net.crossly.buyer.ApiException;
+import net.crossly.buyer.Configuration;
+import net.crossly.buyer.auth.*;
+import net.crossly.buyer.models.*;
+import net.crossly.buyer.api.BuyerApi;
+
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("https://crossly.net/api");
+    
+    // Configure HTTP bearer authorization: BuyerOAuth
+    HttpBearerAuth BuyerOAuth = (HttpBearerAuth) defaultClient.getAuthentication("BuyerOAuth");
+    BuyerOAuth.setBearerToken("BEARER TOKEN");
+
+    BuyerApi apiInstance = new BuyerApi(defaultClient);
+    String underlying = "underlying_example"; // String | 
+    try {
+      GetBuyerVaultMarketOptionIvResponse result = apiInstance.getBuyerVaultMarketOptionIv(underlying);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling BuyerApi#getBuyerVaultMarketOptionIv");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **underlying** | **String**|  |
+
+### Return type
+
+**GetBuyerVaultMarketOptionIvResponse**
+
+### Authorization
+
+[BuyerOAuth](../README.md#BuyerOAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**400** | Error |  -  |
+**401** | Error |  -  |
+**403** | Error |  -  |
+**404** | Error |  -  |
+**429** | Error |  -  |
+**500** | Error |  -  |
+
+<a name="getBuyerVaultMarketOptionPosition"></a>
+# **getBuyerVaultMarketOptionPosition**
+> GetBuyerVaultMarketOptionPositionResponse getBuyerVaultMarketOptionPosition()
+
+Your fractional options positions with their marks, P&amp;L and Greeks (open by default; &#x60;status&#x60; all for closed and settled too). Read only.
+
+### Example
+```java
+// Import classes:
+import net.crossly.buyer.ApiClient;
+import net.crossly.buyer.ApiException;
+import net.crossly.buyer.Configuration;
+import net.crossly.buyer.auth.*;
+import net.crossly.buyer.models.*;
+import net.crossly.buyer.api.BuyerApi;
+
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("https://crossly.net/api");
+    
+    // Configure HTTP bearer authorization: BuyerOAuth
+    HttpBearerAuth BuyerOAuth = (HttpBearerAuth) defaultClient.getAuthentication("BuyerOAuth");
+    BuyerOAuth.setBearerToken("BEARER TOKEN");
+
+    BuyerApi apiInstance = new BuyerApi(defaultClient);
+    try {
+      GetBuyerVaultMarketOptionPositionResponse result = apiInstance.getBuyerVaultMarketOptionPosition();
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling BuyerApi#getBuyerVaultMarketOptionPosition");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+### Parameters
+This endpoint does not need any parameter.
+
+### Return type
+
+**GetBuyerVaultMarketOptionPositionResponse**
+
+### Authorization
+
+[BuyerOAuth](../README.md#BuyerOAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**400** | Error |  -  |
+**401** | Error |  -  |
+**403** | Error |  -  |
+**404** | Error |  -  |
+**429** | Error |  -  |
+**500** | Error |  -  |
+
+<a name="getBuyerVaultMarketOptionRisk"></a>
+# **getBuyerVaultMarketOptionRisk**
+> GetBuyerVaultMarketOptionRiskResponse getBuyerVaultMarketOptionRisk()
+
+Your options portfolio Greeks, a scenario&#39;s P&amp;L (&#x60;priceShift&#x60;, &#x60;volShift&#x60;, &#x60;daysForward&#x60;) and the beta-weighted delta against an index. Read only.
+
+### Example
+```java
+// Import classes:
+import net.crossly.buyer.ApiClient;
+import net.crossly.buyer.ApiException;
+import net.crossly.buyer.Configuration;
+import net.crossly.buyer.auth.*;
+import net.crossly.buyer.models.*;
+import net.crossly.buyer.api.BuyerApi;
+
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("https://crossly.net/api");
+    
+    // Configure HTTP bearer authorization: BuyerOAuth
+    HttpBearerAuth BuyerOAuth = (HttpBearerAuth) defaultClient.getAuthentication("BuyerOAuth");
+    BuyerOAuth.setBearerToken("BEARER TOKEN");
+
+    BuyerApi apiInstance = new BuyerApi(defaultClient);
+    try {
+      GetBuyerVaultMarketOptionRiskResponse result = apiInstance.getBuyerVaultMarketOptionRisk();
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling BuyerApi#getBuyerVaultMarketOptionRisk");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+### Parameters
+This endpoint does not need any parameter.
+
+### Return type
+
+**GetBuyerVaultMarketOptionRiskResponse**
+
+### Authorization
+
+[BuyerOAuth](../README.md#BuyerOAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**400** | Error |  -  |
+**401** | Error |  -  |
+**403** | Error |  -  |
+**404** | Error |  -  |
+**429** | Error |  -  |
+**500** | Error |  -  |
+
+<a name="getBuyerVaultMarketPredictionBoard"></a>
+# **getBuyerVaultMarketPredictionBoard**
+> GetBuyerVaultMarketPredictionBoardResponse getBuyerVaultMarketPredictionBoard()
+
+The busiest open prediction markets and their odds (the Trading Floor board). Anonymous.
+
+### Example
+```java
+// Import classes:
+import net.crossly.buyer.ApiClient;
+import net.crossly.buyer.ApiException;
+import net.crossly.buyer.Configuration;
+import net.crossly.buyer.auth.*;
+import net.crossly.buyer.models.*;
+import net.crossly.buyer.api.BuyerApi;
+
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("https://crossly.net/api");
+    
+    // Configure HTTP bearer authorization: BuyerOAuth
+    HttpBearerAuth BuyerOAuth = (HttpBearerAuth) defaultClient.getAuthentication("BuyerOAuth");
+    BuyerOAuth.setBearerToken("BEARER TOKEN");
+
+    BuyerApi apiInstance = new BuyerApi(defaultClient);
+    try {
+      GetBuyerVaultMarketPredictionBoardResponse result = apiInstance.getBuyerVaultMarketPredictionBoard();
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling BuyerApi#getBuyerVaultMarketPredictionBoard");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+### Parameters
+This endpoint does not need any parameter.
+
+### Return type
+
+**GetBuyerVaultMarketPredictionBoardResponse**
+
+### Authorization
+
+[BuyerOAuth](../README.md#BuyerOAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**400** | Error |  -  |
+**401** | Error |  -  |
+**403** | Error |  -  |
+**404** | Error |  -  |
+**429** | Error |  -  |
+**500** | Error |  -  |
+
+<a name="getBuyerVaultMarketPredictionEvent"></a>
+# **getBuyerVaultMarketPredictionEvent**
+> GetBuyerVaultMarketPredictionEventResponse getBuyerVaultMarketPredictionEvent(id)
+
+One expiry’s markets with your holdings in each and their real worst and best case across them.
+
+### Example
+```java
+// Import classes:
+import net.crossly.buyer.ApiClient;
+import net.crossly.buyer.ApiException;
+import net.crossly.buyer.Configuration;
+import net.crossly.buyer.auth.*;
+import net.crossly.buyer.models.*;
+import net.crossly.buyer.api.BuyerApi;
+
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("https://crossly.net/api");
+    
+    // Configure HTTP bearer authorization: BuyerOAuth
+    HttpBearerAuth BuyerOAuth = (HttpBearerAuth) defaultClient.getAuthentication("BuyerOAuth");
+    BuyerOAuth.setBearerToken("BEARER TOKEN");
+
+    BuyerApi apiInstance = new BuyerApi(defaultClient);
+    String id = "id_example"; // String | 
+    try {
+      GetBuyerVaultMarketPredictionEventResponse result = apiInstance.getBuyerVaultMarketPredictionEvent(id);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling BuyerApi#getBuyerVaultMarketPredictionEvent");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **String**|  |
+
+### Return type
+
+**GetBuyerVaultMarketPredictionEventResponse**
+
+### Authorization
+
+[BuyerOAuth](../README.md#BuyerOAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**400** | Error |  -  |
+**401** | Error |  -  |
+**403** | Error |  -  |
+**404** | Error |  -  |
+**429** | Error |  -  |
+**500** | Error |  -  |
+
+<a name="getBuyerVaultMarketPredictionLeaderboard"></a>
+# **getBuyerVaultMarketPredictionLeaderboard**
+> GetBuyerVaultMarketPredictionLeaderboardResponse getBuyerVaultMarketPredictionLeaderboard()
+
+Opt-in forecaster leaderboards (&#x60;period&#x60; week | month | all; &#x60;metric&#x60; pnl | accuracy | brier; &#x60;venue&#x60; live | paper).
+
+### Example
+```java
+// Import classes:
+import net.crossly.buyer.ApiClient;
+import net.crossly.buyer.ApiException;
+import net.crossly.buyer.Configuration;
+import net.crossly.buyer.auth.*;
+import net.crossly.buyer.models.*;
+import net.crossly.buyer.api.BuyerApi;
+
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("https://crossly.net/api");
+    
+    // Configure HTTP bearer authorization: BuyerOAuth
+    HttpBearerAuth BuyerOAuth = (HttpBearerAuth) defaultClient.getAuthentication("BuyerOAuth");
+    BuyerOAuth.setBearerToken("BEARER TOKEN");
+
+    BuyerApi apiInstance = new BuyerApi(defaultClient);
+    try {
+      GetBuyerVaultMarketPredictionLeaderboardResponse result = apiInstance.getBuyerVaultMarketPredictionLeaderboard();
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling BuyerApi#getBuyerVaultMarketPredictionLeaderboard");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+### Parameters
+This endpoint does not need any parameter.
+
+### Return type
+
+**GetBuyerVaultMarketPredictionLeaderboardResponse**
+
+### Authorization
+
+[BuyerOAuth](../README.md#BuyerOAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**400** | Error |  -  |
+**401** | Error |  -  |
+**403** | Error |  -  |
+**404** | Error |  -  |
+**429** | Error |  -  |
+**500** | Error |  -  |
+
+<a name="getBuyerVaultMarketPredictionMarket"></a>
+# **getBuyerVaultMarketPredictionMarket**
+> GetBuyerVaultMarketPredictionMarketResponse getBuyerVaultMarketPredictionMarket(id)
+
+One prediction market: terms, the Yes ladder (live and practice), recent trades, settlement history and the series rules with their hash.
+
+### Example
+```java
+// Import classes:
+import net.crossly.buyer.ApiClient;
+import net.crossly.buyer.ApiException;
+import net.crossly.buyer.Configuration;
+import net.crossly.buyer.auth.*;
+import net.crossly.buyer.models.*;
+import net.crossly.buyer.api.BuyerApi;
+
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("https://crossly.net/api");
+    
+    // Configure HTTP bearer authorization: BuyerOAuth
+    HttpBearerAuth BuyerOAuth = (HttpBearerAuth) defaultClient.getAuthentication("BuyerOAuth");
+    BuyerOAuth.setBearerToken("BEARER TOKEN");
+
+    BuyerApi apiInstance = new BuyerApi(defaultClient);
+    String id = "id_example"; // String | 
+    try {
+      GetBuyerVaultMarketPredictionMarketResponse result = apiInstance.getBuyerVaultMarketPredictionMarket(id);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling BuyerApi#getBuyerVaultMarketPredictionMarket");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **String**|  |
+
+### Return type
+
+**GetBuyerVaultMarketPredictionMarketResponse**
+
+### Authorization
+
+[BuyerOAuth](../README.md#BuyerOAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**400** | Error |  -  |
+**401** | Error |  -  |
+**403** | Error |  -  |
+**404** | Error |  -  |
+**429** | Error |  -  |
+**500** | Error |  -  |
+
+<a name="getBuyerVaultMarketPredictionMarketHistory"></a>
+# **getBuyerVaultMarketPredictionMarketHistory**
+> GetBuyerVaultMarketPredictionMarketHistoryResponse getBuyerVaultMarketPredictionMarketHistory(id)
+
+A prediction market’s probability over time (display only, never a mark), candles on the Yes price, volume and open interest (&#x60;range&#x60; 1d, 1w, 1m, all; &#x60;venue&#x60; live or paper).
+
+### Example
+```java
+// Import classes:
+import net.crossly.buyer.ApiClient;
+import net.crossly.buyer.ApiException;
+import net.crossly.buyer.Configuration;
+import net.crossly.buyer.auth.*;
+import net.crossly.buyer.models.*;
+import net.crossly.buyer.api.BuyerApi;
+
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("https://crossly.net/api");
+    
+    // Configure HTTP bearer authorization: BuyerOAuth
+    HttpBearerAuth BuyerOAuth = (HttpBearerAuth) defaultClient.getAuthentication("BuyerOAuth");
+    BuyerOAuth.setBearerToken("BEARER TOKEN");
+
+    BuyerApi apiInstance = new BuyerApi(defaultClient);
+    String id = "id_example"; // String | 
+    try {
+      GetBuyerVaultMarketPredictionMarketHistoryResponse result = apiInstance.getBuyerVaultMarketPredictionMarketHistory(id);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling BuyerApi#getBuyerVaultMarketPredictionMarketHistory");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **String**|  |
+
+### Return type
+
+**GetBuyerVaultMarketPredictionMarketHistoryResponse**
+
+### Authorization
+
+[BuyerOAuth](../README.md#BuyerOAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**400** | Error |  -  |
+**401** | Error |  -  |
+**403** | Error |  -  |
+**404** | Error |  -  |
+**429** | Error |  -  |
+**500** | Error |  -  |
+
+<a name="getBuyerVaultMarketShare"></a>
+# **getBuyerVaultMarketShare**
+> GetBuyerVaultMarketShareResponse getBuyerVaultMarketShare()
+
+Your Vault Shares: shares and percent of each item, cost, implied value at the last share price (display only, never a mark), subscriptions and payouts.
+
+### Example
+```java
+// Import classes:
+import net.crossly.buyer.ApiClient;
+import net.crossly.buyer.ApiException;
+import net.crossly.buyer.Configuration;
+import net.crossly.buyer.auth.*;
+import net.crossly.buyer.models.*;
+import net.crossly.buyer.api.BuyerApi;
+
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("https://crossly.net/api");
+    
+    // Configure HTTP bearer authorization: BuyerOAuth
+    HttpBearerAuth BuyerOAuth = (HttpBearerAuth) defaultClient.getAuthentication("BuyerOAuth");
+    BuyerOAuth.setBearerToken("BEARER TOKEN");
+
+    BuyerApi apiInstance = new BuyerApi(defaultClient);
+    try {
+      GetBuyerVaultMarketShareResponse result = apiInstance.getBuyerVaultMarketShare();
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling BuyerApi#getBuyerVaultMarketShare");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+### Parameters
+This endpoint does not need any parameter.
+
+### Return type
+
+**GetBuyerVaultMarketShareResponse**
+
+### Authorization
+
+[BuyerOAuth](../README.md#BuyerOAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**400** | Error |  -  |
+**401** | Error |  -  |
+**403** | Error |  -  |
+**404** | Error |  -  |
+**429** | Error |  -  |
+**500** | Error |  -  |
+
+<a name="getBuyerVaultMarketShareBasket"></a>
+# **getBuyerVaultMarketShareBasket**
+> GetBuyerVaultMarketShareBasketResponse getBuyerVaultMarketShareBasket(id)
+
+One theme basket: its series, weights and prices, and your holdings against them.
+
+### Example
+```java
+// Import classes:
+import net.crossly.buyer.ApiClient;
+import net.crossly.buyer.ApiException;
+import net.crossly.buyer.Configuration;
+import net.crossly.buyer.auth.*;
+import net.crossly.buyer.models.*;
+import net.crossly.buyer.api.BuyerApi;
+
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("https://crossly.net/api");
+    
+    // Configure HTTP bearer authorization: BuyerOAuth
+    HttpBearerAuth BuyerOAuth = (HttpBearerAuth) defaultClient.getAuthentication("BuyerOAuth");
+    BuyerOAuth.setBearerToken("BEARER TOKEN");
+
+    BuyerApi apiInstance = new BuyerApi(defaultClient);
+    String id = "id_example"; // String | 
+    try {
+      GetBuyerVaultMarketShareBasketResponse result = apiInstance.getBuyerVaultMarketShareBasket(id);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling BuyerApi#getBuyerVaultMarketShareBasket");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **String**|  |
+
+### Return type
+
+**GetBuyerVaultMarketShareBasketResponse**
+
+### Authorization
+
+[BuyerOAuth](../README.md#BuyerOAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**400** | Error |  -  |
+**401** | Error |  -  |
+**403** | Error |  -  |
+**404** | Error |  -  |
+**429** | Error |  -  |
+**500** | Error |  -  |
+
+<a name="getBuyerVaultMarketShareSery"></a>
+# **getBuyerVaultMarketShareSery**
+> GetBuyerVaultMarketShareSeryResponse getBuyerVaultMarketShareSery(id)
+
+One Vault Shares series: the offering, the share book, the latest fills, holders as percentages (nobody named) and buyouts.
+
+### Example
+```java
+// Import classes:
+import net.crossly.buyer.ApiClient;
+import net.crossly.buyer.ApiException;
+import net.crossly.buyer.Configuration;
+import net.crossly.buyer.auth.*;
+import net.crossly.buyer.models.*;
+import net.crossly.buyer.api.BuyerApi;
+
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("https://crossly.net/api");
+    
+    // Configure HTTP bearer authorization: BuyerOAuth
+    HttpBearerAuth BuyerOAuth = (HttpBearerAuth) defaultClient.getAuthentication("BuyerOAuth");
+    BuyerOAuth.setBearerToken("BEARER TOKEN");
+
+    BuyerApi apiInstance = new BuyerApi(defaultClient);
+    String id = "id_example"; // String | 
+    try {
+      GetBuyerVaultMarketShareSeryResponse result = apiInstance.getBuyerVaultMarketShareSery(id);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling BuyerApi#getBuyerVaultMarketShareSery");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **String**|  |
+
+### Return type
+
+**GetBuyerVaultMarketShareSeryResponse**
+
+### Authorization
+
+[BuyerOAuth](../README.md#BuyerOAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**400** | Error |  -  |
+**401** | Error |  -  |
+**403** | Error |  -  |
+**404** | Error |  -  |
+**429** | Error |  -  |
+**500** | Error |  -  |
+
+<a name="getBuyerVaultMarketShareSeryHistory"></a>
+# **getBuyerVaultMarketShareSeryHistory**
+> GetBuyerVaultMarketShareSeryHistoryResponse getBuyerVaultMarketShareSeryHistory(id)
+
+A Vault Shares series’ full price history (candles), the offering price and the appraisal history. Display only, never a mark.
+
+### Example
+```java
+// Import classes:
+import net.crossly.buyer.ApiClient;
+import net.crossly.buyer.ApiException;
+import net.crossly.buyer.Configuration;
+import net.crossly.buyer.auth.*;
+import net.crossly.buyer.models.*;
+import net.crossly.buyer.api.BuyerApi;
+
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("https://crossly.net/api");
+    
+    // Configure HTTP bearer authorization: BuyerOAuth
+    HttpBearerAuth BuyerOAuth = (HttpBearerAuth) defaultClient.getAuthentication("BuyerOAuth");
+    BuyerOAuth.setBearerToken("BEARER TOKEN");
+
+    BuyerApi apiInstance = new BuyerApi(defaultClient);
+    String id = "id_example"; // String | 
+    try {
+      GetBuyerVaultMarketShareSeryHistoryResponse result = apiInstance.getBuyerVaultMarketShareSeryHistory(id);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling BuyerApi#getBuyerVaultMarketShareSeryHistory");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **String**|  |
+
+### Return type
+
+**GetBuyerVaultMarketShareSeryHistoryResponse**
+
+### Authorization
+
+[BuyerOAuth](../README.md#BuyerOAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**400** | Error |  -  |
+**401** | Error |  -  |
+**403** | Error |  -  |
+**404** | Error |  -  |
+**429** | Error |  -  |
+**500** | Error |  -  |
+
+<a name="getBuyerVaultMarketShareSeryPerk"></a>
+# **getBuyerVaultMarketShareSeryPerk**
+> GetBuyerVaultMarketShareSeryPerkResponse getBuyerVaultMarketShareSeryPerk(id)
+
+Your holder perks on a series: badge, visit links, viewing days and your bookings.
+
+### Example
+```java
+// Import classes:
+import net.crossly.buyer.ApiClient;
+import net.crossly.buyer.ApiException;
+import net.crossly.buyer.Configuration;
+import net.crossly.buyer.auth.*;
+import net.crossly.buyer.models.*;
+import net.crossly.buyer.api.BuyerApi;
+
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("https://crossly.net/api");
+    
+    // Configure HTTP bearer authorization: BuyerOAuth
+    HttpBearerAuth BuyerOAuth = (HttpBearerAuth) defaultClient.getAuthentication("BuyerOAuth");
+    BuyerOAuth.setBearerToken("BEARER TOKEN");
+
+    BuyerApi apiInstance = new BuyerApi(defaultClient);
+    String id = "id_example"; // String | 
+    try {
+      GetBuyerVaultMarketShareSeryPerkResponse result = apiInstance.getBuyerVaultMarketShareSeryPerk(id);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling BuyerApi#getBuyerVaultMarketShareSeryPerk");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **String**|  |
+
+### Return type
+
+**GetBuyerVaultMarketShareSeryPerkResponse**
+
+### Authorization
+
+[BuyerOAuth](../README.md#BuyerOAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**400** | Error |  -  |
+**401** | Error |  -  |
+**403** | Error |  -  |
+**404** | Error |  -  |
+**429** | Error |  -  |
+**500** | Error |  -  |
+
 <a name="getBuyerVaultMarketWorth"></a>
 # **getBuyerVaultMarketWorth**
 > GetBuyerVaultMarketWorthResponse getBuyerVaultMarketWorth()
@@ -11069,6 +14450,501 @@ This endpoint does not need any parameter.
 ### Return type
 
 **GetBuyerVaultMarketWorthResponse**
+
+### Authorization
+
+[BuyerOAuth](../README.md#BuyerOAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**400** | Error |  -  |
+**401** | Error |  -  |
+**403** | Error |  -  |
+**404** | Error |  -  |
+**429** | Error |  -  |
+**500** | Error |  -  |
+
+<a name="getBuyerWholesaleCart"></a>
+# **getBuyerWholesaleCart**
+> GetBuyerWholesaleCartResponse getBuyerWholesaleCart()
+
+Your cart grouped per seller: trade terms, the order-minimum progress, every rule the cart breaks (the messages checkout would refuse with), PO reference, quote-locked lines, and the checkout methods, deposit and freight threshold for each group.
+
+### Example
+```java
+// Import classes:
+import net.crossly.buyer.ApiClient;
+import net.crossly.buyer.ApiException;
+import net.crossly.buyer.Configuration;
+import net.crossly.buyer.auth.*;
+import net.crossly.buyer.models.*;
+import net.crossly.buyer.api.BuyerApi;
+
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("https://crossly.net/api");
+    
+    // Configure HTTP bearer authorization: BuyerOAuth
+    HttpBearerAuth BuyerOAuth = (HttpBearerAuth) defaultClient.getAuthentication("BuyerOAuth");
+    BuyerOAuth.setBearerToken("BEARER TOKEN");
+
+    BuyerApi apiInstance = new BuyerApi(defaultClient);
+    try {
+      GetBuyerWholesaleCartResponse result = apiInstance.getBuyerWholesaleCart();
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling BuyerApi#getBuyerWholesaleCart");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+### Parameters
+This endpoint does not need any parameter.
+
+### Return type
+
+**GetBuyerWholesaleCartResponse**
+
+### Authorization
+
+[BuyerOAuth](../README.md#BuyerOAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**400** | Error |  -  |
+**401** | Error |  -  |
+**403** | Error |  -  |
+**404** | Error |  -  |
+**429** | Error |  -  |
+**500** | Error |  -  |
+
+<a name="getBuyerWholesaleCatalogApply"></a>
+# **getBuyerWholesaleCatalogApply**
+> GetBuyerWholesaleCatalogApplyResponse getBuyerWholesaleCatalogApply(storeSlug, catalogSlug)
+
+The application form for a store&#39;s wholesale catalog: the seller&#39;s requirements (resale certificate and accepted states, tax id, their custom questions) and your business info pre-filled. applicable&#x3D;false for a catalog you cannot apply to.
+
+### Example
+```java
+// Import classes:
+import net.crossly.buyer.ApiClient;
+import net.crossly.buyer.ApiException;
+import net.crossly.buyer.Configuration;
+import net.crossly.buyer.auth.*;
+import net.crossly.buyer.models.*;
+import net.crossly.buyer.api.BuyerApi;
+
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("https://crossly.net/api");
+    
+    // Configure HTTP bearer authorization: BuyerOAuth
+    HttpBearerAuth BuyerOAuth = (HttpBearerAuth) defaultClient.getAuthentication("BuyerOAuth");
+    BuyerOAuth.setBearerToken("BEARER TOKEN");
+
+    BuyerApi apiInstance = new BuyerApi(defaultClient);
+    String storeSlug = "storeSlug_example"; // String | 
+    String catalogSlug = "catalogSlug_example"; // String | 
+    try {
+      GetBuyerWholesaleCatalogApplyResponse result = apiInstance.getBuyerWholesaleCatalogApply(storeSlug, catalogSlug);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling BuyerApi#getBuyerWholesaleCatalogApply");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **storeSlug** | **String**|  |
+ **catalogSlug** | **String**|  |
+
+### Return type
+
+**GetBuyerWholesaleCatalogApplyResponse**
+
+### Authorization
+
+[BuyerOAuth](../README.md#BuyerOAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**400** | Error |  -  |
+**401** | Error |  -  |
+**403** | Error |  -  |
+**404** | Error |  -  |
+**429** | Error |  -  |
+**500** | Error |  -  |
+
+<a name="getBuyerWholesaleDrop"></a>
+# **getBuyerWholesaleDrop**
+> GetBuyerWholesaleDropResponse getBuyerWholesaleDrop(id)
+
+One trade drop open to you: its listings once live (add one to your cart to reserve or buy it), and your reservations in it. 404 for a drop not open to you.
+
+### Example
+```java
+// Import classes:
+import net.crossly.buyer.ApiClient;
+import net.crossly.buyer.ApiException;
+import net.crossly.buyer.Configuration;
+import net.crossly.buyer.auth.*;
+import net.crossly.buyer.models.*;
+import net.crossly.buyer.api.BuyerApi;
+
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("https://crossly.net/api");
+    
+    // Configure HTTP bearer authorization: BuyerOAuth
+    HttpBearerAuth BuyerOAuth = (HttpBearerAuth) defaultClient.getAuthentication("BuyerOAuth");
+    BuyerOAuth.setBearerToken("BEARER TOKEN");
+
+    BuyerApi apiInstance = new BuyerApi(defaultClient);
+    String id = "id_example"; // String | 
+    try {
+      GetBuyerWholesaleDropResponse result = apiInstance.getBuyerWholesaleDrop(id);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling BuyerApi#getBuyerWholesaleDrop");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **String**|  |
+
+### Return type
+
+**GetBuyerWholesaleDropResponse**
+
+### Authorization
+
+[BuyerOAuth](../README.md#BuyerOAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**400** | Error |  -  |
+**401** | Error |  -  |
+**403** | Error |  -  |
+**404** | Error |  -  |
+**429** | Error |  -  |
+**500** | Error |  -  |
+
+<a name="getBuyerWholesaleInvoicePayQuote"></a>
+# **getBuyerWholesaleInvoicePayQuote**
+> GetBuyerWholesaleInvoicePayQuoteResponse getBuyerWholesaleInvoicePayQuote(id)
+
+What paying an on-account invoice costs now: balance due, the early-pay discount if still open, the minimum part payment and the methods (card, ach).
+
+### Example
+```java
+// Import classes:
+import net.crossly.buyer.ApiClient;
+import net.crossly.buyer.ApiException;
+import net.crossly.buyer.Configuration;
+import net.crossly.buyer.auth.*;
+import net.crossly.buyer.models.*;
+import net.crossly.buyer.api.BuyerApi;
+
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("https://crossly.net/api");
+    
+    // Configure HTTP bearer authorization: BuyerOAuth
+    HttpBearerAuth BuyerOAuth = (HttpBearerAuth) defaultClient.getAuthentication("BuyerOAuth");
+    BuyerOAuth.setBearerToken("BEARER TOKEN");
+
+    BuyerApi apiInstance = new BuyerApi(defaultClient);
+    String id = "id_example"; // String | 
+    try {
+      GetBuyerWholesaleInvoicePayQuoteResponse result = apiInstance.getBuyerWholesaleInvoicePayQuote(id);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling BuyerApi#getBuyerWholesaleInvoicePayQuote");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **String**|  |
+
+### Return type
+
+**GetBuyerWholesaleInvoicePayQuoteResponse**
+
+### Authorization
+
+[BuyerOAuth](../README.md#BuyerOAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**400** | Error |  -  |
+**401** | Error |  -  |
+**403** | Error |  -  |
+**404** | Error |  -  |
+**429** | Error |  -  |
+**500** | Error |  -  |
+
+<a name="getBuyerWholesaleOrderSheet"></a>
+# **getBuyerWholesaleOrderSheet**
+> BuyerWholesaleOrderSheetResponse getBuyerWholesaleOrderSheet(id)
+
+One order sheet priced TODAY at its quantities, with stock, trade terms and flags (unavailable, out_of_stock, short_stock, price_hidden, needs_option).
+
+### Example
+```java
+// Import classes:
+import net.crossly.buyer.ApiClient;
+import net.crossly.buyer.ApiException;
+import net.crossly.buyer.Configuration;
+import net.crossly.buyer.auth.*;
+import net.crossly.buyer.models.*;
+import net.crossly.buyer.api.BuyerApi;
+
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("https://crossly.net/api");
+    
+    // Configure HTTP bearer authorization: BuyerOAuth
+    HttpBearerAuth BuyerOAuth = (HttpBearerAuth) defaultClient.getAuthentication("BuyerOAuth");
+    BuyerOAuth.setBearerToken("BEARER TOKEN");
+
+    BuyerApi apiInstance = new BuyerApi(defaultClient);
+    String id = "id_example"; // String | 
+    try {
+      BuyerWholesaleOrderSheetResponse result = apiInstance.getBuyerWholesaleOrderSheet(id);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling BuyerApi#getBuyerWholesaleOrderSheet");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **String**|  |
+
+### Return type
+
+**BuyerWholesaleOrderSheetResponse**
+
+### Authorization
+
+[BuyerOAuth](../README.md#BuyerOAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**400** | Error |  -  |
+**401** | Error |  -  |
+**403** | Error |  -  |
+**404** | Error |  -  |
+**429** | Error |  -  |
+**500** | Error |  -  |
+
+<a name="getBuyerWholesaleQuote"></a>
+# **getBuyerWholesaleQuote**
+> BuyerWholesaleQuoteResponse getBuyerWholesaleQuote(id)
+
+One of your quotes with its items, the seller&#39;s prices and expiry.
+
+### Example
+```java
+// Import classes:
+import net.crossly.buyer.ApiClient;
+import net.crossly.buyer.ApiException;
+import net.crossly.buyer.Configuration;
+import net.crossly.buyer.auth.*;
+import net.crossly.buyer.models.*;
+import net.crossly.buyer.api.BuyerApi;
+
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("https://crossly.net/api");
+    
+    // Configure HTTP bearer authorization: BuyerOAuth
+    HttpBearerAuth BuyerOAuth = (HttpBearerAuth) defaultClient.getAuthentication("BuyerOAuth");
+    BuyerOAuth.setBearerToken("BEARER TOKEN");
+
+    BuyerApi apiInstance = new BuyerApi(defaultClient);
+    String id = "id_example"; // String | 
+    try {
+      BuyerWholesaleQuoteResponse result = apiInstance.getBuyerWholesaleQuote(id);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling BuyerApi#getBuyerWholesaleQuote");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **String**|  |
+
+### Return type
+
+**BuyerWholesaleQuoteResponse**
+
+### Authorization
+
+[BuyerOAuth](../README.md#BuyerOAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**400** | Error |  -  |
+**401** | Error |  -  |
+**403** | Error |  -  |
+**404** | Error |  -  |
+**429** | Error |  -  |
+**500** | Error |  -  |
+
+<a name="getBuyerWholesaleReorder"></a>
+# **getBuyerWholesaleReorder**
+> GetBuyerWholesaleReorderResponse getBuyerWholesaleReorder(id)
+
+Buy again: a past wholesale order (purchase or order id) as order-sheet lines at the same quantities, priced today, out-of-stock flagged.
+
+### Example
+```java
+// Import classes:
+import net.crossly.buyer.ApiClient;
+import net.crossly.buyer.ApiException;
+import net.crossly.buyer.Configuration;
+import net.crossly.buyer.auth.*;
+import net.crossly.buyer.models.*;
+import net.crossly.buyer.api.BuyerApi;
+
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("https://crossly.net/api");
+    
+    // Configure HTTP bearer authorization: BuyerOAuth
+    HttpBearerAuth BuyerOAuth = (HttpBearerAuth) defaultClient.getAuthentication("BuyerOAuth");
+    BuyerOAuth.setBearerToken("BEARER TOKEN");
+
+    BuyerApi apiInstance = new BuyerApi(defaultClient);
+    String id = "id_example"; // String | 
+    try {
+      GetBuyerWholesaleReorderResponse result = apiInstance.getBuyerWholesaleReorder(id);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling BuyerApi#getBuyerWholesaleReorder");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **String**|  |
+
+### Return type
+
+**GetBuyerWholesaleReorderResponse**
 
 ### Authorization
 
@@ -11993,6 +15869,73 @@ This endpoint does not need any parameter.
 **429** | Error |  -  |
 **500** | Error |  -  |
 
+<a name="listBuyerCompanyApprovals"></a>
+# **listBuyerCompanyApprovals**
+> BuyerResponse3 listBuyerCompanyApprovals()
+
+Spend approval requests (owners and accounts payable see all; others their own). ?status&#x3D;pending|approved|declined|used|expired.
+
+### Example
+```java
+// Import classes:
+import net.crossly.buyer.ApiClient;
+import net.crossly.buyer.ApiException;
+import net.crossly.buyer.Configuration;
+import net.crossly.buyer.auth.*;
+import net.crossly.buyer.models.*;
+import net.crossly.buyer.api.BuyerApi;
+
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("https://crossly.net/api");
+    
+    // Configure HTTP bearer authorization: BuyerOAuth
+    HttpBearerAuth BuyerOAuth = (HttpBearerAuth) defaultClient.getAuthentication("BuyerOAuth");
+    BuyerOAuth.setBearerToken("BEARER TOKEN");
+
+    BuyerApi apiInstance = new BuyerApi(defaultClient);
+    try {
+      BuyerResponse3 result = apiInstance.listBuyerCompanyApprovals();
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling BuyerApi#listBuyerCompanyApprovals");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+### Parameters
+This endpoint does not need any parameter.
+
+### Return type
+
+**BuyerResponse3**
+
+### Authorization
+
+[BuyerOAuth](../README.md#BuyerOAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**400** | Error |  -  |
+**401** | Error |  -  |
+**403** | Error |  -  |
+**404** | Error |  -  |
+**429** | Error |  -  |
+**500** | Error |  -  |
+
 <a name="listBuyerConsolidations"></a>
 # **listBuyerConsolidations**
 > BuyerResponse3 listBuyerConsolidations()
@@ -12110,6 +16053,144 @@ Name | Type | Description  | Notes
 ### Return type
 
 **ListBuyerWishlistMembersResponse**
+
+### Authorization
+
+[BuyerOAuth](../README.md#BuyerOAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**400** | Error |  -  |
+**401** | Error |  -  |
+**403** | Error |  -  |
+**404** | Error |  -  |
+**429** | Error |  -  |
+**500** | Error |  -  |
+
+<a name="listBuyerCreationReviewable"></a>
+# **listBuyerCreationReviewable**
+> ListBuyerCreationReviewableResponse listBuyerCreationReviewable(purchaseRef)
+
+Creations you bought (decor, wearables, interactive objects, cards from packs) and your review of each.
+
+### Example
+```java
+// Import classes:
+import net.crossly.buyer.ApiClient;
+import net.crossly.buyer.ApiException;
+import net.crossly.buyer.Configuration;
+import net.crossly.buyer.auth.*;
+import net.crossly.buyer.models.*;
+import net.crossly.buyer.api.BuyerApi;
+
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("https://crossly.net/api");
+    
+    // Configure HTTP bearer authorization: BuyerOAuth
+    HttpBearerAuth BuyerOAuth = (HttpBearerAuth) defaultClient.getAuthentication("BuyerOAuth");
+    BuyerOAuth.setBearerToken("BEARER TOKEN");
+
+    BuyerApi apiInstance = new BuyerApi(defaultClient);
+    String purchaseRef = "purchaseRef_example"; // String | Only the creation this purchase bought.
+    try {
+      ListBuyerCreationReviewableResponse result = apiInstance.listBuyerCreationReviewable(purchaseRef);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling BuyerApi#listBuyerCreationReviewable");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **purchaseRef** | **String**| Only the creation this purchase bought. | [optional]
+
+### Return type
+
+**ListBuyerCreationReviewableResponse**
+
+### Authorization
+
+[BuyerOAuth](../README.md#BuyerOAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**400** | Error |  -  |
+**401** | Error |  -  |
+**403** | Error |  -  |
+**404** | Error |  -  |
+**429** | Error |  -  |
+**500** | Error |  -  |
+
+<a name="listBuyerEvents"></a>
+# **listBuyerEvents**
+> ListBuyerEventsResponse listBuyerEvents()
+
+Upcoming and live seller events across Crossly, soonest first.
+
+### Example
+```java
+// Import classes:
+import net.crossly.buyer.ApiClient;
+import net.crossly.buyer.ApiException;
+import net.crossly.buyer.Configuration;
+import net.crossly.buyer.auth.*;
+import net.crossly.buyer.models.*;
+import net.crossly.buyer.api.BuyerApi;
+
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("https://crossly.net/api");
+    
+    // Configure HTTP bearer authorization: BuyerOAuth
+    HttpBearerAuth BuyerOAuth = (HttpBearerAuth) defaultClient.getAuthentication("BuyerOAuth");
+    BuyerOAuth.setBearerToken("BEARER TOKEN");
+
+    BuyerApi apiInstance = new BuyerApi(defaultClient);
+    try {
+      ListBuyerEventsResponse result = apiInstance.listBuyerEvents();
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling BuyerApi#listBuyerEvents");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+### Parameters
+This endpoint does not need any parameter.
+
+### Return type
+
+**ListBuyerEventsResponse**
 
 ### Authorization
 
@@ -12650,6 +16731,140 @@ This endpoint does not need any parameter.
 ### Return type
 
 **ListBuyerGiftSentResponse**
+
+### Authorization
+
+[BuyerOAuth](../README.md#BuyerOAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**400** | Error |  -  |
+**401** | Error |  -  |
+**403** | Error |  -  |
+**404** | Error |  -  |
+**429** | Error |  -  |
+**500** | Error |  -  |
+
+<a name="listBuyerHomeBuilders"></a>
+# **listBuyerHomeBuilders**
+> ListBuyerHomeBuildersResponse listBuyerHomeBuilders()
+
+Your co-builders: friends who may arrange your home with you.
+
+### Example
+```java
+// Import classes:
+import net.crossly.buyer.ApiClient;
+import net.crossly.buyer.ApiException;
+import net.crossly.buyer.Configuration;
+import net.crossly.buyer.auth.*;
+import net.crossly.buyer.models.*;
+import net.crossly.buyer.api.BuyerApi;
+
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("https://crossly.net/api");
+    
+    // Configure HTTP bearer authorization: BuyerOAuth
+    HttpBearerAuth BuyerOAuth = (HttpBearerAuth) defaultClient.getAuthentication("BuyerOAuth");
+    BuyerOAuth.setBearerToken("BEARER TOKEN");
+
+    BuyerApi apiInstance = new BuyerApi(defaultClient);
+    try {
+      ListBuyerHomeBuildersResponse result = apiInstance.listBuyerHomeBuilders();
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling BuyerApi#listBuyerHomeBuilders");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+### Parameters
+This endpoint does not need any parameter.
+
+### Return type
+
+**ListBuyerHomeBuildersResponse**
+
+### Authorization
+
+[BuyerOAuth](../README.md#BuyerOAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**400** | Error |  -  |
+**401** | Error |  -  |
+**403** | Error |  -  |
+**404** | Error |  -  |
+**429** | Error |  -  |
+**500** | Error |  -  |
+
+<a name="listBuyerHomeBuilding"></a>
+# **listBuyerHomeBuilding**
+> ListBuyerHomeBuildingResponse listBuyerHomeBuilding()
+
+The homes you co-build, to visit and arrange.
+
+### Example
+```java
+// Import classes:
+import net.crossly.buyer.ApiClient;
+import net.crossly.buyer.ApiException;
+import net.crossly.buyer.Configuration;
+import net.crossly.buyer.auth.*;
+import net.crossly.buyer.models.*;
+import net.crossly.buyer.api.BuyerApi;
+
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("https://crossly.net/api");
+    
+    // Configure HTTP bearer authorization: BuyerOAuth
+    HttpBearerAuth BuyerOAuth = (HttpBearerAuth) defaultClient.getAuthentication("BuyerOAuth");
+    BuyerOAuth.setBearerToken("BEARER TOKEN");
+
+    BuyerApi apiInstance = new BuyerApi(defaultClient);
+    try {
+      ListBuyerHomeBuildingResponse result = apiInstance.listBuyerHomeBuilding();
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling BuyerApi#listBuyerHomeBuilding");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+### Parameters
+This endpoint does not need any parameter.
+
+### Return type
+
+**ListBuyerHomeBuildingResponse**
 
 ### Authorization
 
@@ -13219,6 +17434,73 @@ Name | Type | Description  | Notes
 **429** | Error |  -  |
 **500** | Error |  -  |
 
+<a name="listBuyerLoyalty"></a>
+# **listBuyerLoyalty**
+> ListBuyerLoyaltyResponse listBuyerLoyalty()
+
+Your loyalty clubs: the tier you hold, progress and how to reach the next tier, the typed perks you hold now, and your history.
+
+### Example
+```java
+// Import classes:
+import net.crossly.buyer.ApiClient;
+import net.crossly.buyer.ApiException;
+import net.crossly.buyer.Configuration;
+import net.crossly.buyer.auth.*;
+import net.crossly.buyer.models.*;
+import net.crossly.buyer.api.BuyerApi;
+
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("https://crossly.net/api");
+    
+    // Configure HTTP bearer authorization: BuyerOAuth
+    HttpBearerAuth BuyerOAuth = (HttpBearerAuth) defaultClient.getAuthentication("BuyerOAuth");
+    BuyerOAuth.setBearerToken("BEARER TOKEN");
+
+    BuyerApi apiInstance = new BuyerApi(defaultClient);
+    try {
+      ListBuyerLoyaltyResponse result = apiInstance.listBuyerLoyalty();
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling BuyerApi#listBuyerLoyalty");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+### Parameters
+This endpoint does not need any parameter.
+
+### Return type
+
+**ListBuyerLoyaltyResponse**
+
+### Authorization
+
+[BuyerOAuth](../README.md#BuyerOAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**400** | Error |  -  |
+**401** | Error |  -  |
+**403** | Error |  -  |
+**404** | Error |  -  |
+**429** | Error |  -  |
+**500** | Error |  -  |
+
 <a name="listBuyerMarketBids"></a>
 # **listBuyerMarketBids**
 > BuyerResponse3 listBuyerMarketBids()
@@ -13750,6 +18032,75 @@ Name | Type | Description  | Notes
 ### Return type
 
 **BuyerResponse3**
+
+### Authorization
+
+[BuyerOAuth](../README.md#BuyerOAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**400** | Error |  -  |
+**401** | Error |  -  |
+**403** | Error |  -  |
+**404** | Error |  -  |
+**429** | Error |  -  |
+**500** | Error |  -  |
+
+<a name="listBuyerPaymentMethods"></a>
+# **listBuyerPaymentMethods**
+> ListBuyerPaymentMethodsResponse listBuyerPaymentMethods()
+
+Your saved cards, the default first.
+
+Brand, last 4, expiry and whether it is your default. The &#x60;id&#x60; is what checkout and auction bids take as &#x60;paymentMethodId&#x60;.
+
+### Example
+```java
+// Import classes:
+import net.crossly.buyer.ApiClient;
+import net.crossly.buyer.ApiException;
+import net.crossly.buyer.Configuration;
+import net.crossly.buyer.auth.*;
+import net.crossly.buyer.models.*;
+import net.crossly.buyer.api.BuyerApi;
+
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("https://crossly.net/api");
+    
+    // Configure HTTP bearer authorization: BuyerOAuth
+    HttpBearerAuth BuyerOAuth = (HttpBearerAuth) defaultClient.getAuthentication("BuyerOAuth");
+    BuyerOAuth.setBearerToken("BEARER TOKEN");
+
+    BuyerApi apiInstance = new BuyerApi(defaultClient);
+    try {
+      ListBuyerPaymentMethodsResponse result = apiInstance.listBuyerPaymentMethods();
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling BuyerApi#listBuyerPaymentMethods");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+### Parameters
+This endpoint does not need any parameter.
+
+### Return type
+
+**ListBuyerPaymentMethodsResponse**
 
 ### Authorization
 
@@ -14378,6 +18729,77 @@ This endpoint does not need any parameter.
 **429** | Error |  -  |
 **500** | Error |  -  |
 
+<a name="listBuyerStoreListings"></a>
+# **listBuyerStoreListings**
+> ListBuyerStoreListingsResponse listBuyerStoreListings(slug)
+
+A store&#39;s live listings, filtered by tag, category, text and program chips (f: on_sale, discount_eligible, code_eligible, group_buy_active, rentable, wholesale_available…; all must hold), sorted; each card carries its program badges.
+
+### Example
+```java
+// Import classes:
+import net.crossly.buyer.ApiClient;
+import net.crossly.buyer.ApiException;
+import net.crossly.buyer.Configuration;
+import net.crossly.buyer.auth.*;
+import net.crossly.buyer.models.*;
+import net.crossly.buyer.api.BuyerApi;
+
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("https://crossly.net/api");
+    
+    // Configure HTTP bearer authorization: BuyerOAuth
+    HttpBearerAuth BuyerOAuth = (HttpBearerAuth) defaultClient.getAuthentication("BuyerOAuth");
+    BuyerOAuth.setBearerToken("BEARER TOKEN");
+
+    BuyerApi apiInstance = new BuyerApi(defaultClient);
+    String slug = "slug_example"; // String | 
+    try {
+      ListBuyerStoreListingsResponse result = apiInstance.listBuyerStoreListings(slug);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling BuyerApi#listBuyerStoreListings");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **slug** | **String**|  |
+
+### Return type
+
+**ListBuyerStoreListingsResponse**
+
+### Authorization
+
+[BuyerOAuth](../README.md#BuyerOAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**400** | Error |  -  |
+**401** | Error |  -  |
+**403** | Error |  -  |
+**404** | Error |  -  |
+**429** | Error |  -  |
+**500** | Error |  -  |
+
 <a name="listBuyerSubscriptions"></a>
 # **listBuyerSubscriptions**
 > ListBuyerSubscriptionsResponse listBuyerSubscriptions()
@@ -14916,6 +19338,810 @@ This endpoint does not need any parameter.
 **429** | Error |  -  |
 **500** | Error |  -  |
 
+<a name="listBuyerVaultMarketOptionCombos"></a>
+# **listBuyerVaultMarketOptionCombos**
+> ListBuyerVaultMarketOptionCombosResponse listBuyerVaultMarketOptionCombos()
+
+Your options strategies (working by default) with their legs, net price per unit and fills. Read only.
+
+### Example
+```java
+// Import classes:
+import net.crossly.buyer.ApiClient;
+import net.crossly.buyer.ApiException;
+import net.crossly.buyer.Configuration;
+import net.crossly.buyer.auth.*;
+import net.crossly.buyer.models.*;
+import net.crossly.buyer.api.BuyerApi;
+
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("https://crossly.net/api");
+    
+    // Configure HTTP bearer authorization: BuyerOAuth
+    HttpBearerAuth BuyerOAuth = (HttpBearerAuth) defaultClient.getAuthentication("BuyerOAuth");
+    BuyerOAuth.setBearerToken("BEARER TOKEN");
+
+    BuyerApi apiInstance = new BuyerApi(defaultClient);
+    try {
+      ListBuyerVaultMarketOptionCombosResponse result = apiInstance.listBuyerVaultMarketOptionCombos();
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling BuyerApi#listBuyerVaultMarketOptionCombos");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+### Parameters
+This endpoint does not need any parameter.
+
+### Return type
+
+**ListBuyerVaultMarketOptionCombosResponse**
+
+### Authorization
+
+[BuyerOAuth](../README.md#BuyerOAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**400** | Error |  -  |
+**401** | Error |  -  |
+**403** | Error |  -  |
+**404** | Error |  -  |
+**429** | Error |  -  |
+**500** | Error |  -  |
+
+<a name="listBuyerVaultMarketOptionNotices"></a>
+# **listBuyerVaultMarketOptionNotices**
+> ListBuyerVaultMarketOptionNoticesResponse listBuyerVaultMarketOptionNotices()
+
+Your options notices: expiry warnings, auto-closes, exercises, assignments, expiries worthless and rolls. Read only.
+
+### Example
+```java
+// Import classes:
+import net.crossly.buyer.ApiClient;
+import net.crossly.buyer.ApiException;
+import net.crossly.buyer.Configuration;
+import net.crossly.buyer.auth.*;
+import net.crossly.buyer.models.*;
+import net.crossly.buyer.api.BuyerApi;
+
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("https://crossly.net/api");
+    
+    // Configure HTTP bearer authorization: BuyerOAuth
+    HttpBearerAuth BuyerOAuth = (HttpBearerAuth) defaultClient.getAuthentication("BuyerOAuth");
+    BuyerOAuth.setBearerToken("BEARER TOKEN");
+
+    BuyerApi apiInstance = new BuyerApi(defaultClient);
+    try {
+      ListBuyerVaultMarketOptionNoticesResponse result = apiInstance.listBuyerVaultMarketOptionNotices();
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling BuyerApi#listBuyerVaultMarketOptionNotices");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+### Parameters
+This endpoint does not need any parameter.
+
+### Return type
+
+**ListBuyerVaultMarketOptionNoticesResponse**
+
+### Authorization
+
+[BuyerOAuth](../README.md#BuyerOAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**400** | Error |  -  |
+**401** | Error |  -  |
+**403** | Error |  -  |
+**404** | Error |  -  |
+**429** | Error |  -  |
+**500** | Error |  -  |
+
+<a name="listBuyerVaultMarketOptionSeries"></a>
+# **listBuyerVaultMarketOptionSeries**
+> ListBuyerVaultMarketOptionSeriesResponse listBuyerVaultMarketOptionSeries()
+
+Fractional options series on Crossly prices (indexes, and tier A item keys with 90 days of reliable marks): underlying, status and eligibility. Read only.
+
+### Example
+```java
+// Import classes:
+import net.crossly.buyer.ApiClient;
+import net.crossly.buyer.ApiException;
+import net.crossly.buyer.Configuration;
+import net.crossly.buyer.auth.*;
+import net.crossly.buyer.models.*;
+import net.crossly.buyer.api.BuyerApi;
+
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("https://crossly.net/api");
+    
+    // Configure HTTP bearer authorization: BuyerOAuth
+    HttpBearerAuth BuyerOAuth = (HttpBearerAuth) defaultClient.getAuthentication("BuyerOAuth");
+    BuyerOAuth.setBearerToken("BEARER TOKEN");
+
+    BuyerApi apiInstance = new BuyerApi(defaultClient);
+    try {
+      ListBuyerVaultMarketOptionSeriesResponse result = apiInstance.listBuyerVaultMarketOptionSeries();
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling BuyerApi#listBuyerVaultMarketOptionSeries");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+### Parameters
+This endpoint does not need any parameter.
+
+### Return type
+
+**ListBuyerVaultMarketOptionSeriesResponse**
+
+### Authorization
+
+[BuyerOAuth](../README.md#BuyerOAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**400** | Error |  -  |
+**401** | Error |  -  |
+**403** | Error |  -  |
+**404** | Error |  -  |
+**429** | Error |  -  |
+**500** | Error |  -  |
+
+<a name="listBuyerVaultMarketOptionStrategies"></a>
+# **listBuyerVaultMarketOptionStrategies**
+> ListBuyerVaultMarketOptionStrategiesResponse listBuyerVaultMarketOptionStrategies()
+
+The options strategies the picker builds (vertical, calendar, diagonal, straddle, strangle, butterfly, iron condor, collar) and what each does. Read only.
+
+### Example
+```java
+// Import classes:
+import net.crossly.buyer.ApiClient;
+import net.crossly.buyer.ApiException;
+import net.crossly.buyer.Configuration;
+import net.crossly.buyer.auth.*;
+import net.crossly.buyer.models.*;
+import net.crossly.buyer.api.BuyerApi;
+
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("https://crossly.net/api");
+    
+    // Configure HTTP bearer authorization: BuyerOAuth
+    HttpBearerAuth BuyerOAuth = (HttpBearerAuth) defaultClient.getAuthentication("BuyerOAuth");
+    BuyerOAuth.setBearerToken("BEARER TOKEN");
+
+    BuyerApi apiInstance = new BuyerApi(defaultClient);
+    try {
+      ListBuyerVaultMarketOptionStrategiesResponse result = apiInstance.listBuyerVaultMarketOptionStrategies();
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling BuyerApi#listBuyerVaultMarketOptionStrategies");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+### Parameters
+This endpoint does not need any parameter.
+
+### Return type
+
+**ListBuyerVaultMarketOptionStrategiesResponse**
+
+### Authorization
+
+[BuyerOAuth](../README.md#BuyerOAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**400** | Error |  -  |
+**401** | Error |  -  |
+**403** | Error |  -  |
+**404** | Error |  -  |
+**429** | Error |  -  |
+**500** | Error |  -  |
+
+<a name="listBuyerVaultMarketPredictionComments"></a>
+# **listBuyerVaultMarketPredictionComments**
+> ListBuyerVaultMarketPredictionCommentsResponse listBuyerVaultMarketPredictionComments()
+
+A prediction market’s (or series’) discussion thread. Read only.
+
+### Example
+```java
+// Import classes:
+import net.crossly.buyer.ApiClient;
+import net.crossly.buyer.ApiException;
+import net.crossly.buyer.Configuration;
+import net.crossly.buyer.auth.*;
+import net.crossly.buyer.models.*;
+import net.crossly.buyer.api.BuyerApi;
+
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("https://crossly.net/api");
+    
+    // Configure HTTP bearer authorization: BuyerOAuth
+    HttpBearerAuth BuyerOAuth = (HttpBearerAuth) defaultClient.getAuthentication("BuyerOAuth");
+    BuyerOAuth.setBearerToken("BEARER TOKEN");
+
+    BuyerApi apiInstance = new BuyerApi(defaultClient);
+    try {
+      ListBuyerVaultMarketPredictionCommentsResponse result = apiInstance.listBuyerVaultMarketPredictionComments();
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling BuyerApi#listBuyerVaultMarketPredictionComments");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+### Parameters
+This endpoint does not need any parameter.
+
+### Return type
+
+**ListBuyerVaultMarketPredictionCommentsResponse**
+
+### Authorization
+
+[BuyerOAuth](../README.md#BuyerOAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**400** | Error |  -  |
+**401** | Error |  -  |
+**403** | Error |  -  |
+**404** | Error |  -  |
+**429** | Error |  -  |
+**500** | Error |  -  |
+
+<a name="listBuyerVaultMarketPredictionMarkets"></a>
+# **listBuyerVaultMarketPredictionMarkets**
+> ListBuyerVaultMarketPredictionMarketsResponse listBuyerVaultMarketPredictionMarkets()
+
+\&quot;Will it hit?\&quot; prediction markets on Crossly prices (filter by book key, index slug, kind, status, expiry or text): strike, expiry, best Yes bid and ask, last price and the probability (the market&#39;s own price, display only).
+
+### Example
+```java
+// Import classes:
+import net.crossly.buyer.ApiClient;
+import net.crossly.buyer.ApiException;
+import net.crossly.buyer.Configuration;
+import net.crossly.buyer.auth.*;
+import net.crossly.buyer.models.*;
+import net.crossly.buyer.api.BuyerApi;
+
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("https://crossly.net/api");
+    
+    // Configure HTTP bearer authorization: BuyerOAuth
+    HttpBearerAuth BuyerOAuth = (HttpBearerAuth) defaultClient.getAuthentication("BuyerOAuth");
+    BuyerOAuth.setBearerToken("BEARER TOKEN");
+
+    BuyerApi apiInstance = new BuyerApi(defaultClient);
+    try {
+      ListBuyerVaultMarketPredictionMarketsResponse result = apiInstance.listBuyerVaultMarketPredictionMarkets();
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling BuyerApi#listBuyerVaultMarketPredictionMarkets");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+### Parameters
+This endpoint does not need any parameter.
+
+### Return type
+
+**ListBuyerVaultMarketPredictionMarketsResponse**
+
+### Authorization
+
+[BuyerOAuth](../README.md#BuyerOAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**400** | Error |  -  |
+**401** | Error |  -  |
+**403** | Error |  -  |
+**404** | Error |  -  |
+**429** | Error |  -  |
+**500** | Error |  -  |
+
+<a name="listBuyerVaultMarketPredictionPositions"></a>
+# **listBuyerVaultMarketPredictionPositions**
+> ListBuyerVaultMarketPredictionPositionsResponse listBuyerVaultMarketPredictionPositions()
+
+Your prediction positions (practice and live): side, contracts, cost, value at the last price, payout or refund once settled.
+
+### Example
+```java
+// Import classes:
+import net.crossly.buyer.ApiClient;
+import net.crossly.buyer.ApiException;
+import net.crossly.buyer.Configuration;
+import net.crossly.buyer.auth.*;
+import net.crossly.buyer.models.*;
+import net.crossly.buyer.api.BuyerApi;
+
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("https://crossly.net/api");
+    
+    // Configure HTTP bearer authorization: BuyerOAuth
+    HttpBearerAuth BuyerOAuth = (HttpBearerAuth) defaultClient.getAuthentication("BuyerOAuth");
+    BuyerOAuth.setBearerToken("BEARER TOKEN");
+
+    BuyerApi apiInstance = new BuyerApi(defaultClient);
+    try {
+      ListBuyerVaultMarketPredictionPositionsResponse result = apiInstance.listBuyerVaultMarketPredictionPositions();
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling BuyerApi#listBuyerVaultMarketPredictionPositions");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+### Parameters
+This endpoint does not need any parameter.
+
+### Return type
+
+**ListBuyerVaultMarketPredictionPositionsResponse**
+
+### Authorization
+
+[BuyerOAuth](../README.md#BuyerOAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**400** | Error |  -  |
+**401** | Error |  -  |
+**403** | Error |  -  |
+**404** | Error |  -  |
+**429** | Error |  -  |
+**500** | Error |  -  |
+
+<a name="listBuyerVaultMarketShareAutoInvest"></a>
+# **listBuyerVaultMarketShareAutoInvest**
+> ListBuyerVaultMarketShareAutoInvestResponse listBuyerVaultMarketShareAutoInvest()
+
+Your recurring Vault Shares auto-invest plans.
+
+### Example
+```java
+// Import classes:
+import net.crossly.buyer.ApiClient;
+import net.crossly.buyer.ApiException;
+import net.crossly.buyer.Configuration;
+import net.crossly.buyer.auth.*;
+import net.crossly.buyer.models.*;
+import net.crossly.buyer.api.BuyerApi;
+
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("https://crossly.net/api");
+    
+    // Configure HTTP bearer authorization: BuyerOAuth
+    HttpBearerAuth BuyerOAuth = (HttpBearerAuth) defaultClient.getAuthentication("BuyerOAuth");
+    BuyerOAuth.setBearerToken("BEARER TOKEN");
+
+    BuyerApi apiInstance = new BuyerApi(defaultClient);
+    try {
+      ListBuyerVaultMarketShareAutoInvestResponse result = apiInstance.listBuyerVaultMarketShareAutoInvest();
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling BuyerApi#listBuyerVaultMarketShareAutoInvest");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+### Parameters
+This endpoint does not need any parameter.
+
+### Return type
+
+**ListBuyerVaultMarketShareAutoInvestResponse**
+
+### Authorization
+
+[BuyerOAuth](../README.md#BuyerOAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**400** | Error |  -  |
+**401** | Error |  -  |
+**403** | Error |  -  |
+**404** | Error |  -  |
+**429** | Error |  -  |
+**500** | Error |  -  |
+
+<a name="listBuyerVaultMarketShareBaskets"></a>
+# **listBuyerVaultMarketShareBaskets**
+> ListBuyerVaultMarketShareBasketsResponse listBuyerVaultMarketShareBaskets()
+
+Theme baskets: model portfolios of Vault Shares series you would own directly, never a fund.
+
+### Example
+```java
+// Import classes:
+import net.crossly.buyer.ApiClient;
+import net.crossly.buyer.ApiException;
+import net.crossly.buyer.Configuration;
+import net.crossly.buyer.auth.*;
+import net.crossly.buyer.models.*;
+import net.crossly.buyer.api.BuyerApi;
+
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("https://crossly.net/api");
+    
+    // Configure HTTP bearer authorization: BuyerOAuth
+    HttpBearerAuth BuyerOAuth = (HttpBearerAuth) defaultClient.getAuthentication("BuyerOAuth");
+    BuyerOAuth.setBearerToken("BEARER TOKEN");
+
+    BuyerApi apiInstance = new BuyerApi(defaultClient);
+    try {
+      ListBuyerVaultMarketShareBasketsResponse result = apiInstance.listBuyerVaultMarketShareBaskets();
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling BuyerApi#listBuyerVaultMarketShareBaskets");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+### Parameters
+This endpoint does not need any parameter.
+
+### Return type
+
+**ListBuyerVaultMarketShareBasketsResponse**
+
+### Authorization
+
+[BuyerOAuth](../README.md#BuyerOAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**400** | Error |  -  |
+**401** | Error |  -  |
+**403** | Error |  -  |
+**404** | Error |  -  |
+**429** | Error |  -  |
+**500** | Error |  -  |
+
+<a name="listBuyerVaultMarketShareDrops"></a>
+# **listBuyerVaultMarketShareDrops**
+> ListBuyerVaultMarketShareDropsResponse listBuyerVaultMarketShareDrops()
+
+Upcoming and open Vault Shares drops: phase, countdown, allocation (first come, pro-rata or lottery), your Crossly One early-access time (never a better price).
+
+### Example
+```java
+// Import classes:
+import net.crossly.buyer.ApiClient;
+import net.crossly.buyer.ApiException;
+import net.crossly.buyer.Configuration;
+import net.crossly.buyer.auth.*;
+import net.crossly.buyer.models.*;
+import net.crossly.buyer.api.BuyerApi;
+
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("https://crossly.net/api");
+    
+    // Configure HTTP bearer authorization: BuyerOAuth
+    HttpBearerAuth BuyerOAuth = (HttpBearerAuth) defaultClient.getAuthentication("BuyerOAuth");
+    BuyerOAuth.setBearerToken("BEARER TOKEN");
+
+    BuyerApi apiInstance = new BuyerApi(defaultClient);
+    try {
+      ListBuyerVaultMarketShareDropsResponse result = apiInstance.listBuyerVaultMarketShareDrops();
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling BuyerApi#listBuyerVaultMarketShareDrops");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+### Parameters
+This endpoint does not need any parameter.
+
+### Return type
+
+**ListBuyerVaultMarketShareDropsResponse**
+
+### Authorization
+
+[BuyerOAuth](../README.md#BuyerOAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**400** | Error |  -  |
+**401** | Error |  -  |
+**403** | Error |  -  |
+**404** | Error |  -  |
+**429** | Error |  -  |
+**500** | Error |  -  |
+
+<a name="listBuyerVaultMarketShareGifts"></a>
+# **listBuyerVaultMarketShareGifts**
+> ListBuyerVaultMarketShareGiftsResponse listBuyerVaultMarketShareGifts()
+
+Vault Shares gifts you sent or were offered.
+
+### Example
+```java
+// Import classes:
+import net.crossly.buyer.ApiClient;
+import net.crossly.buyer.ApiException;
+import net.crossly.buyer.Configuration;
+import net.crossly.buyer.auth.*;
+import net.crossly.buyer.models.*;
+import net.crossly.buyer.api.BuyerApi;
+
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("https://crossly.net/api");
+    
+    // Configure HTTP bearer authorization: BuyerOAuth
+    HttpBearerAuth BuyerOAuth = (HttpBearerAuth) defaultClient.getAuthentication("BuyerOAuth");
+    BuyerOAuth.setBearerToken("BEARER TOKEN");
+
+    BuyerApi apiInstance = new BuyerApi(defaultClient);
+    try {
+      ListBuyerVaultMarketShareGiftsResponse result = apiInstance.listBuyerVaultMarketShareGifts();
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling BuyerApi#listBuyerVaultMarketShareGifts");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+### Parameters
+This endpoint does not need any parameter.
+
+### Return type
+
+**ListBuyerVaultMarketShareGiftsResponse**
+
+### Authorization
+
+[BuyerOAuth](../README.md#BuyerOAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**400** | Error |  -  |
+**401** | Error |  -  |
+**403** | Error |  -  |
+**404** | Error |  -  |
+**429** | Error |  -  |
+**500** | Error |  -  |
+
+<a name="listBuyerVaultMarketShareSeries"></a>
+# **listBuyerVaultMarketShareSeries**
+> ListBuyerVaultMarketShareSeriesResponse listBuyerVaultMarketShareSeries()
+
+Vault Shares series: open offerings first, then trading. Terms, progress, last share price and implied item value, and your holding.
+
+### Example
+```java
+// Import classes:
+import net.crossly.buyer.ApiClient;
+import net.crossly.buyer.ApiException;
+import net.crossly.buyer.Configuration;
+import net.crossly.buyer.auth.*;
+import net.crossly.buyer.models.*;
+import net.crossly.buyer.api.BuyerApi;
+
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("https://crossly.net/api");
+    
+    // Configure HTTP bearer authorization: BuyerOAuth
+    HttpBearerAuth BuyerOAuth = (HttpBearerAuth) defaultClient.getAuthentication("BuyerOAuth");
+    BuyerOAuth.setBearerToken("BEARER TOKEN");
+
+    BuyerApi apiInstance = new BuyerApi(defaultClient);
+    try {
+      ListBuyerVaultMarketShareSeriesResponse result = apiInstance.listBuyerVaultMarketShareSeries();
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling BuyerApi#listBuyerVaultMarketShareSeries");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+### Parameters
+This endpoint does not need any parameter.
+
+### Return type
+
+**ListBuyerVaultMarketShareSeriesResponse**
+
+### Authorization
+
+[BuyerOAuth](../README.md#BuyerOAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**400** | Error |  -  |
+**401** | Error |  -  |
+**403** | Error |  -  |
+**404** | Error |  -  |
+**429** | Error |  -  |
+**500** | Error |  -  |
+
 <a name="listBuyerVaultMarketWatchlist"></a>
 # **listBuyerVaultMarketWatchlist**
 > ListBuyerVaultMarketWatchlistResponse listBuyerVaultMarketWatchlist()
@@ -15029,6 +20255,609 @@ This endpoint does not need any parameter.
 ### Return type
 
 **ListBuyerVideoRequestsResponse**
+
+### Authorization
+
+[BuyerOAuth](../README.md#BuyerOAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**400** | Error |  -  |
+**401** | Error |  -  |
+**403** | Error |  -  |
+**404** | Error |  -  |
+**429** | Error |  -  |
+**500** | Error |  -  |
+
+<a name="listBuyerWalletPerks"></a>
+# **listBuyerWalletPerks**
+> ListBuyerWalletPerksResponse listBuyerWalletPerks()
+
+The perks your wallets unlock: each Collection holders deal (a shop’s percent off for holders of a collection) and creator shop perk on a collection a linked wallet or your Crossly wallet holds, best first. Checkout applies the best one; perks never stack with each other.
+
+### Example
+```java
+// Import classes:
+import net.crossly.buyer.ApiClient;
+import net.crossly.buyer.ApiException;
+import net.crossly.buyer.Configuration;
+import net.crossly.buyer.auth.*;
+import net.crossly.buyer.models.*;
+import net.crossly.buyer.api.BuyerApi;
+
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("https://crossly.net/api");
+    
+    // Configure HTTP bearer authorization: BuyerOAuth
+    HttpBearerAuth BuyerOAuth = (HttpBearerAuth) defaultClient.getAuthentication("BuyerOAuth");
+    BuyerOAuth.setBearerToken("BEARER TOKEN");
+
+    BuyerApi apiInstance = new BuyerApi(defaultClient);
+    try {
+      ListBuyerWalletPerksResponse result = apiInstance.listBuyerWalletPerks();
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling BuyerApi#listBuyerWalletPerks");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+### Parameters
+This endpoint does not need any parameter.
+
+### Return type
+
+**ListBuyerWalletPerksResponse**
+
+### Authorization
+
+[BuyerOAuth](../README.md#BuyerOAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**400** | Error |  -  |
+**401** | Error |  -  |
+**403** | Error |  -  |
+**404** | Error |  -  |
+**429** | Error |  -  |
+**500** | Error |  -  |
+
+<a name="listBuyerWholesaleDrops"></a>
+# **listBuyerWholesaleDrops**
+> ListBuyerWholesaleDropsResponse listBuyerWholesaleDrops()
+
+Upcoming and live trade drops open to you: drops sellers release only to their approved trade buyers or to a catalog audience. kind prebook &#x3D; reserve quantity now with a deposit (depositBps) at checkout; the balance is invoiced when the seller releases the stock.
+
+### Example
+```java
+// Import classes:
+import net.crossly.buyer.ApiClient;
+import net.crossly.buyer.ApiException;
+import net.crossly.buyer.Configuration;
+import net.crossly.buyer.auth.*;
+import net.crossly.buyer.models.*;
+import net.crossly.buyer.api.BuyerApi;
+
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("https://crossly.net/api");
+    
+    // Configure HTTP bearer authorization: BuyerOAuth
+    HttpBearerAuth BuyerOAuth = (HttpBearerAuth) defaultClient.getAuthentication("BuyerOAuth");
+    BuyerOAuth.setBearerToken("BEARER TOKEN");
+
+    BuyerApi apiInstance = new BuyerApi(defaultClient);
+    try {
+      ListBuyerWholesaleDropsResponse result = apiInstance.listBuyerWholesaleDrops();
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling BuyerApi#listBuyerWholesaleDrops");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+### Parameters
+This endpoint does not need any parameter.
+
+### Return type
+
+**ListBuyerWholesaleDropsResponse**
+
+### Authorization
+
+[BuyerOAuth](../README.md#BuyerOAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**400** | Error |  -  |
+**401** | Error |  -  |
+**403** | Error |  -  |
+**404** | Error |  -  |
+**429** | Error |  -  |
+**500** | Error |  -  |
+
+<a name="listBuyerWholesaleFreightRequests"></a>
+# **listBuyerWholesaleFreightRequests**
+> BuyerResponse3 listBuyerWholesaleFreightRequests()
+
+Your freight (LTL) quote requests to sellers, with the seller&#39;s figure in cents once quoted.
+
+### Example
+```java
+// Import classes:
+import net.crossly.buyer.ApiClient;
+import net.crossly.buyer.ApiException;
+import net.crossly.buyer.Configuration;
+import net.crossly.buyer.auth.*;
+import net.crossly.buyer.models.*;
+import net.crossly.buyer.api.BuyerApi;
+
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("https://crossly.net/api");
+    
+    // Configure HTTP bearer authorization: BuyerOAuth
+    HttpBearerAuth BuyerOAuth = (HttpBearerAuth) defaultClient.getAuthentication("BuyerOAuth");
+    BuyerOAuth.setBearerToken("BEARER TOKEN");
+
+    BuyerApi apiInstance = new BuyerApi(defaultClient);
+    try {
+      BuyerResponse3 result = apiInstance.listBuyerWholesaleFreightRequests();
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling BuyerApi#listBuyerWholesaleFreightRequests");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+### Parameters
+This endpoint does not need any parameter.
+
+### Return type
+
+**BuyerResponse3**
+
+### Authorization
+
+[BuyerOAuth](../README.md#BuyerOAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**400** | Error |  -  |
+**401** | Error |  -  |
+**403** | Error |  -  |
+**404** | Error |  -  |
+**429** | Error |  -  |
+**500** | Error |  -  |
+
+<a name="listBuyerWholesaleOrderSheets"></a>
+# **listBuyerWholesaleOrderSheets**
+> BuyerResponse3 listBuyerWholesaleOrderSheets()
+
+Your saved wholesale order sheets (one seller each), newest first.
+
+### Example
+```java
+// Import classes:
+import net.crossly.buyer.ApiClient;
+import net.crossly.buyer.ApiException;
+import net.crossly.buyer.Configuration;
+import net.crossly.buyer.auth.*;
+import net.crossly.buyer.models.*;
+import net.crossly.buyer.api.BuyerApi;
+
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("https://crossly.net/api");
+    
+    // Configure HTTP bearer authorization: BuyerOAuth
+    HttpBearerAuth BuyerOAuth = (HttpBearerAuth) defaultClient.getAuthentication("BuyerOAuth");
+    BuyerOAuth.setBearerToken("BEARER TOKEN");
+
+    BuyerApi apiInstance = new BuyerApi(defaultClient);
+    try {
+      BuyerResponse3 result = apiInstance.listBuyerWholesaleOrderSheets();
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling BuyerApi#listBuyerWholesaleOrderSheets");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+### Parameters
+This endpoint does not need any parameter.
+
+### Return type
+
+**BuyerResponse3**
+
+### Authorization
+
+[BuyerOAuth](../README.md#BuyerOAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**400** | Error |  -  |
+**401** | Error |  -  |
+**403** | Error |  -  |
+**404** | Error |  -  |
+**429** | Error |  -  |
+**500** | Error |  -  |
+
+<a name="listBuyerWholesaleOrders"></a>
+# **listBuyerWholesaleOrders**
+> BuyerResponse3 listBuyerWholesaleOrders()
+
+Your past wholesale orders (trade-priced or on account), newest first — the starting point for reorder.
+
+### Example
+```java
+// Import classes:
+import net.crossly.buyer.ApiClient;
+import net.crossly.buyer.ApiException;
+import net.crossly.buyer.Configuration;
+import net.crossly.buyer.auth.*;
+import net.crossly.buyer.models.*;
+import net.crossly.buyer.api.BuyerApi;
+
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("https://crossly.net/api");
+    
+    // Configure HTTP bearer authorization: BuyerOAuth
+    HttpBearerAuth BuyerOAuth = (HttpBearerAuth) defaultClient.getAuthentication("BuyerOAuth");
+    BuyerOAuth.setBearerToken("BEARER TOKEN");
+
+    BuyerApi apiInstance = new BuyerApi(defaultClient);
+    try {
+      BuyerResponse3 result = apiInstance.listBuyerWholesaleOrders();
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling BuyerApi#listBuyerWholesaleOrders");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+### Parameters
+This endpoint does not need any parameter.
+
+### Return type
+
+**BuyerResponse3**
+
+### Authorization
+
+[BuyerOAuth](../README.md#BuyerOAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**400** | Error |  -  |
+**401** | Error |  -  |
+**403** | Error |  -  |
+**404** | Error |  -  |
+**429** | Error |  -  |
+**500** | Error |  -  |
+
+<a name="listBuyerWholesalePrebooks"></a>
+# **listBuyerWholesalePrebooks**
+> ListBuyerWholesalePrebooksResponse listBuyerWholesalePrebooks()
+
+Your pre-books: the drop, item, quantity, deposit paid, balance, status (awaiting_release, invoiced, paid, cancelled, failed) and the balance invoice once the seller released the stock.
+
+### Example
+```java
+// Import classes:
+import net.crossly.buyer.ApiClient;
+import net.crossly.buyer.ApiException;
+import net.crossly.buyer.Configuration;
+import net.crossly.buyer.auth.*;
+import net.crossly.buyer.models.*;
+import net.crossly.buyer.api.BuyerApi;
+
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("https://crossly.net/api");
+    
+    // Configure HTTP bearer authorization: BuyerOAuth
+    HttpBearerAuth BuyerOAuth = (HttpBearerAuth) defaultClient.getAuthentication("BuyerOAuth");
+    BuyerOAuth.setBearerToken("BEARER TOKEN");
+
+    BuyerApi apiInstance = new BuyerApi(defaultClient);
+    try {
+      ListBuyerWholesalePrebooksResponse result = apiInstance.listBuyerWholesalePrebooks();
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling BuyerApi#listBuyerWholesalePrebooks");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+### Parameters
+This endpoint does not need any parameter.
+
+### Return type
+
+**ListBuyerWholesalePrebooksResponse**
+
+### Authorization
+
+[BuyerOAuth](../README.md#BuyerOAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**400** | Error |  -  |
+**401** | Error |  -  |
+**403** | Error |  -  |
+**404** | Error |  -  |
+**429** | Error |  -  |
+**500** | Error |  -  |
+
+<a name="listBuyerWholesaleQuotes"></a>
+# **listBuyerWholesaleQuotes**
+> BuyerResponse3 listBuyerWholesaleQuotes()
+
+Your requests for a quote (RFQ) to wholesale sellers. ?status&#x3D;open|all|requested|answered|accepted|declined|withdrawn|expired. An answered or accepted quote past expiresAt reads expired.
+
+### Example
+```java
+// Import classes:
+import net.crossly.buyer.ApiClient;
+import net.crossly.buyer.ApiException;
+import net.crossly.buyer.Configuration;
+import net.crossly.buyer.auth.*;
+import net.crossly.buyer.models.*;
+import net.crossly.buyer.api.BuyerApi;
+
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("https://crossly.net/api");
+    
+    // Configure HTTP bearer authorization: BuyerOAuth
+    HttpBearerAuth BuyerOAuth = (HttpBearerAuth) defaultClient.getAuthentication("BuyerOAuth");
+    BuyerOAuth.setBearerToken("BEARER TOKEN");
+
+    BuyerApi apiInstance = new BuyerApi(defaultClient);
+    try {
+      BuyerResponse3 result = apiInstance.listBuyerWholesaleQuotes();
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling BuyerApi#listBuyerWholesaleQuotes");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+### Parameters
+This endpoint does not need any parameter.
+
+### Return type
+
+**BuyerResponse3**
+
+### Authorization
+
+[BuyerOAuth](../README.md#BuyerOAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**400** | Error |  -  |
+**401** | Error |  -  |
+**403** | Error |  -  |
+**404** | Error |  -  |
+**429** | Error |  -  |
+**500** | Error |  -  |
+
+<a name="listBuyerWholesaleStatement"></a>
+# **listBuyerWholesaleStatement**
+> BuyerResponse3 listBuyerWholesaleStatement()
+
+Your open trade balances per seller in aging buckets (current, 1-30, 31-60, 61-90, 90+ days past due), with the invoices behind them.
+
+### Example
+```java
+// Import classes:
+import net.crossly.buyer.ApiClient;
+import net.crossly.buyer.ApiException;
+import net.crossly.buyer.Configuration;
+import net.crossly.buyer.auth.*;
+import net.crossly.buyer.models.*;
+import net.crossly.buyer.api.BuyerApi;
+
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("https://crossly.net/api");
+    
+    // Configure HTTP bearer authorization: BuyerOAuth
+    HttpBearerAuth BuyerOAuth = (HttpBearerAuth) defaultClient.getAuthentication("BuyerOAuth");
+    BuyerOAuth.setBearerToken("BEARER TOKEN");
+
+    BuyerApi apiInstance = new BuyerApi(defaultClient);
+    try {
+      BuyerResponse3 result = apiInstance.listBuyerWholesaleStatement();
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling BuyerApi#listBuyerWholesaleStatement");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+### Parameters
+This endpoint does not need any parameter.
+
+### Return type
+
+**BuyerResponse3**
+
+### Authorization
+
+[BuyerOAuth](../README.md#BuyerOAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**400** | Error |  -  |
+**401** | Error |  -  |
+**403** | Error |  -  |
+**404** | Error |  -  |
+**429** | Error |  -  |
+**500** | Error |  -  |
+
+<a name="listBuyerWholesaleSuppliers"></a>
+# **listBuyerWholesaleSuppliers**
+> BuyerResponse3 listBuyerWholesaleSuppliers()
+
+The sellers you trade with: catalogs you can open, your terms (net days, credit limit, discount), customer groups, and what you owe each.
+
+### Example
+```java
+// Import classes:
+import net.crossly.buyer.ApiClient;
+import net.crossly.buyer.ApiException;
+import net.crossly.buyer.Configuration;
+import net.crossly.buyer.auth.*;
+import net.crossly.buyer.models.*;
+import net.crossly.buyer.api.BuyerApi;
+
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("https://crossly.net/api");
+    
+    // Configure HTTP bearer authorization: BuyerOAuth
+    HttpBearerAuth BuyerOAuth = (HttpBearerAuth) defaultClient.getAuthentication("BuyerOAuth");
+    BuyerOAuth.setBearerToken("BEARER TOKEN");
+
+    BuyerApi apiInstance = new BuyerApi(defaultClient);
+    try {
+      BuyerResponse3 result = apiInstance.listBuyerWholesaleSuppliers();
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling BuyerApi#listBuyerWholesaleSuppliers");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+### Parameters
+This endpoint does not need any parameter.
+
+### Return type
+
+**BuyerResponse3**
 
 ### Authorization
 
@@ -15468,6 +21297,288 @@ This endpoint does not need any parameter.
 **429** | Error |  -  |
 **500** | Error |  -  |
 
+<a name="updateBuyerCompany"></a>
+# **updateBuyerCompany**
+> BuyerCompanyResponse updateBuyerCompany()
+
+Rename the company or change its tax id / website (owner).
+
+### Example
+```java
+// Import classes:
+import net.crossly.buyer.ApiClient;
+import net.crossly.buyer.ApiException;
+import net.crossly.buyer.Configuration;
+import net.crossly.buyer.auth.*;
+import net.crossly.buyer.models.*;
+import net.crossly.buyer.api.BuyerApi;
+
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("https://crossly.net/api");
+    
+    // Configure HTTP bearer authorization: BuyerOAuth
+    HttpBearerAuth BuyerOAuth = (HttpBearerAuth) defaultClient.getAuthentication("BuyerOAuth");
+    BuyerOAuth.setBearerToken("BEARER TOKEN");
+
+    BuyerApi apiInstance = new BuyerApi(defaultClient);
+    try {
+      BuyerCompanyResponse result = apiInstance.updateBuyerCompany();
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling BuyerApi#updateBuyerCompany");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+### Parameters
+This endpoint does not need any parameter.
+
+### Return type
+
+**BuyerCompanyResponse**
+
+### Authorization
+
+[BuyerOAuth](../README.md#BuyerOAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**400** | Error |  -  |
+**401** | Error |  -  |
+**403** | Error |  -  |
+**404** | Error |  -  |
+**429** | Error |  -  |
+**500** | Error |  -  |
+
+<a name="updateBuyerCompanyAddress"></a>
+# **updateBuyerCompanyAddress**
+> BuyerCompanyResponse updateBuyerCompanyAddress()
+
+Replace the shared address book (owner): addresses [{ id, label, name, line1, line2?, city, region, postalCode, country, phone?, isDefault? }], at most 20.
+
+### Example
+```java
+// Import classes:
+import net.crossly.buyer.ApiClient;
+import net.crossly.buyer.ApiException;
+import net.crossly.buyer.Configuration;
+import net.crossly.buyer.auth.*;
+import net.crossly.buyer.models.*;
+import net.crossly.buyer.api.BuyerApi;
+
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("https://crossly.net/api");
+    
+    // Configure HTTP bearer authorization: BuyerOAuth
+    HttpBearerAuth BuyerOAuth = (HttpBearerAuth) defaultClient.getAuthentication("BuyerOAuth");
+    BuyerOAuth.setBearerToken("BEARER TOKEN");
+
+    BuyerApi apiInstance = new BuyerApi(defaultClient);
+    try {
+      BuyerCompanyResponse result = apiInstance.updateBuyerCompanyAddress();
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling BuyerApi#updateBuyerCompanyAddress");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+### Parameters
+This endpoint does not need any parameter.
+
+### Return type
+
+**BuyerCompanyResponse**
+
+### Authorization
+
+[BuyerOAuth](../README.md#BuyerOAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**400** | Error |  -  |
+**401** | Error |  -  |
+**403** | Error |  -  |
+**404** | Error |  -  |
+**429** | Error |  -  |
+**500** | Error |  -  |
+
+<a name="updateBuyerCompanyMember"></a>
+# **updateBuyerCompanyMember**
+> BuyerCompanyResponse updateBuyerCompanyMember(id)
+
+Change a member&#39;s role or approval limit (owner). The last owner stays an owner.
+
+### Example
+```java
+// Import classes:
+import net.crossly.buyer.ApiClient;
+import net.crossly.buyer.ApiException;
+import net.crossly.buyer.Configuration;
+import net.crossly.buyer.auth.*;
+import net.crossly.buyer.models.*;
+import net.crossly.buyer.api.BuyerApi;
+
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("https://crossly.net/api");
+    
+    // Configure HTTP bearer authorization: BuyerOAuth
+    HttpBearerAuth BuyerOAuth = (HttpBearerAuth) defaultClient.getAuthentication("BuyerOAuth");
+    BuyerOAuth.setBearerToken("BEARER TOKEN");
+
+    BuyerApi apiInstance = new BuyerApi(defaultClient);
+    String id = "id_example"; // String | 
+    try {
+      BuyerCompanyResponse result = apiInstance.updateBuyerCompanyMember(id);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling BuyerApi#updateBuyerCompanyMember");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **String**|  |
+
+### Return type
+
+**BuyerCompanyResponse**
+
+### Authorization
+
+[BuyerOAuth](../README.md#BuyerOAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**400** | Error |  -  |
+**401** | Error |  -  |
+**403** | Error |  -  |
+**404** | Error |  -  |
+**429** | Error |  -  |
+**500** | Error |  -  |
+
+<a name="updateBuyerCreationReview"></a>
+# **updateBuyerCreationReview**
+> UpdateBuyerCreationReviewResponse updateBuyerCreationReview(format, id, updateBuyerCreationReviewRequest)
+
+Review a creation you bought (or change your review): 1-5 stars and an optional comment.
+
+Only a buyer of it may review it (a bought copy, or a pack that held the card). One review per creation; a second call replaces it. The comment is moderated.
+
+### Example
+```java
+// Import classes:
+import net.crossly.buyer.ApiClient;
+import net.crossly.buyer.ApiException;
+import net.crossly.buyer.Configuration;
+import net.crossly.buyer.auth.*;
+import net.crossly.buyer.models.*;
+import net.crossly.buyer.api.BuyerApi;
+
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("https://crossly.net/api");
+    
+    // Configure HTTP bearer authorization: BuyerOAuth
+    HttpBearerAuth BuyerOAuth = (HttpBearerAuth) defaultClient.getAuthentication("BuyerOAuth");
+    BuyerOAuth.setBearerToken("BEARER TOKEN");
+
+    BuyerApi apiInstance = new BuyerApi(defaultClient);
+    String format = "wearable"; // String | The creation format.
+    String id = "id_example"; // String | The creation id (a card is <setId>.<slug>).
+    UpdateBuyerCreationReviewRequest updateBuyerCreationReviewRequest = new UpdateBuyerCreationReviewRequest(); // UpdateBuyerCreationReviewRequest | 
+    try {
+      UpdateBuyerCreationReviewResponse result = apiInstance.updateBuyerCreationReview(format, id, updateBuyerCreationReviewRequest);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling BuyerApi#updateBuyerCreationReview");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **format** | **String**| The creation format. | [enum: wearable, decor, interactive, card]
+ **id** | **String**| The creation id (a card is &lt;setId&gt;.&lt;slug&gt;). |
+ **updateBuyerCreationReviewRequest** | **UpdateBuyerCreationReviewRequest**|  |
+
+### Return type
+
+**UpdateBuyerCreationReviewResponse**
+
+### Authorization
+
+[BuyerOAuth](../README.md#BuyerOAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**400** | Error |  -  |
+**401** | Error |  -  |
+**403** | Error |  -  |
+**404** | Error |  -  |
+**429** | Error |  -  |
+**500** | Error |  -  |
+
 <a name="updateBuyerFeedback"></a>
 # **updateBuyerFeedback**
 > BuyerResponse updateBuyerFeedback(id, updateBuyerFeedbackRequest)
@@ -15543,6 +21654,207 @@ Name | Type | Description  | Notes
 **429** | Error |  -  |
 **500** | Error |  -  |
 
+<a name="updateBuyerHome"></a>
+# **updateBuyerHome**
+> BuyerHomeResponse updateBuyerHome()
+
+Who may walk in (privacy), the lighting (theme), wallpaper/floor/mood decor and whether visitors see your vault wall values.
+
+### Example
+```java
+// Import classes:
+import net.crossly.buyer.ApiClient;
+import net.crossly.buyer.ApiException;
+import net.crossly.buyer.Configuration;
+import net.crossly.buyer.auth.*;
+import net.crossly.buyer.models.*;
+import net.crossly.buyer.api.BuyerApi;
+
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("https://crossly.net/api");
+    
+    // Configure HTTP bearer authorization: BuyerOAuth
+    HttpBearerAuth BuyerOAuth = (HttpBearerAuth) defaultClient.getAuthentication("BuyerOAuth");
+    BuyerOAuth.setBearerToken("BEARER TOKEN");
+
+    BuyerApi apiInstance = new BuyerApi(defaultClient);
+    try {
+      BuyerHomeResponse result = apiInstance.updateBuyerHome();
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling BuyerApi#updateBuyerHome");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+### Parameters
+This endpoint does not need any parameter.
+
+### Return type
+
+**BuyerHomeResponse**
+
+### Authorization
+
+[BuyerOAuth](../README.md#BuyerOAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**400** | Error |  -  |
+**401** | Error |  -  |
+**403** | Error |  -  |
+**404** | Error |  -  |
+**429** | Error |  -  |
+**500** | Error |  -  |
+
+<a name="updateBuyerHomeBuilder"></a>
+# **updateBuyerHomeBuilder**
+> ListBuyerHomeBuildersResponse updateBuyerHomeBuilder()
+
+Set your co-builders (friends only, at most 4).
+
+### Example
+```java
+// Import classes:
+import net.crossly.buyer.ApiClient;
+import net.crossly.buyer.ApiException;
+import net.crossly.buyer.Configuration;
+import net.crossly.buyer.auth.*;
+import net.crossly.buyer.models.*;
+import net.crossly.buyer.api.BuyerApi;
+
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("https://crossly.net/api");
+    
+    // Configure HTTP bearer authorization: BuyerOAuth
+    HttpBearerAuth BuyerOAuth = (HttpBearerAuth) defaultClient.getAuthentication("BuyerOAuth");
+    BuyerOAuth.setBearerToken("BEARER TOKEN");
+
+    BuyerApi apiInstance = new BuyerApi(defaultClient);
+    try {
+      ListBuyerHomeBuildersResponse result = apiInstance.updateBuyerHomeBuilder();
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling BuyerApi#updateBuyerHomeBuilder");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+### Parameters
+This endpoint does not need any parameter.
+
+### Return type
+
+**ListBuyerHomeBuildersResponse**
+
+### Authorization
+
+[BuyerOAuth](../README.md#BuyerOAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**400** | Error |  -  |
+**401** | Error |  -  |
+**403** | Error |  -  |
+**404** | Error |  -  |
+**429** | Error |  -  |
+**500** | Error |  -  |
+
+<a name="updateBuyerHomeLayout"></a>
+# **updateBuyerHomeLayout**
+> BuyerHomeResponse updateBuyerHomeLayout()
+
+Arrange your home: the whole layout, checked against what you own.
+
+### Example
+```java
+// Import classes:
+import net.crossly.buyer.ApiClient;
+import net.crossly.buyer.ApiException;
+import net.crossly.buyer.Configuration;
+import net.crossly.buyer.auth.*;
+import net.crossly.buyer.models.*;
+import net.crossly.buyer.api.BuyerApi;
+
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("https://crossly.net/api");
+    
+    // Configure HTTP bearer authorization: BuyerOAuth
+    HttpBearerAuth BuyerOAuth = (HttpBearerAuth) defaultClient.getAuthentication("BuyerOAuth");
+    BuyerOAuth.setBearerToken("BEARER TOKEN");
+
+    BuyerApi apiInstance = new BuyerApi(defaultClient);
+    try {
+      BuyerHomeResponse result = apiInstance.updateBuyerHomeLayout();
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling BuyerApi#updateBuyerHomeLayout");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+### Parameters
+This endpoint does not need any parameter.
+
+### Return type
+
+**BuyerHomeResponse**
+
+### Authorization
+
+[BuyerOAuth](../README.md#BuyerOAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**400** | Error |  -  |
+**401** | Error |  -  |
+**403** | Error |  -  |
+**404** | Error |  -  |
+**429** | Error |  -  |
+**500** | Error |  -  |
+
 <a name="updateBuyerHunt"></a>
 # **updateBuyerHunt**
 > BuyerResponse updateBuyerHunt(id)
@@ -15593,6 +21905,79 @@ Name | Type | Description  | Notes
 ### Return type
 
 **BuyerResponse**
+
+### Authorization
+
+[BuyerOAuth](../README.md#BuyerOAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**400** | Error |  -  |
+**401** | Error |  -  |
+**403** | Error |  -  |
+**404** | Error |  -  |
+**429** | Error |  -  |
+**500** | Error |  -  |
+
+<a name="updateBuyerPaymentMethodDefault"></a>
+# **updateBuyerPaymentMethodDefault**
+> UpdateBuyerPaymentMethodDefaultResponse updateBuyerPaymentMethodDefault(id)
+
+Make one of your saved cards the default.
+
+The default is the card express checkout offers first. Only your own saved card: any other id is a 404.
+
+### Example
+```java
+// Import classes:
+import net.crossly.buyer.ApiClient;
+import net.crossly.buyer.ApiException;
+import net.crossly.buyer.Configuration;
+import net.crossly.buyer.auth.*;
+import net.crossly.buyer.models.*;
+import net.crossly.buyer.api.BuyerApi;
+
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("https://crossly.net/api");
+    
+    // Configure HTTP bearer authorization: BuyerOAuth
+    HttpBearerAuth BuyerOAuth = (HttpBearerAuth) defaultClient.getAuthentication("BuyerOAuth");
+    BuyerOAuth.setBearerToken("BEARER TOKEN");
+
+    BuyerApi apiInstance = new BuyerApi(defaultClient);
+    String id = "id_example"; // String | 
+    try {
+      UpdateBuyerPaymentMethodDefaultResponse result = apiInstance.updateBuyerPaymentMethodDefault(id);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling BuyerApi#updateBuyerPaymentMethodDefault");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **String**|  |
+
+### Return type
+
+**UpdateBuyerPaymentMethodDefaultResponse**
 
 ### Authorization
 
@@ -15879,6 +22264,144 @@ Name | Type | Description  | Notes
 ### Return type
 
 **BuyerResponse**
+
+### Authorization
+
+[BuyerOAuth](../README.md#BuyerOAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**400** | Error |  -  |
+**401** | Error |  -  |
+**403** | Error |  -  |
+**404** | Error |  -  |
+**429** | Error |  -  |
+**500** | Error |  -  |
+
+<a name="updateBuyerWholesaleCartPo"></a>
+# **updateBuyerWholesaleCartPo**
+> UpdateBuyerWholesaleCartPoResponse updateBuyerWholesaleCartPo()
+
+Set the PO reference for one seller&#39;s group of your cart: { sellerUserId, poReference } (empty clears it).
+
+### Example
+```java
+// Import classes:
+import net.crossly.buyer.ApiClient;
+import net.crossly.buyer.ApiException;
+import net.crossly.buyer.Configuration;
+import net.crossly.buyer.auth.*;
+import net.crossly.buyer.models.*;
+import net.crossly.buyer.api.BuyerApi;
+
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("https://crossly.net/api");
+    
+    // Configure HTTP bearer authorization: BuyerOAuth
+    HttpBearerAuth BuyerOAuth = (HttpBearerAuth) defaultClient.getAuthentication("BuyerOAuth");
+    BuyerOAuth.setBearerToken("BEARER TOKEN");
+
+    BuyerApi apiInstance = new BuyerApi(defaultClient);
+    try {
+      UpdateBuyerWholesaleCartPoResponse result = apiInstance.updateBuyerWholesaleCartPo();
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling BuyerApi#updateBuyerWholesaleCartPo");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+### Parameters
+This endpoint does not need any parameter.
+
+### Return type
+
+**UpdateBuyerWholesaleCartPoResponse**
+
+### Authorization
+
+[BuyerOAuth](../README.md#BuyerOAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**400** | Error |  -  |
+**401** | Error |  -  |
+**403** | Error |  -  |
+**404** | Error |  -  |
+**429** | Error |  -  |
+**500** | Error |  -  |
+
+<a name="updateBuyerWholesaleOrderSheet"></a>
+# **updateBuyerWholesaleOrderSheet**
+> BuyerWholesaleOrderSheetResponse updateBuyerWholesaleOrderSheet(id)
+
+Rename an order sheet, change its PO reference or note, or replace its lines.
+
+### Example
+```java
+// Import classes:
+import net.crossly.buyer.ApiClient;
+import net.crossly.buyer.ApiException;
+import net.crossly.buyer.Configuration;
+import net.crossly.buyer.auth.*;
+import net.crossly.buyer.models.*;
+import net.crossly.buyer.api.BuyerApi;
+
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("https://crossly.net/api");
+    
+    // Configure HTTP bearer authorization: BuyerOAuth
+    HttpBearerAuth BuyerOAuth = (HttpBearerAuth) defaultClient.getAuthentication("BuyerOAuth");
+    BuyerOAuth.setBearerToken("BEARER TOKEN");
+
+    BuyerApi apiInstance = new BuyerApi(defaultClient);
+    String id = "id_example"; // String | 
+    try {
+      BuyerWholesaleOrderSheetResponse result = apiInstance.updateBuyerWholesaleOrderSheet(id);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling BuyerApi#updateBuyerWholesaleOrderSheet");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **String**|  |
+
+### Return type
+
+**BuyerWholesaleOrderSheetResponse**
 
 ### Authorization
 

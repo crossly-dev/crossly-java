@@ -29,15 +29,15 @@ import com.google.gson.stream.JsonWriter;
 @JsonAdapter(GetVaultAttestationResponseKindsItem.Adapter.class)
 public enum GetVaultAttestationResponseKindsItem {
   
+  OTHER("other"),
+  
   PHYSICAL_COUNT("physical_count"),
   
   INSURANCE_CERTIFICATE("insurance_certificate"),
   
   SOC1_TYPE2("soc1_type2"),
   
-  SOC2("soc2"),
-  
-  OTHER("other");
+  SOC2("soc2");
 
   private String value;
 

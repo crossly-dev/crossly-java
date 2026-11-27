@@ -28,7 +28,7 @@ import org.openapitools.jackson.nullable.JsonNullable;
 /**
  * UpdateBuyerWishlistResponseData
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-11T23:47:29.843Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-27T19:58:46.962Z[Etc/UTC]")
 public class UpdateBuyerWishlistResponseData {
   public static final String SERIALIZED_NAME_SHARE_URL = "shareUrl";
   @SerializedName(SERIALIZED_NAME_SHARE_URL)
@@ -42,13 +42,13 @@ public class UpdateBuyerWishlistResponseData {
   @SerializedName(SERIALIZED_NAME_NAME)
   private String name;
 
-  public static final String SERIALIZED_NAME_CREATED_AT = "createdAt";
-  @SerializedName(SERIALIZED_NAME_CREATED_AT)
-  private String createdAt;
-
   public static final String SERIALIZED_NAME_IS_PUBLIC = "isPublic";
   @SerializedName(SERIALIZED_NAME_IS_PUBLIC)
   private Boolean isPublic;
+
+  public static final String SERIALIZED_NAME_CREATED_AT = "createdAt";
+  @SerializedName(SERIALIZED_NAME_CREATED_AT)
+  private String createdAt;
 
   public static final String SERIALIZED_NAME_SHARE_TOKEN = "shareToken";
   @SerializedName(SERIALIZED_NAME_SHARE_TOKEN)
@@ -126,29 +126,6 @@ public class UpdateBuyerWishlistResponseData {
   }
 
 
-  public UpdateBuyerWishlistResponseData createdAt(String createdAt) {
-    
-    this.createdAt = createdAt;
-    return this;
-  }
-
-   /**
-   * Get createdAt
-   * @return createdAt
-  **/
-  @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "")
-
-  public String getCreatedAt() {
-    return createdAt;
-  }
-
-
-  public void setCreatedAt(String createdAt) {
-    this.createdAt = createdAt;
-  }
-
-
   public UpdateBuyerWishlistResponseData isPublic(Boolean isPublic) {
     
     this.isPublic = isPublic;
@@ -169,6 +146,29 @@ public class UpdateBuyerWishlistResponseData {
 
   public void setIsPublic(Boolean isPublic) {
     this.isPublic = isPublic;
+  }
+
+
+  public UpdateBuyerWishlistResponseData createdAt(String createdAt) {
+    
+    this.createdAt = createdAt;
+    return this;
+  }
+
+   /**
+   * Get createdAt
+   * @return createdAt
+  **/
+  @javax.annotation.Nonnull
+  @ApiModelProperty(required = true, value = "")
+
+  public String getCreatedAt() {
+    return createdAt;
+  }
+
+
+  public void setCreatedAt(String createdAt) {
+    this.createdAt = createdAt;
   }
 
 
@@ -207,8 +207,8 @@ public class UpdateBuyerWishlistResponseData {
     return Objects.equals(this.shareUrl, updateBuyerWishlistResponseData.shareUrl) &&
         Objects.equals(this.id, updateBuyerWishlistResponseData.id) &&
         Objects.equals(this.name, updateBuyerWishlistResponseData.name) &&
-        Objects.equals(this.createdAt, updateBuyerWishlistResponseData.createdAt) &&
         Objects.equals(this.isPublic, updateBuyerWishlistResponseData.isPublic) &&
+        Objects.equals(this.createdAt, updateBuyerWishlistResponseData.createdAt) &&
         Objects.equals(this.shareToken, updateBuyerWishlistResponseData.shareToken);
   }
 
@@ -218,7 +218,7 @@ public class UpdateBuyerWishlistResponseData {
 
   @Override
   public int hashCode() {
-    return Objects.hash(shareUrl, id, name, createdAt, isPublic, shareToken);
+    return Objects.hash(shareUrl, id, name, isPublic, createdAt, shareToken);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -235,8 +235,8 @@ public class UpdateBuyerWishlistResponseData {
     sb.append("    shareUrl: ").append(toIndentedString(shareUrl)).append("\n");
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
-    sb.append("    createdAt: ").append(toIndentedString(createdAt)).append("\n");
     sb.append("    isPublic: ").append(toIndentedString(isPublic)).append("\n");
+    sb.append("    createdAt: ").append(toIndentedString(createdAt)).append("\n");
     sb.append("    shareToken: ").append(toIndentedString(shareToken)).append("\n");
     sb.append("}");
     return sb.toString();

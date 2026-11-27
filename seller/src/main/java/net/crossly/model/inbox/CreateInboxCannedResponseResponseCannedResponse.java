@@ -23,13 +23,14 @@ import com.google.gson.stream.JsonWriter;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
+import java.math.BigDecimal;
 import org.openapitools.jackson.nullable.JsonNullable;
 import org.threeten.bp.OffsetDateTime;
 
 /**
  * CreateInboxCannedResponseResponseCannedResponse
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-11T23:44:48.922Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-27T19:42:43.186Z[Etc/UTC]")
 public class CreateInboxCannedResponseResponseCannedResponse {
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
@@ -51,13 +52,17 @@ public class CreateInboxCannedResponseResponseCannedResponse {
   @SerializedName(SERIALIZED_NAME_TITLE)
   private String title;
 
+  public static final String SERIALIZED_NAME_BODY = "body";
+  @SerializedName(SERIALIZED_NAME_BODY)
+  private String body;
+
   public static final String SERIALIZED_NAME_SURFACE = "surface";
   @SerializedName(SERIALIZED_NAME_SURFACE)
   private String surface;
 
-  public static final String SERIALIZED_NAME_BODY = "body";
-  @SerializedName(SERIALIZED_NAME_BODY)
-  private String body;
+  public static final String SERIALIZED_NAME_SORT_ORDER = "sortOrder";
+  @SerializedName(SERIALIZED_NAME_SORT_ORDER)
+  private BigDecimal sortOrder;
 
   public CreateInboxCannedResponseResponseCannedResponse() { 
   }
@@ -177,29 +182,6 @@ public class CreateInboxCannedResponseResponseCannedResponse {
   }
 
 
-  public CreateInboxCannedResponseResponseCannedResponse surface(String surface) {
-    
-    this.surface = surface;
-    return this;
-  }
-
-   /**
-   * Get surface
-   * @return surface
-  **/
-  @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "")
-
-  public String getSurface() {
-    return surface;
-  }
-
-
-  public void setSurface(String surface) {
-    this.surface = surface;
-  }
-
-
   public CreateInboxCannedResponseResponseCannedResponse body(String body) {
     
     this.body = body;
@@ -223,6 +205,52 @@ public class CreateInboxCannedResponseResponseCannedResponse {
   }
 
 
+  public CreateInboxCannedResponseResponseCannedResponse surface(String surface) {
+    
+    this.surface = surface;
+    return this;
+  }
+
+   /**
+   * Get surface
+   * @return surface
+  **/
+  @javax.annotation.Nonnull
+  @ApiModelProperty(required = true, value = "")
+
+  public String getSurface() {
+    return surface;
+  }
+
+
+  public void setSurface(String surface) {
+    this.surface = surface;
+  }
+
+
+  public CreateInboxCannedResponseResponseCannedResponse sortOrder(BigDecimal sortOrder) {
+    
+    this.sortOrder = sortOrder;
+    return this;
+  }
+
+   /**
+   * Get sortOrder
+   * @return sortOrder
+  **/
+  @javax.annotation.Nonnull
+  @ApiModelProperty(required = true, value = "")
+
+  public BigDecimal getSortOrder() {
+    return sortOrder;
+  }
+
+
+  public void setSortOrder(BigDecimal sortOrder) {
+    this.sortOrder = sortOrder;
+  }
+
+
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -237,8 +265,9 @@ public class CreateInboxCannedResponseResponseCannedResponse {
         Objects.equals(this.createdAt, createInboxCannedResponseResponseCannedResponse.createdAt) &&
         Objects.equals(this.userId, createInboxCannedResponseResponseCannedResponse.userId) &&
         Objects.equals(this.title, createInboxCannedResponseResponseCannedResponse.title) &&
+        Objects.equals(this.body, createInboxCannedResponseResponseCannedResponse.body) &&
         Objects.equals(this.surface, createInboxCannedResponseResponseCannedResponse.surface) &&
-        Objects.equals(this.body, createInboxCannedResponseResponseCannedResponse.body);
+        Objects.equals(this.sortOrder, createInboxCannedResponseResponseCannedResponse.sortOrder);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -247,7 +276,7 @@ public class CreateInboxCannedResponseResponseCannedResponse {
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, name, createdAt, userId, title, surface, body);
+    return Objects.hash(id, name, createdAt, userId, title, body, surface, sortOrder);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -266,8 +295,9 @@ public class CreateInboxCannedResponseResponseCannedResponse {
     sb.append("    createdAt: ").append(toIndentedString(createdAt)).append("\n");
     sb.append("    userId: ").append(toIndentedString(userId)).append("\n");
     sb.append("    title: ").append(toIndentedString(title)).append("\n");
-    sb.append("    surface: ").append(toIndentedString(surface)).append("\n");
     sb.append("    body: ").append(toIndentedString(body)).append("\n");
+    sb.append("    surface: ").append(toIndentedString(surface)).append("\n");
+    sb.append("    sortOrder: ").append(toIndentedString(sortOrder)).append("\n");
     sb.append("}");
     return sb.toString();
   }

@@ -24,13 +24,13 @@ import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 import java.math.BigDecimal;
-import net.crossly.model.common.SlugName;
+import net.crossly.model.common.NameSlug;
 import org.openapitools.jackson.nullable.JsonNullable;
 
 /**
  * ListJobShiftsItem
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-11T23:44:48.922Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-27T19:42:43.186Z[Etc/UTC]")
 public class ListJobShiftsItem {
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
@@ -93,7 +93,7 @@ public class ListJobShiftsItem {
 
   public static final String SERIALIZED_NAME_PLACE = "place";
   @SerializedName(SERIALIZED_NAME_PLACE)
-  private SlugName place;
+  private NameSlug place;
 
   public static final String SERIALIZED_NAME_STARTS_AT = "startsAt";
   @SerializedName(SERIALIZED_NAME_STARTS_AT)
@@ -112,9 +112,9 @@ public class ListJobShiftsItem {
    */
   @JsonAdapter(RailEnum.Adapter.class)
   public enum RailEnum {
-    BUCKS("bucks"),
+    CBX("cbx"),
     
-    CBX("cbx");
+    BUCKS("bucks");
 
     private String value;
 
@@ -163,9 +163,9 @@ public class ListJobShiftsItem {
    */
   @JsonAdapter(StatusEnum.Adapter.class)
   public enum StatusEnum {
-    OPEN("open"),
-    
     CANCELLED("cancelled"),
+    
+    OPEN("open"),
     
     PAID("paid"),
     
@@ -313,7 +313,7 @@ public class ListJobShiftsItem {
   }
 
 
-  public ListJobShiftsItem place(SlugName place) {
+  public ListJobShiftsItem place(NameSlug place) {
     
     this.place = place;
     return this;
@@ -326,12 +326,12 @@ public class ListJobShiftsItem {
   @javax.annotation.Nonnull
   @ApiModelProperty(required = true, value = "")
 
-  public SlugName getPlace() {
+  public NameSlug getPlace() {
     return place;
   }
 
 
-  public void setPlace(SlugName place) {
+  public void setPlace(NameSlug place) {
     this.place = place;
   }
 

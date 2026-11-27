@@ -28,7 +28,7 @@ import java.math.BigDecimal;
 /**
  * GetVaultMarketFeeQuoteResponseMaker
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-11T23:44:48.922Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-27T19:42:43.186Z[Etc/UTC]")
 public class GetVaultMarketFeeQuoteResponseMaker {
   /**
    * Gets or Sets role
@@ -86,13 +86,13 @@ public class GetVaultMarketFeeQuoteResponseMaker {
    */
   @JsonAdapter(ProgramEnum.Adapter.class)
   public enum ProgramEnum {
+    RETAIL("retail"),
+    
     VOLUME("volume"),
     
     LP("lp"),
     
-    DMM("dmm"),
-    
-    RETAIL("retail");
+    DMM("dmm");
 
     private String value;
 

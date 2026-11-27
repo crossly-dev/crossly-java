@@ -24,11 +24,13 @@ import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 import java.math.BigDecimal;
+import net.crossly.model.spatial.GetSpatialStreetPlotQuoteResponseDataClaim;
+import org.openapitools.jackson.nullable.JsonNullable;
 
 /**
  * GetSpatialStreetPlotQuoteResponseData
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-11T23:44:48.922Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-27T19:42:43.186Z[Etc/UTC]")
 public class GetSpatialStreetPlotQuoteResponseData {
   public static final String SERIALIZED_NAME_ADDRESS = "address";
   @SerializedName(SERIALIZED_NAME_ADDRESS)
@@ -65,6 +67,10 @@ public class GetSpatialStreetPlotQuoteResponseData {
   public static final String SERIALIZED_NAME_ENABLED = "enabled";
   @SerializedName(SERIALIZED_NAME_ENABLED)
   private Boolean enabled;
+
+  public static final String SERIALIZED_NAME_CLAIM = "claim";
+  @SerializedName(SERIALIZED_NAME_CLAIM)
+  private GetSpatialStreetPlotQuoteResponseDataClaim claim;
 
   public GetSpatialStreetPlotQuoteResponseData() { 
   }
@@ -276,6 +282,29 @@ public class GetSpatialStreetPlotQuoteResponseData {
   }
 
 
+  public GetSpatialStreetPlotQuoteResponseData claim(GetSpatialStreetPlotQuoteResponseDataClaim claim) {
+    
+    this.claim = claim;
+    return this;
+  }
+
+   /**
+   * Get claim
+   * @return claim
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public GetSpatialStreetPlotQuoteResponseDataClaim getClaim() {
+    return claim;
+  }
+
+
+  public void setClaim(GetSpatialStreetPlotQuoteResponseDataClaim claim) {
+    this.claim = claim;
+  }
+
+
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -293,12 +322,24 @@ public class GetSpatialStreetPlotQuoteResponseData {
         Objects.equals(this.owned, getSpatialStreetPlotQuoteResponseData.owned) &&
         Objects.equals(this.vacant, getSpatialStreetPlotQuoteResponseData.vacant) &&
         Objects.equals(this.buyable, getSpatialStreetPlotQuoteResponseData.buyable) &&
-        Objects.equals(this.enabled, getSpatialStreetPlotQuoteResponseData.enabled);
+        Objects.equals(this.enabled, getSpatialStreetPlotQuoteResponseData.enabled) &&
+        Objects.equals(this.claim, getSpatialStreetPlotQuoteResponseData.claim);
+  }
+
+  private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+    return a == b || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(address, label, priceCents, maintenanceWeeklyCents, includedWeeks, owned, vacant, buyable, enabled);
+    return Objects.hash(address, label, priceCents, maintenanceWeeklyCents, includedWeeks, owned, vacant, buyable, enabled, claim);
+  }
+
+  private static <T> int hashCodeNullable(JsonNullable<T> a) {
+    if (a == null) {
+      return 1;
+    }
+    return a.isPresent() ? Arrays.deepHashCode(new Object[]{a.get()}) : 31;
   }
 
   @Override
@@ -314,6 +355,7 @@ public class GetSpatialStreetPlotQuoteResponseData {
     sb.append("    vacant: ").append(toIndentedString(vacant)).append("\n");
     sb.append("    buyable: ").append(toIndentedString(buyable)).append("\n");
     sb.append("    enabled: ").append(toIndentedString(enabled)).append("\n");
+    sb.append("    claim: ").append(toIndentedString(claim)).append("\n");
     sb.append("}");
     return sb.toString();
   }

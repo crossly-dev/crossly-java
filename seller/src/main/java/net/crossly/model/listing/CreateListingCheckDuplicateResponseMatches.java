@@ -29,7 +29,7 @@ import org.openapitools.jackson.nullable.JsonNullable;
 /**
  * CreateListingCheckDuplicateResponseMatches
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-11T23:44:48.922Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-27T19:42:43.186Z[Etc/UTC]")
 public class CreateListingCheckDuplicateResponseMatches {
   /**
    * What we&#39;d offer to do about this match. A suggestion for which button to feature — never a decision. All three actions stay available.

@@ -29,7 +29,7 @@ import org.openapitools.jackson.nullable.JsonNullable;
  * The owner&#39;s decor (shared street-decor.ts): lamps, banners, paving, arch. Empty &#x3D; the street&#39;s own look.
  */
 @ApiModel(description = "The owner's decor (shared street-decor.ts): lamps, banners, paving, arch. Empty = the street's own look.")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-11T23:44:48.922Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-27T19:42:43.186Z[Etc/UTC]")
 public class GetSpatialStreetResponseDataDecor {
   public static final String SERIALIZED_NAME_LAMP = "lamp";
   @SerializedName(SERIALIZED_NAME_LAMP)
@@ -44,21 +44,21 @@ public class GetSpatialStreetResponseDataDecor {
    */
   @JsonAdapter(BannerColourEnum.Adapter.class)
   public enum BannerColourEnum {
-    RED("red"),
+    BLUE("blue"),
     
     GREEN("green"),
     
-    TEAL("teal"),
-    
-    BLUE("blue"),
-    
     PURPLE("purple"),
+    
+    RED("red"),
+    
+    TEAL("teal"),
     
     CREAM("cream"),
     
-    AMBER("amber"),
+    INK("ink"),
     
-    INK("ink");
+    AMBER("amber");
 
     private String value;
 

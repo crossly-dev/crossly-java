@@ -32,7 +32,7 @@ import org.threeten.bp.OffsetDateTime;
 /**
  * GetVaultMarketMmResponseObligations
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-11T23:44:48.922Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-27T19:42:43.186Z[Etc/UTC]")
 public class GetVaultMarketMmResponseObligations {
   public static final String SERIALIZED_NAME_COVERAGE_PCT = "coveragePct";
   @SerializedName(SERIALIZED_NAME_COVERAGE_PCT)
@@ -54,6 +54,10 @@ public class GetVaultMarketMmResponseObligations {
   @SerializedName(SERIALIZED_NAME_REASONS)
   private List<String> reasons = null;
 
+  public static final String SERIALIZED_NAME_PROGRAM = "program";
+  @SerializedName(SERIALIZED_NAME_PROGRAM)
+  private String program;
+
   public static final String SERIALIZED_NAME_TIER = "tier";
   @SerializedName(SERIALIZED_NAME_TIER)
   private String tier;
@@ -65,10 +69,6 @@ public class GetVaultMarketMmResponseObligations {
   public static final String SERIALIZED_NAME_LEVEL = "level";
   @SerializedName(SERIALIZED_NAME_LEVEL)
   private String level;
-
-  public static final String SERIALIZED_NAME_PROGRAM = "program";
-  @SerializedName(SERIALIZED_NAME_PROGRAM)
-  private String program;
 
   public static final String SERIALIZED_NAME_SAMPLES = "samples";
   @SerializedName(SERIALIZED_NAME_SAMPLES)
@@ -232,6 +232,29 @@ public class GetVaultMarketMmResponseObligations {
   }
 
 
+  public GetVaultMarketMmResponseObligations program(String program) {
+    
+    this.program = program;
+    return this;
+  }
+
+   /**
+   * Get program
+   * @return program
+  **/
+  @javax.annotation.Nonnull
+  @ApiModelProperty(required = true, value = "")
+
+  public String getProgram() {
+    return program;
+  }
+
+
+  public void setProgram(String program) {
+    this.program = program;
+  }
+
+
   public GetVaultMarketMmResponseObligations tier(String tier) {
     
     this.tier = tier;
@@ -298,29 +321,6 @@ public class GetVaultMarketMmResponseObligations {
 
   public void setLevel(String level) {
     this.level = level;
-  }
-
-
-  public GetVaultMarketMmResponseObligations program(String program) {
-    
-    this.program = program;
-    return this;
-  }
-
-   /**
-   * Get program
-   * @return program
-  **/
-  @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "")
-
-  public String getProgram() {
-    return program;
-  }
-
-
-  public void setProgram(String program) {
-    this.program = program;
   }
 
 
@@ -545,10 +545,10 @@ public class GetVaultMarketMmResponseObligations {
         Objects.equals(this.userId, getVaultMarketMmResponseObligations.userId) &&
         Objects.equals(this.day, getVaultMarketMmResponseObligations.day) &&
         Objects.equals(this.reasons, getVaultMarketMmResponseObligations.reasons) &&
+        Objects.equals(this.program, getVaultMarketMmResponseObligations.program) &&
         Objects.equals(this.tier, getVaultMarketMmResponseObligations.tier) &&
         Objects.equals(this.bookKey, getVaultMarketMmResponseObligations.bookKey) &&
         Objects.equals(this.level, getVaultMarketMmResponseObligations.level) &&
-        Objects.equals(this.program, getVaultMarketMmResponseObligations.program) &&
         Objects.equals(this.samples, getVaultMarketMmResponseObligations.samples) &&
         Objects.equals(this.inSpread, getVaultMarketMmResponseObligations.inSpread) &&
         Objects.equals(this.inHalfSpread, getVaultMarketMmResponseObligations.inHalfSpread) &&
@@ -566,7 +566,7 @@ public class GetVaultMarketMmResponseObligations {
 
   @Override
   public int hashCode() {
-    return Objects.hash(coveragePct, updatedAt, userId, day, reasons, tier, bookKey, level, program, samples, inSpread, inHalfSpread, callsTotal, callsJoined, rfqInvited, rfqAnsweredFast, met, coverageBps);
+    return Objects.hash(coveragePct, updatedAt, userId, day, reasons, program, tier, bookKey, level, samples, inSpread, inHalfSpread, callsTotal, callsJoined, rfqInvited, rfqAnsweredFast, met, coverageBps);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -585,10 +585,10 @@ public class GetVaultMarketMmResponseObligations {
     sb.append("    userId: ").append(toIndentedString(userId)).append("\n");
     sb.append("    day: ").append(toIndentedString(day)).append("\n");
     sb.append("    reasons: ").append(toIndentedString(reasons)).append("\n");
+    sb.append("    program: ").append(toIndentedString(program)).append("\n");
     sb.append("    tier: ").append(toIndentedString(tier)).append("\n");
     sb.append("    bookKey: ").append(toIndentedString(bookKey)).append("\n");
     sb.append("    level: ").append(toIndentedString(level)).append("\n");
-    sb.append("    program: ").append(toIndentedString(program)).append("\n");
     sb.append("    samples: ").append(toIndentedString(samples)).append("\n");
     sb.append("    inSpread: ").append(toIndentedString(inSpread)).append("\n");
     sb.append("    inHalfSpread: ").append(toIndentedString(inHalfSpread)).append("\n");

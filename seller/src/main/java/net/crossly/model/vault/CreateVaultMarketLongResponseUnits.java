@@ -30,7 +30,7 @@ import org.openapitools.jackson.nullable.JsonNullable;
  * A multi-unit opening: the units asked for and, once it opened, the units that filled (the rest were cancelled).
  */
 @ApiModel(description = "A multi-unit opening: the units asked for and, once it opened, the units that filled (the rest were cancelled).")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-11T23:44:48.922Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-27T19:42:43.186Z[Etc/UTC]")
 public class CreateVaultMarketLongResponseUnits {
   public static final String SERIALIZED_NAME_REQUESTED = "requested";
   @SerializedName(SERIALIZED_NAME_REQUESTED)

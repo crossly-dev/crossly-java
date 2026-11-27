@@ -29,7 +29,7 @@ import org.openapitools.jackson.nullable.JsonNullable;
  * Category path — split into [main, sub, sub2] when present. eBay categoryPath is the cleanest source.
  */
 @ApiModel(description = "Category path — split into [main, sub, sub2] when present. eBay categoryPath is the cleanest source.")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-11T23:44:48.922Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-27T19:42:43.186Z[Etc/UTC]")
 public class CreateMagicScanSynthesizeResponsePayloadCategory {
   public static final String SERIALIZED_NAME_MAIN = "main";
   @SerializedName(SERIALIZED_NAME_MAIN)

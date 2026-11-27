@@ -28,7 +28,7 @@ import org.openapitools.jackson.nullable.JsonNullable;
 /**
  * GetHomeResponseLayoutItem
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-11T23:44:48.922Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-27T19:42:43.186Z[Etc/UTC]")
 public class GetHomeResponseLayoutItem {
   public static final String SERIALIZED_NAME_TITLE = "title";
   @SerializedName(SERIALIZED_NAME_TITLE)
@@ -73,6 +73,10 @@ public class GetHomeResponseLayoutItem {
   public static final String SERIALIZED_NAME_VISITORS = "visitors";
   @SerializedName(SERIALIZED_NAME_VISITORS)
   private Boolean visitors;
+
+  public static final String SERIALIZED_NAME_TRADE_POST_ID = "tradePostId";
+  @SerializedName(SERIALIZED_NAME_TRADE_POST_ID)
+  private String tradePostId;
 
   public GetHomeResponseLayoutItem() { 
   }
@@ -291,11 +295,11 @@ public class GetHomeResponseLayoutItem {
   }
 
    /**
-   * A &#x60;vault&#x60; ref: the unit&#39;s market (a book key), so a click opens /shop/vault/markets/&lt;market&gt;.
+   * A &#x60;vault&#x60; ref: the unit&#39;s market (a book key), so a click opens /trading/&lt;market&gt;.
    * @return market
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "A `vault` ref: the unit's market (a book key), so a click opens /shop/vault/markets/<market>.")
+  @ApiModelProperty(value = "A `vault` ref: the unit's market (a book key), so a click opens /trading/<market>.")
 
   public String getMarket() {
     return market;
@@ -330,6 +334,29 @@ public class GetHomeResponseLayoutItem {
   }
 
 
+  public GetHomeResponseLayoutItem tradePostId(String tradePostId) {
+    
+    this.tradePostId = tradePostId;
+    return this;
+  }
+
+   /**
+   * The owner&#39;s open Trade Block post for this same product (trade-posts.ts): \&quot;Offer a trade\&quot; opens it.
+   * @return tradePostId
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "The owner's open Trade Block post for this same product (trade-posts.ts): \"Offer a trade\" opens it.")
+
+  public String getTradePostId() {
+    return tradePostId;
+  }
+
+
+  public void setTradePostId(String tradePostId) {
+    this.tradePostId = tradePostId;
+  }
+
+
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -349,7 +376,8 @@ public class GetHomeResponseLayoutItem {
         Objects.equals(this.found, getHomeResponseLayoutItem.found) &&
         Objects.equals(this._object, getHomeResponseLayoutItem._object) &&
         Objects.equals(this.market, getHomeResponseLayoutItem.market) &&
-        Objects.equals(this.visitors, getHomeResponseLayoutItem.visitors);
+        Objects.equals(this.visitors, getHomeResponseLayoutItem.visitors) &&
+        Objects.equals(this.tradePostId, getHomeResponseLayoutItem.tradePostId);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -358,7 +386,7 @@ public class GetHomeResponseLayoutItem {
 
   @Override
   public int hashCode() {
-    return Objects.hash(title, imageUrl, grade, listingSlug, model, crossly, space, found, _object, market, visitors);
+    return Objects.hash(title, imageUrl, grade, listingSlug, model, crossly, space, found, _object, market, visitors, tradePostId);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -383,6 +411,7 @@ public class GetHomeResponseLayoutItem {
     sb.append("    _object: ").append(toIndentedString(_object)).append("\n");
     sb.append("    market: ").append(toIndentedString(market)).append("\n");
     sb.append("    visitors: ").append(toIndentedString(visitors)).append("\n");
+    sb.append("    tradePostId: ").append(toIndentedString(tradePostId)).append("\n");
     sb.append("}");
     return sb.toString();
   }

@@ -24,14 +24,17 @@ import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 import java.math.BigDecimal;
-import net.crossly.model.web3.ListWeb3LaunchesItemCreator;
-import net.crossly.model.web3.ListWeb3LaunchesItemHolderGate;
+import java.util.ArrayList;
+import java.util.List;
+import net.crossly.model.common.ContractName;
+import net.crossly.model.web3.ListWeb3LaunchesItemHolderPerksItem;
+import net.crossly.model.common.NameObject;
 import org.openapitools.jackson.nullable.JsonNullable;
 
 /**
  * ListWeb3LaunchesItem
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-11T23:44:48.922Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-27T19:42:43.186Z[Etc/UTC]")
 public class ListWeb3LaunchesItem {
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
@@ -42,8 +45,6 @@ public class ListWeb3LaunchesItem {
    */
   @JsonAdapter(ChainEnum.Adapter.class)
   public enum ChainEnum {
-    SOLANA("solana"),
-    
     ETHEREUM("ethereum"),
     
     BASE("base"),
@@ -52,7 +53,9 @@ public class ListWeb3LaunchesItem {
     
     ARBITRUM("arbitrum"),
     
-    OPTIMISM("optimism");
+    OPTIMISM("optimism"),
+    
+    SOLANA("solana");
 
     private String value;
 
@@ -105,9 +108,9 @@ public class ListWeb3LaunchesItem {
    */
   @JsonAdapter(StatusEnum.Adapter.class)
   public enum StatusEnum {
-    LIVE("live"),
-    
     DRAFT("draft"),
+    
+    LIVE("live"),
     
     FAILED("failed"),
     
@@ -197,7 +200,7 @@ public class ListWeb3LaunchesItem {
 
   public static final String SERIALIZED_NAME_HOLDER_GATE = "holderGate";
   @SerializedName(SERIALIZED_NAME_HOLDER_GATE)
-  private ListWeb3LaunchesItemHolderGate holderGate;
+  private ContractName holderGate;
 
   public static final String SERIALIZED_NAME_MAX_PER_WALLET = "maxPerWallet";
   @SerializedName(SERIALIZED_NAME_MAX_PER_WALLET)
@@ -216,13 +219,13 @@ public class ListWeb3LaunchesItem {
    */
   @JsonAdapter(PhaseEnum.Adapter.class)
   public enum PhaseEnum {
-    ENDED("ended"),
-    
-    HOLDER("holder"),
-    
     PUBLIC("public"),
     
+    ENDED("ended"),
+    
     UPCOMING("upcoming"),
+    
+    HOLDER("holder"),
     
     SOLD_OUT("sold_out");
 
@@ -270,7 +273,7 @@ public class ListWeb3LaunchesItem {
 
   public static final String SERIALIZED_NAME_CREATOR = "creator";
   @SerializedName(SERIALIZED_NAME_CREATOR)
-  private ListWeb3LaunchesItemCreator creator;
+  private NameObject creator;
 
   public static final String SERIALIZED_NAME_CARD = "card";
   @SerializedName(SERIALIZED_NAME_CARD)
@@ -283,6 +286,18 @@ public class ListWeb3LaunchesItem {
   public static final String SERIALIZED_NAME_REVEALED = "revealed";
   @SerializedName(SERIALIZED_NAME_REVEALED)
   private Boolean revealed;
+
+  public static final String SERIALIZED_NAME_CARD_SET_ID = "cardSetId";
+  @SerializedName(SERIALIZED_NAME_CARD_SET_ID)
+  private String cardSetId;
+
+  public static final String SERIALIZED_NAME_CREATION_REFS = "creationRefs";
+  @SerializedName(SERIALIZED_NAME_CREATION_REFS)
+  private List<String> creationRefs = null;
+
+  public static final String SERIALIZED_NAME_HOLDER_PERKS = "holderPerks";
+  @SerializedName(SERIALIZED_NAME_HOLDER_PERKS)
+  private List<ListWeb3LaunchesItemHolderPerksItem> holderPerks = null;
 
   public ListWeb3LaunchesItem() { 
   }
@@ -609,7 +624,7 @@ public class ListWeb3LaunchesItem {
   }
 
 
-  public ListWeb3LaunchesItem holderGate(ListWeb3LaunchesItemHolderGate holderGate) {
+  public ListWeb3LaunchesItem holderGate(ContractName holderGate) {
     
     this.holderGate = holderGate;
     return this;
@@ -622,12 +637,12 @@ public class ListWeb3LaunchesItem {
   @javax.annotation.Nullable
   @ApiModelProperty(value = "")
 
-  public ListWeb3LaunchesItemHolderGate getHolderGate() {
+  public ContractName getHolderGate() {
     return holderGate;
   }
 
 
-  public void setHolderGate(ListWeb3LaunchesItemHolderGate holderGate) {
+  public void setHolderGate(ContractName holderGate) {
     this.holderGate = holderGate;
   }
 
@@ -724,7 +739,7 @@ public class ListWeb3LaunchesItem {
   }
 
 
-  public ListWeb3LaunchesItem creator(ListWeb3LaunchesItemCreator creator) {
+  public ListWeb3LaunchesItem creator(NameObject creator) {
     
     this.creator = creator;
     return this;
@@ -737,12 +752,12 @@ public class ListWeb3LaunchesItem {
   @javax.annotation.Nonnull
   @ApiModelProperty(required = true, value = "")
 
-  public ListWeb3LaunchesItemCreator getCreator() {
+  public NameObject getCreator() {
     return creator;
   }
 
 
-  public void setCreator(ListWeb3LaunchesItemCreator creator) {
+  public void setCreator(NameObject creator) {
     this.creator = creator;
   }
 
@@ -816,6 +831,91 @@ public class ListWeb3LaunchesItem {
   }
 
 
+  public ListWeb3LaunchesItem cardSetId(String cardSetId) {
+    
+    this.cardSetId = cardSetId;
+    return this;
+  }
+
+   /**
+   * Creator Studio (migration 1163): the card set this collection takes on chain, and the creations it mints.
+   * @return cardSetId
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "Creator Studio (migration 1163): the card set this collection takes on chain, and the creations it mints.")
+
+  public String getCardSetId() {
+    return cardSetId;
+  }
+
+
+  public void setCardSetId(String cardSetId) {
+    this.cardSetId = cardSetId;
+  }
+
+
+  public ListWeb3LaunchesItem creationRefs(List<String> creationRefs) {
+    
+    this.creationRefs = creationRefs;
+    return this;
+  }
+
+  public ListWeb3LaunchesItem addCreationRefsItem(String creationRefsItem) {
+    if (this.creationRefs == null) {
+      this.creationRefs = new ArrayList<String>();
+    }
+    this.creationRefs.add(creationRefsItem);
+    return this;
+  }
+
+   /**
+   * Get creationRefs
+   * @return creationRefs
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public List<String> getCreationRefs() {
+    return creationRefs;
+  }
+
+
+  public void setCreationRefs(List<String> creationRefs) {
+    this.creationRefs = creationRefs;
+  }
+
+
+  public ListWeb3LaunchesItem holderPerks(List<ListWeb3LaunchesItemHolderPerksItem> holderPerks) {
+    
+    this.holderPerks = holderPerks;
+    return this;
+  }
+
+  public ListWeb3LaunchesItem addHolderPerksItem(ListWeb3LaunchesItemHolderPerksItem holderPerksItem) {
+    if (this.holderPerks == null) {
+      this.holderPerks = new ArrayList<ListWeb3LaunchesItemHolderPerksItem>();
+    }
+    this.holderPerks.add(holderPerksItem);
+    return this;
+  }
+
+   /**
+   * Migration 1178 (R-studio-15): what holding a token gets you, decided at mint (shared/creator/holder-perks).
+   * @return holderPerks
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "Migration 1178 (R-studio-15): what holding a token gets you, decided at mint (shared/creator/holder-perks).")
+
+  public List<ListWeb3LaunchesItemHolderPerksItem> getHolderPerks() {
+    return holderPerks;
+  }
+
+
+  public void setHolderPerks(List<ListWeb3LaunchesItemHolderPerksItem> holderPerks) {
+    this.holderPerks = holderPerks;
+  }
+
+
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -847,7 +947,10 @@ public class ListWeb3LaunchesItem {
         Objects.equals(this.creator, listWeb3LaunchesItem.creator) &&
         Objects.equals(this.card, listWeb3LaunchesItem.card) &&
         Objects.equals(this.allowlist, listWeb3LaunchesItem.allowlist) &&
-        Objects.equals(this.revealed, listWeb3LaunchesItem.revealed);
+        Objects.equals(this.revealed, listWeb3LaunchesItem.revealed) &&
+        Objects.equals(this.cardSetId, listWeb3LaunchesItem.cardSetId) &&
+        Objects.equals(this.creationRefs, listWeb3LaunchesItem.creationRefs) &&
+        Objects.equals(this.holderPerks, listWeb3LaunchesItem.holderPerks);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -856,7 +959,7 @@ public class ListWeb3LaunchesItem {
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, chain, contract, status, name, symbol, description, imageUrl, maxSupply, minted, priceWei, holderStart, publicStart, endTime, holderGate, maxPerWallet, royaltyBps, platformBps, phase, creator, card, allowlist, revealed);
+    return Objects.hash(id, chain, contract, status, name, symbol, description, imageUrl, maxSupply, minted, priceWei, holderStart, publicStart, endTime, holderGate, maxPerWallet, royaltyBps, platformBps, phase, creator, card, allowlist, revealed, cardSetId, creationRefs, holderPerks);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -893,6 +996,9 @@ public class ListWeb3LaunchesItem {
     sb.append("    card: ").append(toIndentedString(card)).append("\n");
     sb.append("    allowlist: ").append(toIndentedString(allowlist)).append("\n");
     sb.append("    revealed: ").append(toIndentedString(revealed)).append("\n");
+    sb.append("    cardSetId: ").append(toIndentedString(cardSetId)).append("\n");
+    sb.append("    creationRefs: ").append(toIndentedString(creationRefs)).append("\n");
+    sb.append("    holderPerks: ").append(toIndentedString(holderPerks)).append("\n");
     sb.append("}");
     return sb.toString();
   }

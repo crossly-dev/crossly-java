@@ -29,7 +29,7 @@ import org.openapitools.jackson.nullable.JsonNullable;
 /**
  * ListBuyerFollowingSellersItem
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-11T23:47:29.843Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-27T19:58:46.962Z[Etc/UTC]")
 public class ListBuyerFollowingSellersItem {
   public static final String SERIALIZED_NAME_SELLER_USER_ID = "sellerUserId";
   @SerializedName(SERIALIZED_NAME_SELLER_USER_ID)
@@ -47,6 +47,10 @@ public class ListBuyerFollowingSellersItem {
   @SerializedName(SERIALIZED_NAME_NEW_LISTINGS)
   private BigDecimal newListings;
 
+  public static final String SERIALIZED_NAME_USERNAME = "username";
+  @SerializedName(SERIALIZED_NAME_USERNAME)
+  private String username;
+
   public static final String SERIALIZED_NAME_NAME = "name";
   @SerializedName(SERIALIZED_NAME_NAME)
   private String name;
@@ -54,10 +58,6 @@ public class ListBuyerFollowingSellersItem {
   public static final String SERIALIZED_NAME_AVATAR_URL = "avatarUrl";
   @SerializedName(SERIALIZED_NAME_AVATAR_URL)
   private String avatarUrl;
-
-  public static final String SERIALIZED_NAME_USERNAME = "username";
-  @SerializedName(SERIALIZED_NAME_USERNAME)
-  private String username;
 
   public static final String SERIALIZED_NAME_LAST_SEEN_AT = "lastSeenAt";
   @SerializedName(SERIALIZED_NAME_LAST_SEEN_AT)
@@ -158,6 +158,29 @@ public class ListBuyerFollowingSellersItem {
   }
 
 
+  public ListBuyerFollowingSellersItem username(String username) {
+    
+    this.username = username;
+    return this;
+  }
+
+   /**
+   * Get username
+   * @return username
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public String getUsername() {
+    return username;
+  }
+
+
+  public void setUsername(String username) {
+    this.username = username;
+  }
+
+
   public ListBuyerFollowingSellersItem name(String name) {
     
     this.name = name;
@@ -204,29 +227,6 @@ public class ListBuyerFollowingSellersItem {
   }
 
 
-  public ListBuyerFollowingSellersItem username(String username) {
-    
-    this.username = username;
-    return this;
-  }
-
-   /**
-   * Get username
-   * @return username
-  **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
-
-  public String getUsername() {
-    return username;
-  }
-
-
-  public void setUsername(String username) {
-    this.username = username;
-  }
-
-
   public ListBuyerFollowingSellersItem lastSeenAt(String lastSeenAt) {
     
     this.lastSeenAt = lastSeenAt;
@@ -263,9 +263,9 @@ public class ListBuyerFollowingSellersItem {
         Objects.equals(this.followedAt, listBuyerFollowingSellersItem.followedAt) &&
         Objects.equals(this.activeListings, listBuyerFollowingSellersItem.activeListings) &&
         Objects.equals(this.newListings, listBuyerFollowingSellersItem.newListings) &&
+        Objects.equals(this.username, listBuyerFollowingSellersItem.username) &&
         Objects.equals(this.name, listBuyerFollowingSellersItem.name) &&
         Objects.equals(this.avatarUrl, listBuyerFollowingSellersItem.avatarUrl) &&
-        Objects.equals(this.username, listBuyerFollowingSellersItem.username) &&
         Objects.equals(this.lastSeenAt, listBuyerFollowingSellersItem.lastSeenAt);
   }
 
@@ -275,7 +275,7 @@ public class ListBuyerFollowingSellersItem {
 
   @Override
   public int hashCode() {
-    return Objects.hash(sellerUserId, followedAt, activeListings, newListings, name, avatarUrl, username, lastSeenAt);
+    return Objects.hash(sellerUserId, followedAt, activeListings, newListings, username, name, avatarUrl, lastSeenAt);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -293,9 +293,9 @@ public class ListBuyerFollowingSellersItem {
     sb.append("    followedAt: ").append(toIndentedString(followedAt)).append("\n");
     sb.append("    activeListings: ").append(toIndentedString(activeListings)).append("\n");
     sb.append("    newListings: ").append(toIndentedString(newListings)).append("\n");
+    sb.append("    username: ").append(toIndentedString(username)).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    avatarUrl: ").append(toIndentedString(avatarUrl)).append("\n");
-    sb.append("    username: ").append(toIndentedString(username)).append("\n");
     sb.append("    lastSeenAt: ").append(toIndentedString(lastSeenAt)).append("\n");
     sb.append("}");
     return sb.toString();

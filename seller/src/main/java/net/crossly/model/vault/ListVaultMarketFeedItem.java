@@ -23,13 +23,14 @@ import com.google.gson.stream.JsonWriter;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
-import net.crossly.model.vault.ListVaultMarketFeedItemMark;
+import net.crossly.model.vault.ListVaultMarketFeedItemBy;
+import net.crossly.model.vault.ListVaultMarketOpeningItemMark;
 import org.openapitools.jackson.nullable.JsonNullable;
 
 /**
  * ListVaultMarketFeedItem
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-11T23:44:48.922Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-27T19:42:43.186Z[Etc/UTC]")
 public class ListVaultMarketFeedItem {
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
@@ -38,6 +39,10 @@ public class ListVaultMarketFeedItem {
   public static final String SERIALIZED_NAME_AT = "at";
   @SerializedName(SERIALIZED_NAME_AT)
   private String at;
+
+  public static final String SERIALIZED_NAME_BY = "by";
+  @SerializedName(SERIALIZED_NAME_BY)
+  private ListVaultMarketFeedItemBy by;
 
   public static final String SERIALIZED_NAME_BOOK_KEY = "bookKey";
   @SerializedName(SERIALIZED_NAME_BOOK_KEY)
@@ -57,7 +62,7 @@ public class ListVaultMarketFeedItem {
 
   public static final String SERIALIZED_NAME_MARK = "mark";
   @SerializedName(SERIALIZED_NAME_MARK)
-  private ListVaultMarketFeedItemMark mark;
+  private ListVaultMarketOpeningItemMark mark;
 
   public static final String SERIALIZED_NAME_BUY_HREF = "buyHref";
   @SerializedName(SERIALIZED_NAME_BUY_HREF)
@@ -109,6 +114,29 @@ public class ListVaultMarketFeedItem {
 
   public void setAt(String at) {
     this.at = at;
+  }
+
+
+  public ListVaultMarketFeedItem by(ListVaultMarketFeedItemBy by) {
+    
+    this.by = by;
+    return this;
+  }
+
+   /**
+   * Get by
+   * @return by
+  **/
+  @javax.annotation.Nonnull
+  @ApiModelProperty(required = true, value = "")
+
+  public ListVaultMarketFeedItemBy getBy() {
+    return by;
+  }
+
+
+  public void setBy(ListVaultMarketFeedItemBy by) {
+    this.by = by;
   }
 
 
@@ -204,7 +232,7 @@ public class ListVaultMarketFeedItem {
   }
 
 
-  public ListVaultMarketFeedItem mark(ListVaultMarketFeedItemMark mark) {
+  public ListVaultMarketFeedItem mark(ListVaultMarketOpeningItemMark mark) {
     
     this.mark = mark;
     return this;
@@ -217,12 +245,12 @@ public class ListVaultMarketFeedItem {
   @javax.annotation.Nonnull
   @ApiModelProperty(required = true, value = "")
 
-  public ListVaultMarketFeedItemMark getMark() {
+  public ListVaultMarketOpeningItemMark getMark() {
     return mark;
   }
 
 
-  public void setMark(ListVaultMarketFeedItemMark mark) {
+  public void setMark(ListVaultMarketOpeningItemMark mark) {
     this.mark = mark;
   }
 
@@ -261,6 +289,7 @@ public class ListVaultMarketFeedItem {
     ListVaultMarketFeedItem listVaultMarketFeedItem = (ListVaultMarketFeedItem) o;
     return Objects.equals(this.id, listVaultMarketFeedItem.id) &&
         Objects.equals(this.at, listVaultMarketFeedItem.at) &&
+        Objects.equals(this.by, listVaultMarketFeedItem.by) &&
         Objects.equals(this.bookKey, listVaultMarketFeedItem.bookKey) &&
         Objects.equals(this.name, listVaultMarketFeedItem.name) &&
         Objects.equals(this.label, listVaultMarketFeedItem.label) &&
@@ -275,7 +304,7 @@ public class ListVaultMarketFeedItem {
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, at, bookKey, name, label, imageUrl, mark, buyHref);
+    return Objects.hash(id, at, by, bookKey, name, label, imageUrl, mark, buyHref);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -291,6 +320,7 @@ public class ListVaultMarketFeedItem {
     sb.append("class ListVaultMarketFeedItem {\n");
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    at: ").append(toIndentedString(at)).append("\n");
+    sb.append("    by: ").append(toIndentedString(by)).append("\n");
     sb.append("    bookKey: ").append(toIndentedString(bookKey)).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    label: ").append(toIndentedString(label)).append("\n");

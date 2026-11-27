@@ -28,7 +28,7 @@ import java.io.IOException;
  * Your place in it, when signed in: role and status, or null.
  */
 @ApiModel(description = "Your place in it, when signed in: role and status, or null.")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-11T23:44:48.922Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-27T19:42:43.186Z[Etc/UTC]")
 public class GetWorldSpaceResponseDataYou {
   public static final String SERIALIZED_NAME_ROLE = "role";
   @SerializedName(SERIALIZED_NAME_ROLE)

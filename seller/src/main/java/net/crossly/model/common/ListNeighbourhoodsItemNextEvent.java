@@ -27,19 +27,19 @@ import java.io.IOException;
 /**
  * ListNeighbourhoodsItemNextEvent
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-11T23:44:48.922Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-27T19:42:43.186Z[Etc/UTC]")
 public class ListNeighbourhoodsItemNextEvent {
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
   private String id;
 
-  public static final String SERIALIZED_NAME_LIVE = "live";
-  @SerializedName(SERIALIZED_NAME_LIVE)
-  private Boolean live;
-
   public static final String SERIALIZED_NAME_TITLE = "title";
   @SerializedName(SERIALIZED_NAME_TITLE)
   private String title;
+
+  public static final String SERIALIZED_NAME_LIVE = "live";
+  @SerializedName(SERIALIZED_NAME_LIVE)
+  private Boolean live;
 
   public static final String SERIALIZED_NAME_ENDS_AT = "endsAt";
   @SerializedName(SERIALIZED_NAME_ENDS_AT)
@@ -126,29 +126,6 @@ public class ListNeighbourhoodsItemNextEvent {
   }
 
 
-  public ListNeighbourhoodsItemNextEvent live(Boolean live) {
-    
-    this.live = live;
-    return this;
-  }
-
-   /**
-   * Get live
-   * @return live
-  **/
-  @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "")
-
-  public Boolean getLive() {
-    return live;
-  }
-
-
-  public void setLive(Boolean live) {
-    this.live = live;
-  }
-
-
   public ListNeighbourhoodsItemNextEvent title(String title) {
     
     this.title = title;
@@ -169,6 +146,29 @@ public class ListNeighbourhoodsItemNextEvent {
 
   public void setTitle(String title) {
     this.title = title;
+  }
+
+
+  public ListNeighbourhoodsItemNextEvent live(Boolean live) {
+    
+    this.live = live;
+    return this;
+  }
+
+   /**
+   * Get live
+   * @return live
+  **/
+  @javax.annotation.Nonnull
+  @ApiModelProperty(required = true, value = "")
+
+  public Boolean getLive() {
+    return live;
+  }
+
+
+  public void setLive(Boolean live) {
+    this.live = live;
   }
 
 
@@ -251,8 +251,8 @@ public class ListNeighbourhoodsItemNextEvent {
     }
     ListNeighbourhoodsItemNextEvent listNeighbourhoodsItemNextEvent = (ListNeighbourhoodsItemNextEvent) o;
     return Objects.equals(this.id, listNeighbourhoodsItemNextEvent.id) &&
-        Objects.equals(this.live, listNeighbourhoodsItemNextEvent.live) &&
         Objects.equals(this.title, listNeighbourhoodsItemNextEvent.title) &&
+        Objects.equals(this.live, listNeighbourhoodsItemNextEvent.live) &&
         Objects.equals(this.endsAt, listNeighbourhoodsItemNextEvent.endsAt) &&
         Objects.equals(this.kind, listNeighbourhoodsItemNextEvent.kind) &&
         Objects.equals(this.startsAt, listNeighbourhoodsItemNextEvent.startsAt);
@@ -260,7 +260,7 @@ public class ListNeighbourhoodsItemNextEvent {
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, live, title, endsAt, kind, startsAt);
+    return Objects.hash(id, title, live, endsAt, kind, startsAt);
   }
 
   @Override
@@ -268,8 +268,8 @@ public class ListNeighbourhoodsItemNextEvent {
     StringBuilder sb = new StringBuilder();
     sb.append("class ListNeighbourhoodsItemNextEvent {\n");
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
-    sb.append("    live: ").append(toIndentedString(live)).append("\n");
     sb.append("    title: ").append(toIndentedString(title)).append("\n");
+    sb.append("    live: ").append(toIndentedString(live)).append("\n");
     sb.append("    endsAt: ").append(toIndentedString(endsAt)).append("\n");
     sb.append("    kind: ").append(toIndentedString(kind)).append("\n");
     sb.append("    startsAt: ").append(toIndentedString(startsAt)).append("\n");

@@ -29,16 +29,8 @@ import org.openapitools.jackson.nullable.JsonNullable;
 /**
  * BuyerBoardResponseDataItems
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-11T23:47:29.843Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-27T19:58:46.962Z[Etc/UTC]")
 public class BuyerBoardResponseDataItems {
-  public static final String SERIALIZED_NAME_AVAILABLE = "available";
-  @SerializedName(SERIALIZED_NAME_AVAILABLE)
-  private Boolean available;
-
-  public static final String SERIALIZED_NAME_TITLE = "title";
-  @SerializedName(SERIALIZED_NAME_TITLE)
-  private String title;
-
   public static final String SERIALIZED_NAME_PLATFORM_LISTING_ID = "platformListingId";
   @SerializedName(SERIALIZED_NAME_PLATFORM_LISTING_ID)
   private String platformListingId;
@@ -47,17 +39,21 @@ public class BuyerBoardResponseDataItems {
   @SerializedName(SERIALIZED_NAME_SLUG)
   private String slug;
 
+  public static final String SERIALIZED_NAME_TITLE = "title";
+  @SerializedName(SERIALIZED_NAME_TITLE)
+  private String title;
+
   public static final String SERIALIZED_NAME_PRICE_CENTS = "priceCents";
   @SerializedName(SERIALIZED_NAME_PRICE_CENTS)
   private BigDecimal priceCents;
 
-  public static final String SERIALIZED_NAME_NOTE = "note";
-  @SerializedName(SERIALIZED_NAME_NOTE)
-  private String note;
-
   public static final String SERIALIZED_NAME_IMAGE_URL = "imageUrl";
   @SerializedName(SERIALIZED_NAME_IMAGE_URL)
   private String imageUrl;
+
+  public static final String SERIALIZED_NAME_AVAILABLE = "available";
+  @SerializedName(SERIALIZED_NAME_AVAILABLE)
+  private Boolean available;
 
   public static final String SERIALIZED_NAME_X = "x";
   @SerializedName(SERIALIZED_NAME_X)
@@ -75,54 +71,12 @@ public class BuyerBoardResponseDataItems {
   @SerializedName(SERIALIZED_NAME_Z)
   private BigDecimal z;
 
+  public static final String SERIALIZED_NAME_NOTE = "note";
+  @SerializedName(SERIALIZED_NAME_NOTE)
+  private String note;
+
   public BuyerBoardResponseDataItems() { 
   }
-
-  public BuyerBoardResponseDataItems available(Boolean available) {
-    
-    this.available = available;
-    return this;
-  }
-
-   /**
-   * Get available
-   * @return available
-  **/
-  @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "")
-
-  public Boolean getAvailable() {
-    return available;
-  }
-
-
-  public void setAvailable(Boolean available) {
-    this.available = available;
-  }
-
-
-  public BuyerBoardResponseDataItems title(String title) {
-    
-    this.title = title;
-    return this;
-  }
-
-   /**
-   * Get title
-   * @return title
-  **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
-
-  public String getTitle() {
-    return title;
-  }
-
-
-  public void setTitle(String title) {
-    this.title = title;
-  }
-
 
   public BuyerBoardResponseDataItems platformListingId(String platformListingId) {
     
@@ -170,6 +124,29 @@ public class BuyerBoardResponseDataItems {
   }
 
 
+  public BuyerBoardResponseDataItems title(String title) {
+    
+    this.title = title;
+    return this;
+  }
+
+   /**
+   * Get title
+   * @return title
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public String getTitle() {
+    return title;
+  }
+
+
+  public void setTitle(String title) {
+    this.title = title;
+  }
+
+
   public BuyerBoardResponseDataItems priceCents(BigDecimal priceCents) {
     
     this.priceCents = priceCents;
@@ -193,29 +170,6 @@ public class BuyerBoardResponseDataItems {
   }
 
 
-  public BuyerBoardResponseDataItems note(String note) {
-    
-    this.note = note;
-    return this;
-  }
-
-   /**
-   * Get note
-   * @return note
-  **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
-
-  public String getNote() {
-    return note;
-  }
-
-
-  public void setNote(String note) {
-    this.note = note;
-  }
-
-
   public BuyerBoardResponseDataItems imageUrl(String imageUrl) {
     
     this.imageUrl = imageUrl;
@@ -236,6 +190,29 @@ public class BuyerBoardResponseDataItems {
 
   public void setImageUrl(String imageUrl) {
     this.imageUrl = imageUrl;
+  }
+
+
+  public BuyerBoardResponseDataItems available(Boolean available) {
+    
+    this.available = available;
+    return this;
+  }
+
+   /**
+   * Get available
+   * @return available
+  **/
+  @javax.annotation.Nonnull
+  @ApiModelProperty(required = true, value = "")
+
+  public Boolean getAvailable() {
+    return available;
+  }
+
+
+  public void setAvailable(Boolean available) {
+    this.available = available;
   }
 
 
@@ -331,6 +308,29 @@ public class BuyerBoardResponseDataItems {
   }
 
 
+  public BuyerBoardResponseDataItems note(String note) {
+    
+    this.note = note;
+    return this;
+  }
+
+   /**
+   * Get note
+   * @return note
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public String getNote() {
+    return note;
+  }
+
+
+  public void setNote(String note) {
+    this.note = note;
+  }
+
+
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -340,17 +340,17 @@ public class BuyerBoardResponseDataItems {
       return false;
     }
     BuyerBoardResponseDataItems buyerBoardResponseDataItems = (BuyerBoardResponseDataItems) o;
-    return Objects.equals(this.available, buyerBoardResponseDataItems.available) &&
-        Objects.equals(this.title, buyerBoardResponseDataItems.title) &&
-        Objects.equals(this.platformListingId, buyerBoardResponseDataItems.platformListingId) &&
+    return Objects.equals(this.platformListingId, buyerBoardResponseDataItems.platformListingId) &&
         Objects.equals(this.slug, buyerBoardResponseDataItems.slug) &&
+        Objects.equals(this.title, buyerBoardResponseDataItems.title) &&
         Objects.equals(this.priceCents, buyerBoardResponseDataItems.priceCents) &&
-        Objects.equals(this.note, buyerBoardResponseDataItems.note) &&
         Objects.equals(this.imageUrl, buyerBoardResponseDataItems.imageUrl) &&
+        Objects.equals(this.available, buyerBoardResponseDataItems.available) &&
         Objects.equals(this.x, buyerBoardResponseDataItems.x) &&
         Objects.equals(this.y, buyerBoardResponseDataItems.y) &&
         Objects.equals(this.w, buyerBoardResponseDataItems.w) &&
-        Objects.equals(this.z, buyerBoardResponseDataItems.z);
+        Objects.equals(this.z, buyerBoardResponseDataItems.z) &&
+        Objects.equals(this.note, buyerBoardResponseDataItems.note);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -359,7 +359,7 @@ public class BuyerBoardResponseDataItems {
 
   @Override
   public int hashCode() {
-    return Objects.hash(available, title, platformListingId, slug, priceCents, note, imageUrl, x, y, w, z);
+    return Objects.hash(platformListingId, slug, title, priceCents, imageUrl, available, x, y, w, z, note);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -373,17 +373,17 @@ public class BuyerBoardResponseDataItems {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class BuyerBoardResponseDataItems {\n");
-    sb.append("    available: ").append(toIndentedString(available)).append("\n");
-    sb.append("    title: ").append(toIndentedString(title)).append("\n");
     sb.append("    platformListingId: ").append(toIndentedString(platformListingId)).append("\n");
     sb.append("    slug: ").append(toIndentedString(slug)).append("\n");
+    sb.append("    title: ").append(toIndentedString(title)).append("\n");
     sb.append("    priceCents: ").append(toIndentedString(priceCents)).append("\n");
-    sb.append("    note: ").append(toIndentedString(note)).append("\n");
     sb.append("    imageUrl: ").append(toIndentedString(imageUrl)).append("\n");
+    sb.append("    available: ").append(toIndentedString(available)).append("\n");
     sb.append("    x: ").append(toIndentedString(x)).append("\n");
     sb.append("    y: ").append(toIndentedString(y)).append("\n");
     sb.append("    w: ").append(toIndentedString(w)).append("\n");
     sb.append("    z: ").append(toIndentedString(z)).append("\n");
+    sb.append("    note: ").append(toIndentedString(note)).append("\n");
     sb.append("}");
     return sb.toString();
   }

@@ -29,19 +29,19 @@ import org.openapitools.jackson.nullable.JsonNullable;
 /**
  * GetBuyerCaseResponseDataPurchase
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-11T23:47:29.843Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-27T19:58:46.962Z[Etc/UTC]")
 public class GetBuyerCaseResponseDataPurchase {
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
   private String id;
 
-  public static final String SERIALIZED_NAME_STATUS = "status";
-  @SerializedName(SERIALIZED_NAME_STATUS)
-  private String status;
-
   public static final String SERIALIZED_NAME_BUYER_PAID_CENTS = "buyerPaidCents";
   @SerializedName(SERIALIZED_NAME_BUYER_PAID_CENTS)
   private BigDecimal buyerPaidCents;
+
+  public static final String SERIALIZED_NAME_STATUS = "status";
+  @SerializedName(SERIALIZED_NAME_STATUS)
+  private String status;
 
   public static final String SERIALIZED_NAME_REFUND_STATUS = "refundStatus";
   @SerializedName(SERIALIZED_NAME_REFUND_STATUS)
@@ -77,29 +77,6 @@ public class GetBuyerCaseResponseDataPurchase {
   }
 
 
-  public GetBuyerCaseResponseDataPurchase status(String status) {
-    
-    this.status = status;
-    return this;
-  }
-
-   /**
-   * Get status
-   * @return status
-  **/
-  @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "")
-
-  public String getStatus() {
-    return status;
-  }
-
-
-  public void setStatus(String status) {
-    this.status = status;
-  }
-
-
   public GetBuyerCaseResponseDataPurchase buyerPaidCents(BigDecimal buyerPaidCents) {
     
     this.buyerPaidCents = buyerPaidCents;
@@ -120,6 +97,29 @@ public class GetBuyerCaseResponseDataPurchase {
 
   public void setBuyerPaidCents(BigDecimal buyerPaidCents) {
     this.buyerPaidCents = buyerPaidCents;
+  }
+
+
+  public GetBuyerCaseResponseDataPurchase status(String status) {
+    
+    this.status = status;
+    return this;
+  }
+
+   /**
+   * Get status
+   * @return status
+  **/
+  @javax.annotation.Nonnull
+  @ApiModelProperty(required = true, value = "")
+
+  public String getStatus() {
+    return status;
+  }
+
+
+  public void setStatus(String status) {
+    this.status = status;
   }
 
 
@@ -179,8 +179,8 @@ public class GetBuyerCaseResponseDataPurchase {
     }
     GetBuyerCaseResponseDataPurchase getBuyerCaseResponseDataPurchase = (GetBuyerCaseResponseDataPurchase) o;
     return Objects.equals(this.id, getBuyerCaseResponseDataPurchase.id) &&
-        Objects.equals(this.status, getBuyerCaseResponseDataPurchase.status) &&
         Objects.equals(this.buyerPaidCents, getBuyerCaseResponseDataPurchase.buyerPaidCents) &&
+        Objects.equals(this.status, getBuyerCaseResponseDataPurchase.status) &&
         Objects.equals(this.refundStatus, getBuyerCaseResponseDataPurchase.refundStatus) &&
         Objects.equals(this.refundAmountCents, getBuyerCaseResponseDataPurchase.refundAmountCents);
   }
@@ -191,7 +191,7 @@ public class GetBuyerCaseResponseDataPurchase {
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, status, buyerPaidCents, refundStatus, refundAmountCents);
+    return Objects.hash(id, buyerPaidCents, status, refundStatus, refundAmountCents);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -206,8 +206,8 @@ public class GetBuyerCaseResponseDataPurchase {
     StringBuilder sb = new StringBuilder();
     sb.append("class GetBuyerCaseResponseDataPurchase {\n");
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
-    sb.append("    status: ").append(toIndentedString(status)).append("\n");
     sb.append("    buyerPaidCents: ").append(toIndentedString(buyerPaidCents)).append("\n");
+    sb.append("    status: ").append(toIndentedString(status)).append("\n");
     sb.append("    refundStatus: ").append(toIndentedString(refundStatus)).append("\n");
     sb.append("    refundAmountCents: ").append(toIndentedString(refundAmountCents)).append("\n");
     sb.append("}");

@@ -31,7 +31,7 @@ import java.util.Map;
  * The browse bar&#39;s hover panels: the top collections of each category and chain.
  */
 @ApiModel(description = "The browse bar's hover panels: the top collections of each category and chain.")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-11T23:44:48.922Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-27T19:42:43.186Z[Etc/UTC]")
 public class GetWeb3BrowseResponseTop {
   public static final String SERIALIZED_NAME_CATEGORIES = "categories";
   @SerializedName(SERIALIZED_NAME_CATEGORIES)

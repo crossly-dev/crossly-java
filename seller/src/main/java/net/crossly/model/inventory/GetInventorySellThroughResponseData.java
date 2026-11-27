@@ -23,22 +23,23 @@ import com.google.gson.stream.JsonWriter;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
-import net.crossly.model.analytic.GetAnalyticDashboardResponseSellThrough;
+import net.crossly.model.analytic.GetAnalyticDashboardResponseSellThroughCohort;
 import net.crossly.model.inventory.GetInventorySellThroughResponseDataComparison;
-import net.crossly.model.inventory.GetInventorySellThroughResponseDataWindow;
+import net.crossly.model.inventory.GetInventorySellThroughResponseDataCurrent;
+import net.crossly.model.common.StartEnd;
 
 /**
  * GetInventorySellThroughResponseData
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-11T23:44:48.922Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-27T19:42:43.186Z[Etc/UTC]")
 public class GetInventorySellThroughResponseData {
   public static final String SERIALIZED_NAME_CURRENT = "current";
   @SerializedName(SERIALIZED_NAME_CURRENT)
-  private GetAnalyticDashboardResponseSellThrough current;
+  private GetInventorySellThroughResponseDataCurrent current;
 
   public static final String SERIALIZED_NAME_PREVIOUS = "previous";
   @SerializedName(SERIALIZED_NAME_PREVIOUS)
-  private GetAnalyticDashboardResponseSellThrough previous;
+  private GetInventorySellThroughResponseDataCurrent previous;
 
   public static final String SERIALIZED_NAME_COMPARISON = "comparison";
   @SerializedName(SERIALIZED_NAME_COMPARISON)
@@ -46,12 +47,16 @@ public class GetInventorySellThroughResponseData {
 
   public static final String SERIALIZED_NAME_WINDOW = "window";
   @SerializedName(SERIALIZED_NAME_WINDOW)
-  private GetInventorySellThroughResponseDataWindow window;
+  private StartEnd window;
+
+  public static final String SERIALIZED_NAME_COHORT = "cohort";
+  @SerializedName(SERIALIZED_NAME_COHORT)
+  private GetAnalyticDashboardResponseSellThroughCohort cohort;
 
   public GetInventorySellThroughResponseData() { 
   }
 
-  public GetInventorySellThroughResponseData current(GetAnalyticDashboardResponseSellThrough current) {
+  public GetInventorySellThroughResponseData current(GetInventorySellThroughResponseDataCurrent current) {
     
     this.current = current;
     return this;
@@ -64,17 +69,17 @@ public class GetInventorySellThroughResponseData {
   @javax.annotation.Nonnull
   @ApiModelProperty(required = true, value = "")
 
-  public GetAnalyticDashboardResponseSellThrough getCurrent() {
+  public GetInventorySellThroughResponseDataCurrent getCurrent() {
     return current;
   }
 
 
-  public void setCurrent(GetAnalyticDashboardResponseSellThrough current) {
+  public void setCurrent(GetInventorySellThroughResponseDataCurrent current) {
     this.current = current;
   }
 
 
-  public GetInventorySellThroughResponseData previous(GetAnalyticDashboardResponseSellThrough previous) {
+  public GetInventorySellThroughResponseData previous(GetInventorySellThroughResponseDataCurrent previous) {
     
     this.previous = previous;
     return this;
@@ -87,12 +92,12 @@ public class GetInventorySellThroughResponseData {
   @javax.annotation.Nonnull
   @ApiModelProperty(required = true, value = "")
 
-  public GetAnalyticDashboardResponseSellThrough getPrevious() {
+  public GetInventorySellThroughResponseDataCurrent getPrevious() {
     return previous;
   }
 
 
-  public void setPrevious(GetAnalyticDashboardResponseSellThrough previous) {
+  public void setPrevious(GetInventorySellThroughResponseDataCurrent previous) {
     this.previous = previous;
   }
 
@@ -120,7 +125,7 @@ public class GetInventorySellThroughResponseData {
   }
 
 
-  public GetInventorySellThroughResponseData window(GetInventorySellThroughResponseDataWindow window) {
+  public GetInventorySellThroughResponseData window(StartEnd window) {
     
     this.window = window;
     return this;
@@ -133,13 +138,36 @@ public class GetInventorySellThroughResponseData {
   @javax.annotation.Nonnull
   @ApiModelProperty(required = true, value = "")
 
-  public GetInventorySellThroughResponseDataWindow getWindow() {
+  public StartEnd getWindow() {
     return window;
   }
 
 
-  public void setWindow(GetInventorySellThroughResponseDataWindow window) {
+  public void setWindow(StartEnd window) {
     this.window = window;
+  }
+
+
+  public GetInventorySellThroughResponseData cohort(GetAnalyticDashboardResponseSellThroughCohort cohort) {
+    
+    this.cohort = cohort;
+    return this;
+  }
+
+   /**
+   * Get cohort
+   * @return cohort
+  **/
+  @javax.annotation.Nonnull
+  @ApiModelProperty(required = true, value = "")
+
+  public GetAnalyticDashboardResponseSellThroughCohort getCohort() {
+    return cohort;
+  }
+
+
+  public void setCohort(GetAnalyticDashboardResponseSellThroughCohort cohort) {
+    this.cohort = cohort;
   }
 
 
@@ -155,12 +183,13 @@ public class GetInventorySellThroughResponseData {
     return Objects.equals(this.current, getInventorySellThroughResponseData.current) &&
         Objects.equals(this.previous, getInventorySellThroughResponseData.previous) &&
         Objects.equals(this.comparison, getInventorySellThroughResponseData.comparison) &&
-        Objects.equals(this.window, getInventorySellThroughResponseData.window);
+        Objects.equals(this.window, getInventorySellThroughResponseData.window) &&
+        Objects.equals(this.cohort, getInventorySellThroughResponseData.cohort);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(current, previous, comparison, window);
+    return Objects.hash(current, previous, comparison, window, cohort);
   }
 
   @Override
@@ -171,6 +200,7 @@ public class GetInventorySellThroughResponseData {
     sb.append("    previous: ").append(toIndentedString(previous)).append("\n");
     sb.append("    comparison: ").append(toIndentedString(comparison)).append("\n");
     sb.append("    window: ").append(toIndentedString(window)).append("\n");
+    sb.append("    cohort: ").append(toIndentedString(cohort)).append("\n");
     sb.append("}");
     return sb.toString();
   }

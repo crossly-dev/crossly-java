@@ -27,15 +27,15 @@ import java.io.IOException;
 /**
  * CreateBuyerWishlistInviteResponseData
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-11T23:47:29.843Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-27T19:58:46.962Z[Etc/UTC]")
 public class CreateBuyerWishlistInviteResponseData {
-  public static final String SERIALIZED_NAME_URL = "url";
-  @SerializedName(SERIALIZED_NAME_URL)
-  private String url;
-
   public static final String SERIALIZED_NAME_TOKEN = "token";
   @SerializedName(SERIALIZED_NAME_TOKEN)
   private String token;
+
+  public static final String SERIALIZED_NAME_URL = "url";
+  @SerializedName(SERIALIZED_NAME_URL)
+  private String url;
 
   public static final String SERIALIZED_NAME_EXPIRES_AT = "expiresAt";
   @SerializedName(SERIALIZED_NAME_EXPIRES_AT)
@@ -43,29 +43,6 @@ public class CreateBuyerWishlistInviteResponseData {
 
   public CreateBuyerWishlistInviteResponseData() { 
   }
-
-  public CreateBuyerWishlistInviteResponseData url(String url) {
-    
-    this.url = url;
-    return this;
-  }
-
-   /**
-   * Get url
-   * @return url
-  **/
-  @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "")
-
-  public String getUrl() {
-    return url;
-  }
-
-
-  public void setUrl(String url) {
-    this.url = url;
-  }
-
 
   public CreateBuyerWishlistInviteResponseData token(String token) {
     
@@ -87,6 +64,29 @@ public class CreateBuyerWishlistInviteResponseData {
 
   public void setToken(String token) {
     this.token = token;
+  }
+
+
+  public CreateBuyerWishlistInviteResponseData url(String url) {
+    
+    this.url = url;
+    return this;
+  }
+
+   /**
+   * Get url
+   * @return url
+  **/
+  @javax.annotation.Nonnull
+  @ApiModelProperty(required = true, value = "")
+
+  public String getUrl() {
+    return url;
+  }
+
+
+  public void setUrl(String url) {
+    this.url = url;
   }
 
 
@@ -122,22 +122,22 @@ public class CreateBuyerWishlistInviteResponseData {
       return false;
     }
     CreateBuyerWishlistInviteResponseData createBuyerWishlistInviteResponseData = (CreateBuyerWishlistInviteResponseData) o;
-    return Objects.equals(this.url, createBuyerWishlistInviteResponseData.url) &&
-        Objects.equals(this.token, createBuyerWishlistInviteResponseData.token) &&
+    return Objects.equals(this.token, createBuyerWishlistInviteResponseData.token) &&
+        Objects.equals(this.url, createBuyerWishlistInviteResponseData.url) &&
         Objects.equals(this.expiresAt, createBuyerWishlistInviteResponseData.expiresAt);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(url, token, expiresAt);
+    return Objects.hash(token, url, expiresAt);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class CreateBuyerWishlistInviteResponseData {\n");
-    sb.append("    url: ").append(toIndentedString(url)).append("\n");
     sb.append("    token: ").append(toIndentedString(token)).append("\n");
+    sb.append("    url: ").append(toIndentedString(url)).append("\n");
     sb.append("    expiresAt: ").append(toIndentedString(expiresAt)).append("\n");
     sb.append("}");
     return sb.toString();

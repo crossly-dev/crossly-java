@@ -29,7 +29,7 @@ import org.openapitools.jackson.nullable.JsonNullable;
 /**
  * CreateOrderWhatnotPackageQuoteResponse
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-11T23:44:48.922Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-27T19:42:43.186Z[Etc/UTC]")
 public class CreateOrderWhatnotPackageQuoteResponse {
   public static final String SERIALIZED_NAME_COST_CENTS = "costCents";
   @SerializedName(SERIALIZED_NAME_COST_CENTS)
@@ -49,11 +49,11 @@ public class CreateOrderWhatnotPackageQuoteResponse {
   }
 
    /**
-   * Get costCents
+   * Cents the platform charges for the change; 0 &#x3D; free.
    * @return costCents
   **/
   @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "")
+  @ApiModelProperty(required = true, value = "Cents the platform charges for the change; 0 = free.")
 
   public BigDecimal getCostCents() {
     return costCents;
@@ -72,11 +72,11 @@ public class CreateOrderWhatnotPackageQuoteResponse {
   }
 
    /**
-   * Get error
+   * The platform&#39;s refusal of this package, when it gives one.
    * @return error
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "The platform's refusal of this package, when it gives one.")
 
   public String getError() {
     return error;

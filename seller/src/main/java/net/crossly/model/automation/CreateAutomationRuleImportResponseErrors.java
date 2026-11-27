@@ -25,12 +25,11 @@ import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
 /**
  * CreateAutomationRuleImportResponseErrors
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-11T23:44:48.922Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-27T19:42:43.186Z[Etc/UTC]")
 public class CreateAutomationRuleImportResponseErrors {
   public static final String SERIALIZED_NAME_NAME = "name";
   @SerializedName(SERIALIZED_NAME_NAME)
@@ -38,7 +37,7 @@ public class CreateAutomationRuleImportResponseErrors {
 
   public static final String SERIALIZED_NAME_ERRORS = "errors";
   @SerializedName(SERIALIZED_NAME_ERRORS)
-  private List<Map<String, Object>> errors = new ArrayList<Map<String, Object>>();
+  private List<Object> errors = new ArrayList<Object>();
 
   public CreateAutomationRuleImportResponseErrors() { 
   }
@@ -66,13 +65,13 @@ public class CreateAutomationRuleImportResponseErrors {
   }
 
 
-  public CreateAutomationRuleImportResponseErrors errors(List<Map<String, Object>> errors) {
+  public CreateAutomationRuleImportResponseErrors errors(List<Object> errors) {
     
     this.errors = errors;
     return this;
   }
 
-  public CreateAutomationRuleImportResponseErrors addErrorsItem(Map<String, Object> errorsItem) {
+  public CreateAutomationRuleImportResponseErrors addErrorsItem(Object errorsItem) {
     this.errors.add(errorsItem);
     return this;
   }
@@ -84,12 +83,12 @@ public class CreateAutomationRuleImportResponseErrors {
   @javax.annotation.Nonnull
   @ApiModelProperty(required = true, value = "")
 
-  public List<Map<String, Object>> getErrors() {
+  public List<Object> getErrors() {
     return errors;
   }
 
 
-  public void setErrors(List<Map<String, Object>> errors) {
+  public void setErrors(List<Object> errors) {
     this.errors = errors;
   }
 

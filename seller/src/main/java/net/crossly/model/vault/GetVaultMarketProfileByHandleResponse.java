@@ -27,13 +27,13 @@ import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 import net.crossly.model.vault.GetVaultMarketProfileByHandleResponseOneOfHoldings;
-import net.crossly.model.vault.ListVaultMarketFeedItem;
+import net.crossly.model.vault.GetVaultMarketProfileByHandleResponseOneOfRecentBuys;
 import org.openapitools.jackson.nullable.JsonNullable;
 
 /**
  * GetVaultMarketProfileByHandleResponse
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-11T23:44:48.922Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-27T19:42:43.186Z[Etc/UTC]")
 public class GetVaultMarketProfileByHandleResponse {
   public static final String SERIALIZED_NAME_HANDLE = "handle";
   @SerializedName(SERIALIZED_NAME_HANDLE)
@@ -69,7 +69,7 @@ public class GetVaultMarketProfileByHandleResponse {
 
   public static final String SERIALIZED_NAME_RECENT_BUYS = "recentBuys";
   @SerializedName(SERIALIZED_NAME_RECENT_BUYS)
-  private List<ListVaultMarketFeedItem> recentBuys = new ArrayList<ListVaultMarketFeedItem>();
+  private List<GetVaultMarketProfileByHandleResponseOneOfRecentBuys> recentBuys = new ArrayList<GetVaultMarketProfileByHandleResponseOneOfRecentBuys>();
 
   public static final String SERIALIZED_NAME_DISPLAY_NAME = "displayName";
   @SerializedName(SERIALIZED_NAME_DISPLAY_NAME)
@@ -275,13 +275,13 @@ public class GetVaultMarketProfileByHandleResponse {
   }
 
 
-  public GetVaultMarketProfileByHandleResponse recentBuys(List<ListVaultMarketFeedItem> recentBuys) {
+  public GetVaultMarketProfileByHandleResponse recentBuys(List<GetVaultMarketProfileByHandleResponseOneOfRecentBuys> recentBuys) {
     
     this.recentBuys = recentBuys;
     return this;
   }
 
-  public GetVaultMarketProfileByHandleResponse addRecentBuysItem(ListVaultMarketFeedItem recentBuysItem) {
+  public GetVaultMarketProfileByHandleResponse addRecentBuysItem(GetVaultMarketProfileByHandleResponseOneOfRecentBuys recentBuysItem) {
     this.recentBuys.add(recentBuysItem);
     return this;
   }
@@ -293,12 +293,12 @@ public class GetVaultMarketProfileByHandleResponse {
   @javax.annotation.Nonnull
   @ApiModelProperty(required = true, value = "")
 
-  public List<ListVaultMarketFeedItem> getRecentBuys() {
+  public List<GetVaultMarketProfileByHandleResponseOneOfRecentBuys> getRecentBuys() {
     return recentBuys;
   }
 
 
-  public void setRecentBuys(List<ListVaultMarketFeedItem> recentBuys) {
+  public void setRecentBuys(List<GetVaultMarketProfileByHandleResponseOneOfRecentBuys> recentBuys) {
     this.recentBuys = recentBuys;
   }
 

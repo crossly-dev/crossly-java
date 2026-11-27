@@ -29,8 +29,12 @@ import org.openapitools.jackson.nullable.JsonNullable;
 /**
  * CreateBuyerCartOptimizerResponseDataLinesPick
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-11T23:47:29.843Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-27T19:58:46.962Z[Etc/UTC]")
 public class CreateBuyerCartOptimizerResponseDataLinesPick {
+  public static final String SERIALIZED_NAME_SLUG = "slug";
+  @SerializedName(SERIALIZED_NAME_SLUG)
+  private String slug;
+
   public static final String SERIALIZED_NAME_TITLE = "title";
   @SerializedName(SERIALIZED_NAME_TITLE)
   private String title;
@@ -38,10 +42,6 @@ public class CreateBuyerCartOptimizerResponseDataLinesPick {
   public static final String SERIALIZED_NAME_SELLER_USER_ID = "sellerUserId";
   @SerializedName(SERIALIZED_NAME_SELLER_USER_ID)
   private String sellerUserId;
-
-  public static final String SERIALIZED_NAME_SLUG = "slug";
-  @SerializedName(SERIALIZED_NAME_SLUG)
-  private String slug;
 
   public static final String SERIALIZED_NAME_SELLER_NAME = "sellerName";
   @SerializedName(SERIALIZED_NAME_SELLER_NAME)
@@ -57,6 +57,29 @@ public class CreateBuyerCartOptimizerResponseDataLinesPick {
 
   public CreateBuyerCartOptimizerResponseDataLinesPick() { 
   }
+
+  public CreateBuyerCartOptimizerResponseDataLinesPick slug(String slug) {
+    
+    this.slug = slug;
+    return this;
+  }
+
+   /**
+   * Get slug
+   * @return slug
+  **/
+  @javax.annotation.Nonnull
+  @ApiModelProperty(required = true, value = "")
+
+  public String getSlug() {
+    return slug;
+  }
+
+
+  public void setSlug(String slug) {
+    this.slug = slug;
+  }
+
 
   public CreateBuyerCartOptimizerResponseDataLinesPick title(String title) {
     
@@ -101,29 +124,6 @@ public class CreateBuyerCartOptimizerResponseDataLinesPick {
 
   public void setSellerUserId(String sellerUserId) {
     this.sellerUserId = sellerUserId;
-  }
-
-
-  public CreateBuyerCartOptimizerResponseDataLinesPick slug(String slug) {
-    
-    this.slug = slug;
-    return this;
-  }
-
-   /**
-   * Get slug
-   * @return slug
-  **/
-  @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "")
-
-  public String getSlug() {
-    return slug;
-  }
-
-
-  public void setSlug(String slug) {
-    this.slug = slug;
   }
 
 
@@ -205,9 +205,9 @@ public class CreateBuyerCartOptimizerResponseDataLinesPick {
       return false;
     }
     CreateBuyerCartOptimizerResponseDataLinesPick createBuyerCartOptimizerResponseDataLinesPick = (CreateBuyerCartOptimizerResponseDataLinesPick) o;
-    return Objects.equals(this.title, createBuyerCartOptimizerResponseDataLinesPick.title) &&
+    return Objects.equals(this.slug, createBuyerCartOptimizerResponseDataLinesPick.slug) &&
+        Objects.equals(this.title, createBuyerCartOptimizerResponseDataLinesPick.title) &&
         Objects.equals(this.sellerUserId, createBuyerCartOptimizerResponseDataLinesPick.sellerUserId) &&
-        Objects.equals(this.slug, createBuyerCartOptimizerResponseDataLinesPick.slug) &&
         Objects.equals(this.sellerName, createBuyerCartOptimizerResponseDataLinesPick.sellerName) &&
         Objects.equals(this.unitCents, createBuyerCartOptimizerResponseDataLinesPick.unitCents) &&
         Objects.equals(this.shipCents, createBuyerCartOptimizerResponseDataLinesPick.shipCents);
@@ -219,7 +219,7 @@ public class CreateBuyerCartOptimizerResponseDataLinesPick {
 
   @Override
   public int hashCode() {
-    return Objects.hash(title, sellerUserId, slug, sellerName, unitCents, shipCents);
+    return Objects.hash(slug, title, sellerUserId, sellerName, unitCents, shipCents);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -233,9 +233,9 @@ public class CreateBuyerCartOptimizerResponseDataLinesPick {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class CreateBuyerCartOptimizerResponseDataLinesPick {\n");
+    sb.append("    slug: ").append(toIndentedString(slug)).append("\n");
     sb.append("    title: ").append(toIndentedString(title)).append("\n");
     sb.append("    sellerUserId: ").append(toIndentedString(sellerUserId)).append("\n");
-    sb.append("    slug: ").append(toIndentedString(slug)).append("\n");
     sb.append("    sellerName: ").append(toIndentedString(sellerName)).append("\n");
     sb.append("    unitCents: ").append(toIndentedString(unitCents)).append("\n");
     sb.append("    shipCents: ").append(toIndentedString(shipCents)).append("\n");

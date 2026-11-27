@@ -33,7 +33,7 @@ import org.openapitools.jackson.nullable.JsonNullable;
  * Top eBay match (or null when eBay returned zero). Drives the synthesize step&#39;s title/brand/price seed.
  */
 @ApiModel(description = "Top eBay match (or null when eBay returned zero). Drives the synthesize step's title/brand/price seed.")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-11T23:44:48.922Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-27T19:42:43.186Z[Etc/UTC]")
 public class CreateMagicScanResponseEbayMatch {
   public static final String SERIALIZED_NAME_ITEM_ID = "itemId";
   @SerializedName(SERIALIZED_NAME_ITEM_ID)
@@ -185,11 +185,11 @@ public class CreateMagicScanResponseEbayMatch {
   }
 
    /**
-   * Normalized cents. eBay returns string + currency on &#x60;price.value&#x60;.
+   * Integer cents.
    * @return priceCents
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "Normalized cents. eBay returns string + currency on `price.value`.")
+  @ApiModelProperty(value = "Integer cents.")
 
   public BigDecimal getPriceCents() {
     return priceCents;
@@ -254,11 +254,11 @@ public class CreateMagicScanResponseEbayMatch {
   }
 
    /**
-   * Top-level category eBay assigned to the match (id + path).
+   * The category the marketplace filed the match under (id + path), when the provider returns it.
    * @return categoryId
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "Top-level category eBay assigned to the match (id + path).")
+  @ApiModelProperty(value = "The category the marketplace filed the match under (id + path), when the provider returns it.")
 
   public String getCategoryId() {
     return categoryId;
@@ -354,11 +354,11 @@ public class CreateMagicScanResponseEbayMatch {
   }
 
    /**
-   * Loosely-typed aspect bag — Brand, Color, Material, etc. when eBay inlines them. Always inspected defensively by the synthesizer.
+   * Item specifics, when the provider returns them. Always read defensively.
    * @return aspects
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "Loosely-typed aspect bag — Brand, Color, Material, etc. when eBay inlines them. Always inspected defensively by the synthesizer.")
+  @ApiModelProperty(value = "Item specifics, when the provider returns them. Always read defensively.")
 
   public Map<String, Object> getAspects() {
     return aspects;

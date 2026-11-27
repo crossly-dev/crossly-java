@@ -31,7 +31,7 @@ import org.threeten.bp.OffsetDateTime;
 /**
  * CreateOrderPickupResponseData
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-11T23:44:48.922Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-27T19:42:43.186Z[Etc/UTC]")
 public class CreateOrderPickupResponseData {
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
@@ -53,21 +53,13 @@ public class CreateOrderPickupResponseData {
   @SerializedName(SERIALIZED_NAME_CARRIER)
   private String carrier;
 
-  public static final String SERIALIZED_NAME_ORDER_IDS = "orderIds";
-  @SerializedName(SERIALIZED_NAME_ORDER_IDS)
-  private List<String> orderIds = new ArrayList<String>();
-
-  public static final String SERIALIZED_NAME_SHIPPO_PICKUP_ID = "shippoPickupId";
-  @SerializedName(SERIALIZED_NAME_SHIPPO_PICKUP_ID)
-  private String shippoPickupId;
-
   public static final String SERIALIZED_NAME_CONFIRMATION = "confirmation";
   @SerializedName(SERIALIZED_NAME_CONFIRMATION)
   private String confirmation;
 
-  public static final String SERIALIZED_NAME_PICKUP_DATE = "pickupDate";
-  @SerializedName(SERIALIZED_NAME_PICKUP_DATE)
-  private String pickupDate;
+  public static final String SERIALIZED_NAME_ORDER_IDS = "orderIds";
+  @SerializedName(SERIALIZED_NAME_ORDER_IDS)
+  private List<String> orderIds = new ArrayList<String>();
 
   public static final String SERIALIZED_NAME_MIN_TIME = "minTime";
   @SerializedName(SERIALIZED_NAME_MIN_TIME)
@@ -77,6 +69,18 @@ public class CreateOrderPickupResponseData {
   @SerializedName(SERIALIZED_NAME_MAX_TIME)
   private String maxTime;
 
+  public static final String SERIALIZED_NAME_INSTRUCTIONS = "instructions";
+  @SerializedName(SERIALIZED_NAME_INSTRUCTIONS)
+  private String instructions;
+
+  public static final String SERIALIZED_NAME_SHIPPO_PICKUP_ID = "shippoPickupId";
+  @SerializedName(SERIALIZED_NAME_SHIPPO_PICKUP_ID)
+  private String shippoPickupId;
+
+  public static final String SERIALIZED_NAME_PICKUP_DATE = "pickupDate";
+  @SerializedName(SERIALIZED_NAME_PICKUP_DATE)
+  private String pickupDate;
+
   public static final String SERIALIZED_NAME_CONFIRMED_START = "confirmedStart";
   @SerializedName(SERIALIZED_NAME_CONFIRMED_START)
   private OffsetDateTime confirmedStart;
@@ -84,10 +88,6 @@ public class CreateOrderPickupResponseData {
   public static final String SERIALIZED_NAME_CONFIRMED_END = "confirmedEnd";
   @SerializedName(SERIALIZED_NAME_CONFIRMED_END)
   private OffsetDateTime confirmedEnd;
-
-  public static final String SERIALIZED_NAME_INSTRUCTIONS = "instructions";
-  @SerializedName(SERIALIZED_NAME_INSTRUCTIONS)
-  private String instructions;
 
   public static final String SERIALIZED_NAME_WARNINGS = "warnings";
   @SerializedName(SERIALIZED_NAME_WARNINGS)
@@ -211,6 +211,29 @@ public class CreateOrderPickupResponseData {
   }
 
 
+  public CreateOrderPickupResponseData confirmation(String confirmation) {
+    
+    this.confirmation = confirmation;
+    return this;
+  }
+
+   /**
+   * Get confirmation
+   * @return confirmation
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public String getConfirmation() {
+    return confirmation;
+  }
+
+
+  public void setConfirmation(String confirmation) {
+    this.confirmation = confirmation;
+  }
+
+
   public CreateOrderPickupResponseData orderIds(List<String> orderIds) {
     
     this.orderIds = orderIds;
@@ -236,75 +259,6 @@ public class CreateOrderPickupResponseData {
 
   public void setOrderIds(List<String> orderIds) {
     this.orderIds = orderIds;
-  }
-
-
-  public CreateOrderPickupResponseData shippoPickupId(String shippoPickupId) {
-    
-    this.shippoPickupId = shippoPickupId;
-    return this;
-  }
-
-   /**
-   * Get shippoPickupId
-   * @return shippoPickupId
-  **/
-  @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "")
-
-  public String getShippoPickupId() {
-    return shippoPickupId;
-  }
-
-
-  public void setShippoPickupId(String shippoPickupId) {
-    this.shippoPickupId = shippoPickupId;
-  }
-
-
-  public CreateOrderPickupResponseData confirmation(String confirmation) {
-    
-    this.confirmation = confirmation;
-    return this;
-  }
-
-   /**
-   * Get confirmation
-   * @return confirmation
-  **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
-
-  public String getConfirmation() {
-    return confirmation;
-  }
-
-
-  public void setConfirmation(String confirmation) {
-    this.confirmation = confirmation;
-  }
-
-
-  public CreateOrderPickupResponseData pickupDate(String pickupDate) {
-    
-    this.pickupDate = pickupDate;
-    return this;
-  }
-
-   /**
-   * Get pickupDate
-   * @return pickupDate
-  **/
-  @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "")
-
-  public String getPickupDate() {
-    return pickupDate;
-  }
-
-
-  public void setPickupDate(String pickupDate) {
-    this.pickupDate = pickupDate;
   }
 
 
@@ -354,6 +308,75 @@ public class CreateOrderPickupResponseData {
   }
 
 
+  public CreateOrderPickupResponseData instructions(String instructions) {
+    
+    this.instructions = instructions;
+    return this;
+  }
+
+   /**
+   * Get instructions
+   * @return instructions
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public String getInstructions() {
+    return instructions;
+  }
+
+
+  public void setInstructions(String instructions) {
+    this.instructions = instructions;
+  }
+
+
+  public CreateOrderPickupResponseData shippoPickupId(String shippoPickupId) {
+    
+    this.shippoPickupId = shippoPickupId;
+    return this;
+  }
+
+   /**
+   * Get shippoPickupId
+   * @return shippoPickupId
+  **/
+  @javax.annotation.Nonnull
+  @ApiModelProperty(required = true, value = "")
+
+  public String getShippoPickupId() {
+    return shippoPickupId;
+  }
+
+
+  public void setShippoPickupId(String shippoPickupId) {
+    this.shippoPickupId = shippoPickupId;
+  }
+
+
+  public CreateOrderPickupResponseData pickupDate(String pickupDate) {
+    
+    this.pickupDate = pickupDate;
+    return this;
+  }
+
+   /**
+   * Get pickupDate
+   * @return pickupDate
+  **/
+  @javax.annotation.Nonnull
+  @ApiModelProperty(required = true, value = "")
+
+  public String getPickupDate() {
+    return pickupDate;
+  }
+
+
+  public void setPickupDate(String pickupDate) {
+    this.pickupDate = pickupDate;
+  }
+
+
   public CreateOrderPickupResponseData confirmedStart(OffsetDateTime confirmedStart) {
     
     this.confirmedStart = confirmedStart;
@@ -400,29 +423,6 @@ public class CreateOrderPickupResponseData {
   }
 
 
-  public CreateOrderPickupResponseData instructions(String instructions) {
-    
-    this.instructions = instructions;
-    return this;
-  }
-
-   /**
-   * Get instructions
-   * @return instructions
-  **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
-
-  public String getInstructions() {
-    return instructions;
-  }
-
-
-  public void setInstructions(String instructions) {
-    this.instructions = instructions;
-  }
-
-
   public CreateOrderPickupResponseData warnings(List<String> warnings) {
     
     this.warnings = warnings;
@@ -465,15 +465,15 @@ public class CreateOrderPickupResponseData {
         Objects.equals(this.userId, createOrderPickupResponseData.userId) &&
         Objects.equals(this.status, createOrderPickupResponseData.status) &&
         Objects.equals(this.carrier, createOrderPickupResponseData.carrier) &&
-        Objects.equals(this.orderIds, createOrderPickupResponseData.orderIds) &&
-        Objects.equals(this.shippoPickupId, createOrderPickupResponseData.shippoPickupId) &&
         Objects.equals(this.confirmation, createOrderPickupResponseData.confirmation) &&
-        Objects.equals(this.pickupDate, createOrderPickupResponseData.pickupDate) &&
+        Objects.equals(this.orderIds, createOrderPickupResponseData.orderIds) &&
         Objects.equals(this.minTime, createOrderPickupResponseData.minTime) &&
         Objects.equals(this.maxTime, createOrderPickupResponseData.maxTime) &&
+        Objects.equals(this.instructions, createOrderPickupResponseData.instructions) &&
+        Objects.equals(this.shippoPickupId, createOrderPickupResponseData.shippoPickupId) &&
+        Objects.equals(this.pickupDate, createOrderPickupResponseData.pickupDate) &&
         Objects.equals(this.confirmedStart, createOrderPickupResponseData.confirmedStart) &&
         Objects.equals(this.confirmedEnd, createOrderPickupResponseData.confirmedEnd) &&
-        Objects.equals(this.instructions, createOrderPickupResponseData.instructions) &&
         Objects.equals(this.warnings, createOrderPickupResponseData.warnings);
   }
 
@@ -483,7 +483,7 @@ public class CreateOrderPickupResponseData {
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, createdAt, userId, status, carrier, orderIds, shippoPickupId, confirmation, pickupDate, minTime, maxTime, confirmedStart, confirmedEnd, instructions, warnings);
+    return Objects.hash(id, createdAt, userId, status, carrier, confirmation, orderIds, minTime, maxTime, instructions, shippoPickupId, pickupDate, confirmedStart, confirmedEnd, warnings);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -502,15 +502,15 @@ public class CreateOrderPickupResponseData {
     sb.append("    userId: ").append(toIndentedString(userId)).append("\n");
     sb.append("    status: ").append(toIndentedString(status)).append("\n");
     sb.append("    carrier: ").append(toIndentedString(carrier)).append("\n");
-    sb.append("    orderIds: ").append(toIndentedString(orderIds)).append("\n");
-    sb.append("    shippoPickupId: ").append(toIndentedString(shippoPickupId)).append("\n");
     sb.append("    confirmation: ").append(toIndentedString(confirmation)).append("\n");
-    sb.append("    pickupDate: ").append(toIndentedString(pickupDate)).append("\n");
+    sb.append("    orderIds: ").append(toIndentedString(orderIds)).append("\n");
     sb.append("    minTime: ").append(toIndentedString(minTime)).append("\n");
     sb.append("    maxTime: ").append(toIndentedString(maxTime)).append("\n");
+    sb.append("    instructions: ").append(toIndentedString(instructions)).append("\n");
+    sb.append("    shippoPickupId: ").append(toIndentedString(shippoPickupId)).append("\n");
+    sb.append("    pickupDate: ").append(toIndentedString(pickupDate)).append("\n");
     sb.append("    confirmedStart: ").append(toIndentedString(confirmedStart)).append("\n");
     sb.append("    confirmedEnd: ").append(toIndentedString(confirmedEnd)).append("\n");
-    sb.append("    instructions: ").append(toIndentedString(instructions)).append("\n");
     sb.append("    warnings: ").append(toIndentedString(warnings)).append("\n");
     sb.append("}");
     return sb.toString();

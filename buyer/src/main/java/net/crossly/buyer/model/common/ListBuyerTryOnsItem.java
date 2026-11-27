@@ -28,19 +28,11 @@ import org.openapitools.jackson.nullable.JsonNullable;
 /**
  * ListBuyerTryOnsItem
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-11T23:47:29.843Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-27T19:58:46.962Z[Etc/UTC]")
 public class ListBuyerTryOnsItem {
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
   private String id;
-
-  public static final String SERIALIZED_NAME_CREATED_AT = "createdAt";
-  @SerializedName(SERIALIZED_NAME_CREATED_AT)
-  private String createdAt;
-
-  public static final String SERIALIZED_NAME_STATUS = "status";
-  @SerializedName(SERIALIZED_NAME_STATUS)
-  private String status;
 
   public static final String SERIALIZED_NAME_LISTING_ID = "listingId";
   @SerializedName(SERIALIZED_NAME_LISTING_ID)
@@ -49,6 +41,14 @@ public class ListBuyerTryOnsItem {
   public static final String SERIALIZED_NAME_RESULT_URL = "resultUrl";
   @SerializedName(SERIALIZED_NAME_RESULT_URL)
   private String resultUrl;
+
+  public static final String SERIALIZED_NAME_STATUS = "status";
+  @SerializedName(SERIALIZED_NAME_STATUS)
+  private String status;
+
+  public static final String SERIALIZED_NAME_CREATED_AT = "createdAt";
+  @SerializedName(SERIALIZED_NAME_CREATED_AT)
+  private String createdAt;
 
   public static final String SERIALIZED_NAME_LISTING_TITLE = "listingTitle";
   @SerializedName(SERIALIZED_NAME_LISTING_TITLE)
@@ -77,52 +77,6 @@ public class ListBuyerTryOnsItem {
 
   public void setId(String id) {
     this.id = id;
-  }
-
-
-  public ListBuyerTryOnsItem createdAt(String createdAt) {
-    
-    this.createdAt = createdAt;
-    return this;
-  }
-
-   /**
-   * Get createdAt
-   * @return createdAt
-  **/
-  @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "")
-
-  public String getCreatedAt() {
-    return createdAt;
-  }
-
-
-  public void setCreatedAt(String createdAt) {
-    this.createdAt = createdAt;
-  }
-
-
-  public ListBuyerTryOnsItem status(String status) {
-    
-    this.status = status;
-    return this;
-  }
-
-   /**
-   * Get status
-   * @return status
-  **/
-  @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "")
-
-  public String getStatus() {
-    return status;
-  }
-
-
-  public void setStatus(String status) {
-    this.status = status;
   }
 
 
@@ -172,6 +126,52 @@ public class ListBuyerTryOnsItem {
   }
 
 
+  public ListBuyerTryOnsItem status(String status) {
+    
+    this.status = status;
+    return this;
+  }
+
+   /**
+   * Get status
+   * @return status
+  **/
+  @javax.annotation.Nonnull
+  @ApiModelProperty(required = true, value = "")
+
+  public String getStatus() {
+    return status;
+  }
+
+
+  public void setStatus(String status) {
+    this.status = status;
+  }
+
+
+  public ListBuyerTryOnsItem createdAt(String createdAt) {
+    
+    this.createdAt = createdAt;
+    return this;
+  }
+
+   /**
+   * Get createdAt
+   * @return createdAt
+  **/
+  @javax.annotation.Nonnull
+  @ApiModelProperty(required = true, value = "")
+
+  public String getCreatedAt() {
+    return createdAt;
+  }
+
+
+  public void setCreatedAt(String createdAt) {
+    this.createdAt = createdAt;
+  }
+
+
   public ListBuyerTryOnsItem listingTitle(String listingTitle) {
     
     this.listingTitle = listingTitle;
@@ -205,10 +205,10 @@ public class ListBuyerTryOnsItem {
     }
     ListBuyerTryOnsItem listBuyerTryOnsItem = (ListBuyerTryOnsItem) o;
     return Objects.equals(this.id, listBuyerTryOnsItem.id) &&
-        Objects.equals(this.createdAt, listBuyerTryOnsItem.createdAt) &&
-        Objects.equals(this.status, listBuyerTryOnsItem.status) &&
         Objects.equals(this.listingId, listBuyerTryOnsItem.listingId) &&
         Objects.equals(this.resultUrl, listBuyerTryOnsItem.resultUrl) &&
+        Objects.equals(this.status, listBuyerTryOnsItem.status) &&
+        Objects.equals(this.createdAt, listBuyerTryOnsItem.createdAt) &&
         Objects.equals(this.listingTitle, listBuyerTryOnsItem.listingTitle);
   }
 
@@ -218,7 +218,7 @@ public class ListBuyerTryOnsItem {
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, createdAt, status, listingId, resultUrl, listingTitle);
+    return Objects.hash(id, listingId, resultUrl, status, createdAt, listingTitle);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -233,10 +233,10 @@ public class ListBuyerTryOnsItem {
     StringBuilder sb = new StringBuilder();
     sb.append("class ListBuyerTryOnsItem {\n");
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
-    sb.append("    createdAt: ").append(toIndentedString(createdAt)).append("\n");
-    sb.append("    status: ").append(toIndentedString(status)).append("\n");
     sb.append("    listingId: ").append(toIndentedString(listingId)).append("\n");
     sb.append("    resultUrl: ").append(toIndentedString(resultUrl)).append("\n");
+    sb.append("    status: ").append(toIndentedString(status)).append("\n");
+    sb.append("    createdAt: ").append(toIndentedString(createdAt)).append("\n");
     sb.append("    listingTitle: ").append(toIndentedString(listingTitle)).append("\n");
     sb.append("}");
     return sb.toString();

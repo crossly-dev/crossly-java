@@ -31,12 +31,8 @@ import net.crossly.buyer.model.pack.GetBuyerPackFairnessResponseDataRevealed;
 /**
  * GetBuyerPackFairnessResponseData
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-11T23:47:29.843Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-27T19:58:46.962Z[Etc/UTC]")
 public class GetBuyerPackFairnessResponseData {
-  public static final String SERIALIZED_NAME_NONCE = "nonce";
-  @SerializedName(SERIALIZED_NAME_NONCE)
-  private BigDecimal nonce;
-
   public static final String SERIALIZED_NAME_SERVER_SEED_HASH = "serverSeedHash";
   @SerializedName(SERIALIZED_NAME_SERVER_SEED_HASH)
   private String serverSeedHash;
@@ -45,35 +41,16 @@ public class GetBuyerPackFairnessResponseData {
   @SerializedName(SERIALIZED_NAME_CLIENT_SEED)
   private String clientSeed;
 
+  public static final String SERIALIZED_NAME_NONCE = "nonce";
+  @SerializedName(SERIALIZED_NAME_NONCE)
+  private BigDecimal nonce;
+
   public static final String SERIALIZED_NAME_REVEALED = "revealed";
   @SerializedName(SERIALIZED_NAME_REVEALED)
   private List<GetBuyerPackFairnessResponseDataRevealed> revealed = new ArrayList<GetBuyerPackFairnessResponseDataRevealed>();
 
   public GetBuyerPackFairnessResponseData() { 
   }
-
-  public GetBuyerPackFairnessResponseData nonce(BigDecimal nonce) {
-    
-    this.nonce = nonce;
-    return this;
-  }
-
-   /**
-   * Get nonce
-   * @return nonce
-  **/
-  @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "")
-
-  public BigDecimal getNonce() {
-    return nonce;
-  }
-
-
-  public void setNonce(BigDecimal nonce) {
-    this.nonce = nonce;
-  }
-
 
   public GetBuyerPackFairnessResponseData serverSeedHash(String serverSeedHash) {
     
@@ -121,6 +98,29 @@ public class GetBuyerPackFairnessResponseData {
   }
 
 
+  public GetBuyerPackFairnessResponseData nonce(BigDecimal nonce) {
+    
+    this.nonce = nonce;
+    return this;
+  }
+
+   /**
+   * Get nonce
+   * @return nonce
+  **/
+  @javax.annotation.Nonnull
+  @ApiModelProperty(required = true, value = "")
+
+  public BigDecimal getNonce() {
+    return nonce;
+  }
+
+
+  public void setNonce(BigDecimal nonce) {
+    this.nonce = nonce;
+  }
+
+
   public GetBuyerPackFairnessResponseData revealed(List<GetBuyerPackFairnessResponseDataRevealed> revealed) {
     
     this.revealed = revealed;
@@ -158,24 +158,24 @@ public class GetBuyerPackFairnessResponseData {
       return false;
     }
     GetBuyerPackFairnessResponseData getBuyerPackFairnessResponseData = (GetBuyerPackFairnessResponseData) o;
-    return Objects.equals(this.nonce, getBuyerPackFairnessResponseData.nonce) &&
-        Objects.equals(this.serverSeedHash, getBuyerPackFairnessResponseData.serverSeedHash) &&
+    return Objects.equals(this.serverSeedHash, getBuyerPackFairnessResponseData.serverSeedHash) &&
         Objects.equals(this.clientSeed, getBuyerPackFairnessResponseData.clientSeed) &&
+        Objects.equals(this.nonce, getBuyerPackFairnessResponseData.nonce) &&
         Objects.equals(this.revealed, getBuyerPackFairnessResponseData.revealed);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(nonce, serverSeedHash, clientSeed, revealed);
+    return Objects.hash(serverSeedHash, clientSeed, nonce, revealed);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class GetBuyerPackFairnessResponseData {\n");
-    sb.append("    nonce: ").append(toIndentedString(nonce)).append("\n");
     sb.append("    serverSeedHash: ").append(toIndentedString(serverSeedHash)).append("\n");
     sb.append("    clientSeed: ").append(toIndentedString(clientSeed)).append("\n");
+    sb.append("    nonce: ").append(toIndentedString(nonce)).append("\n");
     sb.append("    revealed: ").append(toIndentedString(revealed)).append("\n");
     sb.append("}");
     return sb.toString();

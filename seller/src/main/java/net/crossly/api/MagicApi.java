@@ -27,12 +27,19 @@ import com.google.gson.reflect.TypeToken;
 import java.io.IOException;
 
 
+import net.crossly.model.magic.CreateMagicAutoDecisionUndoResponse;
+import net.crossly.model.magic.CreateMagicAutoItemResponse;
+import net.crossly.model.magic.CreateMagicAutoRunResponse;
+import net.crossly.model.magic.CreateMagicAutoRunSwipeResponse;
 import net.crossly.model.magic.CreateMagicScanResponse;
 import net.crossly.model.magic.CreateMagicScanSynthesizeResponse;
 import net.crossly.model.common.Error;
+import net.crossly.model.magic.GetMagicAutoSettingResponse;
 import net.crossly.model.magic.GetMagicDraftResponse;
+import net.crossly.model.magic.ListMagicAutoRunDecisionsResponse;
 import net.crossly.model.magic.ListMagicRecentResponse;
 import java.util.UUID;
+import net.crossly.model.magic.UpdateMagicAutoSettingRequest;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
@@ -77,6 +84,604 @@ public class MagicApi {
         this.localCustomBaseUrl = customBaseUrl;
     }
 
+    /**
+     * Build call for createMagicAutoDecisionUndo
+     * @param decisionId  (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call createMagicAutoDecisionUndoCall(UUID decisionId, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/v1/magic/auto/decisions/{decisionId}/undo"
+            .replaceAll("\\{" + "decisionId" + "\\}", localVarApiClient.escapeString(decisionId.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "PersonalAccessToken" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call createMagicAutoDecisionUndoValidateBeforeCall(UUID decisionId, final ApiCallback _callback) throws ApiException {
+        
+        // verify the required parameter 'decisionId' is set
+        if (decisionId == null) {
+            throw new ApiException("Missing the required parameter 'decisionId' when calling createMagicAutoDecisionUndo(Async)");
+        }
+        
+
+        okhttp3.Call localVarCall = createMagicAutoDecisionUndoCall(decisionId, _callback);
+        return localVarCall;
+
+    }
+
+    /**
+     * Undo an automated Magic List decision, deleting its unpublished draft.
+     * 
+     * @param decisionId  (required)
+     * @return CreateMagicAutoDecisionUndoResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public CreateMagicAutoDecisionUndoResponse createMagicAutoDecisionUndo(UUID decisionId) throws ApiException {
+        ApiResponse<CreateMagicAutoDecisionUndoResponse> localVarResp = createMagicAutoDecisionUndoWithHttpInfo(decisionId);
+        return localVarResp.getData();
+    }
+
+    /**
+     * Undo an automated Magic List decision, deleting its unpublished draft.
+     * 
+     * @param decisionId  (required)
+     * @return ApiResponse&lt;CreateMagicAutoDecisionUndoResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<CreateMagicAutoDecisionUndoResponse> createMagicAutoDecisionUndoWithHttpInfo(UUID decisionId) throws ApiException {
+        okhttp3.Call localVarCall = createMagicAutoDecisionUndoValidateBeforeCall(decisionId, null);
+        Type localVarReturnType = new TypeToken<CreateMagicAutoDecisionUndoResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Undo an automated Magic List decision, deleting its unpublished draft. (asynchronously)
+     * 
+     * @param decisionId  (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call createMagicAutoDecisionUndoAsync(UUID decisionId, final ApiCallback<CreateMagicAutoDecisionUndoResponse> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = createMagicAutoDecisionUndoValidateBeforeCall(decisionId, _callback);
+        Type localVarReturnType = new TypeToken<CreateMagicAutoDecisionUndoResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for createMagicAutoItem
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call createMagicAutoItemCall(final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/v1/magic/auto/items";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "PersonalAccessToken" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call createMagicAutoItemValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        
+
+        okhttp3.Call localVarCall = createMagicAutoItemCall(_callback);
+        return localVarCall;
+
+    }
+
+    /**
+     * Scan one item and match it automatically (drafts only, never publishes).
+     * 
+     * @return CreateMagicAutoItemResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public CreateMagicAutoItemResponse createMagicAutoItem() throws ApiException {
+        ApiResponse<CreateMagicAutoItemResponse> localVarResp = createMagicAutoItemWithHttpInfo();
+        return localVarResp.getData();
+    }
+
+    /**
+     * Scan one item and match it automatically (drafts only, never publishes).
+     * 
+     * @return ApiResponse&lt;CreateMagicAutoItemResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<CreateMagicAutoItemResponse> createMagicAutoItemWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = createMagicAutoItemValidateBeforeCall(null);
+        Type localVarReturnType = new TypeToken<CreateMagicAutoItemResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Scan one item and match it automatically (drafts only, never publishes). (asynchronously)
+     * 
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call createMagicAutoItemAsync(final ApiCallback<CreateMagicAutoItemResponse> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = createMagicAutoItemValidateBeforeCall(_callback);
+        Type localVarReturnType = new TypeToken<CreateMagicAutoItemResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for createMagicAutoRun
+     * @param runId  (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call createMagicAutoRunCall(UUID runId, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/v1/magic/auto/runs/{runId}"
+            .replaceAll("\\{" + "runId" + "\\}", localVarApiClient.escapeString(runId.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "PersonalAccessToken" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call createMagicAutoRunValidateBeforeCall(UUID runId, final ApiCallback _callback) throws ApiException {
+        
+        // verify the required parameter 'runId' is set
+        if (runId == null) {
+            throw new ApiException("Missing the required parameter 'runId' when calling createMagicAutoRun(Async)");
+        }
+        
+
+        okhttp3.Call localVarCall = createMagicAutoRunCall(runId, _callback);
+        return localVarCall;
+
+    }
+
+    /**
+     * Score a Magic List run automatically; a confident match in auto mode becomes a draft.
+     * 
+     * @param runId  (required)
+     * @return CreateMagicAutoRunResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public CreateMagicAutoRunResponse createMagicAutoRun(UUID runId) throws ApiException {
+        ApiResponse<CreateMagicAutoRunResponse> localVarResp = createMagicAutoRunWithHttpInfo(runId);
+        return localVarResp.getData();
+    }
+
+    /**
+     * Score a Magic List run automatically; a confident match in auto mode becomes a draft.
+     * 
+     * @param runId  (required)
+     * @return ApiResponse&lt;CreateMagicAutoRunResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<CreateMagicAutoRunResponse> createMagicAutoRunWithHttpInfo(UUID runId) throws ApiException {
+        okhttp3.Call localVarCall = createMagicAutoRunValidateBeforeCall(runId, null);
+        Type localVarReturnType = new TypeToken<CreateMagicAutoRunResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Score a Magic List run automatically; a confident match in auto mode becomes a draft. (asynchronously)
+     * 
+     * @param runId  (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call createMagicAutoRunAsync(UUID runId, final ApiCallback<CreateMagicAutoRunResponse> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = createMagicAutoRunValidateBeforeCall(runId, _callback);
+        Type localVarReturnType = new TypeToken<CreateMagicAutoRunResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for createMagicAutoRunSwipe
+     * @param runId  (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call createMagicAutoRunSwipeCall(UUID runId, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/v1/magic/auto/runs/{runId}/swipes"
+            .replaceAll("\\{" + "runId" + "\\}", localVarApiClient.escapeString(runId.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "PersonalAccessToken" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call createMagicAutoRunSwipeValidateBeforeCall(UUID runId, final ApiCallback _callback) throws ApiException {
+        
+        // verify the required parameter 'runId' is set
+        if (runId == null) {
+            throw new ApiException("Missing the required parameter 'runId' when calling createMagicAutoRunSwipe(Async)");
+        }
+        
+
+        okhttp3.Call localVarCall = createMagicAutoRunSwipeCall(runId, _callback);
+        return localVarCall;
+
+    }
+
+    /**
+     * Record a seller swipe session (kept and rejected match keys) for a Magic List run.
+     * 
+     * @param runId  (required)
+     * @return CreateMagicAutoRunSwipeResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public CreateMagicAutoRunSwipeResponse createMagicAutoRunSwipe(UUID runId) throws ApiException {
+        ApiResponse<CreateMagicAutoRunSwipeResponse> localVarResp = createMagicAutoRunSwipeWithHttpInfo(runId);
+        return localVarResp.getData();
+    }
+
+    /**
+     * Record a seller swipe session (kept and rejected match keys) for a Magic List run.
+     * 
+     * @param runId  (required)
+     * @return ApiResponse&lt;CreateMagicAutoRunSwipeResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<CreateMagicAutoRunSwipeResponse> createMagicAutoRunSwipeWithHttpInfo(UUID runId) throws ApiException {
+        okhttp3.Call localVarCall = createMagicAutoRunSwipeValidateBeforeCall(runId, null);
+        Type localVarReturnType = new TypeToken<CreateMagicAutoRunSwipeResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Record a seller swipe session (kept and rejected match keys) for a Magic List run. (asynchronously)
+     * 
+     * @param runId  (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call createMagicAutoRunSwipeAsync(UUID runId, final ApiCallback<CreateMagicAutoRunSwipeResponse> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = createMagicAutoRunSwipeValidateBeforeCall(runId, _callback);
+        Type localVarReturnType = new TypeToken<CreateMagicAutoRunSwipeResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
     /**
      * Build call for createMagicScan
      * @param _callback Callback for upload/download progress
@@ -372,6 +977,148 @@ public class MagicApi {
         return localVarCall;
     }
     /**
+     * Build call for getMagicAutoSetting
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getMagicAutoSettingCall(final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/v1/magic/auto/settings";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "PersonalAccessToken" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call getMagicAutoSettingValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        
+
+        okhttp3.Call localVarCall = getMagicAutoSettingCall(_callback);
+        return localVarCall;
+
+    }
+
+    /**
+     * The seller’s Magic List automated-matching mode.
+     * mode: off (every match is swiped by hand), auto (confident matches become DRAFTS on their own, never published, always undoable) or review_all (Crossly pre-marks its picks; the seller confirms). Default review_all.
+     * @return GetMagicAutoSettingResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public GetMagicAutoSettingResponse getMagicAutoSetting() throws ApiException {
+        ApiResponse<GetMagicAutoSettingResponse> localVarResp = getMagicAutoSettingWithHttpInfo();
+        return localVarResp.getData();
+    }
+
+    /**
+     * The seller’s Magic List automated-matching mode.
+     * mode: off (every match is swiped by hand), auto (confident matches become DRAFTS on their own, never published, always undoable) or review_all (Crossly pre-marks its picks; the seller confirms). Default review_all.
+     * @return ApiResponse&lt;GetMagicAutoSettingResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<GetMagicAutoSettingResponse> getMagicAutoSettingWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = getMagicAutoSettingValidateBeforeCall(null);
+        Type localVarReturnType = new TypeToken<GetMagicAutoSettingResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * The seller’s Magic List automated-matching mode. (asynchronously)
+     * mode: off (every match is swiped by hand), auto (confident matches become DRAFTS on their own, never published, always undoable) or review_all (Crossly pre-marks its picks; the seller confirms). Default review_all.
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getMagicAutoSettingAsync(final ApiCallback<GetMagicAutoSettingResponse> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = getMagicAutoSettingValidateBeforeCall(_callback);
+        Type localVarReturnType = new TypeToken<GetMagicAutoSettingResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
      * Build call for getMagicDraft
      * @param draftId  (required)
      * @param _callback Callback for upload/download progress
@@ -524,6 +1271,158 @@ public class MagicApi {
         return localVarCall;
     }
     /**
+     * Build call for listMagicAutoRunDecisions
+     * @param runId  (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call listMagicAutoRunDecisionsCall(UUID runId, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/v1/magic/auto/runs/{runId}/decisions"
+            .replaceAll("\\{" + "runId" + "\\}", localVarApiClient.escapeString(runId.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "PersonalAccessToken" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call listMagicAutoRunDecisionsValidateBeforeCall(UUID runId, final ApiCallback _callback) throws ApiException {
+        
+        // verify the required parameter 'runId' is set
+        if (runId == null) {
+            throw new ApiException("Missing the required parameter 'runId' when calling listMagicAutoRunDecisions(Async)");
+        }
+        
+
+        okhttp3.Call localVarCall = listMagicAutoRunDecisionsCall(runId, _callback);
+        return localVarCall;
+
+    }
+
+    /**
+     * Every match decision round (automated and seller) for a Magic List run.
+     * 
+     * @param runId  (required)
+     * @return ListMagicAutoRunDecisionsResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public ListMagicAutoRunDecisionsResponse listMagicAutoRunDecisions(UUID runId) throws ApiException {
+        ApiResponse<ListMagicAutoRunDecisionsResponse> localVarResp = listMagicAutoRunDecisionsWithHttpInfo(runId);
+        return localVarResp.getData();
+    }
+
+    /**
+     * Every match decision round (automated and seller) for a Magic List run.
+     * 
+     * @param runId  (required)
+     * @return ApiResponse&lt;ListMagicAutoRunDecisionsResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<ListMagicAutoRunDecisionsResponse> listMagicAutoRunDecisionsWithHttpInfo(UUID runId) throws ApiException {
+        okhttp3.Call localVarCall = listMagicAutoRunDecisionsValidateBeforeCall(runId, null);
+        Type localVarReturnType = new TypeToken<ListMagicAutoRunDecisionsResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Every match decision round (automated and seller) for a Magic List run. (asynchronously)
+     * 
+     * @param runId  (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call listMagicAutoRunDecisionsAsync(UUID runId, final ApiCallback<ListMagicAutoRunDecisionsResponse> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = listMagicAutoRunDecisionsValidateBeforeCall(runId, _callback);
+        Type localVarReturnType = new TypeToken<ListMagicAutoRunDecisionsResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
      * Build call for listMagicRecent
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -662,6 +1561,157 @@ public class MagicApi {
 
         okhttp3.Call localVarCall = listMagicRecentValidateBeforeCall(_callback);
         Type localVarReturnType = new TypeToken<ListMagicRecentResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for updateMagicAutoSetting
+     * @param updateMagicAutoSettingRequest  (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call updateMagicAutoSettingCall(UpdateMagicAutoSettingRequest updateMagicAutoSettingRequest, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = updateMagicAutoSettingRequest;
+
+        // create path and map variables
+        String localVarPath = "/v1/magic/auto/settings";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "PersonalAccessToken" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "PUT", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call updateMagicAutoSettingValidateBeforeCall(UpdateMagicAutoSettingRequest updateMagicAutoSettingRequest, final ApiCallback _callback) throws ApiException {
+        
+        // verify the required parameter 'updateMagicAutoSettingRequest' is set
+        if (updateMagicAutoSettingRequest == null) {
+            throw new ApiException("Missing the required parameter 'updateMagicAutoSettingRequest' when calling updateMagicAutoSetting(Async)");
+        }
+        
+
+        okhttp3.Call localVarCall = updateMagicAutoSettingCall(updateMagicAutoSettingRequest, _callback);
+        return localVarCall;
+
+    }
+
+    /**
+     * Set the Magic List automated-matching mode (off | auto | review_all).
+     * 
+     * @param updateMagicAutoSettingRequest  (required)
+     * @return GetMagicAutoSettingResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public GetMagicAutoSettingResponse updateMagicAutoSetting(UpdateMagicAutoSettingRequest updateMagicAutoSettingRequest) throws ApiException {
+        ApiResponse<GetMagicAutoSettingResponse> localVarResp = updateMagicAutoSettingWithHttpInfo(updateMagicAutoSettingRequest);
+        return localVarResp.getData();
+    }
+
+    /**
+     * Set the Magic List automated-matching mode (off | auto | review_all).
+     * 
+     * @param updateMagicAutoSettingRequest  (required)
+     * @return ApiResponse&lt;GetMagicAutoSettingResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<GetMagicAutoSettingResponse> updateMagicAutoSettingWithHttpInfo(UpdateMagicAutoSettingRequest updateMagicAutoSettingRequest) throws ApiException {
+        okhttp3.Call localVarCall = updateMagicAutoSettingValidateBeforeCall(updateMagicAutoSettingRequest, null);
+        Type localVarReturnType = new TypeToken<GetMagicAutoSettingResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Set the Magic List automated-matching mode (off | auto | review_all). (asynchronously)
+     * 
+     * @param updateMagicAutoSettingRequest  (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call updateMagicAutoSettingAsync(UpdateMagicAutoSettingRequest updateMagicAutoSettingRequest, final ApiCallback<GetMagicAutoSettingResponse> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = updateMagicAutoSettingValidateBeforeCall(updateMagicAutoSettingRequest, _callback);
+        Type localVarReturnType = new TypeToken<GetMagicAutoSettingResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }

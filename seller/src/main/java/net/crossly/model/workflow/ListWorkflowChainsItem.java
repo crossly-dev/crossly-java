@@ -24,45 +24,244 @@ import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import net.crossly.model.workflow.GetWorkflowChainResponseSteps;
 import org.threeten.bp.OffsetDateTime;
 
 /**
  * ListWorkflowChainsItem
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-11T23:44:48.922Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-27T19:42:43.186Z[Etc/UTC]")
 public class ListWorkflowChainsItem {
-  public static final String SERIALIZED_NAME_STEPS = "steps";
-  @SerializedName(SERIALIZED_NAME_STEPS)
-  private List<GetWorkflowChainResponseSteps> steps = new ArrayList<GetWorkflowChainResponseSteps>();
-
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
   private String id;
-
-  public static final String SERIALIZED_NAME_NAME = "name";
-  @SerializedName(SERIALIZED_NAME_NAME)
-  private String name;
-
-  public static final String SERIALIZED_NAME_CREATED_AT = "createdAt";
-  @SerializedName(SERIALIZED_NAME_CREATED_AT)
-  private OffsetDateTime createdAt;
 
   public static final String SERIALIZED_NAME_USER_ID = "userId";
   @SerializedName(SERIALIZED_NAME_USER_ID)
   private String userId;
 
-  public static final String SERIALIZED_NAME_IS_ACTIVE = "isActive";
-  @SerializedName(SERIALIZED_NAME_IS_ACTIVE)
-  private Boolean isActive;
+  public static final String SERIALIZED_NAME_NAME = "name";
+  @SerializedName(SERIALIZED_NAME_NAME)
+  private String name;
 
   public static final String SERIALIZED_NAME_TRIGGER_ID = "triggerId";
   @SerializedName(SERIALIZED_NAME_TRIGGER_ID)
   private String triggerId;
 
+  public static final String SERIALIZED_NAME_TRIGGER_CONFIG = "triggerConfig";
+  @SerializedName(SERIALIZED_NAME_TRIGGER_CONFIG)
+  private Map<String, Object> triggerConfig = new HashMap<String, Object>();
+
+  public static final String SERIALIZED_NAME_IS_ACTIVE = "isActive";
+  @SerializedName(SERIALIZED_NAME_IS_ACTIVE)
+  private Boolean isActive;
+
+  public static final String SERIALIZED_NAME_CREATED_AT = "createdAt";
+  @SerializedName(SERIALIZED_NAME_CREATED_AT)
+  private OffsetDateTime createdAt;
+
+  public static final String SERIALIZED_NAME_WORKFLOW_ID = "workflowId";
+  @SerializedName(SERIALIZED_NAME_WORKFLOW_ID)
+  private String workflowId;
+
+  public static final String SERIALIZED_NAME_STEPS = "steps";
+  @SerializedName(SERIALIZED_NAME_STEPS)
+  private List<GetWorkflowChainResponseSteps> steps = new ArrayList<GetWorkflowChainResponseSteps>();
+
   public ListWorkflowChainsItem() { 
   }
+
+  public ListWorkflowChainsItem id(String id) {
+    
+    this.id = id;
+    return this;
+  }
+
+   /**
+   * Get id
+   * @return id
+  **/
+  @javax.annotation.Nonnull
+  @ApiModelProperty(required = true, value = "")
+
+  public String getId() {
+    return id;
+  }
+
+
+  public void setId(String id) {
+    this.id = id;
+  }
+
+
+  public ListWorkflowChainsItem userId(String userId) {
+    
+    this.userId = userId;
+    return this;
+  }
+
+   /**
+   * Get userId
+   * @return userId
+  **/
+  @javax.annotation.Nonnull
+  @ApiModelProperty(required = true, value = "")
+
+  public String getUserId() {
+    return userId;
+  }
+
+
+  public void setUserId(String userId) {
+    this.userId = userId;
+  }
+
+
+  public ListWorkflowChainsItem name(String name) {
+    
+    this.name = name;
+    return this;
+  }
+
+   /**
+   * Get name
+   * @return name
+  **/
+  @javax.annotation.Nonnull
+  @ApiModelProperty(required = true, value = "")
+
+  public String getName() {
+    return name;
+  }
+
+
+  public void setName(String name) {
+    this.name = name;
+  }
+
+
+  public ListWorkflowChainsItem triggerId(String triggerId) {
+    
+    this.triggerId = triggerId;
+    return this;
+  }
+
+   /**
+   * Get triggerId
+   * @return triggerId
+  **/
+  @javax.annotation.Nonnull
+  @ApiModelProperty(required = true, value = "")
+
+  public String getTriggerId() {
+    return triggerId;
+  }
+
+
+  public void setTriggerId(String triggerId) {
+    this.triggerId = triggerId;
+  }
+
+
+  public ListWorkflowChainsItem triggerConfig(Map<String, Object> triggerConfig) {
+    
+    this.triggerConfig = triggerConfig;
+    return this;
+  }
+
+  public ListWorkflowChainsItem putTriggerConfigItem(String key, Object triggerConfigItem) {
+    this.triggerConfig.put(key, triggerConfigItem);
+    return this;
+  }
+
+   /**
+   * Get triggerConfig
+   * @return triggerConfig
+  **/
+  @javax.annotation.Nonnull
+  @ApiModelProperty(required = true, value = "")
+
+  public Map<String, Object> getTriggerConfig() {
+    return triggerConfig;
+  }
+
+
+  public void setTriggerConfig(Map<String, Object> triggerConfig) {
+    this.triggerConfig = triggerConfig;
+  }
+
+
+  public ListWorkflowChainsItem isActive(Boolean isActive) {
+    
+    this.isActive = isActive;
+    return this;
+  }
+
+   /**
+   * Get isActive
+   * @return isActive
+  **/
+  @javax.annotation.Nonnull
+  @ApiModelProperty(required = true, value = "")
+
+  public Boolean getIsActive() {
+    return isActive;
+  }
+
+
+  public void setIsActive(Boolean isActive) {
+    this.isActive = isActive;
+  }
+
+
+  public ListWorkflowChainsItem createdAt(OffsetDateTime createdAt) {
+    
+    this.createdAt = createdAt;
+    return this;
+  }
+
+   /**
+   * Get createdAt
+   * @return createdAt
+  **/
+  @javax.annotation.Nonnull
+  @ApiModelProperty(required = true, value = "")
+
+  public OffsetDateTime getCreatedAt() {
+    return createdAt;
+  }
+
+
+  public void setCreatedAt(OffsetDateTime createdAt) {
+    this.createdAt = createdAt;
+  }
+
+
+  public ListWorkflowChainsItem workflowId(String workflowId) {
+    
+    this.workflowId = workflowId;
+    return this;
+  }
+
+   /**
+   * Get workflowId
+   * @return workflowId
+  **/
+  @javax.annotation.Nonnull
+  @ApiModelProperty(required = true, value = "")
+
+  public String getWorkflowId() {
+    return workflowId;
+  }
+
+
+  public void setWorkflowId(String workflowId) {
+    this.workflowId = workflowId;
+  }
+
 
   public ListWorkflowChainsItem steps(List<GetWorkflowChainResponseSteps> steps) {
     
@@ -92,144 +291,6 @@ public class ListWorkflowChainsItem {
   }
 
 
-  public ListWorkflowChainsItem id(String id) {
-    
-    this.id = id;
-    return this;
-  }
-
-   /**
-   * Get id
-   * @return id
-  **/
-  @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "")
-
-  public String getId() {
-    return id;
-  }
-
-
-  public void setId(String id) {
-    this.id = id;
-  }
-
-
-  public ListWorkflowChainsItem name(String name) {
-    
-    this.name = name;
-    return this;
-  }
-
-   /**
-   * Get name
-   * @return name
-  **/
-  @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "")
-
-  public String getName() {
-    return name;
-  }
-
-
-  public void setName(String name) {
-    this.name = name;
-  }
-
-
-  public ListWorkflowChainsItem createdAt(OffsetDateTime createdAt) {
-    
-    this.createdAt = createdAt;
-    return this;
-  }
-
-   /**
-   * Get createdAt
-   * @return createdAt
-  **/
-  @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "")
-
-  public OffsetDateTime getCreatedAt() {
-    return createdAt;
-  }
-
-
-  public void setCreatedAt(OffsetDateTime createdAt) {
-    this.createdAt = createdAt;
-  }
-
-
-  public ListWorkflowChainsItem userId(String userId) {
-    
-    this.userId = userId;
-    return this;
-  }
-
-   /**
-   * Get userId
-   * @return userId
-  **/
-  @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "")
-
-  public String getUserId() {
-    return userId;
-  }
-
-
-  public void setUserId(String userId) {
-    this.userId = userId;
-  }
-
-
-  public ListWorkflowChainsItem isActive(Boolean isActive) {
-    
-    this.isActive = isActive;
-    return this;
-  }
-
-   /**
-   * Get isActive
-   * @return isActive
-  **/
-  @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "")
-
-  public Boolean getIsActive() {
-    return isActive;
-  }
-
-
-  public void setIsActive(Boolean isActive) {
-    this.isActive = isActive;
-  }
-
-
-  public ListWorkflowChainsItem triggerId(String triggerId) {
-    
-    this.triggerId = triggerId;
-    return this;
-  }
-
-   /**
-   * Get triggerId
-   * @return triggerId
-  **/
-  @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "")
-
-  public String getTriggerId() {
-    return triggerId;
-  }
-
-
-  public void setTriggerId(String triggerId) {
-    this.triggerId = triggerId;
-  }
-
-
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -239,31 +300,35 @@ public class ListWorkflowChainsItem {
       return false;
     }
     ListWorkflowChainsItem listWorkflowChainsItem = (ListWorkflowChainsItem) o;
-    return Objects.equals(this.steps, listWorkflowChainsItem.steps) &&
-        Objects.equals(this.id, listWorkflowChainsItem.id) &&
-        Objects.equals(this.name, listWorkflowChainsItem.name) &&
-        Objects.equals(this.createdAt, listWorkflowChainsItem.createdAt) &&
+    return Objects.equals(this.id, listWorkflowChainsItem.id) &&
         Objects.equals(this.userId, listWorkflowChainsItem.userId) &&
+        Objects.equals(this.name, listWorkflowChainsItem.name) &&
+        Objects.equals(this.triggerId, listWorkflowChainsItem.triggerId) &&
+        Objects.equals(this.triggerConfig, listWorkflowChainsItem.triggerConfig) &&
         Objects.equals(this.isActive, listWorkflowChainsItem.isActive) &&
-        Objects.equals(this.triggerId, listWorkflowChainsItem.triggerId);
+        Objects.equals(this.createdAt, listWorkflowChainsItem.createdAt) &&
+        Objects.equals(this.workflowId, listWorkflowChainsItem.workflowId) &&
+        Objects.equals(this.steps, listWorkflowChainsItem.steps);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(steps, id, name, createdAt, userId, isActive, triggerId);
+    return Objects.hash(id, userId, name, triggerId, triggerConfig, isActive, createdAt, workflowId, steps);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class ListWorkflowChainsItem {\n");
-    sb.append("    steps: ").append(toIndentedString(steps)).append("\n");
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
-    sb.append("    name: ").append(toIndentedString(name)).append("\n");
-    sb.append("    createdAt: ").append(toIndentedString(createdAt)).append("\n");
     sb.append("    userId: ").append(toIndentedString(userId)).append("\n");
-    sb.append("    isActive: ").append(toIndentedString(isActive)).append("\n");
+    sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    triggerId: ").append(toIndentedString(triggerId)).append("\n");
+    sb.append("    triggerConfig: ").append(toIndentedString(triggerConfig)).append("\n");
+    sb.append("    isActive: ").append(toIndentedString(isActive)).append("\n");
+    sb.append("    createdAt: ").append(toIndentedString(createdAt)).append("\n");
+    sb.append("    workflowId: ").append(toIndentedString(workflowId)).append("\n");
+    sb.append("    steps: ").append(toIndentedString(steps)).append("\n");
     sb.append("}");
     return sb.toString();
   }

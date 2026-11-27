@@ -28,41 +28,18 @@ import java.math.BigDecimal;
 /**
  * ListBuyerTotalRequestsItemLines
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-11T23:47:29.843Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-27T19:58:46.962Z[Etc/UTC]")
 public class ListBuyerTotalRequestsItemLines {
-  public static final String SERIALIZED_NAME_QUANTITY = "quantity";
-  @SerializedName(SERIALIZED_NAME_QUANTITY)
-  private BigDecimal quantity;
-
   public static final String SERIALIZED_NAME_PLATFORM_LISTING_ID = "platformListingId";
   @SerializedName(SERIALIZED_NAME_PLATFORM_LISTING_ID)
   private String platformListingId;
 
+  public static final String SERIALIZED_NAME_QUANTITY = "quantity";
+  @SerializedName(SERIALIZED_NAME_QUANTITY)
+  private BigDecimal quantity;
+
   public ListBuyerTotalRequestsItemLines() { 
   }
-
-  public ListBuyerTotalRequestsItemLines quantity(BigDecimal quantity) {
-    
-    this.quantity = quantity;
-    return this;
-  }
-
-   /**
-   * Get quantity
-   * @return quantity
-  **/
-  @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "")
-
-  public BigDecimal getQuantity() {
-    return quantity;
-  }
-
-
-  public void setQuantity(BigDecimal quantity) {
-    this.quantity = quantity;
-  }
-
 
   public ListBuyerTotalRequestsItemLines platformListingId(String platformListingId) {
     
@@ -87,6 +64,29 @@ public class ListBuyerTotalRequestsItemLines {
   }
 
 
+  public ListBuyerTotalRequestsItemLines quantity(BigDecimal quantity) {
+    
+    this.quantity = quantity;
+    return this;
+  }
+
+   /**
+   * Get quantity
+   * @return quantity
+  **/
+  @javax.annotation.Nonnull
+  @ApiModelProperty(required = true, value = "")
+
+  public BigDecimal getQuantity() {
+    return quantity;
+  }
+
+
+  public void setQuantity(BigDecimal quantity) {
+    this.quantity = quantity;
+  }
+
+
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -96,21 +96,21 @@ public class ListBuyerTotalRequestsItemLines {
       return false;
     }
     ListBuyerTotalRequestsItemLines listBuyerTotalRequestsItemLines = (ListBuyerTotalRequestsItemLines) o;
-    return Objects.equals(this.quantity, listBuyerTotalRequestsItemLines.quantity) &&
-        Objects.equals(this.platformListingId, listBuyerTotalRequestsItemLines.platformListingId);
+    return Objects.equals(this.platformListingId, listBuyerTotalRequestsItemLines.platformListingId) &&
+        Objects.equals(this.quantity, listBuyerTotalRequestsItemLines.quantity);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(quantity, platformListingId);
+    return Objects.hash(platformListingId, quantity);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class ListBuyerTotalRequestsItemLines {\n");
-    sb.append("    quantity: ").append(toIndentedString(quantity)).append("\n");
     sb.append("    platformListingId: ").append(toIndentedString(platformListingId)).append("\n");
+    sb.append("    quantity: ").append(toIndentedString(quantity)).append("\n");
     sb.append("}");
     return sb.toString();
   }

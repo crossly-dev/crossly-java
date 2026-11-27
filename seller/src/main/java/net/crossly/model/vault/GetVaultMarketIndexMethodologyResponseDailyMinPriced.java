@@ -28,7 +28,7 @@ import java.math.BigDecimal;
 /**
  * GetVaultMarketIndexMethodologyResponseDailyMinPriced
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-11T23:44:48.922Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-27T19:42:43.186Z[Etc/UTC]")
 public class GetVaultMarketIndexMethodologyResponseDailyMinPriced {
   public static final String SERIALIZED_NAME_CUSTOM = "custom";
   @SerializedName(SERIALIZED_NAME_CUSTOM)
@@ -42,6 +42,10 @@ public class GetVaultMarketIndexMethodologyResponseDailyMinPriced {
   @SerializedName(SERIALIZED_NAME_CATEGORY)
   private BigDecimal category;
 
+  public static final String SERIALIZED_NAME_SEGMENT = "segment";
+  @SerializedName(SERIALIZED_NAME_SEGMENT)
+  private BigDecimal segment;
+
   public static final String SERIALIZED_NAME_CURATED = "curated";
   @SerializedName(SERIALIZED_NAME_CURATED)
   private BigDecimal curated;
@@ -49,10 +53,6 @@ public class GetVaultMarketIndexMethodologyResponseDailyMinPriced {
   public static final String SERIALIZED_NAME_COMPOSITE = "composite";
   @SerializedName(SERIALIZED_NAME_COMPOSITE)
   private BigDecimal composite;
-
-  public static final String SERIALIZED_NAME_SEGMENT = "segment";
-  @SerializedName(SERIALIZED_NAME_SEGMENT)
-  private BigDecimal segment;
 
   public GetVaultMarketIndexMethodologyResponseDailyMinPriced() { 
   }
@@ -126,6 +126,29 @@ public class GetVaultMarketIndexMethodologyResponseDailyMinPriced {
   }
 
 
+  public GetVaultMarketIndexMethodologyResponseDailyMinPriced segment(BigDecimal segment) {
+    
+    this.segment = segment;
+    return this;
+  }
+
+   /**
+   * Get segment
+   * @return segment
+  **/
+  @javax.annotation.Nonnull
+  @ApiModelProperty(required = true, value = "")
+
+  public BigDecimal getSegment() {
+    return segment;
+  }
+
+
+  public void setSegment(BigDecimal segment) {
+    this.segment = segment;
+  }
+
+
   public GetVaultMarketIndexMethodologyResponseDailyMinPriced curated(BigDecimal curated) {
     
     this.curated = curated;
@@ -172,29 +195,6 @@ public class GetVaultMarketIndexMethodologyResponseDailyMinPriced {
   }
 
 
-  public GetVaultMarketIndexMethodologyResponseDailyMinPriced segment(BigDecimal segment) {
-    
-    this.segment = segment;
-    return this;
-  }
-
-   /**
-   * Get segment
-   * @return segment
-  **/
-  @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "")
-
-  public BigDecimal getSegment() {
-    return segment;
-  }
-
-
-  public void setSegment(BigDecimal segment) {
-    this.segment = segment;
-  }
-
-
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -207,14 +207,14 @@ public class GetVaultMarketIndexMethodologyResponseDailyMinPriced {
     return Objects.equals(this.custom, getVaultMarketIndexMethodologyResponseDailyMinPriced.custom) &&
         Objects.equals(this.brand, getVaultMarketIndexMethodologyResponseDailyMinPriced.brand) &&
         Objects.equals(this.category, getVaultMarketIndexMethodologyResponseDailyMinPriced.category) &&
+        Objects.equals(this.segment, getVaultMarketIndexMethodologyResponseDailyMinPriced.segment) &&
         Objects.equals(this.curated, getVaultMarketIndexMethodologyResponseDailyMinPriced.curated) &&
-        Objects.equals(this.composite, getVaultMarketIndexMethodologyResponseDailyMinPriced.composite) &&
-        Objects.equals(this.segment, getVaultMarketIndexMethodologyResponseDailyMinPriced.segment);
+        Objects.equals(this.composite, getVaultMarketIndexMethodologyResponseDailyMinPriced.composite);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(custom, brand, category, curated, composite, segment);
+    return Objects.hash(custom, brand, category, segment, curated, composite);
   }
 
   @Override
@@ -224,9 +224,9 @@ public class GetVaultMarketIndexMethodologyResponseDailyMinPriced {
     sb.append("    custom: ").append(toIndentedString(custom)).append("\n");
     sb.append("    brand: ").append(toIndentedString(brand)).append("\n");
     sb.append("    category: ").append(toIndentedString(category)).append("\n");
+    sb.append("    segment: ").append(toIndentedString(segment)).append("\n");
     sb.append("    curated: ").append(toIndentedString(curated)).append("\n");
     sb.append("    composite: ").append(toIndentedString(composite)).append("\n");
-    sb.append("    segment: ").append(toIndentedString(segment)).append("\n");
     sb.append("}");
     return sb.toString();
   }

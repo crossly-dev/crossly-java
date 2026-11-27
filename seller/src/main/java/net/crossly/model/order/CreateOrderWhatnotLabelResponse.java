@@ -23,25 +23,70 @@ import com.google.gson.stream.JsonWriter;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
-import net.crossly.model.order.CreateOrderWhatnotLabelResponseShipment;
+import net.crossly.model.order.GetOrderWhatnotShipmentResponseShipment;
+import org.openapitools.jackson.nullable.JsonNullable;
 
 /**
  * CreateOrderWhatnotLabelResponse
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-11T23:44:48.922Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-27T19:42:43.186Z[Etc/UTC]")
 public class CreateOrderWhatnotLabelResponse {
   public static final String SERIALIZED_NAME_SHIPMENT = "shipment";
   @SerializedName(SERIALIZED_NAME_SHIPMENT)
-  private CreateOrderWhatnotLabelResponseShipment shipment;
+  private GetOrderWhatnotShipmentResponseShipment shipment;
 
   public static final String SERIALIZED_NAME_RECORDED = "recorded";
   @SerializedName(SERIALIZED_NAME_RECORDED)
   private Boolean recorded;
 
+  public static final String SERIALIZED_NAME_OK = "ok";
+  @SerializedName(SERIALIZED_NAME_OK)
+  private Boolean ok;
+
+  public static final String SERIALIZED_NAME_DOWNLOAD_URL = "downloadUrl";
+  @SerializedName(SERIALIZED_NAME_DOWNLOAD_URL)
+  private String downloadUrl;
+
+  public static final String SERIALIZED_NAME_EMAIL_ONLY = "emailOnly";
+  @SerializedName(SERIALIZED_NAME_EMAIL_ONLY)
+  private Boolean emailOnly;
+
+  public static final String SERIALIZED_NAME_LABEL_URL = "labelUrl";
+  @SerializedName(SERIALIZED_NAME_LABEL_URL)
+  private String labelUrl;
+
+  public static final String SERIALIZED_NAME_TRACKING_NUMBER = "trackingNumber";
+  @SerializedName(SERIALIZED_NAME_TRACKING_NUMBER)
+  private String trackingNumber;
+
+  public static final String SERIALIZED_NAME_CARRIER = "carrier";
+  @SerializedName(SERIALIZED_NAME_CARRIER)
+  private String carrier;
+
+  public static final String SERIALIZED_NAME_SERVICE = "service";
+  @SerializedName(SERIALIZED_NAME_SERVICE)
+  private String service;
+
+  public static final String SERIALIZED_NAME_DOCUMENT_KIND = "documentKind";
+  @SerializedName(SERIALIZED_NAME_DOCUMENT_KIND)
+  private String documentKind;
+
+  public static final String SERIALIZED_NAME_WEB_URL = "webUrl";
+  @SerializedName(SERIALIZED_NAME_WEB_URL)
+  private String webUrl;
+
+  public static final String SERIALIZED_NAME_PENDING = "pending";
+  @SerializedName(SERIALIZED_NAME_PENDING)
+  private Boolean pending;
+
+  public static final String SERIALIZED_NAME_MESSAGE = "message";
+  @SerializedName(SERIALIZED_NAME_MESSAGE)
+  private String message;
+
   public CreateOrderWhatnotLabelResponse() { 
   }
 
-  public CreateOrderWhatnotLabelResponse shipment(CreateOrderWhatnotLabelResponseShipment shipment) {
+  public CreateOrderWhatnotLabelResponse shipment(GetOrderWhatnotShipmentResponseShipment shipment) {
     
     this.shipment = shipment;
     return this;
@@ -51,15 +96,15 @@ public class CreateOrderWhatnotLabelResponse {
    * Get shipment
    * @return shipment
   **/
-  @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "")
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
 
-  public CreateOrderWhatnotLabelResponseShipment getShipment() {
+  public GetOrderWhatnotShipmentResponseShipment getShipment() {
     return shipment;
   }
 
 
-  public void setShipment(CreateOrderWhatnotLabelResponseShipment shipment) {
+  public void setShipment(GetOrderWhatnotShipmentResponseShipment shipment) {
     this.shipment = shipment;
   }
 
@@ -74,8 +119,8 @@ public class CreateOrderWhatnotLabelResponse {
    * Get recorded
    * @return recorded
   **/
-  @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "")
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
 
   public Boolean getRecorded() {
     return recorded;
@@ -84,6 +129,259 @@ public class CreateOrderWhatnotLabelResponse {
 
   public void setRecorded(Boolean recorded) {
     this.recorded = recorded;
+  }
+
+
+  public CreateOrderWhatnotLabelResponse ok(Boolean ok) {
+    
+    this.ok = ok;
+    return this;
+  }
+
+   /**
+   * Get ok
+   * @return ok
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public Boolean getOk() {
+    return ok;
+  }
+
+
+  public void setOk(Boolean ok) {
+    this.ok = ok;
+  }
+
+
+  public CreateOrderWhatnotLabelResponse downloadUrl(String downloadUrl) {
+    
+    this.downloadUrl = downloadUrl;
+    return this;
+  }
+
+   /**
+   * Absent for an additional label, which Poshmark delivers only by email.
+   * @return downloadUrl
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "Absent for an additional label, which Poshmark delivers only by email.")
+
+  public String getDownloadUrl() {
+    return downloadUrl;
+  }
+
+
+  public void setDownloadUrl(String downloadUrl) {
+    this.downloadUrl = downloadUrl;
+  }
+
+
+  public CreateOrderWhatnotLabelResponse emailOnly(Boolean emailOnly) {
+    
+    this.emailOnly = emailOnly;
+    return this;
+  }
+
+   /**
+   * True when the label exists only in the seller&#39;s inbox.
+   * @return emailOnly
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "True when the label exists only in the seller's inbox.")
+
+  public Boolean getEmailOnly() {
+    return emailOnly;
+  }
+
+
+  public void setEmailOnly(Boolean emailOnly) {
+    this.emailOnly = emailOnly;
+  }
+
+
+  public CreateOrderWhatnotLabelResponse labelUrl(String labelUrl) {
+    
+    this.labelUrl = labelUrl;
+    return this;
+  }
+
+   /**
+   * Get labelUrl
+   * @return labelUrl
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public String getLabelUrl() {
+    return labelUrl;
+  }
+
+
+  public void setLabelUrl(String labelUrl) {
+    this.labelUrl = labelUrl;
+  }
+
+
+  public CreateOrderWhatnotLabelResponse trackingNumber(String trackingNumber) {
+    
+    this.trackingNumber = trackingNumber;
+    return this;
+  }
+
+   /**
+   * Get trackingNumber
+   * @return trackingNumber
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public String getTrackingNumber() {
+    return trackingNumber;
+  }
+
+
+  public void setTrackingNumber(String trackingNumber) {
+    this.trackingNumber = trackingNumber;
+  }
+
+
+  public CreateOrderWhatnotLabelResponse carrier(String carrier) {
+    
+    this.carrier = carrier;
+    return this;
+  }
+
+   /**
+   * Get carrier
+   * @return carrier
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public String getCarrier() {
+    return carrier;
+  }
+
+
+  public void setCarrier(String carrier) {
+    this.carrier = carrier;
+  }
+
+
+  public CreateOrderWhatnotLabelResponse service(String service) {
+    
+    this.service = service;
+    return this;
+  }
+
+   /**
+   * Get service
+   * @return service
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public String getService() {
+    return service;
+  }
+
+
+  public void setService(String service) {
+    this.service = service;
+  }
+
+
+  public CreateOrderWhatnotLabelResponse documentKind(String documentKind) {
+    
+    this.documentKind = documentKind;
+    return this;
+  }
+
+   /**
+   * Get documentKind
+   * @return documentKind
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public String getDocumentKind() {
+    return documentKind;
+  }
+
+
+  public void setDocumentKind(String documentKind) {
+    this.documentKind = documentKind;
+  }
+
+
+  public CreateOrderWhatnotLabelResponse webUrl(String webUrl) {
+    
+    this.webUrl = webUrl;
+    return this;
+  }
+
+   /**
+   * Get webUrl
+   * @return webUrl
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public String getWebUrl() {
+    return webUrl;
+  }
+
+
+  public void setWebUrl(String webUrl) {
+    this.webUrl = webUrl;
+  }
+
+
+  public CreateOrderWhatnotLabelResponse pending(Boolean pending) {
+    
+    this.pending = pending;
+    return this;
+  }
+
+   /**
+   * Get pending
+   * @return pending
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public Boolean getPending() {
+    return pending;
+  }
+
+
+  public void setPending(Boolean pending) {
+    this.pending = pending;
+  }
+
+
+  public CreateOrderWhatnotLabelResponse message(String message) {
+    
+    this.message = message;
+    return this;
+  }
+
+   /**
+   * Get message
+   * @return message
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public String getMessage() {
+    return message;
+  }
+
+
+  public void setMessage(String message) {
+    this.message = message;
   }
 
 
@@ -97,12 +395,34 @@ public class CreateOrderWhatnotLabelResponse {
     }
     CreateOrderWhatnotLabelResponse createOrderWhatnotLabelResponse = (CreateOrderWhatnotLabelResponse) o;
     return Objects.equals(this.shipment, createOrderWhatnotLabelResponse.shipment) &&
-        Objects.equals(this.recorded, createOrderWhatnotLabelResponse.recorded);
+        Objects.equals(this.recorded, createOrderWhatnotLabelResponse.recorded) &&
+        Objects.equals(this.ok, createOrderWhatnotLabelResponse.ok) &&
+        Objects.equals(this.downloadUrl, createOrderWhatnotLabelResponse.downloadUrl) &&
+        Objects.equals(this.emailOnly, createOrderWhatnotLabelResponse.emailOnly) &&
+        Objects.equals(this.labelUrl, createOrderWhatnotLabelResponse.labelUrl) &&
+        Objects.equals(this.trackingNumber, createOrderWhatnotLabelResponse.trackingNumber) &&
+        Objects.equals(this.carrier, createOrderWhatnotLabelResponse.carrier) &&
+        Objects.equals(this.service, createOrderWhatnotLabelResponse.service) &&
+        Objects.equals(this.documentKind, createOrderWhatnotLabelResponse.documentKind) &&
+        Objects.equals(this.webUrl, createOrderWhatnotLabelResponse.webUrl) &&
+        Objects.equals(this.pending, createOrderWhatnotLabelResponse.pending) &&
+        Objects.equals(this.message, createOrderWhatnotLabelResponse.message);
+  }
+
+  private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+    return a == b || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(shipment, recorded);
+    return Objects.hash(shipment, recorded, ok, downloadUrl, emailOnly, labelUrl, trackingNumber, carrier, service, documentKind, webUrl, pending, message);
+  }
+
+  private static <T> int hashCodeNullable(JsonNullable<T> a) {
+    if (a == null) {
+      return 1;
+    }
+    return a.isPresent() ? Arrays.deepHashCode(new Object[]{a.get()}) : 31;
   }
 
   @Override
@@ -111,6 +431,17 @@ public class CreateOrderWhatnotLabelResponse {
     sb.append("class CreateOrderWhatnotLabelResponse {\n");
     sb.append("    shipment: ").append(toIndentedString(shipment)).append("\n");
     sb.append("    recorded: ").append(toIndentedString(recorded)).append("\n");
+    sb.append("    ok: ").append(toIndentedString(ok)).append("\n");
+    sb.append("    downloadUrl: ").append(toIndentedString(downloadUrl)).append("\n");
+    sb.append("    emailOnly: ").append(toIndentedString(emailOnly)).append("\n");
+    sb.append("    labelUrl: ").append(toIndentedString(labelUrl)).append("\n");
+    sb.append("    trackingNumber: ").append(toIndentedString(trackingNumber)).append("\n");
+    sb.append("    carrier: ").append(toIndentedString(carrier)).append("\n");
+    sb.append("    service: ").append(toIndentedString(service)).append("\n");
+    sb.append("    documentKind: ").append(toIndentedString(documentKind)).append("\n");
+    sb.append("    webUrl: ").append(toIndentedString(webUrl)).append("\n");
+    sb.append("    pending: ").append(toIndentedString(pending)).append("\n");
+    sb.append("    message: ").append(toIndentedString(message)).append("\n");
     sb.append("}");
     return sb.toString();
   }

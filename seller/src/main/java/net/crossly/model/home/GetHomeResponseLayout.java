@@ -33,7 +33,7 @@ import org.openapitools.jackson.nullable.JsonNullable;
 /**
  * GetHomeResponseLayout
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-11T23:44:48.922Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-27T19:42:43.186Z[Etc/UTC]")
 public class GetHomeResponseLayout {
   /**
    * Gets or Sets kind
@@ -109,6 +109,69 @@ public class GetHomeResponseLayout {
   public static final String SERIALIZED_NAME_SET = "set";
   @SerializedName(SERIALIZED_NAME_SET)
   private String set;
+
+  /**
+   * A furniture piece&#39;s colour (HOME_TINTS key): its fabric and finish take it. Absent: as made.
+   */
+  @JsonAdapter(TintEnum.Adapter.class)
+  public enum TintEnum {
+    OAT("oat"),
+    
+    SAGE("sage"),
+    
+    FOREST("forest"),
+    
+    NAVY("navy"),
+    
+    CLAY("clay"),
+    
+    MUSTARD("mustard"),
+    
+    BLUSH("blush"),
+    
+    CHARCOAL("charcoal");
+
+    private String value;
+
+    TintEnum(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    @Override
+    public String toString() {
+      return String.valueOf(value);
+    }
+
+    public static TintEnum fromValue(String value) {
+      for (TintEnum b : TintEnum.values()) {
+        if (b.value.equals(value)) {
+          return b;
+        }
+      }
+      return null;
+    }
+
+    public static class Adapter extends TypeAdapter<TintEnum> {
+      @Override
+      public void write(final JsonWriter jsonWriter, final TintEnum enumeration) throws IOException {
+        jsonWriter.value(enumeration.getValue());
+      }
+
+      @Override
+      public TintEnum read(final JsonReader jsonReader) throws IOException {
+        String value =  jsonReader.nextString();
+        return TintEnum.fromValue(value);
+      }
+    }
+  }
+
+  public static final String SERIALIZED_NAME_TINT = "tint";
+  @SerializedName(SERIALIZED_NAME_TINT)
+  private TintEnum tint;
 
   public static final String SERIALIZED_NAME_ITEM = "item";
   @SerializedName(SERIALIZED_NAME_ITEM)
@@ -283,6 +346,29 @@ public class GetHomeResponseLayout {
   }
 
 
+  public GetHomeResponseLayout tint(TintEnum tint) {
+    
+    this.tint = tint;
+    return this;
+  }
+
+   /**
+   * A furniture piece&#39;s colour (HOME_TINTS key): its fabric and finish take it. Absent: as made.
+   * @return tint
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "A furniture piece's colour (HOME_TINTS key): its fabric and finish take it. Absent: as made.")
+
+  public TintEnum getTint() {
+    return tint;
+  }
+
+
+  public void setTint(TintEnum tint) {
+    this.tint = tint;
+  }
+
+
   public GetHomeResponseLayout item(GetHomeResponseLayoutItem item) {
     
     this.item = item;
@@ -322,6 +408,7 @@ public class GetHomeResponseLayout {
         Objects.equals(this.rotationY, getHomeResponseLayout.rotationY) &&
         Objects.equals(this.slot, getHomeResponseLayout.slot) &&
         Objects.equals(this.set, getHomeResponseLayout.set) &&
+        Objects.equals(this.tint, getHomeResponseLayout.tint) &&
         Objects.equals(this.item, getHomeResponseLayout.item);
   }
 
@@ -331,7 +418,7 @@ public class GetHomeResponseLayout {
 
   @Override
   public int hashCode() {
-    return Objects.hash(kind, model, ref, position, rotationY, slot, set, item);
+    return Objects.hash(kind, model, ref, position, rotationY, slot, set, tint, item);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -352,6 +439,7 @@ public class GetHomeResponseLayout {
     sb.append("    rotationY: ").append(toIndentedString(rotationY)).append("\n");
     sb.append("    slot: ").append(toIndentedString(slot)).append("\n");
     sb.append("    set: ").append(toIndentedString(set)).append("\n");
+    sb.append("    tint: ").append(toIndentedString(tint)).append("\n");
     sb.append("    item: ").append(toIndentedString(item)).append("\n");
     sb.append("}");
     return sb.toString();

@@ -30,7 +30,7 @@ import org.threeten.bp.OffsetDateTime;
 /**
  * GetWeb3CollectionResponseCollection
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-11T23:44:48.922Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-27T19:42:43.186Z[Etc/UTC]")
 public class GetWeb3CollectionResponseCollection {
   public static final String SERIALIZED_NAME_SYMBOL = "symbol";
   @SerializedName(SERIALIZED_NAME_SYMBOL)
@@ -52,13 +52,17 @@ public class GetWeb3CollectionResponseCollection {
   @SerializedName(SERIALIZED_NAME_SLUG)
   private String slug;
 
-  public static final String SERIALIZED_NAME_HIDDEN_AT = "hiddenAt";
-  @SerializedName(SERIALIZED_NAME_HIDDEN_AT)
-  private OffsetDateTime hiddenAt;
-
   public static final String SERIALIZED_NAME_IMAGE_URL = "imageUrl";
   @SerializedName(SERIALIZED_NAME_IMAGE_URL)
   private String imageUrl;
+
+  public static final String SERIALIZED_NAME_VERIFIED = "verified";
+  @SerializedName(SERIALIZED_NAME_VERIFIED)
+  private Boolean verified;
+
+  public static final String SERIALIZED_NAME_HIDDEN_AT = "hiddenAt";
+  @SerializedName(SERIALIZED_NAME_HIDDEN_AT)
+  private OffsetDateTime hiddenAt;
 
   public static final String SERIALIZED_NAME_REFRESHED_AT = "refreshedAt";
   @SerializedName(SERIALIZED_NAME_REFRESHED_AT)
@@ -76,10 +80,6 @@ public class GetWeb3CollectionResponseCollection {
   @SerializedName(SERIALIZED_NAME_CONTRACT)
   private String contract;
 
-  public static final String SERIALIZED_NAME_FIRST_SEEN_AT = "firstSeenAt";
-  @SerializedName(SERIALIZED_NAME_FIRST_SEEN_AT)
-  private OffsetDateTime firstSeenAt;
-
   public static final String SERIALIZED_NAME_TOKEN_TYPE = "tokenType";
   @SerializedName(SERIALIZED_NAME_TOKEN_TYPE)
   private String tokenType;
@@ -92,6 +92,10 @@ public class GetWeb3CollectionResponseCollection {
   @SerializedName(SERIALIZED_NAME_FEATURED_RANK)
   private BigDecimal featuredRank;
 
+  public static final String SERIALIZED_NAME_FIRST_SEEN_AT = "firstSeenAt";
+  @SerializedName(SERIALIZED_NAME_FIRST_SEEN_AT)
+  private OffsetDateTime firstSeenAt;
+
   public static final String SERIALIZED_NAME_BANNER_URL = "bannerUrl";
   @SerializedName(SERIALIZED_NAME_BANNER_URL)
   private String bannerUrl;
@@ -103,10 +107,6 @@ public class GetWeb3CollectionResponseCollection {
   public static final String SERIALIZED_NAME_DISCORD = "discord";
   @SerializedName(SERIALIZED_NAME_DISCORD)
   private String discord;
-
-  public static final String SERIALIZED_NAME_VERIFIED = "verified";
-  @SerializedName(SERIALIZED_NAME_VERIFIED)
-  private Boolean verified;
 
   public static final String SERIALIZED_NAME_DEPLOYED_BLOCK = "deployedBlock";
   @SerializedName(SERIALIZED_NAME_DEPLOYED_BLOCK)
@@ -270,29 +270,6 @@ public class GetWeb3CollectionResponseCollection {
   }
 
 
-  public GetWeb3CollectionResponseCollection hiddenAt(OffsetDateTime hiddenAt) {
-    
-    this.hiddenAt = hiddenAt;
-    return this;
-  }
-
-   /**
-   * Get hiddenAt
-   * @return hiddenAt
-  **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
-
-  public OffsetDateTime getHiddenAt() {
-    return hiddenAt;
-  }
-
-
-  public void setHiddenAt(OffsetDateTime hiddenAt) {
-    this.hiddenAt = hiddenAt;
-  }
-
-
   public GetWeb3CollectionResponseCollection imageUrl(String imageUrl) {
     
     this.imageUrl = imageUrl;
@@ -313,6 +290,52 @@ public class GetWeb3CollectionResponseCollection {
 
   public void setImageUrl(String imageUrl) {
     this.imageUrl = imageUrl;
+  }
+
+
+  public GetWeb3CollectionResponseCollection verified(Boolean verified) {
+    
+    this.verified = verified;
+    return this;
+  }
+
+   /**
+   * Get verified
+   * @return verified
+  **/
+  @javax.annotation.Nonnull
+  @ApiModelProperty(required = true, value = "")
+
+  public Boolean getVerified() {
+    return verified;
+  }
+
+
+  public void setVerified(Boolean verified) {
+    this.verified = verified;
+  }
+
+
+  public GetWeb3CollectionResponseCollection hiddenAt(OffsetDateTime hiddenAt) {
+    
+    this.hiddenAt = hiddenAt;
+    return this;
+  }
+
+   /**
+   * Get hiddenAt
+   * @return hiddenAt
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public OffsetDateTime getHiddenAt() {
+    return hiddenAt;
+  }
+
+
+  public void setHiddenAt(OffsetDateTime hiddenAt) {
+    this.hiddenAt = hiddenAt;
   }
 
 
@@ -408,29 +431,6 @@ public class GetWeb3CollectionResponseCollection {
   }
 
 
-  public GetWeb3CollectionResponseCollection firstSeenAt(OffsetDateTime firstSeenAt) {
-    
-    this.firstSeenAt = firstSeenAt;
-    return this;
-  }
-
-   /**
-   * Get firstSeenAt
-   * @return firstSeenAt
-  **/
-  @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "")
-
-  public OffsetDateTime getFirstSeenAt() {
-    return firstSeenAt;
-  }
-
-
-  public void setFirstSeenAt(OffsetDateTime firstSeenAt) {
-    this.firstSeenAt = firstSeenAt;
-  }
-
-
   public GetWeb3CollectionResponseCollection tokenType(String tokenType) {
     
     this.tokenType = tokenType;
@@ -500,6 +500,29 @@ public class GetWeb3CollectionResponseCollection {
   }
 
 
+  public GetWeb3CollectionResponseCollection firstSeenAt(OffsetDateTime firstSeenAt) {
+    
+    this.firstSeenAt = firstSeenAt;
+    return this;
+  }
+
+   /**
+   * Get firstSeenAt
+   * @return firstSeenAt
+  **/
+  @javax.annotation.Nonnull
+  @ApiModelProperty(required = true, value = "")
+
+  public OffsetDateTime getFirstSeenAt() {
+    return firstSeenAt;
+  }
+
+
+  public void setFirstSeenAt(OffsetDateTime firstSeenAt) {
+    this.firstSeenAt = firstSeenAt;
+  }
+
+
   public GetWeb3CollectionResponseCollection bannerUrl(String bannerUrl) {
     
     this.bannerUrl = bannerUrl;
@@ -566,29 +589,6 @@ public class GetWeb3CollectionResponseCollection {
 
   public void setDiscord(String discord) {
     this.discord = discord;
-  }
-
-
-  public GetWeb3CollectionResponseCollection verified(Boolean verified) {
-    
-    this.verified = verified;
-    return this;
-  }
-
-   /**
-   * Get verified
-   * @return verified
-  **/
-  @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "")
-
-  public Boolean getVerified() {
-    return verified;
-  }
-
-
-  public void setVerified(Boolean verified) {
-    this.verified = verified;
   }
 
 
@@ -859,20 +859,20 @@ public class GetWeb3CollectionResponseCollection {
         Objects.equals(this.description, getWeb3CollectionResponseCollection.description) &&
         Objects.equals(this.category, getWeb3CollectionResponseCollection.category) &&
         Objects.equals(this.slug, getWeb3CollectionResponseCollection.slug) &&
-        Objects.equals(this.hiddenAt, getWeb3CollectionResponseCollection.hiddenAt) &&
         Objects.equals(this.imageUrl, getWeb3CollectionResponseCollection.imageUrl) &&
+        Objects.equals(this.verified, getWeb3CollectionResponseCollection.verified) &&
+        Objects.equals(this.hiddenAt, getWeb3CollectionResponseCollection.hiddenAt) &&
         Objects.equals(this.refreshedAt, getWeb3CollectionResponseCollection.refreshedAt) &&
         Objects.equals(this.externalUrl, getWeb3CollectionResponseCollection.externalUrl) &&
         Objects.equals(this.chain, getWeb3CollectionResponseCollection.chain) &&
         Objects.equals(this.contract, getWeb3CollectionResponseCollection.contract) &&
-        Objects.equals(this.firstSeenAt, getWeb3CollectionResponseCollection.firstSeenAt) &&
         Objects.equals(this.tokenType, getWeb3CollectionResponseCollection.tokenType) &&
         Objects.equals(this.totalSupply, getWeb3CollectionResponseCollection.totalSupply) &&
         Objects.equals(this.featuredRank, getWeb3CollectionResponseCollection.featuredRank) &&
+        Objects.equals(this.firstSeenAt, getWeb3CollectionResponseCollection.firstSeenAt) &&
         Objects.equals(this.bannerUrl, getWeb3CollectionResponseCollection.bannerUrl) &&
         Objects.equals(this.twitter, getWeb3CollectionResponseCollection.twitter) &&
         Objects.equals(this.discord, getWeb3CollectionResponseCollection.discord) &&
-        Objects.equals(this.verified, getWeb3CollectionResponseCollection.verified) &&
         Objects.equals(this.deployedBlock, getWeb3CollectionResponseCollection.deployedBlock) &&
         Objects.equals(this.collectors, getWeb3CollectionResponseCollection.collectors) &&
         Objects.equals(this.indexedAt, getWeb3CollectionResponseCollection.indexedAt) &&
@@ -892,7 +892,7 @@ public class GetWeb3CollectionResponseCollection {
 
   @Override
   public int hashCode() {
-    return Objects.hash(symbol, name, description, category, slug, hiddenAt, imageUrl, refreshedAt, externalUrl, chain, contract, firstSeenAt, tokenType, totalSupply, featuredRank, bannerUrl, twitter, discord, verified, deployedBlock, collectors, indexedAt, indexedCount, imageSource, bannerSource, imageThumbUrl, bannerThumbUrl, rehostCheckedAt, hiddenReason, hiddenCategory);
+    return Objects.hash(symbol, name, description, category, slug, imageUrl, verified, hiddenAt, refreshedAt, externalUrl, chain, contract, tokenType, totalSupply, featuredRank, firstSeenAt, bannerUrl, twitter, discord, deployedBlock, collectors, indexedAt, indexedCount, imageSource, bannerSource, imageThumbUrl, bannerThumbUrl, rehostCheckedAt, hiddenReason, hiddenCategory);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -911,20 +911,20 @@ public class GetWeb3CollectionResponseCollection {
     sb.append("    description: ").append(toIndentedString(description)).append("\n");
     sb.append("    category: ").append(toIndentedString(category)).append("\n");
     sb.append("    slug: ").append(toIndentedString(slug)).append("\n");
-    sb.append("    hiddenAt: ").append(toIndentedString(hiddenAt)).append("\n");
     sb.append("    imageUrl: ").append(toIndentedString(imageUrl)).append("\n");
+    sb.append("    verified: ").append(toIndentedString(verified)).append("\n");
+    sb.append("    hiddenAt: ").append(toIndentedString(hiddenAt)).append("\n");
     sb.append("    refreshedAt: ").append(toIndentedString(refreshedAt)).append("\n");
     sb.append("    externalUrl: ").append(toIndentedString(externalUrl)).append("\n");
     sb.append("    chain: ").append(toIndentedString(chain)).append("\n");
     sb.append("    contract: ").append(toIndentedString(contract)).append("\n");
-    sb.append("    firstSeenAt: ").append(toIndentedString(firstSeenAt)).append("\n");
     sb.append("    tokenType: ").append(toIndentedString(tokenType)).append("\n");
     sb.append("    totalSupply: ").append(toIndentedString(totalSupply)).append("\n");
     sb.append("    featuredRank: ").append(toIndentedString(featuredRank)).append("\n");
+    sb.append("    firstSeenAt: ").append(toIndentedString(firstSeenAt)).append("\n");
     sb.append("    bannerUrl: ").append(toIndentedString(bannerUrl)).append("\n");
     sb.append("    twitter: ").append(toIndentedString(twitter)).append("\n");
     sb.append("    discord: ").append(toIndentedString(discord)).append("\n");
-    sb.append("    verified: ").append(toIndentedString(verified)).append("\n");
     sb.append("    deployedBlock: ").append(toIndentedString(deployedBlock)).append("\n");
     sb.append("    collectors: ").append(toIndentedString(collectors)).append("\n");
     sb.append("    indexedAt: ").append(toIndentedString(indexedAt)).append("\n");

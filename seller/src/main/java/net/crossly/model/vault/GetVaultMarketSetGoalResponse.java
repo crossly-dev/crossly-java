@@ -35,7 +35,7 @@ import org.openapitools.jackson.nullable.JsonNullable;
 /**
  * GetVaultMarketSetGoalResponse
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-11T23:44:48.922Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-27T19:42:43.186Z[Etc/UTC]")
 public class GetVaultMarketSetGoalResponse {
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
@@ -52,9 +52,9 @@ public class GetVaultMarketSetGoalResponse {
   public enum StatusEnum {
     ACTIVE("active"),
     
-    COMPLETE("complete"),
+    ARCHIVED("archived"),
     
-    ARCHIVED("archived");
+    COMPLETE("complete");
 
     private String value;
 
@@ -98,13 +98,13 @@ public class GetVaultMarketSetGoalResponse {
   @SerializedName(SERIALIZED_NAME_STATUS)
   private StatusEnum status;
 
-  public static final String SERIALIZED_NAME_TITLE = "title";
-  @SerializedName(SERIALIZED_NAME_TITLE)
-  private String title;
-
   public static final String SERIALIZED_NAME_CATEGORY = "category";
   @SerializedName(SERIALIZED_NAME_CATEGORY)
   private String category;
+
+  public static final String SERIALIZED_NAME_TITLE = "title";
+  @SerializedName(SERIALIZED_NAME_TITLE)
+  private String title;
 
   public static final String SERIALIZED_NAME_OPTIONS = "options";
   @SerializedName(SERIALIZED_NAME_OPTIONS)
@@ -114,49 +114,53 @@ public class GetVaultMarketSetGoalResponse {
   @SerializedName(SERIALIZED_NAME_COMPLETED_AT)
   private String completedAt;
 
-  public static final String SERIALIZED_NAME_PROGRESS = "progress";
-  @SerializedName(SERIALIZED_NAME_PROGRESS)
-  private String progress;
-
-  public static final String SERIALIZED_NAME_BRAND_SLUG = "brandSlug";
-  @SerializedName(SERIALIZED_NAME_BRAND_SLUG)
-  private String brandSlug;
-
-  public static final String SERIALIZED_NAME_MODEL_SLUG = "modelSlug";
-  @SerializedName(SERIALIZED_NAME_MODEL_SLUG)
-  private String modelSlug;
-
   public static final String SERIALIZED_NAME_TARGET = "target";
   @SerializedName(SERIALIZED_NAME_TARGET)
   private GetVaultMarketSetGoalResponseTarget target;
-
-  public static final String SERIALIZED_NAME_HELD = "held";
-  @SerializedName(SERIALIZED_NAME_HELD)
-  private BigDecimal held;
-
-  public static final String SERIALIZED_NAME_COMPLETE = "complete";
-  @SerializedName(SERIALIZED_NAME_COMPLETE)
-  private Boolean complete;
-
-  public static final String SERIALIZED_NAME_HREF = "href";
-  @SerializedName(SERIALIZED_NAME_HREF)
-  private String href;
 
   public static final String SERIALIZED_NAME_TOTAL = "total";
   @SerializedName(SERIALIZED_NAME_TOTAL)
   private BigDecimal total;
 
-  public static final String SERIALIZED_NAME_SET_FOUND = "setFound";
-  @SerializedName(SERIALIZED_NAME_SET_FOUND)
-  private Boolean setFound;
+  public static final String SERIALIZED_NAME_HREF = "href";
+  @SerializedName(SERIALIZED_NAME_HREF)
+  private String href;
+
+  public static final String SERIALIZED_NAME_BRAND_SLUG = "brandSlug";
+  @SerializedName(SERIALIZED_NAME_BRAND_SLUG)
+  private String brandSlug;
+
+  public static final String SERIALIZED_NAME_PROGRESS = "progress";
+  @SerializedName(SERIALIZED_NAME_PROGRESS)
+  private String progress;
+
+  public static final String SERIALIZED_NAME_MISSING = "missing";
+  @SerializedName(SERIALIZED_NAME_MISSING)
+  private BigDecimal missing;
+
+  public static final String SERIALIZED_NAME_HELD = "held";
+  @SerializedName(SERIALIZED_NAME_HELD)
+  private BigDecimal held;
+
+  public static final String SERIALIZED_NAME_MODEL_SLUG = "modelSlug";
+  @SerializedName(SERIALIZED_NAME_MODEL_SLUG)
+  private String modelSlug;
 
   public static final String SERIALIZED_NAME_BASKET = "basket";
   @SerializedName(SERIALIZED_NAME_BASKET)
   private GetVaultMarketSetGoalResponseBasket basket;
 
-  public static final String SERIALIZED_NAME_MISSING = "missing";
-  @SerializedName(SERIALIZED_NAME_MISSING)
-  private BigDecimal missing;
+  public static final String SERIALIZED_NAME_PIECES = "pieces";
+  @SerializedName(SERIALIZED_NAME_PIECES)
+  private List<GetVaultMarketSetGoalResponsePieces> pieces = new ArrayList<GetVaultMarketSetGoalResponsePieces>();
+
+  public static final String SERIALIZED_NAME_COMPLETE = "complete";
+  @SerializedName(SERIALIZED_NAME_COMPLETE)
+  private Boolean complete;
+
+  public static final String SERIALIZED_NAME_SET_FOUND = "setFound";
+  @SerializedName(SERIALIZED_NAME_SET_FOUND)
+  private Boolean setFound;
 
   public static final String SERIALIZED_NAME_PRICED = "priced";
   @SerializedName(SERIALIZED_NAME_PRICED)
@@ -169,10 +173,6 @@ public class GetVaultMarketSetGoalResponse {
   public static final String SERIALIZED_NAME_TOO_BIG = "tooBig";
   @SerializedName(SERIALIZED_NAME_TOO_BIG)
   private Boolean tooBig;
-
-  public static final String SERIALIZED_NAME_PIECES = "pieces";
-  @SerializedName(SERIALIZED_NAME_PIECES)
-  private List<GetVaultMarketSetGoalResponsePieces> pieces = new ArrayList<GetVaultMarketSetGoalResponsePieces>();
 
   public static final String SERIALIZED_NAME_CARD_SET_HREF = "cardSetHref";
   @SerializedName(SERIALIZED_NAME_CARD_SET_HREF)
@@ -250,29 +250,6 @@ public class GetVaultMarketSetGoalResponse {
   }
 
 
-  public GetVaultMarketSetGoalResponse title(String title) {
-    
-    this.title = title;
-    return this;
-  }
-
-   /**
-   * Get title
-   * @return title
-  **/
-  @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "")
-
-  public String getTitle() {
-    return title;
-  }
-
-
-  public void setTitle(String title) {
-    this.title = title;
-  }
-
-
   public GetVaultMarketSetGoalResponse category(String category) {
     
     this.category = category;
@@ -293,6 +270,29 @@ public class GetVaultMarketSetGoalResponse {
 
   public void setCategory(String category) {
     this.category = category;
+  }
+
+
+  public GetVaultMarketSetGoalResponse title(String title) {
+    
+    this.title = title;
+    return this;
+  }
+
+   /**
+   * Get title
+   * @return title
+  **/
+  @javax.annotation.Nonnull
+  @ApiModelProperty(required = true, value = "")
+
+  public String getTitle() {
+    return title;
+  }
+
+
+  public void setTitle(String title) {
+    this.title = title;
   }
 
 
@@ -342,75 +342,6 @@ public class GetVaultMarketSetGoalResponse {
   }
 
 
-  public GetVaultMarketSetGoalResponse progress(String progress) {
-    
-    this.progress = progress;
-    return this;
-  }
-
-   /**
-   * Get progress
-   * @return progress
-  **/
-  @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "")
-
-  public String getProgress() {
-    return progress;
-  }
-
-
-  public void setProgress(String progress) {
-    this.progress = progress;
-  }
-
-
-  public GetVaultMarketSetGoalResponse brandSlug(String brandSlug) {
-    
-    this.brandSlug = brandSlug;
-    return this;
-  }
-
-   /**
-   * Get brandSlug
-   * @return brandSlug
-  **/
-  @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "")
-
-  public String getBrandSlug() {
-    return brandSlug;
-  }
-
-
-  public void setBrandSlug(String brandSlug) {
-    this.brandSlug = brandSlug;
-  }
-
-
-  public GetVaultMarketSetGoalResponse modelSlug(String modelSlug) {
-    
-    this.modelSlug = modelSlug;
-    return this;
-  }
-
-   /**
-   * Get modelSlug
-   * @return modelSlug
-  **/
-  @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "")
-
-  public String getModelSlug() {
-    return modelSlug;
-  }
-
-
-  public void setModelSlug(String modelSlug) {
-    this.modelSlug = modelSlug;
-  }
-
-
   public GetVaultMarketSetGoalResponse target(GetVaultMarketSetGoalResponseTarget target) {
     
     this.target = target;
@@ -431,75 +362,6 @@ public class GetVaultMarketSetGoalResponse {
 
   public void setTarget(GetVaultMarketSetGoalResponseTarget target) {
     this.target = target;
-  }
-
-
-  public GetVaultMarketSetGoalResponse held(BigDecimal held) {
-    
-    this.held = held;
-    return this;
-  }
-
-   /**
-   * Get held
-   * @return held
-  **/
-  @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "")
-
-  public BigDecimal getHeld() {
-    return held;
-  }
-
-
-  public void setHeld(BigDecimal held) {
-    this.held = held;
-  }
-
-
-  public GetVaultMarketSetGoalResponse complete(Boolean complete) {
-    
-    this.complete = complete;
-    return this;
-  }
-
-   /**
-   * Get complete
-   * @return complete
-  **/
-  @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "")
-
-  public Boolean getComplete() {
-    return complete;
-  }
-
-
-  public void setComplete(Boolean complete) {
-    this.complete = complete;
-  }
-
-
-  public GetVaultMarketSetGoalResponse href(String href) {
-    
-    this.href = href;
-    return this;
-  }
-
-   /**
-   * Get href
-   * @return href
-  **/
-  @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "")
-
-  public String getHref() {
-    return href;
-  }
-
-
-  public void setHref(String href) {
-    this.href = href;
   }
 
 
@@ -526,26 +388,141 @@ public class GetVaultMarketSetGoalResponse {
   }
 
 
-  public GetVaultMarketSetGoalResponse setFound(Boolean setFound) {
+  public GetVaultMarketSetGoalResponse href(String href) {
     
-    this.setFound = setFound;
+    this.href = href;
     return this;
   }
 
    /**
-   * Get setFound
-   * @return setFound
+   * Get href
+   * @return href
   **/
   @javax.annotation.Nonnull
   @ApiModelProperty(required = true, value = "")
 
-  public Boolean getSetFound() {
-    return setFound;
+  public String getHref() {
+    return href;
   }
 
 
-  public void setSetFound(Boolean setFound) {
-    this.setFound = setFound;
+  public void setHref(String href) {
+    this.href = href;
+  }
+
+
+  public GetVaultMarketSetGoalResponse brandSlug(String brandSlug) {
+    
+    this.brandSlug = brandSlug;
+    return this;
+  }
+
+   /**
+   * Get brandSlug
+   * @return brandSlug
+  **/
+  @javax.annotation.Nonnull
+  @ApiModelProperty(required = true, value = "")
+
+  public String getBrandSlug() {
+    return brandSlug;
+  }
+
+
+  public void setBrandSlug(String brandSlug) {
+    this.brandSlug = brandSlug;
+  }
+
+
+  public GetVaultMarketSetGoalResponse progress(String progress) {
+    
+    this.progress = progress;
+    return this;
+  }
+
+   /**
+   * Get progress
+   * @return progress
+  **/
+  @javax.annotation.Nonnull
+  @ApiModelProperty(required = true, value = "")
+
+  public String getProgress() {
+    return progress;
+  }
+
+
+  public void setProgress(String progress) {
+    this.progress = progress;
+  }
+
+
+  public GetVaultMarketSetGoalResponse missing(BigDecimal missing) {
+    
+    this.missing = missing;
+    return this;
+  }
+
+   /**
+   * Get missing
+   * @return missing
+  **/
+  @javax.annotation.Nonnull
+  @ApiModelProperty(required = true, value = "")
+
+  public BigDecimal getMissing() {
+    return missing;
+  }
+
+
+  public void setMissing(BigDecimal missing) {
+    this.missing = missing;
+  }
+
+
+  public GetVaultMarketSetGoalResponse held(BigDecimal held) {
+    
+    this.held = held;
+    return this;
+  }
+
+   /**
+   * Get held
+   * @return held
+  **/
+  @javax.annotation.Nonnull
+  @ApiModelProperty(required = true, value = "")
+
+  public BigDecimal getHeld() {
+    return held;
+  }
+
+
+  public void setHeld(BigDecimal held) {
+    this.held = held;
+  }
+
+
+  public GetVaultMarketSetGoalResponse modelSlug(String modelSlug) {
+    
+    this.modelSlug = modelSlug;
+    return this;
+  }
+
+   /**
+   * Get modelSlug
+   * @return modelSlug
+  **/
+  @javax.annotation.Nonnull
+  @ApiModelProperty(required = true, value = "")
+
+  public String getModelSlug() {
+    return modelSlug;
+  }
+
+
+  public void setModelSlug(String modelSlug) {
+    this.modelSlug = modelSlug;
   }
 
 
@@ -572,26 +549,77 @@ public class GetVaultMarketSetGoalResponse {
   }
 
 
-  public GetVaultMarketSetGoalResponse missing(BigDecimal missing) {
+  public GetVaultMarketSetGoalResponse pieces(List<GetVaultMarketSetGoalResponsePieces> pieces) {
     
-    this.missing = missing;
+    this.pieces = pieces;
+    return this;
+  }
+
+  public GetVaultMarketSetGoalResponse addPiecesItem(GetVaultMarketSetGoalResponsePieces piecesItem) {
+    this.pieces.add(piecesItem);
     return this;
   }
 
    /**
-   * Get missing
-   * @return missing
+   * Get pieces
+   * @return pieces
   **/
   @javax.annotation.Nonnull
   @ApiModelProperty(required = true, value = "")
 
-  public BigDecimal getMissing() {
-    return missing;
+  public List<GetVaultMarketSetGoalResponsePieces> getPieces() {
+    return pieces;
   }
 
 
-  public void setMissing(BigDecimal missing) {
-    this.missing = missing;
+  public void setPieces(List<GetVaultMarketSetGoalResponsePieces> pieces) {
+    this.pieces = pieces;
+  }
+
+
+  public GetVaultMarketSetGoalResponse complete(Boolean complete) {
+    
+    this.complete = complete;
+    return this;
+  }
+
+   /**
+   * Get complete
+   * @return complete
+  **/
+  @javax.annotation.Nonnull
+  @ApiModelProperty(required = true, value = "")
+
+  public Boolean getComplete() {
+    return complete;
+  }
+
+
+  public void setComplete(Boolean complete) {
+    this.complete = complete;
+  }
+
+
+  public GetVaultMarketSetGoalResponse setFound(Boolean setFound) {
+    
+    this.setFound = setFound;
+    return this;
+  }
+
+   /**
+   * Get setFound
+   * @return setFound
+  **/
+  @javax.annotation.Nonnull
+  @ApiModelProperty(required = true, value = "")
+
+  public Boolean getSetFound() {
+    return setFound;
+  }
+
+
+  public void setSetFound(Boolean setFound) {
+    this.setFound = setFound;
   }
 
 
@@ -664,34 +692,6 @@ public class GetVaultMarketSetGoalResponse {
   }
 
 
-  public GetVaultMarketSetGoalResponse pieces(List<GetVaultMarketSetGoalResponsePieces> pieces) {
-    
-    this.pieces = pieces;
-    return this;
-  }
-
-  public GetVaultMarketSetGoalResponse addPiecesItem(GetVaultMarketSetGoalResponsePieces piecesItem) {
-    this.pieces.add(piecesItem);
-    return this;
-  }
-
-   /**
-   * Get pieces
-   * @return pieces
-  **/
-  @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "")
-
-  public List<GetVaultMarketSetGoalResponsePieces> getPieces() {
-    return pieces;
-  }
-
-
-  public void setPieces(List<GetVaultMarketSetGoalResponsePieces> pieces) {
-    this.pieces = pieces;
-  }
-
-
   public GetVaultMarketSetGoalResponse cardSetHref(String cardSetHref) {
     
     this.cardSetHref = cardSetHref;
@@ -727,25 +727,25 @@ public class GetVaultMarketSetGoalResponse {
     return Objects.equals(this.id, getVaultMarketSetGoalResponse.id) &&
         Objects.equals(this.createdAt, getVaultMarketSetGoalResponse.createdAt) &&
         Objects.equals(this.status, getVaultMarketSetGoalResponse.status) &&
-        Objects.equals(this.title, getVaultMarketSetGoalResponse.title) &&
         Objects.equals(this.category, getVaultMarketSetGoalResponse.category) &&
+        Objects.equals(this.title, getVaultMarketSetGoalResponse.title) &&
         Objects.equals(this.options, getVaultMarketSetGoalResponse.options) &&
         Objects.equals(this.completedAt, getVaultMarketSetGoalResponse.completedAt) &&
-        Objects.equals(this.progress, getVaultMarketSetGoalResponse.progress) &&
-        Objects.equals(this.brandSlug, getVaultMarketSetGoalResponse.brandSlug) &&
-        Objects.equals(this.modelSlug, getVaultMarketSetGoalResponse.modelSlug) &&
         Objects.equals(this.target, getVaultMarketSetGoalResponse.target) &&
-        Objects.equals(this.held, getVaultMarketSetGoalResponse.held) &&
-        Objects.equals(this.complete, getVaultMarketSetGoalResponse.complete) &&
-        Objects.equals(this.href, getVaultMarketSetGoalResponse.href) &&
         Objects.equals(this.total, getVaultMarketSetGoalResponse.total) &&
-        Objects.equals(this.setFound, getVaultMarketSetGoalResponse.setFound) &&
-        Objects.equals(this.basket, getVaultMarketSetGoalResponse.basket) &&
+        Objects.equals(this.href, getVaultMarketSetGoalResponse.href) &&
+        Objects.equals(this.brandSlug, getVaultMarketSetGoalResponse.brandSlug) &&
+        Objects.equals(this.progress, getVaultMarketSetGoalResponse.progress) &&
         Objects.equals(this.missing, getVaultMarketSetGoalResponse.missing) &&
+        Objects.equals(this.held, getVaultMarketSetGoalResponse.held) &&
+        Objects.equals(this.modelSlug, getVaultMarketSetGoalResponse.modelSlug) &&
+        Objects.equals(this.basket, getVaultMarketSetGoalResponse.basket) &&
+        Objects.equals(this.pieces, getVaultMarketSetGoalResponse.pieces) &&
+        Objects.equals(this.complete, getVaultMarketSetGoalResponse.complete) &&
+        Objects.equals(this.setFound, getVaultMarketSetGoalResponse.setFound) &&
         Objects.equals(this.priced, getVaultMarketSetGoalResponse.priced) &&
         Objects.equals(this.missingMarkCents, getVaultMarketSetGoalResponse.missingMarkCents) &&
         Objects.equals(this.tooBig, getVaultMarketSetGoalResponse.tooBig) &&
-        Objects.equals(this.pieces, getVaultMarketSetGoalResponse.pieces) &&
         Objects.equals(this.cardSetHref, getVaultMarketSetGoalResponse.cardSetHref);
   }
 
@@ -755,7 +755,7 @@ public class GetVaultMarketSetGoalResponse {
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, createdAt, status, title, category, options, completedAt, progress, brandSlug, modelSlug, target, held, complete, href, total, setFound, basket, missing, priced, missingMarkCents, tooBig, pieces, cardSetHref);
+    return Objects.hash(id, createdAt, status, category, title, options, completedAt, target, total, href, brandSlug, progress, missing, held, modelSlug, basket, pieces, complete, setFound, priced, missingMarkCents, tooBig, cardSetHref);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -772,25 +772,25 @@ public class GetVaultMarketSetGoalResponse {
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    createdAt: ").append(toIndentedString(createdAt)).append("\n");
     sb.append("    status: ").append(toIndentedString(status)).append("\n");
-    sb.append("    title: ").append(toIndentedString(title)).append("\n");
     sb.append("    category: ").append(toIndentedString(category)).append("\n");
+    sb.append("    title: ").append(toIndentedString(title)).append("\n");
     sb.append("    options: ").append(toIndentedString(options)).append("\n");
     sb.append("    completedAt: ").append(toIndentedString(completedAt)).append("\n");
-    sb.append("    progress: ").append(toIndentedString(progress)).append("\n");
-    sb.append("    brandSlug: ").append(toIndentedString(brandSlug)).append("\n");
-    sb.append("    modelSlug: ").append(toIndentedString(modelSlug)).append("\n");
     sb.append("    target: ").append(toIndentedString(target)).append("\n");
-    sb.append("    held: ").append(toIndentedString(held)).append("\n");
-    sb.append("    complete: ").append(toIndentedString(complete)).append("\n");
-    sb.append("    href: ").append(toIndentedString(href)).append("\n");
     sb.append("    total: ").append(toIndentedString(total)).append("\n");
-    sb.append("    setFound: ").append(toIndentedString(setFound)).append("\n");
-    sb.append("    basket: ").append(toIndentedString(basket)).append("\n");
+    sb.append("    href: ").append(toIndentedString(href)).append("\n");
+    sb.append("    brandSlug: ").append(toIndentedString(brandSlug)).append("\n");
+    sb.append("    progress: ").append(toIndentedString(progress)).append("\n");
     sb.append("    missing: ").append(toIndentedString(missing)).append("\n");
+    sb.append("    held: ").append(toIndentedString(held)).append("\n");
+    sb.append("    modelSlug: ").append(toIndentedString(modelSlug)).append("\n");
+    sb.append("    basket: ").append(toIndentedString(basket)).append("\n");
+    sb.append("    pieces: ").append(toIndentedString(pieces)).append("\n");
+    sb.append("    complete: ").append(toIndentedString(complete)).append("\n");
+    sb.append("    setFound: ").append(toIndentedString(setFound)).append("\n");
     sb.append("    priced: ").append(toIndentedString(priced)).append("\n");
     sb.append("    missingMarkCents: ").append(toIndentedString(missingMarkCents)).append("\n");
     sb.append("    tooBig: ").append(toIndentedString(tooBig)).append("\n");
-    sb.append("    pieces: ").append(toIndentedString(pieces)).append("\n");
     sb.append("    cardSetHref: ").append(toIndentedString(cardSetHref)).append("\n");
     sb.append("}");
     return sb.toString();

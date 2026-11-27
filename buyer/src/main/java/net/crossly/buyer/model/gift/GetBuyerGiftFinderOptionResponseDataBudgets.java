@@ -27,41 +27,18 @@ import java.io.IOException;
 /**
  * GetBuyerGiftFinderOptionResponseDataBudgets
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-11T23:47:29.843Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-27T19:58:46.962Z[Etc/UTC]")
 public class GetBuyerGiftFinderOptionResponseDataBudgets {
-  public static final String SERIALIZED_NAME_LABEL = "label";
-  @SerializedName(SERIALIZED_NAME_LABEL)
-  private String label;
-
   public static final String SERIALIZED_NAME_KEY = "key";
   @SerializedName(SERIALIZED_NAME_KEY)
   private String key;
 
+  public static final String SERIALIZED_NAME_LABEL = "label";
+  @SerializedName(SERIALIZED_NAME_LABEL)
+  private String label;
+
   public GetBuyerGiftFinderOptionResponseDataBudgets() { 
   }
-
-  public GetBuyerGiftFinderOptionResponseDataBudgets label(String label) {
-    
-    this.label = label;
-    return this;
-  }
-
-   /**
-   * Get label
-   * @return label
-  **/
-  @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "")
-
-  public String getLabel() {
-    return label;
-  }
-
-
-  public void setLabel(String label) {
-    this.label = label;
-  }
-
 
   public GetBuyerGiftFinderOptionResponseDataBudgets key(String key) {
     
@@ -86,6 +63,29 @@ public class GetBuyerGiftFinderOptionResponseDataBudgets {
   }
 
 
+  public GetBuyerGiftFinderOptionResponseDataBudgets label(String label) {
+    
+    this.label = label;
+    return this;
+  }
+
+   /**
+   * Get label
+   * @return label
+  **/
+  @javax.annotation.Nonnull
+  @ApiModelProperty(required = true, value = "")
+
+  public String getLabel() {
+    return label;
+  }
+
+
+  public void setLabel(String label) {
+    this.label = label;
+  }
+
+
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -95,21 +95,21 @@ public class GetBuyerGiftFinderOptionResponseDataBudgets {
       return false;
     }
     GetBuyerGiftFinderOptionResponseDataBudgets getBuyerGiftFinderOptionResponseDataBudgets = (GetBuyerGiftFinderOptionResponseDataBudgets) o;
-    return Objects.equals(this.label, getBuyerGiftFinderOptionResponseDataBudgets.label) &&
-        Objects.equals(this.key, getBuyerGiftFinderOptionResponseDataBudgets.key);
+    return Objects.equals(this.key, getBuyerGiftFinderOptionResponseDataBudgets.key) &&
+        Objects.equals(this.label, getBuyerGiftFinderOptionResponseDataBudgets.label);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(label, key);
+    return Objects.hash(key, label);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class GetBuyerGiftFinderOptionResponseDataBudgets {\n");
-    sb.append("    label: ").append(toIndentedString(label)).append("\n");
     sb.append("    key: ").append(toIndentedString(key)).append("\n");
+    sb.append("    label: ").append(toIndentedString(label)).append("\n");
     sb.append("}");
     return sb.toString();
   }

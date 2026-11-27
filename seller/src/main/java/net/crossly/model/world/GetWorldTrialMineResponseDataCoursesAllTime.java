@@ -29,7 +29,7 @@ import java.math.BigDecimal;
  * Your best ever on this course, and its place on the all-time board.
  */
 @ApiModel(description = "Your best ever on this course, and its place on the all-time board.")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-11T23:44:48.922Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-27T19:42:43.186Z[Etc/UTC]")
 public class GetWorldTrialMineResponseDataCoursesAllTime {
   public static final String SERIALIZED_NAME_MS = "ms";
   @SerializedName(SERIALIZED_NAME_MS)

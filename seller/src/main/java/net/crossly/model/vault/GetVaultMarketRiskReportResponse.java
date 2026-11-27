@@ -26,6 +26,7 @@ import java.io.IOException;
 import net.crossly.model.vault.CreateVaultMarketPortfolioMarginEnrollResponseOneOfAccount;
 import net.crossly.model.vault.GetVaultMarketNavResponseTotals;
 import net.crossly.model.vault.GetVaultMarketRiskReportResponseConcentration;
+import net.crossly.model.vault.GetVaultMarketRiskReportResponseCounterparty;
 import net.crossly.model.vault.GetVaultMarketRiskReportResponseLvar;
 import net.crossly.model.vault.GetVaultMarketRiskReportResponsePartnerDcm;
 import net.crossly.model.vault.GetVaultMarketRiskReportResponseStress;
@@ -34,7 +35,7 @@ import net.crossly.model.vault.GetVaultMarketRiskReportResponseVar;
 /**
  * GetVaultMarketRiskReportResponse
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-11T23:44:48.922Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-27T19:42:43.186Z[Etc/UTC]")
 public class GetVaultMarketRiskReportResponse {
   public static final String SERIALIZED_NAME_ACCOUNT = "account";
   @SerializedName(SERIALIZED_NAME_ACCOUNT)
@@ -63,6 +64,10 @@ public class GetVaultMarketRiskReportResponse {
   public static final String SERIALIZED_NAME_CONCENTRATION = "concentration";
   @SerializedName(SERIALIZED_NAME_CONCENTRATION)
   private GetVaultMarketRiskReportResponseConcentration concentration;
+
+  public static final String SERIALIZED_NAME_COUNTERPARTY = "counterparty";
+  @SerializedName(SERIALIZED_NAME_COUNTERPARTY)
+  private GetVaultMarketRiskReportResponseCounterparty counterparty;
 
   public static final String SERIALIZED_NAME_PARTNER_DCM = "partnerDcm";
   @SerializedName(SERIALIZED_NAME_PARTNER_DCM)
@@ -232,6 +237,29 @@ public class GetVaultMarketRiskReportResponse {
   }
 
 
+  public GetVaultMarketRiskReportResponse counterparty(GetVaultMarketRiskReportResponseCounterparty counterparty) {
+    
+    this.counterparty = counterparty;
+    return this;
+  }
+
+   /**
+   * Get counterparty
+   * @return counterparty
+  **/
+  @javax.annotation.Nonnull
+  @ApiModelProperty(required = true, value = "")
+
+  public GetVaultMarketRiskReportResponseCounterparty getCounterparty() {
+    return counterparty;
+  }
+
+
+  public void setCounterparty(GetVaultMarketRiskReportResponseCounterparty counterparty) {
+    this.counterparty = counterparty;
+  }
+
+
   public GetVaultMarketRiskReportResponse partnerDcm(GetVaultMarketRiskReportResponsePartnerDcm partnerDcm) {
     
     this.partnerDcm = partnerDcm;
@@ -271,12 +299,13 @@ public class GetVaultMarketRiskReportResponse {
         Objects.equals(this.lvar, getVaultMarketRiskReportResponse.lvar) &&
         Objects.equals(this.stress, getVaultMarketRiskReportResponse.stress) &&
         Objects.equals(this.concentration, getVaultMarketRiskReportResponse.concentration) &&
+        Objects.equals(this.counterparty, getVaultMarketRiskReportResponse.counterparty) &&
         Objects.equals(this.partnerDcm, getVaultMarketRiskReportResponse.partnerDcm);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(account, asOf, nav, var, lvar, stress, concentration, partnerDcm);
+    return Objects.hash(account, asOf, nav, var, lvar, stress, concentration, counterparty, partnerDcm);
   }
 
   @Override
@@ -290,6 +319,7 @@ public class GetVaultMarketRiskReportResponse {
     sb.append("    lvar: ").append(toIndentedString(lvar)).append("\n");
     sb.append("    stress: ").append(toIndentedString(stress)).append("\n");
     sb.append("    concentration: ").append(toIndentedString(concentration)).append("\n");
+    sb.append("    counterparty: ").append(toIndentedString(counterparty)).append("\n");
     sb.append("    partnerDcm: ").append(toIndentedString(partnerDcm)).append("\n");
     sb.append("}");
     return sb.toString();

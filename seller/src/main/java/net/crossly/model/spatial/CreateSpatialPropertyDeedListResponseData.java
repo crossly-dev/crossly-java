@@ -30,7 +30,7 @@ import org.threeten.bp.OffsetDateTime;
 /**
  * CreateSpatialPropertyDeedListResponseData
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-11T23:44:48.922Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-27T19:42:43.186Z[Etc/UTC]")
 public class CreateSpatialPropertyDeedListResponseData {
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
@@ -44,9 +44,9 @@ public class CreateSpatialPropertyDeedListResponseData {
   @SerializedName(SERIALIZED_NAME_STATUS)
   private String status;
 
-  public static final String SERIALIZED_NAME_SELLER_USER_ID = "sellerUserId";
-  @SerializedName(SERIALIZED_NAME_SELLER_USER_ID)
-  private String sellerUserId;
+  public static final String SERIALIZED_NAME_STOREFRONT_ID = "storefrontId";
+  @SerializedName(SERIALIZED_NAME_STOREFRONT_ID)
+  private String storefrontId;
 
   public static final String SERIALIZED_NAME_BUYER_USER_ID = "buyerUserId";
   @SerializedName(SERIALIZED_NAME_BUYER_USER_ID)
@@ -55,6 +55,10 @@ public class CreateSpatialPropertyDeedListResponseData {
   public static final String SERIALIZED_NAME_PRICE_CENTS = "priceCents";
   @SerializedName(SERIALIZED_NAME_PRICE_CENTS)
   private BigDecimal priceCents;
+
+  public static final String SERIALIZED_NAME_SELLER_USER_ID = "sellerUserId";
+  @SerializedName(SERIALIZED_NAME_SELLER_USER_ID)
+  private String sellerUserId;
 
   public static final String SERIALIZED_NAME_CLOSED_AT = "closedAt";
   @SerializedName(SERIALIZED_NAME_CLOSED_AT)
@@ -136,26 +140,26 @@ public class CreateSpatialPropertyDeedListResponseData {
   }
 
 
-  public CreateSpatialPropertyDeedListResponseData sellerUserId(String sellerUserId) {
+  public CreateSpatialPropertyDeedListResponseData storefrontId(String storefrontId) {
     
-    this.sellerUserId = sellerUserId;
+    this.storefrontId = storefrontId;
     return this;
   }
 
    /**
-   * Get sellerUserId
-   * @return sellerUserId
+   * Get storefrontId
+   * @return storefrontId
   **/
-  @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "")
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
 
-  public String getSellerUserId() {
-    return sellerUserId;
+  public String getStorefrontId() {
+    return storefrontId;
   }
 
 
-  public void setSellerUserId(String sellerUserId) {
-    this.sellerUserId = sellerUserId;
+  public void setStorefrontId(String storefrontId) {
+    this.storefrontId = storefrontId;
   }
 
 
@@ -202,6 +206,29 @@ public class CreateSpatialPropertyDeedListResponseData {
 
   public void setPriceCents(BigDecimal priceCents) {
     this.priceCents = priceCents;
+  }
+
+
+  public CreateSpatialPropertyDeedListResponseData sellerUserId(String sellerUserId) {
+    
+    this.sellerUserId = sellerUserId;
+    return this;
+  }
+
+   /**
+   * Get sellerUserId
+   * @return sellerUserId
+  **/
+  @javax.annotation.Nonnull
+  @ApiModelProperty(required = true, value = "")
+
+  public String getSellerUserId() {
+    return sellerUserId;
+  }
+
+
+  public void setSellerUserId(String sellerUserId) {
+    this.sellerUserId = sellerUserId;
   }
 
 
@@ -263,9 +290,10 @@ public class CreateSpatialPropertyDeedListResponseData {
     return Objects.equals(this.id, createSpatialPropertyDeedListResponseData.id) &&
         Objects.equals(this.createdAt, createSpatialPropertyDeedListResponseData.createdAt) &&
         Objects.equals(this.status, createSpatialPropertyDeedListResponseData.status) &&
-        Objects.equals(this.sellerUserId, createSpatialPropertyDeedListResponseData.sellerUserId) &&
+        Objects.equals(this.storefrontId, createSpatialPropertyDeedListResponseData.storefrontId) &&
         Objects.equals(this.buyerUserId, createSpatialPropertyDeedListResponseData.buyerUserId) &&
         Objects.equals(this.priceCents, createSpatialPropertyDeedListResponseData.priceCents) &&
+        Objects.equals(this.sellerUserId, createSpatialPropertyDeedListResponseData.sellerUserId) &&
         Objects.equals(this.closedAt, createSpatialPropertyDeedListResponseData.closedAt) &&
         Objects.equals(this.deedId, createSpatialPropertyDeedListResponseData.deedId);
   }
@@ -276,7 +304,7 @@ public class CreateSpatialPropertyDeedListResponseData {
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, createdAt, status, sellerUserId, buyerUserId, priceCents, closedAt, deedId);
+    return Objects.hash(id, createdAt, status, storefrontId, buyerUserId, priceCents, sellerUserId, closedAt, deedId);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -293,9 +321,10 @@ public class CreateSpatialPropertyDeedListResponseData {
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    createdAt: ").append(toIndentedString(createdAt)).append("\n");
     sb.append("    status: ").append(toIndentedString(status)).append("\n");
-    sb.append("    sellerUserId: ").append(toIndentedString(sellerUserId)).append("\n");
+    sb.append("    storefrontId: ").append(toIndentedString(storefrontId)).append("\n");
     sb.append("    buyerUserId: ").append(toIndentedString(buyerUserId)).append("\n");
     sb.append("    priceCents: ").append(toIndentedString(priceCents)).append("\n");
+    sb.append("    sellerUserId: ").append(toIndentedString(sellerUserId)).append("\n");
     sb.append("    closedAt: ").append(toIndentedString(closedAt)).append("\n");
     sb.append("    deedId: ").append(toIndentedString(deedId)).append("\n");
     sb.append("}");

@@ -23,13 +23,13 @@ import com.google.gson.stream.JsonWriter;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
-import net.crossly.model.common.NameSlug;
+import net.crossly.model.common.NameSlug2;
 import org.openapitools.jackson.nullable.JsonNullable;
 
 /**
  * GetWorldCrewResponseDataMembers
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-11T23:44:48.922Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-27T19:42:43.186Z[Etc/UTC]")
 public class GetWorldCrewResponseDataMembers {
   public static final String SERIALIZED_NAME_USER_ID = "userId";
   @SerializedName(SERIALIZED_NAME_USER_ID)
@@ -45,7 +45,7 @@ public class GetWorldCrewResponseDataMembers {
 
   public static final String SERIALIZED_NAME_ROOM = "room";
   @SerializedName(SERIALIZED_NAME_ROOM)
-  private NameSlug room;
+  private NameSlug2 room;
 
   public GetWorldCrewResponseDataMembers() { 
   }
@@ -119,7 +119,7 @@ public class GetWorldCrewResponseDataMembers {
   }
 
 
-  public GetWorldCrewResponseDataMembers room(NameSlug room) {
+  public GetWorldCrewResponseDataMembers room(NameSlug2 room) {
     
     this.room = room;
     return this;
@@ -132,12 +132,12 @@ public class GetWorldCrewResponseDataMembers {
   @javax.annotation.Nullable
   @ApiModelProperty(value = "")
 
-  public NameSlug getRoom() {
+  public NameSlug2 getRoom() {
     return room;
   }
 
 
-  public void setRoom(NameSlug room) {
+  public void setRoom(NameSlug2 room) {
     this.room = room;
   }
 

@@ -28,41 +28,18 @@ import org.openapitools.jackson.nullable.JsonNullable;
 /**
  * CreateBuyerBreakSpotHoldResponseData
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-11T23:47:29.843Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-27T19:58:46.962Z[Etc/UTC]")
 public class CreateBuyerBreakSpotHoldResponseData {
-  public static final String SERIALIZED_NAME_SLUG = "slug";
-  @SerializedName(SERIALIZED_NAME_SLUG)
-  private String slug;
-
   public static final String SERIALIZED_NAME_HELD_UNTIL = "heldUntil";
   @SerializedName(SERIALIZED_NAME_HELD_UNTIL)
   private String heldUntil;
 
+  public static final String SERIALIZED_NAME_SLUG = "slug";
+  @SerializedName(SERIALIZED_NAME_SLUG)
+  private String slug;
+
   public CreateBuyerBreakSpotHoldResponseData() { 
   }
-
-  public CreateBuyerBreakSpotHoldResponseData slug(String slug) {
-    
-    this.slug = slug;
-    return this;
-  }
-
-   /**
-   * Get slug
-   * @return slug
-  **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
-
-  public String getSlug() {
-    return slug;
-  }
-
-
-  public void setSlug(String slug) {
-    this.slug = slug;
-  }
-
 
   public CreateBuyerBreakSpotHoldResponseData heldUntil(String heldUntil) {
     
@@ -87,6 +64,29 @@ public class CreateBuyerBreakSpotHoldResponseData {
   }
 
 
+  public CreateBuyerBreakSpotHoldResponseData slug(String slug) {
+    
+    this.slug = slug;
+    return this;
+  }
+
+   /**
+   * Get slug
+   * @return slug
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public String getSlug() {
+    return slug;
+  }
+
+
+  public void setSlug(String slug) {
+    this.slug = slug;
+  }
+
+
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -96,8 +96,8 @@ public class CreateBuyerBreakSpotHoldResponseData {
       return false;
     }
     CreateBuyerBreakSpotHoldResponseData createBuyerBreakSpotHoldResponseData = (CreateBuyerBreakSpotHoldResponseData) o;
-    return Objects.equals(this.slug, createBuyerBreakSpotHoldResponseData.slug) &&
-        Objects.equals(this.heldUntil, createBuyerBreakSpotHoldResponseData.heldUntil);
+    return Objects.equals(this.heldUntil, createBuyerBreakSpotHoldResponseData.heldUntil) &&
+        Objects.equals(this.slug, createBuyerBreakSpotHoldResponseData.slug);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -106,7 +106,7 @@ public class CreateBuyerBreakSpotHoldResponseData {
 
   @Override
   public int hashCode() {
-    return Objects.hash(slug, heldUntil);
+    return Objects.hash(heldUntil, slug);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -120,8 +120,8 @@ public class CreateBuyerBreakSpotHoldResponseData {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class CreateBuyerBreakSpotHoldResponseData {\n");
-    sb.append("    slug: ").append(toIndentedString(slug)).append("\n");
     sb.append("    heldUntil: ").append(toIndentedString(heldUntil)).append("\n");
+    sb.append("    slug: ").append(toIndentedString(slug)).append("\n");
     sb.append("}");
     return sb.toString();
   }

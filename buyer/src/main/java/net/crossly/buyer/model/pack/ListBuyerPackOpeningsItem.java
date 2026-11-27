@@ -30,11 +30,19 @@ import org.openapitools.jackson.nullable.JsonNullable;
 /**
  * ListBuyerPackOpeningsItem
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-11T23:47:29.843Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-27T19:58:46.962Z[Etc/UTC]")
 public class ListBuyerPackOpeningsItem {
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
   private String id;
+
+  public static final String SERIALIZED_NAME_PACK_TITLE = "packTitle";
+  @SerializedName(SERIALIZED_NAME_PACK_TITLE)
+  private String packTitle;
+
+  public static final String SERIALIZED_NAME_PACK_SLUG = "packSlug";
+  @SerializedName(SERIALIZED_NAME_PACK_SLUG)
+  private String packSlug;
 
   public static final String SERIALIZED_NAME_STATUS = "status";
   @SerializedName(SERIALIZED_NAME_STATUS)
@@ -43,22 +51,6 @@ public class ListBuyerPackOpeningsItem {
   public static final String SERIALIZED_NAME_PRICE_CENTS = "priceCents";
   @SerializedName(SERIALIZED_NAME_PRICE_CENTS)
   private BigDecimal priceCents;
-
-  public static final String SERIALIZED_NAME_IMAGE_URL = "imageUrl";
-  @SerializedName(SERIALIZED_NAME_IMAGE_URL)
-  private String imageUrl;
-
-  public static final String SERIALIZED_NAME_VAULT_ITEM_ID = "vaultItemId";
-  @SerializedName(SERIALIZED_NAME_VAULT_ITEM_ID)
-  private String vaultItemId;
-
-  public static final String SERIALIZED_NAME_OPENED_AT = "openedAt";
-  @SerializedName(SERIALIZED_NAME_OPENED_AT)
-  private String openedAt;
-
-  public static final String SERIALIZED_NAME_TIER_NAME = "tierName";
-  @SerializedName(SERIALIZED_NAME_TIER_NAME)
-  private String tierName;
 
   public static final String SERIALIZED_NAME_VALUE_CENTS = "valueCents";
   @SerializedName(SERIALIZED_NAME_VALUE_CENTS)
@@ -72,17 +64,25 @@ public class ListBuyerPackOpeningsItem {
   @SerializedName(SERIALIZED_NAME_ITEM_TITLE)
   private String itemTitle;
 
+  public static final String SERIALIZED_NAME_IMAGE_URL = "imageUrl";
+  @SerializedName(SERIALIZED_NAME_IMAGE_URL)
+  private String imageUrl;
+
+  public static final String SERIALIZED_NAME_TIER_NAME = "tierName";
+  @SerializedName(SERIALIZED_NAME_TIER_NAME)
+  private String tierName;
+
+  public static final String SERIALIZED_NAME_VAULT_ITEM_ID = "vaultItemId";
+  @SerializedName(SERIALIZED_NAME_VAULT_ITEM_ID)
+  private String vaultItemId;
+
+  public static final String SERIALIZED_NAME_OPENED_AT = "openedAt";
+  @SerializedName(SERIALIZED_NAME_OPENED_AT)
+  private String openedAt;
+
   public static final String SERIALIZED_NAME_PROOF = "proof";
   @SerializedName(SERIALIZED_NAME_PROOF)
   private ListBuyerPackOpeningsItemProof proof;
-
-  public static final String SERIALIZED_NAME_PACK_TITLE = "packTitle";
-  @SerializedName(SERIALIZED_NAME_PACK_TITLE)
-  private String packTitle;
-
-  public static final String SERIALIZED_NAME_PACK_SLUG = "packSlug";
-  @SerializedName(SERIALIZED_NAME_PACK_SLUG)
-  private String packSlug;
 
   public ListBuyerPackOpeningsItem() { 
   }
@@ -107,6 +107,52 @@ public class ListBuyerPackOpeningsItem {
 
   public void setId(String id) {
     this.id = id;
+  }
+
+
+  public ListBuyerPackOpeningsItem packTitle(String packTitle) {
+    
+    this.packTitle = packTitle;
+    return this;
+  }
+
+   /**
+   * Get packTitle
+   * @return packTitle
+  **/
+  @javax.annotation.Nonnull
+  @ApiModelProperty(required = true, value = "")
+
+  public String getPackTitle() {
+    return packTitle;
+  }
+
+
+  public void setPackTitle(String packTitle) {
+    this.packTitle = packTitle;
+  }
+
+
+  public ListBuyerPackOpeningsItem packSlug(String packSlug) {
+    
+    this.packSlug = packSlug;
+    return this;
+  }
+
+   /**
+   * Get packSlug
+   * @return packSlug
+  **/
+  @javax.annotation.Nonnull
+  @ApiModelProperty(required = true, value = "")
+
+  public String getPackSlug() {
+    return packSlug;
+  }
+
+
+  public void setPackSlug(String packSlug) {
+    this.packSlug = packSlug;
   }
 
 
@@ -153,98 +199,6 @@ public class ListBuyerPackOpeningsItem {
 
   public void setPriceCents(BigDecimal priceCents) {
     this.priceCents = priceCents;
-  }
-
-
-  public ListBuyerPackOpeningsItem imageUrl(String imageUrl) {
-    
-    this.imageUrl = imageUrl;
-    return this;
-  }
-
-   /**
-   * Get imageUrl
-   * @return imageUrl
-  **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
-
-  public String getImageUrl() {
-    return imageUrl;
-  }
-
-
-  public void setImageUrl(String imageUrl) {
-    this.imageUrl = imageUrl;
-  }
-
-
-  public ListBuyerPackOpeningsItem vaultItemId(String vaultItemId) {
-    
-    this.vaultItemId = vaultItemId;
-    return this;
-  }
-
-   /**
-   * Get vaultItemId
-   * @return vaultItemId
-  **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
-
-  public String getVaultItemId() {
-    return vaultItemId;
-  }
-
-
-  public void setVaultItemId(String vaultItemId) {
-    this.vaultItemId = vaultItemId;
-  }
-
-
-  public ListBuyerPackOpeningsItem openedAt(String openedAt) {
-    
-    this.openedAt = openedAt;
-    return this;
-  }
-
-   /**
-   * Get openedAt
-   * @return openedAt
-  **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
-
-  public String getOpenedAt() {
-    return openedAt;
-  }
-
-
-  public void setOpenedAt(String openedAt) {
-    this.openedAt = openedAt;
-  }
-
-
-  public ListBuyerPackOpeningsItem tierName(String tierName) {
-    
-    this.tierName = tierName;
-    return this;
-  }
-
-   /**
-   * Get tierName
-   * @return tierName
-  **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
-
-  public String getTierName() {
-    return tierName;
-  }
-
-
-  public void setTierName(String tierName) {
-    this.tierName = tierName;
   }
 
 
@@ -317,6 +271,98 @@ public class ListBuyerPackOpeningsItem {
   }
 
 
+  public ListBuyerPackOpeningsItem imageUrl(String imageUrl) {
+    
+    this.imageUrl = imageUrl;
+    return this;
+  }
+
+   /**
+   * Get imageUrl
+   * @return imageUrl
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public String getImageUrl() {
+    return imageUrl;
+  }
+
+
+  public void setImageUrl(String imageUrl) {
+    this.imageUrl = imageUrl;
+  }
+
+
+  public ListBuyerPackOpeningsItem tierName(String tierName) {
+    
+    this.tierName = tierName;
+    return this;
+  }
+
+   /**
+   * Get tierName
+   * @return tierName
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public String getTierName() {
+    return tierName;
+  }
+
+
+  public void setTierName(String tierName) {
+    this.tierName = tierName;
+  }
+
+
+  public ListBuyerPackOpeningsItem vaultItemId(String vaultItemId) {
+    
+    this.vaultItemId = vaultItemId;
+    return this;
+  }
+
+   /**
+   * Get vaultItemId
+   * @return vaultItemId
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public String getVaultItemId() {
+    return vaultItemId;
+  }
+
+
+  public void setVaultItemId(String vaultItemId) {
+    this.vaultItemId = vaultItemId;
+  }
+
+
+  public ListBuyerPackOpeningsItem openedAt(String openedAt) {
+    
+    this.openedAt = openedAt;
+    return this;
+  }
+
+   /**
+   * Get openedAt
+   * @return openedAt
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public String getOpenedAt() {
+    return openedAt;
+  }
+
+
+  public void setOpenedAt(String openedAt) {
+    this.openedAt = openedAt;
+  }
+
+
   public ListBuyerPackOpeningsItem proof(ListBuyerPackOpeningsItemProof proof) {
     
     this.proof = proof;
@@ -340,52 +386,6 @@ public class ListBuyerPackOpeningsItem {
   }
 
 
-  public ListBuyerPackOpeningsItem packTitle(String packTitle) {
-    
-    this.packTitle = packTitle;
-    return this;
-  }
-
-   /**
-   * Get packTitle
-   * @return packTitle
-  **/
-  @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "")
-
-  public String getPackTitle() {
-    return packTitle;
-  }
-
-
-  public void setPackTitle(String packTitle) {
-    this.packTitle = packTitle;
-  }
-
-
-  public ListBuyerPackOpeningsItem packSlug(String packSlug) {
-    
-    this.packSlug = packSlug;
-    return this;
-  }
-
-   /**
-   * Get packSlug
-   * @return packSlug
-  **/
-  @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "")
-
-  public String getPackSlug() {
-    return packSlug;
-  }
-
-
-  public void setPackSlug(String packSlug) {
-    this.packSlug = packSlug;
-  }
-
-
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -396,18 +396,18 @@ public class ListBuyerPackOpeningsItem {
     }
     ListBuyerPackOpeningsItem listBuyerPackOpeningsItem = (ListBuyerPackOpeningsItem) o;
     return Objects.equals(this.id, listBuyerPackOpeningsItem.id) &&
+        Objects.equals(this.packTitle, listBuyerPackOpeningsItem.packTitle) &&
+        Objects.equals(this.packSlug, listBuyerPackOpeningsItem.packSlug) &&
         Objects.equals(this.status, listBuyerPackOpeningsItem.status) &&
         Objects.equals(this.priceCents, listBuyerPackOpeningsItem.priceCents) &&
-        Objects.equals(this.imageUrl, listBuyerPackOpeningsItem.imageUrl) &&
-        Objects.equals(this.vaultItemId, listBuyerPackOpeningsItem.vaultItemId) &&
-        Objects.equals(this.openedAt, listBuyerPackOpeningsItem.openedAt) &&
-        Objects.equals(this.tierName, listBuyerPackOpeningsItem.tierName) &&
         Objects.equals(this.valueCents, listBuyerPackOpeningsItem.valueCents) &&
         Objects.equals(this.buybackCents, listBuyerPackOpeningsItem.buybackCents) &&
         Objects.equals(this.itemTitle, listBuyerPackOpeningsItem.itemTitle) &&
-        Objects.equals(this.proof, listBuyerPackOpeningsItem.proof) &&
-        Objects.equals(this.packTitle, listBuyerPackOpeningsItem.packTitle) &&
-        Objects.equals(this.packSlug, listBuyerPackOpeningsItem.packSlug);
+        Objects.equals(this.imageUrl, listBuyerPackOpeningsItem.imageUrl) &&
+        Objects.equals(this.tierName, listBuyerPackOpeningsItem.tierName) &&
+        Objects.equals(this.vaultItemId, listBuyerPackOpeningsItem.vaultItemId) &&
+        Objects.equals(this.openedAt, listBuyerPackOpeningsItem.openedAt) &&
+        Objects.equals(this.proof, listBuyerPackOpeningsItem.proof);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -416,7 +416,7 @@ public class ListBuyerPackOpeningsItem {
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, status, priceCents, imageUrl, vaultItemId, openedAt, tierName, valueCents, buybackCents, itemTitle, proof, packTitle, packSlug);
+    return Objects.hash(id, packTitle, packSlug, status, priceCents, valueCents, buybackCents, itemTitle, imageUrl, tierName, vaultItemId, openedAt, proof);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -431,18 +431,18 @@ public class ListBuyerPackOpeningsItem {
     StringBuilder sb = new StringBuilder();
     sb.append("class ListBuyerPackOpeningsItem {\n");
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
+    sb.append("    packTitle: ").append(toIndentedString(packTitle)).append("\n");
+    sb.append("    packSlug: ").append(toIndentedString(packSlug)).append("\n");
     sb.append("    status: ").append(toIndentedString(status)).append("\n");
     sb.append("    priceCents: ").append(toIndentedString(priceCents)).append("\n");
-    sb.append("    imageUrl: ").append(toIndentedString(imageUrl)).append("\n");
-    sb.append("    vaultItemId: ").append(toIndentedString(vaultItemId)).append("\n");
-    sb.append("    openedAt: ").append(toIndentedString(openedAt)).append("\n");
-    sb.append("    tierName: ").append(toIndentedString(tierName)).append("\n");
     sb.append("    valueCents: ").append(toIndentedString(valueCents)).append("\n");
     sb.append("    buybackCents: ").append(toIndentedString(buybackCents)).append("\n");
     sb.append("    itemTitle: ").append(toIndentedString(itemTitle)).append("\n");
+    sb.append("    imageUrl: ").append(toIndentedString(imageUrl)).append("\n");
+    sb.append("    tierName: ").append(toIndentedString(tierName)).append("\n");
+    sb.append("    vaultItemId: ").append(toIndentedString(vaultItemId)).append("\n");
+    sb.append("    openedAt: ").append(toIndentedString(openedAt)).append("\n");
     sb.append("    proof: ").append(toIndentedString(proof)).append("\n");
-    sb.append("    packTitle: ").append(toIndentedString(packTitle)).append("\n");
-    sb.append("    packSlug: ").append(toIndentedString(packSlug)).append("\n");
     sb.append("}");
     return sb.toString();
   }

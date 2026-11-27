@@ -1850,6 +1850,7 @@ public class BuyerCatalogApi {
      * Build call for getBuyerCatalogListingShipping
      * @param slug  (required)
      * @param zip  (optional)
+     * @param state  (optional)
      * @param country  (optional)
      * @param quantity  (optional)
      * @param _callback Callback for upload/download progress
@@ -1867,7 +1868,7 @@ public class BuyerCatalogApi {
         <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getBuyerCatalogListingShippingCall(String slug, String zip, String country, Integer quantity, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getBuyerCatalogListingShippingCall(String slug, String zip, String state, String country, Integer quantity, final ApiCallback _callback) throws ApiException {
         String basePath = null;
 
         // Operation Servers
@@ -1896,6 +1897,10 @@ public class BuyerCatalogApi {
 
         if (zip != null) {
             localVarQueryParams.addAll(localVarApiClient.parameterToPair("zip", zip));
+        }
+
+        if (state != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("state", state));
         }
 
         if (country != null) {
@@ -1927,7 +1932,7 @@ public class BuyerCatalogApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getBuyerCatalogListingShippingValidateBeforeCall(String slug, String zip, String country, Integer quantity, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getBuyerCatalogListingShippingValidateBeforeCall(String slug, String zip, String state, String country, Integer quantity, final ApiCallback _callback) throws ApiException {
         
         // verify the required parameter 'slug' is set
         if (slug == null) {
@@ -1935,16 +1940,17 @@ public class BuyerCatalogApi {
         }
         
 
-        okhttp3.Call localVarCall = getBuyerCatalogListingShippingCall(slug, zip, country, quantity, _callback);
+        okhttp3.Call localVarCall = getBuyerCatalogListingShippingCall(slug, zip, state, country, quantity, _callback);
         return localVarCall;
 
     }
 
     /**
      * Shipping services and prices to a destination.
-     * Lists every shipping service the seller offers to &#x60;country&#x60; (default: the seller’s own country) with its price for &#x60;quantity&#x60; units and its delivery window in business days (handling included). &#x60;zip&#x60; is required for a domestic quote. &#x60;shipsToCountry: false&#x60; means the seller does not ship there. Pass a service &#x60;id&#x60; as &#x60;shippingServiceId&#x60; to POST /api/v1/buyer/checkout, or in &#x60;shippingServiceBySeller&#x60; to POST /api/v1/buyer/cart/quote.
+     * Lists every shipping service the seller offers to &#x60;country&#x60; (default: the seller’s own country) with its price for &#x60;quantity&#x60; units and its delivery window in business days (handling included). &#x60;zip&#x60; is required for a domestic quote; &#x60;state&#x60; is optional. &#x60;shipsToCountry: false&#x60; means the seller does not ship there (&#x60;noShipMessage&#x60; says why); &#x60;partial: true&#x60; means a ZIP or postcode could change the answer. Pass a service &#x60;id&#x60; as &#x60;shippingServiceId&#x60; to POST /api/v1/buyer/checkout, or in &#x60;shippingServiceBySeller&#x60; to POST /api/v1/buyer/cart/quote. A seller on \&quot;buyer pays: calculated\&quot; prices each allowed carrier service from the live label rate for this parcel plus their handling fee (rates cached 15 minutes): those services carry &#x60;carrier&#x60; and &#x60;carrierService&#x60;, and &#x60;calculatedAtCheckout: true&#x60; means a ZIP is needed first.
      * @param slug  (required)
      * @param zip  (optional)
+     * @param state  (optional)
      * @param country  (optional)
      * @param quantity  (optional)
      * @return GetBuyerCatalogListingShippingResponse
@@ -1961,16 +1967,17 @@ public class BuyerCatalogApi {
         <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
      </table>
      */
-    public GetBuyerCatalogListingShippingResponse getBuyerCatalogListingShipping(String slug, String zip, String country, Integer quantity) throws ApiException {
-        ApiResponse<GetBuyerCatalogListingShippingResponse> localVarResp = getBuyerCatalogListingShippingWithHttpInfo(slug, zip, country, quantity);
+    public GetBuyerCatalogListingShippingResponse getBuyerCatalogListingShipping(String slug, String zip, String state, String country, Integer quantity) throws ApiException {
+        ApiResponse<GetBuyerCatalogListingShippingResponse> localVarResp = getBuyerCatalogListingShippingWithHttpInfo(slug, zip, state, country, quantity);
         return localVarResp.getData();
     }
 
     /**
      * Shipping services and prices to a destination.
-     * Lists every shipping service the seller offers to &#x60;country&#x60; (default: the seller’s own country) with its price for &#x60;quantity&#x60; units and its delivery window in business days (handling included). &#x60;zip&#x60; is required for a domestic quote. &#x60;shipsToCountry: false&#x60; means the seller does not ship there. Pass a service &#x60;id&#x60; as &#x60;shippingServiceId&#x60; to POST /api/v1/buyer/checkout, or in &#x60;shippingServiceBySeller&#x60; to POST /api/v1/buyer/cart/quote.
+     * Lists every shipping service the seller offers to &#x60;country&#x60; (default: the seller’s own country) with its price for &#x60;quantity&#x60; units and its delivery window in business days (handling included). &#x60;zip&#x60; is required for a domestic quote; &#x60;state&#x60; is optional. &#x60;shipsToCountry: false&#x60; means the seller does not ship there (&#x60;noShipMessage&#x60; says why); &#x60;partial: true&#x60; means a ZIP or postcode could change the answer. Pass a service &#x60;id&#x60; as &#x60;shippingServiceId&#x60; to POST /api/v1/buyer/checkout, or in &#x60;shippingServiceBySeller&#x60; to POST /api/v1/buyer/cart/quote. A seller on \&quot;buyer pays: calculated\&quot; prices each allowed carrier service from the live label rate for this parcel plus their handling fee (rates cached 15 minutes): those services carry &#x60;carrier&#x60; and &#x60;carrierService&#x60;, and &#x60;calculatedAtCheckout: true&#x60; means a ZIP is needed first.
      * @param slug  (required)
      * @param zip  (optional)
+     * @param state  (optional)
      * @param country  (optional)
      * @param quantity  (optional)
      * @return ApiResponse&lt;GetBuyerCatalogListingShippingResponse&gt;
@@ -1987,17 +1994,18 @@ public class BuyerCatalogApi {
         <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<GetBuyerCatalogListingShippingResponse> getBuyerCatalogListingShippingWithHttpInfo(String slug, String zip, String country, Integer quantity) throws ApiException {
-        okhttp3.Call localVarCall = getBuyerCatalogListingShippingValidateBeforeCall(slug, zip, country, quantity, null);
+    public ApiResponse<GetBuyerCatalogListingShippingResponse> getBuyerCatalogListingShippingWithHttpInfo(String slug, String zip, String state, String country, Integer quantity) throws ApiException {
+        okhttp3.Call localVarCall = getBuyerCatalogListingShippingValidateBeforeCall(slug, zip, state, country, quantity, null);
         Type localVarReturnType = new TypeToken<GetBuyerCatalogListingShippingResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
      * Shipping services and prices to a destination. (asynchronously)
-     * Lists every shipping service the seller offers to &#x60;country&#x60; (default: the seller’s own country) with its price for &#x60;quantity&#x60; units and its delivery window in business days (handling included). &#x60;zip&#x60; is required for a domestic quote. &#x60;shipsToCountry: false&#x60; means the seller does not ship there. Pass a service &#x60;id&#x60; as &#x60;shippingServiceId&#x60; to POST /api/v1/buyer/checkout, or in &#x60;shippingServiceBySeller&#x60; to POST /api/v1/buyer/cart/quote.
+     * Lists every shipping service the seller offers to &#x60;country&#x60; (default: the seller’s own country) with its price for &#x60;quantity&#x60; units and its delivery window in business days (handling included). &#x60;zip&#x60; is required for a domestic quote; &#x60;state&#x60; is optional. &#x60;shipsToCountry: false&#x60; means the seller does not ship there (&#x60;noShipMessage&#x60; says why); &#x60;partial: true&#x60; means a ZIP or postcode could change the answer. Pass a service &#x60;id&#x60; as &#x60;shippingServiceId&#x60; to POST /api/v1/buyer/checkout, or in &#x60;shippingServiceBySeller&#x60; to POST /api/v1/buyer/cart/quote. A seller on \&quot;buyer pays: calculated\&quot; prices each allowed carrier service from the live label rate for this parcel plus their handling fee (rates cached 15 minutes): those services carry &#x60;carrier&#x60; and &#x60;carrierService&#x60;, and &#x60;calculatedAtCheckout: true&#x60; means a ZIP is needed first.
      * @param slug  (required)
      * @param zip  (optional)
+     * @param state  (optional)
      * @param country  (optional)
      * @param quantity  (optional)
      * @param _callback The callback to be executed when the API call finishes
@@ -2015,9 +2023,9 @@ public class BuyerCatalogApi {
         <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getBuyerCatalogListingShippingAsync(String slug, String zip, String country, Integer quantity, final ApiCallback<GetBuyerCatalogListingShippingResponse> _callback) throws ApiException {
+    public okhttp3.Call getBuyerCatalogListingShippingAsync(String slug, String zip, String state, String country, Integer quantity, final ApiCallback<GetBuyerCatalogListingShippingResponse> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getBuyerCatalogListingShippingValidateBeforeCall(slug, zip, country, quantity, _callback);
+        okhttp3.Call localVarCall = getBuyerCatalogListingShippingValidateBeforeCall(slug, zip, state, country, quantity, _callback);
         Type localVarReturnType = new TypeToken<GetBuyerCatalogListingShippingResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;

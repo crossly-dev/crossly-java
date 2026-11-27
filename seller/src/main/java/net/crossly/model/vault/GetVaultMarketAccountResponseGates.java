@@ -28,8 +28,12 @@ import net.crossly.model.vault.ListVaultMarketGradeToVaultItemGatesGradingRuns;
 /**
  * GetVaultMarketAccountResponseGates
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-11T23:44:48.922Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-27T19:42:43.186Z[Etc/UTC]")
 public class GetVaultMarketAccountResponseGates {
+  public static final String SERIALIZED_NAME_SHARES = "shares";
+  @SerializedName(SERIALIZED_NAME_SHARES)
+  private ListVaultMarketGradeToVaultItemGatesGradingRuns shares;
+
   public static final String SERIALIZED_NAME_CUSTODY = "custody";
   @SerializedName(SERIALIZED_NAME_CUSTODY)
   private ListVaultMarketGradeToVaultItemGatesGradingRuns custody;
@@ -46,8 +50,55 @@ public class GetVaultMarketAccountResponseGates {
   @SerializedName(SERIALIZED_NAME_STAKING)
   private ListVaultMarketGradeToVaultItemGatesGradingRuns staking;
 
+  public static final String SERIALIZED_NAME_SHARES_PARTNER = "shares_partner";
+  @SerializedName(SERIALIZED_NAME_SHARES_PARTNER)
+  private ListVaultMarketGradeToVaultItemGatesGradingRuns sharesPartner;
+
+  public static final String SERIALIZED_NAME_SHARES_SELF = "shares_self";
+  @SerializedName(SERIALIZED_NAME_SHARES_SELF)
+  private ListVaultMarketGradeToVaultItemGatesGradingRuns sharesSelf;
+
+  public static final String SERIALIZED_NAME_OPTIONS_ROUTING = "options_routing";
+  @SerializedName(SERIALIZED_NAME_OPTIONS_ROUTING)
+  private ListVaultMarketGradeToVaultItemGatesGradingRuns optionsRouting;
+
+  public static final String SERIALIZED_NAME_OPTIONS_VENUE = "options_venue";
+  @SerializedName(SERIALIZED_NAME_OPTIONS_VENUE)
+  private ListVaultMarketGradeToVaultItemGatesGradingRuns optionsVenue;
+
+  public static final String SERIALIZED_NAME_PREDICTION_PARTNER = "prediction_partner";
+  @SerializedName(SERIALIZED_NAME_PREDICTION_PARTNER)
+  private ListVaultMarketGradeToVaultItemGatesGradingRuns predictionPartner;
+
+  public static final String SERIALIZED_NAME_PREDICTION_SELF = "prediction_self";
+  @SerializedName(SERIALIZED_NAME_PREDICTION_SELF)
+  private ListVaultMarketGradeToVaultItemGatesGradingRuns predictionSelf;
+
   public GetVaultMarketAccountResponseGates() { 
   }
+
+  public GetVaultMarketAccountResponseGates shares(ListVaultMarketGradeToVaultItemGatesGradingRuns shares) {
+    
+    this.shares = shares;
+    return this;
+  }
+
+   /**
+   * Get shares
+   * @return shares
+  **/
+  @javax.annotation.Nonnull
+  @ApiModelProperty(required = true, value = "")
+
+  public ListVaultMarketGradeToVaultItemGatesGradingRuns getShares() {
+    return shares;
+  }
+
+
+  public void setShares(ListVaultMarketGradeToVaultItemGatesGradingRuns shares) {
+    this.shares = shares;
+  }
+
 
   public GetVaultMarketAccountResponseGates custody(ListVaultMarketGradeToVaultItemGatesGradingRuns custody) {
     
@@ -141,6 +192,144 @@ public class GetVaultMarketAccountResponseGates {
   }
 
 
+  public GetVaultMarketAccountResponseGates sharesPartner(ListVaultMarketGradeToVaultItemGatesGradingRuns sharesPartner) {
+    
+    this.sharesPartner = sharesPartner;
+    return this;
+  }
+
+   /**
+   * Get sharesPartner
+   * @return sharesPartner
+  **/
+  @javax.annotation.Nonnull
+  @ApiModelProperty(required = true, value = "")
+
+  public ListVaultMarketGradeToVaultItemGatesGradingRuns getSharesPartner() {
+    return sharesPartner;
+  }
+
+
+  public void setSharesPartner(ListVaultMarketGradeToVaultItemGatesGradingRuns sharesPartner) {
+    this.sharesPartner = sharesPartner;
+  }
+
+
+  public GetVaultMarketAccountResponseGates sharesSelf(ListVaultMarketGradeToVaultItemGatesGradingRuns sharesSelf) {
+    
+    this.sharesSelf = sharesSelf;
+    return this;
+  }
+
+   /**
+   * Get sharesSelf
+   * @return sharesSelf
+  **/
+  @javax.annotation.Nonnull
+  @ApiModelProperty(required = true, value = "")
+
+  public ListVaultMarketGradeToVaultItemGatesGradingRuns getSharesSelf() {
+    return sharesSelf;
+  }
+
+
+  public void setSharesSelf(ListVaultMarketGradeToVaultItemGatesGradingRuns sharesSelf) {
+    this.sharesSelf = sharesSelf;
+  }
+
+
+  public GetVaultMarketAccountResponseGates optionsRouting(ListVaultMarketGradeToVaultItemGatesGradingRuns optionsRouting) {
+    
+    this.optionsRouting = optionsRouting;
+    return this;
+  }
+
+   /**
+   * Get optionsRouting
+   * @return optionsRouting
+  **/
+  @javax.annotation.Nonnull
+  @ApiModelProperty(required = true, value = "")
+
+  public ListVaultMarketGradeToVaultItemGatesGradingRuns getOptionsRouting() {
+    return optionsRouting;
+  }
+
+
+  public void setOptionsRouting(ListVaultMarketGradeToVaultItemGatesGradingRuns optionsRouting) {
+    this.optionsRouting = optionsRouting;
+  }
+
+
+  public GetVaultMarketAccountResponseGates optionsVenue(ListVaultMarketGradeToVaultItemGatesGradingRuns optionsVenue) {
+    
+    this.optionsVenue = optionsVenue;
+    return this;
+  }
+
+   /**
+   * Get optionsVenue
+   * @return optionsVenue
+  **/
+  @javax.annotation.Nonnull
+  @ApiModelProperty(required = true, value = "")
+
+  public ListVaultMarketGradeToVaultItemGatesGradingRuns getOptionsVenue() {
+    return optionsVenue;
+  }
+
+
+  public void setOptionsVenue(ListVaultMarketGradeToVaultItemGatesGradingRuns optionsVenue) {
+    this.optionsVenue = optionsVenue;
+  }
+
+
+  public GetVaultMarketAccountResponseGates predictionPartner(ListVaultMarketGradeToVaultItemGatesGradingRuns predictionPartner) {
+    
+    this.predictionPartner = predictionPartner;
+    return this;
+  }
+
+   /**
+   * Get predictionPartner
+   * @return predictionPartner
+  **/
+  @javax.annotation.Nonnull
+  @ApiModelProperty(required = true, value = "")
+
+  public ListVaultMarketGradeToVaultItemGatesGradingRuns getPredictionPartner() {
+    return predictionPartner;
+  }
+
+
+  public void setPredictionPartner(ListVaultMarketGradeToVaultItemGatesGradingRuns predictionPartner) {
+    this.predictionPartner = predictionPartner;
+  }
+
+
+  public GetVaultMarketAccountResponseGates predictionSelf(ListVaultMarketGradeToVaultItemGatesGradingRuns predictionSelf) {
+    
+    this.predictionSelf = predictionSelf;
+    return this;
+  }
+
+   /**
+   * Get predictionSelf
+   * @return predictionSelf
+  **/
+  @javax.annotation.Nonnull
+  @ApiModelProperty(required = true, value = "")
+
+  public ListVaultMarketGradeToVaultItemGatesGradingRuns getPredictionSelf() {
+    return predictionSelf;
+  }
+
+
+  public void setPredictionSelf(ListVaultMarketGradeToVaultItemGatesGradingRuns predictionSelf) {
+    this.predictionSelf = predictionSelf;
+  }
+
+
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -150,25 +339,39 @@ public class GetVaultMarketAccountResponseGates {
       return false;
     }
     GetVaultMarketAccountResponseGates getVaultMarketAccountResponseGates = (GetVaultMarketAccountResponseGates) o;
-    return Objects.equals(this.custody, getVaultMarketAccountResponseGates.custody) &&
+    return Objects.equals(this.shares, getVaultMarketAccountResponseGates.shares) &&
+        Objects.equals(this.custody, getVaultMarketAccountResponseGates.custody) &&
         Objects.equals(this.lending, getVaultMarketAccountResponseGates.lending) &&
         Objects.equals(this.leverage, getVaultMarketAccountResponseGates.leverage) &&
-        Objects.equals(this.staking, getVaultMarketAccountResponseGates.staking);
+        Objects.equals(this.staking, getVaultMarketAccountResponseGates.staking) &&
+        Objects.equals(this.sharesPartner, getVaultMarketAccountResponseGates.sharesPartner) &&
+        Objects.equals(this.sharesSelf, getVaultMarketAccountResponseGates.sharesSelf) &&
+        Objects.equals(this.optionsRouting, getVaultMarketAccountResponseGates.optionsRouting) &&
+        Objects.equals(this.optionsVenue, getVaultMarketAccountResponseGates.optionsVenue) &&
+        Objects.equals(this.predictionPartner, getVaultMarketAccountResponseGates.predictionPartner) &&
+        Objects.equals(this.predictionSelf, getVaultMarketAccountResponseGates.predictionSelf);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(custody, lending, leverage, staking);
+    return Objects.hash(shares, custody, lending, leverage, staking, sharesPartner, sharesSelf, optionsRouting, optionsVenue, predictionPartner, predictionSelf);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class GetVaultMarketAccountResponseGates {\n");
+    sb.append("    shares: ").append(toIndentedString(shares)).append("\n");
     sb.append("    custody: ").append(toIndentedString(custody)).append("\n");
     sb.append("    lending: ").append(toIndentedString(lending)).append("\n");
     sb.append("    leverage: ").append(toIndentedString(leverage)).append("\n");
     sb.append("    staking: ").append(toIndentedString(staking)).append("\n");
+    sb.append("    sharesPartner: ").append(toIndentedString(sharesPartner)).append("\n");
+    sb.append("    sharesSelf: ").append(toIndentedString(sharesSelf)).append("\n");
+    sb.append("    optionsRouting: ").append(toIndentedString(optionsRouting)).append("\n");
+    sb.append("    optionsVenue: ").append(toIndentedString(optionsVenue)).append("\n");
+    sb.append("    predictionPartner: ").append(toIndentedString(predictionPartner)).append("\n");
+    sb.append("    predictionSelf: ").append(toIndentedString(predictionSelf)).append("\n");
     sb.append("}");
     return sb.toString();
   }

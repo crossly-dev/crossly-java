@@ -26,13 +26,13 @@ import java.io.IOException;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
-import net.crossly.model.common.SlugName;
+import net.crossly.model.common.NameSlug;
 import org.openapitools.jackson.nullable.JsonNullable;
 
 /**
  * GetVaultMarketCorrelationResponse
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-11T23:44:48.922Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-27T19:42:43.186Z[Etc/UTC]")
 public class GetVaultMarketCorrelationResponse {
   public static final String SERIALIZED_NAME_LABEL = "label";
   @SerializedName(SERIALIZED_NAME_LABEL)
@@ -60,7 +60,7 @@ public class GetVaultMarketCorrelationResponse {
 
   public static final String SERIALIZED_NAME_INDEXES = "indexes";
   @SerializedName(SERIALIZED_NAME_INDEXES)
-  private List<SlugName> indexes = new ArrayList<SlugName>();
+  private List<NameSlug> indexes = new ArrayList<NameSlug>();
 
   public static final String SERIALIZED_NAME_RHO = "rho";
   @SerializedName(SERIALIZED_NAME_RHO)
@@ -215,13 +215,13 @@ public class GetVaultMarketCorrelationResponse {
   }
 
 
-  public GetVaultMarketCorrelationResponse indexes(List<SlugName> indexes) {
+  public GetVaultMarketCorrelationResponse indexes(List<NameSlug> indexes) {
     
     this.indexes = indexes;
     return this;
   }
 
-  public GetVaultMarketCorrelationResponse addIndexesItem(SlugName indexesItem) {
+  public GetVaultMarketCorrelationResponse addIndexesItem(NameSlug indexesItem) {
     this.indexes.add(indexesItem);
     return this;
   }
@@ -233,12 +233,12 @@ public class GetVaultMarketCorrelationResponse {
   @javax.annotation.Nonnull
   @ApiModelProperty(required = true, value = "")
 
-  public List<SlugName> getIndexes() {
+  public List<NameSlug> getIndexes() {
     return indexes;
   }
 
 
-  public void setIndexes(List<SlugName> indexes) {
+  public void setIndexes(List<NameSlug> indexes) {
     this.indexes = indexes;
   }
 

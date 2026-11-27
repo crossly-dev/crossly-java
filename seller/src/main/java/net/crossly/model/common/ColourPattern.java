@@ -27,32 +27,32 @@ import java.io.IOException;
 /**
  * ColourPattern
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-11T23:44:48.922Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-27T19:42:43.186Z[Etc/UTC]")
 public class ColourPattern {
   /**
    * Gets or Sets colour
    */
   @JsonAdapter(ColourEnum.Adapter.class)
   public enum ColourEnum {
+    YELLOW("yellow"),
+    
+    BLUE("blue"),
+    
+    GREEN("green"),
+    
+    PINK("pink"),
+    
+    PURPLE("purple"),
+    
+    CHARCOAL("charcoal"),
+    
     RED("red"),
     
     ORANGE("orange"),
     
-    YELLOW("yellow"),
-    
-    GREEN("green"),
-    
     TEAL("teal"),
     
-    BLUE("blue"),
-    
-    PURPLE("purple"),
-    
-    PINK("pink"),
-    
-    CREAM("cream"),
-    
-    CHARCOAL("charcoal");
+    CREAM("cream");
 
     private String value;
 
@@ -101,13 +101,13 @@ public class ColourPattern {
    */
   @JsonAdapter(PatternEnum.Adapter.class)
   public enum PatternEnum {
-    SOLID("solid"),
+    CHECK("check"),
     
     STRIPE("stripe"),
     
-    SCALLOP("scallop"),
+    SOLID("solid"),
     
-    CHECK("check");
+    SCALLOP("scallop");
 
     private String value;
 

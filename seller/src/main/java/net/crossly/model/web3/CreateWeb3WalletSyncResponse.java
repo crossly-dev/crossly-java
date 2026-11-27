@@ -23,21 +23,21 @@ import com.google.gson.stream.JsonWriter;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
-import net.crossly.model.web3.CreateWeb3WalletSyncResponseSummary;
+import net.crossly.model.web3.CreateWeb3StoreWalletSyncResponseData;
 
 /**
  * CreateWeb3WalletSyncResponse
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-11T23:44:48.922Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-27T19:42:43.186Z[Etc/UTC]")
 public class CreateWeb3WalletSyncResponse {
   public static final String SERIALIZED_NAME_SUMMARY = "summary";
   @SerializedName(SERIALIZED_NAME_SUMMARY)
-  private CreateWeb3WalletSyncResponseSummary summary;
+  private CreateWeb3StoreWalletSyncResponseData summary;
 
   public CreateWeb3WalletSyncResponse() { 
   }
 
-  public CreateWeb3WalletSyncResponse summary(CreateWeb3WalletSyncResponseSummary summary) {
+  public CreateWeb3WalletSyncResponse summary(CreateWeb3StoreWalletSyncResponseData summary) {
     
     this.summary = summary;
     return this;
@@ -50,12 +50,12 @@ public class CreateWeb3WalletSyncResponse {
   @javax.annotation.Nonnull
   @ApiModelProperty(required = true, value = "")
 
-  public CreateWeb3WalletSyncResponseSummary getSummary() {
+  public CreateWeb3StoreWalletSyncResponseData getSummary() {
     return summary;
   }
 
 
-  public void setSummary(CreateWeb3WalletSyncResponseSummary summary) {
+  public void setSummary(CreateWeb3StoreWalletSyncResponseData summary) {
     this.summary = summary;
   }
 

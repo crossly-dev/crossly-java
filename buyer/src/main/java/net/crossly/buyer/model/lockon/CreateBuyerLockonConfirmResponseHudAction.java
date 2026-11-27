@@ -28,7 +28,7 @@ import org.openapitools.jackson.nullable.JsonNullable;
 /**
  * CreateBuyerLockonConfirmResponseHudAction
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-11T23:47:29.843Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-27T19:58:46.962Z[Etc/UTC]")
 public class CreateBuyerLockonConfirmResponseHudAction {
   /**
    * Gets or Sets kind
@@ -37,13 +37,13 @@ public class CreateBuyerLockonConfirmResponseHudAction {
   public enum KindEnum {
     NONE("none"),
     
-    CONFIRM("confirm"),
-    
     SAVE("save"),
     
     BUY_CROSSLY("buy_crossly"),
     
-    BUY_OFFSITE("buy_offsite");
+    BUY_OFFSITE("buy_offsite"),
+    
+    CONFIRM("confirm");
 
     private String value;
 

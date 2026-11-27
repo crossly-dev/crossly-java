@@ -26,17 +26,17 @@ import java.io.IOException;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
-import net.crossly.model.web3.GetWeb3CreatorResponseDaily;
+import net.crossly.model.creator.GetCreatorCollectionResponseDataDashboardDaily;
+import net.crossly.model.creator.GetCreatorCollectionResponseDataDashboardMint;
+import net.crossly.model.creator.GetCreatorCollectionResponseDataDashboardRecent;
 import net.crossly.model.web3.GetWeb3CreatorResponseHolders;
-import net.crossly.model.web3.GetWeb3CreatorResponseMint;
-import net.crossly.model.web3.GetWeb3CreatorResponseRecent;
 import net.crossly.model.web3.GetWeb3CreatorResponseSales;
 import org.openapitools.jackson.nullable.JsonNullable;
 
 /**
  * GetWeb3CreatorResponse
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-11T23:44:48.922Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-27T19:42:43.186Z[Etc/UTC]")
 public class GetWeb3CreatorResponse {
   public static final String SERIALIZED_NAME_CHAIN = "chain";
   @SerializedName(SERIALIZED_NAME_CHAIN)
@@ -68,11 +68,11 @@ public class GetWeb3CreatorResponse {
 
   public static final String SERIALIZED_NAME_DAILY = "daily";
   @SerializedName(SERIALIZED_NAME_DAILY)
-  private List<GetWeb3CreatorResponseDaily> daily = new ArrayList<GetWeb3CreatorResponseDaily>();
+  private List<GetCreatorCollectionResponseDataDashboardDaily> daily = new ArrayList<GetCreatorCollectionResponseDataDashboardDaily>();
 
   public static final String SERIALIZED_NAME_RECENT = "recent";
   @SerializedName(SERIALIZED_NAME_RECENT)
-  private List<GetWeb3CreatorResponseRecent> recent = new ArrayList<GetWeb3CreatorResponseRecent>();
+  private List<GetCreatorCollectionResponseDataDashboardRecent> recent = new ArrayList<GetCreatorCollectionResponseDataDashboardRecent>();
 
   public static final String SERIALIZED_NAME_HOLDERS = "holders";
   @SerializedName(SERIALIZED_NAME_HOLDERS)
@@ -80,7 +80,7 @@ public class GetWeb3CreatorResponse {
 
   public static final String SERIALIZED_NAME_MINT = "mint";
   @SerializedName(SERIALIZED_NAME_MINT)
-  private GetWeb3CreatorResponseMint mint;
+  private GetCreatorCollectionResponseDataDashboardMint mint;
 
   public GetWeb3CreatorResponse() { 
   }
@@ -246,13 +246,13 @@ public class GetWeb3CreatorResponse {
   }
 
 
-  public GetWeb3CreatorResponse daily(List<GetWeb3CreatorResponseDaily> daily) {
+  public GetWeb3CreatorResponse daily(List<GetCreatorCollectionResponseDataDashboardDaily> daily) {
     
     this.daily = daily;
     return this;
   }
 
-  public GetWeb3CreatorResponse addDailyItem(GetWeb3CreatorResponseDaily dailyItem) {
+  public GetWeb3CreatorResponse addDailyItem(GetCreatorCollectionResponseDataDashboardDaily dailyItem) {
     this.daily.add(dailyItem);
     return this;
   }
@@ -264,23 +264,23 @@ public class GetWeb3CreatorResponse {
   @javax.annotation.Nonnull
   @ApiModelProperty(required = true, value = "")
 
-  public List<GetWeb3CreatorResponseDaily> getDaily() {
+  public List<GetCreatorCollectionResponseDataDashboardDaily> getDaily() {
     return daily;
   }
 
 
-  public void setDaily(List<GetWeb3CreatorResponseDaily> daily) {
+  public void setDaily(List<GetCreatorCollectionResponseDataDashboardDaily> daily) {
     this.daily = daily;
   }
 
 
-  public GetWeb3CreatorResponse recent(List<GetWeb3CreatorResponseRecent> recent) {
+  public GetWeb3CreatorResponse recent(List<GetCreatorCollectionResponseDataDashboardRecent> recent) {
     
     this.recent = recent;
     return this;
   }
 
-  public GetWeb3CreatorResponse addRecentItem(GetWeb3CreatorResponseRecent recentItem) {
+  public GetWeb3CreatorResponse addRecentItem(GetCreatorCollectionResponseDataDashboardRecent recentItem) {
     this.recent.add(recentItem);
     return this;
   }
@@ -292,12 +292,12 @@ public class GetWeb3CreatorResponse {
   @javax.annotation.Nonnull
   @ApiModelProperty(required = true, value = "")
 
-  public List<GetWeb3CreatorResponseRecent> getRecent() {
+  public List<GetCreatorCollectionResponseDataDashboardRecent> getRecent() {
     return recent;
   }
 
 
-  public void setRecent(List<GetWeb3CreatorResponseRecent> recent) {
+  public void setRecent(List<GetCreatorCollectionResponseDataDashboardRecent> recent) {
     this.recent = recent;
   }
 
@@ -325,7 +325,7 @@ public class GetWeb3CreatorResponse {
   }
 
 
-  public GetWeb3CreatorResponse mint(GetWeb3CreatorResponseMint mint) {
+  public GetWeb3CreatorResponse mint(GetCreatorCollectionResponseDataDashboardMint mint) {
     
     this.mint = mint;
     return this;
@@ -338,12 +338,12 @@ public class GetWeb3CreatorResponse {
   @javax.annotation.Nullable
   @ApiModelProperty(value = "")
 
-  public GetWeb3CreatorResponseMint getMint() {
+  public GetCreatorCollectionResponseDataDashboardMint getMint() {
     return mint;
   }
 
 
-  public void setMint(GetWeb3CreatorResponseMint mint) {
+  public void setMint(GetCreatorCollectionResponseDataDashboardMint mint) {
     this.mint = mint;
   }
 

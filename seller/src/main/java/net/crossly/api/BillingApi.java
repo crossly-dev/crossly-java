@@ -27,9 +27,11 @@ import com.google.gson.reflect.TypeToken;
 import java.io.IOException;
 
 
-import net.crossly.model.common.CreateBillingUpgradeRequest;
-import net.crossly.model.common.CreateBillingUpgradeResponse;
+import net.crossly.model.billing.CreateBillingUpgradeRequest;
+import net.crossly.model.billing.CreateBillingUpgradeResponse;
 import net.crossly.model.common.Error;
+import net.crossly.model.billing.ListBillingAppAllowancesResponse;
+import net.crossly.model.billing.ListBillingPlansResponse;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
@@ -222,6 +224,290 @@ public class BillingApi {
 
         okhttp3.Call localVarCall = createBillingUpgradeValidateBeforeCall(createBillingUpgradeRequest, _callback);
         Type localVarReturnType = new TypeToken<CreateBillingUpgradeResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for listBillingAppAllowances
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call listBillingAppAllowancesCall(final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/v1/billing/app-allowances";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "PersonalAccessToken" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call listBillingAppAllowancesValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        
+
+        okhttp3.Call localVarCall = listBillingAppAllowancesCall(_callback);
+        return localVarCall;
+
+    }
+
+    /**
+     * Your listing allowances through OAuth apps (used of limit, per app, with its platform scope).
+     * Staff can let an OAuth app list above a seller&#39;s plan, counted apart from the plan&#39;s itemsPerMonth and only on the allowance&#39;s platforms. &#x60;label&#x60; is the sentence to show (12 of 10,000 managed by Infinity; ... this month via Infinity (resets Dec 1); or counts toward your plan for limitMode shared).
+     * @return ListBillingAppAllowancesResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public ListBillingAppAllowancesResponse listBillingAppAllowances() throws ApiException {
+        ApiResponse<ListBillingAppAllowancesResponse> localVarResp = listBillingAppAllowancesWithHttpInfo();
+        return localVarResp.getData();
+    }
+
+    /**
+     * Your listing allowances through OAuth apps (used of limit, per app, with its platform scope).
+     * Staff can let an OAuth app list above a seller&#39;s plan, counted apart from the plan&#39;s itemsPerMonth and only on the allowance&#39;s platforms. &#x60;label&#x60; is the sentence to show (12 of 10,000 managed by Infinity; ... this month via Infinity (resets Dec 1); or counts toward your plan for limitMode shared).
+     * @return ApiResponse&lt;ListBillingAppAllowancesResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<ListBillingAppAllowancesResponse> listBillingAppAllowancesWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = listBillingAppAllowancesValidateBeforeCall(null);
+        Type localVarReturnType = new TypeToken<ListBillingAppAllowancesResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Your listing allowances through OAuth apps (used of limit, per app, with its platform scope). (asynchronously)
+     * Staff can let an OAuth app list above a seller&#39;s plan, counted apart from the plan&#39;s itemsPerMonth and only on the allowance&#39;s platforms. &#x60;label&#x60; is the sentence to show (12 of 10,000 managed by Infinity; ... this month via Infinity (resets Dec 1); or counts toward your plan for limitMode shared).
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call listBillingAppAllowancesAsync(final ApiCallback<ListBillingAppAllowancesResponse> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = listBillingAppAllowancesValidateBeforeCall(_callback);
+        Type localVarReturnType = new TypeToken<ListBillingAppAllowancesResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for listBillingPlans
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call listBillingPlansCall(final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/v1/billing/plans";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "PersonalAccessToken" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call listBillingPlansValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        
+
+        okhttp3.Call localVarCall = listBillingPlansCall(_callback);
+        return localVarCall;
+
+    }
+
+    /**
+     * List the plans with their prices, limits and features.
+     * Prices are the Stripe Prices checkout charges (whole USD). A null limit means no cap.
+     * @return ListBillingPlansResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public ListBillingPlansResponse listBillingPlans() throws ApiException {
+        ApiResponse<ListBillingPlansResponse> localVarResp = listBillingPlansWithHttpInfo();
+        return localVarResp.getData();
+    }
+
+    /**
+     * List the plans with their prices, limits and features.
+     * Prices are the Stripe Prices checkout charges (whole USD). A null limit means no cap.
+     * @return ApiResponse&lt;ListBillingPlansResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<ListBillingPlansResponse> listBillingPlansWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = listBillingPlansValidateBeforeCall(null);
+        Type localVarReturnType = new TypeToken<ListBillingPlansResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * List the plans with their prices, limits and features. (asynchronously)
+     * Prices are the Stripe Prices checkout charges (whole USD). A null limit means no cap.
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call listBillingPlansAsync(final ApiCallback<ListBillingPlansResponse> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = listBillingPlansValidateBeforeCall(_callback);
+        Type localVarReturnType = new TypeToken<ListBillingPlansResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }

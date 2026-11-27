@@ -32,7 +32,7 @@ import org.openapitools.jackson.nullable.JsonNullable;
 /**
  * CreateVaultMarketAgentDraftCancelResponseDraft
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-11T23:44:48.922Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-27T19:42:43.186Z[Etc/UTC]")
 public class CreateVaultMarketAgentDraftCancelResponseDraft {
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
@@ -114,11 +114,11 @@ public class CreateVaultMarketAgentDraftCancelResponseDraft {
    */
   @JsonAdapter(FundingEnum.Adapter.class)
   public enum FundingEnum {
+    VAULT("vault"),
+    
     CARD("card"),
     
-    CUSTODIAN("custodian"),
-    
-    VAULT("vault");
+    CUSTODIAN("custodian");
 
     private String value;
 
@@ -191,11 +191,11 @@ public class CreateVaultMarketAgentDraftCancelResponseDraft {
     
     EXPIRED("expired"),
     
+    DRAFTED("drafted"),
+    
     REJECTED("rejected"),
     
     PLACING("placing"),
-    
-    DRAFTED("drafted"),
     
     PLACED("placed");
 

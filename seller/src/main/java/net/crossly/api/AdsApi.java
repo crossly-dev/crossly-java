@@ -29,11 +29,33 @@ import java.io.IOException;
 
 import net.crossly.model.ad.CreateAdOffsiteCampaignResponse;
 import net.crossly.model.ad.CreateAdOffsiteResumeResponse;
+import net.crossly.model.listing.CreateListingAdBulkAddResponse;
+import net.crossly.model.listing.CreateListingAdCampaignListingResponse;
+import net.crossly.model.listing.CreateListingAdCampaignResponse;
+import net.crossly.model.sponsored.CreateSponsoredAdBillingTopupLinkResponse;
+import net.crossly.model.sponsored.CreateSponsoredAdBoostRemoveResponse;
 import net.crossly.model.common.Error;
+import java.io.File;
 import net.crossly.model.ad.GetAdOffsiteEligibilityResponse;
 import net.crossly.model.ad.GetAdOffsiteReportResponse;
 import net.crossly.model.ad.GetAdOffsiteResponse;
+import net.crossly.model.listing.GetListingAdListingResponse;
+import net.crossly.model.sponsored.GetSponsoredAdBillingResponse;
+import net.crossly.model.sponsored.GetSponsoredAdBillingStatementResponse;
+import net.crossly.model.sponsored.GetSponsoredAdFundResponse;
+import net.crossly.model.sponsored.GetSponsoredAdReportResponse;
+import net.crossly.model.listing.ListListingAdCampaignsResponse;
+import net.crossly.model.listing.ListListingAdPlatformsResponse;
+import net.crossly.model.sponsored.ListSponsoredAdBillingHistoryResponse;
+import net.crossly.model.sponsored.ListSponsoredAdBillingStatementsResponse;
+import net.crossly.model.sponsored.ListSponsoredAdBoostsResponse;
+import net.crossly.model.sponsored.ListSponsoredAdCampaignsResponse;
+import net.crossly.model.sponsored.ListSponsoredAdListingsResponse;
+import net.crossly.model.common.SponsoredAdCampaignResponse;
+import net.crossly.model.common.SponsoredAdResponse;
 import net.crossly.model.ad.UpdateAdOffsiteResponse;
+import net.crossly.model.listing.UpdateListingAdListingRateResponse;
+import net.crossly.model.sponsored.UpdateSponsoredAdBoostResponse;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
@@ -359,6 +381,1354 @@ public class AdsApi {
 
         okhttp3.Call localVarCall = createAdOffsiteResumeValidateBeforeCall(_callback);
         Type localVarReturnType = new TypeToken<CreateAdOffsiteResumeResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for createListingAdBulkAdd
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call createListingAdBulkAddCall(final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/v1/listing-ads/bulk-add";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "PersonalAccessToken" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call createListingAdBulkAddValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        
+
+        okhttp3.Call localVarCall = createListingAdBulkAddCall(_callback);
+        return localVarCall;
+
+    }
+
+    /**
+     * Add listings to a campaign by master listing id: each listing&#39;s live row on &#x60;platform&#x60; joins campaignId (a Crossly campaign uuid, or the marketplace&#39;s campaign id). A listing not live there is its own failed result.
+     * 
+     * @return CreateListingAdBulkAddResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public CreateListingAdBulkAddResponse createListingAdBulkAdd() throws ApiException {
+        ApiResponse<CreateListingAdBulkAddResponse> localVarResp = createListingAdBulkAddWithHttpInfo();
+        return localVarResp.getData();
+    }
+
+    /**
+     * Add listings to a campaign by master listing id: each listing&#39;s live row on &#x60;platform&#x60; joins campaignId (a Crossly campaign uuid, or the marketplace&#39;s campaign id). A listing not live there is its own failed result.
+     * 
+     * @return ApiResponse&lt;CreateListingAdBulkAddResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<CreateListingAdBulkAddResponse> createListingAdBulkAddWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = createListingAdBulkAddValidateBeforeCall(null);
+        Type localVarReturnType = new TypeToken<CreateListingAdBulkAddResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Add listings to a campaign by master listing id: each listing&#39;s live row on &#x60;platform&#x60; joins campaignId (a Crossly campaign uuid, or the marketplace&#39;s campaign id). A listing not live there is its own failed result. (asynchronously)
+     * 
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call createListingAdBulkAddAsync(final ApiCallback<CreateListingAdBulkAddResponse> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = createListingAdBulkAddValidateBeforeCall(_callback);
+        Type localVarReturnType = new TypeToken<CreateListingAdBulkAddResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for createListingAdCampaign
+     * @param platform  (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call createListingAdCampaignCall(String platform, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/v1/listing-ads/{platform}/campaigns"
+            .replaceAll("\\{" + "platform" + "\\}", localVarApiClient.escapeString(platform.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "PersonalAccessToken" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call createListingAdCampaignValidateBeforeCall(String platform, final ApiCallback _callback) throws ApiException {
+        
+        // verify the required parameter 'platform' is set
+        if (platform == null) {
+            throw new ApiException("Missing the required parameter 'platform' when calling createListingAdCampaign(Async)");
+        }
+        
+
+        okhttp3.Call localVarCall = createListingAdCampaignCall(platform, _callback);
+        return localVarCall;
+
+    }
+
+    /**
+     * Create a campaign on the marketplace: program (promoted_listing_rate &#x3D; eBay General, a % of the sale; cpc_campaign &#x3D; eBay Priority, a daily budget), name, ratePct or dailyBudgetCents, startsAt/endsAt, and the program fields. Idempotency-Key supported.
+     * 
+     * @param platform  (required)
+     * @return CreateListingAdCampaignResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public CreateListingAdCampaignResponse createListingAdCampaign(String platform) throws ApiException {
+        ApiResponse<CreateListingAdCampaignResponse> localVarResp = createListingAdCampaignWithHttpInfo(platform);
+        return localVarResp.getData();
+    }
+
+    /**
+     * Create a campaign on the marketplace: program (promoted_listing_rate &#x3D; eBay General, a % of the sale; cpc_campaign &#x3D; eBay Priority, a daily budget), name, ratePct or dailyBudgetCents, startsAt/endsAt, and the program fields. Idempotency-Key supported.
+     * 
+     * @param platform  (required)
+     * @return ApiResponse&lt;CreateListingAdCampaignResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<CreateListingAdCampaignResponse> createListingAdCampaignWithHttpInfo(String platform) throws ApiException {
+        okhttp3.Call localVarCall = createListingAdCampaignValidateBeforeCall(platform, null);
+        Type localVarReturnType = new TypeToken<CreateListingAdCampaignResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Create a campaign on the marketplace: program (promoted_listing_rate &#x3D; eBay General, a % of the sale; cpc_campaign &#x3D; eBay Priority, a daily budget), name, ratePct or dailyBudgetCents, startsAt/endsAt, and the program fields. Idempotency-Key supported. (asynchronously)
+     * 
+     * @param platform  (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call createListingAdCampaignAsync(String platform, final ApiCallback<CreateListingAdCampaignResponse> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = createListingAdCampaignValidateBeforeCall(platform, _callback);
+        Type localVarReturnType = new TypeToken<CreateListingAdCampaignResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for createListingAdCampaignListing
+     * @param platform  (required)
+     * @param campaignId  (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call createListingAdCampaignListingCall(String platform, String campaignId, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/v1/listing-ads/{platform}/campaigns/{campaignId}/listings"
+            .replaceAll("\\{" + "platform" + "\\}", localVarApiClient.escapeString(platform.toString()))
+            .replaceAll("\\{" + "campaignId" + "\\}", localVarApiClient.escapeString(campaignId.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "PersonalAccessToken" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call createListingAdCampaignListingValidateBeforeCall(String platform, String campaignId, final ApiCallback _callback) throws ApiException {
+        
+        // verify the required parameter 'platform' is set
+        if (platform == null) {
+            throw new ApiException("Missing the required parameter 'platform' when calling createListingAdCampaignListing(Async)");
+        }
+        
+        // verify the required parameter 'campaignId' is set
+        if (campaignId == null) {
+            throw new ApiException("Missing the required parameter 'campaignId' when calling createListingAdCampaignListing(Async)");
+        }
+        
+
+        okhttp3.Call localVarCall = createListingAdCampaignListingCall(platform, campaignId, _callback);
+        return localVarCall;
+
+    }
+
+    /**
+     * Promote listings in a marketplace campaign. platformListingIds are Crossly platform-listing ids on that marketplace; ratePct sets the ad rate (eBay General). One result per listing.
+     * 
+     * @param platform  (required)
+     * @param campaignId  (required)
+     * @return CreateListingAdCampaignListingResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public CreateListingAdCampaignListingResponse createListingAdCampaignListing(String platform, String campaignId) throws ApiException {
+        ApiResponse<CreateListingAdCampaignListingResponse> localVarResp = createListingAdCampaignListingWithHttpInfo(platform, campaignId);
+        return localVarResp.getData();
+    }
+
+    /**
+     * Promote listings in a marketplace campaign. platformListingIds are Crossly platform-listing ids on that marketplace; ratePct sets the ad rate (eBay General). One result per listing.
+     * 
+     * @param platform  (required)
+     * @param campaignId  (required)
+     * @return ApiResponse&lt;CreateListingAdCampaignListingResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<CreateListingAdCampaignListingResponse> createListingAdCampaignListingWithHttpInfo(String platform, String campaignId) throws ApiException {
+        okhttp3.Call localVarCall = createListingAdCampaignListingValidateBeforeCall(platform, campaignId, null);
+        Type localVarReturnType = new TypeToken<CreateListingAdCampaignListingResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Promote listings in a marketplace campaign. platformListingIds are Crossly platform-listing ids on that marketplace; ratePct sets the ad rate (eBay General). One result per listing. (asynchronously)
+     * 
+     * @param platform  (required)
+     * @param campaignId  (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call createListingAdCampaignListingAsync(String platform, String campaignId, final ApiCallback<CreateListingAdCampaignListingResponse> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = createListingAdCampaignListingValidateBeforeCall(platform, campaignId, _callback);
+        Type localVarReturnType = new TypeToken<CreateListingAdCampaignListingResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for createListingAdCampaignListingRemove
+     * @param platform  (required)
+     * @param campaignId  (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call createListingAdCampaignListingRemoveCall(String platform, String campaignId, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/v1/listing-ads/{platform}/campaigns/{campaignId}/listings/remove"
+            .replaceAll("\\{" + "platform" + "\\}", localVarApiClient.escapeString(platform.toString()))
+            .replaceAll("\\{" + "campaignId" + "\\}", localVarApiClient.escapeString(campaignId.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "PersonalAccessToken" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call createListingAdCampaignListingRemoveValidateBeforeCall(String platform, String campaignId, final ApiCallback _callback) throws ApiException {
+        
+        // verify the required parameter 'platform' is set
+        if (platform == null) {
+            throw new ApiException("Missing the required parameter 'platform' when calling createListingAdCampaignListingRemove(Async)");
+        }
+        
+        // verify the required parameter 'campaignId' is set
+        if (campaignId == null) {
+            throw new ApiException("Missing the required parameter 'campaignId' when calling createListingAdCampaignListingRemove(Async)");
+        }
+        
+
+        okhttp3.Call localVarCall = createListingAdCampaignListingRemoveCall(platform, campaignId, _callback);
+        return localVarCall;
+
+    }
+
+    /**
+     * Stop promoting listings in a marketplace campaign. One result per listing.
+     * 
+     * @param platform  (required)
+     * @param campaignId  (required)
+     * @return CreateListingAdCampaignListingResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public CreateListingAdCampaignListingResponse createListingAdCampaignListingRemove(String platform, String campaignId) throws ApiException {
+        ApiResponse<CreateListingAdCampaignListingResponse> localVarResp = createListingAdCampaignListingRemoveWithHttpInfo(platform, campaignId);
+        return localVarResp.getData();
+    }
+
+    /**
+     * Stop promoting listings in a marketplace campaign. One result per listing.
+     * 
+     * @param platform  (required)
+     * @param campaignId  (required)
+     * @return ApiResponse&lt;CreateListingAdCampaignListingResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<CreateListingAdCampaignListingResponse> createListingAdCampaignListingRemoveWithHttpInfo(String platform, String campaignId) throws ApiException {
+        okhttp3.Call localVarCall = createListingAdCampaignListingRemoveValidateBeforeCall(platform, campaignId, null);
+        Type localVarReturnType = new TypeToken<CreateListingAdCampaignListingResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Stop promoting listings in a marketplace campaign. One result per listing. (asynchronously)
+     * 
+     * @param platform  (required)
+     * @param campaignId  (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call createListingAdCampaignListingRemoveAsync(String platform, String campaignId, final ApiCallback<CreateListingAdCampaignListingResponse> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = createListingAdCampaignListingRemoveValidateBeforeCall(platform, campaignId, _callback);
+        Type localVarReturnType = new TypeToken<CreateListingAdCampaignListingResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for createSponsoredAdBillingTopupLink
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call createSponsoredAdBillingTopupLinkCall(final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/v1/sponsored-ads/billing/topup-link";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "PersonalAccessToken" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call createSponsoredAdBillingTopupLinkValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        
+
+        okhttp3.Call localVarCall = createSponsoredAdBillingTopupLinkCall(_callback);
+        return localVarCall;
+
+    }
+
+    /**
+     * A Stripe Checkout link that adds amountCents ($5–$10,000) to the ad balance when the seller pays it. Nothing is charged until they do. Use an Idempotency-Key to get the same link back on a retry.
+     * 
+     * @return CreateSponsoredAdBillingTopupLinkResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public CreateSponsoredAdBillingTopupLinkResponse createSponsoredAdBillingTopupLink() throws ApiException {
+        ApiResponse<CreateSponsoredAdBillingTopupLinkResponse> localVarResp = createSponsoredAdBillingTopupLinkWithHttpInfo();
+        return localVarResp.getData();
+    }
+
+    /**
+     * A Stripe Checkout link that adds amountCents ($5–$10,000) to the ad balance when the seller pays it. Nothing is charged until they do. Use an Idempotency-Key to get the same link back on a retry.
+     * 
+     * @return ApiResponse&lt;CreateSponsoredAdBillingTopupLinkResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<CreateSponsoredAdBillingTopupLinkResponse> createSponsoredAdBillingTopupLinkWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = createSponsoredAdBillingTopupLinkValidateBeforeCall(null);
+        Type localVarReturnType = new TypeToken<CreateSponsoredAdBillingTopupLinkResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * A Stripe Checkout link that adds amountCents ($5–$10,000) to the ad balance when the seller pays it. Nothing is charged until they do. Use an Idempotency-Key to get the same link back on a retry. (asynchronously)
+     * 
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call createSponsoredAdBillingTopupLinkAsync(final ApiCallback<CreateSponsoredAdBillingTopupLinkResponse> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = createSponsoredAdBillingTopupLinkValidateBeforeCall(_callback);
+        Type localVarReturnType = new TypeToken<CreateSponsoredAdBillingTopupLinkResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for createSponsoredAdBoostRemove
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call createSponsoredAdBoostRemoveCall(final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/v1/sponsored-ads/boosts/remove";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "PersonalAccessToken" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call createSponsoredAdBoostRemoveValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        
+
+        okhttp3.Call localVarCall = createSponsoredAdBoostRemoveCall(_callback);
+        return localVarCall;
+
+    }
+
+    /**
+     * Stop boosting listings in bulk.
+     * 
+     * @return CreateSponsoredAdBoostRemoveResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public CreateSponsoredAdBoostRemoveResponse createSponsoredAdBoostRemove() throws ApiException {
+        ApiResponse<CreateSponsoredAdBoostRemoveResponse> localVarResp = createSponsoredAdBoostRemoveWithHttpInfo();
+        return localVarResp.getData();
+    }
+
+    /**
+     * Stop boosting listings in bulk.
+     * 
+     * @return ApiResponse&lt;CreateSponsoredAdBoostRemoveResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<CreateSponsoredAdBoostRemoveResponse> createSponsoredAdBoostRemoveWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = createSponsoredAdBoostRemoveValidateBeforeCall(null);
+        Type localVarReturnType = new TypeToken<CreateSponsoredAdBoostRemoveResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Stop boosting listings in bulk. (asynchronously)
+     * 
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call createSponsoredAdBoostRemoveAsync(final ApiCallback<CreateSponsoredAdBoostRemoveResponse> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = createSponsoredAdBoostRemoveValidateBeforeCall(_callback);
+        Type localVarReturnType = new TypeToken<CreateSponsoredAdBoostRemoveResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for createSponsoredAdCampaign
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call createSponsoredAdCampaignCall(final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/v1/sponsored-ads/campaigns";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "PersonalAccessToken" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call createSponsoredAdCampaignValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        
+
+        okhttp3.Call localVarCall = createSponsoredAdCampaignCall(_callback);
+        return localVarCall;
+
+    }
+
+    /**
+     * Create a Sponsored Listings campaign: name, dailyBudgetCents (≥100), optional totalBudgetCents, defaultBidCents (5–10000; the max bid under bidStrategy \&quot;auto\&quot;), placements (search, browse, product_page, home_rail, storefront, worlds_surface), goal (sales | visits), optional targetCategories / targetRegions (ISO countries) / targetDevices (mobile, desktop, app), optional startsAt/endsAt, listings [{platformListingId, bidCents?, boostBps? (100–2000, pay-on-sale Boost; null clears)}], keywords [{keyword, matchType broad|phrase|exact, negative?, bidCents?}], worldTargets [{kind showroom|convention, id, bidCents?, status?}] (your showroom or a convention you host, promoted in the Crossly World directory; at least one listing or world target), status active|draft. A catalog boost: targetType \&quot;wholesale_catalog\&quot; + targetCatalogId (your catalog), no listings, keywords or world targets; it ranks Sponsored in the wholesale directory. bidStrategy defaults to your account default. Clicks are charged from your ad funds (ad balance and/or CBX, ad credit first); with none it waits as out_of_budget.
+     * 
+     * @return SponsoredAdCampaignResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public SponsoredAdCampaignResponse createSponsoredAdCampaign() throws ApiException {
+        ApiResponse<SponsoredAdCampaignResponse> localVarResp = createSponsoredAdCampaignWithHttpInfo();
+        return localVarResp.getData();
+    }
+
+    /**
+     * Create a Sponsored Listings campaign: name, dailyBudgetCents (≥100), optional totalBudgetCents, defaultBidCents (5–10000; the max bid under bidStrategy \&quot;auto\&quot;), placements (search, browse, product_page, home_rail, storefront, worlds_surface), goal (sales | visits), optional targetCategories / targetRegions (ISO countries) / targetDevices (mobile, desktop, app), optional startsAt/endsAt, listings [{platformListingId, bidCents?, boostBps? (100–2000, pay-on-sale Boost; null clears)}], keywords [{keyword, matchType broad|phrase|exact, negative?, bidCents?}], worldTargets [{kind showroom|convention, id, bidCents?, status?}] (your showroom or a convention you host, promoted in the Crossly World directory; at least one listing or world target), status active|draft. A catalog boost: targetType \&quot;wholesale_catalog\&quot; + targetCatalogId (your catalog), no listings, keywords or world targets; it ranks Sponsored in the wholesale directory. bidStrategy defaults to your account default. Clicks are charged from your ad funds (ad balance and/or CBX, ad credit first); with none it waits as out_of_budget.
+     * 
+     * @return ApiResponse&lt;SponsoredAdCampaignResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<SponsoredAdCampaignResponse> createSponsoredAdCampaignWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = createSponsoredAdCampaignValidateBeforeCall(null);
+        Type localVarReturnType = new TypeToken<SponsoredAdCampaignResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Create a Sponsored Listings campaign: name, dailyBudgetCents (≥100), optional totalBudgetCents, defaultBidCents (5–10000; the max bid under bidStrategy \&quot;auto\&quot;), placements (search, browse, product_page, home_rail, storefront, worlds_surface), goal (sales | visits), optional targetCategories / targetRegions (ISO countries) / targetDevices (mobile, desktop, app), optional startsAt/endsAt, listings [{platformListingId, bidCents?, boostBps? (100–2000, pay-on-sale Boost; null clears)}], keywords [{keyword, matchType broad|phrase|exact, negative?, bidCents?}], worldTargets [{kind showroom|convention, id, bidCents?, status?}] (your showroom or a convention you host, promoted in the Crossly World directory; at least one listing or world target), status active|draft. A catalog boost: targetType \&quot;wholesale_catalog\&quot; + targetCatalogId (your catalog), no listings, keywords or world targets; it ranks Sponsored in the wholesale directory. bidStrategy defaults to your account default. Clicks are charged from your ad funds (ad balance and/or CBX, ad credit first); with none it waits as out_of_budget. (asynchronously)
+     * 
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call createSponsoredAdCampaignAsync(final ApiCallback<SponsoredAdCampaignResponse> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = createSponsoredAdCampaignValidateBeforeCall(_callback);
+        Type localVarReturnType = new TypeToken<SponsoredAdCampaignResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for createSponsoredAdCampaignDuplicate
+     * @param id  (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call createSponsoredAdCampaignDuplicateCall(String id, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/v1/sponsored-ads/campaigns/{id}/duplicate"
+            .replaceAll("\\{" + "id" + "\\}", localVarApiClient.escapeString(id.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "PersonalAccessToken" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call createSponsoredAdCampaignDuplicateValidateBeforeCall(String id, final ApiCallback _callback) throws ApiException {
+        
+        // verify the required parameter 'id' is set
+        if (id == null) {
+            throw new ApiException("Missing the required parameter 'id' when calling createSponsoredAdCampaignDuplicate(Async)");
+        }
+        
+
+        okhttp3.Call localVarCall = createSponsoredAdCampaignDuplicateCall(id, _callback);
+        return localVarCall;
+
+    }
+
+    /**
+     * Copy a campaign (settings, listings, keywords) as a new draft.
+     * 
+     * @param id  (required)
+     * @return SponsoredAdCampaignResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public SponsoredAdCampaignResponse createSponsoredAdCampaignDuplicate(String id) throws ApiException {
+        ApiResponse<SponsoredAdCampaignResponse> localVarResp = createSponsoredAdCampaignDuplicateWithHttpInfo(id);
+        return localVarResp.getData();
+    }
+
+    /**
+     * Copy a campaign (settings, listings, keywords) as a new draft.
+     * 
+     * @param id  (required)
+     * @return ApiResponse&lt;SponsoredAdCampaignResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<SponsoredAdCampaignResponse> createSponsoredAdCampaignDuplicateWithHttpInfo(String id) throws ApiException {
+        okhttp3.Call localVarCall = createSponsoredAdCampaignDuplicateValidateBeforeCall(id, null);
+        Type localVarReturnType = new TypeToken<SponsoredAdCampaignResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Copy a campaign (settings, listings, keywords) as a new draft. (asynchronously)
+     * 
+     * @param id  (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call createSponsoredAdCampaignDuplicateAsync(String id, final ApiCallback<SponsoredAdCampaignResponse> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = createSponsoredAdCampaignDuplicateValidateBeforeCall(id, _callback);
+        Type localVarReturnType = new TypeToken<SponsoredAdCampaignResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for createSponsoredAdCampaignStatus
+     * @param id  (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call createSponsoredAdCampaignStatusCall(String id, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/v1/sponsored-ads/campaigns/{id}/status"
+            .replaceAll("\\{" + "id" + "\\}", localVarApiClient.escapeString(id.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "PersonalAccessToken" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call createSponsoredAdCampaignStatusValidateBeforeCall(String id, final ApiCallback _callback) throws ApiException {
+        
+        // verify the required parameter 'id' is set
+        if (id == null) {
+            throw new ApiException("Missing the required parameter 'id' when calling createSponsoredAdCampaignStatus(Async)");
+        }
+        
+
+        okhttp3.Call localVarCall = createSponsoredAdCampaignStatusCall(id, _callback);
+        return localVarCall;
+
+    }
+
+    /**
+     * Set a campaign active (launch/resume), paused, or ended (final). Resuming with no ad funds to pay for clicks leaves it out_of_budget until you top up.
+     * 
+     * @param id  (required)
+     * @return SponsoredAdCampaignResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public SponsoredAdCampaignResponse createSponsoredAdCampaignStatus(String id) throws ApiException {
+        ApiResponse<SponsoredAdCampaignResponse> localVarResp = createSponsoredAdCampaignStatusWithHttpInfo(id);
+        return localVarResp.getData();
+    }
+
+    /**
+     * Set a campaign active (launch/resume), paused, or ended (final). Resuming with no ad funds to pay for clicks leaves it out_of_budget until you top up.
+     * 
+     * @param id  (required)
+     * @return ApiResponse&lt;SponsoredAdCampaignResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<SponsoredAdCampaignResponse> createSponsoredAdCampaignStatusWithHttpInfo(String id) throws ApiException {
+        okhttp3.Call localVarCall = createSponsoredAdCampaignStatusValidateBeforeCall(id, null);
+        Type localVarReturnType = new TypeToken<SponsoredAdCampaignResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Set a campaign active (launch/resume), paused, or ended (final). Resuming with no ad funds to pay for clicks leaves it out_of_budget until you top up. (asynchronously)
+     * 
+     * @param id  (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call createSponsoredAdCampaignStatusAsync(String id, final ApiCallback<SponsoredAdCampaignResponse> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = createSponsoredAdCampaignStatusValidateBeforeCall(id, _callback);
+        Type localVarReturnType = new TypeToken<SponsoredAdCampaignResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -789,6 +2159,2338 @@ public class AdsApi {
         return localVarCall;
     }
     /**
+     * Build call for getListingAdListing
+     * @param listingId  (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getListingAdListingCall(String listingId, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/v1/listing-ads/listings/{listingId}"
+            .replaceAll("\\{" + "listingId" + "\\}", localVarApiClient.escapeString(listingId.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "PersonalAccessToken" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call getListingAdListingValidateBeforeCall(String listingId, final ApiCallback _callback) throws ApiException {
+        
+        // verify the required parameter 'listingId' is set
+        if (listingId == null) {
+            throw new ApiException("Missing the required parameter 'listingId' when calling getListingAdListing(Async)");
+        }
+        
+
+        okhttp3.Call localVarCall = getListingAdListingCall(listingId, _callback);
+        return localVarCall;
+
+    }
+
+    /**
+     * Every promotion of one listing: its Crossly campaigns and Boost, and each marketplace ad with status, campaign, rate and last sync.
+     * 
+     * @param listingId  (required)
+     * @return GetListingAdListingResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public GetListingAdListingResponse getListingAdListing(String listingId) throws ApiException {
+        ApiResponse<GetListingAdListingResponse> localVarResp = getListingAdListingWithHttpInfo(listingId);
+        return localVarResp.getData();
+    }
+
+    /**
+     * Every promotion of one listing: its Crossly campaigns and Boost, and each marketplace ad with status, campaign, rate and last sync.
+     * 
+     * @param listingId  (required)
+     * @return ApiResponse&lt;GetListingAdListingResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<GetListingAdListingResponse> getListingAdListingWithHttpInfo(String listingId) throws ApiException {
+        okhttp3.Call localVarCall = getListingAdListingValidateBeforeCall(listingId, null);
+        Type localVarReturnType = new TypeToken<GetListingAdListingResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Every promotion of one listing: its Crossly campaigns and Boost, and each marketplace ad with status, campaign, rate and last sync. (asynchronously)
+     * 
+     * @param listingId  (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getListingAdListingAsync(String listingId, final ApiCallback<GetListingAdListingResponse> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = getListingAdListingValidateBeforeCall(listingId, _callback);
+        Type localVarReturnType = new TypeToken<GetListingAdListingResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for getSponsoredAdBilling
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getSponsoredAdBillingCall(final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/v1/sponsored-ads/billing";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "PersonalAccessToken" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call getSponsoredAdBillingValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        
+
+        okhttp3.Call localVarCall = getSponsoredAdBillingCall(_callback);
+        return localVarCall;
+
+    }
+
+    /**
+     * What pays for your ads: headroom across the billing rails (ad balance and/or CBX), unbilled click spend, settlement charges, daily spend, Boost fees and CBX ad-credit grants; funds is the full funds summary (same as /v1/sponsored-ads/funds). refresh&#x3D;true re-reads the balance.
+     * 
+     * @return GetSponsoredAdBillingResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public GetSponsoredAdBillingResponse getSponsoredAdBilling() throws ApiException {
+        ApiResponse<GetSponsoredAdBillingResponse> localVarResp = getSponsoredAdBillingWithHttpInfo();
+        return localVarResp.getData();
+    }
+
+    /**
+     * What pays for your ads: headroom across the billing rails (ad balance and/or CBX), unbilled click spend, settlement charges, daily spend, Boost fees and CBX ad-credit grants; funds is the full funds summary (same as /v1/sponsored-ads/funds). refresh&#x3D;true re-reads the balance.
+     * 
+     * @return ApiResponse&lt;GetSponsoredAdBillingResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<GetSponsoredAdBillingResponse> getSponsoredAdBillingWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = getSponsoredAdBillingValidateBeforeCall(null);
+        Type localVarReturnType = new TypeToken<GetSponsoredAdBillingResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * What pays for your ads: headroom across the billing rails (ad balance and/or CBX), unbilled click spend, settlement charges, daily spend, Boost fees and CBX ad-credit grants; funds is the full funds summary (same as /v1/sponsored-ads/funds). refresh&#x3D;true re-reads the balance. (asynchronously)
+     * 
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getSponsoredAdBillingAsync(final ApiCallback<GetSponsoredAdBillingResponse> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = getSponsoredAdBillingValidateBeforeCall(_callback);
+        Type localVarReturnType = new TypeToken<GetSponsoredAdBillingResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for getSponsoredAdBillingStatement
+     * @param month  (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getSponsoredAdBillingStatementCall(String month, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/v1/sponsored-ads/billing/statements/{month}"
+            .replaceAll("\\{" + "month" + "\\}", localVarApiClient.escapeString(month.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "PersonalAccessToken" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call getSponsoredAdBillingStatementValidateBeforeCall(String month, final ApiCallback _callback) throws ApiException {
+        
+        // verify the required parameter 'month' is set
+        if (month == null) {
+            throw new ApiException("Missing the required parameter 'month' when calling getSponsoredAdBillingStatement(Async)");
+        }
+        
+
+        okhttp3.Call localVarCall = getSponsoredAdBillingStatementCall(month, _callback);
+        return localVarCall;
+
+    }
+
+    /**
+     * One month&#39;s ads statement: opening and closing ad balance, top-ups, click spend by campaign, how clicks were paid, credits, refunds and Boost fees.
+     * 
+     * @param month  (required)
+     * @return GetSponsoredAdBillingStatementResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public GetSponsoredAdBillingStatementResponse getSponsoredAdBillingStatement(String month) throws ApiException {
+        ApiResponse<GetSponsoredAdBillingStatementResponse> localVarResp = getSponsoredAdBillingStatementWithHttpInfo(month);
+        return localVarResp.getData();
+    }
+
+    /**
+     * One month&#39;s ads statement: opening and closing ad balance, top-ups, click spend by campaign, how clicks were paid, credits, refunds and Boost fees.
+     * 
+     * @param month  (required)
+     * @return ApiResponse&lt;GetSponsoredAdBillingStatementResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<GetSponsoredAdBillingStatementResponse> getSponsoredAdBillingStatementWithHttpInfo(String month) throws ApiException {
+        okhttp3.Call localVarCall = getSponsoredAdBillingStatementValidateBeforeCall(month, null);
+        Type localVarReturnType = new TypeToken<GetSponsoredAdBillingStatementResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * One month&#39;s ads statement: opening and closing ad balance, top-ups, click spend by campaign, how clicks were paid, credits, refunds and Boost fees. (asynchronously)
+     * 
+     * @param month  (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getSponsoredAdBillingStatementAsync(String month, final ApiCallback<GetSponsoredAdBillingStatementResponse> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = getSponsoredAdBillingStatementValidateBeforeCall(month, _callback);
+        Type localVarReturnType = new TypeToken<GetSponsoredAdBillingStatementResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for getSponsoredAdBillingStatementPdf
+     * @param month  (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> A PDF document. </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getSponsoredAdBillingStatementPdfCall(String month, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/v1/sponsored-ads/billing/statements/{month}/pdf"
+            .replaceAll("\\{" + "month" + "\\}", localVarApiClient.escapeString(month.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/pdf", "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "PersonalAccessToken" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call getSponsoredAdBillingStatementPdfValidateBeforeCall(String month, final ApiCallback _callback) throws ApiException {
+        
+        // verify the required parameter 'month' is set
+        if (month == null) {
+            throw new ApiException("Missing the required parameter 'month' when calling getSponsoredAdBillingStatementPdf(Async)");
+        }
+        
+
+        okhttp3.Call localVarCall = getSponsoredAdBillingStatementPdfCall(month, _callback);
+        return localVarCall;
+
+    }
+
+    /**
+     * One month&#39;s ads statement as a PDF.
+     * 
+     * @param month  (required)
+     * @return File
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> A PDF document. </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public File getSponsoredAdBillingStatementPdf(String month) throws ApiException {
+        ApiResponse<File> localVarResp = getSponsoredAdBillingStatementPdfWithHttpInfo(month);
+        return localVarResp.getData();
+    }
+
+    /**
+     * One month&#39;s ads statement as a PDF.
+     * 
+     * @param month  (required)
+     * @return ApiResponse&lt;File&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> A PDF document. </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<File> getSponsoredAdBillingStatementPdfWithHttpInfo(String month) throws ApiException {
+        okhttp3.Call localVarCall = getSponsoredAdBillingStatementPdfValidateBeforeCall(month, null);
+        Type localVarReturnType = new TypeToken<File>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * One month&#39;s ads statement as a PDF. (asynchronously)
+     * 
+     * @param month  (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> A PDF document. </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getSponsoredAdBillingStatementPdfAsync(String month, final ApiCallback<File> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = getSponsoredAdBillingStatementPdfValidateBeforeCall(month, _callback);
+        Type localVarReturnType = new TypeToken<File>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for getSponsoredAdBillingTopupReceipt
+     * @param id  (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> A PDF document. </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getSponsoredAdBillingTopupReceiptCall(String id, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/v1/sponsored-ads/billing/topups/{id}/receipt"
+            .replaceAll("\\{" + "id" + "\\}", localVarApiClient.escapeString(id.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/pdf", "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "PersonalAccessToken" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call getSponsoredAdBillingTopupReceiptValidateBeforeCall(String id, final ApiCallback _callback) throws ApiException {
+        
+        // verify the required parameter 'id' is set
+        if (id == null) {
+            throw new ApiException("Missing the required parameter 'id' when calling getSponsoredAdBillingTopupReceipt(Async)");
+        }
+        
+
+        okhttp3.Call localVarCall = getSponsoredAdBillingTopupReceiptCall(id, _callback);
+        return localVarCall;
+
+    }
+
+    /**
+     * One ad balance top-up&#39;s receipt as a PDF (each top-up in the billing history carries its id and receipt number).
+     * 
+     * @param id  (required)
+     * @return File
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> A PDF document. </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public File getSponsoredAdBillingTopupReceipt(String id) throws ApiException {
+        ApiResponse<File> localVarResp = getSponsoredAdBillingTopupReceiptWithHttpInfo(id);
+        return localVarResp.getData();
+    }
+
+    /**
+     * One ad balance top-up&#39;s receipt as a PDF (each top-up in the billing history carries its id and receipt number).
+     * 
+     * @param id  (required)
+     * @return ApiResponse&lt;File&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> A PDF document. </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<File> getSponsoredAdBillingTopupReceiptWithHttpInfo(String id) throws ApiException {
+        okhttp3.Call localVarCall = getSponsoredAdBillingTopupReceiptValidateBeforeCall(id, null);
+        Type localVarReturnType = new TypeToken<File>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * One ad balance top-up&#39;s receipt as a PDF (each top-up in the billing history carries its id and receipt number). (asynchronously)
+     * 
+     * @param id  (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> A PDF document. </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getSponsoredAdBillingTopupReceiptAsync(String id, final ApiCallback<File> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = getSponsoredAdBillingTopupReceiptValidateBeforeCall(id, _callback);
+        Type localVarReturnType = new TypeToken<File>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for getSponsoredAdCampaign
+     * @param id  (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getSponsoredAdCampaignCall(String id, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/v1/sponsored-ads/campaigns/{id}"
+            .replaceAll("\\{" + "id" + "\\}", localVarApiClient.escapeString(id.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "PersonalAccessToken" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call getSponsoredAdCampaignValidateBeforeCall(String id, final ApiCallback _callback) throws ApiException {
+        
+        // verify the required parameter 'id' is set
+        if (id == null) {
+            throw new ApiException("Missing the required parameter 'id' when calling getSponsoredAdCampaign(Async)");
+        }
+        
+
+        okhttp3.Call localVarCall = getSponsoredAdCampaignCall(id, _callback);
+        return localVarCall;
+
+    }
+
+    /**
+     * One campaign: settings, its listings (bid, suggested bid, live, per-listing stats) and keywords. A catalog boost (targetType wholesale_catalog) has &#x60;catalogs&#x60;: per boosted catalog impressions, clicks, spend, attributed trade orders and revenue, CTR and ROAS.
+     * 
+     * @param id  (required)
+     * @return SponsoredAdCampaignResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public SponsoredAdCampaignResponse getSponsoredAdCampaign(String id) throws ApiException {
+        ApiResponse<SponsoredAdCampaignResponse> localVarResp = getSponsoredAdCampaignWithHttpInfo(id);
+        return localVarResp.getData();
+    }
+
+    /**
+     * One campaign: settings, its listings (bid, suggested bid, live, per-listing stats) and keywords. A catalog boost (targetType wholesale_catalog) has &#x60;catalogs&#x60;: per boosted catalog impressions, clicks, spend, attributed trade orders and revenue, CTR and ROAS.
+     * 
+     * @param id  (required)
+     * @return ApiResponse&lt;SponsoredAdCampaignResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<SponsoredAdCampaignResponse> getSponsoredAdCampaignWithHttpInfo(String id) throws ApiException {
+        okhttp3.Call localVarCall = getSponsoredAdCampaignValidateBeforeCall(id, null);
+        Type localVarReturnType = new TypeToken<SponsoredAdCampaignResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * One campaign: settings, its listings (bid, suggested bid, live, per-listing stats) and keywords. A catalog boost (targetType wholesale_catalog) has &#x60;catalogs&#x60;: per boosted catalog impressions, clicks, spend, attributed trade orders and revenue, CTR and ROAS. (asynchronously)
+     * 
+     * @param id  (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getSponsoredAdCampaignAsync(String id, final ApiCallback<SponsoredAdCampaignResponse> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = getSponsoredAdCampaignValidateBeforeCall(id, _callback);
+        Type localVarReturnType = new TypeToken<SponsoredAdCampaignResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for getSponsoredAdFund
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getSponsoredAdFundCall(final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/v1/sponsored-ads/funds";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "PersonalAccessToken" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call getSponsoredAdFundValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        
+
+        okhttp3.Call localVarCall = getSponsoredAdFundCall(_callback);
+        return localVarCall;
+
+    }
+
+    /**
+     * What can pay for clicks now: the billing rails in effect (ad balance and/or CBX), the ad balance and ad credit, CBX headroom, unbilled clicks, available cents, auto top-up, the saved payment method and the refundable balance. refresh&#x3D;true re-reads CBX.
+     * 
+     * @return GetSponsoredAdFundResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public GetSponsoredAdFundResponse getSponsoredAdFund() throws ApiException {
+        ApiResponse<GetSponsoredAdFundResponse> localVarResp = getSponsoredAdFundWithHttpInfo();
+        return localVarResp.getData();
+    }
+
+    /**
+     * What can pay for clicks now: the billing rails in effect (ad balance and/or CBX), the ad balance and ad credit, CBX headroom, unbilled clicks, available cents, auto top-up, the saved payment method and the refundable balance. refresh&#x3D;true re-reads CBX.
+     * 
+     * @return ApiResponse&lt;GetSponsoredAdFundResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<GetSponsoredAdFundResponse> getSponsoredAdFundWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = getSponsoredAdFundValidateBeforeCall(null);
+        Type localVarReturnType = new TypeToken<GetSponsoredAdFundResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * What can pay for clicks now: the billing rails in effect (ad balance and/or CBX), the ad balance and ad credit, CBX headroom, unbilled clicks, available cents, auto top-up, the saved payment method and the refundable balance. refresh&#x3D;true re-reads CBX. (asynchronously)
+     * 
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getSponsoredAdFundAsync(final ApiCallback<GetSponsoredAdFundResponse> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = getSponsoredAdFundValidateBeforeCall(_callback);
+        Type localVarReturnType = new TypeToken<GetSponsoredAdFundResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for getSponsoredAdReport
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getSponsoredAdReportCall(final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/v1/sponsored-ads/report";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "PersonalAccessToken" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call getSponsoredAdReportValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        
+
+        okhttp3.Call localVarCall = getSponsoredAdReportCall(_callback);
+        return localVarCall;
+
+    }
+
+    /**
+     * Sponsored report for a range: totals (spend, impressions, clicks, CTR, average CPC, attributed orders and revenue, ROAS), a zero-filled daily series, per-campaign rows (targetType listings | wholesale_catalog) and &#x60;catalogs&#x60;, one row per boosted catalog. Listing orders are Crossly purchases of the advertised listing within 7 days of a click by the same buyer; catalog orders are trade orders with that seller within 7 days of a catalog click by the same buyer. Catalog impressions count once per viewer per day.
+     * 
+     * @return GetSponsoredAdReportResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public GetSponsoredAdReportResponse getSponsoredAdReport() throws ApiException {
+        ApiResponse<GetSponsoredAdReportResponse> localVarResp = getSponsoredAdReportWithHttpInfo();
+        return localVarResp.getData();
+    }
+
+    /**
+     * Sponsored report for a range: totals (spend, impressions, clicks, CTR, average CPC, attributed orders and revenue, ROAS), a zero-filled daily series, per-campaign rows (targetType listings | wholesale_catalog) and &#x60;catalogs&#x60;, one row per boosted catalog. Listing orders are Crossly purchases of the advertised listing within 7 days of a click by the same buyer; catalog orders are trade orders with that seller within 7 days of a catalog click by the same buyer. Catalog impressions count once per viewer per day.
+     * 
+     * @return ApiResponse&lt;GetSponsoredAdReportResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<GetSponsoredAdReportResponse> getSponsoredAdReportWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = getSponsoredAdReportValidateBeforeCall(null);
+        Type localVarReturnType = new TypeToken<GetSponsoredAdReportResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Sponsored report for a range: totals (spend, impressions, clicks, CTR, average CPC, attributed orders and revenue, ROAS), a zero-filled daily series, per-campaign rows (targetType listings | wholesale_catalog) and &#x60;catalogs&#x60;, one row per boosted catalog. Listing orders are Crossly purchases of the advertised listing within 7 days of a click by the same buyer; catalog orders are trade orders with that seller within 7 days of a catalog click by the same buyer. Catalog impressions count once per viewer per day. (asynchronously)
+     * 
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getSponsoredAdReportAsync(final ApiCallback<GetSponsoredAdReportResponse> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = getSponsoredAdReportValidateBeforeCall(_callback);
+        Type localVarReturnType = new TypeToken<GetSponsoredAdReportResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for getSponsoredAdSetting
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getSponsoredAdSettingCall(final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/v1/sponsored-ads/settings";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "PersonalAccessToken" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call getSponsoredAdSettingValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        
+
+        okhttp3.Call localVarCall = getSponsoredAdSettingCall(_callback);
+        return localVarCall;
+
+    }
+
+    /**
+     * Ads quick settings: adsPaused, accountDailyCapCents and spentTodayCents, defaultBidStrategy, autoTopup.
+     * 
+     * @return SponsoredAdResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public SponsoredAdResponse getSponsoredAdSetting() throws ApiException {
+        ApiResponse<SponsoredAdResponse> localVarResp = getSponsoredAdSettingWithHttpInfo();
+        return localVarResp.getData();
+    }
+
+    /**
+     * Ads quick settings: adsPaused, accountDailyCapCents and spentTodayCents, defaultBidStrategy, autoTopup.
+     * 
+     * @return ApiResponse&lt;SponsoredAdResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<SponsoredAdResponse> getSponsoredAdSettingWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = getSponsoredAdSettingValidateBeforeCall(null);
+        Type localVarReturnType = new TypeToken<SponsoredAdResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Ads quick settings: adsPaused, accountDailyCapCents and spentTodayCents, defaultBidStrategy, autoTopup. (asynchronously)
+     * 
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getSponsoredAdSettingAsync(final ApiCallback<SponsoredAdResponse> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = getSponsoredAdSettingValidateBeforeCall(_callback);
+        Type localVarReturnType = new TypeToken<SponsoredAdResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for listListingAdCampaigns
+     * @param platform  (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call listListingAdCampaignsCall(String platform, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/v1/listing-ads/{platform}/campaigns"
+            .replaceAll("\\{" + "platform" + "\\}", localVarApiClient.escapeString(platform.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "PersonalAccessToken" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call listListingAdCampaignsValidateBeforeCall(String platform, final ApiCallback _callback) throws ApiException {
+        
+        // verify the required parameter 'platform' is set
+        if (platform == null) {
+            throw new ApiException("Missing the required parameter 'platform' when calling listListingAdCampaigns(Async)");
+        }
+        
+
+        okhttp3.Call localVarCall = listListingAdCampaignsCall(platform, _callback);
+        return localVarCall;
+
+    }
+
+    /**
+     * Your ad campaigns on one marketplace (cached up to 15 minutes; refresh&#x3D;true asks the marketplace now).
+     * 
+     * @param platform  (required)
+     * @return ListListingAdCampaignsResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public ListListingAdCampaignsResponse listListingAdCampaigns(String platform) throws ApiException {
+        ApiResponse<ListListingAdCampaignsResponse> localVarResp = listListingAdCampaignsWithHttpInfo(platform);
+        return localVarResp.getData();
+    }
+
+    /**
+     * Your ad campaigns on one marketplace (cached up to 15 minutes; refresh&#x3D;true asks the marketplace now).
+     * 
+     * @param platform  (required)
+     * @return ApiResponse&lt;ListListingAdCampaignsResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<ListListingAdCampaignsResponse> listListingAdCampaignsWithHttpInfo(String platform) throws ApiException {
+        okhttp3.Call localVarCall = listListingAdCampaignsValidateBeforeCall(platform, null);
+        Type localVarReturnType = new TypeToken<ListListingAdCampaignsResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Your ad campaigns on one marketplace (cached up to 15 minutes; refresh&#x3D;true asks the marketplace now). (asynchronously)
+     * 
+     * @param platform  (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call listListingAdCampaignsAsync(String platform, final ApiCallback<ListListingAdCampaignsResponse> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = listListingAdCampaignsValidateBeforeCall(platform, _callback);
+        Type localVarReturnType = new TypeToken<ListListingAdCampaignsResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for listListingAdPlatforms
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call listListingAdPlatformsCall(final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/v1/listing-ads/platforms";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "PersonalAccessToken" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call listListingAdPlatformsValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        
+
+        okhttp3.Call localVarCall = listListingAdPlatformsCall(_callback);
+        return localVarCall;
+
+    }
+
+    /**
+     * The ads registry: each marketplace that sells promotion, its programs (kind, scope, campaign and listing fields), which verbs are wired / need a capture / are unsupported, and whether you are connected there.
+     * 
+     * @return ListListingAdPlatformsResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public ListListingAdPlatformsResponse listListingAdPlatforms() throws ApiException {
+        ApiResponse<ListListingAdPlatformsResponse> localVarResp = listListingAdPlatformsWithHttpInfo();
+        return localVarResp.getData();
+    }
+
+    /**
+     * The ads registry: each marketplace that sells promotion, its programs (kind, scope, campaign and listing fields), which verbs are wired / need a capture / are unsupported, and whether you are connected there.
+     * 
+     * @return ApiResponse&lt;ListListingAdPlatformsResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<ListListingAdPlatformsResponse> listListingAdPlatformsWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = listListingAdPlatformsValidateBeforeCall(null);
+        Type localVarReturnType = new TypeToken<ListListingAdPlatformsResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * The ads registry: each marketplace that sells promotion, its programs (kind, scope, campaign and listing fields), which verbs are wired / need a capture / are unsupported, and whether you are connected there. (asynchronously)
+     * 
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call listListingAdPlatformsAsync(final ApiCallback<ListListingAdPlatformsResponse> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = listListingAdPlatformsValidateBeforeCall(_callback);
+        Type localVarReturnType = new TypeToken<ListListingAdPlatformsResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for listSponsoredAdBillingHistory
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call listSponsoredAdBillingHistoryCall(final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/v1/sponsored-ads/billing/history";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "PersonalAccessToken" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call listSponsoredAdBillingHistoryValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        
+
+        okhttp3.Call localVarCall = listSponsoredAdBillingHistoryCall(_callback);
+        return localVarCall;
+
+    }
+
+    /**
+     * Billing history newest first: top-ups (status, receipt number), click charges (how each was paid: ad balance, credit, CBX, written off), credits, refunds and Boost fees. kind filters; before (ISO time) pages; limit ≤ 100.
+     * 
+     * @return ListSponsoredAdBillingHistoryResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public ListSponsoredAdBillingHistoryResponse listSponsoredAdBillingHistory() throws ApiException {
+        ApiResponse<ListSponsoredAdBillingHistoryResponse> localVarResp = listSponsoredAdBillingHistoryWithHttpInfo();
+        return localVarResp.getData();
+    }
+
+    /**
+     * Billing history newest first: top-ups (status, receipt number), click charges (how each was paid: ad balance, credit, CBX, written off), credits, refunds and Boost fees. kind filters; before (ISO time) pages; limit ≤ 100.
+     * 
+     * @return ApiResponse&lt;ListSponsoredAdBillingHistoryResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<ListSponsoredAdBillingHistoryResponse> listSponsoredAdBillingHistoryWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = listSponsoredAdBillingHistoryValidateBeforeCall(null);
+        Type localVarReturnType = new TypeToken<ListSponsoredAdBillingHistoryResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Billing history newest first: top-ups (status, receipt number), click charges (how each was paid: ad balance, credit, CBX, written off), credits, refunds and Boost fees. kind filters; before (ISO time) pages; limit ≤ 100. (asynchronously)
+     * 
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call listSponsoredAdBillingHistoryAsync(final ApiCallback<ListSponsoredAdBillingHistoryResponse> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = listSponsoredAdBillingHistoryValidateBeforeCall(_callback);
+        Type localVarReturnType = new TypeToken<ListSponsoredAdBillingHistoryResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for listSponsoredAdBillingStatements
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call listSponsoredAdBillingStatementsCall(final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/v1/sponsored-ads/billing/statements";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "PersonalAccessToken" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call listSponsoredAdBillingStatementsValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        
+
+        okhttp3.Call localVarCall = listSponsoredAdBillingStatementsCall(_callback);
+        return localVarCall;
+
+    }
+
+    /**
+     * Months (YYYY-MM) with any ad billing activity, newest first.
+     * 
+     * @return ListSponsoredAdBillingStatementsResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public ListSponsoredAdBillingStatementsResponse listSponsoredAdBillingStatements() throws ApiException {
+        ApiResponse<ListSponsoredAdBillingStatementsResponse> localVarResp = listSponsoredAdBillingStatementsWithHttpInfo();
+        return localVarResp.getData();
+    }
+
+    /**
+     * Months (YYYY-MM) with any ad billing activity, newest first.
+     * 
+     * @return ApiResponse&lt;ListSponsoredAdBillingStatementsResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<ListSponsoredAdBillingStatementsResponse> listSponsoredAdBillingStatementsWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = listSponsoredAdBillingStatementsValidateBeforeCall(null);
+        Type localVarReturnType = new TypeToken<ListSponsoredAdBillingStatementsResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Months (YYYY-MM) with any ad billing activity, newest first. (asynchronously)
+     * 
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call listSponsoredAdBillingStatementsAsync(final ApiCallback<ListSponsoredAdBillingStatementsResponse> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = listSponsoredAdBillingStatementsValidateBeforeCall(_callback);
+        Type localVarReturnType = new TypeToken<ListSponsoredAdBillingStatementsResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for listSponsoredAdBoosts
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call listSponsoredAdBoostsCall(final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/v1/sponsored-ads/boosts";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "PersonalAccessToken" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call listSponsoredAdBoostsValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        
+
+        okhttp3.Call localVarCall = listSponsoredAdBoostsCall(_callback);
+        return localVarCall;
+
+    }
+
+    /**
+     * Boosted (pay-on-sale) listings: the rate, sales and fees taken so far. A boost lifts organic ranking by up to 10% and costs its rate only when the listing sells on Crossly.
+     * 
+     * @return ListSponsoredAdBoostsResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public ListSponsoredAdBoostsResponse listSponsoredAdBoosts() throws ApiException {
+        ApiResponse<ListSponsoredAdBoostsResponse> localVarResp = listSponsoredAdBoostsWithHttpInfo();
+        return localVarResp.getData();
+    }
+
+    /**
+     * Boosted (pay-on-sale) listings: the rate, sales and fees taken so far. A boost lifts organic ranking by up to 10% and costs its rate only when the listing sells on Crossly.
+     * 
+     * @return ApiResponse&lt;ListSponsoredAdBoostsResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<ListSponsoredAdBoostsResponse> listSponsoredAdBoostsWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = listSponsoredAdBoostsValidateBeforeCall(null);
+        Type localVarReturnType = new TypeToken<ListSponsoredAdBoostsResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Boosted (pay-on-sale) listings: the rate, sales and fees taken so far. A boost lifts organic ranking by up to 10% and costs its rate only when the listing sells on Crossly. (asynchronously)
+     * 
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call listSponsoredAdBoostsAsync(final ApiCallback<ListSponsoredAdBoostsResponse> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = listSponsoredAdBoostsValidateBeforeCall(_callback);
+        Type localVarReturnType = new TypeToken<ListSponsoredAdBoostsResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for listSponsoredAdCampaigns
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call listSponsoredAdCampaignsCall(final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/v1/sponsored-ads/campaigns";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "PersonalAccessToken" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call listSponsoredAdCampaignsValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        
+
+        okhttp3.Call localVarCall = listSponsoredAdCampaignsCall(_callback);
+        return localVarCall;
+
+    }
+
+    /**
+     * Your Sponsored Listings campaigns with status, pacing (spent today, daily cap reached), budgets, bids, placements and stats for the range (from/to, YYYY-MM-DD; default last 30 days).
+     * 
+     * @return ListSponsoredAdCampaignsResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public ListSponsoredAdCampaignsResponse listSponsoredAdCampaigns() throws ApiException {
+        ApiResponse<ListSponsoredAdCampaignsResponse> localVarResp = listSponsoredAdCampaignsWithHttpInfo();
+        return localVarResp.getData();
+    }
+
+    /**
+     * Your Sponsored Listings campaigns with status, pacing (spent today, daily cap reached), budgets, bids, placements and stats for the range (from/to, YYYY-MM-DD; default last 30 days).
+     * 
+     * @return ApiResponse&lt;ListSponsoredAdCampaignsResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<ListSponsoredAdCampaignsResponse> listSponsoredAdCampaignsWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = listSponsoredAdCampaignsValidateBeforeCall(null);
+        Type localVarReturnType = new TypeToken<ListSponsoredAdCampaignsResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Your Sponsored Listings campaigns with status, pacing (spent today, daily cap reached), budgets, bids, placements and stats for the range (from/to, YYYY-MM-DD; default last 30 days). (asynchronously)
+     * 
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call listSponsoredAdCampaignsAsync(final ApiCallback<ListSponsoredAdCampaignsResponse> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = listSponsoredAdCampaignsValidateBeforeCall(_callback);
+        Type localVarReturnType = new TypeToken<ListSponsoredAdCampaignsResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for listSponsoredAdListings
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call listSponsoredAdListingsCall(final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/v1/sponsored-ads/listings";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "PersonalAccessToken" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call listSponsoredAdListingsValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        
+
+        okhttp3.Call localVarCall = listSponsoredAdListingsCall(_callback);
+        return localVarCall;
+
+    }
+
+    /**
+     * Per-listing ad performance across campaigns for a range, plus suggestions: live listings with views but few sales that are not sponsored yet, with a suggested bid.
+     * 
+     * @return ListSponsoredAdListingsResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public ListSponsoredAdListingsResponse listSponsoredAdListings() throws ApiException {
+        ApiResponse<ListSponsoredAdListingsResponse> localVarResp = listSponsoredAdListingsWithHttpInfo();
+        return localVarResp.getData();
+    }
+
+    /**
+     * Per-listing ad performance across campaigns for a range, plus suggestions: live listings with views but few sales that are not sponsored yet, with a suggested bid.
+     * 
+     * @return ApiResponse&lt;ListSponsoredAdListingsResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<ListSponsoredAdListingsResponse> listSponsoredAdListingsWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = listSponsoredAdListingsValidateBeforeCall(null);
+        Type localVarReturnType = new TypeToken<ListSponsoredAdListingsResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Per-listing ad performance across campaigns for a range, plus suggestions: live listings with views but few sales that are not sponsored yet, with a suggested bid. (asynchronously)
+     * 
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call listSponsoredAdListingsAsync(final ApiCallback<ListSponsoredAdListingsResponse> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = listSponsoredAdListingsValidateBeforeCall(_callback);
+        Type localVarReturnType = new TypeToken<ListSponsoredAdListingsResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
      * Build call for updateAdOffsite
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -927,6 +4629,908 @@ public class AdsApi {
 
         okhttp3.Call localVarCall = updateAdOffsiteValidateBeforeCall(_callback);
         Type localVarReturnType = new TypeToken<UpdateAdOffsiteResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for updateListingAdCampaign
+     * @param platform  (required)
+     * @param campaignId  (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call updateListingAdCampaignCall(String platform, String campaignId, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/v1/listing-ads/{platform}/campaigns/{campaignId}"
+            .replaceAll("\\{" + "platform" + "\\}", localVarApiClient.escapeString(platform.toString()))
+            .replaceAll("\\{" + "campaignId" + "\\}", localVarApiClient.escapeString(campaignId.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "PersonalAccessToken" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "PATCH", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call updateListingAdCampaignValidateBeforeCall(String platform, String campaignId, final ApiCallback _callback) throws ApiException {
+        
+        // verify the required parameter 'platform' is set
+        if (platform == null) {
+            throw new ApiException("Missing the required parameter 'platform' when calling updateListingAdCampaign(Async)");
+        }
+        
+        // verify the required parameter 'campaignId' is set
+        if (campaignId == null) {
+            throw new ApiException("Missing the required parameter 'campaignId' when calling updateListingAdCampaign(Async)");
+        }
+        
+
+        okhttp3.Call localVarCall = updateListingAdCampaignCall(platform, campaignId, _callback);
+        return localVarCall;
+
+    }
+
+    /**
+     * Change a marketplace campaign: name, dailyBudgetCents, endsAt (null clears), status paused | running | ended.
+     * 
+     * @param platform  (required)
+     * @param campaignId  (required)
+     * @return CreateListingAdCampaignResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public CreateListingAdCampaignResponse updateListingAdCampaign(String platform, String campaignId) throws ApiException {
+        ApiResponse<CreateListingAdCampaignResponse> localVarResp = updateListingAdCampaignWithHttpInfo(platform, campaignId);
+        return localVarResp.getData();
+    }
+
+    /**
+     * Change a marketplace campaign: name, dailyBudgetCents, endsAt (null clears), status paused | running | ended.
+     * 
+     * @param platform  (required)
+     * @param campaignId  (required)
+     * @return ApiResponse&lt;CreateListingAdCampaignResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<CreateListingAdCampaignResponse> updateListingAdCampaignWithHttpInfo(String platform, String campaignId) throws ApiException {
+        okhttp3.Call localVarCall = updateListingAdCampaignValidateBeforeCall(platform, campaignId, null);
+        Type localVarReturnType = new TypeToken<CreateListingAdCampaignResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Change a marketplace campaign: name, dailyBudgetCents, endsAt (null clears), status paused | running | ended. (asynchronously)
+     * 
+     * @param platform  (required)
+     * @param campaignId  (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call updateListingAdCampaignAsync(String platform, String campaignId, final ApiCallback<CreateListingAdCampaignResponse> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = updateListingAdCampaignValidateBeforeCall(platform, campaignId, _callback);
+        Type localVarReturnType = new TypeToken<CreateListingAdCampaignResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for updateListingAdListingRate
+     * @param platform  (required)
+     * @param platformListingId  (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call updateListingAdListingRateCall(String platform, String platformListingId, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/v1/listing-ads/{platform}/listings/{platformListingId}/rate"
+            .replaceAll("\\{" + "platform" + "\\}", localVarApiClient.escapeString(platform.toString()))
+            .replaceAll("\\{" + "platformListingId" + "\\}", localVarApiClient.escapeString(platformListingId.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "PersonalAccessToken" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "PUT", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call updateListingAdListingRateValidateBeforeCall(String platform, String platformListingId, final ApiCallback _callback) throws ApiException {
+        
+        // verify the required parameter 'platform' is set
+        if (platform == null) {
+            throw new ApiException("Missing the required parameter 'platform' when calling updateListingAdListingRate(Async)");
+        }
+        
+        // verify the required parameter 'platformListingId' is set
+        if (platformListingId == null) {
+            throw new ApiException("Missing the required parameter 'platformListingId' when calling updateListingAdListingRate(Async)");
+        }
+        
+
+        okhttp3.Call localVarCall = updateListingAdListingRateCall(platform, platformListingId, _callback);
+        return localVarCall;
+
+    }
+
+    /**
+     * Change one promoted listing&#39;s ad rate (percent of the sale) in the campaign it is in.
+     * 
+     * @param platform  (required)
+     * @param platformListingId  (required)
+     * @return UpdateListingAdListingRateResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public UpdateListingAdListingRateResponse updateListingAdListingRate(String platform, String platformListingId) throws ApiException {
+        ApiResponse<UpdateListingAdListingRateResponse> localVarResp = updateListingAdListingRateWithHttpInfo(platform, platformListingId);
+        return localVarResp.getData();
+    }
+
+    /**
+     * Change one promoted listing&#39;s ad rate (percent of the sale) in the campaign it is in.
+     * 
+     * @param platform  (required)
+     * @param platformListingId  (required)
+     * @return ApiResponse&lt;UpdateListingAdListingRateResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<UpdateListingAdListingRateResponse> updateListingAdListingRateWithHttpInfo(String platform, String platformListingId) throws ApiException {
+        okhttp3.Call localVarCall = updateListingAdListingRateValidateBeforeCall(platform, platformListingId, null);
+        Type localVarReturnType = new TypeToken<UpdateListingAdListingRateResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Change one promoted listing&#39;s ad rate (percent of the sale) in the campaign it is in. (asynchronously)
+     * 
+     * @param platform  (required)
+     * @param platformListingId  (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call updateListingAdListingRateAsync(String platform, String platformListingId, final ApiCallback<UpdateListingAdListingRateResponse> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = updateListingAdListingRateValidateBeforeCall(platform, platformListingId, _callback);
+        Type localVarReturnType = new TypeToken<UpdateListingAdListingRateResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for updateSponsoredAdBillingAutoTopup
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call updateSponsoredAdBillingAutoTopupCall(final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/v1/sponsored-ads/billing/auto-topup";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "PersonalAccessToken" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "PUT", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call updateSponsoredAdBillingAutoTopupValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        
+
+        okhttp3.Call localVarCall = updateSponsoredAdBillingAutoTopupCall(_callback);
+        return localVarCall;
+
+    }
+
+    /**
+     * Auto top-up: enabled, thresholdCents (top up when the ad balance drops below it), amountCents (how much). Needs a saved payment method (the first top-up saves it).
+     * 
+     * @return SponsoredAdResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public SponsoredAdResponse updateSponsoredAdBillingAutoTopup() throws ApiException {
+        ApiResponse<SponsoredAdResponse> localVarResp = updateSponsoredAdBillingAutoTopupWithHttpInfo();
+        return localVarResp.getData();
+    }
+
+    /**
+     * Auto top-up: enabled, thresholdCents (top up when the ad balance drops below it), amountCents (how much). Needs a saved payment method (the first top-up saves it).
+     * 
+     * @return ApiResponse&lt;SponsoredAdResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<SponsoredAdResponse> updateSponsoredAdBillingAutoTopupWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = updateSponsoredAdBillingAutoTopupValidateBeforeCall(null);
+        Type localVarReturnType = new TypeToken<SponsoredAdResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Auto top-up: enabled, thresholdCents (top up when the ad balance drops below it), amountCents (how much). Needs a saved payment method (the first top-up saves it). (asynchronously)
+     * 
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call updateSponsoredAdBillingAutoTopupAsync(final ApiCallback<SponsoredAdResponse> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = updateSponsoredAdBillingAutoTopupValidateBeforeCall(_callback);
+        Type localVarReturnType = new TypeToken<SponsoredAdResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for updateSponsoredAdBoost
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call updateSponsoredAdBoostCall(final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/v1/sponsored-ads/boosts";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "PersonalAccessToken" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "PUT", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call updateSponsoredAdBoostValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        
+
+        okhttp3.Call localVarCall = updateSponsoredAdBoostCall(_callback);
+        return localVarCall;
+
+    }
+
+    /**
+     * Boost listings in bulk (platformListingIds, upliftBps 100–2000 &#x3D; 1–20%), or change their rate. Your own live Crossly listings only.
+     * 
+     * @return UpdateSponsoredAdBoostResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public UpdateSponsoredAdBoostResponse updateSponsoredAdBoost() throws ApiException {
+        ApiResponse<UpdateSponsoredAdBoostResponse> localVarResp = updateSponsoredAdBoostWithHttpInfo();
+        return localVarResp.getData();
+    }
+
+    /**
+     * Boost listings in bulk (platformListingIds, upliftBps 100–2000 &#x3D; 1–20%), or change their rate. Your own live Crossly listings only.
+     * 
+     * @return ApiResponse&lt;UpdateSponsoredAdBoostResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<UpdateSponsoredAdBoostResponse> updateSponsoredAdBoostWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = updateSponsoredAdBoostValidateBeforeCall(null);
+        Type localVarReturnType = new TypeToken<UpdateSponsoredAdBoostResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Boost listings in bulk (platformListingIds, upliftBps 100–2000 &#x3D; 1–20%), or change their rate. Your own live Crossly listings only. (asynchronously)
+     * 
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call updateSponsoredAdBoostAsync(final ApiCallback<UpdateSponsoredAdBoostResponse> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = updateSponsoredAdBoostValidateBeforeCall(_callback);
+        Type localVarReturnType = new TypeToken<UpdateSponsoredAdBoostResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for updateSponsoredAdCampaign
+     * @param id  (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call updateSponsoredAdCampaignCall(String id, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/v1/sponsored-ads/campaigns/{id}"
+            .replaceAll("\\{" + "id" + "\\}", localVarApiClient.escapeString(id.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "PersonalAccessToken" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "PATCH", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call updateSponsoredAdCampaignValidateBeforeCall(String id, final ApiCallback _callback) throws ApiException {
+        
+        // verify the required parameter 'id' is set
+        if (id == null) {
+            throw new ApiException("Missing the required parameter 'id' when calling updateSponsoredAdCampaign(Async)");
+        }
+        
+
+        okhttp3.Call localVarCall = updateSponsoredAdCampaignCall(id, _callback);
+        return localVarCall;
+
+    }
+
+    /**
+     * Edit a campaign. Any of the create fields; listings and keywords, when given, replace the current set. Raising the total budget resumes a campaign stopped by it.
+     * 
+     * @param id  (required)
+     * @return SponsoredAdCampaignResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public SponsoredAdCampaignResponse updateSponsoredAdCampaign(String id) throws ApiException {
+        ApiResponse<SponsoredAdCampaignResponse> localVarResp = updateSponsoredAdCampaignWithHttpInfo(id);
+        return localVarResp.getData();
+    }
+
+    /**
+     * Edit a campaign. Any of the create fields; listings and keywords, when given, replace the current set. Raising the total budget resumes a campaign stopped by it.
+     * 
+     * @param id  (required)
+     * @return ApiResponse&lt;SponsoredAdCampaignResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<SponsoredAdCampaignResponse> updateSponsoredAdCampaignWithHttpInfo(String id) throws ApiException {
+        okhttp3.Call localVarCall = updateSponsoredAdCampaignValidateBeforeCall(id, null);
+        Type localVarReturnType = new TypeToken<SponsoredAdCampaignResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Edit a campaign. Any of the create fields; listings and keywords, when given, replace the current set. Raising the total budget resumes a campaign stopped by it. (asynchronously)
+     * 
+     * @param id  (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call updateSponsoredAdCampaignAsync(String id, final ApiCallback<SponsoredAdCampaignResponse> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = updateSponsoredAdCampaignValidateBeforeCall(id, _callback);
+        Type localVarReturnType = new TypeToken<SponsoredAdCampaignResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for updateSponsoredAdSetting
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call updateSponsoredAdSettingCall(final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/v1/sponsored-ads/settings";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "PersonalAccessToken" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "PATCH", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call updateSponsoredAdSettingValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        
+
+        okhttp3.Call localVarCall = updateSponsoredAdSettingCall(_callback);
+        return localVarCall;
+
+    }
+
+    /**
+     * Change ads quick settings: adsPaused (pause / resume every ad), accountDailyCapCents (null &#x3D; no cap), defaultBidStrategy (auto | manual) for new campaigns, autoTopup {enabled, thresholdCents?, amountCents?}, railPreference (cash_first | cbx_first, both rails live only).
+     * 
+     * @return SponsoredAdResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public SponsoredAdResponse updateSponsoredAdSetting() throws ApiException {
+        ApiResponse<SponsoredAdResponse> localVarResp = updateSponsoredAdSettingWithHttpInfo();
+        return localVarResp.getData();
+    }
+
+    /**
+     * Change ads quick settings: adsPaused (pause / resume every ad), accountDailyCapCents (null &#x3D; no cap), defaultBidStrategy (auto | manual) for new campaigns, autoTopup {enabled, thresholdCents?, amountCents?}, railPreference (cash_first | cbx_first, both rails live only).
+     * 
+     * @return ApiResponse&lt;SponsoredAdResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<SponsoredAdResponse> updateSponsoredAdSettingWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = updateSponsoredAdSettingValidateBeforeCall(null);
+        Type localVarReturnType = new TypeToken<SponsoredAdResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Change ads quick settings: adsPaused (pause / resume every ad), accountDailyCapCents (null &#x3D; no cap), defaultBidStrategy (auto | manual) for new campaigns, autoTopup {enabled, thresholdCents?, amountCents?}, railPreference (cash_first | cbx_first, both rails live only). (asynchronously)
+     * 
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call updateSponsoredAdSettingAsync(final ApiCallback<SponsoredAdResponse> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = updateSponsoredAdSettingValidateBeforeCall(_callback);
+        Type localVarReturnType = new TypeToken<SponsoredAdResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }

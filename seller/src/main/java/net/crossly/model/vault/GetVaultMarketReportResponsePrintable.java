@@ -33,12 +33,8 @@ import org.openapitools.jackson.nullable.JsonNullable;
 /**
  * GetVaultMarketReportResponsePrintable
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-11T23:44:48.922Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-27T19:42:43.186Z[Etc/UTC]")
 public class GetVaultMarketReportResponsePrintable {
-  public static final String SERIALIZED_NAME_NOTES = "notes";
-  @SerializedName(SERIALIZED_NAME_NOTES)
-  private List<String> notes = new ArrayList<String>();
-
   public static final String SERIALIZED_NAME_TITLE = "title";
   @SerializedName(SERIALIZED_NAME_TITLE)
   private String title;
@@ -50,6 +46,10 @@ public class GetVaultMarketReportResponsePrintable {
   public static final String SERIALIZED_NAME_SECTIONS = "sections";
   @SerializedName(SERIALIZED_NAME_SECTIONS)
   private List<GetVaultMarketOrderHandlingResponseSections> sections = new ArrayList<GetVaultMarketOrderHandlingResponseSections>();
+
+  public static final String SERIALIZED_NAME_NOTES = "notes";
+  @SerializedName(SERIALIZED_NAME_NOTES)
+  private List<String> notes = new ArrayList<String>();
 
   /**
    * Gets or Sets paper
@@ -112,34 +112,6 @@ public class GetVaultMarketReportResponsePrintable {
 
   public GetVaultMarketReportResponsePrintable() { 
   }
-
-  public GetVaultMarketReportResponsePrintable notes(List<String> notes) {
-    
-    this.notes = notes;
-    return this;
-  }
-
-  public GetVaultMarketReportResponsePrintable addNotesItem(String notesItem) {
-    this.notes.add(notesItem);
-    return this;
-  }
-
-   /**
-   * Closing paragraphs, small and grey.
-   * @return notes
-  **/
-  @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "Closing paragraphs, small and grey.")
-
-  public List<String> getNotes() {
-    return notes;
-  }
-
-
-  public void setNotes(List<String> notes) {
-    this.notes = notes;
-  }
-
 
   public GetVaultMarketReportResponsePrintable title(String title) {
     
@@ -217,6 +189,34 @@ public class GetVaultMarketReportResponsePrintable {
 
   public void setSections(List<GetVaultMarketOrderHandlingResponseSections> sections) {
     this.sections = sections;
+  }
+
+
+  public GetVaultMarketReportResponsePrintable notes(List<String> notes) {
+    
+    this.notes = notes;
+    return this;
+  }
+
+  public GetVaultMarketReportResponsePrintable addNotesItem(String notesItem) {
+    this.notes.add(notesItem);
+    return this;
+  }
+
+   /**
+   * Closing paragraphs, small and grey.
+   * @return notes
+  **/
+  @javax.annotation.Nonnull
+  @ApiModelProperty(required = true, value = "Closing paragraphs, small and grey.")
+
+  public List<String> getNotes() {
+    return notes;
+  }
+
+
+  public void setNotes(List<String> notes) {
+    this.notes = notes;
   }
 
 
@@ -298,10 +298,10 @@ public class GetVaultMarketReportResponsePrintable {
       return false;
     }
     GetVaultMarketReportResponsePrintable getVaultMarketReportResponsePrintable = (GetVaultMarketReportResponsePrintable) o;
-    return Objects.equals(this.notes, getVaultMarketReportResponsePrintable.notes) &&
-        Objects.equals(this.title, getVaultMarketReportResponsePrintable.title) &&
+    return Objects.equals(this.title, getVaultMarketReportResponsePrintable.title) &&
         Objects.equals(this.meta, getVaultMarketReportResponsePrintable.meta) &&
         Objects.equals(this.sections, getVaultMarketReportResponsePrintable.sections) &&
+        Objects.equals(this.notes, getVaultMarketReportResponsePrintable.notes) &&
         Objects.equals(this.paper, getVaultMarketReportResponsePrintable.paper) &&
         Objects.equals(this.table, getVaultMarketReportResponsePrintable.table) &&
         Objects.equals(this.qr, getVaultMarketReportResponsePrintable.qr);
@@ -313,7 +313,7 @@ public class GetVaultMarketReportResponsePrintable {
 
   @Override
   public int hashCode() {
-    return Objects.hash(notes, title, meta, sections, paper, table, qr);
+    return Objects.hash(title, meta, sections, notes, paper, table, qr);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -327,10 +327,10 @@ public class GetVaultMarketReportResponsePrintable {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class GetVaultMarketReportResponsePrintable {\n");
-    sb.append("    notes: ").append(toIndentedString(notes)).append("\n");
     sb.append("    title: ").append(toIndentedString(title)).append("\n");
     sb.append("    meta: ").append(toIndentedString(meta)).append("\n");
     sb.append("    sections: ").append(toIndentedString(sections)).append("\n");
+    sb.append("    notes: ").append(toIndentedString(notes)).append("\n");
     sb.append("    paper: ").append(toIndentedString(paper)).append("\n");
     sb.append("    table: ").append(toIndentedString(table)).append("\n");
     sb.append("    qr: ").append(toIndentedString(qr)).append("\n");

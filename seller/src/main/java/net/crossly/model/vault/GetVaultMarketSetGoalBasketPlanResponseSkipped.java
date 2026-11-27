@@ -28,7 +28,7 @@ import java.math.BigDecimal;
 /**
  * GetVaultMarketSetGoalBasketPlanResponseSkipped
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-11T23:44:48.922Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-27T19:42:43.186Z[Etc/UTC]")
 public class GetVaultMarketSetGoalBasketPlanResponseSkipped {
   public static final String SERIALIZED_NAME_SKU_ID = "skuId";
   @SerializedName(SERIALIZED_NAME_SKU_ID)
@@ -47,9 +47,9 @@ public class GetVaultMarketSetGoalBasketPlanResponseSkipped {
    */
   @JsonAdapter(ReasonEnum.Adapter.class)
   public enum ReasonEnum {
-    TOO_MANY("too_many"),
-    
     NO_PRICE("no_price"),
+    
+    TOO_MANY("too_many"),
     
     OVER_BUDGET("over_budget"),
     

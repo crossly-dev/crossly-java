@@ -28,7 +28,7 @@ import java.math.BigDecimal;
 /**
  * GetCbxMeResponseDataTerms
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-11T23:44:48.922Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-27T19:42:43.186Z[Etc/UTC]")
 public class GetCbxMeResponseDataTerms {
   public static final String SERIALIZED_NAME_EARN_RATE_BPS = "earnRateBps";
   @SerializedName(SERIALIZED_NAME_EARN_RATE_BPS)

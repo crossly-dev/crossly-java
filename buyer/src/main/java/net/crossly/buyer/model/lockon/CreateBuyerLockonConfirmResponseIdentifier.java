@@ -27,16 +27,16 @@ import java.io.IOException;
 /**
  * CreateBuyerLockonConfirmResponseIdentifier
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-11T23:47:29.843Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-27T19:58:46.962Z[Etc/UTC]")
 public class CreateBuyerLockonConfirmResponseIdentifier {
   /**
    * Gets or Sets ns
    */
   @JsonAdapter(NsEnum.Adapter.class)
   public enum NsEnum {
-    STYLE_CODE("style_code"),
-    
     GTIN("gtin"),
+    
+    STYLE_CODE("style_code"),
     
     LEGO_SET("lego_set"),
     

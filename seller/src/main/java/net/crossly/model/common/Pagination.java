@@ -28,7 +28,7 @@ import java.io.IOException;
  * Present only when the endpoint pages. Absent — not null — when it returns everything.
  */
 @ApiModel(description = "Present only when the endpoint pages. Absent — not null — when it returns everything.")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-11T23:44:48.922Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-27T19:42:43.186Z[Etc/UTC]")
 public class Pagination {
   public static final String SERIALIZED_NAME_PAGE = "page";
   @SerializedName(SERIALIZED_NAME_PAGE)
@@ -45,6 +45,10 @@ public class Pagination {
   public static final String SERIALIZED_NAME_TOTAL_PAGES = "totalPages";
   @SerializedName(SERIALIZED_NAME_TOTAL_PAGES)
   private Integer totalPages;
+
+  public static final String SERIALIZED_NAME_PAGES = "pages";
+  @SerializedName(SERIALIZED_NAME_PAGES)
+  private Integer pages;
 
   public Pagination() { 
   }
@@ -143,6 +147,31 @@ public class Pagination {
   }
 
 
+  public Pagination pages(Integer pages) {
+    
+    this.pages = pages;
+    return this;
+  }
+
+   /**
+   * Deprecated alias of &#x60;totalPages&#x60;, sent only by GET /v1/inventory (its original name). Read &#x60;totalPages&#x60;.
+   * @return pages
+   * @deprecated
+  **/
+  @Deprecated
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "Deprecated alias of `totalPages`, sent only by GET /v1/inventory (its original name). Read `totalPages`.")
+
+  public Integer getPages() {
+    return pages;
+  }
+
+
+  public void setPages(Integer pages) {
+    this.pages = pages;
+  }
+
+
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -155,12 +184,13 @@ public class Pagination {
     return Objects.equals(this.page, pagination.page) &&
         Objects.equals(this.limit, pagination.limit) &&
         Objects.equals(this.total, pagination.total) &&
-        Objects.equals(this.totalPages, pagination.totalPages);
+        Objects.equals(this.totalPages, pagination.totalPages) &&
+        Objects.equals(this.pages, pagination.pages);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(page, limit, total, totalPages);
+    return Objects.hash(page, limit, total, totalPages, pages);
   }
 
   @Override
@@ -171,6 +201,7 @@ public class Pagination {
     sb.append("    limit: ").append(toIndentedString(limit)).append("\n");
     sb.append("    total: ").append(toIndentedString(total)).append("\n");
     sb.append("    totalPages: ").append(toIndentedString(totalPages)).append("\n");
+    sb.append("    pages: ").append(toIndentedString(pages)).append("\n");
     sb.append("}");
     return sb.toString();
   }

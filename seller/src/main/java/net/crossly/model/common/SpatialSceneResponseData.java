@@ -24,17 +24,58 @@ import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 import java.math.BigDecimal;
+import net.crossly.model.common.SpatialSceneResponseDataSettings;
 import org.openapitools.jackson.nullable.JsonNullable;
 import org.threeten.bp.OffsetDateTime;
 
 /**
  * SpatialSceneResponseData
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-11T23:44:48.922Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-27T19:42:43.186Z[Etc/UTC]")
 public class SpatialSceneResponseData {
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
   private String id;
+
+  public static final String SERIALIZED_NAME_USER_ID = "userId";
+  @SerializedName(SERIALIZED_NAME_USER_ID)
+  private String userId;
+
+  public static final String SERIALIZED_NAME_KIND = "kind";
+  @SerializedName(SERIALIZED_NAME_KIND)
+  private String kind;
+
+  public static final String SERIALIZED_NAME_CATEGORY_SLUG = "categorySlug";
+  @SerializedName(SERIALIZED_NAME_CATEGORY_SLUG)
+  private String categorySlug;
+
+  public static final String SERIALIZED_NAME_NAME = "name";
+  @SerializedName(SERIALIZED_NAME_NAME)
+  private String name;
+
+  public static final String SERIALIZED_NAME_PUBLIC_SLUG = "publicSlug";
+  @SerializedName(SERIALIZED_NAME_PUBLIC_SLUG)
+  private String publicSlug;
+
+  public static final String SERIALIZED_NAME_VISIBILITY = "visibility";
+  @SerializedName(SERIALIZED_NAME_VISIBILITY)
+  private String visibility;
+
+  public static final String SERIALIZED_NAME_SETTINGS = "settings";
+  @SerializedName(SERIALIZED_NAME_SETTINGS)
+  private SpatialSceneResponseDataSettings settings;
+
+  public static final String SERIALIZED_NAME_STOREFRONT_ID = "storefrontId";
+  @SerializedName(SERIALIZED_NAME_STOREFRONT_ID)
+  private String storefrontId;
+
+  public static final String SERIALIZED_NAME_SHOWROOM_POSITION = "showroomPosition";
+  @SerializedName(SERIALIZED_NAME_SHOWROOM_POSITION)
+  private BigDecimal showroomPosition;
+
+  public static final String SERIALIZED_NAME_AUTO_INCLUDE_INVENTORY = "autoIncludeInventory";
+  @SerializedName(SERIALIZED_NAME_AUTO_INCLUDE_INVENTORY)
+  private Boolean autoIncludeInventory;
 
   public static final String SERIALIZED_NAME_CREATED_AT = "createdAt";
   @SerializedName(SERIALIZED_NAME_CREATED_AT)
@@ -43,30 +84,6 @@ public class SpatialSceneResponseData {
   public static final String SERIALIZED_NAME_UPDATED_AT = "updatedAt";
   @SerializedName(SERIALIZED_NAME_UPDATED_AT)
   private OffsetDateTime updatedAt;
-
-  public static final String SERIALIZED_NAME_INVENTORY_ITEM_ID = "inventoryItemId";
-  @SerializedName(SERIALIZED_NAME_INVENTORY_ITEM_ID)
-  private String inventoryItemId;
-
-  public static final String SERIALIZED_NAME_SCENE_ID = "sceneId";
-  @SerializedName(SERIALIZED_NAME_SCENE_ID)
-  private String sceneId;
-
-  public static final String SERIALIZED_NAME_INVENTORY_UNIT_ID = "inventoryUnitId";
-  @SerializedName(SERIALIZED_NAME_INVENTORY_UNIT_ID)
-  private String inventoryUnitId;
-
-  public static final String SERIALIZED_NAME_NODE_ID = "nodeId";
-  @SerializedName(SERIALIZED_NAME_NODE_ID)
-  private String nodeId;
-
-  public static final String SERIALIZED_NAME_SLOT_INDEX = "slotIndex";
-  @SerializedName(SERIALIZED_NAME_SLOT_INDEX)
-  private BigDecimal slotIndex;
-
-  public static final String SERIALIZED_NAME_PINNED = "pinned";
-  @SerializedName(SERIALIZED_NAME_PINNED)
-  private Boolean pinned;
 
   public SpatialSceneResponseData() { 
   }
@@ -91,6 +108,236 @@ public class SpatialSceneResponseData {
 
   public void setId(String id) {
     this.id = id;
+  }
+
+
+  public SpatialSceneResponseData userId(String userId) {
+    
+    this.userId = userId;
+    return this;
+  }
+
+   /**
+   * Get userId
+   * @return userId
+  **/
+  @javax.annotation.Nonnull
+  @ApiModelProperty(required = true, value = "")
+
+  public String getUserId() {
+    return userId;
+  }
+
+
+  public void setUserId(String userId) {
+    this.userId = userId;
+  }
+
+
+  public SpatialSceneResponseData kind(String kind) {
+    
+    this.kind = kind;
+    return this;
+  }
+
+   /**
+   * &#39;collection&#39; | &#39;warehouse&#39;  Same renderer, opposite contracts. A collection may be arranged for beauty; a warehouse must match the physical room or it is worse than no warehouse, because someone will walk to the wrong shelf.
+   * @return kind
+  **/
+  @javax.annotation.Nonnull
+  @ApiModelProperty(required = true, value = "'collection' | 'warehouse'  Same renderer, opposite contracts. A collection may be arranged for beauty; a warehouse must match the physical room or it is worse than no warehouse, because someone will walk to the wrong shelf.")
+
+  public String getKind() {
+    return kind;
+  }
+
+
+  public void setKind(String kind) {
+    this.kind = kind;
+  }
+
+
+  public SpatialSceneResponseData categorySlug(String categorySlug) {
+    
+    this.categorySlug = categorySlug;
+    return this;
+  }
+
+   /**
+   * NULL for warehouses and for the generic catch-all room.
+   * @return categorySlug
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "NULL for warehouses and for the generic catch-all room.")
+
+  public String getCategorySlug() {
+    return categorySlug;
+  }
+
+
+  public void setCategorySlug(String categorySlug) {
+    this.categorySlug = categorySlug;
+  }
+
+
+  public SpatialSceneResponseData name(String name) {
+    
+    this.name = name;
+    return this;
+  }
+
+   /**
+   * Get name
+   * @return name
+  **/
+  @javax.annotation.Nonnull
+  @ApiModelProperty(required = true, value = "")
+
+  public String getName() {
+    return name;
+  }
+
+
+  public void setName(String name) {
+    this.name = name;
+  }
+
+
+  public SpatialSceneResponseData publicSlug(String publicSlug) {
+    
+    this.publicSlug = publicSlug;
+    return this;
+  }
+
+   /**
+   * Public share handle. NULL until someone chooses to share.
+   * @return publicSlug
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "Public share handle. NULL until someone chooses to share.")
+
+  public String getPublicSlug() {
+    return publicSlug;
+  }
+
+
+  public void setPublicSlug(String publicSlug) {
+    this.publicSlug = publicSlug;
+  }
+
+
+  public SpatialSceneResponseData visibility(String visibility) {
+    
+    this.visibility = visibility;
+    return this;
+  }
+
+   /**
+   * &#39;private&#39; | &#39;unlisted&#39; | &#39;public&#39;  Defaults CLOSED. A collection is the one surface in this product that routinely contains things which are not for sale and were never meant to be seen by anybody — that is most of what makes it a collection.
+   * @return visibility
+  **/
+  @javax.annotation.Nonnull
+  @ApiModelProperty(required = true, value = "'private' | 'unlisted' | 'public'  Defaults CLOSED. A collection is the one surface in this product that routinely contains things which are not for sale and were never meant to be seen by anybody — that is most of what makes it a collection.")
+
+  public String getVisibility() {
+    return visibility;
+  }
+
+
+  public void setVisibility(String visibility) {
+    this.visibility = visibility;
+  }
+
+
+  public SpatialSceneResponseData settings(SpatialSceneResponseDataSettings settings) {
+    
+    this.settings = settings;
+    return this;
+  }
+
+   /**
+   * Get settings
+   * @return settings
+  **/
+  @javax.annotation.Nonnull
+  @ApiModelProperty(required = true, value = "")
+
+  public SpatialSceneResponseDataSettings getSettings() {
+    return settings;
+  }
+
+
+  public void setSettings(SpatialSceneResponseDataSettings settings) {
+    this.settings = settings;
+  }
+
+
+  public SpatialSceneResponseData storefrontId(String storefrontId) {
+    
+    this.storefrontId = storefrontId;
+    return this;
+  }
+
+   /**
+   * kind&#x3D;&#39;shop&#39;: the store this showroom belongs to (0830). NULL &#x3D; a legacy row of the default store.
+   * @return storefrontId
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "kind='shop': the store this showroom belongs to (0830). NULL = a legacy row of the default store.")
+
+  public String getStorefrontId() {
+    return storefrontId;
+  }
+
+
+  public void setStorefrontId(String storefrontId) {
+    this.storefrontId = storefrontId;
+  }
+
+
+  public SpatialSceneResponseData showroomPosition(BigDecimal showroomPosition) {
+    
+    this.showroomPosition = showroomPosition;
+    return this;
+  }
+
+   /**
+   * 1147 kind&#x3D;&#39;shop&#39;: a store&#39;s showrooms in order; 0 &#x3D; its primary (one per store, the unique index below).
+   * @return showroomPosition
+  **/
+  @javax.annotation.Nonnull
+  @ApiModelProperty(required = true, value = "1147 kind='shop': a store's showrooms in order; 0 = its primary (one per store, the unique index below).")
+
+  public BigDecimal getShowroomPosition() {
+    return showroomPosition;
+  }
+
+
+  public void setShowroomPosition(BigDecimal showroomPosition) {
+    this.showroomPosition = showroomPosition;
+  }
+
+
+  public SpatialSceneResponseData autoIncludeInventory(Boolean autoIncludeInventory) {
+    
+    this.autoIncludeInventory = autoIncludeInventory;
+    return this;
+  }
+
+   /**
+   * 1147 kind&#x3D;&#39;shop&#39;: opt-in, stand every live item automatically. Off &#x3D; only what is pinned shows.
+   * @return autoIncludeInventory
+  **/
+  @javax.annotation.Nonnull
+  @ApiModelProperty(required = true, value = "1147 kind='shop': opt-in, stand every live item automatically. Off = only what is pinned shows.")
+
+  public Boolean getAutoIncludeInventory() {
+    return autoIncludeInventory;
+  }
+
+
+  public void setAutoIncludeInventory(Boolean autoIncludeInventory) {
+    this.autoIncludeInventory = autoIncludeInventory;
   }
 
 
@@ -140,144 +387,6 @@ public class SpatialSceneResponseData {
   }
 
 
-  public SpatialSceneResponseData inventoryItemId(String inventoryItemId) {
-    
-    this.inventoryItemId = inventoryItemId;
-    return this;
-  }
-
-   /**
-   * Get inventoryItemId
-   * @return inventoryItemId
-  **/
-  @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "")
-
-  public String getInventoryItemId() {
-    return inventoryItemId;
-  }
-
-
-  public void setInventoryItemId(String inventoryItemId) {
-    this.inventoryItemId = inventoryItemId;
-  }
-
-
-  public SpatialSceneResponseData sceneId(String sceneId) {
-    
-    this.sceneId = sceneId;
-    return this;
-  }
-
-   /**
-   * Get sceneId
-   * @return sceneId
-  **/
-  @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "")
-
-  public String getSceneId() {
-    return sceneId;
-  }
-
-
-  public void setSceneId(String sceneId) {
-    this.sceneId = sceneId;
-  }
-
-
-  public SpatialSceneResponseData inventoryUnitId(String inventoryUnitId) {
-    
-    this.inventoryUnitId = inventoryUnitId;
-    return this;
-  }
-
-   /**
-   * Get inventoryUnitId
-   * @return inventoryUnitId
-  **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
-
-  public String getInventoryUnitId() {
-    return inventoryUnitId;
-  }
-
-
-  public void setInventoryUnitId(String inventoryUnitId) {
-    this.inventoryUnitId = inventoryUnitId;
-  }
-
-
-  public SpatialSceneResponseData nodeId(String nodeId) {
-    
-    this.nodeId = nodeId;
-    return this;
-  }
-
-   /**
-   * Get nodeId
-   * @return nodeId
-  **/
-  @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "")
-
-  public String getNodeId() {
-    return nodeId;
-  }
-
-
-  public void setNodeId(String nodeId) {
-    this.nodeId = nodeId;
-  }
-
-
-  public SpatialSceneResponseData slotIndex(BigDecimal slotIndex) {
-    
-    this.slotIndex = slotIndex;
-    return this;
-  }
-
-   /**
-   * Get slotIndex
-   * @return slotIndex
-  **/
-  @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "")
-
-  public BigDecimal getSlotIndex() {
-    return slotIndex;
-  }
-
-
-  public void setSlotIndex(BigDecimal slotIndex) {
-    this.slotIndex = slotIndex;
-  }
-
-
-  public SpatialSceneResponseData pinned(Boolean pinned) {
-    
-    this.pinned = pinned;
-    return this;
-  }
-
-   /**
-   * Get pinned
-   * @return pinned
-  **/
-  @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "")
-
-  public Boolean getPinned() {
-    return pinned;
-  }
-
-
-  public void setPinned(Boolean pinned) {
-    this.pinned = pinned;
-  }
-
-
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -288,14 +397,18 @@ public class SpatialSceneResponseData {
     }
     SpatialSceneResponseData spatialSceneResponseData = (SpatialSceneResponseData) o;
     return Objects.equals(this.id, spatialSceneResponseData.id) &&
+        Objects.equals(this.userId, spatialSceneResponseData.userId) &&
+        Objects.equals(this.kind, spatialSceneResponseData.kind) &&
+        Objects.equals(this.categorySlug, spatialSceneResponseData.categorySlug) &&
+        Objects.equals(this.name, spatialSceneResponseData.name) &&
+        Objects.equals(this.publicSlug, spatialSceneResponseData.publicSlug) &&
+        Objects.equals(this.visibility, spatialSceneResponseData.visibility) &&
+        Objects.equals(this.settings, spatialSceneResponseData.settings) &&
+        Objects.equals(this.storefrontId, spatialSceneResponseData.storefrontId) &&
+        Objects.equals(this.showroomPosition, spatialSceneResponseData.showroomPosition) &&
+        Objects.equals(this.autoIncludeInventory, spatialSceneResponseData.autoIncludeInventory) &&
         Objects.equals(this.createdAt, spatialSceneResponseData.createdAt) &&
-        Objects.equals(this.updatedAt, spatialSceneResponseData.updatedAt) &&
-        Objects.equals(this.inventoryItemId, spatialSceneResponseData.inventoryItemId) &&
-        Objects.equals(this.sceneId, spatialSceneResponseData.sceneId) &&
-        Objects.equals(this.inventoryUnitId, spatialSceneResponseData.inventoryUnitId) &&
-        Objects.equals(this.nodeId, spatialSceneResponseData.nodeId) &&
-        Objects.equals(this.slotIndex, spatialSceneResponseData.slotIndex) &&
-        Objects.equals(this.pinned, spatialSceneResponseData.pinned);
+        Objects.equals(this.updatedAt, spatialSceneResponseData.updatedAt);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -304,7 +417,7 @@ public class SpatialSceneResponseData {
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, createdAt, updatedAt, inventoryItemId, sceneId, inventoryUnitId, nodeId, slotIndex, pinned);
+    return Objects.hash(id, userId, kind, categorySlug, name, publicSlug, visibility, settings, storefrontId, showroomPosition, autoIncludeInventory, createdAt, updatedAt);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -319,14 +432,18 @@ public class SpatialSceneResponseData {
     StringBuilder sb = new StringBuilder();
     sb.append("class SpatialSceneResponseData {\n");
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
+    sb.append("    userId: ").append(toIndentedString(userId)).append("\n");
+    sb.append("    kind: ").append(toIndentedString(kind)).append("\n");
+    sb.append("    categorySlug: ").append(toIndentedString(categorySlug)).append("\n");
+    sb.append("    name: ").append(toIndentedString(name)).append("\n");
+    sb.append("    publicSlug: ").append(toIndentedString(publicSlug)).append("\n");
+    sb.append("    visibility: ").append(toIndentedString(visibility)).append("\n");
+    sb.append("    settings: ").append(toIndentedString(settings)).append("\n");
+    sb.append("    storefrontId: ").append(toIndentedString(storefrontId)).append("\n");
+    sb.append("    showroomPosition: ").append(toIndentedString(showroomPosition)).append("\n");
+    sb.append("    autoIncludeInventory: ").append(toIndentedString(autoIncludeInventory)).append("\n");
     sb.append("    createdAt: ").append(toIndentedString(createdAt)).append("\n");
     sb.append("    updatedAt: ").append(toIndentedString(updatedAt)).append("\n");
-    sb.append("    inventoryItemId: ").append(toIndentedString(inventoryItemId)).append("\n");
-    sb.append("    sceneId: ").append(toIndentedString(sceneId)).append("\n");
-    sb.append("    inventoryUnitId: ").append(toIndentedString(inventoryUnitId)).append("\n");
-    sb.append("    nodeId: ").append(toIndentedString(nodeId)).append("\n");
-    sb.append("    slotIndex: ").append(toIndentedString(slotIndex)).append("\n");
-    sb.append("    pinned: ").append(toIndentedString(pinned)).append("\n");
     sb.append("}");
     return sb.toString();
   }

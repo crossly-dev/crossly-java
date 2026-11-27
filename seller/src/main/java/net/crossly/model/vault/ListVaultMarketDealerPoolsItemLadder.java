@@ -31,7 +31,7 @@ import org.openapitools.jackson.nullable.JsonNullable;
 /**
  * ListVaultMarketDealerPoolsItemLadder
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-11T23:44:48.922Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-27T19:42:43.186Z[Etc/UTC]")
 public class ListVaultMarketDealerPoolsItemLadder {
   public static final String SERIALIZED_NAME_BIDS = "bids";
   @SerializedName(SERIALIZED_NAME_BIDS)
@@ -48,11 +48,11 @@ public class ListVaultMarketDealerPoolsItemLadder {
   public enum BidLimitEnum {
     FLOOR("floor"),
     
+    CEILING("ceiling"),
+    
     NO_UNITS("no_units"),
     
     NO_CASH("no_cash"),
-    
-    CEILING("ceiling"),
     
     CURVE_END("curve_end");
 
@@ -105,11 +105,11 @@ public class ListVaultMarketDealerPoolsItemLadder {
   public enum AskLimitEnum {
     FLOOR("floor"),
     
+    CEILING("ceiling"),
+    
     NO_UNITS("no_units"),
     
     NO_CASH("no_cash"),
-    
-    CEILING("ceiling"),
     
     CURVE_END("curve_end");
 

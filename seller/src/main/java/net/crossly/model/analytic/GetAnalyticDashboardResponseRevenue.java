@@ -24,12 +24,13 @@ import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 import java.math.BigDecimal;
+import net.crossly.model.analytic.GetAnalyticOverviewResponseDataKpisNetSalesDelta;
 import org.openapitools.jackson.nullable.JsonNullable;
 
 /**
  * GetAnalyticDashboardResponseRevenue
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-11T23:44:48.922Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-27T19:42:43.186Z[Etc/UTC]")
 public class GetAnalyticDashboardResponseRevenue {
   public static final String SERIALIZED_NAME_CURRENT = "current";
   @SerializedName(SERIALIZED_NAME_CURRENT)
@@ -42,6 +43,10 @@ public class GetAnalyticDashboardResponseRevenue {
   public static final String SERIALIZED_NAME_PCT_CHANGE = "pctChange";
   @SerializedName(SERIALIZED_NAME_PCT_CHANGE)
   private BigDecimal pctChange;
+
+  public static final String SERIALIZED_NAME_DELTA = "delta";
+  @SerializedName(SERIALIZED_NAME_DELTA)
+  private GetAnalyticOverviewResponseDataKpisNetSalesDelta delta;
 
   public GetAnalyticDashboardResponseRevenue() { 
   }
@@ -115,6 +120,29 @@ public class GetAnalyticDashboardResponseRevenue {
   }
 
 
+  public GetAnalyticDashboardResponseRevenue delta(GetAnalyticOverviewResponseDataKpisNetSalesDelta delta) {
+    
+    this.delta = delta;
+    return this;
+  }
+
+   /**
+   * Get delta
+   * @return delta
+  **/
+  @javax.annotation.Nonnull
+  @ApiModelProperty(required = true, value = "")
+
+  public GetAnalyticOverviewResponseDataKpisNetSalesDelta getDelta() {
+    return delta;
+  }
+
+
+  public void setDelta(GetAnalyticOverviewResponseDataKpisNetSalesDelta delta) {
+    this.delta = delta;
+  }
+
+
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -126,7 +154,8 @@ public class GetAnalyticDashboardResponseRevenue {
     GetAnalyticDashboardResponseRevenue getAnalyticDashboardResponseRevenue = (GetAnalyticDashboardResponseRevenue) o;
     return Objects.equals(this.current, getAnalyticDashboardResponseRevenue.current) &&
         Objects.equals(this.previous, getAnalyticDashboardResponseRevenue.previous) &&
-        Objects.equals(this.pctChange, getAnalyticDashboardResponseRevenue.pctChange);
+        Objects.equals(this.pctChange, getAnalyticDashboardResponseRevenue.pctChange) &&
+        Objects.equals(this.delta, getAnalyticDashboardResponseRevenue.delta);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -135,7 +164,7 @@ public class GetAnalyticDashboardResponseRevenue {
 
   @Override
   public int hashCode() {
-    return Objects.hash(current, previous, pctChange);
+    return Objects.hash(current, previous, pctChange, delta);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -152,6 +181,7 @@ public class GetAnalyticDashboardResponseRevenue {
     sb.append("    current: ").append(toIndentedString(current)).append("\n");
     sb.append("    previous: ").append(toIndentedString(previous)).append("\n");
     sb.append("    pctChange: ").append(toIndentedString(pctChange)).append("\n");
+    sb.append("    delta: ").append(toIndentedString(delta)).append("\n");
     sb.append("}");
     return sb.toString();
   }

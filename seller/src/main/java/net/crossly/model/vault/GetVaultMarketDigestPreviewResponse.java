@@ -26,13 +26,14 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import net.crossly.model.vault.GetVaultMarketDigestPreviewResponseFirstMarks;
+import net.crossly.model.vault.GetVaultMarketDigestPreviewResponseLearn;
 import net.crossly.model.vault.GetVaultMarketDigestPreviewResponseOffers;
 import net.crossly.model.vault.GetVaultMarketDigestPreviewResponseValue;
 
 /**
  * GetVaultMarketDigestPreviewResponse
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-11T23:44:48.922Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-27T19:42:43.186Z[Etc/UTC]")
 public class GetVaultMarketDigestPreviewResponse {
   public static final String SERIALIZED_NAME_LINES = "lines";
   @SerializedName(SERIALIZED_NAME_LINES)
@@ -53,6 +54,10 @@ public class GetVaultMarketDigestPreviewResponse {
   public static final String SERIALIZED_NAME_FIRST_MARKS = "firstMarks";
   @SerializedName(SERIALIZED_NAME_FIRST_MARKS)
   private List<GetVaultMarketDigestPreviewResponseFirstMarks> firstMarks = new ArrayList<GetVaultMarketDigestPreviewResponseFirstMarks>();
+
+  public static final String SERIALIZED_NAME_LEARN = "learn";
+  @SerializedName(SERIALIZED_NAME_LEARN)
+  private GetVaultMarketDigestPreviewResponseLearn learn;
 
   public GetVaultMarketDigestPreviewResponse() { 
   }
@@ -187,6 +192,29 @@ public class GetVaultMarketDigestPreviewResponse {
   }
 
 
+  public GetVaultMarketDigestPreviewResponse learn(GetVaultMarketDigestPreviewResponseLearn learn) {
+    
+    this.learn = learn;
+    return this;
+  }
+
+   /**
+   * Get learn
+   * @return learn
+  **/
+  @javax.annotation.Nonnull
+  @ApiModelProperty(required = true, value = "")
+
+  public GetVaultMarketDigestPreviewResponseLearn getLearn() {
+    return learn;
+  }
+
+
+  public void setLearn(GetVaultMarketDigestPreviewResponseLearn learn) {
+    this.learn = learn;
+  }
+
+
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -200,12 +228,13 @@ public class GetVaultMarketDigestPreviewResponse {
         Objects.equals(this.week, getVaultMarketDigestPreviewResponse.week) &&
         Objects.equals(this.value, getVaultMarketDigestPreviewResponse.value) &&
         Objects.equals(this.offers, getVaultMarketDigestPreviewResponse.offers) &&
-        Objects.equals(this.firstMarks, getVaultMarketDigestPreviewResponse.firstMarks);
+        Objects.equals(this.firstMarks, getVaultMarketDigestPreviewResponse.firstMarks) &&
+        Objects.equals(this.learn, getVaultMarketDigestPreviewResponse.learn);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(lines, week, value, offers, firstMarks);
+    return Objects.hash(lines, week, value, offers, firstMarks, learn);
   }
 
   @Override
@@ -217,6 +246,7 @@ public class GetVaultMarketDigestPreviewResponse {
     sb.append("    value: ").append(toIndentedString(value)).append("\n");
     sb.append("    offers: ").append(toIndentedString(offers)).append("\n");
     sb.append("    firstMarks: ").append(toIndentedString(firstMarks)).append("\n");
+    sb.append("    learn: ").append(toIndentedString(learn)).append("\n");
     sb.append("}");
     return sb.toString();
   }

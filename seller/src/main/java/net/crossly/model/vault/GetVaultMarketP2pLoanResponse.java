@@ -34,7 +34,7 @@ import org.openapitools.jackson.nullable.JsonNullable;
 /**
  * GetVaultMarketP2pLoanResponse
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-11T23:44:48.922Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-27T19:42:43.186Z[Etc/UTC]")
 public class GetVaultMarketP2pLoanResponse {
   public static final String SERIALIZED_NAME_EVENTS = "events";
   @SerializedName(SERIALIZED_NAME_EVENTS)
@@ -116,11 +116,15 @@ public class GetVaultMarketP2pLoanResponse {
   public enum StatusEnum {
     ACTIVE("active"),
     
-    FUNDING("funding"),
-    
     CANCELLED("cancelled"),
     
+    FUNDING("funding"),
+    
     AUCTION("auction"),
+    
+    REPAID("repaid"),
+    
+    FORECLOSED("foreclosed"),
     
     REPAYING("repaying"),
     
@@ -128,11 +132,7 @@ public class GetVaultMarketP2pLoanResponse {
     
     REFI_PENDING("refi_pending"),
     
-    REPAID("repaid"),
-    
-    REFINANCED("refinanced"),
-    
-    FORECLOSED("foreclosed");
+    REFINANCED("refinanced");
 
     private String value;
 

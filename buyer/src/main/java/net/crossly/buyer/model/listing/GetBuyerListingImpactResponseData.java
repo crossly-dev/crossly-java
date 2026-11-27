@@ -29,19 +29,15 @@ import org.openapitools.jackson.nullable.JsonNullable;
 /**
  * GetBuyerListingImpactResponseData
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-11T23:47:29.843Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-27T19:58:46.962Z[Etc/UTC]")
 public class GetBuyerListingImpactResponseData {
-  public static final String SERIALIZED_NAME_SOURCE = "source";
-  @SerializedName(SERIALIZED_NAME_SOURCE)
-  private String source;
+  public static final String SERIALIZED_NAME_KEY = "key";
+  @SerializedName(SERIALIZED_NAME_KEY)
+  private String key;
 
   public static final String SERIALIZED_NAME_LABEL = "label";
   @SerializedName(SERIALIZED_NAME_LABEL)
   private String label;
-
-  public static final String SERIALIZED_NAME_KEY = "key";
-  @SerializedName(SERIALIZED_NAME_KEY)
-  private String key;
 
   public static final String SERIALIZED_NAME_CO2_KG = "co2Kg";
   @SerializedName(SERIALIZED_NAME_CO2_KG)
@@ -51,29 +47,33 @@ public class GetBuyerListingImpactResponseData {
   @SerializedName(SERIALIZED_NAME_WATER_L)
   private BigDecimal waterL;
 
+  public static final String SERIALIZED_NAME_SOURCE = "source";
+  @SerializedName(SERIALIZED_NAME_SOURCE)
+  private String source;
+
   public GetBuyerListingImpactResponseData() { 
   }
 
-  public GetBuyerListingImpactResponseData source(String source) {
+  public GetBuyerListingImpactResponseData key(String key) {
     
-    this.source = source;
+    this.key = key;
     return this;
   }
 
    /**
-   * Get source
-   * @return source
+   * Get key
+   * @return key
   **/
   @javax.annotation.Nonnull
   @ApiModelProperty(required = true, value = "")
 
-  public String getSource() {
-    return source;
+  public String getKey() {
+    return key;
   }
 
 
-  public void setSource(String source) {
-    this.source = source;
+  public void setKey(String key) {
+    this.key = key;
   }
 
 
@@ -97,29 +97,6 @@ public class GetBuyerListingImpactResponseData {
 
   public void setLabel(String label) {
     this.label = label;
-  }
-
-
-  public GetBuyerListingImpactResponseData key(String key) {
-    
-    this.key = key;
-    return this;
-  }
-
-   /**
-   * Get key
-   * @return key
-  **/
-  @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "")
-
-  public String getKey() {
-    return key;
-  }
-
-
-  public void setKey(String key) {
-    this.key = key;
   }
 
 
@@ -169,6 +146,29 @@ public class GetBuyerListingImpactResponseData {
   }
 
 
+  public GetBuyerListingImpactResponseData source(String source) {
+    
+    this.source = source;
+    return this;
+  }
+
+   /**
+   * Get source
+   * @return source
+  **/
+  @javax.annotation.Nonnull
+  @ApiModelProperty(required = true, value = "")
+
+  public String getSource() {
+    return source;
+  }
+
+
+  public void setSource(String source) {
+    this.source = source;
+  }
+
+
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -178,11 +178,11 @@ public class GetBuyerListingImpactResponseData {
       return false;
     }
     GetBuyerListingImpactResponseData getBuyerListingImpactResponseData = (GetBuyerListingImpactResponseData) o;
-    return Objects.equals(this.source, getBuyerListingImpactResponseData.source) &&
+    return Objects.equals(this.key, getBuyerListingImpactResponseData.key) &&
         Objects.equals(this.label, getBuyerListingImpactResponseData.label) &&
-        Objects.equals(this.key, getBuyerListingImpactResponseData.key) &&
         Objects.equals(this.co2Kg, getBuyerListingImpactResponseData.co2Kg) &&
-        Objects.equals(this.waterL, getBuyerListingImpactResponseData.waterL);
+        Objects.equals(this.waterL, getBuyerListingImpactResponseData.waterL) &&
+        Objects.equals(this.source, getBuyerListingImpactResponseData.source);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -191,7 +191,7 @@ public class GetBuyerListingImpactResponseData {
 
   @Override
   public int hashCode() {
-    return Objects.hash(source, label, key, co2Kg, waterL);
+    return Objects.hash(key, label, co2Kg, waterL, source);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -205,11 +205,11 @@ public class GetBuyerListingImpactResponseData {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class GetBuyerListingImpactResponseData {\n");
-    sb.append("    source: ").append(toIndentedString(source)).append("\n");
-    sb.append("    label: ").append(toIndentedString(label)).append("\n");
     sb.append("    key: ").append(toIndentedString(key)).append("\n");
+    sb.append("    label: ").append(toIndentedString(label)).append("\n");
     sb.append("    co2Kg: ").append(toIndentedString(co2Kg)).append("\n");
     sb.append("    waterL: ").append(toIndentedString(waterL)).append("\n");
+    sb.append("    source: ").append(toIndentedString(source)).append("\n");
     sb.append("}");
     return sb.toString();
   }

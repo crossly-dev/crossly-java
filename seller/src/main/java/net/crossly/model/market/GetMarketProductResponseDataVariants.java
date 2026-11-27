@@ -30,7 +30,7 @@ import org.threeten.bp.OffsetDateTime;
 /**
  * GetMarketProductResponseDataVariants
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-11T23:44:48.922Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-27T19:42:43.186Z[Etc/UTC]")
 public class GetMarketProductResponseDataVariants {
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
@@ -43,6 +43,10 @@ public class GetMarketProductResponseDataVariants {
   public static final String SERIALIZED_NAME_SORT_KEY = "sortKey";
   @SerializedName(SERIALIZED_NAME_SORT_KEY)
   private BigDecimal sortKey;
+
+  public static final String SERIALIZED_NAME_SKU_ID = "skuId";
+  @SerializedName(SERIALIZED_NAME_SKU_ID)
+  private String skuId;
 
   public static final String SERIALIZED_NAME_EXTERNAL_ID = "externalId";
   @SerializedName(SERIALIZED_NAME_EXTERNAL_ID)
@@ -63,10 +67,6 @@ public class GetMarketProductResponseDataVariants {
   public static final String SERIALIZED_NAME_TRADES_COUNT = "tradesCount";
   @SerializedName(SERIALIZED_NAME_TRADES_COUNT)
   private BigDecimal tradesCount;
-
-  public static final String SERIALIZED_NAME_SKU_ID = "skuId";
-  @SerializedName(SERIALIZED_NAME_SKU_ID)
-  private String skuId;
 
   public static final String SERIALIZED_NAME_LAST_SALE_AT = "lastSaleAt";
   @SerializedName(SERIALIZED_NAME_LAST_SALE_AT)
@@ -149,6 +149,29 @@ public class GetMarketProductResponseDataVariants {
 
   public void setSortKey(BigDecimal sortKey) {
     this.sortKey = sortKey;
+  }
+
+
+  public GetMarketProductResponseDataVariants skuId(String skuId) {
+    
+    this.skuId = skuId;
+    return this;
+  }
+
+   /**
+   * Get skuId
+   * @return skuId
+  **/
+  @javax.annotation.Nonnull
+  @ApiModelProperty(required = true, value = "")
+
+  public String getSkuId() {
+    return skuId;
+  }
+
+
+  public void setSkuId(String skuId) {
+    this.skuId = skuId;
   }
 
 
@@ -267,29 +290,6 @@ public class GetMarketProductResponseDataVariants {
   }
 
 
-  public GetMarketProductResponseDataVariants skuId(String skuId) {
-    
-    this.skuId = skuId;
-    return this;
-  }
-
-   /**
-   * Get skuId
-   * @return skuId
-  **/
-  @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "")
-
-  public String getSkuId() {
-    return skuId;
-  }
-
-
-  public void setSkuId(String skuId) {
-    this.skuId = skuId;
-  }
-
-
   public GetMarketProductResponseDataVariants lastSaleAt(OffsetDateTime lastSaleAt) {
     
     this.lastSaleAt = lastSaleAt;
@@ -371,12 +371,12 @@ public class GetMarketProductResponseDataVariants {
     return Objects.equals(this.id, getMarketProductResponseDataVariants.id) &&
         Objects.equals(this.label, getMarketProductResponseDataVariants.label) &&
         Objects.equals(this.sortKey, getMarketProductResponseDataVariants.sortKey) &&
+        Objects.equals(this.skuId, getMarketProductResponseDataVariants.skuId) &&
         Objects.equals(this.externalId, getMarketProductResponseDataVariants.externalId) &&
         Objects.equals(this.externalSource, getMarketProductResponseDataVariants.externalSource) &&
         Objects.equals(this.externalSyncedAt, getMarketProductResponseDataVariants.externalSyncedAt) &&
         Objects.equals(this.lastSaleCents, getMarketProductResponseDataVariants.lastSaleCents) &&
         Objects.equals(this.tradesCount, getMarketProductResponseDataVariants.tradesCount) &&
-        Objects.equals(this.skuId, getMarketProductResponseDataVariants.skuId) &&
         Objects.equals(this.lastSaleAt, getMarketProductResponseDataVariants.lastSaleAt) &&
         Objects.equals(this.bestBidCents, getMarketProductResponseDataVariants.bestBidCents) &&
         Objects.equals(this.bestAskCents, getMarketProductResponseDataVariants.bestAskCents);
@@ -388,7 +388,7 @@ public class GetMarketProductResponseDataVariants {
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, label, sortKey, externalId, externalSource, externalSyncedAt, lastSaleCents, tradesCount, skuId, lastSaleAt, bestBidCents, bestAskCents);
+    return Objects.hash(id, label, sortKey, skuId, externalId, externalSource, externalSyncedAt, lastSaleCents, tradesCount, lastSaleAt, bestBidCents, bestAskCents);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -405,12 +405,12 @@ public class GetMarketProductResponseDataVariants {
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    label: ").append(toIndentedString(label)).append("\n");
     sb.append("    sortKey: ").append(toIndentedString(sortKey)).append("\n");
+    sb.append("    skuId: ").append(toIndentedString(skuId)).append("\n");
     sb.append("    externalId: ").append(toIndentedString(externalId)).append("\n");
     sb.append("    externalSource: ").append(toIndentedString(externalSource)).append("\n");
     sb.append("    externalSyncedAt: ").append(toIndentedString(externalSyncedAt)).append("\n");
     sb.append("    lastSaleCents: ").append(toIndentedString(lastSaleCents)).append("\n");
     sb.append("    tradesCount: ").append(toIndentedString(tradesCount)).append("\n");
-    sb.append("    skuId: ").append(toIndentedString(skuId)).append("\n");
     sb.append("    lastSaleAt: ").append(toIndentedString(lastSaleAt)).append("\n");
     sb.append("    bestBidCents: ").append(toIndentedString(bestBidCents)).append("\n");
     sb.append("    bestAskCents: ").append(toIndentedString(bestAskCents)).append("\n");

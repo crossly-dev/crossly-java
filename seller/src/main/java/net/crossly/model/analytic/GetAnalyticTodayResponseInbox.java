@@ -29,7 +29,7 @@ import org.openapitools.jackson.nullable.JsonNullable;
 /**
  * GetAnalyticTodayResponseInbox
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-11T23:44:48.922Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-27T19:42:43.186Z[Etc/UTC]")
 public class GetAnalyticTodayResponseInbox {
   public static final String SERIALIZED_NAME_UNREAD = "unread";
   @SerializedName(SERIALIZED_NAME_UNREAD)
@@ -57,11 +57,11 @@ public class GetAnalyticTodayResponseInbox {
   }
 
    /**
-   * Conversations not yet opened (hidden threads excluded).
+   * Unread conversations + unopened offers — the Unread tab&#39;s rows (services/inbox/attention.ts).
    * @return unread
   **/
   @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "Conversations not yet opened (hidden threads excluded).")
+  @ApiModelProperty(required = true, value = "Unread conversations + unopened offers — the Unread tab's rows (services/inbox/attention.ts).")
 
   public BigDecimal getUnread() {
     return unread;
@@ -80,11 +80,11 @@ public class GetAnalyticTodayResponseInbox {
   }
 
    /**
-   * Open threads whose newest message is the buyer&#39;s.
+   * Threads and offers waiting on the seller — the Needs reply tab&#39;s rows.
    * @return awaitingReply
   **/
   @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "Open threads whose newest message is the buyer's.")
+  @ApiModelProperty(required = true, value = "Threads and offers waiting on the seller — the Needs reply tab's rows.")
 
   public BigDecimal getAwaitingReply() {
     return awaitingReply;

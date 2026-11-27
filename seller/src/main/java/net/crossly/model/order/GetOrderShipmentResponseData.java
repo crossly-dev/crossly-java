@@ -30,7 +30,7 @@ import org.threeten.bp.OffsetDateTime;
 /**
  * GetOrderShipmentResponseData
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-11T23:44:48.922Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-27T19:42:43.186Z[Etc/UTC]")
 public class GetOrderShipmentResponseData {
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
@@ -48,10 +48,6 @@ public class GetOrderShipmentResponseData {
   @SerializedName(SERIALIZED_NAME_SOURCE)
   private String source;
 
-  public static final String SERIALIZED_NAME_ORDER_ID = "orderId";
-  @SerializedName(SERIALIZED_NAME_ORDER_ID)
-  private String orderId;
-
   public static final String SERIALIZED_NAME_CARRIER = "carrier";
   @SerializedName(SERIALIZED_NAME_CARRIER)
   private String carrier;
@@ -64,9 +60,9 @@ public class GetOrderShipmentResponseData {
   @SerializedName(SERIALIZED_NAME_TRACKING_NUMBER)
   private String trackingNumber;
 
-  public static final String SERIALIZED_NAME_VOIDED_AT = "voidedAt";
-  @SerializedName(SERIALIZED_NAME_VOIDED_AT)
-  private OffsetDateTime voidedAt;
+  public static final String SERIALIZED_NAME_ORDER_ID = "orderId";
+  @SerializedName(SERIALIZED_NAME_ORDER_ID)
+  private String orderId;
 
   public static final String SERIALIZED_NAME_LABEL_COST_CENTS = "labelCostCents";
   @SerializedName(SERIALIZED_NAME_LABEL_COST_CENTS)
@@ -76,6 +72,10 @@ public class GetOrderShipmentResponseData {
   @SerializedName(SERIALIZED_NAME_LABEL_URL)
   private String labelUrl;
 
+  public static final String SERIALIZED_NAME_LABEL_QR_URL = "labelQrUrl";
+  @SerializedName(SERIALIZED_NAME_LABEL_QR_URL)
+  private String labelQrUrl;
+
   public static final String SERIALIZED_NAME_SHIPPO_SHIPMENT_ID = "shippoShipmentId";
   @SerializedName(SERIALIZED_NAME_SHIPPO_SHIPMENT_ID)
   private String shippoShipmentId;
@@ -83,6 +83,10 @@ public class GetOrderShipmentResponseData {
   public static final String SERIALIZED_NAME_TRACKING_REGISTERED_AT = "trackingRegisteredAt";
   @SerializedName(SERIALIZED_NAME_TRACKING_REGISTERED_AT)
   private OffsetDateTime trackingRegisteredAt;
+
+  public static final String SERIALIZED_NAME_VOIDED_AT = "voidedAt";
+  @SerializedName(SERIALIZED_NAME_VOIDED_AT)
+  private OffsetDateTime voidedAt;
 
   public GetOrderShipmentResponseData() { 
   }
@@ -179,29 +183,6 @@ public class GetOrderShipmentResponseData {
   }
 
 
-  public GetOrderShipmentResponseData orderId(String orderId) {
-    
-    this.orderId = orderId;
-    return this;
-  }
-
-   /**
-   * Get orderId
-   * @return orderId
-  **/
-  @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "")
-
-  public String getOrderId() {
-    return orderId;
-  }
-
-
-  public void setOrderId(String orderId) {
-    this.orderId = orderId;
-  }
-
-
   public GetOrderShipmentResponseData carrier(String carrier) {
     
     this.carrier = carrier;
@@ -271,26 +252,26 @@ public class GetOrderShipmentResponseData {
   }
 
 
-  public GetOrderShipmentResponseData voidedAt(OffsetDateTime voidedAt) {
+  public GetOrderShipmentResponseData orderId(String orderId) {
     
-    this.voidedAt = voidedAt;
+    this.orderId = orderId;
     return this;
   }
 
    /**
-   * Get voidedAt
-   * @return voidedAt
+   * Get orderId
+   * @return orderId
   **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
+  @javax.annotation.Nonnull
+  @ApiModelProperty(required = true, value = "")
 
-  public OffsetDateTime getVoidedAt() {
-    return voidedAt;
+  public String getOrderId() {
+    return orderId;
   }
 
 
-  public void setVoidedAt(OffsetDateTime voidedAt) {
-    this.voidedAt = voidedAt;
+  public void setOrderId(String orderId) {
+    this.orderId = orderId;
   }
 
 
@@ -340,6 +321,29 @@ public class GetOrderShipmentResponseData {
   }
 
 
+  public GetOrderShipmentResponseData labelQrUrl(String labelQrUrl) {
+    
+    this.labelQrUrl = labelQrUrl;
+    return this;
+  }
+
+   /**
+   * Get labelQrUrl
+   * @return labelQrUrl
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public String getLabelQrUrl() {
+    return labelQrUrl;
+  }
+
+
+  public void setLabelQrUrl(String labelQrUrl) {
+    this.labelQrUrl = labelQrUrl;
+  }
+
+
   public GetOrderShipmentResponseData shippoShipmentId(String shippoShipmentId) {
     
     this.shippoShipmentId = shippoShipmentId;
@@ -386,6 +390,29 @@ public class GetOrderShipmentResponseData {
   }
 
 
+  public GetOrderShipmentResponseData voidedAt(OffsetDateTime voidedAt) {
+    
+    this.voidedAt = voidedAt;
+    return this;
+  }
+
+   /**
+   * Get voidedAt
+   * @return voidedAt
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public OffsetDateTime getVoidedAt() {
+    return voidedAt;
+  }
+
+
+  public void setVoidedAt(OffsetDateTime voidedAt) {
+    this.voidedAt = voidedAt;
+  }
+
+
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -399,15 +426,16 @@ public class GetOrderShipmentResponseData {
         Objects.equals(this.createdAt, getOrderShipmentResponseData.createdAt) &&
         Objects.equals(this.userId, getOrderShipmentResponseData.userId) &&
         Objects.equals(this.source, getOrderShipmentResponseData.source) &&
-        Objects.equals(this.orderId, getOrderShipmentResponseData.orderId) &&
         Objects.equals(this.carrier, getOrderShipmentResponseData.carrier) &&
         Objects.equals(this.service, getOrderShipmentResponseData.service) &&
         Objects.equals(this.trackingNumber, getOrderShipmentResponseData.trackingNumber) &&
-        Objects.equals(this.voidedAt, getOrderShipmentResponseData.voidedAt) &&
+        Objects.equals(this.orderId, getOrderShipmentResponseData.orderId) &&
         Objects.equals(this.labelCostCents, getOrderShipmentResponseData.labelCostCents) &&
         Objects.equals(this.labelUrl, getOrderShipmentResponseData.labelUrl) &&
+        Objects.equals(this.labelQrUrl, getOrderShipmentResponseData.labelQrUrl) &&
         Objects.equals(this.shippoShipmentId, getOrderShipmentResponseData.shippoShipmentId) &&
-        Objects.equals(this.trackingRegisteredAt, getOrderShipmentResponseData.trackingRegisteredAt);
+        Objects.equals(this.trackingRegisteredAt, getOrderShipmentResponseData.trackingRegisteredAt) &&
+        Objects.equals(this.voidedAt, getOrderShipmentResponseData.voidedAt);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -416,7 +444,7 @@ public class GetOrderShipmentResponseData {
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, createdAt, userId, source, orderId, carrier, service, trackingNumber, voidedAt, labelCostCents, labelUrl, shippoShipmentId, trackingRegisteredAt);
+    return Objects.hash(id, createdAt, userId, source, carrier, service, trackingNumber, orderId, labelCostCents, labelUrl, labelQrUrl, shippoShipmentId, trackingRegisteredAt, voidedAt);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -434,15 +462,16 @@ public class GetOrderShipmentResponseData {
     sb.append("    createdAt: ").append(toIndentedString(createdAt)).append("\n");
     sb.append("    userId: ").append(toIndentedString(userId)).append("\n");
     sb.append("    source: ").append(toIndentedString(source)).append("\n");
-    sb.append("    orderId: ").append(toIndentedString(orderId)).append("\n");
     sb.append("    carrier: ").append(toIndentedString(carrier)).append("\n");
     sb.append("    service: ").append(toIndentedString(service)).append("\n");
     sb.append("    trackingNumber: ").append(toIndentedString(trackingNumber)).append("\n");
-    sb.append("    voidedAt: ").append(toIndentedString(voidedAt)).append("\n");
+    sb.append("    orderId: ").append(toIndentedString(orderId)).append("\n");
     sb.append("    labelCostCents: ").append(toIndentedString(labelCostCents)).append("\n");
     sb.append("    labelUrl: ").append(toIndentedString(labelUrl)).append("\n");
+    sb.append("    labelQrUrl: ").append(toIndentedString(labelQrUrl)).append("\n");
     sb.append("    shippoShipmentId: ").append(toIndentedString(shippoShipmentId)).append("\n");
     sb.append("    trackingRegisteredAt: ").append(toIndentedString(trackingRegisteredAt)).append("\n");
+    sb.append("    voidedAt: ").append(toIndentedString(voidedAt)).append("\n");
     sb.append("}");
     return sb.toString();
   }

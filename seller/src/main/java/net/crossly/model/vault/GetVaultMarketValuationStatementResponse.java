@@ -26,6 +26,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import net.crossly.model.vault.CreateVaultMarketValuationStatementResponseAccount;
+import net.crossly.model.vault.CreateVaultMarketValuationStatementResponseShares;
 import net.crossly.model.vault.CreateVaultMarketValuationStatementResponseTotals;
 import net.crossly.model.vault.CreateVaultMarketValuationStatementResponseUnits;
 import net.crossly.model.vault.GetVaultMarketValuationStatementResponseSeal;
@@ -35,7 +36,7 @@ import org.openapitools.jackson.nullable.JsonNullable;
 /**
  * GetVaultMarketValuationStatementResponse
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-11T23:44:48.922Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-27T19:42:43.186Z[Etc/UTC]")
 public class GetVaultMarketValuationStatementResponse {
   public static final String SERIALIZED_NAME_ISSUED = "issued";
   @SerializedName(SERIALIZED_NAME_ISSUED)
@@ -70,9 +71,9 @@ public class GetVaultMarketValuationStatementResponse {
    */
   @JsonAdapter(PurposeEnum.Adapter.class)
   public enum PurposeEnum {
-    INSURANCE("insurance"),
+    APPRAISAL("appraisal"),
     
-    APPRAISAL("appraisal");
+    INSURANCE("insurance");
 
     private String value;
 
@@ -163,6 +164,10 @@ public class GetVaultMarketValuationStatementResponse {
   public static final String SERIALIZED_NAME_VENUE = "venue";
   @SerializedName(SERIALIZED_NAME_VENUE)
   private String venue;
+
+  public static final String SERIALIZED_NAME_SHARES = "shares";
+  @SerializedName(SERIALIZED_NAME_SHARES)
+  private CreateVaultMarketValuationStatementResponseShares shares;
 
   public GetVaultMarketValuationStatementResponse() { 
   }
@@ -642,6 +647,29 @@ public class GetVaultMarketValuationStatementResponse {
   }
 
 
+  public GetVaultMarketValuationStatementResponse shares(CreateVaultMarketValuationStatementResponseShares shares) {
+    
+    this.shares = shares;
+    return this;
+  }
+
+   /**
+   * Get shares
+   * @return shares
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public CreateVaultMarketValuationStatementResponseShares getShares() {
+    return shares;
+  }
+
+
+  public void setShares(CreateVaultMarketValuationStatementResponseShares shares) {
+    this.shares = shares;
+  }
+
+
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -670,7 +698,8 @@ public class GetVaultMarketValuationStatementResponse {
         Objects.equals(this.methodology, getVaultMarketValuationStatementResponse.methodology) &&
         Objects.equals(this.notes, getVaultMarketValuationStatementResponse.notes) &&
         Objects.equals(this.verifyUrl, getVaultMarketValuationStatementResponse.verifyUrl) &&
-        Objects.equals(this.venue, getVaultMarketValuationStatementResponse.venue);
+        Objects.equals(this.venue, getVaultMarketValuationStatementResponse.venue) &&
+        Objects.equals(this.shares, getVaultMarketValuationStatementResponse.shares);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -679,7 +708,7 @@ public class GetVaultMarketValuationStatementResponse {
 
   @Override
   public int hashCode() {
-    return Objects.hash(issued, hash, seal, verify, kind, version, id, purpose, title, asOf, issuedAt, account, preparedFor, policyRef, units, totals, methodology, notes, verifyUrl, venue);
+    return Objects.hash(issued, hash, seal, verify, kind, version, id, purpose, title, asOf, issuedAt, account, preparedFor, policyRef, units, totals, methodology, notes, verifyUrl, venue, shares);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -713,6 +742,7 @@ public class GetVaultMarketValuationStatementResponse {
     sb.append("    notes: ").append(toIndentedString(notes)).append("\n");
     sb.append("    verifyUrl: ").append(toIndentedString(verifyUrl)).append("\n");
     sb.append("    venue: ").append(toIndentedString(venue)).append("\n");
+    sb.append("    shares: ").append(toIndentedString(shares)).append("\n");
     sb.append("}");
     return sb.toString();
   }

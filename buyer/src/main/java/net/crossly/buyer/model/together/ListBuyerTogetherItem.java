@@ -27,8 +27,12 @@ import java.io.IOException;
 /**
  * ListBuyerTogetherItem
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-11T23:47:29.843Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-27T19:58:46.962Z[Etc/UTC]")
 public class ListBuyerTogetherItem {
+  public static final String SERIALIZED_NAME_CODE = "code";
+  @SerializedName(SERIALIZED_NAME_CODE)
+  private String code;
+
   public static final String SERIALIZED_NAME_NAME = "name";
   @SerializedName(SERIALIZED_NAME_NAME)
   private String name;
@@ -37,12 +41,31 @@ public class ListBuyerTogetherItem {
   @SerializedName(SERIALIZED_NAME_ENDS_AT)
   private String endsAt;
 
-  public static final String SERIALIZED_NAME_CODE = "code";
-  @SerializedName(SERIALIZED_NAME_CODE)
-  private String code;
-
   public ListBuyerTogetherItem() { 
   }
+
+  public ListBuyerTogetherItem code(String code) {
+    
+    this.code = code;
+    return this;
+  }
+
+   /**
+   * Get code
+   * @return code
+  **/
+  @javax.annotation.Nonnull
+  @ApiModelProperty(required = true, value = "")
+
+  public String getCode() {
+    return code;
+  }
+
+
+  public void setCode(String code) {
+    this.code = code;
+  }
+
 
   public ListBuyerTogetherItem name(String name) {
     
@@ -90,29 +113,6 @@ public class ListBuyerTogetherItem {
   }
 
 
-  public ListBuyerTogetherItem code(String code) {
-    
-    this.code = code;
-    return this;
-  }
-
-   /**
-   * Get code
-   * @return code
-  **/
-  @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "")
-
-  public String getCode() {
-    return code;
-  }
-
-
-  public void setCode(String code) {
-    this.code = code;
-  }
-
-
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -122,23 +122,23 @@ public class ListBuyerTogetherItem {
       return false;
     }
     ListBuyerTogetherItem listBuyerTogetherItem = (ListBuyerTogetherItem) o;
-    return Objects.equals(this.name, listBuyerTogetherItem.name) &&
-        Objects.equals(this.endsAt, listBuyerTogetherItem.endsAt) &&
-        Objects.equals(this.code, listBuyerTogetherItem.code);
+    return Objects.equals(this.code, listBuyerTogetherItem.code) &&
+        Objects.equals(this.name, listBuyerTogetherItem.name) &&
+        Objects.equals(this.endsAt, listBuyerTogetherItem.endsAt);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(name, endsAt, code);
+    return Objects.hash(code, name, endsAt);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class ListBuyerTogetherItem {\n");
+    sb.append("    code: ").append(toIndentedString(code)).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    endsAt: ").append(toIndentedString(endsAt)).append("\n");
-    sb.append("    code: ").append(toIndentedString(code)).append("\n");
     sb.append("}");
     return sb.toString();
   }

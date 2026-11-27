@@ -26,13 +26,14 @@ import java.io.IOException;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
+import net.crossly.model.analytic.GetAnalyticInventoryResponseDataWorst;
 import net.crossly.model.inventory.GetInventoryAgingResponseDataBuckets;
-import net.crossly.model.inventory.GetInventoryAgingResponseDataWorst;
+import org.openapitools.jackson.nullable.JsonNullable;
 
 /**
  * GetInventoryAgingResponseData
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-11T23:44:48.922Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-27T19:42:43.186Z[Etc/UTC]")
 public class GetInventoryAgingResponseData {
   public static final String SERIALIZED_NAME_BUCKETS = "buckets";
   @SerializedName(SERIALIZED_NAME_BUCKETS)
@@ -40,11 +41,23 @@ public class GetInventoryAgingResponseData {
 
   public static final String SERIALIZED_NAME_WORST = "worst";
   @SerializedName(SERIALIZED_NAME_WORST)
-  private List<GetInventoryAgingResponseDataWorst> worst = new ArrayList<GetInventoryAgingResponseDataWorst>();
+  private List<GetAnalyticInventoryResponseDataWorst> worst = new ArrayList<GetAnalyticInventoryResponseDataWorst>();
 
   public static final String SERIALIZED_NAME_STUCK_CAPITAL_CENTS = "stuckCapitalCents";
   @SerializedName(SERIALIZED_NAME_STUCK_CAPITAL_CENTS)
   private BigDecimal stuckCapitalCents;
+
+  public static final String SERIALIZED_NAME_ATTENTION_COST_CENTS = "attentionCostCents";
+  @SerializedName(SERIALIZED_NAME_ATTENTION_COST_CENTS)
+  private BigDecimal attentionCostCents;
+
+  public static final String SERIALIZED_NAME_OVER90_COST_CENTS = "over90CostCents";
+  @SerializedName(SERIALIZED_NAME_OVER90_COST_CENTS)
+  private BigDecimal over90CostCents;
+
+  public static final String SERIALIZED_NAME_OVER90_LISTED_VALUE_CENTS = "over90ListedValueCents";
+  @SerializedName(SERIALIZED_NAME_OVER90_LISTED_VALUE_CENTS)
+  private BigDecimal over90ListedValueCents;
 
   public static final String SERIALIZED_NAME_TOTAL_ITEMS = "totalItems";
   @SerializedName(SERIALIZED_NAME_TOTAL_ITEMS)
@@ -53,6 +66,75 @@ public class GetInventoryAgingResponseData {
   public static final String SERIALIZED_NAME_TOTAL_UNITS = "totalUnits";
   @SerializedName(SERIALIZED_NAME_TOTAL_UNITS)
   private BigDecimal totalUnits;
+
+  public static final String SERIALIZED_NAME_COST_KNOWN_ITEMS = "costKnownItems";
+  @SerializedName(SERIALIZED_NAME_COST_KNOWN_ITEMS)
+  private BigDecimal costKnownItems;
+
+  public static final String SERIALIZED_NAME_COST_UNKNOWN_ITEMS = "costUnknownItems";
+  @SerializedName(SERIALIZED_NAME_COST_UNKNOWN_ITEMS)
+  private BigDecimal costUnknownItems;
+
+  public static final String SERIALIZED_NAME_LISTED_VALUE_CENTS = "listedValueCents";
+  @SerializedName(SERIALIZED_NAME_LISTED_VALUE_CENTS)
+  private BigDecimal listedValueCents;
+
+  public static final String SERIALIZED_NAME_MARKET_VALUE_CENTS = "marketValueCents";
+  @SerializedName(SERIALIZED_NAME_MARKET_VALUE_CENTS)
+  private BigDecimal marketValueCents;
+
+  /**
+   * Gets or Sets sizeBy
+   */
+  @JsonAdapter(SizeByEnum.Adapter.class)
+  public enum SizeByEnum {
+    valueOption("value"),
+    
+    cost("cost"),
+    
+    units("units");
+
+    private String value;
+
+    SizeByEnum(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    @Override
+    public String toString() {
+      return String.valueOf(value);
+    }
+
+    public static SizeByEnum fromValue(String value) {
+      for (SizeByEnum b : SizeByEnum.values()) {
+        if (b.value.equals(value)) {
+          return b;
+        }
+      }
+      throw new IllegalArgumentException("Unexpected value '" + value + "'");
+    }
+
+    public static class Adapter extends TypeAdapter<SizeByEnum> {
+      @Override
+      public void write(final JsonWriter jsonWriter, final SizeByEnum enumeration) throws IOException {
+        jsonWriter.value(enumeration.getValue());
+      }
+
+      @Override
+      public SizeByEnum read(final JsonReader jsonReader) throws IOException {
+        String value =  jsonReader.nextString();
+        return SizeByEnum.fromValue(value);
+      }
+    }
+  }
+
+  public static final String SERIALIZED_NAME_SIZE_BY = "sizeBy";
+  @SerializedName(SERIALIZED_NAME_SIZE_BY)
+  private SizeByEnum sizeBy;
 
   public GetInventoryAgingResponseData() { 
   }
@@ -85,13 +167,13 @@ public class GetInventoryAgingResponseData {
   }
 
 
-  public GetInventoryAgingResponseData worst(List<GetInventoryAgingResponseDataWorst> worst) {
+  public GetInventoryAgingResponseData worst(List<GetAnalyticInventoryResponseDataWorst> worst) {
     
     this.worst = worst;
     return this;
   }
 
-  public GetInventoryAgingResponseData addWorstItem(GetInventoryAgingResponseDataWorst worstItem) {
+  public GetInventoryAgingResponseData addWorstItem(GetAnalyticInventoryResponseDataWorst worstItem) {
     this.worst.add(worstItem);
     return this;
   }
@@ -103,12 +185,12 @@ public class GetInventoryAgingResponseData {
   @javax.annotation.Nonnull
   @ApiModelProperty(required = true, value = "")
 
-  public List<GetInventoryAgingResponseDataWorst> getWorst() {
+  public List<GetAnalyticInventoryResponseDataWorst> getWorst() {
     return worst;
   }
 
 
-  public void setWorst(List<GetInventoryAgingResponseDataWorst> worst) {
+  public void setWorst(List<GetAnalyticInventoryResponseDataWorst> worst) {
     this.worst = worst;
   }
 
@@ -120,11 +202,11 @@ public class GetInventoryAgingResponseData {
   }
 
    /**
-   * Get stuckCapitalCents
+   * Cost of stock 30+ days listed or unlisted (30-90 + 90+ + unlisted): the same number as attentionCostCents. Not \&quot;older than three months\&quot;; that is over90CostCents.
    * @return stuckCapitalCents
   **/
   @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "")
+  @ApiModelProperty(required = true, value = "Cost of stock 30+ days listed or unlisted (30-90 + 90+ + unlisted): the same number as attentionCostCents. Not \"older than three months\"; that is over90CostCents.")
 
   public BigDecimal getStuckCapitalCents() {
     return stuckCapitalCents;
@@ -133,6 +215,75 @@ public class GetInventoryAgingResponseData {
 
   public void setStuckCapitalCents(BigDecimal stuckCapitalCents) {
     this.stuckCapitalCents = stuckCapitalCents;
+  }
+
+
+  public GetInventoryAgingResponseData attentionCostCents(BigDecimal attentionCostCents) {
+    
+    this.attentionCostCents = attentionCostCents;
+    return this;
+  }
+
+   /**
+   * Get attentionCostCents
+   * @return attentionCostCents
+  **/
+  @javax.annotation.Nonnull
+  @ApiModelProperty(required = true, value = "")
+
+  public BigDecimal getAttentionCostCents() {
+    return attentionCostCents;
+  }
+
+
+  public void setAttentionCostCents(BigDecimal attentionCostCents) {
+    this.attentionCostCents = attentionCostCents;
+  }
+
+
+  public GetInventoryAgingResponseData over90CostCents(BigDecimal over90CostCents) {
+    
+    this.over90CostCents = over90CostCents;
+    return this;
+  }
+
+   /**
+   * Get over90CostCents
+   * @return over90CostCents
+  **/
+  @javax.annotation.Nonnull
+  @ApiModelProperty(required = true, value = "")
+
+  public BigDecimal getOver90CostCents() {
+    return over90CostCents;
+  }
+
+
+  public void setOver90CostCents(BigDecimal over90CostCents) {
+    this.over90CostCents = over90CostCents;
+  }
+
+
+  public GetInventoryAgingResponseData over90ListedValueCents(BigDecimal over90ListedValueCents) {
+    
+    this.over90ListedValueCents = over90ListedValueCents;
+    return this;
+  }
+
+   /**
+   * Get over90ListedValueCents
+   * @return over90ListedValueCents
+  **/
+  @javax.annotation.Nonnull
+  @ApiModelProperty(required = true, value = "")
+
+  public BigDecimal getOver90ListedValueCents() {
+    return over90ListedValueCents;
+  }
+
+
+  public void setOver90ListedValueCents(BigDecimal over90ListedValueCents) {
+    this.over90ListedValueCents = over90ListedValueCents;
   }
 
 
@@ -182,6 +333,121 @@ public class GetInventoryAgingResponseData {
   }
 
 
+  public GetInventoryAgingResponseData costKnownItems(BigDecimal costKnownItems) {
+    
+    this.costKnownItems = costKnownItems;
+    return this;
+  }
+
+   /**
+   * Get costKnownItems
+   * @return costKnownItems
+  **/
+  @javax.annotation.Nonnull
+  @ApiModelProperty(required = true, value = "")
+
+  public BigDecimal getCostKnownItems() {
+    return costKnownItems;
+  }
+
+
+  public void setCostKnownItems(BigDecimal costKnownItems) {
+    this.costKnownItems = costKnownItems;
+  }
+
+
+  public GetInventoryAgingResponseData costUnknownItems(BigDecimal costUnknownItems) {
+    
+    this.costUnknownItems = costUnknownItems;
+    return this;
+  }
+
+   /**
+   * Get costUnknownItems
+   * @return costUnknownItems
+  **/
+  @javax.annotation.Nonnull
+  @ApiModelProperty(required = true, value = "")
+
+  public BigDecimal getCostUnknownItems() {
+    return costUnknownItems;
+  }
+
+
+  public void setCostUnknownItems(BigDecimal costUnknownItems) {
+    this.costUnknownItems = costUnknownItems;
+  }
+
+
+  public GetInventoryAgingResponseData listedValueCents(BigDecimal listedValueCents) {
+    
+    this.listedValueCents = listedValueCents;
+    return this;
+  }
+
+   /**
+   * Get listedValueCents
+   * @return listedValueCents
+  **/
+  @javax.annotation.Nonnull
+  @ApiModelProperty(required = true, value = "")
+
+  public BigDecimal getListedValueCents() {
+    return listedValueCents;
+  }
+
+
+  public void setListedValueCents(BigDecimal listedValueCents) {
+    this.listedValueCents = listedValueCents;
+  }
+
+
+  public GetInventoryAgingResponseData marketValueCents(BigDecimal marketValueCents) {
+    
+    this.marketValueCents = marketValueCents;
+    return this;
+  }
+
+   /**
+   * Get marketValueCents
+   * @return marketValueCents
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public BigDecimal getMarketValueCents() {
+    return marketValueCents;
+  }
+
+
+  public void setMarketValueCents(BigDecimal marketValueCents) {
+    this.marketValueCents = marketValueCents;
+  }
+
+
+  public GetInventoryAgingResponseData sizeBy(SizeByEnum sizeBy) {
+    
+    this.sizeBy = sizeBy;
+    return this;
+  }
+
+   /**
+   * Get sizeBy
+   * @return sizeBy
+  **/
+  @javax.annotation.Nonnull
+  @ApiModelProperty(required = true, value = "")
+
+  public SizeByEnum getSizeBy() {
+    return sizeBy;
+  }
+
+
+  public void setSizeBy(SizeByEnum sizeBy) {
+    this.sizeBy = sizeBy;
+  }
+
+
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -194,13 +460,32 @@ public class GetInventoryAgingResponseData {
     return Objects.equals(this.buckets, getInventoryAgingResponseData.buckets) &&
         Objects.equals(this.worst, getInventoryAgingResponseData.worst) &&
         Objects.equals(this.stuckCapitalCents, getInventoryAgingResponseData.stuckCapitalCents) &&
+        Objects.equals(this.attentionCostCents, getInventoryAgingResponseData.attentionCostCents) &&
+        Objects.equals(this.over90CostCents, getInventoryAgingResponseData.over90CostCents) &&
+        Objects.equals(this.over90ListedValueCents, getInventoryAgingResponseData.over90ListedValueCents) &&
         Objects.equals(this.totalItems, getInventoryAgingResponseData.totalItems) &&
-        Objects.equals(this.totalUnits, getInventoryAgingResponseData.totalUnits);
+        Objects.equals(this.totalUnits, getInventoryAgingResponseData.totalUnits) &&
+        Objects.equals(this.costKnownItems, getInventoryAgingResponseData.costKnownItems) &&
+        Objects.equals(this.costUnknownItems, getInventoryAgingResponseData.costUnknownItems) &&
+        Objects.equals(this.listedValueCents, getInventoryAgingResponseData.listedValueCents) &&
+        Objects.equals(this.marketValueCents, getInventoryAgingResponseData.marketValueCents) &&
+        Objects.equals(this.sizeBy, getInventoryAgingResponseData.sizeBy);
+  }
+
+  private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+    return a == b || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(buckets, worst, stuckCapitalCents, totalItems, totalUnits);
+    return Objects.hash(buckets, worst, stuckCapitalCents, attentionCostCents, over90CostCents, over90ListedValueCents, totalItems, totalUnits, costKnownItems, costUnknownItems, listedValueCents, marketValueCents, sizeBy);
+  }
+
+  private static <T> int hashCodeNullable(JsonNullable<T> a) {
+    if (a == null) {
+      return 1;
+    }
+    return a.isPresent() ? Arrays.deepHashCode(new Object[]{a.get()}) : 31;
   }
 
   @Override
@@ -210,8 +495,16 @@ public class GetInventoryAgingResponseData {
     sb.append("    buckets: ").append(toIndentedString(buckets)).append("\n");
     sb.append("    worst: ").append(toIndentedString(worst)).append("\n");
     sb.append("    stuckCapitalCents: ").append(toIndentedString(stuckCapitalCents)).append("\n");
+    sb.append("    attentionCostCents: ").append(toIndentedString(attentionCostCents)).append("\n");
+    sb.append("    over90CostCents: ").append(toIndentedString(over90CostCents)).append("\n");
+    sb.append("    over90ListedValueCents: ").append(toIndentedString(over90ListedValueCents)).append("\n");
     sb.append("    totalItems: ").append(toIndentedString(totalItems)).append("\n");
     sb.append("    totalUnits: ").append(toIndentedString(totalUnits)).append("\n");
+    sb.append("    costKnownItems: ").append(toIndentedString(costKnownItems)).append("\n");
+    sb.append("    costUnknownItems: ").append(toIndentedString(costUnknownItems)).append("\n");
+    sb.append("    listedValueCents: ").append(toIndentedString(listedValueCents)).append("\n");
+    sb.append("    marketValueCents: ").append(toIndentedString(marketValueCents)).append("\n");
+    sb.append("    sizeBy: ").append(toIndentedString(sizeBy)).append("\n");
     sb.append("}");
     return sb.toString();
   }

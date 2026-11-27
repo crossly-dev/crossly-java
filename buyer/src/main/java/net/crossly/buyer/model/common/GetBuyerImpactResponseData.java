@@ -28,16 +28,8 @@ import java.math.BigDecimal;
 /**
  * GetBuyerImpactResponseData
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-11T23:47:29.843Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-27T19:58:46.962Z[Etc/UTC]")
 public class GetBuyerImpactResponseData {
-  public static final String SERIALIZED_NAME_CO2_KG = "co2Kg";
-  @SerializedName(SERIALIZED_NAME_CO2_KG)
-  private BigDecimal co2Kg;
-
-  public static final String SERIALIZED_NAME_WATER_L = "waterL";
-  @SerializedName(SERIALIZED_NAME_WATER_L)
-  private BigDecimal waterL;
-
   public static final String SERIALIZED_NAME_ITEMS_BOUGHT = "itemsBought";
   @SerializedName(SERIALIZED_NAME_ITEMS_BOUGHT)
   private BigDecimal itemsBought;
@@ -46,54 +38,16 @@ public class GetBuyerImpactResponseData {
   @SerializedName(SERIALIZED_NAME_ITEMS_WITH_FIGURES)
   private BigDecimal itemsWithFigures;
 
+  public static final String SERIALIZED_NAME_CO2_KG = "co2Kg";
+  @SerializedName(SERIALIZED_NAME_CO2_KG)
+  private BigDecimal co2Kg;
+
+  public static final String SERIALIZED_NAME_WATER_L = "waterL";
+  @SerializedName(SERIALIZED_NAME_WATER_L)
+  private BigDecimal waterL;
+
   public GetBuyerImpactResponseData() { 
   }
-
-  public GetBuyerImpactResponseData co2Kg(BigDecimal co2Kg) {
-    
-    this.co2Kg = co2Kg;
-    return this;
-  }
-
-   /**
-   * Get co2Kg
-   * @return co2Kg
-  **/
-  @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "")
-
-  public BigDecimal getCo2Kg() {
-    return co2Kg;
-  }
-
-
-  public void setCo2Kg(BigDecimal co2Kg) {
-    this.co2Kg = co2Kg;
-  }
-
-
-  public GetBuyerImpactResponseData waterL(BigDecimal waterL) {
-    
-    this.waterL = waterL;
-    return this;
-  }
-
-   /**
-   * Get waterL
-   * @return waterL
-  **/
-  @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "")
-
-  public BigDecimal getWaterL() {
-    return waterL;
-  }
-
-
-  public void setWaterL(BigDecimal waterL) {
-    this.waterL = waterL;
-  }
-
 
   public GetBuyerImpactResponseData itemsBought(BigDecimal itemsBought) {
     
@@ -141,6 +95,52 @@ public class GetBuyerImpactResponseData {
   }
 
 
+  public GetBuyerImpactResponseData co2Kg(BigDecimal co2Kg) {
+    
+    this.co2Kg = co2Kg;
+    return this;
+  }
+
+   /**
+   * Get co2Kg
+   * @return co2Kg
+  **/
+  @javax.annotation.Nonnull
+  @ApiModelProperty(required = true, value = "")
+
+  public BigDecimal getCo2Kg() {
+    return co2Kg;
+  }
+
+
+  public void setCo2Kg(BigDecimal co2Kg) {
+    this.co2Kg = co2Kg;
+  }
+
+
+  public GetBuyerImpactResponseData waterL(BigDecimal waterL) {
+    
+    this.waterL = waterL;
+    return this;
+  }
+
+   /**
+   * Get waterL
+   * @return waterL
+  **/
+  @javax.annotation.Nonnull
+  @ApiModelProperty(required = true, value = "")
+
+  public BigDecimal getWaterL() {
+    return waterL;
+  }
+
+
+  public void setWaterL(BigDecimal waterL) {
+    this.waterL = waterL;
+  }
+
+
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -150,25 +150,25 @@ public class GetBuyerImpactResponseData {
       return false;
     }
     GetBuyerImpactResponseData getBuyerImpactResponseData = (GetBuyerImpactResponseData) o;
-    return Objects.equals(this.co2Kg, getBuyerImpactResponseData.co2Kg) &&
-        Objects.equals(this.waterL, getBuyerImpactResponseData.waterL) &&
-        Objects.equals(this.itemsBought, getBuyerImpactResponseData.itemsBought) &&
-        Objects.equals(this.itemsWithFigures, getBuyerImpactResponseData.itemsWithFigures);
+    return Objects.equals(this.itemsBought, getBuyerImpactResponseData.itemsBought) &&
+        Objects.equals(this.itemsWithFigures, getBuyerImpactResponseData.itemsWithFigures) &&
+        Objects.equals(this.co2Kg, getBuyerImpactResponseData.co2Kg) &&
+        Objects.equals(this.waterL, getBuyerImpactResponseData.waterL);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(co2Kg, waterL, itemsBought, itemsWithFigures);
+    return Objects.hash(itemsBought, itemsWithFigures, co2Kg, waterL);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class GetBuyerImpactResponseData {\n");
-    sb.append("    co2Kg: ").append(toIndentedString(co2Kg)).append("\n");
-    sb.append("    waterL: ").append(toIndentedString(waterL)).append("\n");
     sb.append("    itemsBought: ").append(toIndentedString(itemsBought)).append("\n");
     sb.append("    itemsWithFigures: ").append(toIndentedString(itemsWithFigures)).append("\n");
+    sb.append("    co2Kg: ").append(toIndentedString(co2Kg)).append("\n");
+    sb.append("    waterL: ").append(toIndentedString(waterL)).append("\n");
     sb.append("}");
     return sb.toString();
   }

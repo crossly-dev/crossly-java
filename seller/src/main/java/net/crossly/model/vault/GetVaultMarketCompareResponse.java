@@ -30,7 +30,7 @@ import net.crossly.model.vault.GetVaultMarketCompareResponseSeries;
 /**
  * GetVaultMarketCompareResponse
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-11T23:44:48.922Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-27T19:42:43.186Z[Etc/UTC]")
 public class GetVaultMarketCompareResponse {
   public static final String SERIALIZED_NAME_DAYS = "days";
   @SerializedName(SERIALIZED_NAME_DAYS)

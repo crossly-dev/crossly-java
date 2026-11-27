@@ -31,7 +31,7 @@ import org.openapitools.jackson.nullable.JsonNullable;
 /**
  * GetTaxonomyCategoryAspectResponseAspects
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-11T23:44:48.922Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-27T19:42:43.186Z[Etc/UTC]")
 public class GetTaxonomyCategoryAspectResponseAspects {
   public static final String SERIALIZED_NAME_NAME = "name";
   @SerializedName(SERIALIZED_NAME_NAME)
@@ -49,10 +49,6 @@ public class GetTaxonomyCategoryAspectResponseAspects {
   @SerializedName(SERIALIZED_NAME_REQUIRED)
   private Boolean required;
 
-  public static final String SERIALIZED_NAME_CARDINALITY = "cardinality";
-  @SerializedName(SERIALIZED_NAME_CARDINALITY)
-  private String cardinality;
-
   public static final String SERIALIZED_NAME_VARIES_BY_ASPECT = "variesByAspect";
   @SerializedName(SERIALIZED_NAME_VARIES_BY_ASPECT)
   private Boolean variesByAspect;
@@ -60,6 +56,10 @@ public class GetTaxonomyCategoryAspectResponseAspects {
   public static final String SERIALIZED_NAME_MAX_LENGTH = "maxLength";
   @SerializedName(SERIALIZED_NAME_MAX_LENGTH)
   private BigDecimal maxLength;
+
+  public static final String SERIALIZED_NAME_CARDINALITY = "cardinality";
+  @SerializedName(SERIALIZED_NAME_CARDINALITY)
+  private String cardinality;
 
   public static final String SERIALIZED_NAME_SELECTION_ONLY = "selectionOnly";
   @SerializedName(SERIALIZED_NAME_SELECTION_ONLY)
@@ -168,29 +168,6 @@ public class GetTaxonomyCategoryAspectResponseAspects {
   }
 
 
-  public GetTaxonomyCategoryAspectResponseAspects cardinality(String cardinality) {
-    
-    this.cardinality = cardinality;
-    return this;
-  }
-
-   /**
-   * Cardinality — SINGLE_VALUE / MULTIPLE_VALUES.
-   * @return cardinality
-  **/
-  @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "Cardinality — SINGLE_VALUE / MULTIPLE_VALUES.")
-
-  public String getCardinality() {
-    return cardinality;
-  }
-
-
-  public void setCardinality(String cardinality) {
-    this.cardinality = cardinality;
-  }
-
-
   public GetTaxonomyCategoryAspectResponseAspects variesByAspect(Boolean variesByAspect) {
     
     this.variesByAspect = variesByAspect;
@@ -237,6 +214,29 @@ public class GetTaxonomyCategoryAspectResponseAspects {
   }
 
 
+  public GetTaxonomyCategoryAspectResponseAspects cardinality(String cardinality) {
+    
+    this.cardinality = cardinality;
+    return this;
+  }
+
+   /**
+   * Cardinality — SINGLE_VALUE / MULTIPLE_VALUES.
+   * @return cardinality
+  **/
+  @javax.annotation.Nonnull
+  @ApiModelProperty(required = true, value = "Cardinality — SINGLE_VALUE / MULTIPLE_VALUES.")
+
+  public String getCardinality() {
+    return cardinality;
+  }
+
+
+  public void setCardinality(String cardinality) {
+    this.cardinality = cardinality;
+  }
+
+
   public GetTaxonomyCategoryAspectResponseAspects selectionOnly(Boolean selectionOnly) {
     
     this.selectionOnly = selectionOnly;
@@ -273,9 +273,9 @@ public class GetTaxonomyCategoryAspectResponseAspects {
         Objects.equals(this.dataType, getTaxonomyCategoryAspectResponseAspects.dataType) &&
         Objects.equals(this.enumValues, getTaxonomyCategoryAspectResponseAspects.enumValues) &&
         Objects.equals(this.required, getTaxonomyCategoryAspectResponseAspects.required) &&
-        Objects.equals(this.cardinality, getTaxonomyCategoryAspectResponseAspects.cardinality) &&
         Objects.equals(this.variesByAspect, getTaxonomyCategoryAspectResponseAspects.variesByAspect) &&
         Objects.equals(this.maxLength, getTaxonomyCategoryAspectResponseAspects.maxLength) &&
+        Objects.equals(this.cardinality, getTaxonomyCategoryAspectResponseAspects.cardinality) &&
         Objects.equals(this.selectionOnly, getTaxonomyCategoryAspectResponseAspects.selectionOnly);
   }
 
@@ -285,7 +285,7 @@ public class GetTaxonomyCategoryAspectResponseAspects {
 
   @Override
   public int hashCode() {
-    return Objects.hash(name, dataType, enumValues, required, cardinality, variesByAspect, maxLength, selectionOnly);
+    return Objects.hash(name, dataType, enumValues, required, variesByAspect, maxLength, cardinality, selectionOnly);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -303,9 +303,9 @@ public class GetTaxonomyCategoryAspectResponseAspects {
     sb.append("    dataType: ").append(toIndentedString(dataType)).append("\n");
     sb.append("    enumValues: ").append(toIndentedString(enumValues)).append("\n");
     sb.append("    required: ").append(toIndentedString(required)).append("\n");
-    sb.append("    cardinality: ").append(toIndentedString(cardinality)).append("\n");
     sb.append("    variesByAspect: ").append(toIndentedString(variesByAspect)).append("\n");
     sb.append("    maxLength: ").append(toIndentedString(maxLength)).append("\n");
+    sb.append("    cardinality: ").append(toIndentedString(cardinality)).append("\n");
     sb.append("    selectionOnly: ").append(toIndentedString(selectionOnly)).append("\n");
     sb.append("}");
     return sb.toString();

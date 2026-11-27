@@ -32,7 +32,7 @@ import org.openapitools.jackson.nullable.JsonNullable;
 /**
  * GetSpatialEmployeeConfigResponseDataConfigRules
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-11T23:44:48.922Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-27T19:42:43.186Z[Etc/UTC]")
 public class GetSpatialEmployeeConfigResponseDataConfigRules {
   /**
    * Gets or Sets when
@@ -41,15 +41,15 @@ public class GetSpatialEmployeeConfigResponseDataConfigRules {
   public enum WhenEnum {
     ENTERED("entered"),
     
+    ASKED("asked"),
+    
     LINGERED("lingered"),
     
     INSPECTED("inspected"),
     
     ADDED_TO_CART("added_to_cart"),
     
-    LEAVING_WITH_CART("leaving_with_cart"),
-    
-    ASKED("asked");
+    LEAVING_WITH_CART("leaving_with_cart");
 
     private String value;
 

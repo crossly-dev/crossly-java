@@ -29,7 +29,7 @@ import org.threeten.bp.OffsetDateTime;
 /**
  * ListNetworkPoolLogItem
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-11T23:44:48.922Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-27T19:42:43.186Z[Etc/UTC]")
 public class ListNetworkPoolLogItem {
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
@@ -39,10 +39,6 @@ public class ListNetworkPoolLogItem {
   @SerializedName(SERIALIZED_NAME_PLATFORM)
   private String platform;
 
-  public static final String SERIALIZED_NAME_RULE_ID = "ruleId";
-  @SerializedName(SERIALIZED_NAME_RULE_ID)
-  private String ruleId;
-
   public static final String SERIALIZED_NAME_ACTION_TYPE = "actionType";
   @SerializedName(SERIALIZED_NAME_ACTION_TYPE)
   private String actionType;
@@ -51,9 +47,9 @@ public class ListNetworkPoolLogItem {
   @SerializedName(SERIALIZED_NAME_TARGET_USER_ID)
   private String targetUserId;
 
-  public static final String SERIALIZED_NAME_PERFORMED_AT = "performedAt";
-  @SerializedName(SERIALIZED_NAME_PERFORMED_AT)
-  private OffsetDateTime performedAt;
+  public static final String SERIALIZED_NAME_RULE_ID = "ruleId";
+  @SerializedName(SERIALIZED_NAME_RULE_ID)
+  private String ruleId;
 
   public static final String SERIALIZED_NAME_ENGAGER_USER_ID = "engagerUserId";
   @SerializedName(SERIALIZED_NAME_ENGAGER_USER_ID)
@@ -66,6 +62,10 @@ public class ListNetworkPoolLogItem {
   public static final String SERIALIZED_NAME_TARGET_PLATFORM_LISTING_ID = "targetPlatformListingId";
   @SerializedName(SERIALIZED_NAME_TARGET_PLATFORM_LISTING_ID)
   private String targetPlatformListingId;
+
+  public static final String SERIALIZED_NAME_PERFORMED_AT = "performedAt";
+  @SerializedName(SERIALIZED_NAME_PERFORMED_AT)
+  private OffsetDateTime performedAt;
 
   public ListNetworkPoolLogItem() { 
   }
@@ -116,29 +116,6 @@ public class ListNetworkPoolLogItem {
   }
 
 
-  public ListNetworkPoolLogItem ruleId(String ruleId) {
-    
-    this.ruleId = ruleId;
-    return this;
-  }
-
-   /**
-   * Get ruleId
-   * @return ruleId
-  **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
-
-  public String getRuleId() {
-    return ruleId;
-  }
-
-
-  public void setRuleId(String ruleId) {
-    this.ruleId = ruleId;
-  }
-
-
   public ListNetworkPoolLogItem actionType(String actionType) {
     
     this.actionType = actionType;
@@ -185,26 +162,26 @@ public class ListNetworkPoolLogItem {
   }
 
 
-  public ListNetworkPoolLogItem performedAt(OffsetDateTime performedAt) {
+  public ListNetworkPoolLogItem ruleId(String ruleId) {
     
-    this.performedAt = performedAt;
+    this.ruleId = ruleId;
     return this;
   }
 
    /**
-   * Get performedAt
-   * @return performedAt
+   * Get ruleId
+   * @return ruleId
   **/
-  @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "")
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
 
-  public OffsetDateTime getPerformedAt() {
-    return performedAt;
+  public String getRuleId() {
+    return ruleId;
   }
 
 
-  public void setPerformedAt(OffsetDateTime performedAt) {
-    this.performedAt = performedAt;
+  public void setRuleId(String ruleId) {
+    this.ruleId = ruleId;
   }
 
 
@@ -277,6 +254,29 @@ public class ListNetworkPoolLogItem {
   }
 
 
+  public ListNetworkPoolLogItem performedAt(OffsetDateTime performedAt) {
+    
+    this.performedAt = performedAt;
+    return this;
+  }
+
+   /**
+   * Get performedAt
+   * @return performedAt
+  **/
+  @javax.annotation.Nonnull
+  @ApiModelProperty(required = true, value = "")
+
+  public OffsetDateTime getPerformedAt() {
+    return performedAt;
+  }
+
+
+  public void setPerformedAt(OffsetDateTime performedAt) {
+    this.performedAt = performedAt;
+  }
+
+
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -288,13 +288,13 @@ public class ListNetworkPoolLogItem {
     ListNetworkPoolLogItem listNetworkPoolLogItem = (ListNetworkPoolLogItem) o;
     return Objects.equals(this.id, listNetworkPoolLogItem.id) &&
         Objects.equals(this.platform, listNetworkPoolLogItem.platform) &&
-        Objects.equals(this.ruleId, listNetworkPoolLogItem.ruleId) &&
         Objects.equals(this.actionType, listNetworkPoolLogItem.actionType) &&
         Objects.equals(this.targetUserId, listNetworkPoolLogItem.targetUserId) &&
-        Objects.equals(this.performedAt, listNetworkPoolLogItem.performedAt) &&
+        Objects.equals(this.ruleId, listNetworkPoolLogItem.ruleId) &&
         Objects.equals(this.engagerUserId, listNetworkPoolLogItem.engagerUserId) &&
         Objects.equals(this.targetListingId, listNetworkPoolLogItem.targetListingId) &&
-        Objects.equals(this.targetPlatformListingId, listNetworkPoolLogItem.targetPlatformListingId);
+        Objects.equals(this.targetPlatformListingId, listNetworkPoolLogItem.targetPlatformListingId) &&
+        Objects.equals(this.performedAt, listNetworkPoolLogItem.performedAt);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -303,7 +303,7 @@ public class ListNetworkPoolLogItem {
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, platform, ruleId, actionType, targetUserId, performedAt, engagerUserId, targetListingId, targetPlatformListingId);
+    return Objects.hash(id, platform, actionType, targetUserId, ruleId, engagerUserId, targetListingId, targetPlatformListingId, performedAt);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -319,13 +319,13 @@ public class ListNetworkPoolLogItem {
     sb.append("class ListNetworkPoolLogItem {\n");
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    platform: ").append(toIndentedString(platform)).append("\n");
-    sb.append("    ruleId: ").append(toIndentedString(ruleId)).append("\n");
     sb.append("    actionType: ").append(toIndentedString(actionType)).append("\n");
     sb.append("    targetUserId: ").append(toIndentedString(targetUserId)).append("\n");
-    sb.append("    performedAt: ").append(toIndentedString(performedAt)).append("\n");
+    sb.append("    ruleId: ").append(toIndentedString(ruleId)).append("\n");
     sb.append("    engagerUserId: ").append(toIndentedString(engagerUserId)).append("\n");
     sb.append("    targetListingId: ").append(toIndentedString(targetListingId)).append("\n");
     sb.append("    targetPlatformListingId: ").append(toIndentedString(targetPlatformListingId)).append("\n");
+    sb.append("    performedAt: ").append(toIndentedString(performedAt)).append("\n");
     sb.append("}");
     return sb.toString();
   }

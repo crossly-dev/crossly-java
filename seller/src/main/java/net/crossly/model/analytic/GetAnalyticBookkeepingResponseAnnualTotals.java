@@ -28,8 +28,16 @@ import java.math.BigDecimal;
 /**
  * GetAnalyticBookkeepingResponseAnnualTotals
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-11T23:44:48.922Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-27T19:42:43.186Z[Etc/UTC]")
 public class GetAnalyticBookkeepingResponseAnnualTotals {
+  public static final String SERIALIZED_NAME_GROSS_SALES = "grossSales";
+  @SerializedName(SERIALIZED_NAME_GROSS_SALES)
+  private BigDecimal grossSales;
+
+  public static final String SERIALIZED_NAME_REFUNDS = "refunds";
+  @SerializedName(SERIALIZED_NAME_REFUNDS)
+  private BigDecimal refunds;
+
   public static final String SERIALIZED_NAME_REVENUE = "revenue";
   @SerializedName(SERIALIZED_NAME_REVENUE)
   private BigDecimal revenue;
@@ -46,12 +54,66 @@ public class GetAnalyticBookkeepingResponseAnnualTotals {
   @SerializedName(SERIALIZED_NAME_SHIPPING_COSTS)
   private BigDecimal shippingCosts;
 
+  public static final String SERIALIZED_NAME_MILEAGE = "mileage";
+  @SerializedName(SERIALIZED_NAME_MILEAGE)
+  private BigDecimal mileage;
+
+  public static final String SERIALIZED_NAME_OTHER_EXPENSES = "otherExpenses";
+  @SerializedName(SERIALIZED_NAME_OTHER_EXPENSES)
+  private BigDecimal otherExpenses;
+
   public static final String SERIALIZED_NAME_NET_PROFIT = "netProfit";
   @SerializedName(SERIALIZED_NAME_NET_PROFIT)
   private BigDecimal netProfit;
 
   public GetAnalyticBookkeepingResponseAnnualTotals() { 
   }
+
+  public GetAnalyticBookkeepingResponseAnnualTotals grossSales(BigDecimal grossSales) {
+    
+    this.grossSales = grossSales;
+    return this;
+  }
+
+   /**
+   * Get grossSales
+   * @return grossSales
+  **/
+  @javax.annotation.Nonnull
+  @ApiModelProperty(required = true, value = "")
+
+  public BigDecimal getGrossSales() {
+    return grossSales;
+  }
+
+
+  public void setGrossSales(BigDecimal grossSales) {
+    this.grossSales = grossSales;
+  }
+
+
+  public GetAnalyticBookkeepingResponseAnnualTotals refunds(BigDecimal refunds) {
+    
+    this.refunds = refunds;
+    return this;
+  }
+
+   /**
+   * Get refunds
+   * @return refunds
+  **/
+  @javax.annotation.Nonnull
+  @ApiModelProperty(required = true, value = "")
+
+  public BigDecimal getRefunds() {
+    return refunds;
+  }
+
+
+  public void setRefunds(BigDecimal refunds) {
+    this.refunds = refunds;
+  }
+
 
   public GetAnalyticBookkeepingResponseAnnualTotals revenue(BigDecimal revenue) {
     
@@ -145,6 +207,52 @@ public class GetAnalyticBookkeepingResponseAnnualTotals {
   }
 
 
+  public GetAnalyticBookkeepingResponseAnnualTotals mileage(BigDecimal mileage) {
+    
+    this.mileage = mileage;
+    return this;
+  }
+
+   /**
+   * Get mileage
+   * @return mileage
+  **/
+  @javax.annotation.Nonnull
+  @ApiModelProperty(required = true, value = "")
+
+  public BigDecimal getMileage() {
+    return mileage;
+  }
+
+
+  public void setMileage(BigDecimal mileage) {
+    this.mileage = mileage;
+  }
+
+
+  public GetAnalyticBookkeepingResponseAnnualTotals otherExpenses(BigDecimal otherExpenses) {
+    
+    this.otherExpenses = otherExpenses;
+    return this;
+  }
+
+   /**
+   * Get otherExpenses
+   * @return otherExpenses
+  **/
+  @javax.annotation.Nonnull
+  @ApiModelProperty(required = true, value = "")
+
+  public BigDecimal getOtherExpenses() {
+    return otherExpenses;
+  }
+
+
+  public void setOtherExpenses(BigDecimal otherExpenses) {
+    this.otherExpenses = otherExpenses;
+  }
+
+
   public GetAnalyticBookkeepingResponseAnnualTotals netProfit(BigDecimal netProfit) {
     
     this.netProfit = netProfit;
@@ -177,26 +285,34 @@ public class GetAnalyticBookkeepingResponseAnnualTotals {
       return false;
     }
     GetAnalyticBookkeepingResponseAnnualTotals getAnalyticBookkeepingResponseAnnualTotals = (GetAnalyticBookkeepingResponseAnnualTotals) o;
-    return Objects.equals(this.revenue, getAnalyticBookkeepingResponseAnnualTotals.revenue) &&
+    return Objects.equals(this.grossSales, getAnalyticBookkeepingResponseAnnualTotals.grossSales) &&
+        Objects.equals(this.refunds, getAnalyticBookkeepingResponseAnnualTotals.refunds) &&
+        Objects.equals(this.revenue, getAnalyticBookkeepingResponseAnnualTotals.revenue) &&
         Objects.equals(this.cogs, getAnalyticBookkeepingResponseAnnualTotals.cogs) &&
         Objects.equals(this.platformFees, getAnalyticBookkeepingResponseAnnualTotals.platformFees) &&
         Objects.equals(this.shippingCosts, getAnalyticBookkeepingResponseAnnualTotals.shippingCosts) &&
+        Objects.equals(this.mileage, getAnalyticBookkeepingResponseAnnualTotals.mileage) &&
+        Objects.equals(this.otherExpenses, getAnalyticBookkeepingResponseAnnualTotals.otherExpenses) &&
         Objects.equals(this.netProfit, getAnalyticBookkeepingResponseAnnualTotals.netProfit);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(revenue, cogs, platformFees, shippingCosts, netProfit);
+    return Objects.hash(grossSales, refunds, revenue, cogs, platformFees, shippingCosts, mileage, otherExpenses, netProfit);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class GetAnalyticBookkeepingResponseAnnualTotals {\n");
+    sb.append("    grossSales: ").append(toIndentedString(grossSales)).append("\n");
+    sb.append("    refunds: ").append(toIndentedString(refunds)).append("\n");
     sb.append("    revenue: ").append(toIndentedString(revenue)).append("\n");
     sb.append("    cogs: ").append(toIndentedString(cogs)).append("\n");
     sb.append("    platformFees: ").append(toIndentedString(platformFees)).append("\n");
     sb.append("    shippingCosts: ").append(toIndentedString(shippingCosts)).append("\n");
+    sb.append("    mileage: ").append(toIndentedString(mileage)).append("\n");
+    sb.append("    otherExpenses: ").append(toIndentedString(otherExpenses)).append("\n");
     sb.append("    netProfit: ").append(toIndentedString(netProfit)).append("\n");
     sb.append("}");
     return sb.toString();

@@ -26,12 +26,12 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
-import net.crossly.model.world.ListWorldOutfitsItemAppearance;
+import net.crossly.model.world.CreateWorldOutfitResponseDataPresetAppearance;
 
 /**
  * CreateWorldOutfitResponseDataPreset
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-11T23:44:48.922Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-27T19:42:43.186Z[Etc/UTC]")
 public class CreateWorldOutfitResponseDataPreset {
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
@@ -43,7 +43,7 @@ public class CreateWorldOutfitResponseDataPreset {
 
   public static final String SERIALIZED_NAME_APPEARANCE = "appearance";
   @SerializedName(SERIALIZED_NAME_APPEARANCE)
-  private ListWorldOutfitsItemAppearance appearance;
+  private CreateWorldOutfitResponseDataPresetAppearance appearance;
 
   public static final String SERIALIZED_NAME_ITEMS = "items";
   @SerializedName(SERIALIZED_NAME_ITEMS)
@@ -106,7 +106,7 @@ public class CreateWorldOutfitResponseDataPreset {
   }
 
 
-  public CreateWorldOutfitResponseDataPreset appearance(ListWorldOutfitsItemAppearance appearance) {
+  public CreateWorldOutfitResponseDataPreset appearance(CreateWorldOutfitResponseDataPresetAppearance appearance) {
     
     this.appearance = appearance;
     return this;
@@ -119,12 +119,12 @@ public class CreateWorldOutfitResponseDataPreset {
   @javax.annotation.Nonnull
   @ApiModelProperty(required = true, value = "")
 
-  public ListWorldOutfitsItemAppearance getAppearance() {
+  public CreateWorldOutfitResponseDataPresetAppearance getAppearance() {
     return appearance;
   }
 
 
-  public void setAppearance(ListWorldOutfitsItemAppearance appearance) {
+  public void setAppearance(CreateWorldOutfitResponseDataPresetAppearance appearance) {
     this.appearance = appearance;
   }
 

@@ -28,8 +28,11 @@ import java.io.IOException;
 
 
 import net.crossly.model.account.CreateAccountResponse;
+import net.crossly.model.connection.CreateConnectionCardnexusApiKeyResponse;
 import net.crossly.model.connection.CreateConnectionEmailImapResponse;
 import net.crossly.model.connection.CreateConnectionEmailImapTestResponse;
+import net.crossly.model.connection.CreateConnectionLightspeedXTokenRequest;
+import net.crossly.model.connection.CreateConnectionLightspeedXTokenResponse;
 import net.crossly.model.platform.CreatePlatformAccountConnectResponse;
 import net.crossly.model.platform.CreatePlatformAccountDisconnectResponse;
 import net.crossly.model.platform.CreatePlatformAccountHistoryImportRequest;
@@ -38,9 +41,12 @@ import net.crossly.model.platform.CreatePlatformAccountRefreshStatusResponse;
 import net.crossly.model.common.Error;
 import net.crossly.model.connection.GetConnectionEmailResponse;
 import net.crossly.model.connection.GetConnectionExtensionOnlineResponse;
+import net.crossly.model.connection.GetConnectionPolicyManagementOptionResponse;
 import net.crossly.model.common.GetOauthInitResponse;
 import net.crossly.model.platform.GetPlatformLimitResponse;
 import net.crossly.model.account.ListAccountsResponse;
+import net.crossly.model.connection.ListConnectionPolicyManagementItem;
+import net.crossly.model.connection.ListConnectionPolicyManagementResponse;
 import net.crossly.model.connection.ListConnectionsResponse;
 import net.crossly.model.common.OkResponse;
 import net.crossly.model.common.SuccessResponse;
@@ -229,6 +235,148 @@ public class AccountsApi {
 
         okhttp3.Call localVarCall = createAccountValidateBeforeCall(_callback);
         Type localVarReturnType = new TypeToken<CreateAccountResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for createConnectionCardnexusApiKey
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call createConnectionCardnexusApiKeyCall(final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/v1/connections/cardnexus/api-key";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "PersonalAccessToken" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call createConnectionCardnexusApiKeyValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        
+
+        okhttp3.Call localVarCall = createConnectionCardnexusApiKeyCall(_callback);
+        return localVarCall;
+
+    }
+
+    /**
+     * Connect CardNexus with a personal API key (validated live before it is stored).
+     * 
+     * @return CreateConnectionCardnexusApiKeyResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public CreateConnectionCardnexusApiKeyResponse createConnectionCardnexusApiKey() throws ApiException {
+        ApiResponse<CreateConnectionCardnexusApiKeyResponse> localVarResp = createConnectionCardnexusApiKeyWithHttpInfo();
+        return localVarResp.getData();
+    }
+
+    /**
+     * Connect CardNexus with a personal API key (validated live before it is stored).
+     * 
+     * @return ApiResponse&lt;CreateConnectionCardnexusApiKeyResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<CreateConnectionCardnexusApiKeyResponse> createConnectionCardnexusApiKeyWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = createConnectionCardnexusApiKeyValidateBeforeCall(null);
+        Type localVarReturnType = new TypeToken<CreateConnectionCardnexusApiKeyResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Connect CardNexus with a personal API key (validated live before it is stored). (asynchronously)
+     * 
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call createConnectionCardnexusApiKeyAsync(final ApiCallback<CreateConnectionCardnexusApiKeyResponse> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = createConnectionCardnexusApiKeyValidateBeforeCall(_callback);
+        Type localVarReturnType = new TypeToken<CreateConnectionCardnexusApiKeyResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -513,6 +661,157 @@ public class AccountsApi {
 
         okhttp3.Call localVarCall = createConnectionEmailImapTestValidateBeforeCall(_callback);
         Type localVarReturnType = new TypeToken<CreateConnectionEmailImapTestResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for createConnectionLightspeedXToken
+     * @param createConnectionLightspeedXTokenRequest  (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call createConnectionLightspeedXTokenCall(CreateConnectionLightspeedXTokenRequest createConnectionLightspeedXTokenRequest, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = createConnectionLightspeedXTokenRequest;
+
+        // create path and map variables
+        String localVarPath = "/v1/connections/lightspeed_x/token";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "PersonalAccessToken" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call createConnectionLightspeedXTokenValidateBeforeCall(CreateConnectionLightspeedXTokenRequest createConnectionLightspeedXTokenRequest, final ApiCallback _callback) throws ApiException {
+        
+        // verify the required parameter 'createConnectionLightspeedXTokenRequest' is set
+        if (createConnectionLightspeedXTokenRequest == null) {
+            throw new ApiException("Missing the required parameter 'createConnectionLightspeedXTokenRequest' when calling createConnectionLightspeedXToken(Async)");
+        }
+        
+
+        okhttp3.Call localVarCall = createConnectionLightspeedXTokenCall(createConnectionLightspeedXTokenRequest, _callback);
+        return localVarCall;
+
+    }
+
+    /**
+     * Connect Lightspeed X-Series with a personal token (Setup → Personal tokens, Plus plan) and the store prefix.
+     * 
+     * @param createConnectionLightspeedXTokenRequest  (required)
+     * @return CreateConnectionLightspeedXTokenResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public CreateConnectionLightspeedXTokenResponse createConnectionLightspeedXToken(CreateConnectionLightspeedXTokenRequest createConnectionLightspeedXTokenRequest) throws ApiException {
+        ApiResponse<CreateConnectionLightspeedXTokenResponse> localVarResp = createConnectionLightspeedXTokenWithHttpInfo(createConnectionLightspeedXTokenRequest);
+        return localVarResp.getData();
+    }
+
+    /**
+     * Connect Lightspeed X-Series with a personal token (Setup → Personal tokens, Plus plan) and the store prefix.
+     * 
+     * @param createConnectionLightspeedXTokenRequest  (required)
+     * @return ApiResponse&lt;CreateConnectionLightspeedXTokenResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<CreateConnectionLightspeedXTokenResponse> createConnectionLightspeedXTokenWithHttpInfo(CreateConnectionLightspeedXTokenRequest createConnectionLightspeedXTokenRequest) throws ApiException {
+        okhttp3.Call localVarCall = createConnectionLightspeedXTokenValidateBeforeCall(createConnectionLightspeedXTokenRequest, null);
+        Type localVarReturnType = new TypeToken<CreateConnectionLightspeedXTokenResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Connect Lightspeed X-Series with a personal token (Setup → Personal tokens, Plus plan) and the store prefix. (asynchronously)
+     * 
+     * @param createConnectionLightspeedXTokenRequest  (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call createConnectionLightspeedXTokenAsync(CreateConnectionLightspeedXTokenRequest createConnectionLightspeedXTokenRequest, final ApiCallback<CreateConnectionLightspeedXTokenResponse> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = createConnectionLightspeedXTokenValidateBeforeCall(createConnectionLightspeedXTokenRequest, _callback);
+        Type localVarReturnType = new TypeToken<CreateConnectionLightspeedXTokenResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -900,7 +1199,7 @@ public class AccountsApi {
     }
 
     /**
-     * Archive every active account row for a platform.
+     * Disconnect every account of a platform (archives the rows and deletes their stored sessions).
      * 
      * @param platform  (required)
      * @return CreatePlatformAccountDisconnectResponse
@@ -923,7 +1222,7 @@ public class AccountsApi {
     }
 
     /**
-     * Archive every active account row for a platform.
+     * Disconnect every account of a platform (archives the rows and deletes their stored sessions).
      * 
      * @param platform  (required)
      * @return ApiResponse&lt;CreatePlatformAccountDisconnectResponse&gt;
@@ -947,7 +1246,7 @@ public class AccountsApi {
     }
 
     /**
-     * Archive every active account row for a platform. (asynchronously)
+     * Disconnect every account of a platform (archives the rows and deletes their stored sessions). (asynchronously)
      * 
      * @param platform  (required)
      * @param _callback The callback to be executed when the API call finishes
@@ -2016,6 +2315,168 @@ public class AccountsApi {
         return localVarCall;
     }
     /**
+     * Build call for getConnectionPolicyManagementOption
+     * @param connectionId  (required)
+     * @param source  (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getConnectionPolicyManagementOptionCall(String connectionId, String source, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/v1/connections/policy-management/{connectionId}/options/{source}"
+            .replaceAll("\\{" + "connectionId" + "\\}", localVarApiClient.escapeString(connectionId.toString()))
+            .replaceAll("\\{" + "source" + "\\}", localVarApiClient.escapeString(source.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "PersonalAccessToken" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call getConnectionPolicyManagementOptionValidateBeforeCall(String connectionId, String source, final ApiCallback _callback) throws ApiException {
+        
+        // verify the required parameter 'connectionId' is set
+        if (connectionId == null) {
+            throw new ApiException("Missing the required parameter 'connectionId' when calling getConnectionPolicyManagementOption(Async)");
+        }
+        
+        // verify the required parameter 'source' is set
+        if (source == null) {
+            throw new ApiException("Missing the required parameter 'source' when calling getConnectionPolicyManagementOption(Async)");
+        }
+        
+
+        okhttp3.Call localVarCall = getConnectionPolicyManagementOptionCall(connectionId, source, _callback);
+        return localVarCall;
+
+    }
+
+    /**
+     * List the live options a marketplace policy field offers (e.g. Allegro delivery methods).
+     * For one of your managed connections, the choices a preset&#39;s &#x60;platformFields&#x60; picker offers, from the marketplace (&#x60;source&#x60; is the field&#39;s &#x60;optionsSource&#x60;, e.g. &#x60;delivery-methods&#x60;). An unknown connection or source is a 404.
+     * @param connectionId  (required)
+     * @param source  (required)
+     * @return GetConnectionPolicyManagementOptionResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public GetConnectionPolicyManagementOptionResponse getConnectionPolicyManagementOption(String connectionId, String source) throws ApiException {
+        ApiResponse<GetConnectionPolicyManagementOptionResponse> localVarResp = getConnectionPolicyManagementOptionWithHttpInfo(connectionId, source);
+        return localVarResp.getData();
+    }
+
+    /**
+     * List the live options a marketplace policy field offers (e.g. Allegro delivery methods).
+     * For one of your managed connections, the choices a preset&#39;s &#x60;platformFields&#x60; picker offers, from the marketplace (&#x60;source&#x60; is the field&#39;s &#x60;optionsSource&#x60;, e.g. &#x60;delivery-methods&#x60;). An unknown connection or source is a 404.
+     * @param connectionId  (required)
+     * @param source  (required)
+     * @return ApiResponse&lt;GetConnectionPolicyManagementOptionResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<GetConnectionPolicyManagementOptionResponse> getConnectionPolicyManagementOptionWithHttpInfo(String connectionId, String source) throws ApiException {
+        okhttp3.Call localVarCall = getConnectionPolicyManagementOptionValidateBeforeCall(connectionId, source, null);
+        Type localVarReturnType = new TypeToken<GetConnectionPolicyManagementOptionResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * List the live options a marketplace policy field offers (e.g. Allegro delivery methods). (asynchronously)
+     * For one of your managed connections, the choices a preset&#39;s &#x60;platformFields&#x60; picker offers, from the marketplace (&#x60;source&#x60; is the field&#39;s &#x60;optionsSource&#x60;, e.g. &#x60;delivery-methods&#x60;). An unknown connection or source is a 404.
+     * @param connectionId  (required)
+     * @param source  (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getConnectionPolicyManagementOptionAsync(String connectionId, String source, final ApiCallback<GetConnectionPolicyManagementOptionResponse> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = getConnectionPolicyManagementOptionValidateBeforeCall(connectionId, source, _callback);
+        Type localVarReturnType = new TypeToken<GetConnectionPolicyManagementOptionResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
      * Build call for getOauthInit
      * @param platform  (required)
      * @param shop  (optional)
@@ -2111,7 +2572,7 @@ public class AccountsApi {
 
     /**
      * Return the OAuth authorize URL for an API-track platform.
-     * Most platforms return &#x60;{ url }&#x60;. Etsy adds &#x60;{ correlationId }&#x60; (PKCE verifier stashed in Redis). Bonanza adds &#x60;{ oneShot: true }&#x60;. WooCommerce requires &#x60;?siteUrl&#x3D;...&#x60;. Walmart returns &#x60;{ status: \&quot;request_only\&quot;, requestUrl, message }&#x60; instead of a URL because per-seller OAuth needs Solution Provider approval.
+     * Most platforms return &#x60;{ url }&#x60; (Shopify, Etsy, Amazon and the other marketplaces Atlas Connections connects: the URL Atlas returns for this seller). Bonanza adds &#x60;{ oneShot: true }&#x60;. WooCommerce requires &#x60;?siteUrl&#x3D;...&#x60;. Walmart returns &#x60;{ status: \&quot;request_only\&quot;, requestUrl, message }&#x60; instead of a URL because per-seller OAuth needs Solution Provider approval.
      * @param platform  (required)
      * @param shop  (optional)
      * @param region  (optional)
@@ -2137,7 +2598,7 @@ public class AccountsApi {
 
     /**
      * Return the OAuth authorize URL for an API-track platform.
-     * Most platforms return &#x60;{ url }&#x60;. Etsy adds &#x60;{ correlationId }&#x60; (PKCE verifier stashed in Redis). Bonanza adds &#x60;{ oneShot: true }&#x60;. WooCommerce requires &#x60;?siteUrl&#x3D;...&#x60;. Walmart returns &#x60;{ status: \&quot;request_only\&quot;, requestUrl, message }&#x60; instead of a URL because per-seller OAuth needs Solution Provider approval.
+     * Most platforms return &#x60;{ url }&#x60; (Shopify, Etsy, Amazon and the other marketplaces Atlas Connections connects: the URL Atlas returns for this seller). Bonanza adds &#x60;{ oneShot: true }&#x60;. WooCommerce requires &#x60;?siteUrl&#x3D;...&#x60;. Walmart returns &#x60;{ status: \&quot;request_only\&quot;, requestUrl, message }&#x60; instead of a URL because per-seller OAuth needs Solution Provider approval.
      * @param platform  (required)
      * @param shop  (optional)
      * @param region  (optional)
@@ -2164,7 +2625,7 @@ public class AccountsApi {
 
     /**
      * Return the OAuth authorize URL for an API-track platform. (asynchronously)
-     * Most platforms return &#x60;{ url }&#x60;. Etsy adds &#x60;{ correlationId }&#x60; (PKCE verifier stashed in Redis). Bonanza adds &#x60;{ oneShot: true }&#x60;. WooCommerce requires &#x60;?siteUrl&#x3D;...&#x60;. Walmart returns &#x60;{ status: \&quot;request_only\&quot;, requestUrl, message }&#x60; instead of a URL because per-seller OAuth needs Solution Provider approval.
+     * Most platforms return &#x60;{ url }&#x60; (Shopify, Etsy, Amazon and the other marketplaces Atlas Connections connects: the URL Atlas returns for this seller). Bonanza adds &#x60;{ oneShot: true }&#x60;. WooCommerce requires &#x60;?siteUrl&#x3D;...&#x60;. Walmart returns &#x60;{ status: \&quot;request_only\&quot;, requestUrl, message }&#x60; instead of a URL because per-seller OAuth needs Solution Provider approval.
      * @param platform  (required)
      * @param shop  (optional)
      * @param region  (optional)
@@ -2476,6 +2937,148 @@ public class AccountsApi {
         return localVarCall;
     }
     /**
+     * Build call for listConnectionPolicyManagement
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call listConnectionPolicyManagementCall(final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/v1/connections/policy-management";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "PersonalAccessToken" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call listConnectionPolicyManagementValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        
+
+        okhttp3.Call localVarCall = listConnectionPolicyManagementCall(_callback);
+        return localVarCall;
+
+    }
+
+    /**
+     * List eBay and Etsy accounts with whether Crossly manages their policies.
+     * One row per connected eBay or Etsy account: &#x60;eligible&#x60; (eBay only on EBAY_US), &#x60;managed&#x60; (Crossly keeps its policies / shipping profiles in step with your default presets) and sync &#x60;notes&#x60;.
+     * @return ListConnectionPolicyManagementResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public ListConnectionPolicyManagementResponse listConnectionPolicyManagement() throws ApiException {
+        ApiResponse<ListConnectionPolicyManagementResponse> localVarResp = listConnectionPolicyManagementWithHttpInfo();
+        return localVarResp.getData();
+    }
+
+    /**
+     * List eBay and Etsy accounts with whether Crossly manages their policies.
+     * One row per connected eBay or Etsy account: &#x60;eligible&#x60; (eBay only on EBAY_US), &#x60;managed&#x60; (Crossly keeps its policies / shipping profiles in step with your default presets) and sync &#x60;notes&#x60;.
+     * @return ApiResponse&lt;ListConnectionPolicyManagementResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<ListConnectionPolicyManagementResponse> listConnectionPolicyManagementWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = listConnectionPolicyManagementValidateBeforeCall(null);
+        Type localVarReturnType = new TypeToken<ListConnectionPolicyManagementResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * List eBay and Etsy accounts with whether Crossly manages their policies. (asynchronously)
+     * One row per connected eBay or Etsy account: &#x60;eligible&#x60; (eBay only on EBAY_US), &#x60;managed&#x60; (Crossly keeps its policies / shipping profiles in step with your default presets) and sync &#x60;notes&#x60;.
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call listConnectionPolicyManagementAsync(final ApiCallback<ListConnectionPolicyManagementResponse> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = listConnectionPolicyManagementValidateBeforeCall(_callback);
+        Type localVarReturnType = new TypeToken<ListConnectionPolicyManagementResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
      * Build call for listConnections
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -2766,6 +3369,158 @@ public class AccountsApi {
 
         okhttp3.Call localVarCall = updateConnectionEmailImapValidateBeforeCall(id, _callback);
         Type localVarReturnType = new TypeToken<SuccessResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for updateConnectionPolicyManagement
+     * @param connectionId  (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call updateConnectionPolicyManagementCall(String connectionId, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/v1/connections/policy-management/{connectionId}"
+            .replaceAll("\\{" + "connectionId" + "\\}", localVarApiClient.escapeString(connectionId.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "PersonalAccessToken" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "PUT", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call updateConnectionPolicyManagementValidateBeforeCall(String connectionId, final ApiCallback _callback) throws ApiException {
+        
+        // verify the required parameter 'connectionId' is set
+        if (connectionId == null) {
+            throw new ApiException("Missing the required parameter 'connectionId' when calling updateConnectionPolicyManagement(Async)");
+        }
+        
+
+        okhttp3.Call localVarCall = updateConnectionPolicyManagementCall(connectionId, _callback);
+        return localVarCall;
+
+    }
+
+    /**
+     * Turn Crossly policy management on or off for one eBay or Etsy account.
+     * Body &#x60;{ managed: boolean }&#x60;. On: Crossly may overwrite that account&#39;s own policies with your default presets and queues a sync now (409 for an ineligible account, e.g. non-US eBay). Off: Crossly stops touching them. A connection that is not yours (or not eBay/Etsy) is a 404.
+     * @param connectionId  (required)
+     * @return ListConnectionPolicyManagementItem
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public ListConnectionPolicyManagementItem updateConnectionPolicyManagement(String connectionId) throws ApiException {
+        ApiResponse<ListConnectionPolicyManagementItem> localVarResp = updateConnectionPolicyManagementWithHttpInfo(connectionId);
+        return localVarResp.getData();
+    }
+
+    /**
+     * Turn Crossly policy management on or off for one eBay or Etsy account.
+     * Body &#x60;{ managed: boolean }&#x60;. On: Crossly may overwrite that account&#39;s own policies with your default presets and queues a sync now (409 for an ineligible account, e.g. non-US eBay). Off: Crossly stops touching them. A connection that is not yours (or not eBay/Etsy) is a 404.
+     * @param connectionId  (required)
+     * @return ApiResponse&lt;ListConnectionPolicyManagementItem&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<ListConnectionPolicyManagementItem> updateConnectionPolicyManagementWithHttpInfo(String connectionId) throws ApiException {
+        okhttp3.Call localVarCall = updateConnectionPolicyManagementValidateBeforeCall(connectionId, null);
+        Type localVarReturnType = new TypeToken<ListConnectionPolicyManagementItem>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Turn Crossly policy management on or off for one eBay or Etsy account. (asynchronously)
+     * Body &#x60;{ managed: boolean }&#x60;. On: Crossly may overwrite that account&#39;s own policies with your default presets and queues a sync now (409 for an ineligible account, e.g. non-US eBay). Off: Crossly stops touching them. A connection that is not yours (or not eBay/Etsy) is a 404.
+     * @param connectionId  (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call updateConnectionPolicyManagementAsync(String connectionId, final ApiCallback<ListConnectionPolicyManagementItem> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = updateConnectionPolicyManagementValidateBeforeCall(connectionId, _callback);
+        Type localVarReturnType = new TypeToken<ListConnectionPolicyManagementItem>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }

@@ -30,7 +30,7 @@ import org.threeten.bp.OffsetDateTime;
 /**
  * ListPolicyReturnsItem
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-11T23:44:48.922Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-27T19:42:43.186Z[Etc/UTC]")
 public class ListPolicyReturnsItem {
   public static final String SERIALIZED_NAME_ORDER_ID = "orderId";
   @SerializedName(SERIALIZED_NAME_ORDER_ID)
@@ -48,14 +48,6 @@ public class ListPolicyReturnsItem {
   @SerializedName(SERIALIZED_NAME_STATUS)
   private String status;
 
-  public static final String SERIALIZED_NAME_REASON = "reason";
-  @SerializedName(SERIALIZED_NAME_REASON)
-  private String reason;
-
-  public static final String SERIALIZED_NAME_RECEIVED_AT = "receivedAt";
-  @SerializedName(SERIALIZED_NAME_RECEIVED_AT)
-  private OffsetDateTime receivedAt;
-
   public static final String SERIALIZED_NAME_CARRIER = "carrier";
   @SerializedName(SERIALIZED_NAME_CARRIER)
   private String carrier;
@@ -68,29 +60,33 @@ public class ListPolicyReturnsItem {
   @SerializedName(SERIALIZED_NAME_REFUNDED_AT)
   private OffsetDateTime refundedAt;
 
-  public static final String SERIALIZED_NAME_FIT = "fit";
-  @SerializedName(SERIALIZED_NAME_FIT)
-  private String fit;
-
-  public static final String SERIALIZED_NAME_SELLER_USER_ID = "sellerUserId";
-  @SerializedName(SERIALIZED_NAME_SELLER_USER_ID)
-  private String sellerUserId;
-
   public static final String SERIALIZED_NAME_BUYER_USER_ID = "buyerUserId";
   @SerializedName(SERIALIZED_NAME_BUYER_USER_ID)
   private String buyerUserId;
 
-  public static final String SERIALIZED_NAME_PURCHASE_ID = "purchaseId";
-  @SerializedName(SERIALIZED_NAME_PURCHASE_ID)
-  private String purchaseId;
+  public static final String SERIALIZED_NAME_REASON = "reason";
+  @SerializedName(SERIALIZED_NAME_REASON)
+  private String reason;
+
+  public static final String SERIALIZED_NAME_RECEIVED_AT = "receivedAt";
+  @SerializedName(SERIALIZED_NAME_RECEIVED_AT)
+  private OffsetDateTime receivedAt;
 
   public static final String SERIALIZED_NAME_LABEL_URL = "labelUrl";
   @SerializedName(SERIALIZED_NAME_LABEL_URL)
   private String labelUrl;
 
+  public static final String SERIALIZED_NAME_SELLER_USER_ID = "sellerUserId";
+  @SerializedName(SERIALIZED_NAME_SELLER_USER_ID)
+  private String sellerUserId;
+
   public static final String SERIALIZED_NAME_REFUND_STRIPE_ID = "refundStripeId";
   @SerializedName(SERIALIZED_NAME_REFUND_STRIPE_ID)
   private String refundStripeId;
+
+  public static final String SERIALIZED_NAME_PURCHASE_ID = "purchaseId";
+  @SerializedName(SERIALIZED_NAME_PURCHASE_ID)
+  private String purchaseId;
 
   public static final String SERIALIZED_NAME_NOTE = "note";
   @SerializedName(SERIALIZED_NAME_NOTE)
@@ -103,6 +99,10 @@ public class ListPolicyReturnsItem {
   public static final String SERIALIZED_NAME_TRACKING_CODE = "trackingCode";
   @SerializedName(SERIALIZED_NAME_TRACKING_CODE)
   private String trackingCode;
+
+  public static final String SERIALIZED_NAME_FIT = "fit";
+  @SerializedName(SERIALIZED_NAME_FIT)
+  private String fit;
 
   public static final String SERIALIZED_NAME_REFUND_CENTS = "refundCents";
   @SerializedName(SERIALIZED_NAME_REFUND_CENTS)
@@ -207,52 +207,6 @@ public class ListPolicyReturnsItem {
   }
 
 
-  public ListPolicyReturnsItem reason(String reason) {
-    
-    this.reason = reason;
-    return this;
-  }
-
-   /**
-   * Get reason
-   * @return reason
-  **/
-  @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "")
-
-  public String getReason() {
-    return reason;
-  }
-
-
-  public void setReason(String reason) {
-    this.reason = reason;
-  }
-
-
-  public ListPolicyReturnsItem receivedAt(OffsetDateTime receivedAt) {
-    
-    this.receivedAt = receivedAt;
-    return this;
-  }
-
-   /**
-   * Get receivedAt
-   * @return receivedAt
-  **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
-
-  public OffsetDateTime getReceivedAt() {
-    return receivedAt;
-  }
-
-
-  public void setReceivedAt(OffsetDateTime receivedAt) {
-    this.receivedAt = receivedAt;
-  }
-
-
   public ListPolicyReturnsItem carrier(String carrier) {
     
     this.carrier = carrier;
@@ -322,52 +276,6 @@ public class ListPolicyReturnsItem {
   }
 
 
-  public ListPolicyReturnsItem fit(String fit) {
-    
-    this.fit = fit;
-    return this;
-  }
-
-   /**
-   * Get fit
-   * @return fit
-  **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
-
-  public String getFit() {
-    return fit;
-  }
-
-
-  public void setFit(String fit) {
-    this.fit = fit;
-  }
-
-
-  public ListPolicyReturnsItem sellerUserId(String sellerUserId) {
-    
-    this.sellerUserId = sellerUserId;
-    return this;
-  }
-
-   /**
-   * Get sellerUserId
-   * @return sellerUserId
-  **/
-  @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "")
-
-  public String getSellerUserId() {
-    return sellerUserId;
-  }
-
-
-  public void setSellerUserId(String sellerUserId) {
-    this.sellerUserId = sellerUserId;
-  }
-
-
   public ListPolicyReturnsItem buyerUserId(String buyerUserId) {
     
     this.buyerUserId = buyerUserId;
@@ -391,26 +299,49 @@ public class ListPolicyReturnsItem {
   }
 
 
-  public ListPolicyReturnsItem purchaseId(String purchaseId) {
+  public ListPolicyReturnsItem reason(String reason) {
     
-    this.purchaseId = purchaseId;
+    this.reason = reason;
     return this;
   }
 
    /**
-   * Get purchaseId
-   * @return purchaseId
+   * Get reason
+   * @return reason
   **/
   @javax.annotation.Nonnull
   @ApiModelProperty(required = true, value = "")
 
-  public String getPurchaseId() {
-    return purchaseId;
+  public String getReason() {
+    return reason;
   }
 
 
-  public void setPurchaseId(String purchaseId) {
-    this.purchaseId = purchaseId;
+  public void setReason(String reason) {
+    this.reason = reason;
+  }
+
+
+  public ListPolicyReturnsItem receivedAt(OffsetDateTime receivedAt) {
+    
+    this.receivedAt = receivedAt;
+    return this;
+  }
+
+   /**
+   * Get receivedAt
+   * @return receivedAt
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public OffsetDateTime getReceivedAt() {
+    return receivedAt;
+  }
+
+
+  public void setReceivedAt(OffsetDateTime receivedAt) {
+    this.receivedAt = receivedAt;
   }
 
 
@@ -437,6 +368,29 @@ public class ListPolicyReturnsItem {
   }
 
 
+  public ListPolicyReturnsItem sellerUserId(String sellerUserId) {
+    
+    this.sellerUserId = sellerUserId;
+    return this;
+  }
+
+   /**
+   * Get sellerUserId
+   * @return sellerUserId
+  **/
+  @javax.annotation.Nonnull
+  @ApiModelProperty(required = true, value = "")
+
+  public String getSellerUserId() {
+    return sellerUserId;
+  }
+
+
+  public void setSellerUserId(String sellerUserId) {
+    this.sellerUserId = sellerUserId;
+  }
+
+
   public ListPolicyReturnsItem refundStripeId(String refundStripeId) {
     
     this.refundStripeId = refundStripeId;
@@ -457,6 +411,29 @@ public class ListPolicyReturnsItem {
 
   public void setRefundStripeId(String refundStripeId) {
     this.refundStripeId = refundStripeId;
+  }
+
+
+  public ListPolicyReturnsItem purchaseId(String purchaseId) {
+    
+    this.purchaseId = purchaseId;
+    return this;
+  }
+
+   /**
+   * Get purchaseId
+   * @return purchaseId
+  **/
+  @javax.annotation.Nonnull
+  @ApiModelProperty(required = true, value = "")
+
+  public String getPurchaseId() {
+    return purchaseId;
+  }
+
+
+  public void setPurchaseId(String purchaseId) {
+    this.purchaseId = purchaseId;
   }
 
 
@@ -529,6 +506,29 @@ public class ListPolicyReturnsItem {
   }
 
 
+  public ListPolicyReturnsItem fit(String fit) {
+    
+    this.fit = fit;
+    return this;
+  }
+
+   /**
+   * Get fit
+   * @return fit
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public String getFit() {
+    return fit;
+  }
+
+
+  public void setFit(String fit) {
+    this.fit = fit;
+  }
+
+
   public ListPolicyReturnsItem refundCents(BigDecimal refundCents) {
     
     this.refundCents = refundCents;
@@ -588,20 +588,20 @@ public class ListPolicyReturnsItem {
         Objects.equals(this.id, listPolicyReturnsItem.id) &&
         Objects.equals(this.createdAt, listPolicyReturnsItem.createdAt) &&
         Objects.equals(this.status, listPolicyReturnsItem.status) &&
-        Objects.equals(this.reason, listPolicyReturnsItem.reason) &&
-        Objects.equals(this.receivedAt, listPolicyReturnsItem.receivedAt) &&
         Objects.equals(this.carrier, listPolicyReturnsItem.carrier) &&
         Objects.equals(this.shippedAt, listPolicyReturnsItem.shippedAt) &&
         Objects.equals(this.refundedAt, listPolicyReturnsItem.refundedAt) &&
-        Objects.equals(this.fit, listPolicyReturnsItem.fit) &&
-        Objects.equals(this.sellerUserId, listPolicyReturnsItem.sellerUserId) &&
         Objects.equals(this.buyerUserId, listPolicyReturnsItem.buyerUserId) &&
-        Objects.equals(this.purchaseId, listPolicyReturnsItem.purchaseId) &&
+        Objects.equals(this.reason, listPolicyReturnsItem.reason) &&
+        Objects.equals(this.receivedAt, listPolicyReturnsItem.receivedAt) &&
         Objects.equals(this.labelUrl, listPolicyReturnsItem.labelUrl) &&
+        Objects.equals(this.sellerUserId, listPolicyReturnsItem.sellerUserId) &&
         Objects.equals(this.refundStripeId, listPolicyReturnsItem.refundStripeId) &&
+        Objects.equals(this.purchaseId, listPolicyReturnsItem.purchaseId) &&
         Objects.equals(this.note, listPolicyReturnsItem.note) &&
         Objects.equals(this.feeCents, listPolicyReturnsItem.feeCents) &&
         Objects.equals(this.trackingCode, listPolicyReturnsItem.trackingCode) &&
+        Objects.equals(this.fit, listPolicyReturnsItem.fit) &&
         Objects.equals(this.refundCents, listPolicyReturnsItem.refundCents) &&
         Objects.equals(this.prepaidLabel, listPolicyReturnsItem.prepaidLabel);
   }
@@ -612,7 +612,7 @@ public class ListPolicyReturnsItem {
 
   @Override
   public int hashCode() {
-    return Objects.hash(orderId, id, createdAt, status, reason, receivedAt, carrier, shippedAt, refundedAt, fit, sellerUserId, buyerUserId, purchaseId, labelUrl, refundStripeId, note, feeCents, trackingCode, refundCents, prepaidLabel);
+    return Objects.hash(orderId, id, createdAt, status, carrier, shippedAt, refundedAt, buyerUserId, reason, receivedAt, labelUrl, sellerUserId, refundStripeId, purchaseId, note, feeCents, trackingCode, fit, refundCents, prepaidLabel);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -630,20 +630,20 @@ public class ListPolicyReturnsItem {
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    createdAt: ").append(toIndentedString(createdAt)).append("\n");
     sb.append("    status: ").append(toIndentedString(status)).append("\n");
-    sb.append("    reason: ").append(toIndentedString(reason)).append("\n");
-    sb.append("    receivedAt: ").append(toIndentedString(receivedAt)).append("\n");
     sb.append("    carrier: ").append(toIndentedString(carrier)).append("\n");
     sb.append("    shippedAt: ").append(toIndentedString(shippedAt)).append("\n");
     sb.append("    refundedAt: ").append(toIndentedString(refundedAt)).append("\n");
-    sb.append("    fit: ").append(toIndentedString(fit)).append("\n");
-    sb.append("    sellerUserId: ").append(toIndentedString(sellerUserId)).append("\n");
     sb.append("    buyerUserId: ").append(toIndentedString(buyerUserId)).append("\n");
-    sb.append("    purchaseId: ").append(toIndentedString(purchaseId)).append("\n");
+    sb.append("    reason: ").append(toIndentedString(reason)).append("\n");
+    sb.append("    receivedAt: ").append(toIndentedString(receivedAt)).append("\n");
     sb.append("    labelUrl: ").append(toIndentedString(labelUrl)).append("\n");
+    sb.append("    sellerUserId: ").append(toIndentedString(sellerUserId)).append("\n");
     sb.append("    refundStripeId: ").append(toIndentedString(refundStripeId)).append("\n");
+    sb.append("    purchaseId: ").append(toIndentedString(purchaseId)).append("\n");
     sb.append("    note: ").append(toIndentedString(note)).append("\n");
     sb.append("    feeCents: ").append(toIndentedString(feeCents)).append("\n");
     sb.append("    trackingCode: ").append(toIndentedString(trackingCode)).append("\n");
+    sb.append("    fit: ").append(toIndentedString(fit)).append("\n");
     sb.append("    refundCents: ").append(toIndentedString(refundCents)).append("\n");
     sb.append("    prepaidLabel: ").append(toIndentedString(prepaidLabel)).append("\n");
     sb.append("}");

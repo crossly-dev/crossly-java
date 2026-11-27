@@ -24,15 +24,20 @@ import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 import java.math.BigDecimal;
+import net.crossly.model.vault.ListVaultMarketFollowLeaderboardsItemPerson;
 
 /**
  * ListVaultMarketFollowLeaderboardsItem
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-11T23:44:48.922Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-27T19:42:43.186Z[Etc/UTC]")
 public class ListVaultMarketFollowLeaderboardsItem {
   public static final String SERIALIZED_NAME_RANK = "rank";
   @SerializedName(SERIALIZED_NAME_RANK)
   private BigDecimal rank;
+
+  public static final String SERIALIZED_NAME_PERSON = "person";
+  @SerializedName(SERIALIZED_NAME_PERSON)
+  private ListVaultMarketFollowLeaderboardsItemPerson person;
 
   public static final String SERIALIZED_NAME_RETURN_BPS = "returnBps";
   @SerializedName(SERIALIZED_NAME_RETURN_BPS)
@@ -85,6 +90,29 @@ public class ListVaultMarketFollowLeaderboardsItem {
 
   public void setRank(BigDecimal rank) {
     this.rank = rank;
+  }
+
+
+  public ListVaultMarketFollowLeaderboardsItem person(ListVaultMarketFollowLeaderboardsItemPerson person) {
+    
+    this.person = person;
+    return this;
+  }
+
+   /**
+   * Get person
+   * @return person
+  **/
+  @javax.annotation.Nonnull
+  @ApiModelProperty(required = true, value = "")
+
+  public ListVaultMarketFollowLeaderboardsItemPerson getPerson() {
+    return person;
+  }
+
+
+  public void setPerson(ListVaultMarketFollowLeaderboardsItemPerson person) {
+    this.person = person;
   }
 
 
@@ -259,6 +287,7 @@ public class ListVaultMarketFollowLeaderboardsItem {
     }
     ListVaultMarketFollowLeaderboardsItem listVaultMarketFollowLeaderboardsItem = (ListVaultMarketFollowLeaderboardsItem) o;
     return Objects.equals(this.rank, listVaultMarketFollowLeaderboardsItem.rank) &&
+        Objects.equals(this.person, listVaultMarketFollowLeaderboardsItem.person) &&
         Objects.equals(this.returnBps, listVaultMarketFollowLeaderboardsItem.returnBps) &&
         Objects.equals(this.volatilityBps, listVaultMarketFollowLeaderboardsItem.volatilityBps) &&
         Objects.equals(this.riskAdjusted, listVaultMarketFollowLeaderboardsItem.riskAdjusted) &&
@@ -270,7 +299,7 @@ public class ListVaultMarketFollowLeaderboardsItem {
 
   @Override
   public int hashCode() {
-    return Objects.hash(rank, returnBps, volatilityBps, riskAdjusted, maxDrawdownBps, days, markets, isMe);
+    return Objects.hash(rank, person, returnBps, volatilityBps, riskAdjusted, maxDrawdownBps, days, markets, isMe);
   }
 
   @Override
@@ -278,6 +307,7 @@ public class ListVaultMarketFollowLeaderboardsItem {
     StringBuilder sb = new StringBuilder();
     sb.append("class ListVaultMarketFollowLeaderboardsItem {\n");
     sb.append("    rank: ").append(toIndentedString(rank)).append("\n");
+    sb.append("    person: ").append(toIndentedString(person)).append("\n");
     sb.append("    returnBps: ").append(toIndentedString(returnBps)).append("\n");
     sb.append("    volatilityBps: ").append(toIndentedString(volatilityBps)).append("\n");
     sb.append("    riskAdjusted: ").append(toIndentedString(riskAdjusted)).append("\n");

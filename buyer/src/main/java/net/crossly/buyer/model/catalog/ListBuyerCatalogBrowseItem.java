@@ -29,7 +29,7 @@ import org.openapitools.jackson.nullable.JsonNullable;
 /**
  * ListBuyerCatalogBrowseItem
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-11T23:47:29.843Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-27T19:58:46.962Z[Etc/UTC]")
 public class ListBuyerCatalogBrowseItem {
   public static final String SERIALIZED_NAME_SLUG = "slug";
   @SerializedName(SERIALIZED_NAME_SLUG)
@@ -106,6 +106,10 @@ public class ListBuyerCatalogBrowseItem {
   public static final String SERIALIZED_NAME_SHIPS_FROM_COUNTRY = "shipsFromCountry";
   @SerializedName(SERIALIZED_NAME_SHIPS_FROM_COUNTRY)
   private String shipsFromCountry;
+
+  public static final String SERIALIZED_NAME_HAS_PASSPORT = "hasPassport";
+  @SerializedName(SERIALIZED_NAME_HAS_PASSPORT)
+  private Boolean hasPassport;
 
   public static final String SERIALIZED_NAME_SOLD_AT = "soldAt";
   @SerializedName(SERIALIZED_NAME_SOLD_AT)
@@ -559,6 +563,29 @@ public class ListBuyerCatalogBrowseItem {
   }
 
 
+  public ListBuyerCatalogBrowseItem hasPassport(Boolean hasPassport) {
+    
+    this.hasPassport = hasPassport;
+    return this;
+  }
+
+   /**
+   * The item has an active Crossly Passport (the tile&#39;s \&quot;Crossly Passport\&quot; chip, docs/PASSPORTS.md §7.4).  Optional: only the main browse query reads it; other row builders leave it out.
+   * @return hasPassport
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "The item has an active Crossly Passport (the tile's \"Crossly Passport\" chip, docs/PASSPORTS.md §7.4).  Optional: only the main browse query reads it; other row builders leave it out.")
+
+  public Boolean getHasPassport() {
+    return hasPassport;
+  }
+
+
+  public void setHasPassport(Boolean hasPassport) {
+    this.hasPassport = hasPassport;
+  }
+
+
   public ListBuyerCatalogBrowseItem soldAt(String soldAt) {
     
     this.soldAt = soldAt;
@@ -656,6 +683,7 @@ public class ListBuyerCatalogBrowseItem {
         Objects.equals(this.aiMedia, listBuyerCatalogBrowseItem.aiMedia) &&
         Objects.equals(this.aiMediaDetected, listBuyerCatalogBrowseItem.aiMediaDetected) &&
         Objects.equals(this.shipsFromCountry, listBuyerCatalogBrowseItem.shipsFromCountry) &&
+        Objects.equals(this.hasPassport, listBuyerCatalogBrowseItem.hasPassport) &&
         Objects.equals(this.soldAt, listBuyerCatalogBrowseItem.soldAt) &&
         Objects.equals(this.soldPriceCents, listBuyerCatalogBrowseItem.soldPriceCents) &&
         Objects.equals(this.soldQuantity, listBuyerCatalogBrowseItem.soldQuantity);
@@ -667,7 +695,7 @@ public class ListBuyerCatalogBrowseItem {
 
   @Override
   public int hashCode() {
-    return Objects.hash(slug, title, priceCents, compareAtCents, thumbnail, sellerDisplayName, sellerAvatarUrl, sellerHandle, brand, condition, promoted, viewCount, watcherCount, soldCount, salePriceCents, saleEndsAt, aiMedia, aiMediaDetected, shipsFromCountry, soldAt, soldPriceCents, soldQuantity);
+    return Objects.hash(slug, title, priceCents, compareAtCents, thumbnail, sellerDisplayName, sellerAvatarUrl, sellerHandle, brand, condition, promoted, viewCount, watcherCount, soldCount, salePriceCents, saleEndsAt, aiMedia, aiMediaDetected, shipsFromCountry, hasPassport, soldAt, soldPriceCents, soldQuantity);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -700,6 +728,7 @@ public class ListBuyerCatalogBrowseItem {
     sb.append("    aiMedia: ").append(toIndentedString(aiMedia)).append("\n");
     sb.append("    aiMediaDetected: ").append(toIndentedString(aiMediaDetected)).append("\n");
     sb.append("    shipsFromCountry: ").append(toIndentedString(shipsFromCountry)).append("\n");
+    sb.append("    hasPassport: ").append(toIndentedString(hasPassport)).append("\n");
     sb.append("    soldAt: ").append(toIndentedString(soldAt)).append("\n");
     sb.append("    soldPriceCents: ").append(toIndentedString(soldPriceCents)).append("\n");
     sb.append("    soldQuantity: ").append(toIndentedString(soldQuantity)).append("\n");

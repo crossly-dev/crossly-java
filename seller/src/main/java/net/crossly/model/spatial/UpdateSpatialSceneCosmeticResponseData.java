@@ -26,13 +26,13 @@ import java.io.IOException;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
-import net.crossly.model.spatial.UpdateSpatialSceneCosmeticResponseDataProps;
+import net.crossly.model.showroom.GetShowroomResponseDataRoomProps;
 import org.openapitools.jackson.nullable.JsonNullable;
 
 /**
  * UpdateSpatialSceneCosmeticResponseData
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-11T23:44:48.922Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-27T19:42:43.186Z[Etc/UTC]")
 public class UpdateSpatialSceneCosmeticResponseData {
   public static final String SERIALIZED_NAME_THEME = "theme";
   @SerializedName(SERIALIZED_NAME_THEME)
@@ -198,7 +198,7 @@ public class UpdateSpatialSceneCosmeticResponseData {
 
   public static final String SERIALIZED_NAME_PROPS = "props";
   @SerializedName(SERIALIZED_NAME_PROPS)
-  private List<UpdateSpatialSceneCosmeticResponseDataProps> props = null;
+  private List<GetShowroomResponseDataRoomProps> props = null;
 
   /**
    * How this room&#39;s door presents itself in the hall. See SHOPFRONT_STYLES.  Undefined means \&quot;never chosen\&quot;, which the renderer reads as SHOPFRONT_DEFAULT — NOT as &#x60;none&#x60;. The two are different answers and the distinction is the whole reason this is optional rather than defaulted here: a validator that filled in &#x60;fascia&#x60; would make \&quot;I explicitly want a bare opening\&quot; unrepresentable.
@@ -209,9 +209,9 @@ public class UpdateSpatialSceneCosmeticResponseData {
     
     NONE("none"),
     
-    AWNING("awning"),
-    
     FASCIA("fascia"),
+    
+    AWNING("awning"),
     
     NEON_FASCIA("neon_fascia"),
     
@@ -674,15 +674,15 @@ public class UpdateSpatialSceneCosmeticResponseData {
   }
 
 
-  public UpdateSpatialSceneCosmeticResponseData props(List<UpdateSpatialSceneCosmeticResponseDataProps> props) {
+  public UpdateSpatialSceneCosmeticResponseData props(List<GetShowroomResponseDataRoomProps> props) {
     
     this.props = props;
     return this;
   }
 
-  public UpdateSpatialSceneCosmeticResponseData addPropsItem(UpdateSpatialSceneCosmeticResponseDataProps propsItem) {
+  public UpdateSpatialSceneCosmeticResponseData addPropsItem(GetShowroomResponseDataRoomProps propsItem) {
     if (this.props == null) {
-      this.props = new ArrayList<UpdateSpatialSceneCosmeticResponseDataProps>();
+      this.props = new ArrayList<GetShowroomResponseDataRoomProps>();
     }
     this.props.add(propsItem);
     return this;
@@ -695,12 +695,12 @@ public class UpdateSpatialSceneCosmeticResponseData {
   @javax.annotation.Nullable
   @ApiModelProperty(value = "Decorative props. Never containers — see CosmeticProp.")
 
-  public List<UpdateSpatialSceneCosmeticResponseDataProps> getProps() {
+  public List<GetShowroomResponseDataRoomProps> getProps() {
     return props;
   }
 
 
-  public void setProps(List<UpdateSpatialSceneCosmeticResponseDataProps> props) {
+  public void setProps(List<GetShowroomResponseDataRoomProps> props) {
     this.props = props;
   }
 

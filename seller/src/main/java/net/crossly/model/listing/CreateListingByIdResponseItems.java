@@ -27,14 +27,14 @@ import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
-import net.crossly.model.grading.ListGradingSubmissionsItemGrading;
+import net.crossly.model.bulk.CreateBulkBatchItemResponseGrading;
 import org.openapitools.jackson.nullable.JsonNullable;
 import org.threeten.bp.OffsetDateTime;
 
 /**
  * CreateListingByIdResponseItems
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-11T23:44:48.922Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-27T19:42:43.186Z[Etc/UTC]")
 public class CreateListingByIdResponseItems {
   public static final String SERIALIZED_NAME_EFFECTIVE_TITLE = "effectiveTitle";
   @SerializedName(SERIALIZED_NAME_EFFECTIVE_TITLE)
@@ -150,7 +150,7 @@ public class CreateListingByIdResponseItems {
 
   public static final String SERIALIZED_NAME_GRADING = "grading";
   @SerializedName(SERIALIZED_NAME_GRADING)
-  private ListGradingSubmissionsItemGrading grading;
+  private CreateBulkBatchItemResponseGrading grading;
 
   public static final String SERIALIZED_NAME_BRAND = "brand";
   @SerializedName(SERIALIZED_NAME_BRAND)
@@ -317,6 +317,14 @@ public class CreateListingByIdResponseItems {
   @SerializedName(SERIALIZED_NAME_AUTOMATION_BLOCKED_CHAIN_IDS)
   private List<String> automationBlockedChainIds = new ArrayList<String>();
 
+  public static final String SERIALIZED_NAME_WORKFLOW_BLOCKED_IDS = "workflowBlockedIds";
+  @SerializedName(SERIALIZED_NAME_WORKFLOW_BLOCKED_IDS)
+  private List<String> workflowBlockedIds = new ArrayList<String>();
+
+  public static final String SERIALIZED_NAME_WORKFLOW_ASSIGNED_IDS = "workflowAssignedIds";
+  @SerializedName(SERIALIZED_NAME_WORKFLOW_ASSIGNED_IDS)
+  private List<String> workflowAssignedIds = new ArrayList<String>();
+
   public static final String SERIALIZED_NAME_HS_CODE = "hsCode";
   @SerializedName(SERIALIZED_NAME_HS_CODE)
   private String hsCode;
@@ -356,6 +364,18 @@ public class CreateListingByIdResponseItems {
   public static final String SERIALIZED_NAME_CLIENT_DRAFT_ID = "clientDraftId";
   @SerializedName(SERIALIZED_NAME_CLIENT_DRAFT_ID)
   private String clientDraftId;
+
+  public static final String SERIALIZED_NAME_ATTRIBUTED_OAUTH_APP_ID = "attributedOauthAppId";
+  @SerializedName(SERIALIZED_NAME_ATTRIBUTED_OAUTH_APP_ID)
+  private String attributedOauthAppId;
+
+  public static final String SERIALIZED_NAME_ATTRIBUTED_GRANT_ID = "attributedGrantId";
+  @SerializedName(SERIALIZED_NAME_ATTRIBUTED_GRANT_ID)
+  private String attributedGrantId;
+
+  public static final String SERIALIZED_NAME_QUOTA_BUCKET = "quotaBucket";
+  @SerializedName(SERIALIZED_NAME_QUOTA_BUCKET)
+  private String quotaBucket;
 
   public static final String SERIALIZED_NAME_CREATED_AT = "createdAt";
   @SerializedName(SERIALIZED_NAME_CREATED_AT)
@@ -1050,7 +1070,7 @@ public class CreateListingByIdResponseItems {
   }
 
 
-  public CreateListingByIdResponseItems grading(ListGradingSubmissionsItemGrading grading) {
+  public CreateListingByIdResponseItems grading(CreateBulkBatchItemResponseGrading grading) {
     
     this.grading = grading;
     return this;
@@ -1063,12 +1083,12 @@ public class CreateListingByIdResponseItems {
   @javax.annotation.Nullable
   @ApiModelProperty(value = "")
 
-  public ListGradingSubmissionsItemGrading getGrading() {
+  public CreateBulkBatchItemResponseGrading getGrading() {
     return grading;
   }
 
 
-  public void setGrading(ListGradingSubmissionsItemGrading grading) {
+  public void setGrading(CreateBulkBatchItemResponseGrading grading) {
     this.grading = grading;
   }
 
@@ -1778,6 +1798,62 @@ public class CreateListingByIdResponseItems {
   }
 
 
+  public CreateListingByIdResponseItems workflowBlockedIds(List<String> workflowBlockedIds) {
+    
+    this.workflowBlockedIds = workflowBlockedIds;
+    return this;
+  }
+
+  public CreateListingByIdResponseItems addWorkflowBlockedIdsItem(String workflowBlockedIdsItem) {
+    this.workflowBlockedIds.add(workflowBlockedIdsItem);
+    return this;
+  }
+
+   /**
+   * Per-listing workflow overrides (migration 1099, docs/WORKFLOWS.md §10): the automation_* rule/chain ids above map here on conversion; &#x60;find.listings&#x60; and listing action nodes honour them.   workflowBlockedIds  — workflows (workflows.id) this listing is exempt from  workflowAssignedIds — workflows this listing is force-included in
+   * @return workflowBlockedIds
+  **/
+  @javax.annotation.Nonnull
+  @ApiModelProperty(required = true, value = "Per-listing workflow overrides (migration 1099, docs/WORKFLOWS.md §10): the automation_* rule/chain ids above map here on conversion; `find.listings` and listing action nodes honour them.   workflowBlockedIds  — workflows (workflows.id) this listing is exempt from  workflowAssignedIds — workflows this listing is force-included in")
+
+  public List<String> getWorkflowBlockedIds() {
+    return workflowBlockedIds;
+  }
+
+
+  public void setWorkflowBlockedIds(List<String> workflowBlockedIds) {
+    this.workflowBlockedIds = workflowBlockedIds;
+  }
+
+
+  public CreateListingByIdResponseItems workflowAssignedIds(List<String> workflowAssignedIds) {
+    
+    this.workflowAssignedIds = workflowAssignedIds;
+    return this;
+  }
+
+  public CreateListingByIdResponseItems addWorkflowAssignedIdsItem(String workflowAssignedIdsItem) {
+    this.workflowAssignedIds.add(workflowAssignedIdsItem);
+    return this;
+  }
+
+   /**
+   * Get workflowAssignedIds
+   * @return workflowAssignedIds
+  **/
+  @javax.annotation.Nonnull
+  @ApiModelProperty(required = true, value = "")
+
+  public List<String> getWorkflowAssignedIds() {
+    return workflowAssignedIds;
+  }
+
+
+  public void setWorkflowAssignedIds(List<String> workflowAssignedIds) {
+    this.workflowAssignedIds = workflowAssignedIds;
+  }
+
+
   public CreateListingByIdResponseItems hsCode(String hsCode) {
     
     this.hsCode = hsCode;
@@ -2008,6 +2084,75 @@ public class CreateListingByIdResponseItems {
   }
 
 
+  public CreateListingByIdResponseItems attributedOauthAppId(String attributedOauthAppId) {
+    
+    this.attributedOauthAppId = attributedOauthAppId;
+    return this;
+  }
+
+   /**
+   * The third-party OAuth app that created this listing (via its access token), if any — the anchor for developer revenue-share: the app that created the item earns a cut of its sales. Stamped once at create time (first writer wins, never overwritten); null for the web app, a PAT, or anything first-party. &#x60;attributedGrantId&#x60; pins the specific install whose agreed terms apply. See services/developer-earnings/.
+   * @return attributedOauthAppId
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "The third-party OAuth app that created this listing (via its access token), if any — the anchor for developer revenue-share: the app that created the item earns a cut of its sales. Stamped once at create time (first writer wins, never overwritten); null for the web app, a PAT, or anything first-party. `attributedGrantId` pins the specific install whose agreed terms apply. See services/developer-earnings/.")
+
+  public String getAttributedOauthAppId() {
+    return attributedOauthAppId;
+  }
+
+
+  public void setAttributedOauthAppId(String attributedOauthAppId) {
+    this.attributedOauthAppId = attributedOauthAppId;
+  }
+
+
+  public CreateListingByIdResponseItems attributedGrantId(String attributedGrantId) {
+    
+    this.attributedGrantId = attributedGrantId;
+    return this;
+  }
+
+   /**
+   * Get attributedGrantId
+   * @return attributedGrantId
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public String getAttributedGrantId() {
+    return attributedGrantId;
+  }
+
+
+  public void setAttributedGrantId(String attributedGrantId) {
+    this.attributedGrantId = attributedGrantId;
+  }
+
+
+  public CreateListingByIdResponseItems quotaBucket(String quotaBucket) {
+    
+    this.quotaBucket = quotaBucket;
+    return this;
+  }
+
+   /**
+   * Which quota this listing is counted in (migration 1064): &#39;app_allowance&#39; &#x3D; the attributed app&#39;s per-seller allowance (services/app-allowance/), &#39;plan&#39; &#x3D; the seller&#39;s plan, null &#x3D; created before allowances / by no app (plan rules). Stays &#39;app_allowance&#39; after an unlink (grandfathered, no longer counted).
+   * @return quotaBucket
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "Which quota this listing is counted in (migration 1064): 'app_allowance' = the attributed app's per-seller allowance (services/app-allowance/), 'plan' = the seller's plan, null = created before allowances / by no app (plan rules). Stays 'app_allowance' after an unlink (grandfathered, no longer counted).")
+
+  public String getQuotaBucket() {
+    return quotaBucket;
+  }
+
+
+  public void setQuotaBucket(String quotaBucket) {
+    this.quotaBucket = quotaBucket;
+  }
+
+
   public CreateListingByIdResponseItems createdAt(OffsetDateTime createdAt) {
     
     this.createdAt = createdAt;
@@ -2121,6 +2266,8 @@ public class CreateListingByIdResponseItems {
         Objects.equals(this.automationBlockedRuleIds, createListingByIdResponseItems.automationBlockedRuleIds) &&
         Objects.equals(this.automationAssignedChainIds, createListingByIdResponseItems.automationAssignedChainIds) &&
         Objects.equals(this.automationBlockedChainIds, createListingByIdResponseItems.automationBlockedChainIds) &&
+        Objects.equals(this.workflowBlockedIds, createListingByIdResponseItems.workflowBlockedIds) &&
+        Objects.equals(this.workflowAssignedIds, createListingByIdResponseItems.workflowAssignedIds) &&
         Objects.equals(this.hsCode, createListingByIdResponseItems.hsCode) &&
         Objects.equals(this.countryOfOrigin, createListingByIdResponseItems.countryOfOrigin) &&
         Objects.equals(this.priceFloorCents, createListingByIdResponseItems.priceFloorCents) &&
@@ -2131,6 +2278,9 @@ public class CreateListingByIdResponseItems {
         Objects.equals(this.source, createListingByIdResponseItems.source) &&
         Objects.equals(this.duplicateOfListingId, createListingByIdResponseItems.duplicateOfListingId) &&
         Objects.equals(this.clientDraftId, createListingByIdResponseItems.clientDraftId) &&
+        Objects.equals(this.attributedOauthAppId, createListingByIdResponseItems.attributedOauthAppId) &&
+        Objects.equals(this.attributedGrantId, createListingByIdResponseItems.attributedGrantId) &&
+        Objects.equals(this.quotaBucket, createListingByIdResponseItems.quotaBucket) &&
         Objects.equals(this.createdAt, createListingByIdResponseItems.createdAt) &&
         Objects.equals(this.updatedAt, createListingByIdResponseItems.updatedAt);
   }
@@ -2141,7 +2291,7 @@ public class CreateListingByIdResponseItems {
 
   @Override
   public int hashCode() {
-    return Objects.hash(effectiveTitle, effectivePrice, effectiveDescription, effectiveImages, effectiveBrand, effectiveCondition, effectiveSize, effectiveSku, effectiveColor, effectiveTags, platformListings, inventoryItemId, id, userId, name, title, description, descriptionHtml, price, currency, images, videoUrl, aiMediaUrls, aiMediaDeclared, aiMediaDetectedUrls, status, condition, gradeKey, grading, brand, size, material, style, pattern, department, gender, itemType, sizeSystem, color, tags, sku, isDigital, quantity, quantityAvailable, weightLb, weightOz, dimensionLIn, dimensionWIn, dimensionHIn, publishAt, scheduledPlatforms, parentListingId, groupKind, isBundle, automationAssignedRuleIds, automationBlockedRuleIds, automationAssignedChainIds, automationBlockedChainIds, hsCode, countryOfOrigin, priceFloorCents, floorIsNet, delistedAt, soldAt, ebayAttributesEnrichedAt, source, duplicateOfListingId, clientDraftId, createdAt, updatedAt);
+    return Objects.hash(effectiveTitle, effectivePrice, effectiveDescription, effectiveImages, effectiveBrand, effectiveCondition, effectiveSize, effectiveSku, effectiveColor, effectiveTags, platformListings, inventoryItemId, id, userId, name, title, description, descriptionHtml, price, currency, images, videoUrl, aiMediaUrls, aiMediaDeclared, aiMediaDetectedUrls, status, condition, gradeKey, grading, brand, size, material, style, pattern, department, gender, itemType, sizeSystem, color, tags, sku, isDigital, quantity, quantityAvailable, weightLb, weightOz, dimensionLIn, dimensionWIn, dimensionHIn, publishAt, scheduledPlatforms, parentListingId, groupKind, isBundle, automationAssignedRuleIds, automationBlockedRuleIds, automationAssignedChainIds, automationBlockedChainIds, workflowBlockedIds, workflowAssignedIds, hsCode, countryOfOrigin, priceFloorCents, floorIsNet, delistedAt, soldAt, ebayAttributesEnrichedAt, source, duplicateOfListingId, clientDraftId, attributedOauthAppId, attributedGrantId, quotaBucket, createdAt, updatedAt);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -2213,6 +2363,8 @@ public class CreateListingByIdResponseItems {
     sb.append("    automationBlockedRuleIds: ").append(toIndentedString(automationBlockedRuleIds)).append("\n");
     sb.append("    automationAssignedChainIds: ").append(toIndentedString(automationAssignedChainIds)).append("\n");
     sb.append("    automationBlockedChainIds: ").append(toIndentedString(automationBlockedChainIds)).append("\n");
+    sb.append("    workflowBlockedIds: ").append(toIndentedString(workflowBlockedIds)).append("\n");
+    sb.append("    workflowAssignedIds: ").append(toIndentedString(workflowAssignedIds)).append("\n");
     sb.append("    hsCode: ").append(toIndentedString(hsCode)).append("\n");
     sb.append("    countryOfOrigin: ").append(toIndentedString(countryOfOrigin)).append("\n");
     sb.append("    priceFloorCents: ").append(toIndentedString(priceFloorCents)).append("\n");
@@ -2223,6 +2375,9 @@ public class CreateListingByIdResponseItems {
     sb.append("    source: ").append(toIndentedString(source)).append("\n");
     sb.append("    duplicateOfListingId: ").append(toIndentedString(duplicateOfListingId)).append("\n");
     sb.append("    clientDraftId: ").append(toIndentedString(clientDraftId)).append("\n");
+    sb.append("    attributedOauthAppId: ").append(toIndentedString(attributedOauthAppId)).append("\n");
+    sb.append("    attributedGrantId: ").append(toIndentedString(attributedGrantId)).append("\n");
+    sb.append("    quotaBucket: ").append(toIndentedString(quotaBucket)).append("\n");
     sb.append("    createdAt: ").append(toIndentedString(createdAt)).append("\n");
     sb.append("    updatedAt: ").append(toIndentedString(updatedAt)).append("\n");
     sb.append("}");

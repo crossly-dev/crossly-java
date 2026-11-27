@@ -28,41 +28,18 @@ import net.crossly.buyer.model.offer.CreateBuyerOfferResponseDataOffer;
 /**
  * CreateBuyerOfferResponseData
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-11T23:47:29.843Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-27T19:58:46.962Z[Etc/UTC]")
 public class CreateBuyerOfferResponseData {
-  public static final String SERIALIZED_NAME_OFFER = "offer";
-  @SerializedName(SERIALIZED_NAME_OFFER)
-  private CreateBuyerOfferResponseDataOffer offer;
-
   public static final String SERIALIZED_NAME_OK = "ok";
   @SerializedName(SERIALIZED_NAME_OK)
   private Boolean ok;
 
+  public static final String SERIALIZED_NAME_OFFER = "offer";
+  @SerializedName(SERIALIZED_NAME_OFFER)
+  private CreateBuyerOfferResponseDataOffer offer;
+
   public CreateBuyerOfferResponseData() { 
   }
-
-  public CreateBuyerOfferResponseData offer(CreateBuyerOfferResponseDataOffer offer) {
-    
-    this.offer = offer;
-    return this;
-  }
-
-   /**
-   * Get offer
-   * @return offer
-  **/
-  @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "")
-
-  public CreateBuyerOfferResponseDataOffer getOffer() {
-    return offer;
-  }
-
-
-  public void setOffer(CreateBuyerOfferResponseDataOffer offer) {
-    this.offer = offer;
-  }
-
 
   public CreateBuyerOfferResponseData ok(Boolean ok) {
     
@@ -87,6 +64,29 @@ public class CreateBuyerOfferResponseData {
   }
 
 
+  public CreateBuyerOfferResponseData offer(CreateBuyerOfferResponseDataOffer offer) {
+    
+    this.offer = offer;
+    return this;
+  }
+
+   /**
+   * Get offer
+   * @return offer
+  **/
+  @javax.annotation.Nonnull
+  @ApiModelProperty(required = true, value = "")
+
+  public CreateBuyerOfferResponseDataOffer getOffer() {
+    return offer;
+  }
+
+
+  public void setOffer(CreateBuyerOfferResponseDataOffer offer) {
+    this.offer = offer;
+  }
+
+
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -96,21 +96,21 @@ public class CreateBuyerOfferResponseData {
       return false;
     }
     CreateBuyerOfferResponseData createBuyerOfferResponseData = (CreateBuyerOfferResponseData) o;
-    return Objects.equals(this.offer, createBuyerOfferResponseData.offer) &&
-        Objects.equals(this.ok, createBuyerOfferResponseData.ok);
+    return Objects.equals(this.ok, createBuyerOfferResponseData.ok) &&
+        Objects.equals(this.offer, createBuyerOfferResponseData.offer);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(offer, ok);
+    return Objects.hash(ok, offer);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class CreateBuyerOfferResponseData {\n");
-    sb.append("    offer: ").append(toIndentedString(offer)).append("\n");
     sb.append("    ok: ").append(toIndentedString(ok)).append("\n");
+    sb.append("    offer: ").append(toIndentedString(offer)).append("\n");
     sb.append("}");
     return sb.toString();
   }

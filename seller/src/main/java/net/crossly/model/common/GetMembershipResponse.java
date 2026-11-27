@@ -23,22 +23,23 @@ import com.google.gson.stream.JsonWriter;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
+import net.crossly.model.common.GetMembershipResponseBenefits;
 import org.openapitools.jackson.nullable.JsonNullable;
 import org.threeten.bp.OffsetDateTime;
 
 /**
  * GetMembershipResponse
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-11T23:44:48.922Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-27T19:42:43.186Z[Etc/UTC]")
 public class GetMembershipResponse {
   /**
    * Gets or Sets tier
    */
   @JsonAdapter(TierEnum.Adapter.class)
   public enum TierEnum {
-    CLASSIC("classic"),
+    PRO("pro"),
     
-    PRO("pro");
+    CLASSIC("classic");
 
     private String value;
 
@@ -93,6 +94,10 @@ public class GetMembershipResponse {
   public static final String SERIALIZED_NAME_ENDS_AT = "endsAt";
   @SerializedName(SERIALIZED_NAME_ENDS_AT)
   private OffsetDateTime endsAt;
+
+  public static final String SERIALIZED_NAME_BENEFITS = "benefits";
+  @SerializedName(SERIALIZED_NAME_BENEFITS)
+  private GetMembershipResponseBenefits benefits;
 
   public GetMembershipResponse() { 
   }
@@ -189,6 +194,29 @@ public class GetMembershipResponse {
   }
 
 
+  public GetMembershipResponse benefits(GetMembershipResponseBenefits benefits) {
+    
+    this.benefits = benefits;
+    return this;
+  }
+
+   /**
+   * Get benefits
+   * @return benefits
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public GetMembershipResponseBenefits getBenefits() {
+    return benefits;
+  }
+
+
+  public void setBenefits(GetMembershipResponseBenefits benefits) {
+    this.benefits = benefits;
+  }
+
+
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -201,7 +229,8 @@ public class GetMembershipResponse {
     return Objects.equals(this.tier, getMembershipResponse.tier) &&
         Objects.equals(this.active, getMembershipResponse.active) &&
         Objects.equals(this.startedAt, getMembershipResponse.startedAt) &&
-        Objects.equals(this.endsAt, getMembershipResponse.endsAt);
+        Objects.equals(this.endsAt, getMembershipResponse.endsAt) &&
+        Objects.equals(this.benefits, getMembershipResponse.benefits);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -210,7 +239,7 @@ public class GetMembershipResponse {
 
   @Override
   public int hashCode() {
-    return Objects.hash(tier, active, startedAt, endsAt);
+    return Objects.hash(tier, active, startedAt, endsAt, benefits);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -228,6 +257,7 @@ public class GetMembershipResponse {
     sb.append("    active: ").append(toIndentedString(active)).append("\n");
     sb.append("    startedAt: ").append(toIndentedString(startedAt)).append("\n");
     sb.append("    endsAt: ").append(toIndentedString(endsAt)).append("\n");
+    sb.append("    benefits: ").append(toIndentedString(benefits)).append("\n");
     sb.append("}");
     return sb.toString();
   }

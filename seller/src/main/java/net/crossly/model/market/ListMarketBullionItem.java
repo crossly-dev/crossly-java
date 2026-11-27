@@ -29,7 +29,7 @@ import org.openapitools.jackson.nullable.JsonNullable;
 /**
  * ListMarketBullionItem
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-11T23:44:48.922Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-27T19:42:43.186Z[Etc/UTC]")
 public class ListMarketBullionItem {
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
@@ -119,11 +119,11 @@ public class ListMarketBullionItem {
    */
   @JsonAdapter(FormEnum.Adapter.class)
   public enum FormEnum {
-    ROUND("round"),
-    
     BULLION_COIN("bullion_coin"),
     
-    BAR("bar");
+    BAR("bar"),
+    
+    ROUND("round");
 
     private String value;
 
@@ -172,9 +172,9 @@ public class ListMarketBullionItem {
    */
   @JsonAdapter(SizeEnum.Adapter.class)
   public enum SizeEnum {
-    QUARTER("quarter"),
-    
     FRACTIONAL("fractional"),
+    
+    QUARTER("quarter"),
     
     HALF("half"),
     

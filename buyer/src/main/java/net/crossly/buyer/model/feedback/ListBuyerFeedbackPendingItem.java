@@ -28,7 +28,7 @@ import org.openapitools.jackson.nullable.JsonNullable;
 /**
  * ListBuyerFeedbackPendingItem
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-11T23:47:29.843Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-27T19:58:46.962Z[Etc/UTC]")
 public class ListBuyerFeedbackPendingItem {
   public static final String SERIALIZED_NAME_PURCHASE_ID = "purchaseId";
   @SerializedName(SERIALIZED_NAME_PURCHASE_ID)
@@ -38,25 +38,25 @@ public class ListBuyerFeedbackPendingItem {
   @SerializedName(SERIALIZED_NAME_ITEM_TITLE)
   private String itemTitle;
 
-  public static final String SERIALIZED_NAME_SHIPPED_AT = "shippedAt";
-  @SerializedName(SERIALIZED_NAME_SHIPPED_AT)
-  private String shippedAt;
+  public static final String SERIALIZED_NAME_IMAGE_URL = "imageUrl";
+  @SerializedName(SERIALIZED_NAME_IMAGE_URL)
+  private String imageUrl;
 
   public static final String SERIALIZED_NAME_DELIVERED_AT = "deliveredAt";
   @SerializedName(SERIALIZED_NAME_DELIVERED_AT)
   private String deliveredAt;
 
-  public static final String SERIALIZED_NAME_IMAGE_URL = "imageUrl";
-  @SerializedName(SERIALIZED_NAME_IMAGE_URL)
-  private String imageUrl;
-
-  public static final String SERIALIZED_NAME_SELLER_NAME = "sellerName";
-  @SerializedName(SERIALIZED_NAME_SELLER_NAME)
-  private String sellerName;
+  public static final String SERIALIZED_NAME_SHIPPED_AT = "shippedAt";
+  @SerializedName(SERIALIZED_NAME_SHIPPED_AT)
+  private String shippedAt;
 
   public static final String SERIALIZED_NAME_ORDERED_AT = "orderedAt";
   @SerializedName(SERIALIZED_NAME_ORDERED_AT)
   private String orderedAt;
+
+  public static final String SERIALIZED_NAME_SELLER_NAME = "sellerName";
+  @SerializedName(SERIALIZED_NAME_SELLER_NAME)
+  private String sellerName;
 
   public ListBuyerFeedbackPendingItem() { 
   }
@@ -107,26 +107,26 @@ public class ListBuyerFeedbackPendingItem {
   }
 
 
-  public ListBuyerFeedbackPendingItem shippedAt(String shippedAt) {
+  public ListBuyerFeedbackPendingItem imageUrl(String imageUrl) {
     
-    this.shippedAt = shippedAt;
+    this.imageUrl = imageUrl;
     return this;
   }
 
    /**
-   * Get shippedAt
-   * @return shippedAt
+   * Get imageUrl
+   * @return imageUrl
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "")
 
-  public String getShippedAt() {
-    return shippedAt;
+  public String getImageUrl() {
+    return imageUrl;
   }
 
 
-  public void setShippedAt(String shippedAt) {
-    this.shippedAt = shippedAt;
+  public void setImageUrl(String imageUrl) {
+    this.imageUrl = imageUrl;
   }
 
 
@@ -153,49 +153,26 @@ public class ListBuyerFeedbackPendingItem {
   }
 
 
-  public ListBuyerFeedbackPendingItem imageUrl(String imageUrl) {
+  public ListBuyerFeedbackPendingItem shippedAt(String shippedAt) {
     
-    this.imageUrl = imageUrl;
+    this.shippedAt = shippedAt;
     return this;
   }
 
    /**
-   * Get imageUrl
-   * @return imageUrl
+   * Get shippedAt
+   * @return shippedAt
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "")
 
-  public String getImageUrl() {
-    return imageUrl;
+  public String getShippedAt() {
+    return shippedAt;
   }
 
 
-  public void setImageUrl(String imageUrl) {
-    this.imageUrl = imageUrl;
-  }
-
-
-  public ListBuyerFeedbackPendingItem sellerName(String sellerName) {
-    
-    this.sellerName = sellerName;
-    return this;
-  }
-
-   /**
-   * Get sellerName
-   * @return sellerName
-  **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
-
-  public String getSellerName() {
-    return sellerName;
-  }
-
-
-  public void setSellerName(String sellerName) {
-    this.sellerName = sellerName;
+  public void setShippedAt(String shippedAt) {
+    this.shippedAt = shippedAt;
   }
 
 
@@ -222,6 +199,29 @@ public class ListBuyerFeedbackPendingItem {
   }
 
 
+  public ListBuyerFeedbackPendingItem sellerName(String sellerName) {
+    
+    this.sellerName = sellerName;
+    return this;
+  }
+
+   /**
+   * Get sellerName
+   * @return sellerName
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public String getSellerName() {
+    return sellerName;
+  }
+
+
+  public void setSellerName(String sellerName) {
+    this.sellerName = sellerName;
+  }
+
+
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -233,11 +233,11 @@ public class ListBuyerFeedbackPendingItem {
     ListBuyerFeedbackPendingItem listBuyerFeedbackPendingItem = (ListBuyerFeedbackPendingItem) o;
     return Objects.equals(this.purchaseId, listBuyerFeedbackPendingItem.purchaseId) &&
         Objects.equals(this.itemTitle, listBuyerFeedbackPendingItem.itemTitle) &&
-        Objects.equals(this.shippedAt, listBuyerFeedbackPendingItem.shippedAt) &&
-        Objects.equals(this.deliveredAt, listBuyerFeedbackPendingItem.deliveredAt) &&
         Objects.equals(this.imageUrl, listBuyerFeedbackPendingItem.imageUrl) &&
-        Objects.equals(this.sellerName, listBuyerFeedbackPendingItem.sellerName) &&
-        Objects.equals(this.orderedAt, listBuyerFeedbackPendingItem.orderedAt);
+        Objects.equals(this.deliveredAt, listBuyerFeedbackPendingItem.deliveredAt) &&
+        Objects.equals(this.shippedAt, listBuyerFeedbackPendingItem.shippedAt) &&
+        Objects.equals(this.orderedAt, listBuyerFeedbackPendingItem.orderedAt) &&
+        Objects.equals(this.sellerName, listBuyerFeedbackPendingItem.sellerName);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -246,7 +246,7 @@ public class ListBuyerFeedbackPendingItem {
 
   @Override
   public int hashCode() {
-    return Objects.hash(purchaseId, itemTitle, shippedAt, deliveredAt, imageUrl, sellerName, orderedAt);
+    return Objects.hash(purchaseId, itemTitle, imageUrl, deliveredAt, shippedAt, orderedAt, sellerName);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -262,11 +262,11 @@ public class ListBuyerFeedbackPendingItem {
     sb.append("class ListBuyerFeedbackPendingItem {\n");
     sb.append("    purchaseId: ").append(toIndentedString(purchaseId)).append("\n");
     sb.append("    itemTitle: ").append(toIndentedString(itemTitle)).append("\n");
-    sb.append("    shippedAt: ").append(toIndentedString(shippedAt)).append("\n");
-    sb.append("    deliveredAt: ").append(toIndentedString(deliveredAt)).append("\n");
     sb.append("    imageUrl: ").append(toIndentedString(imageUrl)).append("\n");
-    sb.append("    sellerName: ").append(toIndentedString(sellerName)).append("\n");
+    sb.append("    deliveredAt: ").append(toIndentedString(deliveredAt)).append("\n");
+    sb.append("    shippedAt: ").append(toIndentedString(shippedAt)).append("\n");
     sb.append("    orderedAt: ").append(toIndentedString(orderedAt)).append("\n");
+    sb.append("    sellerName: ").append(toIndentedString(sellerName)).append("\n");
     sb.append("}");
     return sb.toString();
   }

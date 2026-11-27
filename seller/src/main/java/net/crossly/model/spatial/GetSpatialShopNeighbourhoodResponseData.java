@@ -31,7 +31,7 @@ import org.openapitools.jackson.nullable.JsonNullable;
 /**
  * GetSpatialShopNeighbourhoodResponseData
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-11T23:44:48.922Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-27T19:42:43.186Z[Etc/UTC]")
 public class GetSpatialShopNeighbourhoodResponseData {
   public static final String SERIALIZED_NAME_SHOP = "shop";
   @SerializedName(SERIALIZED_NAME_SHOP)
@@ -95,14 +95,6 @@ public class GetSpatialShopNeighbourhoodResponseData {
   public static final String SERIALIZED_NAME_SUGGESTED = "suggested";
   @SerializedName(SERIALIZED_NAME_SUGGESTED)
   private SuggestedEnum suggested;
-
-  public static final String SERIALIZED_NAME_CAN_MOVE = "canMove";
-  @SerializedName(SERIALIZED_NAME_CAN_MOVE)
-  private Boolean canMove;
-
-  public static final String SERIALIZED_NAME_MOVE = "move";
-  @SerializedName(SERIALIZED_NAME_MOVE)
-  private Object move = null;
 
   public static final String SERIALIZED_NAME_OPTIONS = "options";
   @SerializedName(SERIALIZED_NAME_OPTIONS)
@@ -180,52 +172,6 @@ public class GetSpatialShopNeighbourhoodResponseData {
   }
 
 
-  public GetSpatialShopNeighbourhoodResponseData canMove(Boolean canMove) {
-    
-    this.canMove = canMove;
-    return this;
-  }
-
-   /**
-   * Get canMove
-   * @return canMove
-  **/
-  @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "")
-
-  public Boolean getCanMove() {
-    return canMove;
-  }
-
-
-  public void setCanMove(Boolean canMove) {
-    this.canMove = canMove;
-  }
-
-
-  public GetSpatialShopNeighbourhoodResponseData move(Object move) {
-    
-    this.move = move;
-    return this;
-  }
-
-   /**
-   * Get move
-   * @return move
-  **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
-
-  public Object getMove() {
-    return move;
-  }
-
-
-  public void setMove(Object move) {
-    this.move = move;
-  }
-
-
   public GetSpatialShopNeighbourhoodResponseData options(List<ListNeighbourhoodsItem> options) {
     
     this.options = options;
@@ -266,8 +212,6 @@ public class GetSpatialShopNeighbourhoodResponseData {
     return Objects.equals(this.shop, getSpatialShopNeighbourhoodResponseData.shop) &&
         Objects.equals(this.home, getSpatialShopNeighbourhoodResponseData.home) &&
         Objects.equals(this.suggested, getSpatialShopNeighbourhoodResponseData.suggested) &&
-        Objects.equals(this.canMove, getSpatialShopNeighbourhoodResponseData.canMove) &&
-        Objects.equals(this.move, getSpatialShopNeighbourhoodResponseData.move) &&
         Objects.equals(this.options, getSpatialShopNeighbourhoodResponseData.options);
   }
 
@@ -277,7 +221,7 @@ public class GetSpatialShopNeighbourhoodResponseData {
 
   @Override
   public int hashCode() {
-    return Objects.hash(shop, home, suggested, canMove, move, options);
+    return Objects.hash(shop, home, suggested, options);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -294,8 +238,6 @@ public class GetSpatialShopNeighbourhoodResponseData {
     sb.append("    shop: ").append(toIndentedString(shop)).append("\n");
     sb.append("    home: ").append(toIndentedString(home)).append("\n");
     sb.append("    suggested: ").append(toIndentedString(suggested)).append("\n");
-    sb.append("    canMove: ").append(toIndentedString(canMove)).append("\n");
-    sb.append("    move: ").append(toIndentedString(move)).append("\n");
     sb.append("    options: ").append(toIndentedString(options)).append("\n");
     sb.append("}");
     return sb.toString();

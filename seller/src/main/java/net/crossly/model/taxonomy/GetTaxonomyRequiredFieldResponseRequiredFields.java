@@ -30,7 +30,7 @@ import org.openapitools.jackson.nullable.JsonNullable;
 /**
  * GetTaxonomyRequiredFieldResponseRequiredFields
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-11T23:44:48.922Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-27T19:42:43.186Z[Etc/UTC]")
 public class GetTaxonomyRequiredFieldResponseRequiredFields {
   /**
    * Gets or Sets dataType
@@ -97,13 +97,13 @@ public class GetTaxonomyRequiredFieldResponseRequiredFields {
   @SerializedName(SERIALIZED_NAME_KEY)
   private String key;
 
-  public static final String SERIALIZED_NAME_REQUIRED = "required";
-  @SerializedName(SERIALIZED_NAME_REQUIRED)
-  private Boolean required;
-
   public static final String SERIALIZED_NAME_HINT = "hint";
   @SerializedName(SERIALIZED_NAME_HINT)
   private String hint;
+
+  public static final String SERIALIZED_NAME_REQUIRED = "required";
+  @SerializedName(SERIALIZED_NAME_REQUIRED)
+  private Boolean required;
 
   public static final String SERIALIZED_NAME_MASTER = "master";
   @SerializedName(SERIALIZED_NAME_MASTER)
@@ -216,29 +216,6 @@ public class GetTaxonomyRequiredFieldResponseRequiredFields {
   }
 
 
-  public GetTaxonomyRequiredFieldResponseRequiredFields required(Boolean required) {
-    
-    this.required = required;
-    return this;
-  }
-
-   /**
-   * Get required
-   * @return required
-  **/
-  @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "")
-
-  public Boolean getRequired() {
-    return required;
-  }
-
-
-  public void setRequired(Boolean required) {
-    this.required = required;
-  }
-
-
   public GetTaxonomyRequiredFieldResponseRequiredFields hint(String hint) {
     
     this.hint = hint;
@@ -259,6 +236,29 @@ public class GetTaxonomyRequiredFieldResponseRequiredFields {
 
   public void setHint(String hint) {
     this.hint = hint;
+  }
+
+
+  public GetTaxonomyRequiredFieldResponseRequiredFields required(Boolean required) {
+    
+    this.required = required;
+    return this;
+  }
+
+   /**
+   * Get required
+   * @return required
+  **/
+  @javax.annotation.Nonnull
+  @ApiModelProperty(required = true, value = "")
+
+  public Boolean getRequired() {
+    return required;
+  }
+
+
+  public void setRequired(Boolean required) {
+    this.required = required;
   }
 
 
@@ -321,8 +321,8 @@ public class GetTaxonomyRequiredFieldResponseRequiredFields {
         Objects.equals(this.enumValues, getTaxonomyRequiredFieldResponseRequiredFields.enumValues) &&
         Objects.equals(this.label, getTaxonomyRequiredFieldResponseRequiredFields.label) &&
         Objects.equals(this.key, getTaxonomyRequiredFieldResponseRequiredFields.key) &&
-        Objects.equals(this.required, getTaxonomyRequiredFieldResponseRequiredFields.required) &&
         Objects.equals(this.hint, getTaxonomyRequiredFieldResponseRequiredFields.hint) &&
+        Objects.equals(this.required, getTaxonomyRequiredFieldResponseRequiredFields.required) &&
         Objects.equals(this.master, getTaxonomyRequiredFieldResponseRequiredFields.master) &&
         Objects.equals(this.selectionOnly, getTaxonomyRequiredFieldResponseRequiredFields.selectionOnly);
   }
@@ -333,7 +333,7 @@ public class GetTaxonomyRequiredFieldResponseRequiredFields {
 
   @Override
   public int hashCode() {
-    return Objects.hash(dataType, enumValues, label, key, required, hint, master, selectionOnly);
+    return Objects.hash(dataType, enumValues, label, key, hint, required, master, selectionOnly);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -351,8 +351,8 @@ public class GetTaxonomyRequiredFieldResponseRequiredFields {
     sb.append("    enumValues: ").append(toIndentedString(enumValues)).append("\n");
     sb.append("    label: ").append(toIndentedString(label)).append("\n");
     sb.append("    key: ").append(toIndentedString(key)).append("\n");
-    sb.append("    required: ").append(toIndentedString(required)).append("\n");
     sb.append("    hint: ").append(toIndentedString(hint)).append("\n");
+    sb.append("    required: ").append(toIndentedString(required)).append("\n");
     sb.append("    master: ").append(toIndentedString(master)).append("\n");
     sb.append("    selectionOnly: ").append(toIndentedString(selectionOnly)).append("\n");
     sb.append("}");

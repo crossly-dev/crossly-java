@@ -26,11 +26,12 @@ import java.io.IOException;
 import java.math.BigDecimal;
 import net.crossly.buyer.model.vault.GetBuyerVaultMarketHistoryResponseNowMarks;
 import net.crossly.buyer.model.vault.GetBuyerVaultMarketWorthResponseSellNow;
+import net.crossly.buyer.model.vault.GetBuyerVaultMarketWorthResponseToday;
 
 /**
  * GetBuyerVaultMarketWorthResponse
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-11T23:47:29.843Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-27T19:58:46.962Z[Etc/UTC]")
 public class GetBuyerVaultMarketWorthResponse {
   public static final String SERIALIZED_NAME_AS_OF = "asOf";
   @SerializedName(SERIALIZED_NAME_AS_OF)
@@ -71,6 +72,10 @@ public class GetBuyerVaultMarketWorthResponse {
   public static final String SERIALIZED_NAME_PNL_CENTS = "pnlCents";
   @SerializedName(SERIALIZED_NAME_PNL_CENTS)
   private BigDecimal pnlCents;
+
+  public static final String SERIALIZED_NAME_TODAY = "today";
+  @SerializedName(SERIALIZED_NAME_TODAY)
+  private GetBuyerVaultMarketWorthResponseToday today;
 
   public static final String SERIALIZED_NAME_SELL_NOW = "sellNow";
   @SerializedName(SERIALIZED_NAME_SELL_NOW)
@@ -313,6 +318,29 @@ public class GetBuyerVaultMarketWorthResponse {
   }
 
 
+  public GetBuyerVaultMarketWorthResponse today(GetBuyerVaultMarketWorthResponseToday today) {
+    
+    this.today = today;
+    return this;
+  }
+
+   /**
+   * Get today
+   * @return today
+  **/
+  @javax.annotation.Nonnull
+  @ApiModelProperty(required = true, value = "")
+
+  public GetBuyerVaultMarketWorthResponseToday getToday() {
+    return today;
+  }
+
+
+  public void setToday(GetBuyerVaultMarketWorthResponseToday today) {
+    this.today = today;
+  }
+
+
   public GetBuyerVaultMarketWorthResponse sellNow(GetBuyerVaultMarketWorthResponseSellNow sellNow) {
     
     this.sellNow = sellNow;
@@ -378,13 +406,14 @@ public class GetBuyerVaultMarketWorthResponse {
         Objects.equals(this.marks, getBuyerVaultMarketWorthResponse.marks) &&
         Objects.equals(this.costCents, getBuyerVaultMarketWorthResponse.costCents) &&
         Objects.equals(this.pnlCents, getBuyerVaultMarketWorthResponse.pnlCents) &&
+        Objects.equals(this.today, getBuyerVaultMarketWorthResponse.today) &&
         Objects.equals(this.sellNow, getBuyerVaultMarketWorthResponse.sellNow) &&
         Objects.equals(this.note, getBuyerVaultMarketWorthResponse.note);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(asOf, valueCents, vaultCents, onLoanCents, positionsCents, units, unitsOnLoan, marks, costCents, pnlCents, sellNow, note);
+    return Objects.hash(asOf, valueCents, vaultCents, onLoanCents, positionsCents, units, unitsOnLoan, marks, costCents, pnlCents, today, sellNow, note);
   }
 
   @Override
@@ -401,6 +430,7 @@ public class GetBuyerVaultMarketWorthResponse {
     sb.append("    marks: ").append(toIndentedString(marks)).append("\n");
     sb.append("    costCents: ").append(toIndentedString(costCents)).append("\n");
     sb.append("    pnlCents: ").append(toIndentedString(pnlCents)).append("\n");
+    sb.append("    today: ").append(toIndentedString(today)).append("\n");
     sb.append("    sellNow: ").append(toIndentedString(sellNow)).append("\n");
     sb.append("    note: ").append(toIndentedString(note)).append("\n");
     sb.append("}");

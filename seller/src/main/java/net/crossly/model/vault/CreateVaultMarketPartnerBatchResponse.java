@@ -26,13 +26,13 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import net.crossly.model.vault.CreateVaultMarketPartnerBatchResponseCreated;
-import net.crossly.model.vault.CreateVaultMarketPartnerBatchResponseLabel;
+import net.crossly.model.common.LabelUrlTrackingCode;
 import org.openapitools.jackson.nullable.JsonNullable;
 
 /**
  * CreateVaultMarketPartnerBatchResponse
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-11T23:44:48.922Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-27T19:42:43.186Z[Etc/UTC]")
 public class CreateVaultMarketPartnerBatchResponse {
   public static final String SERIALIZED_NAME_BATCH_ID = "batchId";
   @SerializedName(SERIALIZED_NAME_BATCH_ID)
@@ -48,7 +48,7 @@ public class CreateVaultMarketPartnerBatchResponse {
 
   public static final String SERIALIZED_NAME_LABEL = "label";
   @SerializedName(SERIALIZED_NAME_LABEL)
-  private CreateVaultMarketPartnerBatchResponseLabel label;
+  private LabelUrlTrackingCode label;
 
   public static final String SERIALIZED_NAME_LABEL_ERROR = "labelError";
   @SerializedName(SERIALIZED_NAME_LABEL_ERROR)
@@ -131,7 +131,7 @@ public class CreateVaultMarketPartnerBatchResponse {
   }
 
 
-  public CreateVaultMarketPartnerBatchResponse label(CreateVaultMarketPartnerBatchResponseLabel label) {
+  public CreateVaultMarketPartnerBatchResponse label(LabelUrlTrackingCode label) {
     
     this.label = label;
     return this;
@@ -144,12 +144,12 @@ public class CreateVaultMarketPartnerBatchResponse {
   @javax.annotation.Nullable
   @ApiModelProperty(value = "")
 
-  public CreateVaultMarketPartnerBatchResponseLabel getLabel() {
+  public LabelUrlTrackingCode getLabel() {
     return label;
   }
 
 
-  public void setLabel(CreateVaultMarketPartnerBatchResponseLabel label) {
+  public void setLabel(LabelUrlTrackingCode label) {
     this.label = label;
   }
 

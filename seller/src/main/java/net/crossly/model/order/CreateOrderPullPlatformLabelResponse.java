@@ -24,11 +24,12 @@ import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 import java.math.BigDecimal;
+import org.openapitools.jackson.nullable.JsonNullable;
 
 /**
  * CreateOrderPullPlatformLabelResponse
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-11T23:44:48.922Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-27T19:42:43.186Z[Etc/UTC]")
 public class CreateOrderPullPlatformLabelResponse {
   public static final String SERIALIZED_NAME_URL = "url";
   @SerializedName(SERIALIZED_NAME_URL)
@@ -93,6 +94,14 @@ public class CreateOrderPullPlatformLabelResponse {
   @SerializedName(SERIALIZED_NAME_PROVENANCE)
   private ProvenanceEnum provenance;
 
+  public static final String SERIALIZED_NAME_SHIPPING_LABEL_URL = "shippingLabelUrl";
+  @SerializedName(SERIALIZED_NAME_SHIPPING_LABEL_URL)
+  private String shippingLabelUrl;
+
+  public static final String SERIALIZED_NAME_TRACKING_NUMBER = "trackingNumber";
+  @SerializedName(SERIALIZED_NAME_TRACKING_NUMBER)
+  private String trackingNumber;
+
   public CreateOrderPullPlatformLabelResponse() { 
   }
 
@@ -106,8 +115,8 @@ public class CreateOrderPullPlatformLabelResponse {
    * Get url
    * @return url
   **/
-  @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "")
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
 
   public String getUrl() {
     return url;
@@ -129,8 +138,8 @@ public class CreateOrderPullPlatformLabelResponse {
    * Get persisted
    * @return persisted
   **/
-  @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "")
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
 
   public Boolean getPersisted() {
     return persisted;
@@ -152,8 +161,8 @@ public class CreateOrderPullPlatformLabelResponse {
    * Get expiresInSeconds
    * @return expiresInSeconds
   **/
-  @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "")
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
 
   public BigDecimal getExpiresInSeconds() {
     return expiresInSeconds;
@@ -188,6 +197,52 @@ public class CreateOrderPullPlatformLabelResponse {
   }
 
 
+  public CreateOrderPullPlatformLabelResponse shippingLabelUrl(String shippingLabelUrl) {
+    
+    this.shippingLabelUrl = shippingLabelUrl;
+    return this;
+  }
+
+   /**
+   * Get shippingLabelUrl
+   * @return shippingLabelUrl
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public String getShippingLabelUrl() {
+    return shippingLabelUrl;
+  }
+
+
+  public void setShippingLabelUrl(String shippingLabelUrl) {
+    this.shippingLabelUrl = shippingLabelUrl;
+  }
+
+
+  public CreateOrderPullPlatformLabelResponse trackingNumber(String trackingNumber) {
+    
+    this.trackingNumber = trackingNumber;
+    return this;
+  }
+
+   /**
+   * Get trackingNumber
+   * @return trackingNumber
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public String getTrackingNumber() {
+    return trackingNumber;
+  }
+
+
+  public void setTrackingNumber(String trackingNumber) {
+    this.trackingNumber = trackingNumber;
+  }
+
+
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -200,12 +255,25 @@ public class CreateOrderPullPlatformLabelResponse {
     return Objects.equals(this.url, createOrderPullPlatformLabelResponse.url) &&
         Objects.equals(this.persisted, createOrderPullPlatformLabelResponse.persisted) &&
         Objects.equals(this.expiresInSeconds, createOrderPullPlatformLabelResponse.expiresInSeconds) &&
-        Objects.equals(this.provenance, createOrderPullPlatformLabelResponse.provenance);
+        Objects.equals(this.provenance, createOrderPullPlatformLabelResponse.provenance) &&
+        Objects.equals(this.shippingLabelUrl, createOrderPullPlatformLabelResponse.shippingLabelUrl) &&
+        Objects.equals(this.trackingNumber, createOrderPullPlatformLabelResponse.trackingNumber);
+  }
+
+  private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+    return a == b || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(url, persisted, expiresInSeconds, provenance);
+    return Objects.hash(url, persisted, expiresInSeconds, provenance, shippingLabelUrl, trackingNumber);
+  }
+
+  private static <T> int hashCodeNullable(JsonNullable<T> a) {
+    if (a == null) {
+      return 1;
+    }
+    return a.isPresent() ? Arrays.deepHashCode(new Object[]{a.get()}) : 31;
   }
 
   @Override
@@ -216,6 +284,8 @@ public class CreateOrderPullPlatformLabelResponse {
     sb.append("    persisted: ").append(toIndentedString(persisted)).append("\n");
     sb.append("    expiresInSeconds: ").append(toIndentedString(expiresInSeconds)).append("\n");
     sb.append("    provenance: ").append(toIndentedString(provenance)).append("\n");
+    sb.append("    shippingLabelUrl: ").append(toIndentedString(shippingLabelUrl)).append("\n");
+    sb.append("    trackingNumber: ").append(toIndentedString(trackingNumber)).append("\n");
     sb.append("}");
     return sb.toString();
   }

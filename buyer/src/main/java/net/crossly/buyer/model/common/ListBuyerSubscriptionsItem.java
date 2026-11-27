@@ -29,7 +29,7 @@ import org.openapitools.jackson.nullable.JsonNullable;
 /**
  * ListBuyerSubscriptionsItem
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-11T23:47:29.843Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-27T19:58:46.962Z[Etc/UTC]")
 public class ListBuyerSubscriptionsItem {
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
@@ -39,18 +39,6 @@ public class ListBuyerSubscriptionsItem {
   @SerializedName(SERIALIZED_NAME_STATUS)
   private String status;
 
-  public static final String SERIALIZED_NAME_TITLE = "title";
-  @SerializedName(SERIALIZED_NAME_TITLE)
-  private String title;
-
-  public static final String SERIALIZED_NAME_SLUG = "slug";
-  @SerializedName(SERIALIZED_NAME_SLUG)
-  private String slug;
-
-  public static final String SERIALIZED_NAME_NEXT_RUN_AT = "nextRunAt";
-  @SerializedName(SERIALIZED_NAME_NEXT_RUN_AT)
-  private String nextRunAt;
-
   public static final String SERIALIZED_NAME_INTERVAL_DAYS = "intervalDays";
   @SerializedName(SERIALIZED_NAME_INTERVAL_DAYS)
   private BigDecimal intervalDays;
@@ -58,6 +46,18 @@ public class ListBuyerSubscriptionsItem {
   public static final String SERIALIZED_NAME_DISCOUNT_BPS = "discountBps";
   @SerializedName(SERIALIZED_NAME_DISCOUNT_BPS)
   private BigDecimal discountBps;
+
+  public static final String SERIALIZED_NAME_NEXT_RUN_AT = "nextRunAt";
+  @SerializedName(SERIALIZED_NAME_NEXT_RUN_AT)
+  private String nextRunAt;
+
+  public static final String SERIALIZED_NAME_SLUG = "slug";
+  @SerializedName(SERIALIZED_NAME_SLUG)
+  private String slug;
+
+  public static final String SERIALIZED_NAME_TITLE = "title";
+  @SerializedName(SERIALIZED_NAME_TITLE)
+  private String title;
 
   public ListBuyerSubscriptionsItem() { 
   }
@@ -108,75 +108,6 @@ public class ListBuyerSubscriptionsItem {
   }
 
 
-  public ListBuyerSubscriptionsItem title(String title) {
-    
-    this.title = title;
-    return this;
-  }
-
-   /**
-   * Get title
-   * @return title
-  **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
-
-  public String getTitle() {
-    return title;
-  }
-
-
-  public void setTitle(String title) {
-    this.title = title;
-  }
-
-
-  public ListBuyerSubscriptionsItem slug(String slug) {
-    
-    this.slug = slug;
-    return this;
-  }
-
-   /**
-   * Get slug
-   * @return slug
-  **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
-
-  public String getSlug() {
-    return slug;
-  }
-
-
-  public void setSlug(String slug) {
-    this.slug = slug;
-  }
-
-
-  public ListBuyerSubscriptionsItem nextRunAt(String nextRunAt) {
-    
-    this.nextRunAt = nextRunAt;
-    return this;
-  }
-
-   /**
-   * Get nextRunAt
-   * @return nextRunAt
-  **/
-  @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "")
-
-  public String getNextRunAt() {
-    return nextRunAt;
-  }
-
-
-  public void setNextRunAt(String nextRunAt) {
-    this.nextRunAt = nextRunAt;
-  }
-
-
   public ListBuyerSubscriptionsItem intervalDays(BigDecimal intervalDays) {
     
     this.intervalDays = intervalDays;
@@ -223,6 +154,75 @@ public class ListBuyerSubscriptionsItem {
   }
 
 
+  public ListBuyerSubscriptionsItem nextRunAt(String nextRunAt) {
+    
+    this.nextRunAt = nextRunAt;
+    return this;
+  }
+
+   /**
+   * Get nextRunAt
+   * @return nextRunAt
+  **/
+  @javax.annotation.Nonnull
+  @ApiModelProperty(required = true, value = "")
+
+  public String getNextRunAt() {
+    return nextRunAt;
+  }
+
+
+  public void setNextRunAt(String nextRunAt) {
+    this.nextRunAt = nextRunAt;
+  }
+
+
+  public ListBuyerSubscriptionsItem slug(String slug) {
+    
+    this.slug = slug;
+    return this;
+  }
+
+   /**
+   * Get slug
+   * @return slug
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public String getSlug() {
+    return slug;
+  }
+
+
+  public void setSlug(String slug) {
+    this.slug = slug;
+  }
+
+
+  public ListBuyerSubscriptionsItem title(String title) {
+    
+    this.title = title;
+    return this;
+  }
+
+   /**
+   * Get title
+   * @return title
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public String getTitle() {
+    return title;
+  }
+
+
+  public void setTitle(String title) {
+    this.title = title;
+  }
+
+
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -234,11 +234,11 @@ public class ListBuyerSubscriptionsItem {
     ListBuyerSubscriptionsItem listBuyerSubscriptionsItem = (ListBuyerSubscriptionsItem) o;
     return Objects.equals(this.id, listBuyerSubscriptionsItem.id) &&
         Objects.equals(this.status, listBuyerSubscriptionsItem.status) &&
-        Objects.equals(this.title, listBuyerSubscriptionsItem.title) &&
-        Objects.equals(this.slug, listBuyerSubscriptionsItem.slug) &&
-        Objects.equals(this.nextRunAt, listBuyerSubscriptionsItem.nextRunAt) &&
         Objects.equals(this.intervalDays, listBuyerSubscriptionsItem.intervalDays) &&
-        Objects.equals(this.discountBps, listBuyerSubscriptionsItem.discountBps);
+        Objects.equals(this.discountBps, listBuyerSubscriptionsItem.discountBps) &&
+        Objects.equals(this.nextRunAt, listBuyerSubscriptionsItem.nextRunAt) &&
+        Objects.equals(this.slug, listBuyerSubscriptionsItem.slug) &&
+        Objects.equals(this.title, listBuyerSubscriptionsItem.title);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -247,7 +247,7 @@ public class ListBuyerSubscriptionsItem {
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, status, title, slug, nextRunAt, intervalDays, discountBps);
+    return Objects.hash(id, status, intervalDays, discountBps, nextRunAt, slug, title);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -263,11 +263,11 @@ public class ListBuyerSubscriptionsItem {
     sb.append("class ListBuyerSubscriptionsItem {\n");
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    status: ").append(toIndentedString(status)).append("\n");
-    sb.append("    title: ").append(toIndentedString(title)).append("\n");
-    sb.append("    slug: ").append(toIndentedString(slug)).append("\n");
-    sb.append("    nextRunAt: ").append(toIndentedString(nextRunAt)).append("\n");
     sb.append("    intervalDays: ").append(toIndentedString(intervalDays)).append("\n");
     sb.append("    discountBps: ").append(toIndentedString(discountBps)).append("\n");
+    sb.append("    nextRunAt: ").append(toIndentedString(nextRunAt)).append("\n");
+    sb.append("    slug: ").append(toIndentedString(slug)).append("\n");
+    sb.append("    title: ").append(toIndentedString(title)).append("\n");
     sb.append("}");
     return sb.toString();
   }

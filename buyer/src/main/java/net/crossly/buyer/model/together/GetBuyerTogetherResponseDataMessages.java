@@ -27,7 +27,7 @@ import java.io.IOException;
 /**
  * GetBuyerTogetherResponseDataMessages
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-11T23:47:29.843Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-27T19:58:46.962Z[Etc/UTC]")
 public class GetBuyerTogetherResponseDataMessages {
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
@@ -37,17 +37,17 @@ public class GetBuyerTogetherResponseDataMessages {
   @SerializedName(SERIALIZED_NAME_NAME)
   private String name;
 
-  public static final String SERIALIZED_NAME_CREATED_AT = "createdAt";
-  @SerializedName(SERIALIZED_NAME_CREATED_AT)
-  private String createdAt;
+  public static final String SERIALIZED_NAME_ME = "me";
+  @SerializedName(SERIALIZED_NAME_ME)
+  private Boolean me;
 
   public static final String SERIALIZED_NAME_BODY = "body";
   @SerializedName(SERIALIZED_NAME_BODY)
   private String body;
 
-  public static final String SERIALIZED_NAME_ME = "me";
-  @SerializedName(SERIALIZED_NAME_ME)
-  private Boolean me;
+  public static final String SERIALIZED_NAME_CREATED_AT = "createdAt";
+  @SerializedName(SERIALIZED_NAME_CREATED_AT)
+  private String createdAt;
 
   public GetBuyerTogetherResponseDataMessages() { 
   }
@@ -98,26 +98,26 @@ public class GetBuyerTogetherResponseDataMessages {
   }
 
 
-  public GetBuyerTogetherResponseDataMessages createdAt(String createdAt) {
+  public GetBuyerTogetherResponseDataMessages me(Boolean me) {
     
-    this.createdAt = createdAt;
+    this.me = me;
     return this;
   }
 
    /**
-   * Get createdAt
-   * @return createdAt
+   * Get me
+   * @return me
   **/
   @javax.annotation.Nonnull
   @ApiModelProperty(required = true, value = "")
 
-  public String getCreatedAt() {
-    return createdAt;
+  public Boolean getMe() {
+    return me;
   }
 
 
-  public void setCreatedAt(String createdAt) {
-    this.createdAt = createdAt;
+  public void setMe(Boolean me) {
+    this.me = me;
   }
 
 
@@ -144,26 +144,26 @@ public class GetBuyerTogetherResponseDataMessages {
   }
 
 
-  public GetBuyerTogetherResponseDataMessages me(Boolean me) {
+  public GetBuyerTogetherResponseDataMessages createdAt(String createdAt) {
     
-    this.me = me;
+    this.createdAt = createdAt;
     return this;
   }
 
    /**
-   * Get me
-   * @return me
+   * Get createdAt
+   * @return createdAt
   **/
   @javax.annotation.Nonnull
   @ApiModelProperty(required = true, value = "")
 
-  public Boolean getMe() {
-    return me;
+  public String getCreatedAt() {
+    return createdAt;
   }
 
 
-  public void setMe(Boolean me) {
-    this.me = me;
+  public void setCreatedAt(String createdAt) {
+    this.createdAt = createdAt;
   }
 
 
@@ -178,14 +178,14 @@ public class GetBuyerTogetherResponseDataMessages {
     GetBuyerTogetherResponseDataMessages getBuyerTogetherResponseDataMessages = (GetBuyerTogetherResponseDataMessages) o;
     return Objects.equals(this.id, getBuyerTogetherResponseDataMessages.id) &&
         Objects.equals(this.name, getBuyerTogetherResponseDataMessages.name) &&
-        Objects.equals(this.createdAt, getBuyerTogetherResponseDataMessages.createdAt) &&
+        Objects.equals(this.me, getBuyerTogetherResponseDataMessages.me) &&
         Objects.equals(this.body, getBuyerTogetherResponseDataMessages.body) &&
-        Objects.equals(this.me, getBuyerTogetherResponseDataMessages.me);
+        Objects.equals(this.createdAt, getBuyerTogetherResponseDataMessages.createdAt);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, name, createdAt, body, me);
+    return Objects.hash(id, name, me, body, createdAt);
   }
 
   @Override
@@ -194,9 +194,9 @@ public class GetBuyerTogetherResponseDataMessages {
     sb.append("class GetBuyerTogetherResponseDataMessages {\n");
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
-    sb.append("    createdAt: ").append(toIndentedString(createdAt)).append("\n");
-    sb.append("    body: ").append(toIndentedString(body)).append("\n");
     sb.append("    me: ").append(toIndentedString(me)).append("\n");
+    sb.append("    body: ").append(toIndentedString(body)).append("\n");
+    sb.append("    createdAt: ").append(toIndentedString(createdAt)).append("\n");
     sb.append("}");
     return sb.toString();
   }

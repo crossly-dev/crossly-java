@@ -28,16 +28,17 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import net.crossly.model.inventory.GetInventoryResponsePlatformListingsDigitalFile;
+import net.crossly.model.inventory.GetInventoryResponsePlatformListingsBundlePromo;
 import net.crossly.model.inventory.GetInventoryResponsePlatformListingsMeasurements;
 import net.crossly.model.inventory.GetInventoryResponsePlatformListingsPersonalization;
+import net.crossly.model.listing.GetListingResponsePlatformListingsUnmatchedSale;
 import org.openapitools.jackson.nullable.JsonNullable;
 import org.threeten.bp.OffsetDateTime;
 
 /**
  * GetListingResponsePlatformListings
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-11T23:44:48.922Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-27T19:42:43.186Z[Etc/UTC]")
 public class GetListingResponsePlatformListings {
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
@@ -47,33 +48,90 @@ public class GetListingResponsePlatformListings {
   @SerializedName(SERIALIZED_NAME_USER_ID)
   private String userId;
 
-  public static final String SERIALIZED_NAME_QUANTITY = "quantity";
-  @SerializedName(SERIALIZED_NAME_QUANTITY)
-  private BigDecimal quantity;
+  public static final String SERIALIZED_NAME_PLATFORM = "platform";
+  @SerializedName(SERIALIZED_NAME_PLATFORM)
+  private String platform;
+
+  public static final String SERIALIZED_NAME_ACCOUNT_SLOT = "accountSlot";
+  @SerializedName(SERIALIZED_NAME_ACCOUNT_SLOT)
+  private BigDecimal accountSlot;
 
   public static final String SERIALIZED_NAME_STATUS = "status";
   @SerializedName(SERIALIZED_NAME_STATUS)
   private String status;
 
-  public static final String SERIALIZED_NAME_PLATFORM = "platform";
-  @SerializedName(SERIALIZED_NAME_PLATFORM)
-  private String platform;
-
-  public static final String SERIALIZED_NAME_ERROR_MESSAGE = "errorMessage";
-  @SerializedName(SERIALIZED_NAME_ERROR_MESSAGE)
-  private String errorMessage;
-
-  public static final String SERIALIZED_NAME_LISTING_ID = "listingId";
-  @SerializedName(SERIALIZED_NAME_LISTING_ID)
-  private String listingId;
-
   public static final String SERIALIZED_NAME_MARKETPLACE_ID = "marketplaceId";
   @SerializedName(SERIALIZED_NAME_MARKETPLACE_ID)
   private String marketplaceId;
 
-  public static final String SERIALIZED_NAME_ACCOUNT_SLOT = "accountSlot";
-  @SerializedName(SERIALIZED_NAME_ACCOUNT_SLOT)
-  private BigDecimal accountSlot;
+  /**
+   * Gets or Sets origin
+   */
+  @JsonAdapter(OriginEnum.Adapter.class)
+  public enum OriginEnum {
+    UNKNOWN("unknown"),
+    
+    PUBLISHED("published"),
+    
+    IMPORTED("imported"),
+    
+    EXTERNAL_STUB("external_stub"),
+    
+    APP_LINKED("app_linked");
+
+    private String value;
+
+    OriginEnum(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    @Override
+    public String toString() {
+      return String.valueOf(value);
+    }
+
+    public static OriginEnum fromValue(String value) {
+      for (OriginEnum b : OriginEnum.values()) {
+        if (b.value.equals(value)) {
+          return b;
+        }
+      }
+      throw new IllegalArgumentException("Unexpected value '" + value + "'");
+    }
+
+    public static class Adapter extends TypeAdapter<OriginEnum> {
+      @Override
+      public void write(final JsonWriter jsonWriter, final OriginEnum enumeration) throws IOException {
+        jsonWriter.value(enumeration.getValue());
+      }
+
+      @Override
+      public OriginEnum read(final JsonReader jsonReader) throws IOException {
+        String value =  jsonReader.nextString();
+        return OriginEnum.fromValue(value);
+      }
+    }
+  }
+
+  public static final String SERIALIZED_NAME_ORIGIN = "origin";
+  @SerializedName(SERIALIZED_NAME_ORIGIN)
+  private OriginEnum origin;
+
+  public static final String SERIALIZED_NAME_VIEWS = "views";
+  @SerializedName(SERIALIZED_NAME_VIEWS)
+  private BigDecimal views;
+
+  public static final String SERIALIZED_NAME_FAVORITES = "favorites";
+  @SerializedName(SERIALIZED_NAME_FAVORITES)
+  private BigDecimal favorites;
+
+  public static final String SERIALIZED_NAME_QUANTITY = "quantity";
+  @SerializedName(SERIALIZED_NAME_QUANTITY)
+  private BigDecimal quantity;
 
   public static final String SERIALIZED_NAME_INVENTORY_ITEM_ID = "inventoryItemId";
   @SerializedName(SERIALIZED_NAME_INVENTORY_ITEM_ID)
@@ -90,6 +148,10 @@ public class GetListingResponsePlatformListings {
   public static final String SERIALIZED_NAME_SOLD_AT = "soldAt";
   @SerializedName(SERIALIZED_NAME_SOLD_AT)
   private OffsetDateTime soldAt;
+
+  public static final String SERIALIZED_NAME_LISTING_ID = "listingId";
+  @SerializedName(SERIALIZED_NAME_LISTING_ID)
+  private String listingId;
 
   public static final String SERIALIZED_NAME_PLATFORM_LISTING_ID = "platformListingId";
   @SerializedName(SERIALIZED_NAME_PLATFORM_LISTING_ID)
@@ -119,21 +181,100 @@ public class GetListingResponsePlatformListings {
   @SerializedName(SERIALIZED_NAME_LAST_CHECKED_AT)
   private OffsetDateTime lastCheckedAt;
 
-  public static final String SERIALIZED_NAME_VIEWS = "views";
-  @SerializedName(SERIALIZED_NAME_VIEWS)
-  private BigDecimal views;
-
-  public static final String SERIALIZED_NAME_FAVORITES = "favorites";
-  @SerializedName(SERIALIZED_NAME_FAVORITES)
-  private BigDecimal favorites;
-
   public static final String SERIALIZED_NAME_COMMENTS_COUNT = "commentsCount";
   @SerializedName(SERIALIZED_NAME_COMMENTS_COUNT)
   private BigDecimal commentsCount;
 
+  public static final String SERIALIZED_NAME_IMPRESSIONS = "impressions";
+  @SerializedName(SERIALIZED_NAME_IMPRESSIONS)
+  private BigDecimal impressions;
+
+  public static final String SERIALIZED_NAME_CTR_BPS = "ctrBps";
+  @SerializedName(SERIALIZED_NAME_CTR_BPS)
+  private BigDecimal ctrBps;
+
+  /**
+   * Gets or Sets viewsSemantics
+   */
+  @JsonAdapter(ViewsSemanticsEnum.Adapter.class)
+  public enum ViewsSemanticsEnum {
+    LIFETIME("lifetime"),
+    
+    ROLLING7D("rolling7d"),
+    
+    ROLLING30D("rolling30d"),
+    
+    CLICKS("clicks");
+
+    private String value;
+
+    ViewsSemanticsEnum(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    @Override
+    public String toString() {
+      return String.valueOf(value);
+    }
+
+    public static ViewsSemanticsEnum fromValue(String value) {
+      for (ViewsSemanticsEnum b : ViewsSemanticsEnum.values()) {
+        if (b.value.equals(value)) {
+          return b;
+        }
+      }
+      return null;
+    }
+
+    public static class Adapter extends TypeAdapter<ViewsSemanticsEnum> {
+      @Override
+      public void write(final JsonWriter jsonWriter, final ViewsSemanticsEnum enumeration) throws IOException {
+        jsonWriter.value(enumeration.getValue());
+      }
+
+      @Override
+      public ViewsSemanticsEnum read(final JsonReader jsonReader) throws IOException {
+        String value =  jsonReader.nextString();
+        return ViewsSemanticsEnum.fromValue(value);
+      }
+    }
+  }
+
+  public static final String SERIALIZED_NAME_VIEWS_SEMANTICS = "viewsSemantics";
+  @SerializedName(SERIALIZED_NAME_VIEWS_SEMANTICS)
+  private ViewsSemanticsEnum viewsSemantics;
+
   public static final String SERIALIZED_NAME_LAST_STATS_SYNCED_AT = "lastStatsSyncedAt";
   @SerializedName(SERIALIZED_NAME_LAST_STATS_SYNCED_AT)
   private OffsetDateTime lastStatsSyncedAt;
+
+  public static final String SERIALIZED_NAME_ERROR_MESSAGE = "errorMessage";
+  @SerializedName(SERIALIZED_NAME_ERROR_MESSAGE)
+  private String errorMessage;
+
+  public static final String SERIALIZED_NAME_DELIST_REQUESTED_AT = "delistRequestedAt";
+  @SerializedName(SERIALIZED_NAME_DELIST_REQUESTED_AT)
+  private OffsetDateTime delistRequestedAt;
+
+  public static final String SERIALIZED_NAME_DELIST_REQUESTED_REASON = "delistRequestedReason";
+  @SerializedName(SERIALIZED_NAME_DELIST_REQUESTED_REASON)
+  private String delistRequestedReason;
+
+  public static final String SERIALIZED_NAME_DELIST_FAILED_AT = "delistFailedAt";
+  @SerializedName(SERIALIZED_NAME_DELIST_FAILED_AT)
+  private OffsetDateTime delistFailedAt;
+
+  public static final String SERIALIZED_NAME_DELIST_ERROR = "delistError";
+  @SerializedName(SERIALIZED_NAME_DELIST_ERROR)
+  private String delistError;
+
+  public static final String SERIALIZED_NAME_DELIST_ERROR_CODE = "delistErrorCode";
+  @SerializedName(SERIALIZED_NAME_DELIST_ERROR_CODE)
+  private String delistErrorCode;
 
   public static final String SERIALIZED_NAME_LISTED_PRICE = "listedPrice";
   @SerializedName(SERIALIZED_NAME_LISTED_PRICE)
@@ -146,6 +287,14 @@ public class GetListingResponsePlatformListings {
   public static final String SERIALIZED_NAME_CROSSLY_PRICE_FX_AS_OF = "crosslyPriceFxAsOf";
   @SerializedName(SERIALIZED_NAME_CROSSLY_PRICE_FX_AS_OF)
   private String crosslyPriceFxAsOf;
+
+  public static final String SERIALIZED_NAME_BUNDLE_PROMO = "bundlePromo";
+  @SerializedName(SERIALIZED_NAME_BUNDLE_PROMO)
+  private GetInventoryResponsePlatformListingsBundlePromo bundlePromo;
+
+  public static final String SERIALIZED_NAME_STOREFRONT_ID = "storefrontId";
+  @SerializedName(SERIALIZED_NAME_STOREFRONT_ID)
+  private String storefrontId;
 
   public static final String SERIALIZED_NAME_HASHTAGS = "hashtags";
   @SerializedName(SERIALIZED_NAME_HASHTAGS)
@@ -222,10 +371,6 @@ public class GetListingResponsePlatformListings {
   public static final String SERIALIZED_NAME_PERSONALIZATION = "personalization";
   @SerializedName(SERIALIZED_NAME_PERSONALIZATION)
   private GetInventoryResponsePlatformListingsPersonalization personalization;
-
-  public static final String SERIALIZED_NAME_DIGITAL_FILE = "digitalFile";
-  @SerializedName(SERIALIZED_NAME_DIGITAL_FILE)
-  private GetInventoryResponsePlatformListingsDigitalFile digitalFile;
 
   public static final String SERIALIZED_NAME_TRY_DAYS = "tryDays";
   @SerializedName(SERIALIZED_NAME_TRY_DAYS)
@@ -383,6 +528,61 @@ public class GetListingResponsePlatformListings {
   @SerializedName(SERIALIZED_NAME_PUBLISHED_OVERRIDES)
   private Map<String, Object> publishedOverrides = null;
 
+  /**
+   * Gets or Sets delistState
+   */
+  @JsonAdapter(DelistStateEnum.Adapter.class)
+  public enum DelistStateEnum {
+    PENDING("pending"),
+    
+    FAILED("failed");
+
+    private String value;
+
+    DelistStateEnum(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    @Override
+    public String toString() {
+      return String.valueOf(value);
+    }
+
+    public static DelistStateEnum fromValue(String value) {
+      for (DelistStateEnum b : DelistStateEnum.values()) {
+        if (b.value.equals(value)) {
+          return b;
+        }
+      }
+      return null;
+    }
+
+    public static class Adapter extends TypeAdapter<DelistStateEnum> {
+      @Override
+      public void write(final JsonWriter jsonWriter, final DelistStateEnum enumeration) throws IOException {
+        jsonWriter.value(enumeration.getValue());
+      }
+
+      @Override
+      public DelistStateEnum read(final JsonReader jsonReader) throws IOException {
+        String value =  jsonReader.nextString();
+        return DelistStateEnum.fromValue(value);
+      }
+    }
+  }
+
+  public static final String SERIALIZED_NAME_DELIST_STATE = "delistState";
+  @SerializedName(SERIALIZED_NAME_DELIST_STATE)
+  private DelistStateEnum delistState;
+
+  public static final String SERIALIZED_NAME_UNMATCHED_SALE = "unmatchedSale";
+  @SerializedName(SERIALIZED_NAME_UNMATCHED_SALE)
+  private GetListingResponsePlatformListingsUnmatchedSale unmatchedSale;
+
   public GetListingResponsePlatformListings() { 
   }
 
@@ -432,26 +632,49 @@ public class GetListingResponsePlatformListings {
   }
 
 
-  public GetListingResponsePlatformListings quantity(BigDecimal quantity) {
+  public GetListingResponsePlatformListings platform(String platform) {
     
-    this.quantity = quantity;
+    this.platform = platform;
     return this;
   }
 
    /**
-   * Get quantity
-   * @return quantity
+   * Get platform
+   * @return platform
   **/
   @javax.annotation.Nonnull
   @ApiModelProperty(required = true, value = "")
 
-  public BigDecimal getQuantity() {
-    return quantity;
+  public String getPlatform() {
+    return platform;
   }
 
 
-  public void setQuantity(BigDecimal quantity) {
-    this.quantity = quantity;
+  public void setPlatform(String platform) {
+    this.platform = platform;
+  }
+
+
+  public GetListingResponsePlatformListings accountSlot(BigDecimal accountSlot) {
+    
+    this.accountSlot = accountSlot;
+    return this;
+  }
+
+   /**
+   * Get accountSlot
+   * @return accountSlot
+  **/
+  @javax.annotation.Nonnull
+  @ApiModelProperty(required = true, value = "")
+
+  public BigDecimal getAccountSlot() {
+    return accountSlot;
+  }
+
+
+  public void setAccountSlot(BigDecimal accountSlot) {
+    this.accountSlot = accountSlot;
   }
 
 
@@ -478,75 +701,6 @@ public class GetListingResponsePlatformListings {
   }
 
 
-  public GetListingResponsePlatformListings platform(String platform) {
-    
-    this.platform = platform;
-    return this;
-  }
-
-   /**
-   * Get platform
-   * @return platform
-  **/
-  @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "")
-
-  public String getPlatform() {
-    return platform;
-  }
-
-
-  public void setPlatform(String platform) {
-    this.platform = platform;
-  }
-
-
-  public GetListingResponsePlatformListings errorMessage(String errorMessage) {
-    
-    this.errorMessage = errorMessage;
-    return this;
-  }
-
-   /**
-   * Get errorMessage
-   * @return errorMessage
-  **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
-
-  public String getErrorMessage() {
-    return errorMessage;
-  }
-
-
-  public void setErrorMessage(String errorMessage) {
-    this.errorMessage = errorMessage;
-  }
-
-
-  public GetListingResponsePlatformListings listingId(String listingId) {
-    
-    this.listingId = listingId;
-    return this;
-  }
-
-   /**
-   * Get listingId
-   * @return listingId
-  **/
-  @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "")
-
-  public String getListingId() {
-    return listingId;
-  }
-
-
-  public void setListingId(String listingId) {
-    this.listingId = listingId;
-  }
-
-
   public GetListingResponsePlatformListings marketplaceId(String marketplaceId) {
     
     this.marketplaceId = marketplaceId;
@@ -570,26 +724,95 @@ public class GetListingResponsePlatformListings {
   }
 
 
-  public GetListingResponsePlatformListings accountSlot(BigDecimal accountSlot) {
+  public GetListingResponsePlatformListings origin(OriginEnum origin) {
     
-    this.accountSlot = accountSlot;
+    this.origin = origin;
     return this;
   }
 
    /**
-   * Get accountSlot
-   * @return accountSlot
+   * Get origin
+   * @return origin
   **/
   @javax.annotation.Nonnull
   @ApiModelProperty(required = true, value = "")
 
-  public BigDecimal getAccountSlot() {
-    return accountSlot;
+  public OriginEnum getOrigin() {
+    return origin;
   }
 
 
-  public void setAccountSlot(BigDecimal accountSlot) {
-    this.accountSlot = accountSlot;
+  public void setOrigin(OriginEnum origin) {
+    this.origin = origin;
+  }
+
+
+  public GetListingResponsePlatformListings views(BigDecimal views) {
+    
+    this.views = views;
+    return this;
+  }
+
+   /**
+   * Get views
+   * @return views
+  **/
+  @javax.annotation.Nonnull
+  @ApiModelProperty(required = true, value = "")
+
+  public BigDecimal getViews() {
+    return views;
+  }
+
+
+  public void setViews(BigDecimal views) {
+    this.views = views;
+  }
+
+
+  public GetListingResponsePlatformListings favorites(BigDecimal favorites) {
+    
+    this.favorites = favorites;
+    return this;
+  }
+
+   /**
+   * Get favorites
+   * @return favorites
+  **/
+  @javax.annotation.Nonnull
+  @ApiModelProperty(required = true, value = "")
+
+  public BigDecimal getFavorites() {
+    return favorites;
+  }
+
+
+  public void setFavorites(BigDecimal favorites) {
+    this.favorites = favorites;
+  }
+
+
+  public GetListingResponsePlatformListings quantity(BigDecimal quantity) {
+    
+    this.quantity = quantity;
+    return this;
+  }
+
+   /**
+   * Get quantity
+   * @return quantity
+  **/
+  @javax.annotation.Nonnull
+  @ApiModelProperty(required = true, value = "")
+
+  public BigDecimal getQuantity() {
+    return quantity;
+  }
+
+
+  public void setQuantity(BigDecimal quantity) {
+    this.quantity = quantity;
   }
 
 
@@ -682,6 +905,29 @@ public class GetListingResponsePlatformListings {
 
   public void setSoldAt(OffsetDateTime soldAt) {
     this.soldAt = soldAt;
+  }
+
+
+  public GetListingResponsePlatformListings listingId(String listingId) {
+    
+    this.listingId = listingId;
+    return this;
+  }
+
+   /**
+   * Get listingId
+   * @return listingId
+  **/
+  @javax.annotation.Nonnull
+  @ApiModelProperty(required = true, value = "")
+
+  public String getListingId() {
+    return listingId;
+  }
+
+
+  public void setListingId(String listingId) {
+    this.listingId = listingId;
   }
 
 
@@ -846,52 +1092,6 @@ public class GetListingResponsePlatformListings {
   }
 
 
-  public GetListingResponsePlatformListings views(BigDecimal views) {
-    
-    this.views = views;
-    return this;
-  }
-
-   /**
-   * Get views
-   * @return views
-  **/
-  @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "")
-
-  public BigDecimal getViews() {
-    return views;
-  }
-
-
-  public void setViews(BigDecimal views) {
-    this.views = views;
-  }
-
-
-  public GetListingResponsePlatformListings favorites(BigDecimal favorites) {
-    
-    this.favorites = favorites;
-    return this;
-  }
-
-   /**
-   * Get favorites
-   * @return favorites
-  **/
-  @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "")
-
-  public BigDecimal getFavorites() {
-    return favorites;
-  }
-
-
-  public void setFavorites(BigDecimal favorites) {
-    this.favorites = favorites;
-  }
-
-
   public GetListingResponsePlatformListings commentsCount(BigDecimal commentsCount) {
     
     this.commentsCount = commentsCount;
@@ -915,6 +1115,75 @@ public class GetListingResponsePlatformListings {
   }
 
 
+  public GetListingResponsePlatformListings impressions(BigDecimal impressions) {
+    
+    this.impressions = impressions;
+    return this;
+  }
+
+   /**
+   * Get impressions
+   * @return impressions
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public BigDecimal getImpressions() {
+    return impressions;
+  }
+
+
+  public void setImpressions(BigDecimal impressions) {
+    this.impressions = impressions;
+  }
+
+
+  public GetListingResponsePlatformListings ctrBps(BigDecimal ctrBps) {
+    
+    this.ctrBps = ctrBps;
+    return this;
+  }
+
+   /**
+   * Get ctrBps
+   * @return ctrBps
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public BigDecimal getCtrBps() {
+    return ctrBps;
+  }
+
+
+  public void setCtrBps(BigDecimal ctrBps) {
+    this.ctrBps = ctrBps;
+  }
+
+
+  public GetListingResponsePlatformListings viewsSemantics(ViewsSemanticsEnum viewsSemantics) {
+    
+    this.viewsSemantics = viewsSemantics;
+    return this;
+  }
+
+   /**
+   * Get viewsSemantics
+   * @return viewsSemantics
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public ViewsSemanticsEnum getViewsSemantics() {
+    return viewsSemantics;
+  }
+
+
+  public void setViewsSemantics(ViewsSemanticsEnum viewsSemantics) {
+    this.viewsSemantics = viewsSemantics;
+  }
+
+
   public GetListingResponsePlatformListings lastStatsSyncedAt(OffsetDateTime lastStatsSyncedAt) {
     
     this.lastStatsSyncedAt = lastStatsSyncedAt;
@@ -935,6 +1204,144 @@ public class GetListingResponsePlatformListings {
 
   public void setLastStatsSyncedAt(OffsetDateTime lastStatsSyncedAt) {
     this.lastStatsSyncedAt = lastStatsSyncedAt;
+  }
+
+
+  public GetListingResponsePlatformListings errorMessage(String errorMessage) {
+    
+    this.errorMessage = errorMessage;
+    return this;
+  }
+
+   /**
+   * Get errorMessage
+   * @return errorMessage
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public String getErrorMessage() {
+    return errorMessage;
+  }
+
+
+  public void setErrorMessage(String errorMessage) {
+    this.errorMessage = errorMessage;
+  }
+
+
+  public GetListingResponsePlatformListings delistRequestedAt(OffsetDateTime delistRequestedAt) {
+    
+    this.delistRequestedAt = delistRequestedAt;
+    return this;
+  }
+
+   /**
+   * Get delistRequestedAt
+   * @return delistRequestedAt
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public OffsetDateTime getDelistRequestedAt() {
+    return delistRequestedAt;
+  }
+
+
+  public void setDelistRequestedAt(OffsetDateTime delistRequestedAt) {
+    this.delistRequestedAt = delistRequestedAt;
+  }
+
+
+  public GetListingResponsePlatformListings delistRequestedReason(String delistRequestedReason) {
+    
+    this.delistRequestedReason = delistRequestedReason;
+    return this;
+  }
+
+   /**
+   * Get delistRequestedReason
+   * @return delistRequestedReason
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public String getDelistRequestedReason() {
+    return delistRequestedReason;
+  }
+
+
+  public void setDelistRequestedReason(String delistRequestedReason) {
+    this.delistRequestedReason = delistRequestedReason;
+  }
+
+
+  public GetListingResponsePlatformListings delistFailedAt(OffsetDateTime delistFailedAt) {
+    
+    this.delistFailedAt = delistFailedAt;
+    return this;
+  }
+
+   /**
+   * Get delistFailedAt
+   * @return delistFailedAt
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public OffsetDateTime getDelistFailedAt() {
+    return delistFailedAt;
+  }
+
+
+  public void setDelistFailedAt(OffsetDateTime delistFailedAt) {
+    this.delistFailedAt = delistFailedAt;
+  }
+
+
+  public GetListingResponsePlatformListings delistError(String delistError) {
+    
+    this.delistError = delistError;
+    return this;
+  }
+
+   /**
+   * Get delistError
+   * @return delistError
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public String getDelistError() {
+    return delistError;
+  }
+
+
+  public void setDelistError(String delistError) {
+    this.delistError = delistError;
+  }
+
+
+  public GetListingResponsePlatformListings delistErrorCode(String delistErrorCode) {
+    
+    this.delistErrorCode = delistErrorCode;
+    return this;
+  }
+
+   /**
+   * Get delistErrorCode
+   * @return delistErrorCode
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public String getDelistErrorCode() {
+    return delistErrorCode;
+  }
+
+
+  public void setDelistErrorCode(String delistErrorCode) {
+    this.delistErrorCode = delistErrorCode;
   }
 
 
@@ -1004,6 +1411,52 @@ public class GetListingResponsePlatformListings {
 
   public void setCrosslyPriceFxAsOf(String crosslyPriceFxAsOf) {
     this.crosslyPriceFxAsOf = crosslyPriceFxAsOf;
+  }
+
+
+  public GetListingResponsePlatformListings bundlePromo(GetInventoryResponsePlatformListingsBundlePromo bundlePromo) {
+    
+    this.bundlePromo = bundlePromo;
+    return this;
+  }
+
+   /**
+   * Get bundlePromo
+   * @return bundlePromo
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public GetInventoryResponsePlatformListingsBundlePromo getBundlePromo() {
+    return bundlePromo;
+  }
+
+
+  public void setBundlePromo(GetInventoryResponsePlatformListingsBundlePromo bundlePromo) {
+    this.bundlePromo = bundlePromo;
+  }
+
+
+  public GetListingResponsePlatformListings storefrontId(String storefrontId) {
+    
+    this.storefrontId = storefrontId;
+    return this;
+  }
+
+   /**
+   * Get storefrontId
+   * @return storefrontId
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public String getStorefrontId() {
+    return storefrontId;
+  }
+
+
+  public void setStorefrontId(String storefrontId) {
+    this.storefrontId = storefrontId;
   }
 
 
@@ -1457,29 +1910,6 @@ public class GetListingResponsePlatformListings {
 
   public void setPersonalization(GetInventoryResponsePlatformListingsPersonalization personalization) {
     this.personalization = personalization;
-  }
-
-
-  public GetListingResponsePlatformListings digitalFile(GetInventoryResponsePlatformListingsDigitalFile digitalFile) {
-    
-    this.digitalFile = digitalFile;
-    return this;
-  }
-
-   /**
-   * Get digitalFile
-   * @return digitalFile
-  **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
-
-  public GetInventoryResponsePlatformListingsDigitalFile getDigitalFile() {
-    return digitalFile;
-  }
-
-
-  public void setDigitalFile(GetInventoryResponsePlatformListingsDigitalFile digitalFile) {
-    this.digitalFile = digitalFile;
   }
 
 
@@ -2396,6 +2826,52 @@ public class GetListingResponsePlatformListings {
   }
 
 
+  public GetListingResponsePlatformListings delistState(DelistStateEnum delistState) {
+    
+    this.delistState = delistState;
+    return this;
+  }
+
+   /**
+   * Get delistState
+   * @return delistState
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public DelistStateEnum getDelistState() {
+    return delistState;
+  }
+
+
+  public void setDelistState(DelistStateEnum delistState) {
+    this.delistState = delistState;
+  }
+
+
+  public GetListingResponsePlatformListings unmatchedSale(GetListingResponsePlatformListingsUnmatchedSale unmatchedSale) {
+    
+    this.unmatchedSale = unmatchedSale;
+    return this;
+  }
+
+   /**
+   * Get unmatchedSale
+   * @return unmatchedSale
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public GetListingResponsePlatformListingsUnmatchedSale getUnmatchedSale() {
+    return unmatchedSale;
+  }
+
+
+  public void setUnmatchedSale(GetListingResponsePlatformListingsUnmatchedSale unmatchedSale) {
+    this.unmatchedSale = unmatchedSale;
+  }
+
+
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -2407,17 +2883,19 @@ public class GetListingResponsePlatformListings {
     GetListingResponsePlatformListings getListingResponsePlatformListings = (GetListingResponsePlatformListings) o;
     return Objects.equals(this.id, getListingResponsePlatformListings.id) &&
         Objects.equals(this.userId, getListingResponsePlatformListings.userId) &&
-        Objects.equals(this.quantity, getListingResponsePlatformListings.quantity) &&
-        Objects.equals(this.status, getListingResponsePlatformListings.status) &&
         Objects.equals(this.platform, getListingResponsePlatformListings.platform) &&
-        Objects.equals(this.errorMessage, getListingResponsePlatformListings.errorMessage) &&
-        Objects.equals(this.listingId, getListingResponsePlatformListings.listingId) &&
-        Objects.equals(this.marketplaceId, getListingResponsePlatformListings.marketplaceId) &&
         Objects.equals(this.accountSlot, getListingResponsePlatformListings.accountSlot) &&
+        Objects.equals(this.status, getListingResponsePlatformListings.status) &&
+        Objects.equals(this.marketplaceId, getListingResponsePlatformListings.marketplaceId) &&
+        Objects.equals(this.origin, getListingResponsePlatformListings.origin) &&
+        Objects.equals(this.views, getListingResponsePlatformListings.views) &&
+        Objects.equals(this.favorites, getListingResponsePlatformListings.favorites) &&
+        Objects.equals(this.quantity, getListingResponsePlatformListings.quantity) &&
         Objects.equals(this.inventoryItemId, getListingResponsePlatformListings.inventoryItemId) &&
         Objects.equals(this.currency, getListingResponsePlatformListings.currency) &&
         Objects.equals(this.delistedAt, getListingResponsePlatformListings.delistedAt) &&
         Objects.equals(this.soldAt, getListingResponsePlatformListings.soldAt) &&
+        Objects.equals(this.listingId, getListingResponsePlatformListings.listingId) &&
         Objects.equals(this.platformListingId, getListingResponsePlatformListings.platformListingId) &&
         Objects.equals(this.platformListingUrl, getListingResponsePlatformListings.platformListingUrl) &&
         Objects.equals(this.stockLocation, getListingResponsePlatformListings.stockLocation) &&
@@ -2425,13 +2903,22 @@ public class GetListingResponsePlatformListings {
         Objects.equals(this.sharedAt, getListingResponsePlatformListings.sharedAt) &&
         Objects.equals(this.delistReason, getListingResponsePlatformListings.delistReason) &&
         Objects.equals(this.lastCheckedAt, getListingResponsePlatformListings.lastCheckedAt) &&
-        Objects.equals(this.views, getListingResponsePlatformListings.views) &&
-        Objects.equals(this.favorites, getListingResponsePlatformListings.favorites) &&
         Objects.equals(this.commentsCount, getListingResponsePlatformListings.commentsCount) &&
+        Objects.equals(this.impressions, getListingResponsePlatformListings.impressions) &&
+        Objects.equals(this.ctrBps, getListingResponsePlatformListings.ctrBps) &&
+        Objects.equals(this.viewsSemantics, getListingResponsePlatformListings.viewsSemantics) &&
         Objects.equals(this.lastStatsSyncedAt, getListingResponsePlatformListings.lastStatsSyncedAt) &&
+        Objects.equals(this.errorMessage, getListingResponsePlatformListings.errorMessage) &&
+        Objects.equals(this.delistRequestedAt, getListingResponsePlatformListings.delistRequestedAt) &&
+        Objects.equals(this.delistRequestedReason, getListingResponsePlatformListings.delistRequestedReason) &&
+        Objects.equals(this.delistFailedAt, getListingResponsePlatformListings.delistFailedAt) &&
+        Objects.equals(this.delistError, getListingResponsePlatformListings.delistError) &&
+        Objects.equals(this.delistErrorCode, getListingResponsePlatformListings.delistErrorCode) &&
         Objects.equals(this.listedPrice, getListingResponsePlatformListings.listedPrice) &&
         Objects.equals(this.crosslyPriceUsdCents, getListingResponsePlatformListings.crosslyPriceUsdCents) &&
         Objects.equals(this.crosslyPriceFxAsOf, getListingResponsePlatformListings.crosslyPriceFxAsOf) &&
+        Objects.equals(this.bundlePromo, getListingResponsePlatformListings.bundlePromo) &&
+        Objects.equals(this.storefrontId, getListingResponsePlatformListings.storefrontId) &&
         Objects.equals(this.hashtags, getListingResponsePlatformListings.hashtags) &&
         Objects.equals(this.isDraft, getListingResponsePlatformListings.isDraft) &&
         Objects.equals(this.scheduledPublishAt, getListingResponsePlatformListings.scheduledPublishAt) &&
@@ -2451,7 +2938,6 @@ public class GetListingResponsePlatformListings {
         Objects.equals(this.bestOfferAutoDeclineCents, getListingResponsePlatformListings.bestOfferAutoDeclineCents) &&
         Objects.equals(this.aestheticTags, getListingResponsePlatformListings.aestheticTags) &&
         Objects.equals(this.personalization, getListingResponsePlatformListings.personalization) &&
-        Objects.equals(this.digitalFile, getListingResponsePlatformListings.digitalFile) &&
         Objects.equals(this.tryDays, getListingResponsePlatformListings.tryDays) &&
         Objects.equals(this.tryFeeCents, getListingResponsePlatformListings.tryFeeCents) &&
         Objects.equals(this.subscribeDiscountBps, getListingResponsePlatformListings.subscribeDiscountBps) &&
@@ -2490,7 +2976,9 @@ public class GetListingResponsePlatformListings {
         Objects.equals(this.web3OrderId, getListingResponsePlatformListings.web3OrderId) &&
         Objects.equals(this.verificationFailed, getListingResponsePlatformListings.verificationFailed) &&
         Objects.equals(this.detailsPending, getListingResponsePlatformListings.detailsPending) &&
-        Objects.equals(this.publishedOverrides, getListingResponsePlatformListings.publishedOverrides);
+        Objects.equals(this.publishedOverrides, getListingResponsePlatformListings.publishedOverrides) &&
+        Objects.equals(this.delistState, getListingResponsePlatformListings.delistState) &&
+        Objects.equals(this.unmatchedSale, getListingResponsePlatformListings.unmatchedSale);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -2499,7 +2987,7 @@ public class GetListingResponsePlatformListings {
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, userId, quantity, status, platform, errorMessage, listingId, marketplaceId, accountSlot, inventoryItemId, currency, delistedAt, soldAt, platformListingId, platformListingUrl, stockLocation, listedAt, sharedAt, delistReason, lastCheckedAt, views, favorites, commentsCount, lastStatsSyncedAt, listedPrice, crosslyPriceUsdCents, crosslyPriceFxAsOf, hashtags, isDraft, scheduledPublishAt, isDutchAuction, dutchStartCents, dutchFloorCents, dutchEndsAt, isPreOrder, expectedShipBy, preorderDepositPercentBps, boostedAt, imageCaption, durationDays, endsAt, bestOfferEnabled, bestOfferAutoAcceptCents, bestOfferAutoDeclineCents, aestheticTags, personalization, digitalFile, tryDays, tryFeeCents, subscribeDiscountBps, measurements, allowsLocalPickup, pickupRadiusMiles, pickupLat, pickupLng, refurbishedTier, refurbWarrantyMonths, refurbBatteryPct, charitySlug, charityPercentBps, crosslyReturnPolicyId, crosslyShippingPolicyId, crosslyPaymentPolicyId, retailPriceCents, restrictedCountries, auctionExtendSeconds, authenticationProviderSlug, authenticationRequired, hasVariants, charityId, minOrderQuantity, wholesaleUnitPriceCents, wholesaleMinQuantity, auctionReserveCents, isGtc, handlingTimeDays, itemLocation, itemLocationZip, itemLocationCountry, declaredShippingCost, returnPolicyText, lastDriftCheckedAt, web3OrderId, verificationFailed, detailsPending, publishedOverrides);
+    return Objects.hash(id, userId, platform, accountSlot, status, marketplaceId, origin, views, favorites, quantity, inventoryItemId, currency, delistedAt, soldAt, listingId, platformListingId, platformListingUrl, stockLocation, listedAt, sharedAt, delistReason, lastCheckedAt, commentsCount, impressions, ctrBps, viewsSemantics, lastStatsSyncedAt, errorMessage, delistRequestedAt, delistRequestedReason, delistFailedAt, delistError, delistErrorCode, listedPrice, crosslyPriceUsdCents, crosslyPriceFxAsOf, bundlePromo, storefrontId, hashtags, isDraft, scheduledPublishAt, isDutchAuction, dutchStartCents, dutchFloorCents, dutchEndsAt, isPreOrder, expectedShipBy, preorderDepositPercentBps, boostedAt, imageCaption, durationDays, endsAt, bestOfferEnabled, bestOfferAutoAcceptCents, bestOfferAutoDeclineCents, aestheticTags, personalization, tryDays, tryFeeCents, subscribeDiscountBps, measurements, allowsLocalPickup, pickupRadiusMiles, pickupLat, pickupLng, refurbishedTier, refurbWarrantyMonths, refurbBatteryPct, charitySlug, charityPercentBps, crosslyReturnPolicyId, crosslyShippingPolicyId, crosslyPaymentPolicyId, retailPriceCents, restrictedCountries, auctionExtendSeconds, authenticationProviderSlug, authenticationRequired, hasVariants, charityId, minOrderQuantity, wholesaleUnitPriceCents, wholesaleMinQuantity, auctionReserveCents, isGtc, handlingTimeDays, itemLocation, itemLocationZip, itemLocationCountry, declaredShippingCost, returnPolicyText, lastDriftCheckedAt, web3OrderId, verificationFailed, detailsPending, publishedOverrides, delistState, unmatchedSale);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -2515,17 +3003,19 @@ public class GetListingResponsePlatformListings {
     sb.append("class GetListingResponsePlatformListings {\n");
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    userId: ").append(toIndentedString(userId)).append("\n");
-    sb.append("    quantity: ").append(toIndentedString(quantity)).append("\n");
-    sb.append("    status: ").append(toIndentedString(status)).append("\n");
     sb.append("    platform: ").append(toIndentedString(platform)).append("\n");
-    sb.append("    errorMessage: ").append(toIndentedString(errorMessage)).append("\n");
-    sb.append("    listingId: ").append(toIndentedString(listingId)).append("\n");
-    sb.append("    marketplaceId: ").append(toIndentedString(marketplaceId)).append("\n");
     sb.append("    accountSlot: ").append(toIndentedString(accountSlot)).append("\n");
+    sb.append("    status: ").append(toIndentedString(status)).append("\n");
+    sb.append("    marketplaceId: ").append(toIndentedString(marketplaceId)).append("\n");
+    sb.append("    origin: ").append(toIndentedString(origin)).append("\n");
+    sb.append("    views: ").append(toIndentedString(views)).append("\n");
+    sb.append("    favorites: ").append(toIndentedString(favorites)).append("\n");
+    sb.append("    quantity: ").append(toIndentedString(quantity)).append("\n");
     sb.append("    inventoryItemId: ").append(toIndentedString(inventoryItemId)).append("\n");
     sb.append("    currency: ").append(toIndentedString(currency)).append("\n");
     sb.append("    delistedAt: ").append(toIndentedString(delistedAt)).append("\n");
     sb.append("    soldAt: ").append(toIndentedString(soldAt)).append("\n");
+    sb.append("    listingId: ").append(toIndentedString(listingId)).append("\n");
     sb.append("    platformListingId: ").append(toIndentedString(platformListingId)).append("\n");
     sb.append("    platformListingUrl: ").append(toIndentedString(platformListingUrl)).append("\n");
     sb.append("    stockLocation: ").append(toIndentedString(stockLocation)).append("\n");
@@ -2533,13 +3023,22 @@ public class GetListingResponsePlatformListings {
     sb.append("    sharedAt: ").append(toIndentedString(sharedAt)).append("\n");
     sb.append("    delistReason: ").append(toIndentedString(delistReason)).append("\n");
     sb.append("    lastCheckedAt: ").append(toIndentedString(lastCheckedAt)).append("\n");
-    sb.append("    views: ").append(toIndentedString(views)).append("\n");
-    sb.append("    favorites: ").append(toIndentedString(favorites)).append("\n");
     sb.append("    commentsCount: ").append(toIndentedString(commentsCount)).append("\n");
+    sb.append("    impressions: ").append(toIndentedString(impressions)).append("\n");
+    sb.append("    ctrBps: ").append(toIndentedString(ctrBps)).append("\n");
+    sb.append("    viewsSemantics: ").append(toIndentedString(viewsSemantics)).append("\n");
     sb.append("    lastStatsSyncedAt: ").append(toIndentedString(lastStatsSyncedAt)).append("\n");
+    sb.append("    errorMessage: ").append(toIndentedString(errorMessage)).append("\n");
+    sb.append("    delistRequestedAt: ").append(toIndentedString(delistRequestedAt)).append("\n");
+    sb.append("    delistRequestedReason: ").append(toIndentedString(delistRequestedReason)).append("\n");
+    sb.append("    delistFailedAt: ").append(toIndentedString(delistFailedAt)).append("\n");
+    sb.append("    delistError: ").append(toIndentedString(delistError)).append("\n");
+    sb.append("    delistErrorCode: ").append(toIndentedString(delistErrorCode)).append("\n");
     sb.append("    listedPrice: ").append(toIndentedString(listedPrice)).append("\n");
     sb.append("    crosslyPriceUsdCents: ").append(toIndentedString(crosslyPriceUsdCents)).append("\n");
     sb.append("    crosslyPriceFxAsOf: ").append(toIndentedString(crosslyPriceFxAsOf)).append("\n");
+    sb.append("    bundlePromo: ").append(toIndentedString(bundlePromo)).append("\n");
+    sb.append("    storefrontId: ").append(toIndentedString(storefrontId)).append("\n");
     sb.append("    hashtags: ").append(toIndentedString(hashtags)).append("\n");
     sb.append("    isDraft: ").append(toIndentedString(isDraft)).append("\n");
     sb.append("    scheduledPublishAt: ").append(toIndentedString(scheduledPublishAt)).append("\n");
@@ -2559,7 +3058,6 @@ public class GetListingResponsePlatformListings {
     sb.append("    bestOfferAutoDeclineCents: ").append(toIndentedString(bestOfferAutoDeclineCents)).append("\n");
     sb.append("    aestheticTags: ").append(toIndentedString(aestheticTags)).append("\n");
     sb.append("    personalization: ").append(toIndentedString(personalization)).append("\n");
-    sb.append("    digitalFile: ").append(toIndentedString(digitalFile)).append("\n");
     sb.append("    tryDays: ").append(toIndentedString(tryDays)).append("\n");
     sb.append("    tryFeeCents: ").append(toIndentedString(tryFeeCents)).append("\n");
     sb.append("    subscribeDiscountBps: ").append(toIndentedString(subscribeDiscountBps)).append("\n");
@@ -2599,6 +3097,8 @@ public class GetListingResponsePlatformListings {
     sb.append("    verificationFailed: ").append(toIndentedString(verificationFailed)).append("\n");
     sb.append("    detailsPending: ").append(toIndentedString(detailsPending)).append("\n");
     sb.append("    publishedOverrides: ").append(toIndentedString(publishedOverrides)).append("\n");
+    sb.append("    delistState: ").append(toIndentedString(delistState)).append("\n");
+    sb.append("    unmatchedSale: ").append(toIndentedString(unmatchedSale)).append("\n");
     sb.append("}");
     return sb.toString();
   }

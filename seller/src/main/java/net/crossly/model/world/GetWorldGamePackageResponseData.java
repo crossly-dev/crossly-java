@@ -33,7 +33,7 @@ import org.threeten.bp.OffsetDateTime;
 /**
  * GetWorldGamePackageResponseData
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-11T23:44:48.922Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-27T19:42:43.186Z[Etc/UTC]")
 public class GetWorldGamePackageResponseData {
   public static final String SERIALIZED_NAME_STATS = "stats";
   @SerializedName(SERIALIZED_NAME_STATS)
@@ -58,6 +58,14 @@ public class GetWorldGamePackageResponseData {
   public static final String SERIALIZED_NAME_CREATED_AT = "createdAt";
   @SerializedName(SERIALIZED_NAME_CREATED_AT)
   private OffsetDateTime createdAt;
+
+  public static final String SERIALIZED_NAME_UPDATED_AT = "updatedAt";
+  @SerializedName(SERIALIZED_NAME_UPDATED_AT)
+  private OffsetDateTime updatedAt;
+
+  public static final String SERIALIZED_NAME_UNPUBLISHED_AT = "unpublishedAt";
+  @SerializedName(SERIALIZED_NAME_UNPUBLISHED_AT)
+  private OffsetDateTime unpublishedAt;
 
   public static final String SERIALIZED_NAME_VERSIONS = "versions";
   @SerializedName(SERIALIZED_NAME_VERSIONS)
@@ -204,6 +212,52 @@ public class GetWorldGamePackageResponseData {
   }
 
 
+  public GetWorldGamePackageResponseData updatedAt(OffsetDateTime updatedAt) {
+    
+    this.updatedAt = updatedAt;
+    return this;
+  }
+
+   /**
+   * Get updatedAt
+   * @return updatedAt
+  **/
+  @javax.annotation.Nonnull
+  @ApiModelProperty(required = true, value = "")
+
+  public OffsetDateTime getUpdatedAt() {
+    return updatedAt;
+  }
+
+
+  public void setUpdatedAt(OffsetDateTime updatedAt) {
+    this.updatedAt = updatedAt;
+  }
+
+
+  public GetWorldGamePackageResponseData unpublishedAt(OffsetDateTime unpublishedAt) {
+    
+    this.unpublishedAt = unpublishedAt;
+    return this;
+  }
+
+   /**
+   * Get unpublishedAt
+   * @return unpublishedAt
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public OffsetDateTime getUnpublishedAt() {
+    return unpublishedAt;
+  }
+
+
+  public void setUnpublishedAt(OffsetDateTime unpublishedAt) {
+    this.unpublishedAt = unpublishedAt;
+  }
+
+
   public GetWorldGamePackageResponseData versions(List<GetWorldGamePackageResponseDataVersions> versions) {
     
     this.versions = versions;
@@ -247,6 +301,8 @@ public class GetWorldGamePackageResponseData {
         Objects.equals(this.name, getWorldGamePackageResponseData.name) &&
         Objects.equals(this.designId, getWorldGamePackageResponseData.designId) &&
         Objects.equals(this.createdAt, getWorldGamePackageResponseData.createdAt) &&
+        Objects.equals(this.updatedAt, getWorldGamePackageResponseData.updatedAt) &&
+        Objects.equals(this.unpublishedAt, getWorldGamePackageResponseData.unpublishedAt) &&
         Objects.equals(this.versions, getWorldGamePackageResponseData.versions);
   }
 
@@ -256,7 +312,7 @@ public class GetWorldGamePackageResponseData {
 
   @Override
   public int hashCode() {
-    return Objects.hash(stats, id, slug, name, designId, createdAt, versions);
+    return Objects.hash(stats, id, slug, name, designId, createdAt, updatedAt, unpublishedAt, versions);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -276,6 +332,8 @@ public class GetWorldGamePackageResponseData {
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    designId: ").append(toIndentedString(designId)).append("\n");
     sb.append("    createdAt: ").append(toIndentedString(createdAt)).append("\n");
+    sb.append("    updatedAt: ").append(toIndentedString(updatedAt)).append("\n");
+    sb.append("    unpublishedAt: ").append(toIndentedString(unpublishedAt)).append("\n");
     sb.append("    versions: ").append(toIndentedString(versions)).append("\n");
     sb.append("}");
     return sb.toString();

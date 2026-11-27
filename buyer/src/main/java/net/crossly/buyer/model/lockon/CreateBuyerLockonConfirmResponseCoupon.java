@@ -30,7 +30,7 @@ import org.openapitools.jackson.nullable.JsonNullable;
  * A code worth trying at the recommended retailer, with the cashback already on &#x60;offsite.buyerCashbackCents&#x60;.  &#x60;hud.coupon.measured&#x60; says whether the saving figure rests on real outcomes. Render the two differently: an unmeasured code is worth offering and its saving is not a number we have.
  */
 @ApiModel(description = "A code worth trying at the recommended retailer, with the cashback already on `offsite.buyerCashbackCents`.  `hud.coupon.measured` says whether the saving figure rests on real outcomes. Render the two differently: an unmeasured code is worth offering and its saving is not a number we have.")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-11T23:47:29.843Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-27T19:58:46.962Z[Etc/UTC]")
 public class CreateBuyerLockonConfirmResponseCoupon {
   public static final String SERIALIZED_NAME_CODE = "code";
   @SerializedName(SERIALIZED_NAME_CODE)

@@ -25,13 +25,18 @@ import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 import net.crossly.model.web3.GetWeb3LaunchToolResponseAllowlist;
 import net.crossly.model.web3.GetWeb3LaunchToolResponseArt;
+import net.crossly.model.web3.GetWeb3LaunchToolResponseRoyalties;
 import net.crossly.model.web3.GetWeb3LaunchToolResponseSupply;
 
 /**
  * GetWeb3LaunchToolResponse
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-11T23:44:48.922Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-27T19:42:43.186Z[Etc/UTC]")
 public class GetWeb3LaunchToolResponse {
+  public static final String SERIALIZED_NAME_ROYALTIES = "royalties";
+  @SerializedName(SERIALIZED_NAME_ROYALTIES)
+  private GetWeb3LaunchToolResponseRoyalties royalties;
+
   public static final String SERIALIZED_NAME_ALLOWLIST = "allowlist";
   @SerializedName(SERIALIZED_NAME_ALLOWLIST)
   private GetWeb3LaunchToolResponseAllowlist allowlist;
@@ -46,6 +51,29 @@ public class GetWeb3LaunchToolResponse {
 
   public GetWeb3LaunchToolResponse() { 
   }
+
+  public GetWeb3LaunchToolResponse royalties(GetWeb3LaunchToolResponseRoyalties royalties) {
+    
+    this.royalties = royalties;
+    return this;
+  }
+
+   /**
+   * Get royalties
+   * @return royalties
+  **/
+  @javax.annotation.Nonnull
+  @ApiModelProperty(required = true, value = "")
+
+  public GetWeb3LaunchToolResponseRoyalties getRoyalties() {
+    return royalties;
+  }
+
+
+  public void setRoyalties(GetWeb3LaunchToolResponseRoyalties royalties) {
+    this.royalties = royalties;
+  }
+
 
   public GetWeb3LaunchToolResponse allowlist(GetWeb3LaunchToolResponseAllowlist allowlist) {
     
@@ -125,20 +153,22 @@ public class GetWeb3LaunchToolResponse {
       return false;
     }
     GetWeb3LaunchToolResponse getWeb3LaunchToolResponse = (GetWeb3LaunchToolResponse) o;
-    return Objects.equals(this.allowlist, getWeb3LaunchToolResponse.allowlist) &&
+    return Objects.equals(this.royalties, getWeb3LaunchToolResponse.royalties) &&
+        Objects.equals(this.allowlist, getWeb3LaunchToolResponse.allowlist) &&
         Objects.equals(this.art, getWeb3LaunchToolResponse.art) &&
         Objects.equals(this.supply, getWeb3LaunchToolResponse.supply);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(allowlist, art, supply);
+    return Objects.hash(royalties, allowlist, art, supply);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class GetWeb3LaunchToolResponse {\n");
+    sb.append("    royalties: ").append(toIndentedString(royalties)).append("\n");
     sb.append("    allowlist: ").append(toIndentedString(allowlist)).append("\n");
     sb.append("    art: ").append(toIndentedString(art)).append("\n");
     sb.append("    supply: ").append(toIndentedString(supply)).append("\n");

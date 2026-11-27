@@ -28,19 +28,19 @@ import org.openapitools.jackson.nullable.JsonNullable;
 /**
  * CreateBuyerOfferRespondResponseData
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-11T23:47:29.843Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-27T19:58:46.962Z[Etc/UTC]")
 public class CreateBuyerOfferRespondResponseData {
   public static final String SERIALIZED_NAME_STATUS = "status";
   @SerializedName(SERIALIZED_NAME_STATUS)
   private String status;
 
-  public static final String SERIALIZED_NAME_OFFER_ID = "offerId";
-  @SerializedName(SERIALIZED_NAME_OFFER_ID)
-  private String offerId;
-
   public static final String SERIALIZED_NAME_REDEEMABLE = "redeemable";
   @SerializedName(SERIALIZED_NAME_REDEEMABLE)
   private Boolean redeemable;
+
+  public static final String SERIALIZED_NAME_OFFER_ID = "offerId";
+  @SerializedName(SERIALIZED_NAME_OFFER_ID)
+  private String offerId;
 
   public CreateBuyerOfferRespondResponseData() { 
   }
@@ -68,29 +68,6 @@ public class CreateBuyerOfferRespondResponseData {
   }
 
 
-  public CreateBuyerOfferRespondResponseData offerId(String offerId) {
-    
-    this.offerId = offerId;
-    return this;
-  }
-
-   /**
-   * Countered: the id of YOUR new offer, now waiting on the seller.
-   * @return offerId
-  **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "Countered: the id of YOUR new offer, now waiting on the seller.")
-
-  public String getOfferId() {
-    return offerId;
-  }
-
-
-  public void setOfferId(String offerId) {
-    this.offerId = offerId;
-  }
-
-
   public CreateBuyerOfferRespondResponseData redeemable(Boolean redeemable) {
     
     this.redeemable = redeemable;
@@ -114,6 +91,29 @@ public class CreateBuyerOfferRespondResponseData {
   }
 
 
+  public CreateBuyerOfferRespondResponseData offerId(String offerId) {
+    
+    this.offerId = offerId;
+    return this;
+  }
+
+   /**
+   * Countered: the id of YOUR new offer, now waiting on the seller.
+   * @return offerId
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "Countered: the id of YOUR new offer, now waiting on the seller.")
+
+  public String getOfferId() {
+    return offerId;
+  }
+
+
+  public void setOfferId(String offerId) {
+    this.offerId = offerId;
+  }
+
+
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -124,8 +124,8 @@ public class CreateBuyerOfferRespondResponseData {
     }
     CreateBuyerOfferRespondResponseData createBuyerOfferRespondResponseData = (CreateBuyerOfferRespondResponseData) o;
     return Objects.equals(this.status, createBuyerOfferRespondResponseData.status) &&
-        Objects.equals(this.offerId, createBuyerOfferRespondResponseData.offerId) &&
-        Objects.equals(this.redeemable, createBuyerOfferRespondResponseData.redeemable);
+        Objects.equals(this.redeemable, createBuyerOfferRespondResponseData.redeemable) &&
+        Objects.equals(this.offerId, createBuyerOfferRespondResponseData.offerId);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -134,7 +134,7 @@ public class CreateBuyerOfferRespondResponseData {
 
   @Override
   public int hashCode() {
-    return Objects.hash(status, offerId, redeemable);
+    return Objects.hash(status, redeemable, offerId);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -149,8 +149,8 @@ public class CreateBuyerOfferRespondResponseData {
     StringBuilder sb = new StringBuilder();
     sb.append("class CreateBuyerOfferRespondResponseData {\n");
     sb.append("    status: ").append(toIndentedString(status)).append("\n");
-    sb.append("    offerId: ").append(toIndentedString(offerId)).append("\n");
     sb.append("    redeemable: ").append(toIndentedString(redeemable)).append("\n");
+    sb.append("    offerId: ").append(toIndentedString(offerId)).append("\n");
     sb.append("}");
     return sb.toString();
   }

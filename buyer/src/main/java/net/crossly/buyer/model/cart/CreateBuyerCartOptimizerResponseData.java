@@ -31,8 +31,16 @@ import net.crossly.buyer.model.cart.CreateBuyerCartOptimizerResponseDataLines;
 /**
  * CreateBuyerCartOptimizerResponseData
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-11T23:47:29.843Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-27T19:58:46.962Z[Etc/UTC]")
 public class CreateBuyerCartOptimizerResponseData {
+  public static final String SERIALIZED_NAME_LINES = "lines";
+  @SerializedName(SERIALIZED_NAME_LINES)
+  private List<CreateBuyerCartOptimizerResponseDataLines> lines = new ArrayList<CreateBuyerCartOptimizerResponseDataLines>();
+
+  public static final String SERIALIZED_NAME_ITEMS_CENTS = "itemsCents";
+  @SerializedName(SERIALIZED_NAME_ITEMS_CENTS)
+  private BigDecimal itemsCents;
+
   public static final String SERIALIZED_NAME_SHIPPING_CENTS = "shippingCents";
   @SerializedName(SERIALIZED_NAME_SHIPPING_CENTS)
   private BigDecimal shippingCents;
@@ -41,17 +49,9 @@ public class CreateBuyerCartOptimizerResponseData {
   @SerializedName(SERIALIZED_NAME_TOTAL_CENTS)
   private BigDecimal totalCents;
 
-  public static final String SERIALIZED_NAME_LINES = "lines";
-  @SerializedName(SERIALIZED_NAME_LINES)
-  private List<CreateBuyerCartOptimizerResponseDataLines> lines = new ArrayList<CreateBuyerCartOptimizerResponseDataLines>();
-
   public static final String SERIALIZED_NAME_SELLERS = "sellers";
   @SerializedName(SERIALIZED_NAME_SELLERS)
   private BigDecimal sellers;
-
-  public static final String SERIALIZED_NAME_ITEMS_CENTS = "itemsCents";
-  @SerializedName(SERIALIZED_NAME_ITEMS_CENTS)
-  private BigDecimal itemsCents;
 
   public static final String SERIALIZED_NAME_UNMATCHED = "unmatched";
   @SerializedName(SERIALIZED_NAME_UNMATCHED)
@@ -59,6 +59,57 @@ public class CreateBuyerCartOptimizerResponseData {
 
   public CreateBuyerCartOptimizerResponseData() { 
   }
+
+  public CreateBuyerCartOptimizerResponseData lines(List<CreateBuyerCartOptimizerResponseDataLines> lines) {
+    
+    this.lines = lines;
+    return this;
+  }
+
+  public CreateBuyerCartOptimizerResponseData addLinesItem(CreateBuyerCartOptimizerResponseDataLines linesItem) {
+    this.lines.add(linesItem);
+    return this;
+  }
+
+   /**
+   * Get lines
+   * @return lines
+  **/
+  @javax.annotation.Nonnull
+  @ApiModelProperty(required = true, value = "")
+
+  public List<CreateBuyerCartOptimizerResponseDataLines> getLines() {
+    return lines;
+  }
+
+
+  public void setLines(List<CreateBuyerCartOptimizerResponseDataLines> lines) {
+    this.lines = lines;
+  }
+
+
+  public CreateBuyerCartOptimizerResponseData itemsCents(BigDecimal itemsCents) {
+    
+    this.itemsCents = itemsCents;
+    return this;
+  }
+
+   /**
+   * Get itemsCents
+   * @return itemsCents
+  **/
+  @javax.annotation.Nonnull
+  @ApiModelProperty(required = true, value = "")
+
+  public BigDecimal getItemsCents() {
+    return itemsCents;
+  }
+
+
+  public void setItemsCents(BigDecimal itemsCents) {
+    this.itemsCents = itemsCents;
+  }
+
 
   public CreateBuyerCartOptimizerResponseData shippingCents(BigDecimal shippingCents) {
     
@@ -106,34 +157,6 @@ public class CreateBuyerCartOptimizerResponseData {
   }
 
 
-  public CreateBuyerCartOptimizerResponseData lines(List<CreateBuyerCartOptimizerResponseDataLines> lines) {
-    
-    this.lines = lines;
-    return this;
-  }
-
-  public CreateBuyerCartOptimizerResponseData addLinesItem(CreateBuyerCartOptimizerResponseDataLines linesItem) {
-    this.lines.add(linesItem);
-    return this;
-  }
-
-   /**
-   * Get lines
-   * @return lines
-  **/
-  @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "")
-
-  public List<CreateBuyerCartOptimizerResponseDataLines> getLines() {
-    return lines;
-  }
-
-
-  public void setLines(List<CreateBuyerCartOptimizerResponseDataLines> lines) {
-    this.lines = lines;
-  }
-
-
   public CreateBuyerCartOptimizerResponseData sellers(BigDecimal sellers) {
     
     this.sellers = sellers;
@@ -154,29 +177,6 @@ public class CreateBuyerCartOptimizerResponseData {
 
   public void setSellers(BigDecimal sellers) {
     this.sellers = sellers;
-  }
-
-
-  public CreateBuyerCartOptimizerResponseData itemsCents(BigDecimal itemsCents) {
-    
-    this.itemsCents = itemsCents;
-    return this;
-  }
-
-   /**
-   * Get itemsCents
-   * @return itemsCents
-  **/
-  @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "")
-
-  public BigDecimal getItemsCents() {
-    return itemsCents;
-  }
-
-
-  public void setItemsCents(BigDecimal itemsCents) {
-    this.itemsCents = itemsCents;
   }
 
 
@@ -217,28 +217,28 @@ public class CreateBuyerCartOptimizerResponseData {
       return false;
     }
     CreateBuyerCartOptimizerResponseData createBuyerCartOptimizerResponseData = (CreateBuyerCartOptimizerResponseData) o;
-    return Objects.equals(this.shippingCents, createBuyerCartOptimizerResponseData.shippingCents) &&
-        Objects.equals(this.totalCents, createBuyerCartOptimizerResponseData.totalCents) &&
-        Objects.equals(this.lines, createBuyerCartOptimizerResponseData.lines) &&
-        Objects.equals(this.sellers, createBuyerCartOptimizerResponseData.sellers) &&
+    return Objects.equals(this.lines, createBuyerCartOptimizerResponseData.lines) &&
         Objects.equals(this.itemsCents, createBuyerCartOptimizerResponseData.itemsCents) &&
+        Objects.equals(this.shippingCents, createBuyerCartOptimizerResponseData.shippingCents) &&
+        Objects.equals(this.totalCents, createBuyerCartOptimizerResponseData.totalCents) &&
+        Objects.equals(this.sellers, createBuyerCartOptimizerResponseData.sellers) &&
         Objects.equals(this.unmatched, createBuyerCartOptimizerResponseData.unmatched);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(shippingCents, totalCents, lines, sellers, itemsCents, unmatched);
+    return Objects.hash(lines, itemsCents, shippingCents, totalCents, sellers, unmatched);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class CreateBuyerCartOptimizerResponseData {\n");
+    sb.append("    lines: ").append(toIndentedString(lines)).append("\n");
+    sb.append("    itemsCents: ").append(toIndentedString(itemsCents)).append("\n");
     sb.append("    shippingCents: ").append(toIndentedString(shippingCents)).append("\n");
     sb.append("    totalCents: ").append(toIndentedString(totalCents)).append("\n");
-    sb.append("    lines: ").append(toIndentedString(lines)).append("\n");
     sb.append("    sellers: ").append(toIndentedString(sellers)).append("\n");
-    sb.append("    itemsCents: ").append(toIndentedString(itemsCents)).append("\n");
     sb.append("    unmatched: ").append(toIndentedString(unmatched)).append("\n");
     sb.append("}");
     return sb.toString();

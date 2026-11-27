@@ -30,7 +30,7 @@ import org.openapitools.jackson.nullable.JsonNullable;
  * A promoted listing on this vacant plot&#39;s hoarding (placements.ts).
  */
 @ApiModel(description = "A promoted listing on this vacant plot's hoarding (placements.ts).")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-11T23:44:48.922Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-27T19:42:43.186Z[Etc/UTC]")
 public class GetSpatialStreetResponseDataPlotsSponsored {
   public static final String SERIALIZED_NAME_SLUG = "slug";
   @SerializedName(SERIALIZED_NAME_SLUG)

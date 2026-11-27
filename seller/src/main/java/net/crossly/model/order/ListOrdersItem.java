@@ -28,70 +28,97 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import net.crossly.model.order.ListOrdersItemTrackingHistory;
+import net.crossly.model.order.GetOrderResponseAppShare;
+import net.crossly.model.order.GetOrderResponseLineItems;
+import net.crossly.model.order.GetOrderResponseTrackingHistory;
+import net.crossly.model.order.GetOrderResponseTrade;
 import org.openapitools.jackson.nullable.JsonNullable;
 import org.threeten.bp.OffsetDateTime;
 
 /**
  * ListOrdersItem
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-11T23:44:48.922Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-27T19:42:43.186Z[Etc/UTC]")
 public class ListOrdersItem {
-  public static final String SERIALIZED_NAME_ID = "id";
-  @SerializedName(SERIALIZED_NAME_ID)
-  private String id;
+  public static final String SERIALIZED_NAME_APP_SHARE = "appShare";
+  @SerializedName(SERIALIZED_NAME_APP_SHARE)
+  private GetOrderResponseAppShare appShare;
 
-  public static final String SERIALIZED_NAME_CREATED_AT = "createdAt";
-  @SerializedName(SERIALIZED_NAME_CREATED_AT)
-  private OffsetDateTime createdAt;
+  public static final String SERIALIZED_NAME_TRADE = "trade";
+  @SerializedName(SERIALIZED_NAME_TRADE)
+  private GetOrderResponseTrade trade;
 
-  public static final String SERIALIZED_NAME_UPDATED_AT = "updatedAt";
-  @SerializedName(SERIALIZED_NAME_UPDATED_AT)
-  private OffsetDateTime updatedAt;
+  public static final String SERIALIZED_NAME_SALE_PRICE = "salePrice";
+  @SerializedName(SERIALIZED_NAME_SALE_PRICE)
+  private BigDecimal salePrice;
 
-  public static final String SERIALIZED_NAME_USER_ID = "userId";
-  @SerializedName(SERIALIZED_NAME_USER_ID)
-  private String userId;
+  public static final String SERIALIZED_NAME_PLATFORM_FEE = "platformFee";
+  @SerializedName(SERIALIZED_NAME_PLATFORM_FEE)
+  private BigDecimal platformFee;
+
+  public static final String SERIALIZED_NAME_TAX_COLLECTED = "taxCollected";
+  @SerializedName(SERIALIZED_NAME_TAX_COLLECTED)
+  private BigDecimal taxCollected;
+
+  public static final String SERIALIZED_NAME_SHIPPING_CHARGED = "shippingCharged";
+  @SerializedName(SERIALIZED_NAME_SHIPPING_CHARGED)
+  private BigDecimal shippingCharged;
+
+  public static final String SERIALIZED_NAME_FEE_SOURCE = "feeSource";
+  @SerializedName(SERIALIZED_NAME_FEE_SOURCE)
+  private String feeSource;
+
+  public static final String SERIALIZED_NAME_DETAILS_PENDING = "detailsPending";
+  @SerializedName(SERIALIZED_NAME_DETAILS_PENDING)
+  private Boolean detailsPending;
+
+  public static final String SERIALIZED_NAME_SKU = "sku";
+  @SerializedName(SERIALIZED_NAME_SKU)
+  private String sku;
 
   public static final String SERIALIZED_NAME_QUANTITY = "quantity";
   @SerializedName(SERIALIZED_NAME_QUANTITY)
   private BigDecimal quantity;
 
-  public static final String SERIALIZED_NAME_NOTES = "notes";
-  @SerializedName(SERIALIZED_NAME_NOTES)
-  private String notes;
+  public static final String SERIALIZED_NAME_LINE_ITEMS = "lineItems";
+  @SerializedName(SERIALIZED_NAME_LINE_ITEMS)
+  private List<GetOrderResponseLineItems> lineItems = null;
 
-  public static final String SERIALIZED_NAME_STATUS = "status";
-  @SerializedName(SERIALIZED_NAME_STATUS)
-  private String status;
+  public static final String SERIALIZED_NAME_ID = "id";
+  @SerializedName(SERIALIZED_NAME_ID)
+  private String id;
 
-  public static final String SERIALIZED_NAME_PLATFORM = "platform";
-  @SerializedName(SERIALIZED_NAME_PLATFORM)
-  private String platform;
-
-  public static final String SERIALIZED_NAME_CANCELLED_AT = "cancelledAt";
-  @SerializedName(SERIALIZED_NAME_CANCELLED_AT)
-  private OffsetDateTime cancelledAt;
-
-  public static final String SERIALIZED_NAME_LISTING_ID = "listingId";
-  @SerializedName(SERIALIZED_NAME_LISTING_ID)
-  private String listingId;
+  public static final String SERIALIZED_NAME_USER_ID = "userId";
+  @SerializedName(SERIALIZED_NAME_USER_ID)
+  private String userId;
 
   public static final String SERIALIZED_NAME_INVENTORY_ITEM_ID = "inventoryItemId";
   @SerializedName(SERIALIZED_NAME_INVENTORY_ITEM_ID)
   private String inventoryItemId;
 
+  public static final String SERIALIZED_NAME_LISTING_ID = "listingId";
+  @SerializedName(SERIALIZED_NAME_LISTING_ID)
+  private String listingId;
+
   public static final String SERIALIZED_NAME_PLATFORM_LISTING_ID = "platformListingId";
   @SerializedName(SERIALIZED_NAME_PLATFORM_LISTING_ID)
   private String platformListingId;
 
-  public static final String SERIALIZED_NAME_HANDLING_TIME_DAYS = "handlingTimeDays";
-  @SerializedName(SERIALIZED_NAME_HANDLING_TIME_DAYS)
-  private BigDecimal handlingTimeDays;
+  public static final String SERIALIZED_NAME_PLATFORM = "platform";
+  @SerializedName(SERIALIZED_NAME_PLATFORM)
+  private String platform;
 
   public static final String SERIALIZED_NAME_PLATFORM_ORDER_ID = "platformOrderId";
   @SerializedName(SERIALIZED_NAME_PLATFORM_ORDER_ID)
   private String platformOrderId;
+
+  public static final String SERIALIZED_NAME_REPORTED_BY_APP_ID = "reportedByAppId";
+  @SerializedName(SERIALIZED_NAME_REPORTED_BY_APP_ID)
+  private String reportedByAppId;
+
+  public static final String SERIALIZED_NAME_STOREFRONT_ID = "storefrontId";
+  @SerializedName(SERIALIZED_NAME_STOREFRONT_ID)
+  private String storefrontId;
 
   public static final String SERIALIZED_NAME_BUYER_USERNAME = "buyerUsername";
   @SerializedName(SERIALIZED_NAME_BUYER_USERNAME)
@@ -113,6 +140,10 @@ public class ListOrdersItem {
   @SerializedName(SERIALIZED_NAME_DUTIES_REFUNDED_AT)
   private OffsetDateTime dutiesRefundedAt;
 
+  public static final String SERIALIZED_NAME_STATUS = "status";
+  @SerializedName(SERIALIZED_NAME_STATUS)
+  private String status;
+
   public static final String SERIALIZED_NAME_SALES_CHANNEL = "salesChannel";
   @SerializedName(SERIALIZED_NAME_SALES_CHANNEL)
   private String salesChannel;
@@ -120,6 +151,18 @@ public class ListOrdersItem {
   public static final String SERIALIZED_NAME_CHANNEL_LOCATION_ID = "channelLocationId";
   @SerializedName(SERIALIZED_NAME_CHANNEL_LOCATION_ID)
   private String channelLocationId;
+
+  public static final String SERIALIZED_NAME_CHANNEL = "channel";
+  @SerializedName(SERIALIZED_NAME_CHANNEL)
+  private String channel;
+
+  public static final String SERIALIZED_NAME_INVOICE_ID = "invoiceId";
+  @SerializedName(SERIALIZED_NAME_INVOICE_ID)
+  private String invoiceId;
+
+  public static final String SERIALIZED_NAME_BUYER_COMPANY_ID = "buyerCompanyId";
+  @SerializedName(SERIALIZED_NAME_BUYER_COMPANY_ID)
+  private String buyerCompanyId;
 
   public static final String SERIALIZED_NAME_PACKAGE_PRESET_ID = "packagePresetId";
   @SerializedName(SERIALIZED_NAME_PACKAGE_PRESET_ID)
@@ -179,7 +222,7 @@ public class ListOrdersItem {
 
   public static final String SERIALIZED_NAME_TRACKING_HISTORY = "trackingHistory";
   @SerializedName(SERIALIZED_NAME_TRACKING_HISTORY)
-  private List<ListOrdersItemTrackingHistory> trackingHistory = null;
+  private List<GetOrderResponseTrackingHistory> trackingHistory = null;
 
   public static final String SERIALIZED_NAME_DELIVERY_LOCATION = "deliveryLocation";
   @SerializedName(SERIALIZED_NAME_DELIVERY_LOCATION)
@@ -212,6 +255,10 @@ public class ListOrdersItem {
   public static final String SERIALIZED_NAME_REQUESTED_SERVICE = "requestedService";
   @SerializedName(SERIALIZED_NAME_REQUESTED_SERVICE)
   private String requestedService;
+
+  public static final String SERIALIZED_NAME_HANDLING_TIME_DAYS = "handlingTimeDays";
+  @SerializedName(SERIALIZED_NAME_HANDLING_TIME_DAYS)
+  private BigDecimal handlingTimeDays;
 
   public static final String SERIALIZED_NAME_SHIP_BY_AT = "shipByAt";
   @SerializedName(SERIALIZED_NAME_SHIP_BY_AT)
@@ -265,9 +312,17 @@ public class ListOrdersItem {
   @SerializedName(SERIALIZED_NAME_REFUNDED_AT)
   private OffsetDateTime refundedAt;
 
+  public static final String SERIALIZED_NAME_CANCELLED_AT = "cancelledAt";
+  @SerializedName(SERIALIZED_NAME_CANCELLED_AT)
+  private OffsetDateTime cancelledAt;
+
   public static final String SERIALIZED_NAME_CANCELLATION_REASON = "cancellationReason";
   @SerializedName(SERIALIZED_NAME_CANCELLATION_REASON)
   private String cancellationReason;
+
+  public static final String SERIALIZED_NAME_NOTES = "notes";
+  @SerializedName(SERIALIZED_NAME_NOTES)
+  private String notes;
 
   public static final String SERIALIZED_NAME_ARRIVAL_CONDITION_REQUESTED_AT = "arrivalConditionRequestedAt";
   @SerializedName(SERIALIZED_NAME_ARRIVAL_CONDITION_REQUESTED_AT)
@@ -285,6 +340,10 @@ public class ListOrdersItem {
   @SerializedName(SERIALIZED_NAME_DELIVERY_PHOTO_URL)
   private String deliveryPhotoUrl;
 
+  public static final String SERIALIZED_NAME_DELIVERY_PHOTO_SOURCE = "deliveryPhotoSource";
+  @SerializedName(SERIALIZED_NAME_DELIVERY_PHOTO_SOURCE)
+  private String deliveryPhotoSource;
+
   public static final String SERIALIZED_NAME_PURCHASE_ORDER_REF = "purchaseOrderRef";
   @SerializedName(SERIALIZED_NAME_PURCHASE_ORDER_REF)
   private String purchaseOrderRef;
@@ -301,12 +360,289 @@ public class ListOrdersItem {
   @SerializedName(SERIALIZED_NAME_FULFILLMENT_METHOD)
   private String fulfillmentMethod;
 
+  public static final String SERIALIZED_NAME_SOURCE = "source";
+  @SerializedName(SERIALIZED_NAME_SOURCE)
+  private String source;
+
+  public static final String SERIALIZED_NAME_PLATFORM_CONFIRMED_AT = "platformConfirmedAt";
+  @SerializedName(SERIALIZED_NAME_PLATFORM_CONFIRMED_AT)
+  private OffsetDateTime platformConfirmedAt;
+
+  public static final String SERIALIZED_NAME_CREATED_AT = "createdAt";
+  @SerializedName(SERIALIZED_NAME_CREATED_AT)
+  private OffsetDateTime createdAt;
+
+  public static final String SERIALIZED_NAME_UPDATED_AT = "updatedAt";
+  @SerializedName(SERIALIZED_NAME_UPDATED_AT)
+  private OffsetDateTime updatedAt;
+
   public static final String SERIALIZED_NAME_DELETED_AT = "deletedAt";
   @SerializedName(SERIALIZED_NAME_DELETED_AT)
   private OffsetDateTime deletedAt;
 
   public ListOrdersItem() { 
   }
+
+  public ListOrdersItem appShare(GetOrderResponseAppShare appShare) {
+    
+    this.appShare = appShare;
+    return this;
+  }
+
+   /**
+   * Get appShare
+   * @return appShare
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public GetOrderResponseAppShare getAppShare() {
+    return appShare;
+  }
+
+
+  public void setAppShare(GetOrderResponseAppShare appShare) {
+    this.appShare = appShare;
+  }
+
+
+  public ListOrdersItem trade(GetOrderResponseTrade trade) {
+    
+    this.trade = trade;
+    return this;
+  }
+
+   /**
+   * Get trade
+   * @return trade
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public GetOrderResponseTrade getTrade() {
+    return trade;
+  }
+
+
+  public void setTrade(GetOrderResponseTrade trade) {
+    this.trade = trade;
+  }
+
+
+  public ListOrdersItem salePrice(BigDecimal salePrice) {
+    
+    this.salePrice = salePrice;
+    return this;
+  }
+
+   /**
+   * DOLLARS (numbers, as order.created sends them). null &#x3D; not known (no sale row, or details pending).
+   * @return salePrice
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "DOLLARS (numbers, as order.created sends them). null = not known (no sale row, or details pending).")
+
+  public BigDecimal getSalePrice() {
+    return salePrice;
+  }
+
+
+  public void setSalePrice(BigDecimal salePrice) {
+    this.salePrice = salePrice;
+  }
+
+
+  public ListOrdersItem platformFee(BigDecimal platformFee) {
+    
+    this.platformFee = platformFee;
+    return this;
+  }
+
+   /**
+   * Get platformFee
+   * @return platformFee
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public BigDecimal getPlatformFee() {
+    return platformFee;
+  }
+
+
+  public void setPlatformFee(BigDecimal platformFee) {
+    this.platformFee = platformFee;
+  }
+
+
+  public ListOrdersItem taxCollected(BigDecimal taxCollected) {
+    
+    this.taxCollected = taxCollected;
+    return this;
+  }
+
+   /**
+   * Get taxCollected
+   * @return taxCollected
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public BigDecimal getTaxCollected() {
+    return taxCollected;
+  }
+
+
+  public void setTaxCollected(BigDecimal taxCollected) {
+    this.taxCollected = taxCollected;
+  }
+
+
+  public ListOrdersItem shippingCharged(BigDecimal shippingCharged) {
+    
+    this.shippingCharged = shippingCharged;
+    return this;
+  }
+
+   /**
+   * Get shippingCharged
+   * @return shippingCharged
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public BigDecimal getShippingCharged() {
+    return shippingCharged;
+  }
+
+
+  public void setShippingCharged(BigDecimal shippingCharged) {
+    this.shippingCharged = shippingCharged;
+  }
+
+
+  public ListOrdersItem feeSource(String feeSource) {
+    
+    this.feeSource = feeSource;
+    return this;
+  }
+
+   /**
+   * &#39;exact&#39; (the marketplace&#39;s charged fee) | &#39;estimated&#39;.
+   * @return feeSource
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "'exact' (the marketplace's charged fee) | 'estimated'.")
+
+  public String getFeeSource() {
+    return feeSource;
+  }
+
+
+  public void setFeeSource(String feeSource) {
+    this.feeSource = feeSource;
+  }
+
+
+  public ListOrdersItem detailsPending(Boolean detailsPending) {
+    
+    this.detailsPending = detailsPending;
+    return this;
+  }
+
+   /**
+   * Get detailsPending
+   * @return detailsPending
+  **/
+  @javax.annotation.Nonnull
+  @ApiModelProperty(required = true, value = "")
+
+  public Boolean getDetailsPending() {
+    return detailsPending;
+  }
+
+
+  public void setDetailsPending(Boolean detailsPending) {
+    this.detailsPending = detailsPending;
+  }
+
+
+  public ListOrdersItem sku(String sku) {
+    
+    this.sku = sku;
+    return this;
+  }
+
+   /**
+   * The listing&#39;s SKU (order.created &#x60;sku&#x60;).
+   * @return sku
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "The listing's SKU (order.created `sku`).")
+
+  public String getSku() {
+    return sku;
+  }
+
+
+  public void setSku(String sku) {
+    this.sku = sku;
+  }
+
+
+  public ListOrdersItem quantity(BigDecimal quantity) {
+    
+    this.quantity = quantity;
+    return this;
+  }
+
+   /**
+   * Units purchased in this order (default 1). Drives how many units the Available→Reserved→Sold state machine moves. See migration 0139. Units on the order (order.created &#x60;quantity&#x60;).
+   * @return quantity
+  **/
+  @javax.annotation.Nonnull
+  @ApiModelProperty(required = true, value = "Units purchased in this order (default 1). Drives how many units the Available→Reserved→Sold state machine moves. See migration 0139. Units on the order (order.created `quantity`).")
+
+  public BigDecimal getQuantity() {
+    return quantity;
+  }
+
+
+  public void setQuantity(BigDecimal quantity) {
+    this.quantity = quantity;
+  }
+
+
+  public ListOrdersItem lineItems(List<GetOrderResponseLineItems> lineItems) {
+    
+    this.lineItems = lineItems;
+    return this;
+  }
+
+  public ListOrdersItem addLineItemsItem(GetOrderResponseLineItems lineItemsItem) {
+    if (this.lineItems == null) {
+      this.lineItems = new ArrayList<GetOrderResponseLineItems>();
+    }
+    this.lineItems.add(lineItemsItem);
+    return this;
+  }
+
+   /**
+   * Get lineItems
+   * @return lineItems
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public List<GetOrderResponseLineItems> getLineItems() {
+    return lineItems;
+  }
+
+
+  public void setLineItems(List<GetOrderResponseLineItems> lineItems) {
+    this.lineItems = lineItems;
+  }
+
 
   public ListOrdersItem id(String id) {
     
@@ -328,52 +664,6 @@ public class ListOrdersItem {
 
   public void setId(String id) {
     this.id = id;
-  }
-
-
-  public ListOrdersItem createdAt(OffsetDateTime createdAt) {
-    
-    this.createdAt = createdAt;
-    return this;
-  }
-
-   /**
-   * Get createdAt
-   * @return createdAt
-  **/
-  @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "")
-
-  public OffsetDateTime getCreatedAt() {
-    return createdAt;
-  }
-
-
-  public void setCreatedAt(OffsetDateTime createdAt) {
-    this.createdAt = createdAt;
-  }
-
-
-  public ListOrdersItem updatedAt(OffsetDateTime updatedAt) {
-    
-    this.updatedAt = updatedAt;
-    return this;
-  }
-
-   /**
-   * Get updatedAt
-   * @return updatedAt
-  **/
-  @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "")
-
-  public OffsetDateTime getUpdatedAt() {
-    return updatedAt;
-  }
-
-
-  public void setUpdatedAt(OffsetDateTime updatedAt) {
-    this.updatedAt = updatedAt;
   }
 
 
@@ -400,118 +690,26 @@ public class ListOrdersItem {
   }
 
 
-  public ListOrdersItem quantity(BigDecimal quantity) {
+  public ListOrdersItem inventoryItemId(String inventoryItemId) {
     
-    this.quantity = quantity;
+    this.inventoryItemId = inventoryItemId;
     return this;
   }
 
    /**
-   * Get quantity
-   * @return quantity
-  **/
-  @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "")
-
-  public BigDecimal getQuantity() {
-    return quantity;
-  }
-
-
-  public void setQuantity(BigDecimal quantity) {
-    this.quantity = quantity;
-  }
-
-
-  public ListOrdersItem notes(String notes) {
-    
-    this.notes = notes;
-    return this;
-  }
-
-   /**
-   * Get notes
-   * @return notes
+   * Get inventoryItemId
+   * @return inventoryItemId
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "")
 
-  public String getNotes() {
-    return notes;
+  public String getInventoryItemId() {
+    return inventoryItemId;
   }
 
 
-  public void setNotes(String notes) {
-    this.notes = notes;
-  }
-
-
-  public ListOrdersItem status(String status) {
-    
-    this.status = status;
-    return this;
-  }
-
-   /**
-   * Get status
-   * @return status
-  **/
-  @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "")
-
-  public String getStatus() {
-    return status;
-  }
-
-
-  public void setStatus(String status) {
-    this.status = status;
-  }
-
-
-  public ListOrdersItem platform(String platform) {
-    
-    this.platform = platform;
-    return this;
-  }
-
-   /**
-   * Get platform
-   * @return platform
-  **/
-  @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "")
-
-  public String getPlatform() {
-    return platform;
-  }
-
-
-  public void setPlatform(String platform) {
-    this.platform = platform;
-  }
-
-
-  public ListOrdersItem cancelledAt(OffsetDateTime cancelledAt) {
-    
-    this.cancelledAt = cancelledAt;
-    return this;
-  }
-
-   /**
-   * Get cancelledAt
-   * @return cancelledAt
-  **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
-
-  public OffsetDateTime getCancelledAt() {
-    return cancelledAt;
-  }
-
-
-  public void setCancelledAt(OffsetDateTime cancelledAt) {
-    this.cancelledAt = cancelledAt;
+  public void setInventoryItemId(String inventoryItemId) {
+    this.inventoryItemId = inventoryItemId;
   }
 
 
@@ -538,29 +736,6 @@ public class ListOrdersItem {
   }
 
 
-  public ListOrdersItem inventoryItemId(String inventoryItemId) {
-    
-    this.inventoryItemId = inventoryItemId;
-    return this;
-  }
-
-   /**
-   * Get inventoryItemId
-   * @return inventoryItemId
-  **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
-
-  public String getInventoryItemId() {
-    return inventoryItemId;
-  }
-
-
-  public void setInventoryItemId(String inventoryItemId) {
-    this.inventoryItemId = inventoryItemId;
-  }
-
-
   public ListOrdersItem platformListingId(String platformListingId) {
     
     this.platformListingId = platformListingId;
@@ -584,26 +759,26 @@ public class ListOrdersItem {
   }
 
 
-  public ListOrdersItem handlingTimeDays(BigDecimal handlingTimeDays) {
+  public ListOrdersItem platform(String platform) {
     
-    this.handlingTimeDays = handlingTimeDays;
+    this.platform = platform;
     return this;
   }
 
    /**
-   * Get handlingTimeDays
-   * @return handlingTimeDays
+   * Get platform
+   * @return platform
   **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
+  @javax.annotation.Nonnull
+  @ApiModelProperty(required = true, value = "")
 
-  public BigDecimal getHandlingTimeDays() {
-    return handlingTimeDays;
+  public String getPlatform() {
+    return platform;
   }
 
 
-  public void setHandlingTimeDays(BigDecimal handlingTimeDays) {
-    this.handlingTimeDays = handlingTimeDays;
+  public void setPlatform(String platform) {
+    this.platform = platform;
   }
 
 
@@ -627,6 +802,52 @@ public class ListOrdersItem {
 
   public void setPlatformOrderId(String platformOrderId) {
     this.platformOrderId = platformOrderId;
+  }
+
+
+  public ListOrdersItem reportedByAppId(String reportedByAppId) {
+    
+    this.reportedByAppId = reportedByAppId;
+    return this;
+  }
+
+   /**
+   * 1066 (order relay): the developer app that reported this order through an inbound item.sold (FK oauth_apps.id ON DELETE SET NULL in SQL). Null for every order Crossly detected itself. Read by action authority.
+   * @return reportedByAppId
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "1066 (order relay): the developer app that reported this order through an inbound item.sold (FK oauth_apps.id ON DELETE SET NULL in SQL). Null for every order Crossly detected itself. Read by action authority.")
+
+  public String getReportedByAppId() {
+    return reportedByAppId;
+  }
+
+
+  public void setReportedByAppId(String reportedByAppId) {
+    this.reportedByAppId = reportedByAppId;
+  }
+
+
+  public ListOrdersItem storefrontId(String storefrontId) {
+    
+    this.storefrontId = storefrontId;
+    return this;
+  }
+
+   /**
+   * Crossly orders only: the seller&#39;s storefront this sale came from. Null for every non-crossly platform. See db/schema/storefronts.ts.
+   * @return storefrontId
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "Crossly orders only: the seller's storefront this sale came from. Null for every non-crossly platform. See db/schema/storefronts.ts.")
+
+  public String getStorefrontId() {
+    return storefrontId;
+  }
+
+
+  public void setStorefrontId(String storefrontId) {
+    this.storefrontId = storefrontId;
   }
 
 
@@ -668,11 +889,11 @@ public class ListOrdersItem {
   }
 
    /**
-   * Get pickupPoint
+   * C8 (0448): the carrier location the parcel is held at — services/pickup-points.ts.
    * @return pickupPoint
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "C8 (0448): the carrier location the parcel is held at — services/pickup-points.ts.")
 
   public Map<String, Object> getPickupPoint() {
     return pickupPoint;
@@ -691,11 +912,11 @@ public class ListOrdersItem {
   }
 
    /**
-   * Get consolidationId
+   * D4 (0448): set when this seller ships to the consolidation hub, not the buyer — services/hub/.
    * @return consolidationId
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "D4 (0448): set when this seller ships to the consolidation hub, not the buyer — services/hub/.")
 
   public String getConsolidationId() {
     return consolidationId;
@@ -714,11 +935,11 @@ public class ListOrdersItem {
   }
 
    /**
-   * Get dutiesCents
+   * X4 (0479): import duties + taxes + fees the buyer paid at checkout for this parcel (services/landed-cost/); the label ships DDP.
    * @return dutiesCents
   **/
   @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "")
+  @ApiModelProperty(required = true, value = "X4 (0479): import duties + taxes + fees the buyer paid at checkout for this parcel (services/landed-cost/); the label ships DDP.")
 
   public BigDecimal getDutiesCents() {
     return dutiesCents;
@@ -737,11 +958,11 @@ public class ListOrdersItem {
   }
 
    /**
-   * Get dutiesRefundedAt
+   * X4: refunded because the order never shipped.
    * @return dutiesRefundedAt
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "X4: refunded because the order never shipped.")
 
   public OffsetDateTime getDutiesRefundedAt() {
     return dutiesRefundedAt;
@@ -753,6 +974,29 @@ public class ListOrdersItem {
   }
 
 
+  public ListOrdersItem status(String status) {
+    
+    this.status = status;
+    return this;
+  }
+
+   /**
+   * Get status
+   * @return status
+  **/
+  @javax.annotation.Nonnull
+  @ApiModelProperty(required = true, value = "")
+
+  public String getStatus() {
+    return status;
+  }
+
+
+  public void setStatus(String status) {
+    this.status = status;
+  }
+
+
   public ListOrdersItem salesChannel(String salesChannel) {
     
     this.salesChannel = salesChannel;
@@ -760,11 +1004,11 @@ public class ListOrdersItem {
   }
 
    /**
-   * Get salesChannel
+   * Where the sale happened, as distinct from which platform it was on.  Shopify POS orders arrive through the same Orders API as web orders, so before this they were detected as ordinary online sales and landed in &#x60;needs_fulfillment&#x60; — queued for a shipment that will never happen, because the customer already walked out with the item.  &#39;online&#39; for everything else, which is what every pre-existing row is.
    * @return salesChannel
   **/
   @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "")
+  @ApiModelProperty(required = true, value = "Where the sale happened, as distinct from which platform it was on.  Shopify POS orders arrive through the same Orders API as web orders, so before this they were detected as ordinary online sales and landed in `needs_fulfillment` — queued for a shipment that will never happen, because the customer already walked out with the item.  'online' for everything else, which is what every pre-existing row is.")
 
   public String getSalesChannel() {
     return salesChannel;
@@ -783,11 +1027,11 @@ public class ListOrdersItem {
   }
 
    /**
-   * Get channelLocationId
+   * POS location that rang it up. Null for online sales.
    * @return channelLocationId
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "POS location that rang it up. Null for online sales.")
 
   public String getChannelLocationId() {
     return channelLocationId;
@@ -796,6 +1040,75 @@ public class ListOrdersItem {
 
   public void setChannelLocationId(String channelLocationId) {
     this.channelLocationId = channelLocationId;
+  }
+
+
+  public ListOrdersItem channel(String channel) {
+    
+    this.channel = channel;
+    return this;
+  }
+
+   /**
+   * 1121 — which BUSINESS channel sold it: retail | wholesale | auction | live | world | pos (@crosslister/shared/wholesale ORDER_CHANNELS). Orthogonal to &#x60;salesChannel&#x60; (online vs in person): a wholesale order is usually online. Written at sale record time (sale/detect/order-write.ts).
+   * @return channel
+  **/
+  @javax.annotation.Nonnull
+  @ApiModelProperty(required = true, value = "1121 — which BUSINESS channel sold it: retail | wholesale | auction | live | world | pos (@crosslister/shared/wholesale ORDER_CHANNELS). Orthogonal to `salesChannel` (online vs in person): a wholesale order is usually online. Written at sale record time (sale/detect/order-write.ts).")
+
+  public String getChannel() {
+    return channel;
+  }
+
+
+  public void setChannel(String channel) {
+    this.channel = channel;
+  }
+
+
+  public ListOrdersItem invoiceId(String invoiceId) {
+    
+    this.invoiceId = invoiceId;
+    return this;
+  }
+
+   /**
+   * 1121 — the on-account invoice this order was placed on (crossly_invoices.id).
+   * @return invoiceId
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "1121 — the on-account invoice this order was placed on (crossly_invoices.id).")
+
+  public String getInvoiceId() {
+    return invoiceId;
+  }
+
+
+  public void setInvoiceId(String invoiceId) {
+    this.invoiceId = invoiceId;
+  }
+
+
+  public ListOrdersItem buyerCompanyId(String buyerCompanyId) {
+    
+    this.buyerCompanyId = buyerCompanyId;
+    return this;
+  }
+
+   /**
+   * 1121 — the buyer company (W7 crossly_buyer_companies; no FK until that table exists).
+   * @return buyerCompanyId
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "1121 — the buyer company (W7 crossly_buyer_companies; no FK until that table exists).")
+
+  public String getBuyerCompanyId() {
+    return buyerCompanyId;
+  }
+
+
+  public void setBuyerCompanyId(String buyerCompanyId) {
+    this.buyerCompanyId = buyerCompanyId;
   }
 
 
@@ -1121,33 +1434,33 @@ public class ListOrdersItem {
   }
 
 
-  public ListOrdersItem trackingHistory(List<ListOrdersItemTrackingHistory> trackingHistory) {
+  public ListOrdersItem trackingHistory(List<GetOrderResponseTrackingHistory> trackingHistory) {
     
     this.trackingHistory = trackingHistory;
     return this;
   }
 
-  public ListOrdersItem addTrackingHistoryItem(ListOrdersItemTrackingHistory trackingHistoryItem) {
+  public ListOrdersItem addTrackingHistoryItem(GetOrderResponseTrackingHistory trackingHistoryItem) {
     if (this.trackingHistory == null) {
-      this.trackingHistory = new ArrayList<ListOrdersItemTrackingHistory>();
+      this.trackingHistory = new ArrayList<GetOrderResponseTrackingHistory>();
     }
     this.trackingHistory.add(trackingHistoryItem);
     return this;
   }
 
    /**
-   * Get trackingHistory
+   * Every carrier scan, newest first (migration 0243).  The two columns above are the CURRENT state, overwritten on each refresh. For a dispute that proves nothing: \&quot;delivered\&quot; with no date, no location and no chain of scans is a claim, not evidence. Shippo returns the full history on every track call; it used to be discarded.
    * @return trackingHistory
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "Every carrier scan, newest first (migration 0243).  The two columns above are the CURRENT state, overwritten on each refresh. For a dispute that proves nothing: \"delivered\" with no date, no location and no chain of scans is a claim, not evidence. Shippo returns the full history on every track call; it used to be discarded.")
 
-  public List<ListOrdersItemTrackingHistory> getTrackingHistory() {
+  public List<GetOrderResponseTrackingHistory> getTrackingHistory() {
     return trackingHistory;
   }
 
 
-  public void setTrackingHistory(List<ListOrdersItemTrackingHistory> trackingHistory) {
+  public void setTrackingHistory(List<GetOrderResponseTrackingHistory> trackingHistory) {
     this.trackingHistory = trackingHistory;
   }
 
@@ -1159,11 +1472,11 @@ public class ListOrdersItem {
   }
 
    /**
-   * Get deliveryLocation
+   * Where the carrier says it was left, when they say.
    * @return deliveryLocation
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "Where the carrier says it was left, when they say.")
 
   public String getDeliveryLocation() {
     return deliveryLocation;
@@ -1182,11 +1495,11 @@ public class ListOrdersItem {
   }
 
    /**
-   * Get deliverySignature
+   * Signature name, where the service captured one. Most residential deliveries have none — absence is not evidence of non-delivery.
    * @return deliverySignature
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "Signature name, where the service captured one. Most residential deliveries have none — absence is not evidence of non-delivery.")
 
   public String getDeliverySignature() {
     return deliverySignature;
@@ -1336,6 +1649,29 @@ public class ListOrdersItem {
   }
 
 
+  public ListOrdersItem handlingTimeDays(BigDecimal handlingTimeDays) {
+    
+    this.handlingTimeDays = handlingTimeDays;
+    return this;
+  }
+
+   /**
+   * Get handlingTimeDays
+   * @return handlingTimeDays
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public BigDecimal getHandlingTimeDays() {
+    return handlingTimeDays;
+  }
+
+
+  public void setHandlingTimeDays(BigDecimal handlingTimeDays) {
+    this.handlingTimeDays = handlingTimeDays;
+  }
+
+
   public ListOrdersItem shipByAt(OffsetDateTime shipByAt) {
     
     this.shipByAt = shipByAt;
@@ -1389,11 +1725,11 @@ public class ListOrdersItem {
   }
 
    /**
-   * Get oversoldBy
+   * Units this order could NOT be covered from stock — an oversell (0 &#x3D; normal). Set at detection by recordSale&#39;s shortfall; the seller must cancel or refund. See migration 0156.
    * @return oversoldBy
   **/
   @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "")
+  @ApiModelProperty(required = true, value = "Units this order could NOT be covered from stock — an oversell (0 = normal). Set at detection by recordSale's shortfall; the seller must cancel or refund. See migration 0156.")
 
   public BigDecimal getOversoldBy() {
     return oversoldBy;
@@ -1412,11 +1748,11 @@ public class ListOrdersItem {
   }
 
    /**
-   * Get lastStatusCheckAt
+   * Last time this order&#39;s status was reconciled against the platform. NULL &#x3D; never. Drives the targeted sweeper for orders that fall off page 1 of the sold-list walk. See migration 0157.
    * @return lastStatusCheckAt
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "Last time this order's status was reconciled against the platform. NULL = never. Drives the targeted sweeper for orders that fall off page 1 of the sold-list walk. See migration 0157.")
 
   public OffsetDateTime getLastStatusCheckAt() {
     return lastStatusCheckAt;
@@ -1435,11 +1771,11 @@ public class ListOrdersItem {
   }
 
    /**
-   * Get lastChatCheckAt
+   * Last time this order&#39;s platform CHAT thread was pulled. NULL &#x3D; never. Separate from lastStatusCheckAt because the cadences differ by an order of magnitude — a buyer question needs answering in minutes, a status reconcile can wait an hour. See migration 0158.
    * @return lastChatCheckAt
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "Last time this order's platform CHAT thread was pulled. NULL = never. Separate from lastStatusCheckAt because the cadences differ by an order of magnitude — a buyer question needs answering in minutes, a status reconcile can wait an hour. See migration 0158.")
 
   public OffsetDateTime getLastChatCheckAt() {
     return lastChatCheckAt;
@@ -1635,6 +1971,29 @@ public class ListOrdersItem {
   }
 
 
+  public ListOrdersItem cancelledAt(OffsetDateTime cancelledAt) {
+    
+    this.cancelledAt = cancelledAt;
+    return this;
+  }
+
+   /**
+   * Get cancelledAt
+   * @return cancelledAt
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public OffsetDateTime getCancelledAt() {
+    return cancelledAt;
+  }
+
+
+  public void setCancelledAt(OffsetDateTime cancelledAt) {
+    this.cancelledAt = cancelledAt;
+  }
+
+
   public ListOrdersItem cancellationReason(String cancellationReason) {
     
     this.cancellationReason = cancellationReason;
@@ -1658,6 +2017,29 @@ public class ListOrdersItem {
   }
 
 
+  public ListOrdersItem notes(String notes) {
+    
+    this.notes = notes;
+    return this;
+  }
+
+   /**
+   * Get notes
+   * @return notes
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public String getNotes() {
+    return notes;
+  }
+
+
+  public void setNotes(String notes) {
+    this.notes = notes;
+  }
+
+
   public ListOrdersItem arrivalConditionRequestedAt(OffsetDateTime arrivalConditionRequestedAt) {
     
     this.arrivalConditionRequestedAt = arrivalConditionRequestedAt;
@@ -1665,11 +2047,11 @@ public class ListOrdersItem {
   }
 
    /**
-   * Get arrivalConditionRequestedAt
+   * The arrival-condition ask, recorded on the ORDER rather than read off the seller&#39;s toggle at review time. The seller can flip that toggle later; what a reviewer needs is what was asked of THIS buyer on THIS delivery — including that they were asked and declined.
    * @return arrivalConditionRequestedAt
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "The arrival-condition ask, recorded on the ORDER rather than read off the seller's toggle at review time. The seller can flip that toggle later; what a reviewer needs is what was asked of THIS buyer on THIS delivery — including that they were asked and declined.")
 
   public OffsetDateTime getArrivalConditionRequestedAt() {
     return arrivalConditionRequestedAt;
@@ -1734,11 +2116,11 @@ public class ListOrdersItem {
   }
 
    /**
-   * Get deliveryPhotoUrl
+   * The courier&#39;s proof-of-delivery photo, when one can be obtained. Third-party provenance, which makes it the strongest seal frame we can get — see services/evidence/delivery-photo.ts.
    * @return deliveryPhotoUrl
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "The courier's proof-of-delivery photo, when one can be obtained. Third-party provenance, which makes it the strongest seal frame we can get — see services/evidence/delivery-photo.ts.")
 
   public String getDeliveryPhotoUrl() {
     return deliveryPhotoUrl;
@@ -1750,6 +2132,29 @@ public class ListOrdersItem {
   }
 
 
+  public ListOrdersItem deliveryPhotoSource(String deliveryPhotoSource) {
+    
+    this.deliveryPhotoSource = deliveryPhotoSource;
+    return this;
+  }
+
+   /**
+   * Where it came from: &#39;carrier_api:ups&#39; | &#39;trackified&#39; | &#39;platform:&lt;p&gt;&#39; | &#39;pasted&#39; | &#39;uploaded&#39; (shared delivery-photo-source.ts).
+   * @return deliveryPhotoSource
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "Where it came from: 'carrier_api:ups' | 'trackified' | 'platform:<p>' | 'pasted' | 'uploaded' (shared delivery-photo-source.ts).")
+
+  public String getDeliveryPhotoSource() {
+    return deliveryPhotoSource;
+  }
+
+
+  public void setDeliveryPhotoSource(String deliveryPhotoSource) {
+    this.deliveryPhotoSource = deliveryPhotoSource;
+  }
+
+
   public ListOrdersItem purchaseOrderRef(String purchaseOrderRef) {
     
     this.purchaseOrderRef = purchaseOrderRef;
@@ -1757,11 +2162,11 @@ public class ListOrdersItem {
   }
 
    /**
-   * Get purchaseOrderRef
+   * The buyer&#39;s OWN purchase-order reference.  A trade buyer&#39;s accounts department reconciles on their number, not ours. An order without it is one somebody has to chase by hand, which is the difference between getting paid on day 30 and day 75.
    * @return purchaseOrderRef
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "The buyer's OWN purchase-order reference.  A trade buyer's accounts department reconciles on their number, not ours. An order without it is one somebody has to chase by hand, which is the difference between getting paid on day 30 and day 75.")
 
   public String getPurchaseOrderRef() {
     return purchaseOrderRef;
@@ -1785,11 +2190,11 @@ public class ListOrdersItem {
   }
 
    /**
-   * Get arrivalConditionPhotos
+   * Buyer&#39;s arrival photos. Always read as a set, for one delivery.
    * @return arrivalConditionPhotos
   **/
   @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "")
+  @ApiModelProperty(required = true, value = "Buyer's arrival photos. Always read as a set, for one delivery.")
 
   public List<String> getArrivalConditionPhotos() {
     return arrivalConditionPhotos;
@@ -1831,11 +2236,11 @@ public class ListOrdersItem {
   }
 
    /**
-   * Get fulfillmentMethod
+   * &#x60;&#39;ship&#39;&#x60; | &#x60;&#39;pickup&#39;&#x60; | &#x60;&#39;mixed&#39;&#x60; — a DERIVED summary of this order&#39;s lines, for reads that only need the headline.  The authority is &#x60;crossly_order_items.fulfillment_method&#x60;: a buyer can collect part of one seller&#39;s order and have the rest posted, so the order-level value is &#39;mixed&#39; whenever its lines disagree. Anything that acts on the difference — buying a label, packing a parcel — must read the lines, not this (migrations 0219, 0220).
    * @return fulfillmentMethod
   **/
   @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "")
+  @ApiModelProperty(required = true, value = "`'ship'` | `'pickup'` | `'mixed'` — a DERIVED summary of this order's lines, for reads that only need the headline.  The authority is `crossly_order_items.fulfillment_method`: a buyer can collect part of one seller's order and have the rest posted, so the order-level value is 'mixed' whenever its lines disagree. Anything that acts on the difference — buying a label, packing a parcel — must read the lines, not this (migrations 0219, 0220).")
 
   public String getFulfillmentMethod() {
     return fulfillmentMethod;
@@ -1847,6 +2252,98 @@ public class ListOrdersItem {
   }
 
 
+  public ListOrdersItem source(String source) {
+    
+    this.source = source;
+    return this;
+  }
+
+   /**
+   * 1074 — &#39;email&#39; &#x3D; the sale was found by the email monitor, not reported by the platform: the order is incomplete (no buyer address, label or confirmed fees) until the platform reports it. NULL &#x3D; platform-reported.
+   * @return source
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "1074 — 'email' = the sale was found by the email monitor, not reported by the platform: the order is incomplete (no buyer address, label or confirmed fees) until the platform reports it. NULL = platform-reported.")
+
+  public String getSource() {
+    return source;
+  }
+
+
+  public void setSource(String source) {
+    this.source = source;
+  }
+
+
+  public ListOrdersItem platformConfirmedAt(OffsetDateTime platformConfirmedAt) {
+    
+    this.platformConfirmedAt = platformConfirmedAt;
+    return this;
+  }
+
+   /**
+   * 1074 — when the platform itself reported this email-found order (same order id). Clears the banner.
+   * @return platformConfirmedAt
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "1074 — when the platform itself reported this email-found order (same order id). Clears the banner.")
+
+  public OffsetDateTime getPlatformConfirmedAt() {
+    return platformConfirmedAt;
+  }
+
+
+  public void setPlatformConfirmedAt(OffsetDateTime platformConfirmedAt) {
+    this.platformConfirmedAt = platformConfirmedAt;
+  }
+
+
+  public ListOrdersItem createdAt(OffsetDateTime createdAt) {
+    
+    this.createdAt = createdAt;
+    return this;
+  }
+
+   /**
+   * Get createdAt
+   * @return createdAt
+  **/
+  @javax.annotation.Nonnull
+  @ApiModelProperty(required = true, value = "")
+
+  public OffsetDateTime getCreatedAt() {
+    return createdAt;
+  }
+
+
+  public void setCreatedAt(OffsetDateTime createdAt) {
+    this.createdAt = createdAt;
+  }
+
+
+  public ListOrdersItem updatedAt(OffsetDateTime updatedAt) {
+    
+    this.updatedAt = updatedAt;
+    return this;
+  }
+
+   /**
+   * Get updatedAt
+   * @return updatedAt
+  **/
+  @javax.annotation.Nonnull
+  @ApiModelProperty(required = true, value = "")
+
+  public OffsetDateTime getUpdatedAt() {
+    return updatedAt;
+  }
+
+
+  public void setUpdatedAt(OffsetDateTime updatedAt) {
+    this.updatedAt = updatedAt;
+  }
+
+
   public ListOrdersItem deletedAt(OffsetDateTime deletedAt) {
     
     this.deletedAt = deletedAt;
@@ -1854,11 +2351,11 @@ public class ListOrdersItem {
   }
 
    /**
-   * Get deletedAt
+   * Soft-delete tombstone for bulk-delete on /orders. UI list + count queries filter WHERE deleted_at IS NULL.
    * @return deletedAt
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "Soft-delete tombstone for bulk-delete on /orders. UI list + count queries filter WHERE deleted_at IS NULL.")
 
   public OffsetDateTime getDeletedAt() {
     return deletedAt;
@@ -1879,27 +2376,37 @@ public class ListOrdersItem {
       return false;
     }
     ListOrdersItem listOrdersItem = (ListOrdersItem) o;
-    return Objects.equals(this.id, listOrdersItem.id) &&
-        Objects.equals(this.createdAt, listOrdersItem.createdAt) &&
-        Objects.equals(this.updatedAt, listOrdersItem.updatedAt) &&
-        Objects.equals(this.userId, listOrdersItem.userId) &&
+    return Objects.equals(this.appShare, listOrdersItem.appShare) &&
+        Objects.equals(this.trade, listOrdersItem.trade) &&
+        Objects.equals(this.salePrice, listOrdersItem.salePrice) &&
+        Objects.equals(this.platformFee, listOrdersItem.platformFee) &&
+        Objects.equals(this.taxCollected, listOrdersItem.taxCollected) &&
+        Objects.equals(this.shippingCharged, listOrdersItem.shippingCharged) &&
+        Objects.equals(this.feeSource, listOrdersItem.feeSource) &&
+        Objects.equals(this.detailsPending, listOrdersItem.detailsPending) &&
+        Objects.equals(this.sku, listOrdersItem.sku) &&
         Objects.equals(this.quantity, listOrdersItem.quantity) &&
-        Objects.equals(this.notes, listOrdersItem.notes) &&
-        Objects.equals(this.status, listOrdersItem.status) &&
-        Objects.equals(this.platform, listOrdersItem.platform) &&
-        Objects.equals(this.cancelledAt, listOrdersItem.cancelledAt) &&
-        Objects.equals(this.listingId, listOrdersItem.listingId) &&
+        Objects.equals(this.lineItems, listOrdersItem.lineItems) &&
+        Objects.equals(this.id, listOrdersItem.id) &&
+        Objects.equals(this.userId, listOrdersItem.userId) &&
         Objects.equals(this.inventoryItemId, listOrdersItem.inventoryItemId) &&
+        Objects.equals(this.listingId, listOrdersItem.listingId) &&
         Objects.equals(this.platformListingId, listOrdersItem.platformListingId) &&
-        Objects.equals(this.handlingTimeDays, listOrdersItem.handlingTimeDays) &&
+        Objects.equals(this.platform, listOrdersItem.platform) &&
         Objects.equals(this.platformOrderId, listOrdersItem.platformOrderId) &&
+        Objects.equals(this.reportedByAppId, listOrdersItem.reportedByAppId) &&
+        Objects.equals(this.storefrontId, listOrdersItem.storefrontId) &&
         Objects.equals(this.buyerUsername, listOrdersItem.buyerUsername) &&
         Objects.equals(this.pickupPoint, listOrdersItem.pickupPoint) &&
         Objects.equals(this.consolidationId, listOrdersItem.consolidationId) &&
         Objects.equals(this.dutiesCents, listOrdersItem.dutiesCents) &&
         Objects.equals(this.dutiesRefundedAt, listOrdersItem.dutiesRefundedAt) &&
+        Objects.equals(this.status, listOrdersItem.status) &&
         Objects.equals(this.salesChannel, listOrdersItem.salesChannel) &&
         Objects.equals(this.channelLocationId, listOrdersItem.channelLocationId) &&
+        Objects.equals(this.channel, listOrdersItem.channel) &&
+        Objects.equals(this.invoiceId, listOrdersItem.invoiceId) &&
+        Objects.equals(this.buyerCompanyId, listOrdersItem.buyerCompanyId) &&
         Objects.equals(this.packagePresetId, listOrdersItem.packagePresetId) &&
         Objects.equals(this.carrier, listOrdersItem.carrier) &&
         Objects.equals(this.service, listOrdersItem.service) &&
@@ -1923,6 +2430,7 @@ public class ListOrdersItem {
         Objects.equals(this.costOfGoods, listOrdersItem.costOfGoods) &&
         Objects.equals(this.requestedCarrier, listOrdersItem.requestedCarrier) &&
         Objects.equals(this.requestedService, listOrdersItem.requestedService) &&
+        Objects.equals(this.handlingTimeDays, listOrdersItem.handlingTimeDays) &&
         Objects.equals(this.shipByAt, listOrdersItem.shipByAt) &&
         Objects.equals(this.shipByAlertedAt, listOrdersItem.shipByAlertedAt) &&
         Objects.equals(this.oversoldBy, listOrdersItem.oversoldBy) &&
@@ -1936,15 +2444,22 @@ public class ListOrdersItem {
         Objects.equals(this.refundReason, listOrdersItem.refundReason) &&
         Objects.equals(this.refundPlatformId, listOrdersItem.refundPlatformId) &&
         Objects.equals(this.refundedAt, listOrdersItem.refundedAt) &&
+        Objects.equals(this.cancelledAt, listOrdersItem.cancelledAt) &&
         Objects.equals(this.cancellationReason, listOrdersItem.cancellationReason) &&
+        Objects.equals(this.notes, listOrdersItem.notes) &&
         Objects.equals(this.arrivalConditionRequestedAt, listOrdersItem.arrivalConditionRequestedAt) &&
         Objects.equals(this.arrivalConditionSubmittedAt, listOrdersItem.arrivalConditionSubmittedAt) &&
         Objects.equals(this.arrivalConditionDeclinedAt, listOrdersItem.arrivalConditionDeclinedAt) &&
         Objects.equals(this.deliveryPhotoUrl, listOrdersItem.deliveryPhotoUrl) &&
+        Objects.equals(this.deliveryPhotoSource, listOrdersItem.deliveryPhotoSource) &&
         Objects.equals(this.purchaseOrderRef, listOrdersItem.purchaseOrderRef) &&
         Objects.equals(this.arrivalConditionPhotos, listOrdersItem.arrivalConditionPhotos) &&
         Objects.equals(this.buyerEmail, listOrdersItem.buyerEmail) &&
         Objects.equals(this.fulfillmentMethod, listOrdersItem.fulfillmentMethod) &&
+        Objects.equals(this.source, listOrdersItem.source) &&
+        Objects.equals(this.platformConfirmedAt, listOrdersItem.platformConfirmedAt) &&
+        Objects.equals(this.createdAt, listOrdersItem.createdAt) &&
+        Objects.equals(this.updatedAt, listOrdersItem.updatedAt) &&
         Objects.equals(this.deletedAt, listOrdersItem.deletedAt);
   }
 
@@ -1954,7 +2469,7 @@ public class ListOrdersItem {
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, createdAt, updatedAt, userId, quantity, notes, status, platform, cancelledAt, listingId, inventoryItemId, platformListingId, handlingTimeDays, platformOrderId, buyerUsername, pickupPoint, consolidationId, dutiesCents, dutiesRefundedAt, salesChannel, channelLocationId, packagePresetId, carrier, service, trackingNumber, easypostShipmentId, easypostTrackerId, easypostRateId, shippingLabelUrl, labelPurchasedAt, shippedAt, estimatedDelivery, deliveredAt, carrierStatus, carrierStatusDetail, trackingHistory, deliveryLocation, deliverySignature, trackingSubmittedAt, trackingSubmitStatus, labelCost, costOfGoods, requestedCarrier, requestedService, shipByAt, shipByAlertedAt, oversoldBy, lastStatusCheckAt, lastChatCheckAt, isDisputed, disputeReason, disputePlatformCaseId, disputeResolvedAt, refundAmount, refundReason, refundPlatformId, refundedAt, cancellationReason, arrivalConditionRequestedAt, arrivalConditionSubmittedAt, arrivalConditionDeclinedAt, deliveryPhotoUrl, purchaseOrderRef, arrivalConditionPhotos, buyerEmail, fulfillmentMethod, deletedAt);
+    return Objects.hash(appShare, trade, salePrice, platformFee, taxCollected, shippingCharged, feeSource, detailsPending, sku, quantity, lineItems, id, userId, inventoryItemId, listingId, platformListingId, platform, platformOrderId, reportedByAppId, storefrontId, buyerUsername, pickupPoint, consolidationId, dutiesCents, dutiesRefundedAt, status, salesChannel, channelLocationId, channel, invoiceId, buyerCompanyId, packagePresetId, carrier, service, trackingNumber, easypostShipmentId, easypostTrackerId, easypostRateId, shippingLabelUrl, labelPurchasedAt, shippedAt, estimatedDelivery, deliveredAt, carrierStatus, carrierStatusDetail, trackingHistory, deliveryLocation, deliverySignature, trackingSubmittedAt, trackingSubmitStatus, labelCost, costOfGoods, requestedCarrier, requestedService, handlingTimeDays, shipByAt, shipByAlertedAt, oversoldBy, lastStatusCheckAt, lastChatCheckAt, isDisputed, disputeReason, disputePlatformCaseId, disputeResolvedAt, refundAmount, refundReason, refundPlatformId, refundedAt, cancelledAt, cancellationReason, notes, arrivalConditionRequestedAt, arrivalConditionSubmittedAt, arrivalConditionDeclinedAt, deliveryPhotoUrl, deliveryPhotoSource, purchaseOrderRef, arrivalConditionPhotos, buyerEmail, fulfillmentMethod, source, platformConfirmedAt, createdAt, updatedAt, deletedAt);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -1968,27 +2483,37 @@ public class ListOrdersItem {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class ListOrdersItem {\n");
-    sb.append("    id: ").append(toIndentedString(id)).append("\n");
-    sb.append("    createdAt: ").append(toIndentedString(createdAt)).append("\n");
-    sb.append("    updatedAt: ").append(toIndentedString(updatedAt)).append("\n");
-    sb.append("    userId: ").append(toIndentedString(userId)).append("\n");
+    sb.append("    appShare: ").append(toIndentedString(appShare)).append("\n");
+    sb.append("    trade: ").append(toIndentedString(trade)).append("\n");
+    sb.append("    salePrice: ").append(toIndentedString(salePrice)).append("\n");
+    sb.append("    platformFee: ").append(toIndentedString(platformFee)).append("\n");
+    sb.append("    taxCollected: ").append(toIndentedString(taxCollected)).append("\n");
+    sb.append("    shippingCharged: ").append(toIndentedString(shippingCharged)).append("\n");
+    sb.append("    feeSource: ").append(toIndentedString(feeSource)).append("\n");
+    sb.append("    detailsPending: ").append(toIndentedString(detailsPending)).append("\n");
+    sb.append("    sku: ").append(toIndentedString(sku)).append("\n");
     sb.append("    quantity: ").append(toIndentedString(quantity)).append("\n");
-    sb.append("    notes: ").append(toIndentedString(notes)).append("\n");
-    sb.append("    status: ").append(toIndentedString(status)).append("\n");
-    sb.append("    platform: ").append(toIndentedString(platform)).append("\n");
-    sb.append("    cancelledAt: ").append(toIndentedString(cancelledAt)).append("\n");
-    sb.append("    listingId: ").append(toIndentedString(listingId)).append("\n");
+    sb.append("    lineItems: ").append(toIndentedString(lineItems)).append("\n");
+    sb.append("    id: ").append(toIndentedString(id)).append("\n");
+    sb.append("    userId: ").append(toIndentedString(userId)).append("\n");
     sb.append("    inventoryItemId: ").append(toIndentedString(inventoryItemId)).append("\n");
+    sb.append("    listingId: ").append(toIndentedString(listingId)).append("\n");
     sb.append("    platformListingId: ").append(toIndentedString(platformListingId)).append("\n");
-    sb.append("    handlingTimeDays: ").append(toIndentedString(handlingTimeDays)).append("\n");
+    sb.append("    platform: ").append(toIndentedString(platform)).append("\n");
     sb.append("    platformOrderId: ").append(toIndentedString(platformOrderId)).append("\n");
+    sb.append("    reportedByAppId: ").append(toIndentedString(reportedByAppId)).append("\n");
+    sb.append("    storefrontId: ").append(toIndentedString(storefrontId)).append("\n");
     sb.append("    buyerUsername: ").append(toIndentedString(buyerUsername)).append("\n");
     sb.append("    pickupPoint: ").append(toIndentedString(pickupPoint)).append("\n");
     sb.append("    consolidationId: ").append(toIndentedString(consolidationId)).append("\n");
     sb.append("    dutiesCents: ").append(toIndentedString(dutiesCents)).append("\n");
     sb.append("    dutiesRefundedAt: ").append(toIndentedString(dutiesRefundedAt)).append("\n");
+    sb.append("    status: ").append(toIndentedString(status)).append("\n");
     sb.append("    salesChannel: ").append(toIndentedString(salesChannel)).append("\n");
     sb.append("    channelLocationId: ").append(toIndentedString(channelLocationId)).append("\n");
+    sb.append("    channel: ").append(toIndentedString(channel)).append("\n");
+    sb.append("    invoiceId: ").append(toIndentedString(invoiceId)).append("\n");
+    sb.append("    buyerCompanyId: ").append(toIndentedString(buyerCompanyId)).append("\n");
     sb.append("    packagePresetId: ").append(toIndentedString(packagePresetId)).append("\n");
     sb.append("    carrier: ").append(toIndentedString(carrier)).append("\n");
     sb.append("    service: ").append(toIndentedString(service)).append("\n");
@@ -2012,6 +2537,7 @@ public class ListOrdersItem {
     sb.append("    costOfGoods: ").append(toIndentedString(costOfGoods)).append("\n");
     sb.append("    requestedCarrier: ").append(toIndentedString(requestedCarrier)).append("\n");
     sb.append("    requestedService: ").append(toIndentedString(requestedService)).append("\n");
+    sb.append("    handlingTimeDays: ").append(toIndentedString(handlingTimeDays)).append("\n");
     sb.append("    shipByAt: ").append(toIndentedString(shipByAt)).append("\n");
     sb.append("    shipByAlertedAt: ").append(toIndentedString(shipByAlertedAt)).append("\n");
     sb.append("    oversoldBy: ").append(toIndentedString(oversoldBy)).append("\n");
@@ -2025,15 +2551,22 @@ public class ListOrdersItem {
     sb.append("    refundReason: ").append(toIndentedString(refundReason)).append("\n");
     sb.append("    refundPlatformId: ").append(toIndentedString(refundPlatformId)).append("\n");
     sb.append("    refundedAt: ").append(toIndentedString(refundedAt)).append("\n");
+    sb.append("    cancelledAt: ").append(toIndentedString(cancelledAt)).append("\n");
     sb.append("    cancellationReason: ").append(toIndentedString(cancellationReason)).append("\n");
+    sb.append("    notes: ").append(toIndentedString(notes)).append("\n");
     sb.append("    arrivalConditionRequestedAt: ").append(toIndentedString(arrivalConditionRequestedAt)).append("\n");
     sb.append("    arrivalConditionSubmittedAt: ").append(toIndentedString(arrivalConditionSubmittedAt)).append("\n");
     sb.append("    arrivalConditionDeclinedAt: ").append(toIndentedString(arrivalConditionDeclinedAt)).append("\n");
     sb.append("    deliveryPhotoUrl: ").append(toIndentedString(deliveryPhotoUrl)).append("\n");
+    sb.append("    deliveryPhotoSource: ").append(toIndentedString(deliveryPhotoSource)).append("\n");
     sb.append("    purchaseOrderRef: ").append(toIndentedString(purchaseOrderRef)).append("\n");
     sb.append("    arrivalConditionPhotos: ").append(toIndentedString(arrivalConditionPhotos)).append("\n");
     sb.append("    buyerEmail: ").append(toIndentedString(buyerEmail)).append("\n");
     sb.append("    fulfillmentMethod: ").append(toIndentedString(fulfillmentMethod)).append("\n");
+    sb.append("    source: ").append(toIndentedString(source)).append("\n");
+    sb.append("    platformConfirmedAt: ").append(toIndentedString(platformConfirmedAt)).append("\n");
+    sb.append("    createdAt: ").append(toIndentedString(createdAt)).append("\n");
+    sb.append("    updatedAt: ").append(toIndentedString(updatedAt)).append("\n");
     sb.append("    deletedAt: ").append(toIndentedString(deletedAt)).append("\n");
     sb.append("}");
     return sb.toString();

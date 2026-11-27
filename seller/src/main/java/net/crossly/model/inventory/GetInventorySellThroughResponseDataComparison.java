@@ -24,16 +24,21 @@ import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 import java.math.BigDecimal;
+import net.crossly.model.analytic.GetAnalyticOverviewResponseDataKpisNetSalesDelta;
 import org.openapitools.jackson.nullable.JsonNullable;
 
 /**
  * GetInventorySellThroughResponseDataComparison
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-11T23:44:48.922Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-27T19:42:43.186Z[Etc/UTC]")
 public class GetInventorySellThroughResponseDataComparison {
   public static final String SERIALIZED_NAME_PCT_CHANGE = "pctChange";
   @SerializedName(SERIALIZED_NAME_PCT_CHANGE)
-  private BigDecimal pctChange;
+  private Object pctChange = null;
+
+  public static final String SERIALIZED_NAME_PP = "pp";
+  @SerializedName(SERIALIZED_NAME_PP)
+  private BigDecimal pp;
 
   public static final String SERIALIZED_NAME_COMPARABLE = "comparable";
   @SerializedName(SERIALIZED_NAME_COMPARABLE)
@@ -43,29 +48,56 @@ public class GetInventorySellThroughResponseDataComparison {
   @SerializedName(SERIALIZED_NAME_REASON)
   private String reason;
 
+  public static final String SERIALIZED_NAME_DELTA = "delta";
+  @SerializedName(SERIALIZED_NAME_DELTA)
+  private GetAnalyticOverviewResponseDataKpisNetSalesDelta delta;
+
   public GetInventorySellThroughResponseDataComparison() { 
   }
 
-  public GetInventorySellThroughResponseDataComparison pctChange(BigDecimal pctChange) {
+  public GetInventorySellThroughResponseDataComparison pctChange(Object pctChange) {
     
     this.pctChange = pctChange;
     return this;
   }
 
    /**
-   * Get pctChange
+   * Always null: a relative change of a rate is not reported. Read &#x60;pp&#x60;.
    * @return pctChange
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(required = true, value = "Always null: a relative change of a rate is not reported. Read `pp`.")
 
-  public BigDecimal getPctChange() {
+  public Object getPctChange() {
     return pctChange;
   }
 
 
-  public void setPctChange(BigDecimal pctChange) {
+  public void setPctChange(Object pctChange) {
     this.pctChange = pctChange;
+  }
+
+
+  public GetInventorySellThroughResponseDataComparison pp(BigDecimal pp) {
+    
+    this.pp = pp;
+    return this;
+  }
+
+   /**
+   * Percentage points, null when not comparable.
+   * @return pp
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "Percentage points, null when not comparable.")
+
+  public BigDecimal getPp() {
+    return pp;
+  }
+
+
+  public void setPp(BigDecimal pp) {
+    this.pp = pp;
   }
 
 
@@ -115,6 +147,29 @@ public class GetInventorySellThroughResponseDataComparison {
   }
 
 
+  public GetInventorySellThroughResponseDataComparison delta(GetAnalyticOverviewResponseDataKpisNetSalesDelta delta) {
+    
+    this.delta = delta;
+    return this;
+  }
+
+   /**
+   * Get delta
+   * @return delta
+  **/
+  @javax.annotation.Nonnull
+  @ApiModelProperty(required = true, value = "")
+
+  public GetAnalyticOverviewResponseDataKpisNetSalesDelta getDelta() {
+    return delta;
+  }
+
+
+  public void setDelta(GetAnalyticOverviewResponseDataKpisNetSalesDelta delta) {
+    this.delta = delta;
+  }
+
+
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -125,8 +180,10 @@ public class GetInventorySellThroughResponseDataComparison {
     }
     GetInventorySellThroughResponseDataComparison getInventorySellThroughResponseDataComparison = (GetInventorySellThroughResponseDataComparison) o;
     return Objects.equals(this.pctChange, getInventorySellThroughResponseDataComparison.pctChange) &&
+        Objects.equals(this.pp, getInventorySellThroughResponseDataComparison.pp) &&
         Objects.equals(this.comparable, getInventorySellThroughResponseDataComparison.comparable) &&
-        Objects.equals(this.reason, getInventorySellThroughResponseDataComparison.reason);
+        Objects.equals(this.reason, getInventorySellThroughResponseDataComparison.reason) &&
+        Objects.equals(this.delta, getInventorySellThroughResponseDataComparison.delta);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -135,7 +192,7 @@ public class GetInventorySellThroughResponseDataComparison {
 
   @Override
   public int hashCode() {
-    return Objects.hash(pctChange, comparable, reason);
+    return Objects.hash(pctChange, pp, comparable, reason, delta);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -150,8 +207,10 @@ public class GetInventorySellThroughResponseDataComparison {
     StringBuilder sb = new StringBuilder();
     sb.append("class GetInventorySellThroughResponseDataComparison {\n");
     sb.append("    pctChange: ").append(toIndentedString(pctChange)).append("\n");
+    sb.append("    pp: ").append(toIndentedString(pp)).append("\n");
     sb.append("    comparable: ").append(toIndentedString(comparable)).append("\n");
     sb.append("    reason: ").append(toIndentedString(reason)).append("\n");
+    sb.append("    delta: ").append(toIndentedString(delta)).append("\n");
     sb.append("}");
     return sb.toString();
   }

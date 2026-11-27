@@ -30,11 +30,27 @@ import org.threeten.bp.OffsetDateTime;
 /**
  * GetAnalyticItemResponseItems
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-11T23:44:48.922Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-27T19:42:43.186Z[Etc/UTC]")
 public class GetAnalyticItemResponseItems {
   public static final String SERIALIZED_NAME_SALE_ID = "saleId";
   @SerializedName(SERIALIZED_NAME_SALE_ID)
   private String saleId;
+
+  public static final String SERIALIZED_NAME_INVENTORY_ITEM_ID = "inventoryItemId";
+  @SerializedName(SERIALIZED_NAME_INVENTORY_ITEM_ID)
+  private String inventoryItemId;
+
+  public static final String SERIALIZED_NAME_LISTING_ID = "listingId";
+  @SerializedName(SERIALIZED_NAME_LISTING_ID)
+  private String listingId;
+
+  public static final String SERIALIZED_NAME_PLATFORM_LISTING_ID = "platformListingId";
+  @SerializedName(SERIALIZED_NAME_PLATFORM_LISTING_ID)
+  private String platformListingId;
+
+  public static final String SERIALIZED_NAME_IMAGE_URL = "imageUrl";
+  @SerializedName(SERIALIZED_NAME_IMAGE_URL)
+  private String imageUrl;
 
   public static final String SERIALIZED_NAME_PLATFORM = "platform";
   @SerializedName(SERIALIZED_NAME_PLATFORM)
@@ -55,6 +71,10 @@ public class GetAnalyticItemResponseItems {
   public static final String SERIALIZED_NAME_ITEM_SKU = "itemSku";
   @SerializedName(SERIALIZED_NAME_ITEM_SKU)
   private String itemSku;
+
+  public static final String SERIALIZED_NAME_DETAILS_PENDING = "detailsPending";
+  @SerializedName(SERIALIZED_NAME_DETAILS_PENDING)
+  private Boolean detailsPending;
 
   public static final String SERIALIZED_NAME_SALE_PRICE = "salePrice";
   @SerializedName(SERIALIZED_NAME_SALE_PRICE)
@@ -111,6 +131,98 @@ public class GetAnalyticItemResponseItems {
 
   public void setSaleId(String saleId) {
     this.saleId = saleId;
+  }
+
+
+  public GetAnalyticItemResponseItems inventoryItemId(String inventoryItemId) {
+    
+    this.inventoryItemId = inventoryItemId;
+    return this;
+  }
+
+   /**
+   * Get inventoryItemId
+   * @return inventoryItemId
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public String getInventoryItemId() {
+    return inventoryItemId;
+  }
+
+
+  public void setInventoryItemId(String inventoryItemId) {
+    this.inventoryItemId = inventoryItemId;
+  }
+
+
+  public GetAnalyticItemResponseItems listingId(String listingId) {
+    
+    this.listingId = listingId;
+    return this;
+  }
+
+   /**
+   * Get listingId
+   * @return listingId
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public String getListingId() {
+    return listingId;
+  }
+
+
+  public void setListingId(String listingId) {
+    this.listingId = listingId;
+  }
+
+
+  public GetAnalyticItemResponseItems platformListingId(String platformListingId) {
+    
+    this.platformListingId = platformListingId;
+    return this;
+  }
+
+   /**
+   * Get platformListingId
+   * @return platformListingId
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public String getPlatformListingId() {
+    return platformListingId;
+  }
+
+
+  public void setPlatformListingId(String platformListingId) {
+    this.platformListingId = platformListingId;
+  }
+
+
+  public GetAnalyticItemResponseItems imageUrl(String imageUrl) {
+    
+    this.imageUrl = imageUrl;
+    return this;
+  }
+
+   /**
+   * Get imageUrl
+   * @return imageUrl
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public String getImageUrl() {
+    return imageUrl;
+  }
+
+
+  public void setImageUrl(String imageUrl) {
+    this.imageUrl = imageUrl;
   }
 
 
@@ -226,6 +338,29 @@ public class GetAnalyticItemResponseItems {
 
   public void setItemSku(String itemSku) {
     this.itemSku = itemSku;
+  }
+
+
+  public GetAnalyticItemResponseItems detailsPending(Boolean detailsPending) {
+    
+    this.detailsPending = detailsPending;
+    return this;
+  }
+
+   /**
+   * Get detailsPending
+   * @return detailsPending
+  **/
+  @javax.annotation.Nonnull
+  @ApiModelProperty(required = true, value = "")
+
+  public Boolean getDetailsPending() {
+    return detailsPending;
+  }
+
+
+  public void setDetailsPending(Boolean detailsPending) {
+    this.detailsPending = detailsPending;
   }
 
 
@@ -354,8 +489,8 @@ public class GetAnalyticItemResponseItems {
    * Get marginPct
    * @return marginPct
   **/
-  @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "")
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
 
   public BigDecimal getMarginPct() {
     return marginPct;
@@ -423,11 +558,16 @@ public class GetAnalyticItemResponseItems {
     }
     GetAnalyticItemResponseItems getAnalyticItemResponseItems = (GetAnalyticItemResponseItems) o;
     return Objects.equals(this.saleId, getAnalyticItemResponseItems.saleId) &&
+        Objects.equals(this.inventoryItemId, getAnalyticItemResponseItems.inventoryItemId) &&
+        Objects.equals(this.listingId, getAnalyticItemResponseItems.listingId) &&
+        Objects.equals(this.platformListingId, getAnalyticItemResponseItems.platformListingId) &&
+        Objects.equals(this.imageUrl, getAnalyticItemResponseItems.imageUrl) &&
         Objects.equals(this.platform, getAnalyticItemResponseItems.platform) &&
         Objects.equals(this.platformOrderId, getAnalyticItemResponseItems.platformOrderId) &&
         Objects.equals(this.itemTitle, getAnalyticItemResponseItems.itemTitle) &&
         Objects.equals(this.itemBrand, getAnalyticItemResponseItems.itemBrand) &&
         Objects.equals(this.itemSku, getAnalyticItemResponseItems.itemSku) &&
+        Objects.equals(this.detailsPending, getAnalyticItemResponseItems.detailsPending) &&
         Objects.equals(this.salePrice, getAnalyticItemResponseItems.salePrice) &&
         Objects.equals(this.platformFee, getAnalyticItemResponseItems.platformFee) &&
         Objects.equals(this.shippingCost, getAnalyticItemResponseItems.shippingCost) &&
@@ -444,7 +584,7 @@ public class GetAnalyticItemResponseItems {
 
   @Override
   public int hashCode() {
-    return Objects.hash(saleId, platform, platformOrderId, itemTitle, itemBrand, itemSku, salePrice, platformFee, shippingCost, costOfGoods, netProfit, marginPct, daysToSell, detectedAt);
+    return Objects.hash(saleId, inventoryItemId, listingId, platformListingId, imageUrl, platform, platformOrderId, itemTitle, itemBrand, itemSku, detailsPending, salePrice, platformFee, shippingCost, costOfGoods, netProfit, marginPct, daysToSell, detectedAt);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -459,11 +599,16 @@ public class GetAnalyticItemResponseItems {
     StringBuilder sb = new StringBuilder();
     sb.append("class GetAnalyticItemResponseItems {\n");
     sb.append("    saleId: ").append(toIndentedString(saleId)).append("\n");
+    sb.append("    inventoryItemId: ").append(toIndentedString(inventoryItemId)).append("\n");
+    sb.append("    listingId: ").append(toIndentedString(listingId)).append("\n");
+    sb.append("    platformListingId: ").append(toIndentedString(platformListingId)).append("\n");
+    sb.append("    imageUrl: ").append(toIndentedString(imageUrl)).append("\n");
     sb.append("    platform: ").append(toIndentedString(platform)).append("\n");
     sb.append("    platformOrderId: ").append(toIndentedString(platformOrderId)).append("\n");
     sb.append("    itemTitle: ").append(toIndentedString(itemTitle)).append("\n");
     sb.append("    itemBrand: ").append(toIndentedString(itemBrand)).append("\n");
     sb.append("    itemSku: ").append(toIndentedString(itemSku)).append("\n");
+    sb.append("    detailsPending: ").append(toIndentedString(detailsPending)).append("\n");
     sb.append("    salePrice: ").append(toIndentedString(salePrice)).append("\n");
     sb.append("    platformFee: ").append(toIndentedString(platformFee)).append("\n");
     sb.append("    shippingCost: ").append(toIndentedString(shippingCost)).append("\n");

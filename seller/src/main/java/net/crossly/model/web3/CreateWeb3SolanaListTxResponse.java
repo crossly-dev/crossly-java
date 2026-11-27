@@ -30,7 +30,7 @@ import net.crossly.model.common.TxV0Object;
 /**
  * CreateWeb3SolanaListTxResponse
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-11T23:44:48.922Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-27T19:42:43.186Z[Etc/UTC]")
 public class CreateWeb3SolanaListTxResponse {
   public static final String SERIALIZED_NAME_TXS = "txs";
   @SerializedName(SERIALIZED_NAME_TXS)

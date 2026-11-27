@@ -32,20 +32,20 @@ import org.threeten.bp.OffsetDateTime;
 /**
  * GetOrderEvidenceResponseDataArrival
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-11T23:44:48.922Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-27T19:42:43.186Z[Etc/UTC]")
 public class GetOrderEvidenceResponseDataArrival {
   /**
    * Gets or Sets state
    */
   @JsonAdapter(StateEnum.Adapter.class)
   public enum StateEnum {
-    AWAITING("awaiting"),
+    DECLINED("declined"),
     
     SUBMITTED("submitted"),
     
-    DECLINED("declined"),
-    
     NOT_REQUESTED("not_requested"),
+    
+    AWAITING("awaiting"),
     
     WINDOW_CLOSED("window_closed");
 

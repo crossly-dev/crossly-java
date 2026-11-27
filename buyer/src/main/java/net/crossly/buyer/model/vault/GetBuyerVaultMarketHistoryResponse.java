@@ -27,11 +27,12 @@ import java.util.ArrayList;
 import java.util.List;
 import net.crossly.buyer.model.vault.GetBuyerVaultMarketHistoryResponseNow;
 import net.crossly.buyer.model.vault.GetBuyerVaultMarketHistoryResponseSeries;
+import net.crossly.buyer.model.vault.GetBuyerVaultMarketHistoryResponseToday;
 
 /**
  * GetBuyerVaultMarketHistoryResponse
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-11T23:47:29.843Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-27T19:58:46.962Z[Etc/UTC]")
 public class GetBuyerVaultMarketHistoryResponse {
   public static final String SERIALIZED_NAME_SERIES = "series";
   @SerializedName(SERIALIZED_NAME_SERIES)
@@ -40,6 +41,10 @@ public class GetBuyerVaultMarketHistoryResponse {
   public static final String SERIALIZED_NAME_NOW = "now";
   @SerializedName(SERIALIZED_NAME_NOW)
   private GetBuyerVaultMarketHistoryResponseNow now;
+
+  public static final String SERIALIZED_NAME_TODAY = "today";
+  @SerializedName(SERIALIZED_NAME_TODAY)
+  private GetBuyerVaultMarketHistoryResponseToday today;
 
   public GetBuyerVaultMarketHistoryResponse() { 
   }
@@ -95,6 +100,29 @@ public class GetBuyerVaultMarketHistoryResponse {
   }
 
 
+  public GetBuyerVaultMarketHistoryResponse today(GetBuyerVaultMarketHistoryResponseToday today) {
+    
+    this.today = today;
+    return this;
+  }
+
+   /**
+   * Get today
+   * @return today
+  **/
+  @javax.annotation.Nonnull
+  @ApiModelProperty(required = true, value = "")
+
+  public GetBuyerVaultMarketHistoryResponseToday getToday() {
+    return today;
+  }
+
+
+  public void setToday(GetBuyerVaultMarketHistoryResponseToday today) {
+    this.today = today;
+  }
+
+
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -105,12 +133,13 @@ public class GetBuyerVaultMarketHistoryResponse {
     }
     GetBuyerVaultMarketHistoryResponse getBuyerVaultMarketHistoryResponse = (GetBuyerVaultMarketHistoryResponse) o;
     return Objects.equals(this.series, getBuyerVaultMarketHistoryResponse.series) &&
-        Objects.equals(this.now, getBuyerVaultMarketHistoryResponse.now);
+        Objects.equals(this.now, getBuyerVaultMarketHistoryResponse.now) &&
+        Objects.equals(this.today, getBuyerVaultMarketHistoryResponse.today);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(series, now);
+    return Objects.hash(series, now, today);
   }
 
   @Override
@@ -119,6 +148,7 @@ public class GetBuyerVaultMarketHistoryResponse {
     sb.append("class GetBuyerVaultMarketHistoryResponse {\n");
     sb.append("    series: ").append(toIndentedString(series)).append("\n");
     sb.append("    now: ").append(toIndentedString(now)).append("\n");
+    sb.append("    today: ").append(toIndentedString(today)).append("\n");
     sb.append("}");
     return sb.toString();
   }

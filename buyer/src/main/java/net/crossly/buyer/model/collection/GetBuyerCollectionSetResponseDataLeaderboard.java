@@ -28,15 +28,15 @@ import java.math.BigDecimal;
 /**
  * GetBuyerCollectionSetResponseDataLeaderboard
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-11T23:47:29.843Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-27T19:58:46.962Z[Etc/UTC]")
 public class GetBuyerCollectionSetResponseDataLeaderboard {
-  public static final String SERIALIZED_NAME_NAME = "name";
-  @SerializedName(SERIALIZED_NAME_NAME)
-  private String name;
-
   public static final String SERIALIZED_NAME_RANK = "rank";
   @SerializedName(SERIALIZED_NAME_RANK)
   private BigDecimal rank;
+
+  public static final String SERIALIZED_NAME_NAME = "name";
+  @SerializedName(SERIALIZED_NAME_NAME)
+  private String name;
 
   public static final String SERIALIZED_NAME_OWNED = "owned";
   @SerializedName(SERIALIZED_NAME_OWNED)
@@ -44,29 +44,6 @@ public class GetBuyerCollectionSetResponseDataLeaderboard {
 
   public GetBuyerCollectionSetResponseDataLeaderboard() { 
   }
-
-  public GetBuyerCollectionSetResponseDataLeaderboard name(String name) {
-    
-    this.name = name;
-    return this;
-  }
-
-   /**
-   * Get name
-   * @return name
-  **/
-  @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "")
-
-  public String getName() {
-    return name;
-  }
-
-
-  public void setName(String name) {
-    this.name = name;
-  }
-
 
   public GetBuyerCollectionSetResponseDataLeaderboard rank(BigDecimal rank) {
     
@@ -88,6 +65,29 @@ public class GetBuyerCollectionSetResponseDataLeaderboard {
 
   public void setRank(BigDecimal rank) {
     this.rank = rank;
+  }
+
+
+  public GetBuyerCollectionSetResponseDataLeaderboard name(String name) {
+    
+    this.name = name;
+    return this;
+  }
+
+   /**
+   * Get name
+   * @return name
+  **/
+  @javax.annotation.Nonnull
+  @ApiModelProperty(required = true, value = "")
+
+  public String getName() {
+    return name;
+  }
+
+
+  public void setName(String name) {
+    this.name = name;
   }
 
 
@@ -123,22 +123,22 @@ public class GetBuyerCollectionSetResponseDataLeaderboard {
       return false;
     }
     GetBuyerCollectionSetResponseDataLeaderboard getBuyerCollectionSetResponseDataLeaderboard = (GetBuyerCollectionSetResponseDataLeaderboard) o;
-    return Objects.equals(this.name, getBuyerCollectionSetResponseDataLeaderboard.name) &&
-        Objects.equals(this.rank, getBuyerCollectionSetResponseDataLeaderboard.rank) &&
+    return Objects.equals(this.rank, getBuyerCollectionSetResponseDataLeaderboard.rank) &&
+        Objects.equals(this.name, getBuyerCollectionSetResponseDataLeaderboard.name) &&
         Objects.equals(this.owned, getBuyerCollectionSetResponseDataLeaderboard.owned);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(name, rank, owned);
+    return Objects.hash(rank, name, owned);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class GetBuyerCollectionSetResponseDataLeaderboard {\n");
-    sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    rank: ").append(toIndentedString(rank)).append("\n");
+    sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    owned: ").append(toIndentedString(owned)).append("\n");
     sb.append("}");
     return sb.toString();

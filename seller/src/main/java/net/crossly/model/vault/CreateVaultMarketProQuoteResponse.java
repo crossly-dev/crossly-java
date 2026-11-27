@@ -23,12 +23,12 @@ import com.google.gson.stream.JsonWriter;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
-import net.crossly.model.vault.CreateVaultMarketProQuoteResponseBid;
+import net.crossly.model.common.OrderIdError;
 
 /**
  * CreateVaultMarketProQuoteResponse
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-11T23:44:48.922Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-27T19:42:43.186Z[Etc/UTC]")
 public class CreateVaultMarketProQuoteResponse {
   public static final String SERIALIZED_NAME_BOOK_KEY = "bookKey";
   @SerializedName(SERIALIZED_NAME_BOOK_KEY)
@@ -36,11 +36,11 @@ public class CreateVaultMarketProQuoteResponse {
 
   public static final String SERIALIZED_NAME_BID = "bid";
   @SerializedName(SERIALIZED_NAME_BID)
-  private CreateVaultMarketProQuoteResponseBid bid;
+  private OrderIdError bid;
 
   public static final String SERIALIZED_NAME_ASK = "ask";
   @SerializedName(SERIALIZED_NAME_ASK)
-  private CreateVaultMarketProQuoteResponseBid ask;
+  private OrderIdError ask;
 
   public CreateVaultMarketProQuoteResponse() { 
   }
@@ -68,7 +68,7 @@ public class CreateVaultMarketProQuoteResponse {
   }
 
 
-  public CreateVaultMarketProQuoteResponse bid(CreateVaultMarketProQuoteResponseBid bid) {
+  public CreateVaultMarketProQuoteResponse bid(OrderIdError bid) {
     
     this.bid = bid;
     return this;
@@ -81,17 +81,17 @@ public class CreateVaultMarketProQuoteResponse {
   @javax.annotation.Nonnull
   @ApiModelProperty(required = true, value = "")
 
-  public CreateVaultMarketProQuoteResponseBid getBid() {
+  public OrderIdError getBid() {
     return bid;
   }
 
 
-  public void setBid(CreateVaultMarketProQuoteResponseBid bid) {
+  public void setBid(OrderIdError bid) {
     this.bid = bid;
   }
 
 
-  public CreateVaultMarketProQuoteResponse ask(CreateVaultMarketProQuoteResponseBid ask) {
+  public CreateVaultMarketProQuoteResponse ask(OrderIdError ask) {
     
     this.ask = ask;
     return this;
@@ -104,12 +104,12 @@ public class CreateVaultMarketProQuoteResponse {
   @javax.annotation.Nonnull
   @ApiModelProperty(required = true, value = "")
 
-  public CreateVaultMarketProQuoteResponseBid getAsk() {
+  public OrderIdError getAsk() {
     return ask;
   }
 
 
-  public void setAsk(CreateVaultMarketProQuoteResponseBid ask) {
+  public void setAsk(OrderIdError ask) {
     this.ask = ask;
   }
 

@@ -24,14 +24,15 @@ import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 import java.math.BigDecimal;
+import net.crossly.model.game.ListGameHuntsItemRules;
 import net.crossly.model.game.ListGameHuntsItemStall;
-import net.crossly.model.common.SlugName;
+import net.crossly.model.common.NameSlug;
 import org.openapitools.jackson.nullable.JsonNullable;
 
 /**
  * ListGameHuntsItem
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-11T23:44:48.922Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-27T19:42:43.186Z[Etc/UTC]")
 public class ListGameHuntsItem {
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
@@ -43,7 +44,7 @@ public class ListGameHuntsItem {
 
   public static final String SERIALIZED_NAME_SHOP = "shop";
   @SerializedName(SERIALIZED_NAME_SHOP)
-  private SlugName shop;
+  private NameSlug shop;
 
   public static final String SERIALIZED_NAME_STALL = "stall";
   @SerializedName(SERIALIZED_NAME_STALL)
@@ -64,6 +65,10 @@ public class ListGameHuntsItem {
   public static final String SERIALIZED_NAME_FINISHERS = "finishers";
   @SerializedName(SERIALIZED_NAME_FINISHERS)
   private BigDecimal finishers;
+
+  public static final String SERIALIZED_NAME_RULES = "rules";
+  @SerializedName(SERIALIZED_NAME_RULES)
+  private ListGameHuntsItemRules rules;
 
   public ListGameHuntsItem() { 
   }
@@ -114,7 +119,7 @@ public class ListGameHuntsItem {
   }
 
 
-  public ListGameHuntsItem shop(SlugName shop) {
+  public ListGameHuntsItem shop(NameSlug shop) {
     
     this.shop = shop;
     return this;
@@ -127,12 +132,12 @@ public class ListGameHuntsItem {
   @javax.annotation.Nonnull
   @ApiModelProperty(required = true, value = "")
 
-  public SlugName getShop() {
+  public NameSlug getShop() {
     return shop;
   }
 
 
-  public void setShop(SlugName shop) {
+  public void setShop(NameSlug shop) {
     this.shop = shop;
   }
 
@@ -252,6 +257,29 @@ public class ListGameHuntsItem {
   }
 
 
+  public ListGameHuntsItem rules(ListGameHuntsItemRules rules) {
+    
+    this.rules = rules;
+    return this;
+  }
+
+   /**
+   * Get rules
+   * @return rules
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public ListGameHuntsItemRules getRules() {
+    return rules;
+  }
+
+
+  public void setRules(ListGameHuntsItemRules rules) {
+    this.rules = rules;
+  }
+
+
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -268,7 +296,8 @@ public class ListGameHuntsItem {
         Objects.equals(this.tokens, listGameHuntsItem.tokens) &&
         Objects.equals(this.reward, listGameHuntsItem.reward) &&
         Objects.equals(this.endsAt, listGameHuntsItem.endsAt) &&
-        Objects.equals(this.finishers, listGameHuntsItem.finishers);
+        Objects.equals(this.finishers, listGameHuntsItem.finishers) &&
+        Objects.equals(this.rules, listGameHuntsItem.rules);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -277,7 +306,7 @@ public class ListGameHuntsItem {
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, title, shop, stall, tokens, reward, endsAt, finishers);
+    return Objects.hash(id, title, shop, stall, tokens, reward, endsAt, finishers, rules);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -299,6 +328,7 @@ public class ListGameHuntsItem {
     sb.append("    reward: ").append(toIndentedString(reward)).append("\n");
     sb.append("    endsAt: ").append(toIndentedString(endsAt)).append("\n");
     sb.append("    finishers: ").append(toIndentedString(finishers)).append("\n");
+    sb.append("    rules: ").append(toIndentedString(rules)).append("\n");
     sb.append("}");
     return sb.toString();
   }

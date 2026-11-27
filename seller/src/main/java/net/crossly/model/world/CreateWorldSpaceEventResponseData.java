@@ -29,7 +29,7 @@ import org.threeten.bp.OffsetDateTime;
 /**
  * CreateWorldSpaceEventResponseData
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-11T23:44:48.922Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-27T19:42:43.186Z[Etc/UTC]")
 public class CreateWorldSpaceEventResponseData {
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
@@ -39,10 +39,6 @@ public class CreateWorldSpaceEventResponseData {
   @SerializedName(SERIALIZED_NAME_CREATED_AT)
   private OffsetDateTime createdAt;
 
-  public static final String SERIALIZED_NAME_CANCELLED_AT = "cancelledAt";
-  @SerializedName(SERIALIZED_NAME_CANCELLED_AT)
-  private OffsetDateTime cancelledAt;
-
   public static final String SERIALIZED_NAME_TITLE = "title";
   @SerializedName(SERIALIZED_NAME_TITLE)
   private String title;
@@ -51,6 +47,10 @@ public class CreateWorldSpaceEventResponseData {
   @SerializedName(SERIALIZED_NAME_ENDS_AT)
   private OffsetDateTime endsAt;
 
+  public static final String SERIALIZED_NAME_CANCELLED_AT = "cancelledAt";
+  @SerializedName(SERIALIZED_NAME_CANCELLED_AT)
+  private OffsetDateTime cancelledAt;
+
   public static final String SERIALIZED_NAME_KIND = "kind";
   @SerializedName(SERIALIZED_NAME_KIND)
   private String kind;
@@ -58,10 +58,6 @@ public class CreateWorldSpaceEventResponseData {
   public static final String SERIALIZED_NAME_STARTS_AT = "startsAt";
   @SerializedName(SERIALIZED_NAME_STARTS_AT)
   private OffsetDateTime startsAt;
-
-  public static final String SERIALIZED_NAME_REMINDED_AT = "remindedAt";
-  @SerializedName(SERIALIZED_NAME_REMINDED_AT)
-  private OffsetDateTime remindedAt;
 
   public static final String SERIALIZED_NAME_CREATED_BY = "createdBy";
   @SerializedName(SERIALIZED_NAME_CREATED_BY)
@@ -74,6 +70,10 @@ public class CreateWorldSpaceEventResponseData {
   public static final String SERIALIZED_NAME_SPACE_ID = "spaceId";
   @SerializedName(SERIALIZED_NAME_SPACE_ID)
   private String spaceId;
+
+  public static final String SERIALIZED_NAME_REMINDED_AT = "remindedAt";
+  @SerializedName(SERIALIZED_NAME_REMINDED_AT)
+  private OffsetDateTime remindedAt;
 
   public static final String SERIALIZED_NAME_CLUB_ONLY = "clubOnly";
   @SerializedName(SERIALIZED_NAME_CLUB_ONLY)
@@ -128,29 +128,6 @@ public class CreateWorldSpaceEventResponseData {
   }
 
 
-  public CreateWorldSpaceEventResponseData cancelledAt(OffsetDateTime cancelledAt) {
-    
-    this.cancelledAt = cancelledAt;
-    return this;
-  }
-
-   /**
-   * Get cancelledAt
-   * @return cancelledAt
-  **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
-
-  public OffsetDateTime getCancelledAt() {
-    return cancelledAt;
-  }
-
-
-  public void setCancelledAt(OffsetDateTime cancelledAt) {
-    this.cancelledAt = cancelledAt;
-  }
-
-
   public CreateWorldSpaceEventResponseData title(String title) {
     
     this.title = title;
@@ -197,6 +174,29 @@ public class CreateWorldSpaceEventResponseData {
   }
 
 
+  public CreateWorldSpaceEventResponseData cancelledAt(OffsetDateTime cancelledAt) {
+    
+    this.cancelledAt = cancelledAt;
+    return this;
+  }
+
+   /**
+   * Get cancelledAt
+   * @return cancelledAt
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public OffsetDateTime getCancelledAt() {
+    return cancelledAt;
+  }
+
+
+  public void setCancelledAt(OffsetDateTime cancelledAt) {
+    this.cancelledAt = cancelledAt;
+  }
+
+
   public CreateWorldSpaceEventResponseData kind(String kind) {
     
     this.kind = kind;
@@ -240,29 +240,6 @@ public class CreateWorldSpaceEventResponseData {
 
   public void setStartsAt(OffsetDateTime startsAt) {
     this.startsAt = startsAt;
-  }
-
-
-  public CreateWorldSpaceEventResponseData remindedAt(OffsetDateTime remindedAt) {
-    
-    this.remindedAt = remindedAt;
-    return this;
-  }
-
-   /**
-   * Get remindedAt
-   * @return remindedAt
-  **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
-
-  public OffsetDateTime getRemindedAt() {
-    return remindedAt;
-  }
-
-
-  public void setRemindedAt(OffsetDateTime remindedAt) {
-    this.remindedAt = remindedAt;
   }
 
 
@@ -335,6 +312,29 @@ public class CreateWorldSpaceEventResponseData {
   }
 
 
+  public CreateWorldSpaceEventResponseData remindedAt(OffsetDateTime remindedAt) {
+    
+    this.remindedAt = remindedAt;
+    return this;
+  }
+
+   /**
+   * Get remindedAt
+   * @return remindedAt
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public OffsetDateTime getRemindedAt() {
+    return remindedAt;
+  }
+
+
+  public void setRemindedAt(OffsetDateTime remindedAt) {
+    this.remindedAt = remindedAt;
+  }
+
+
   public CreateWorldSpaceEventResponseData clubOnly(Boolean clubOnly) {
     
     this.clubOnly = clubOnly;
@@ -369,15 +369,15 @@ public class CreateWorldSpaceEventResponseData {
     CreateWorldSpaceEventResponseData createWorldSpaceEventResponseData = (CreateWorldSpaceEventResponseData) o;
     return Objects.equals(this.id, createWorldSpaceEventResponseData.id) &&
         Objects.equals(this.createdAt, createWorldSpaceEventResponseData.createdAt) &&
-        Objects.equals(this.cancelledAt, createWorldSpaceEventResponseData.cancelledAt) &&
         Objects.equals(this.title, createWorldSpaceEventResponseData.title) &&
         Objects.equals(this.endsAt, createWorldSpaceEventResponseData.endsAt) &&
+        Objects.equals(this.cancelledAt, createWorldSpaceEventResponseData.cancelledAt) &&
         Objects.equals(this.kind, createWorldSpaceEventResponseData.kind) &&
         Objects.equals(this.startsAt, createWorldSpaceEventResponseData.startsAt) &&
-        Objects.equals(this.remindedAt, createWorldSpaceEventResponseData.remindedAt) &&
         Objects.equals(this.createdBy, createWorldSpaceEventResponseData.createdBy) &&
         Objects.equals(this.about, createWorldSpaceEventResponseData.about) &&
         Objects.equals(this.spaceId, createWorldSpaceEventResponseData.spaceId) &&
+        Objects.equals(this.remindedAt, createWorldSpaceEventResponseData.remindedAt) &&
         Objects.equals(this.clubOnly, createWorldSpaceEventResponseData.clubOnly);
   }
 
@@ -387,7 +387,7 @@ public class CreateWorldSpaceEventResponseData {
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, createdAt, cancelledAt, title, endsAt, kind, startsAt, remindedAt, createdBy, about, spaceId, clubOnly);
+    return Objects.hash(id, createdAt, title, endsAt, cancelledAt, kind, startsAt, createdBy, about, spaceId, remindedAt, clubOnly);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -403,15 +403,15 @@ public class CreateWorldSpaceEventResponseData {
     sb.append("class CreateWorldSpaceEventResponseData {\n");
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    createdAt: ").append(toIndentedString(createdAt)).append("\n");
-    sb.append("    cancelledAt: ").append(toIndentedString(cancelledAt)).append("\n");
     sb.append("    title: ").append(toIndentedString(title)).append("\n");
     sb.append("    endsAt: ").append(toIndentedString(endsAt)).append("\n");
+    sb.append("    cancelledAt: ").append(toIndentedString(cancelledAt)).append("\n");
     sb.append("    kind: ").append(toIndentedString(kind)).append("\n");
     sb.append("    startsAt: ").append(toIndentedString(startsAt)).append("\n");
-    sb.append("    remindedAt: ").append(toIndentedString(remindedAt)).append("\n");
     sb.append("    createdBy: ").append(toIndentedString(createdBy)).append("\n");
     sb.append("    about: ").append(toIndentedString(about)).append("\n");
     sb.append("    spaceId: ").append(toIndentedString(spaceId)).append("\n");
+    sb.append("    remindedAt: ").append(toIndentedString(remindedAt)).append("\n");
     sb.append("    clubOnly: ").append(toIndentedString(clubOnly)).append("\n");
     sb.append("}");
     return sb.toString();

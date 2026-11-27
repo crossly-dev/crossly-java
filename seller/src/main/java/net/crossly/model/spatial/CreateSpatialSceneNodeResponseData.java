@@ -31,8 +31,12 @@ import org.threeten.bp.OffsetDateTime;
 /**
  * CreateSpatialSceneNodeResponseData
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-11T23:44:48.922Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-27T19:42:43.186Z[Etc/UTC]")
 public class CreateSpatialSceneNodeResponseData {
+  public static final String SERIALIZED_NAME_TRANSFORM = "transform";
+  @SerializedName(SERIALIZED_NAME_TRANSFORM)
+  private CreateSpatialSceneNodeResponseDataTransform transform;
+
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
   private String id;
@@ -45,10 +49,6 @@ public class CreateSpatialSceneNodeResponseData {
   @SerializedName(SERIALIZED_NAME_UPDATED_AT)
   private OffsetDateTime updatedAt;
 
-  public static final String SERIALIZED_NAME_TRANSFORM = "transform";
-  @SerializedName(SERIALIZED_NAME_TRANSFORM)
-  private CreateSpatialSceneNodeResponseDataTransform transform;
-
   public static final String SERIALIZED_NAME_LABEL = "label";
   @SerializedName(SERIALIZED_NAME_LABEL)
   private String label;
@@ -56,10 +56,6 @@ public class CreateSpatialSceneNodeResponseData {
   public static final String SERIALIZED_NAME_SORT = "sort";
   @SerializedName(SERIALIZED_NAME_SORT)
   private BigDecimal sort;
-
-  public static final String SERIALIZED_NAME_SEGMENT = "segment";
-  @SerializedName(SERIALIZED_NAME_SEGMENT)
-  private String segment;
 
   public static final String SERIALIZED_NAME_SCENE_ID = "sceneId";
   @SerializedName(SERIALIZED_NAME_SCENE_ID)
@@ -73,8 +69,35 @@ public class CreateSpatialSceneNodeResponseData {
   @SerializedName(SERIALIZED_NAME_UNIT_KEY)
   private String unitKey;
 
+  public static final String SERIALIZED_NAME_SEGMENT = "segment";
+  @SerializedName(SERIALIZED_NAME_SEGMENT)
+  private String segment;
+
   public CreateSpatialSceneNodeResponseData() { 
   }
+
+  public CreateSpatialSceneNodeResponseData transform(CreateSpatialSceneNodeResponseDataTransform transform) {
+    
+    this.transform = transform;
+    return this;
+  }
+
+   /**
+   * Get transform
+   * @return transform
+  **/
+  @javax.annotation.Nonnull
+  @ApiModelProperty(required = true, value = "")
+
+  public CreateSpatialSceneNodeResponseDataTransform getTransform() {
+    return transform;
+  }
+
+
+  public void setTransform(CreateSpatialSceneNodeResponseDataTransform transform) {
+    this.transform = transform;
+  }
+
 
   public CreateSpatialSceneNodeResponseData id(String id) {
     
@@ -145,29 +168,6 @@ public class CreateSpatialSceneNodeResponseData {
   }
 
 
-  public CreateSpatialSceneNodeResponseData transform(CreateSpatialSceneNodeResponseDataTransform transform) {
-    
-    this.transform = transform;
-    return this;
-  }
-
-   /**
-   * Get transform
-   * @return transform
-  **/
-  @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "")
-
-  public CreateSpatialSceneNodeResponseDataTransform getTransform() {
-    return transform;
-  }
-
-
-  public void setTransform(CreateSpatialSceneNodeResponseDataTransform transform) {
-    this.transform = transform;
-  }
-
-
   public CreateSpatialSceneNodeResponseData label(String label) {
     
     this.label = label;
@@ -211,29 +211,6 @@ public class CreateSpatialSceneNodeResponseData {
 
   public void setSort(BigDecimal sort) {
     this.sort = sort;
-  }
-
-
-  public CreateSpatialSceneNodeResponseData segment(String segment) {
-    
-    this.segment = segment;
-    return this;
-  }
-
-   /**
-   * Get segment
-   * @return segment
-  **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
-
-  public String getSegment() {
-    return segment;
-  }
-
-
-  public void setSegment(String segment) {
-    this.segment = segment;
   }
 
 
@@ -306,6 +283,29 @@ public class CreateSpatialSceneNodeResponseData {
   }
 
 
+  public CreateSpatialSceneNodeResponseData segment(String segment) {
+    
+    this.segment = segment;
+    return this;
+  }
+
+   /**
+   * Get segment
+   * @return segment
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public String getSegment() {
+    return segment;
+  }
+
+
+  public void setSegment(String segment) {
+    this.segment = segment;
+  }
+
+
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -315,16 +315,16 @@ public class CreateSpatialSceneNodeResponseData {
       return false;
     }
     CreateSpatialSceneNodeResponseData createSpatialSceneNodeResponseData = (CreateSpatialSceneNodeResponseData) o;
-    return Objects.equals(this.id, createSpatialSceneNodeResponseData.id) &&
+    return Objects.equals(this.transform, createSpatialSceneNodeResponseData.transform) &&
+        Objects.equals(this.id, createSpatialSceneNodeResponseData.id) &&
         Objects.equals(this.createdAt, createSpatialSceneNodeResponseData.createdAt) &&
         Objects.equals(this.updatedAt, createSpatialSceneNodeResponseData.updatedAt) &&
-        Objects.equals(this.transform, createSpatialSceneNodeResponseData.transform) &&
         Objects.equals(this.label, createSpatialSceneNodeResponseData.label) &&
         Objects.equals(this.sort, createSpatialSceneNodeResponseData.sort) &&
-        Objects.equals(this.segment, createSpatialSceneNodeResponseData.segment) &&
         Objects.equals(this.sceneId, createSpatialSceneNodeResponseData.sceneId) &&
         Objects.equals(this.parentId, createSpatialSceneNodeResponseData.parentId) &&
-        Objects.equals(this.unitKey, createSpatialSceneNodeResponseData.unitKey);
+        Objects.equals(this.unitKey, createSpatialSceneNodeResponseData.unitKey) &&
+        Objects.equals(this.segment, createSpatialSceneNodeResponseData.segment);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -333,7 +333,7 @@ public class CreateSpatialSceneNodeResponseData {
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, createdAt, updatedAt, transform, label, sort, segment, sceneId, parentId, unitKey);
+    return Objects.hash(transform, id, createdAt, updatedAt, label, sort, sceneId, parentId, unitKey, segment);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -347,16 +347,16 @@ public class CreateSpatialSceneNodeResponseData {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class CreateSpatialSceneNodeResponseData {\n");
+    sb.append("    transform: ").append(toIndentedString(transform)).append("\n");
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    createdAt: ").append(toIndentedString(createdAt)).append("\n");
     sb.append("    updatedAt: ").append(toIndentedString(updatedAt)).append("\n");
-    sb.append("    transform: ").append(toIndentedString(transform)).append("\n");
     sb.append("    label: ").append(toIndentedString(label)).append("\n");
     sb.append("    sort: ").append(toIndentedString(sort)).append("\n");
-    sb.append("    segment: ").append(toIndentedString(segment)).append("\n");
     sb.append("    sceneId: ").append(toIndentedString(sceneId)).append("\n");
     sb.append("    parentId: ").append(toIndentedString(parentId)).append("\n");
     sb.append("    unitKey: ").append(toIndentedString(unitKey)).append("\n");
+    sb.append("    segment: ").append(toIndentedString(segment)).append("\n");
     sb.append("}");
     return sb.toString();
   }

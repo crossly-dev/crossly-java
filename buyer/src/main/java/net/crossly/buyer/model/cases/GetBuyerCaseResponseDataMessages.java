@@ -30,27 +30,27 @@ import org.openapitools.jackson.nullable.JsonNullable;
 /**
  * GetBuyerCaseResponseDataMessages
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-11T23:47:29.843Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-27T19:58:46.962Z[Etc/UTC]")
 public class GetBuyerCaseResponseDataMessages {
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
   private String id;
 
-  public static final String SERIALIZED_NAME_CREATED_AT = "createdAt";
-  @SerializedName(SERIALIZED_NAME_CREATED_AT)
-  private String createdAt;
-
-  public static final String SERIALIZED_NAME_KIND = "kind";
-  @SerializedName(SERIALIZED_NAME_KIND)
-  private String kind;
+  public static final String SERIALIZED_NAME_AUTHOR_ROLE = "authorRole";
+  @SerializedName(SERIALIZED_NAME_AUTHOR_ROLE)
+  private String authorRole;
 
   public static final String SERIALIZED_NAME_BODY = "body";
   @SerializedName(SERIALIZED_NAME_BODY)
   private String body;
 
-  public static final String SERIALIZED_NAME_AUTHOR_ROLE = "authorRole";
-  @SerializedName(SERIALIZED_NAME_AUTHOR_ROLE)
-  private String authorRole;
+  public static final String SERIALIZED_NAME_KIND = "kind";
+  @SerializedName(SERIALIZED_NAME_KIND)
+  private String kind;
+
+  public static final String SERIALIZED_NAME_CREATED_AT = "createdAt";
+  @SerializedName(SERIALIZED_NAME_CREATED_AT)
+  private String createdAt;
 
   public static final String SERIALIZED_NAME_ATTACHMENT_URLS = "attachmentUrls";
   @SerializedName(SERIALIZED_NAME_ATTACHMENT_URLS)
@@ -82,49 +82,26 @@ public class GetBuyerCaseResponseDataMessages {
   }
 
 
-  public GetBuyerCaseResponseDataMessages createdAt(String createdAt) {
+  public GetBuyerCaseResponseDataMessages authorRole(String authorRole) {
     
-    this.createdAt = createdAt;
+    this.authorRole = authorRole;
     return this;
   }
 
    /**
-   * Get createdAt
-   * @return createdAt
+   * buyer | seller | ops | system.
+   * @return authorRole
   **/
   @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "")
+  @ApiModelProperty(required = true, value = "buyer | seller | ops | system.")
 
-  public String getCreatedAt() {
-    return createdAt;
+  public String getAuthorRole() {
+    return authorRole;
   }
 
 
-  public void setCreatedAt(String createdAt) {
-    this.createdAt = createdAt;
-  }
-
-
-  public GetBuyerCaseResponseDataMessages kind(String kind) {
-    
-    this.kind = kind;
-    return this;
-  }
-
-   /**
-   * message | offer | decision | state_change.
-   * @return kind
-  **/
-  @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "message | offer | decision | state_change.")
-
-  public String getKind() {
-    return kind;
-  }
-
-
-  public void setKind(String kind) {
-    this.kind = kind;
+  public void setAuthorRole(String authorRole) {
+    this.authorRole = authorRole;
   }
 
 
@@ -151,26 +128,49 @@ public class GetBuyerCaseResponseDataMessages {
   }
 
 
-  public GetBuyerCaseResponseDataMessages authorRole(String authorRole) {
+  public GetBuyerCaseResponseDataMessages kind(String kind) {
     
-    this.authorRole = authorRole;
+    this.kind = kind;
     return this;
   }
 
    /**
-   * buyer | seller | ops | system.
-   * @return authorRole
+   * message | offer | decision | state_change.
+   * @return kind
   **/
   @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "buyer | seller | ops | system.")
+  @ApiModelProperty(required = true, value = "message | offer | decision | state_change.")
 
-  public String getAuthorRole() {
-    return authorRole;
+  public String getKind() {
+    return kind;
   }
 
 
-  public void setAuthorRole(String authorRole) {
-    this.authorRole = authorRole;
+  public void setKind(String kind) {
+    this.kind = kind;
+  }
+
+
+  public GetBuyerCaseResponseDataMessages createdAt(String createdAt) {
+    
+    this.createdAt = createdAt;
+    return this;
+  }
+
+   /**
+   * Get createdAt
+   * @return createdAt
+  **/
+  @javax.annotation.Nonnull
+  @ApiModelProperty(required = true, value = "")
+
+  public String getCreatedAt() {
+    return createdAt;
+  }
+
+
+  public void setCreatedAt(String createdAt) {
+    this.createdAt = createdAt;
   }
 
 
@@ -215,10 +215,10 @@ public class GetBuyerCaseResponseDataMessages {
     }
     GetBuyerCaseResponseDataMessages getBuyerCaseResponseDataMessages = (GetBuyerCaseResponseDataMessages) o;
     return Objects.equals(this.id, getBuyerCaseResponseDataMessages.id) &&
-        Objects.equals(this.createdAt, getBuyerCaseResponseDataMessages.createdAt) &&
-        Objects.equals(this.kind, getBuyerCaseResponseDataMessages.kind) &&
-        Objects.equals(this.body, getBuyerCaseResponseDataMessages.body) &&
         Objects.equals(this.authorRole, getBuyerCaseResponseDataMessages.authorRole) &&
+        Objects.equals(this.body, getBuyerCaseResponseDataMessages.body) &&
+        Objects.equals(this.kind, getBuyerCaseResponseDataMessages.kind) &&
+        Objects.equals(this.createdAt, getBuyerCaseResponseDataMessages.createdAt) &&
         Objects.equals(this.attachmentUrls, getBuyerCaseResponseDataMessages.attachmentUrls);
   }
 
@@ -228,7 +228,7 @@ public class GetBuyerCaseResponseDataMessages {
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, createdAt, kind, body, authorRole, attachmentUrls);
+    return Objects.hash(id, authorRole, body, kind, createdAt, attachmentUrls);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -243,10 +243,10 @@ public class GetBuyerCaseResponseDataMessages {
     StringBuilder sb = new StringBuilder();
     sb.append("class GetBuyerCaseResponseDataMessages {\n");
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
-    sb.append("    createdAt: ").append(toIndentedString(createdAt)).append("\n");
-    sb.append("    kind: ").append(toIndentedString(kind)).append("\n");
-    sb.append("    body: ").append(toIndentedString(body)).append("\n");
     sb.append("    authorRole: ").append(toIndentedString(authorRole)).append("\n");
+    sb.append("    body: ").append(toIndentedString(body)).append("\n");
+    sb.append("    kind: ").append(toIndentedString(kind)).append("\n");
+    sb.append("    createdAt: ").append(toIndentedString(createdAt)).append("\n");
     sb.append("    attachmentUrls: ").append(toIndentedString(attachmentUrls)).append("\n");
     sb.append("}");
     return sb.toString();

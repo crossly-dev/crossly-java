@@ -23,13 +23,14 @@ import com.google.gson.stream.JsonWriter;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
+import net.crossly.model.world.ListWorldOutfitsItemAppearanceOutfit;
 import org.openapitools.jackson.nullable.JsonNullable;
 
 /**
  * The look to put on your character (the client stores it, as the creator does).
  */
 @ApiModel(description = "The look to put on your character (the client stores it, as the creator does).")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-11T23:44:48.922Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-27T19:42:43.186Z[Etc/UTC]")
 public class ListWorldOutfitsItemAppearance {
   public static final String SERIALIZED_NAME_SKIN = "skin";
   @SerializedName(SERIALIZED_NAME_SKIN)
@@ -62,6 +63,10 @@ public class ListWorldOutfitsItemAppearance {
   public static final String SERIALIZED_NAME_SHAPE = "shape";
   @SerializedName(SERIALIZED_NAME_SHAPE)
   private String shape;
+
+  public static final String SERIALIZED_NAME_OUTFIT = "outfit";
+  @SerializedName(SERIALIZED_NAME_OUTFIT)
+  private ListWorldOutfitsItemAppearanceOutfit outfit;
 
   public ListWorldOutfitsItemAppearance() { 
   }
@@ -250,6 +255,29 @@ public class ListWorldOutfitsItemAppearance {
   }
 
 
+  public ListWorldOutfitsItemAppearance outfit(ListWorldOutfitsItemAppearanceOutfit outfit) {
+    
+    this.outfit = outfit;
+    return this;
+  }
+
+   /**
+   * Get outfit
+   * @return outfit
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public ListWorldOutfitsItemAppearanceOutfit getOutfit() {
+    return outfit;
+  }
+
+
+  public void setOutfit(ListWorldOutfitsItemAppearanceOutfit outfit) {
+    this.outfit = outfit;
+  }
+
+
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -266,7 +294,8 @@ public class ListWorldOutfitsItemAppearance {
         Objects.equals(this.build, listWorldOutfitsItemAppearance.build) &&
         Objects.equals(this.brows, listWorldOutfitsItemAppearance.brows) &&
         Objects.equals(this.mouth, listWorldOutfitsItemAppearance.mouth) &&
-        Objects.equals(this.shape, listWorldOutfitsItemAppearance.shape);
+        Objects.equals(this.shape, listWorldOutfitsItemAppearance.shape) &&
+        Objects.equals(this.outfit, listWorldOutfitsItemAppearance.outfit);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -275,7 +304,7 @@ public class ListWorldOutfitsItemAppearance {
 
   @Override
   public int hashCode() {
-    return Objects.hash(skin, hair, hairColour, eyes, build, brows, mouth, shape);
+    return Objects.hash(skin, hair, hairColour, eyes, build, brows, mouth, shape, outfit);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -297,6 +326,7 @@ public class ListWorldOutfitsItemAppearance {
     sb.append("    brows: ").append(toIndentedString(brows)).append("\n");
     sb.append("    mouth: ").append(toIndentedString(mouth)).append("\n");
     sb.append("    shape: ").append(toIndentedString(shape)).append("\n");
+    sb.append("    outfit: ").append(toIndentedString(outfit)).append("\n");
     sb.append("}");
     return sb.toString();
   }

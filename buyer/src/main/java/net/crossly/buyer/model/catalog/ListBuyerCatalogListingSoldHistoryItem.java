@@ -28,8 +28,12 @@ import java.math.BigDecimal;
 /**
  * ListBuyerCatalogListingSoldHistoryItem
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-11T23:47:29.843Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-27T19:58:46.962Z[Etc/UTC]")
 public class ListBuyerCatalogListingSoldHistoryItem {
+  public static final String SERIALIZED_NAME_PRICE_CENTS = "priceCents";
+  @SerializedName(SERIALIZED_NAME_PRICE_CENTS)
+  private BigDecimal priceCents;
+
   public static final String SERIALIZED_NAME_QUANTITY = "quantity";
   @SerializedName(SERIALIZED_NAME_QUANTITY)
   private BigDecimal quantity;
@@ -38,12 +42,31 @@ public class ListBuyerCatalogListingSoldHistoryItem {
   @SerializedName(SERIALIZED_NAME_SOLD_AT)
   private String soldAt;
 
-  public static final String SERIALIZED_NAME_PRICE_CENTS = "priceCents";
-  @SerializedName(SERIALIZED_NAME_PRICE_CENTS)
-  private BigDecimal priceCents;
-
   public ListBuyerCatalogListingSoldHistoryItem() { 
   }
+
+  public ListBuyerCatalogListingSoldHistoryItem priceCents(BigDecimal priceCents) {
+    
+    this.priceCents = priceCents;
+    return this;
+  }
+
+   /**
+   * Per-unit item price the buyer paid, in cents — excludes shipping and tax.
+   * @return priceCents
+  **/
+  @javax.annotation.Nonnull
+  @ApiModelProperty(required = true, value = "Per-unit item price the buyer paid, in cents — excludes shipping and tax.")
+
+  public BigDecimal getPriceCents() {
+    return priceCents;
+  }
+
+
+  public void setPriceCents(BigDecimal priceCents) {
+    this.priceCents = priceCents;
+  }
+
 
   public ListBuyerCatalogListingSoldHistoryItem quantity(BigDecimal quantity) {
     
@@ -91,29 +114,6 @@ public class ListBuyerCatalogListingSoldHistoryItem {
   }
 
 
-  public ListBuyerCatalogListingSoldHistoryItem priceCents(BigDecimal priceCents) {
-    
-    this.priceCents = priceCents;
-    return this;
-  }
-
-   /**
-   * Per-unit item price the buyer paid, in cents — excludes shipping and tax.
-   * @return priceCents
-  **/
-  @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "Per-unit item price the buyer paid, in cents — excludes shipping and tax.")
-
-  public BigDecimal getPriceCents() {
-    return priceCents;
-  }
-
-
-  public void setPriceCents(BigDecimal priceCents) {
-    this.priceCents = priceCents;
-  }
-
-
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -123,23 +123,23 @@ public class ListBuyerCatalogListingSoldHistoryItem {
       return false;
     }
     ListBuyerCatalogListingSoldHistoryItem listBuyerCatalogListingSoldHistoryItem = (ListBuyerCatalogListingSoldHistoryItem) o;
-    return Objects.equals(this.quantity, listBuyerCatalogListingSoldHistoryItem.quantity) &&
-        Objects.equals(this.soldAt, listBuyerCatalogListingSoldHistoryItem.soldAt) &&
-        Objects.equals(this.priceCents, listBuyerCatalogListingSoldHistoryItem.priceCents);
+    return Objects.equals(this.priceCents, listBuyerCatalogListingSoldHistoryItem.priceCents) &&
+        Objects.equals(this.quantity, listBuyerCatalogListingSoldHistoryItem.quantity) &&
+        Objects.equals(this.soldAt, listBuyerCatalogListingSoldHistoryItem.soldAt);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(quantity, soldAt, priceCents);
+    return Objects.hash(priceCents, quantity, soldAt);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class ListBuyerCatalogListingSoldHistoryItem {\n");
+    sb.append("    priceCents: ").append(toIndentedString(priceCents)).append("\n");
     sb.append("    quantity: ").append(toIndentedString(quantity)).append("\n");
     sb.append("    soldAt: ").append(toIndentedString(soldAt)).append("\n");
-    sb.append("    priceCents: ").append(toIndentedString(priceCents)).append("\n");
     sb.append("}");
     return sb.toString();
   }

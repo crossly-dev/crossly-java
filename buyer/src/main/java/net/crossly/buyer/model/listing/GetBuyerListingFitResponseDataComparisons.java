@@ -28,15 +28,15 @@ import net.crossly.buyer.model.listing.GetBuyerListingFitResponseDataComparisons
 /**
  * GetBuyerListingFitResponseDataComparisons
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-11T23:47:29.843Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-27T19:58:46.962Z[Etc/UTC]")
 public class GetBuyerListingFitResponseDataComparisons {
-  public static final String SERIALIZED_NAME_LABEL = "label";
-  @SerializedName(SERIALIZED_NAME_LABEL)
-  private String label;
-
   public static final String SERIALIZED_NAME_REF_ID = "refId";
   @SerializedName(SERIALIZED_NAME_REF_ID)
   private String refId;
+
+  public static final String SERIALIZED_NAME_LABEL = "label";
+  @SerializedName(SERIALIZED_NAME_LABEL)
+  private String label;
 
   public static final String SERIALIZED_NAME_RESULT = "result";
   @SerializedName(SERIALIZED_NAME_RESULT)
@@ -44,29 +44,6 @@ public class GetBuyerListingFitResponseDataComparisons {
 
   public GetBuyerListingFitResponseDataComparisons() { 
   }
-
-  public GetBuyerListingFitResponseDataComparisons label(String label) {
-    
-    this.label = label;
-    return this;
-  }
-
-   /**
-   * Get label
-   * @return label
-  **/
-  @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "")
-
-  public String getLabel() {
-    return label;
-  }
-
-
-  public void setLabel(String label) {
-    this.label = label;
-  }
-
 
   public GetBuyerListingFitResponseDataComparisons refId(String refId) {
     
@@ -88,6 +65,29 @@ public class GetBuyerListingFitResponseDataComparisons {
 
   public void setRefId(String refId) {
     this.refId = refId;
+  }
+
+
+  public GetBuyerListingFitResponseDataComparisons label(String label) {
+    
+    this.label = label;
+    return this;
+  }
+
+   /**
+   * Get label
+   * @return label
+  **/
+  @javax.annotation.Nonnull
+  @ApiModelProperty(required = true, value = "")
+
+  public String getLabel() {
+    return label;
+  }
+
+
+  public void setLabel(String label) {
+    this.label = label;
   }
 
 
@@ -123,22 +123,22 @@ public class GetBuyerListingFitResponseDataComparisons {
       return false;
     }
     GetBuyerListingFitResponseDataComparisons getBuyerListingFitResponseDataComparisons = (GetBuyerListingFitResponseDataComparisons) o;
-    return Objects.equals(this.label, getBuyerListingFitResponseDataComparisons.label) &&
-        Objects.equals(this.refId, getBuyerListingFitResponseDataComparisons.refId) &&
+    return Objects.equals(this.refId, getBuyerListingFitResponseDataComparisons.refId) &&
+        Objects.equals(this.label, getBuyerListingFitResponseDataComparisons.label) &&
         Objects.equals(this.result, getBuyerListingFitResponseDataComparisons.result);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(label, refId, result);
+    return Objects.hash(refId, label, result);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class GetBuyerListingFitResponseDataComparisons {\n");
-    sb.append("    label: ").append(toIndentedString(label)).append("\n");
     sb.append("    refId: ").append(toIndentedString(refId)).append("\n");
+    sb.append("    label: ").append(toIndentedString(label)).append("\n");
     sb.append("    result: ").append(toIndentedString(result)).append("\n");
     sb.append("}");
     return sb.toString();

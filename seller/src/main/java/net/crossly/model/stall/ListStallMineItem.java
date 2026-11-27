@@ -38,7 +38,7 @@ import org.openapitools.jackson.nullable.JsonNullable;
 /**
  * ListStallMineItem
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-11T23:44:48.922Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-27T19:42:43.186Z[Etc/UTC]")
 public class ListStallMineItem {
   public static final String SERIALIZED_NAME_STATS = "stats";
   @SerializedName(SERIALIZED_NAME_STATS)
@@ -73,9 +73,9 @@ public class ListStallMineItem {
    */
   @JsonAdapter(UnitEnum.Adapter.class)
   public enum UnitEnum {
-    EVENT("event"),
+    DAY("day"),
     
-    DAY("day");
+    EVENT("event");
 
     private String value;
 
@@ -193,9 +193,9 @@ public class ListStallMineItem {
   public enum RailEnum {
     CARD("card"),
     
-    BUCKS("bucks"),
+    CBX("cbx"),
     
-    CBX("cbx");
+    BUCKS("bucks");
 
     private String value;
 
@@ -262,6 +262,63 @@ public class ListStallMineItem {
   public static final String SERIALIZED_NAME_LISTING_IDS = "listingIds";
   @SerializedName(SERIALIZED_NAME_LISTING_IDS)
   private List<String> listingIds = new ArrayList<String>();
+
+  /**
+   * Gets or Sets boothKind
+   */
+  @JsonAdapter(BoothKindEnum.Adapter.class)
+  public enum BoothKindEnum {
+    BOOTH("booth"),
+    
+    CART("cart"),
+    
+    PAVILION("pavilion");
+
+    private String value;
+
+    BoothKindEnum(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    @Override
+    public String toString() {
+      return String.valueOf(value);
+    }
+
+    public static BoothKindEnum fromValue(String value) {
+      for (BoothKindEnum b : BoothKindEnum.values()) {
+        if (b.value.equals(value)) {
+          return b;
+        }
+      }
+      throw new IllegalArgumentException("Unexpected value '" + value + "'");
+    }
+
+    public static class Adapter extends TypeAdapter<BoothKindEnum> {
+      @Override
+      public void write(final JsonWriter jsonWriter, final BoothKindEnum enumeration) throws IOException {
+        jsonWriter.value(enumeration.getValue());
+      }
+
+      @Override
+      public BoothKindEnum read(final JsonReader jsonReader) throws IOException {
+        String value =  jsonReader.nextString();
+        return BoothKindEnum.fromValue(value);
+      }
+    }
+  }
+
+  public static final String SERIALIZED_NAME_BOOTH_KIND = "boothKind";
+  @SerializedName(SERIALIZED_NAME_BOOTH_KIND)
+  private BoothKindEnum boothKind;
+
+  public static final String SERIALIZED_NAME_CAPACITY = "capacity";
+  @SerializedName(SERIALIZED_NAME_CAPACITY)
+  private BigDecimal capacity;
 
   public static final String SERIALIZED_NAME_AWNING = "awning";
   @SerializedName(SERIALIZED_NAME_AWNING)
@@ -738,6 +795,52 @@ public class ListStallMineItem {
   }
 
 
+  public ListStallMineItem boothKind(BoothKindEnum boothKind) {
+    
+    this.boothKind = boothKind;
+    return this;
+  }
+
+   /**
+   * Get boothKind
+   * @return boothKind
+  **/
+  @javax.annotation.Nonnull
+  @ApiModelProperty(required = true, value = "")
+
+  public BoothKindEnum getBoothKind() {
+    return boothKind;
+  }
+
+
+  public void setBoothKind(BoothKindEnum boothKind) {
+    this.boothKind = boothKind;
+  }
+
+
+  public ListStallMineItem capacity(BigDecimal capacity) {
+    
+    this.capacity = capacity;
+    return this;
+  }
+
+   /**
+   * Get capacity
+   * @return capacity
+  **/
+  @javax.annotation.Nonnull
+  @ApiModelProperty(required = true, value = "")
+
+  public BigDecimal getCapacity() {
+    return capacity;
+  }
+
+
+  public void setCapacity(BigDecimal capacity) {
+    this.capacity = capacity;
+  }
+
+
   public ListStallMineItem awning(ColourPattern awning) {
     
     this.awning = awning;
@@ -881,6 +984,8 @@ public class ListStallMineItem {
         Objects.equals(this.refundedCents, listStallMineItem.refundedCents) &&
         Objects.equals(this.cancellable, listStallMineItem.cancellable) &&
         Objects.equals(this.listingIds, listStallMineItem.listingIds) &&
+        Objects.equals(this.boothKind, listStallMineItem.boothKind) &&
+        Objects.equals(this.capacity, listStallMineItem.capacity) &&
         Objects.equals(this.awning, listStallMineItem.awning) &&
         Objects.equals(this.booth, listStallMineItem.booth) &&
         Objects.equals(this.sign, listStallMineItem.sign) &&
@@ -894,7 +999,7 @@ public class ListStallMineItem {
 
   @Override
   public int hashCode() {
-    return Objects.hash(stats, upcoming, drawnBooth, boothTrimmed, id, street, spotIndex, unit, units, startsAt, endsAt, status, rail, owner, quote, totalCents, refundedCents, cancellable, listingIds, awning, booth, sign, attendant, createdAt);
+    return Objects.hash(stats, upcoming, drawnBooth, boothTrimmed, id, street, spotIndex, unit, units, startsAt, endsAt, status, rail, owner, quote, totalCents, refundedCents, cancellable, listingIds, boothKind, capacity, awning, booth, sign, attendant, createdAt);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -927,6 +1032,8 @@ public class ListStallMineItem {
     sb.append("    refundedCents: ").append(toIndentedString(refundedCents)).append("\n");
     sb.append("    cancellable: ").append(toIndentedString(cancellable)).append("\n");
     sb.append("    listingIds: ").append(toIndentedString(listingIds)).append("\n");
+    sb.append("    boothKind: ").append(toIndentedString(boothKind)).append("\n");
+    sb.append("    capacity: ").append(toIndentedString(capacity)).append("\n");
     sb.append("    awning: ").append(toIndentedString(awning)).append("\n");
     sb.append("    booth: ").append(toIndentedString(booth)).append("\n");
     sb.append("    sign: ").append(toIndentedString(sign)).append("\n");

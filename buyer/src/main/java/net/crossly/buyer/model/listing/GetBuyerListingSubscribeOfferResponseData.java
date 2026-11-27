@@ -30,12 +30,8 @@ import java.util.List;
 /**
  * GetBuyerListingSubscribeOfferResponseData
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-11T23:47:29.843Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-27T19:58:46.962Z[Etc/UTC]")
 public class GetBuyerListingSubscribeOfferResponseData {
-  public static final String SERIALIZED_NAME_PRICE_CENTS = "priceCents";
-  @SerializedName(SERIALIZED_NAME_PRICE_CENTS)
-  private BigDecimal priceCents;
-
   public static final String SERIALIZED_NAME_DISCOUNT_BPS = "discountBps";
   @SerializedName(SERIALIZED_NAME_DISCOUNT_BPS)
   private BigDecimal discountBps;
@@ -44,35 +40,16 @@ public class GetBuyerListingSubscribeOfferResponseData {
   @SerializedName(SERIALIZED_NAME_INTERVALS)
   private List<BigDecimal> intervals = new ArrayList<BigDecimal>();
 
+  public static final String SERIALIZED_NAME_PRICE_CENTS = "priceCents";
+  @SerializedName(SERIALIZED_NAME_PRICE_CENTS)
+  private BigDecimal priceCents;
+
   public static final String SERIALIZED_NAME_SUBSCRIBE_PRICE_CENTS = "subscribePriceCents";
   @SerializedName(SERIALIZED_NAME_SUBSCRIBE_PRICE_CENTS)
   private BigDecimal subscribePriceCents;
 
   public GetBuyerListingSubscribeOfferResponseData() { 
   }
-
-  public GetBuyerListingSubscribeOfferResponseData priceCents(BigDecimal priceCents) {
-    
-    this.priceCents = priceCents;
-    return this;
-  }
-
-   /**
-   * Get priceCents
-   * @return priceCents
-  **/
-  @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "")
-
-  public BigDecimal getPriceCents() {
-    return priceCents;
-  }
-
-
-  public void setPriceCents(BigDecimal priceCents) {
-    this.priceCents = priceCents;
-  }
-
 
   public GetBuyerListingSubscribeOfferResponseData discountBps(BigDecimal discountBps) {
     
@@ -125,6 +102,29 @@ public class GetBuyerListingSubscribeOfferResponseData {
   }
 
 
+  public GetBuyerListingSubscribeOfferResponseData priceCents(BigDecimal priceCents) {
+    
+    this.priceCents = priceCents;
+    return this;
+  }
+
+   /**
+   * Get priceCents
+   * @return priceCents
+  **/
+  @javax.annotation.Nonnull
+  @ApiModelProperty(required = true, value = "")
+
+  public BigDecimal getPriceCents() {
+    return priceCents;
+  }
+
+
+  public void setPriceCents(BigDecimal priceCents) {
+    this.priceCents = priceCents;
+  }
+
+
   public GetBuyerListingSubscribeOfferResponseData subscribePriceCents(BigDecimal subscribePriceCents) {
     
     this.subscribePriceCents = subscribePriceCents;
@@ -157,24 +157,24 @@ public class GetBuyerListingSubscribeOfferResponseData {
       return false;
     }
     GetBuyerListingSubscribeOfferResponseData getBuyerListingSubscribeOfferResponseData = (GetBuyerListingSubscribeOfferResponseData) o;
-    return Objects.equals(this.priceCents, getBuyerListingSubscribeOfferResponseData.priceCents) &&
-        Objects.equals(this.discountBps, getBuyerListingSubscribeOfferResponseData.discountBps) &&
+    return Objects.equals(this.discountBps, getBuyerListingSubscribeOfferResponseData.discountBps) &&
         Objects.equals(this.intervals, getBuyerListingSubscribeOfferResponseData.intervals) &&
+        Objects.equals(this.priceCents, getBuyerListingSubscribeOfferResponseData.priceCents) &&
         Objects.equals(this.subscribePriceCents, getBuyerListingSubscribeOfferResponseData.subscribePriceCents);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(priceCents, discountBps, intervals, subscribePriceCents);
+    return Objects.hash(discountBps, intervals, priceCents, subscribePriceCents);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class GetBuyerListingSubscribeOfferResponseData {\n");
-    sb.append("    priceCents: ").append(toIndentedString(priceCents)).append("\n");
     sb.append("    discountBps: ").append(toIndentedString(discountBps)).append("\n");
     sb.append("    intervals: ").append(toIndentedString(intervals)).append("\n");
+    sb.append("    priceCents: ").append(toIndentedString(priceCents)).append("\n");
     sb.append("    subscribePriceCents: ").append(toIndentedString(subscribePriceCents)).append("\n");
     sb.append("}");
     return sb.toString();

@@ -25,7 +25,9 @@ import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 import java.math.BigDecimal;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import net.crossly.buyer.model.catalog.GetBuyerCatalogListingShippingResponseInternational;
 import net.crossly.buyer.model.catalog.GetBuyerCatalogListingShippingResponseServices;
 import org.openapitools.jackson.nullable.JsonNullable;
@@ -33,7 +35,7 @@ import org.openapitools.jackson.nullable.JsonNullable;
 /**
  * GetBuyerCatalogListingShippingResponse
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-11T23:47:29.843Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-27T19:58:46.962Z[Etc/UTC]")
 public class GetBuyerCatalogListingShippingResponse {
   public static final String SERIALIZED_NAME_CENTS = "cents";
   @SerializedName(SERIALIZED_NAME_CENTS)
@@ -75,6 +77,18 @@ public class GetBuyerCatalogListingShippingResponse {
   @SerializedName(SERIALIZED_NAME_NO_SHIP_REASON)
   private String noShipReason;
 
+  public static final String SERIALIZED_NAME_NO_SHIP_MESSAGE = "noShipMessage";
+  @SerializedName(SERIALIZED_NAME_NO_SHIP_MESSAGE)
+  private String noShipMessage;
+
+  public static final String SERIALIZED_NAME_RULE = "rule";
+  @SerializedName(SERIALIZED_NAME_RULE)
+  private Map<String, Object> rule = null;
+
+  public static final String SERIALIZED_NAME_PARTIAL = "partial";
+  @SerializedName(SERIALIZED_NAME_PARTIAL)
+  private Boolean partial;
+
   public static final String SERIALIZED_NAME_SERVICES = "services";
   @SerializedName(SERIALIZED_NAME_SERVICES)
   private List<GetBuyerCatalogListingShippingResponseServices> services = new ArrayList<GetBuyerCatalogListingShippingResponseServices>();
@@ -82,6 +96,10 @@ public class GetBuyerCatalogListingShippingResponse {
   public static final String SERIALIZED_NAME_DEFAULT_SERVICE_ID = "defaultServiceId";
   @SerializedName(SERIALIZED_NAME_DEFAULT_SERVICE_ID)
   private String defaultServiceId;
+
+  public static final String SERIALIZED_NAME_CALCULATED_AT_CHECKOUT = "calculatedAtCheckout";
+  @SerializedName(SERIALIZED_NAME_CALCULATED_AT_CHECKOUT)
+  private Boolean calculatedAtCheckout;
 
   public static final String SERIALIZED_NAME_INTERNATIONAL = "international";
   @SerializedName(SERIALIZED_NAME_INTERNATIONAL)
@@ -324,6 +342,83 @@ public class GetBuyerCatalogListingShippingResponse {
   }
 
 
+  public GetBuyerCatalogListingShippingResponse noShipMessage(String noShipMessage) {
+    
+    this.noShipMessage = noShipMessage;
+    return this;
+  }
+
+   /**
+   * Why it doesn&#39;t ship here, as the buyer should read it; null when it does.
+   * @return noShipMessage
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "Why it doesn't ship here, as the buyer should read it; null when it does.")
+
+  public String getNoShipMessage() {
+    return noShipMessage;
+  }
+
+
+  public void setNoShipMessage(String noShipMessage) {
+    this.noShipMessage = noShipMessage;
+  }
+
+
+  public GetBuyerCatalogListingShippingResponse rule(Map<String, Object> rule) {
+    
+    this.rule = rule;
+    return this;
+  }
+
+  public GetBuyerCatalogListingShippingResponse putRuleItem(String key, Object ruleItem) {
+    if (this.rule == null) {
+      this.rule = new HashMap<String, Object>();
+    }
+    this.rule.put(key, ruleItem);
+    return this;
+  }
+
+   /**
+   * The seller&#39;s ship-to rule that decided a refusal; null when none did.
+   * @return rule
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "The seller's ship-to rule that decided a refusal; null when none did.")
+
+  public Map<String, Object> getRule() {
+    return rule;
+  }
+
+
+  public void setRule(Map<String, Object> rule) {
+    this.rule = rule;
+  }
+
+
+  public GetBuyerCatalogListingShippingResponse partial(Boolean partial) {
+    
+    this.partial = partial;
+    return this;
+  }
+
+   /**
+   * True when a fuller address (ZIP / postcode) could change the answer.
+   * @return partial
+  **/
+  @javax.annotation.Nonnull
+  @ApiModelProperty(required = true, value = "True when a fuller address (ZIP / postcode) could change the answer.")
+
+  public Boolean getPartial() {
+    return partial;
+  }
+
+
+  public void setPartial(Boolean partial) {
+    this.partial = partial;
+  }
+
+
   public GetBuyerCatalogListingShippingResponse services(List<GetBuyerCatalogListingShippingResponseServices> services) {
     
     this.services = services;
@@ -372,6 +467,29 @@ public class GetBuyerCatalogListingShippingResponse {
 
   public void setDefaultServiceId(String defaultServiceId) {
     this.defaultServiceId = defaultServiceId;
+  }
+
+
+  public GetBuyerCatalogListingShippingResponse calculatedAtCheckout(Boolean calculatedAtCheckout) {
+    
+    this.calculatedAtCheckout = calculatedAtCheckout;
+    return this;
+  }
+
+   /**
+   * Buyer pays: calculated: no live label rate for this destination yet (give a ZIP); &#x60;cents&#x60; is null.
+   * @return calculatedAtCheckout
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "Buyer pays: calculated: no live label rate for this destination yet (give a ZIP); `cents` is null.")
+
+  public Boolean getCalculatedAtCheckout() {
+    return calculatedAtCheckout;
+  }
+
+
+  public void setCalculatedAtCheckout(Boolean calculatedAtCheckout) {
+    this.calculatedAtCheckout = calculatedAtCheckout;
   }
 
 
@@ -440,8 +558,12 @@ public class GetBuyerCatalogListingShippingResponse {
         Objects.equals(this.destinationCountry, getBuyerCatalogListingShippingResponse.destinationCountry) &&
         Objects.equals(this.shipsToCountry, getBuyerCatalogListingShippingResponse.shipsToCountry) &&
         Objects.equals(this.noShipReason, getBuyerCatalogListingShippingResponse.noShipReason) &&
+        Objects.equals(this.noShipMessage, getBuyerCatalogListingShippingResponse.noShipMessage) &&
+        Objects.equals(this.rule, getBuyerCatalogListingShippingResponse.rule) &&
+        Objects.equals(this.partial, getBuyerCatalogListingShippingResponse.partial) &&
         Objects.equals(this.services, getBuyerCatalogListingShippingResponse.services) &&
         Objects.equals(this.defaultServiceId, getBuyerCatalogListingShippingResponse.defaultServiceId) &&
+        Objects.equals(this.calculatedAtCheckout, getBuyerCatalogListingShippingResponse.calculatedAtCheckout) &&
         Objects.equals(this.international, getBuyerCatalogListingShippingResponse.international) &&
         Objects.equals(this.importChargesNote, getBuyerCatalogListingShippingResponse.importChargesNote);
   }
@@ -452,7 +574,7 @@ public class GetBuyerCatalogListingShippingResponse {
 
   @Override
   public int hashCode() {
-    return Objects.hash(cents, kind, quantity, carrier, service, cached, freeShippingThresholdCents, destinationCountry, shipsToCountry, noShipReason, services, defaultServiceId, international, importChargesNote);
+    return Objects.hash(cents, kind, quantity, carrier, service, cached, freeShippingThresholdCents, destinationCountry, shipsToCountry, noShipReason, noShipMessage, rule, partial, services, defaultServiceId, calculatedAtCheckout, international, importChargesNote);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -476,8 +598,12 @@ public class GetBuyerCatalogListingShippingResponse {
     sb.append("    destinationCountry: ").append(toIndentedString(destinationCountry)).append("\n");
     sb.append("    shipsToCountry: ").append(toIndentedString(shipsToCountry)).append("\n");
     sb.append("    noShipReason: ").append(toIndentedString(noShipReason)).append("\n");
+    sb.append("    noShipMessage: ").append(toIndentedString(noShipMessage)).append("\n");
+    sb.append("    rule: ").append(toIndentedString(rule)).append("\n");
+    sb.append("    partial: ").append(toIndentedString(partial)).append("\n");
     sb.append("    services: ").append(toIndentedString(services)).append("\n");
     sb.append("    defaultServiceId: ").append(toIndentedString(defaultServiceId)).append("\n");
+    sb.append("    calculatedAtCheckout: ").append(toIndentedString(calculatedAtCheckout)).append("\n");
     sb.append("    international: ").append(toIndentedString(international)).append("\n");
     sb.append("    importChargesNote: ").append(toIndentedString(importChargesNote)).append("\n");
     sb.append("}");

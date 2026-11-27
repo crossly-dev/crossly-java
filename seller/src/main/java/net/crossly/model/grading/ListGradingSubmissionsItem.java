@@ -24,13 +24,13 @@ import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 import java.math.BigDecimal;
-import net.crossly.model.grading.ListGradingSubmissionsItemGrading;
+import net.crossly.model.bulk.CreateBulkBatchItemResponseGrading;
 import org.openapitools.jackson.nullable.JsonNullable;
 
 /**
  * ListGradingSubmissionsItem
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-11T23:44:48.922Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-27T19:42:43.186Z[Etc/UTC]")
 public class ListGradingSubmissionsItem {
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
@@ -41,9 +41,11 @@ public class ListGradingSubmissionsItem {
    */
   @JsonAdapter(ModeEnum.Adapter.class)
   public enum ModeEnum {
-    RUN("run"),
+    DIRECT("direct"),
     
-    DIRECT("direct");
+    ORDER("order"),
+    
+    RUN("run");
 
     private String value;
 
@@ -86,6 +88,10 @@ public class ListGradingSubmissionsItem {
   public static final String SERIALIZED_NAME_MODE = "mode";
   @SerializedName(SERIALIZED_NAME_MODE)
   private ModeEnum mode;
+
+  public static final String SERIALIZED_NAME_ORDER_ID = "orderId";
+  @SerializedName(SERIALIZED_NAME_ORDER_ID)
+  private String orderId;
 
   public static final String SERIALIZED_NAME_RUN_ID = "runId";
   @SerializedName(SERIALIZED_NAME_RUN_ID)
@@ -132,17 +138,13 @@ public class ListGradingSubmissionsItem {
    */
   @JsonAdapter(StatusEnum.Adapter.class)
   public enum StatusEnum {
-    GRADED("graded"),
+    REFUNDED("refunded"),
     
-    RETURNED("returned"),
+    RECEIVED("received"),
     
     RELEASED("released"),
     
-    REFUNDED("refunded"),
-    
     RESERVED("reserved"),
-    
-    RECEIVED("received"),
     
     CHARGED("charged"),
     
@@ -152,7 +154,11 @@ public class ListGradingSubmissionsItem {
     
     AT_GRADER("at_grader"),
     
+    GRADED("graded"),
+    
     RETURNING("returning"),
+    
+    RETURNED("returned"),
     
     VAULTED("vaulted");
 
@@ -232,7 +238,7 @@ public class ListGradingSubmissionsItem {
 
   public static final String SERIALIZED_NAME_GRADING = "grading";
   @SerializedName(SERIALIZED_NAME_GRADING)
-  private ListGradingSubmissionsItemGrading grading;
+  private CreateBulkBatchItemResponseGrading grading;
 
   public static final String SERIALIZED_NAME_CERT_VERIFIED = "certVerified";
   @SerializedName(SERIALIZED_NAME_CERT_VERIFIED)
@@ -292,6 +298,29 @@ public class ListGradingSubmissionsItem {
 
   public void setMode(ModeEnum mode) {
     this.mode = mode;
+  }
+
+
+  public ListGradingSubmissionsItem orderId(String orderId) {
+    
+    this.orderId = orderId;
+    return this;
+  }
+
+   /**
+   * The grading order (submission through Crossly) this card is in.
+   * @return orderId
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "The grading order (submission through Crossly) this card is in.")
+
+  public String getOrderId() {
+    return orderId;
+  }
+
+
+  public void setOrderId(String orderId) {
+    this.orderId = orderId;
   }
 
 
@@ -732,7 +761,7 @@ public class ListGradingSubmissionsItem {
   }
 
 
-  public ListGradingSubmissionsItem grading(ListGradingSubmissionsItemGrading grading) {
+  public ListGradingSubmissionsItem grading(CreateBulkBatchItemResponseGrading grading) {
     
     this.grading = grading;
     return this;
@@ -745,12 +774,12 @@ public class ListGradingSubmissionsItem {
   @javax.annotation.Nullable
   @ApiModelProperty(value = "")
 
-  public ListGradingSubmissionsItemGrading getGrading() {
+  public CreateBulkBatchItemResponseGrading getGrading() {
     return grading;
   }
 
 
-  public void setGrading(ListGradingSubmissionsItemGrading grading) {
+  public void setGrading(CreateBulkBatchItemResponseGrading grading) {
     this.grading = grading;
   }
 
@@ -835,6 +864,7 @@ public class ListGradingSubmissionsItem {
     ListGradingSubmissionsItem listGradingSubmissionsItem = (ListGradingSubmissionsItem) o;
     return Objects.equals(this.id, listGradingSubmissionsItem.id) &&
         Objects.equals(this.mode, listGradingSubmissionsItem.mode) &&
+        Objects.equals(this.orderId, listGradingSubmissionsItem.orderId) &&
         Objects.equals(this.runId, listGradingSubmissionsItem.runId) &&
         Objects.equals(this.runCutoffAt, listGradingSubmissionsItem.runCutoffAt) &&
         Objects.equals(this.runStatus, listGradingSubmissionsItem.runStatus) &&
@@ -866,7 +896,7 @@ public class ListGradingSubmissionsItem {
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, mode, runId, runCutoffAt, runStatus, graderSlug, graderName, tierSlug, inventoryItemId, title, declaredValueCents, prescreen, status, missMode, returnMode, chargedCents, refundedCents, inboundLabelUrl, inboundTracking, returnTracking, prescreenNote, grading, certVerified, createdAt, updatedAt);
+    return Objects.hash(id, mode, orderId, runId, runCutoffAt, runStatus, graderSlug, graderName, tierSlug, inventoryItemId, title, declaredValueCents, prescreen, status, missMode, returnMode, chargedCents, refundedCents, inboundLabelUrl, inboundTracking, returnTracking, prescreenNote, grading, certVerified, createdAt, updatedAt);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -882,6 +912,7 @@ public class ListGradingSubmissionsItem {
     sb.append("class ListGradingSubmissionsItem {\n");
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    mode: ").append(toIndentedString(mode)).append("\n");
+    sb.append("    orderId: ").append(toIndentedString(orderId)).append("\n");
     sb.append("    runId: ").append(toIndentedString(runId)).append("\n");
     sb.append("    runCutoffAt: ").append(toIndentedString(runCutoffAt)).append("\n");
     sb.append("    runStatus: ").append(toIndentedString(runStatus)).append("\n");

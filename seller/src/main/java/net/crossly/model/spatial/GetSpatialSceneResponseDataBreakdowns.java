@@ -28,7 +28,7 @@ import java.math.BigDecimal;
 /**
  * GetSpatialSceneResponseDataBreakdowns
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-11T23:44:48.922Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-27T19:42:43.186Z[Etc/UTC]")
 public class GetSpatialSceneResponseDataBreakdowns {
   /**
    * Gets or Sets facet
@@ -37,17 +37,23 @@ public class GetSpatialSceneResponseDataBreakdowns {
   public enum FacetEnum {
     brand("brand"),
     
+    label("label"),
+    
+    status("status"),
+    
+    age("age"),
+    
     condition("condition"),
     
     size("size"),
     
-    status("status"),
-    
-    label("label"),
-    
     title("title"),
     
     valueOption("value"),
+    
+    set("set"),
+    
+    team("team"),
     
     year("year"),
     
@@ -55,19 +61,13 @@ public class GetSpatialSceneResponseDataBreakdowns {
     
     game("game"),
     
-    set("set"),
-    
     franchise("franchise"),
-    
-    team("team"),
     
     era("era"),
     
     genre("genre"),
     
     colour("colour"),
-    
-    age("age"),
     
     exhibitor("exhibitor");
 

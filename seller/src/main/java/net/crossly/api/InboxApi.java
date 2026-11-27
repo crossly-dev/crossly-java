@@ -34,17 +34,20 @@ import net.crossly.model.inbox.CreateInboxConversationBulkResponse;
 import net.crossly.model.inbox.CreateInboxMessageTriageResponse;
 import net.crossly.model.inbox.CreateInboxOfferResponse;
 import net.crossly.model.inbox.CreateInboxReplyResponse;
-import net.crossly.model.order.CreateOrderDisputeResponse;
+import net.crossly.model.inbox.CreateInboxSendOfferRequest;
+import net.crossly.model.inbox.CreateInboxSendOfferResponse;
 import net.crossly.model.video.CreateVideoRequestAnswerResponse;
 import net.crossly.model.video.CreateVideoRequestUploadUrlResponse;
 import net.crossly.model.web3.CreateWeb3LaunchArtResponse;
 import net.crossly.model.common.Error;
 import net.crossly.model.inbox.GetInboxCannedResponseResponse;
 import net.crossly.model.inbox.GetInboxConversationMessageResponse;
+import net.crossly.model.inbox.GetInboxCountResponse;
 import net.crossly.model.inbox.GetInboxResponse;
 import net.crossly.model.inbox.ListInboxResponse;
 import net.crossly.model.video.ListVideoRequestsResponse;
 import java.util.UUID;
+import net.crossly.model.inbox.UpdateInboxCannedResponseOrderRequest;
 import net.crossly.model.inbox.UpdateInboxConversationResponse;
 
 import java.lang.reflect.Type;
@@ -305,7 +308,7 @@ public class InboxApi {
     }
 
     /**
-     * Create a canned response.
+     * Create a canned response (added to the end of the list).
      * 
      * @return CreateInboxCannedResponseResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -327,7 +330,7 @@ public class InboxApi {
     }
 
     /**
-     * Create a canned response.
+     * Create a canned response (added to the end of the list).
      * 
      * @return ApiResponse&lt;CreateInboxCannedResponseResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -350,7 +353,7 @@ public class InboxApi {
     }
 
     /**
-     * Create a canned response. (asynchronously)
+     * Create a canned response (added to the end of the list). (asynchronously)
      * 
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -1267,6 +1270,167 @@ public class InboxApi {
         return localVarCall;
     }
     /**
+     * Build call for createInboxSendOffer
+     * @param id  (required)
+     * @param createInboxSendOfferRequest  (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call createInboxSendOfferCall(UUID id, CreateInboxSendOfferRequest createInboxSendOfferRequest, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = createInboxSendOfferRequest;
+
+        // create path and map variables
+        String localVarPath = "/v1/inbox/{id}/send-offer"
+            .replaceAll("\\{" + "id" + "\\}", localVarApiClient.escapeString(id.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "PersonalAccessToken" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call createInboxSendOfferValidateBeforeCall(UUID id, CreateInboxSendOfferRequest createInboxSendOfferRequest, final ApiCallback _callback) throws ApiException {
+        
+        // verify the required parameter 'id' is set
+        if (id == null) {
+            throw new ApiException("Missing the required parameter 'id' when calling createInboxSendOffer(Async)");
+        }
+        
+        // verify the required parameter 'createInboxSendOfferRequest' is set
+        if (createInboxSendOfferRequest == null) {
+            throw new ApiException("Missing the required parameter 'createInboxSendOfferRequest' when calling createInboxSendOffer(Async)");
+        }
+        
+
+        okhttp3.Call localVarCall = createInboxSendOfferCall(id, createInboxSendOfferRequest, _callback);
+        return localVarCall;
+
+    }
+
+    /**
+     * Make the buyer an offer inside a conversation (seller → buyer). Only where the conversation&#39;s canSendOffer is true (Grailed today). &#x60;amount&#x60; is in the listing&#39;s currency, above 0 and below the listing price (whole dollars on Grailed). The offer is in the thread at once as a message with offerAmount + offerStatus, deliveryStatus &#39;sending&#39; until the platform confirms.
+     * 
+     * @param id  (required)
+     * @param createInboxSendOfferRequest  (required)
+     * @return CreateInboxSendOfferResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public CreateInboxSendOfferResponse createInboxSendOffer(UUID id, CreateInboxSendOfferRequest createInboxSendOfferRequest) throws ApiException {
+        ApiResponse<CreateInboxSendOfferResponse> localVarResp = createInboxSendOfferWithHttpInfo(id, createInboxSendOfferRequest);
+        return localVarResp.getData();
+    }
+
+    /**
+     * Make the buyer an offer inside a conversation (seller → buyer). Only where the conversation&#39;s canSendOffer is true (Grailed today). &#x60;amount&#x60; is in the listing&#39;s currency, above 0 and below the listing price (whole dollars on Grailed). The offer is in the thread at once as a message with offerAmount + offerStatus, deliveryStatus &#39;sending&#39; until the platform confirms.
+     * 
+     * @param id  (required)
+     * @param createInboxSendOfferRequest  (required)
+     * @return ApiResponse&lt;CreateInboxSendOfferResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<CreateInboxSendOfferResponse> createInboxSendOfferWithHttpInfo(UUID id, CreateInboxSendOfferRequest createInboxSendOfferRequest) throws ApiException {
+        okhttp3.Call localVarCall = createInboxSendOfferValidateBeforeCall(id, createInboxSendOfferRequest, null);
+        Type localVarReturnType = new TypeToken<CreateInboxSendOfferResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Make the buyer an offer inside a conversation (seller → buyer). Only where the conversation&#39;s canSendOffer is true (Grailed today). &#x60;amount&#x60; is in the listing&#39;s currency, above 0 and below the listing price (whole dollars on Grailed). The offer is in the thread at once as a message with offerAmount + offerStatus, deliveryStatus &#39;sending&#39; until the platform confirms. (asynchronously)
+     * 
+     * @param id  (required)
+     * @param createInboxSendOfferRequest  (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call createInboxSendOfferAsync(UUID id, CreateInboxSendOfferRequest createInboxSendOfferRequest, final ApiCallback<CreateInboxSendOfferResponse> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = createInboxSendOfferValidateBeforeCall(id, createInboxSendOfferRequest, _callback);
+        Type localVarReturnType = new TypeToken<CreateInboxSendOfferResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
      * Build call for createVideoRequestAnswer
      * @param id  (required)
      * @param _callback Callback for upload/download progress
@@ -1721,7 +1885,7 @@ public class InboxApi {
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 204 </td><td> No Content — the request succeeded and there is no body. </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
         <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
@@ -1795,12 +1959,11 @@ public class InboxApi {
      * Delete a canned response.
      * 
      * @param id  (required)
-     * @return CreateOrderDisputeResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 204 </td><td> No Content — the request succeeded and there is no body. </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
         <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
@@ -1809,21 +1972,20 @@ public class InboxApi {
         <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
      </table>
      */
-    public CreateOrderDisputeResponse deleteInboxCannedResponse(UUID id) throws ApiException {
-        ApiResponse<CreateOrderDisputeResponse> localVarResp = deleteInboxCannedResponseWithHttpInfo(id);
-        return localVarResp.getData();
+    public void deleteInboxCannedResponse(UUID id) throws ApiException {
+        deleteInboxCannedResponseWithHttpInfo(id);
     }
 
     /**
      * Delete a canned response.
      * 
      * @param id  (required)
-     * @return ApiResponse&lt;CreateOrderDisputeResponse&gt;
+     * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 204 </td><td> No Content — the request succeeded and there is no body. </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
         <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
@@ -1832,10 +1994,9 @@ public class InboxApi {
         <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<CreateOrderDisputeResponse> deleteInboxCannedResponseWithHttpInfo(UUID id) throws ApiException {
+    public ApiResponse<Void> deleteInboxCannedResponseWithHttpInfo(UUID id) throws ApiException {
         okhttp3.Call localVarCall = deleteInboxCannedResponseValidateBeforeCall(id, null);
-        Type localVarReturnType = new TypeToken<CreateOrderDisputeResponse>(){}.getType();
-        return localVarApiClient.execute(localVarCall, localVarReturnType);
+        return localVarApiClient.execute(localVarCall);
     }
 
     /**
@@ -1848,7 +2009,7 @@ public class InboxApi {
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 204 </td><td> No Content — the request succeeded and there is no body. </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
         <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
@@ -1857,11 +2018,10 @@ public class InboxApi {
         <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call deleteInboxCannedResponseAsync(UUID id, final ApiCallback<CreateOrderDisputeResponse> _callback) throws ApiException {
+    public okhttp3.Call deleteInboxCannedResponseAsync(UUID id, final ApiCallback<Void> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = deleteInboxCannedResponseValidateBeforeCall(id, _callback);
-        Type localVarReturnType = new TypeToken<CreateOrderDisputeResponse>(){}.getType();
-        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
@@ -1944,7 +2104,7 @@ public class InboxApi {
     }
 
     /**
-     * Get one conversation with its messages.
+     * Get one conversation with its messages and the item it is about (itemTitle, itemThumbnail, itemPrice, itemCurrency, itemUrl on the platform, listingId in Crossly, crosslyListingSlug, canSendOffer). An offer made in the thread is a message with offerAmount + offerStatus.
      * 
      * @param id  (required)
      * @return GetInboxResponse
@@ -1967,7 +2127,7 @@ public class InboxApi {
     }
 
     /**
-     * Get one conversation with its messages.
+     * Get one conversation with its messages and the item it is about (itemTitle, itemThumbnail, itemPrice, itemCurrency, itemUrl on the platform, listingId in Crossly, crosslyListingSlug, canSendOffer). An offer made in the thread is a message with offerAmount + offerStatus.
      * 
      * @param id  (required)
      * @return ApiResponse&lt;GetInboxResponse&gt;
@@ -1991,7 +2151,7 @@ public class InboxApi {
     }
 
     /**
-     * Get one conversation with its messages. (asynchronously)
+     * Get one conversation with its messages and the item it is about (itemTitle, itemThumbnail, itemPrice, itemCurrency, itemUrl on the platform, listingId in Crossly, crosslyListingSlug, canSendOffer). An offer made in the thread is a message with offerAmount + offerStatus. (asynchronously)
      * 
      * @param id  (required)
      * @param _callback The callback to be executed when the API call finishes
@@ -2089,7 +2249,7 @@ public class InboxApi {
     }
 
     /**
-     * List canned responses.
+     * List canned responses in the seller&#39;s order.
      * 
      * @return GetInboxCannedResponseResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -2111,7 +2271,7 @@ public class InboxApi {
     }
 
     /**
-     * List canned responses.
+     * List canned responses in the seller&#39;s order.
      * 
      * @return ApiResponse&lt;GetInboxCannedResponseResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -2134,7 +2294,7 @@ public class InboxApi {
     }
 
     /**
-     * List canned responses. (asynchronously)
+     * List canned responses in the seller&#39;s order. (asynchronously)
      * 
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -2383,7 +2543,7 @@ public class InboxApi {
     }
 
     /**
-     * Sidebar badge: unread conversation count.
+     * Unread conversation count (threads only; /v1/inbox/counts adds offers).
      * 
      * @return CreateWeb3LaunchArtResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -2405,7 +2565,7 @@ public class InboxApi {
     }
 
     /**
-     * Sidebar badge: unread conversation count.
+     * Unread conversation count (threads only; /v1/inbox/counts adds offers).
      * 
      * @return ApiResponse&lt;CreateWeb3LaunchArtResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -2428,7 +2588,7 @@ public class InboxApi {
     }
 
     /**
-     * Sidebar badge: unread conversation count. (asynchronously)
+     * Unread conversation count (threads only; /v1/inbox/counts adds offers). (asynchronously)
      * 
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -2453,9 +2613,7 @@ public class InboxApi {
         return localVarCall;
     }
     /**
-     * Build call for listInbox
-     * @param page  (optional, default to 1)
-     * @param limit  (optional, default to 25)
+     * Build call for getInboxCount
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -2471,7 +2629,152 @@ public class InboxApi {
         <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call listInboxCall(Integer page, Integer limit, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getInboxCountCall(final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/v1/inbox/counts";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "PersonalAccessToken" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call getInboxCountValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        
+
+        okhttp3.Call localVarCall = getInboxCountCall(_callback);
+        return localVarCall;
+
+    }
+
+    /**
+     * Inbox badges: unread and needs-reply, split into conversations and offers.
+     * 
+     * @return GetInboxCountResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public GetInboxCountResponse getInboxCount() throws ApiException {
+        ApiResponse<GetInboxCountResponse> localVarResp = getInboxCountWithHttpInfo();
+        return localVarResp.getData();
+    }
+
+    /**
+     * Inbox badges: unread and needs-reply, split into conversations and offers.
+     * 
+     * @return ApiResponse&lt;GetInboxCountResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<GetInboxCountResponse> getInboxCountWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = getInboxCountValidateBeforeCall(null);
+        Type localVarReturnType = new TypeToken<GetInboxCountResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Inbox badges: unread and needs-reply, split into conversations and offers. (asynchronously)
+     * 
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getInboxCountAsync(final ApiCallback<GetInboxCountResponse> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = getInboxCountValidateBeforeCall(_callback);
+        Type localVarReturnType = new TypeToken<GetInboxCountResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for listInbox
+     * @param page  (optional, default to 1)
+     * @param limit  (optional, default to 25)
+     * @param filter unread | needs_reply (services/inbox/attention.ts). Omit for all. (optional)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call listInboxCall(Integer page, Integer limit, String filter, final ApiCallback _callback) throws ApiException {
         String basePath = null;
 
         // Operation Servers
@@ -2505,6 +2808,10 @@ public class InboxApi {
             localVarQueryParams.addAll(localVarApiClient.parameterToPair("limit", limit));
         }
 
+        if (filter != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("filter", filter));
+        }
+
         final String[] localVarAccepts = {
             "application/json"
         };
@@ -2526,19 +2833,20 @@ public class InboxApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call listInboxValidateBeforeCall(Integer page, Integer limit, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call listInboxValidateBeforeCall(Integer page, Integer limit, String filter, final ApiCallback _callback) throws ApiException {
         
 
-        okhttp3.Call localVarCall = listInboxCall(page, limit, _callback);
+        okhttp3.Call localVarCall = listInboxCall(page, limit, filter, _callback);
         return localVarCall;
 
     }
 
     /**
-     * List conversations.
+     * List conversations. &#x60;filter&#x60; narrows to the rows GET /v1/inbox/counts counts.
      * 
      * @param page  (optional, default to 1)
      * @param limit  (optional, default to 25)
+     * @param filter unread | needs_reply (services/inbox/attention.ts). Omit for all. (optional)
      * @return ListInboxResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -2553,16 +2861,17 @@ public class InboxApi {
         <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
      </table>
      */
-    public ListInboxResponse listInbox(Integer page, Integer limit) throws ApiException {
-        ApiResponse<ListInboxResponse> localVarResp = listInboxWithHttpInfo(page, limit);
+    public ListInboxResponse listInbox(Integer page, Integer limit, String filter) throws ApiException {
+        ApiResponse<ListInboxResponse> localVarResp = listInboxWithHttpInfo(page, limit, filter);
         return localVarResp.getData();
     }
 
     /**
-     * List conversations.
+     * List conversations. &#x60;filter&#x60; narrows to the rows GET /v1/inbox/counts counts.
      * 
      * @param page  (optional, default to 1)
      * @param limit  (optional, default to 25)
+     * @param filter unread | needs_reply (services/inbox/attention.ts). Omit for all. (optional)
      * @return ApiResponse&lt;ListInboxResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -2577,17 +2886,18 @@ public class InboxApi {
         <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<ListInboxResponse> listInboxWithHttpInfo(Integer page, Integer limit) throws ApiException {
-        okhttp3.Call localVarCall = listInboxValidateBeforeCall(page, limit, null);
+    public ApiResponse<ListInboxResponse> listInboxWithHttpInfo(Integer page, Integer limit, String filter) throws ApiException {
+        okhttp3.Call localVarCall = listInboxValidateBeforeCall(page, limit, filter, null);
         Type localVarReturnType = new TypeToken<ListInboxResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
-     * List conversations. (asynchronously)
+     * List conversations. &#x60;filter&#x60; narrows to the rows GET /v1/inbox/counts counts. (asynchronously)
      * 
      * @param page  (optional, default to 1)
      * @param limit  (optional, default to 25)
+     * @param filter unread | needs_reply (services/inbox/attention.ts). Omit for all. (optional)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -2603,9 +2913,9 @@ public class InboxApi {
         <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call listInboxAsync(Integer page, Integer limit, final ApiCallback<ListInboxResponse> _callback) throws ApiException {
+    public okhttp3.Call listInboxAsync(Integer page, Integer limit, String filter, final ApiCallback<ListInboxResponse> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = listInboxValidateBeforeCall(page, limit, _callback);
+        okhttp3.Call localVarCall = listInboxValidateBeforeCall(page, limit, filter, _callback);
         Type localVarReturnType = new TypeToken<ListInboxResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -2901,6 +3211,157 @@ public class InboxApi {
 
         okhttp3.Call localVarCall = updateInboxCannedResponseValidateBeforeCall(id, _callback);
         Type localVarReturnType = new TypeToken<CreateInboxCannedResponseResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for updateInboxCannedResponseOrder
+     * @param updateInboxCannedResponseOrderRequest  (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call updateInboxCannedResponseOrderCall(UpdateInboxCannedResponseOrderRequest updateInboxCannedResponseOrderRequest, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = updateInboxCannedResponseOrderRequest;
+
+        // create path and map variables
+        String localVarPath = "/v1/inbox/canned-responses/order";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "PersonalAccessToken" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "PUT", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call updateInboxCannedResponseOrderValidateBeforeCall(UpdateInboxCannedResponseOrderRequest updateInboxCannedResponseOrderRequest, final ApiCallback _callback) throws ApiException {
+        
+        // verify the required parameter 'updateInboxCannedResponseOrderRequest' is set
+        if (updateInboxCannedResponseOrderRequest == null) {
+            throw new ApiException("Missing the required parameter 'updateInboxCannedResponseOrderRequest' when calling updateInboxCannedResponseOrder(Async)");
+        }
+        
+
+        okhttp3.Call localVarCall = updateInboxCannedResponseOrderCall(updateInboxCannedResponseOrderRequest, _callback);
+        return localVarCall;
+
+    }
+
+    /**
+     * Reorder canned responses.
+     * Pass EVERY canned response id in the new order (first &#x3D; top of the picker). A list with an unknown, missing or repeated id is refused with a validation error and nothing changes.
+     * @param updateInboxCannedResponseOrderRequest  (required)
+     * @return GetInboxCannedResponseResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public GetInboxCannedResponseResponse updateInboxCannedResponseOrder(UpdateInboxCannedResponseOrderRequest updateInboxCannedResponseOrderRequest) throws ApiException {
+        ApiResponse<GetInboxCannedResponseResponse> localVarResp = updateInboxCannedResponseOrderWithHttpInfo(updateInboxCannedResponseOrderRequest);
+        return localVarResp.getData();
+    }
+
+    /**
+     * Reorder canned responses.
+     * Pass EVERY canned response id in the new order (first &#x3D; top of the picker). A list with an unknown, missing or repeated id is refused with a validation error and nothing changes.
+     * @param updateInboxCannedResponseOrderRequest  (required)
+     * @return ApiResponse&lt;GetInboxCannedResponseResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<GetInboxCannedResponseResponse> updateInboxCannedResponseOrderWithHttpInfo(UpdateInboxCannedResponseOrderRequest updateInboxCannedResponseOrderRequest) throws ApiException {
+        okhttp3.Call localVarCall = updateInboxCannedResponseOrderValidateBeforeCall(updateInboxCannedResponseOrderRequest, null);
+        Type localVarReturnType = new TypeToken<GetInboxCannedResponseResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Reorder canned responses. (asynchronously)
+     * Pass EVERY canned response id in the new order (first &#x3D; top of the picker). A list with an unknown, missing or repeated id is refused with a validation error and nothing changes.
+     * @param updateInboxCannedResponseOrderRequest  (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call updateInboxCannedResponseOrderAsync(UpdateInboxCannedResponseOrderRequest updateInboxCannedResponseOrderRequest, final ApiCallback<GetInboxCannedResponseResponse> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = updateInboxCannedResponseOrderValidateBeforeCall(updateInboxCannedResponseOrderRequest, _callback);
+        Type localVarReturnType = new TypeToken<GetInboxCannedResponseResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }

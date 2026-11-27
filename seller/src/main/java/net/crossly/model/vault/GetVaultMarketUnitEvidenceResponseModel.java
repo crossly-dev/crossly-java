@@ -30,7 +30,7 @@ import org.openapitools.jackson.nullable.JsonNullable;
  * The best 3D view of the unit: a captured mesh first, then a texture.
  */
 @ApiModel(description = "The best 3D view of the unit: a captured mesh first, then a texture.")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-11T23:44:48.922Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-27T19:42:43.186Z[Etc/UTC]")
 public class GetVaultMarketUnitEvidenceResponseModel {
   /**
    * Gets or Sets kind

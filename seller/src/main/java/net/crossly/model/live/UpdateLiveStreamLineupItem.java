@@ -29,16 +29,8 @@ import org.openapitools.jackson.nullable.JsonNullable;
 /**
  * UpdateLiveStreamLineupItem
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-11T23:44:48.922Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-27T19:42:43.186Z[Etc/UTC]")
 public class UpdateLiveStreamLineupItem {
-  public static final String SERIALIZED_NAME_AVAILABLE = "available";
-  @SerializedName(SERIALIZED_NAME_AVAILABLE)
-  private Boolean available;
-
-  public static final String SERIALIZED_NAME_TITLE = "title";
-  @SerializedName(SERIALIZED_NAME_TITLE)
-  private String title;
-
   public static final String SERIALIZED_NAME_PLATFORM_LISTING_ID = "platformListingId";
   @SerializedName(SERIALIZED_NAME_PLATFORM_LISTING_ID)
   private String platformListingId;
@@ -51,6 +43,10 @@ public class UpdateLiveStreamLineupItem {
   @SerializedName(SERIALIZED_NAME_SLUG)
   private String slug;
 
+  public static final String SERIALIZED_NAME_TITLE = "title";
+  @SerializedName(SERIALIZED_NAME_TITLE)
+  private String title;
+
   public static final String SERIALIZED_NAME_PRICE_CENTS = "priceCents";
   @SerializedName(SERIALIZED_NAME_PRICE_CENTS)
   private BigDecimal priceCents;
@@ -59,58 +55,16 @@ public class UpdateLiveStreamLineupItem {
   @SerializedName(SERIALIZED_NAME_IMAGE_URL)
   private String imageUrl;
 
+  public static final String SERIALIZED_NAME_AVAILABLE = "available";
+  @SerializedName(SERIALIZED_NAME_AVAILABLE)
+  private Boolean available;
+
   public static final String SERIALIZED_NAME_PINNED = "pinned";
   @SerializedName(SERIALIZED_NAME_PINNED)
   private Boolean pinned;
 
   public UpdateLiveStreamLineupItem() { 
   }
-
-  public UpdateLiveStreamLineupItem available(Boolean available) {
-    
-    this.available = available;
-    return this;
-  }
-
-   /**
-   * Get available
-   * @return available
-  **/
-  @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "")
-
-  public Boolean getAvailable() {
-    return available;
-  }
-
-
-  public void setAvailable(Boolean available) {
-    this.available = available;
-  }
-
-
-  public UpdateLiveStreamLineupItem title(String title) {
-    
-    this.title = title;
-    return this;
-  }
-
-   /**
-   * Get title
-   * @return title
-  **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
-
-  public String getTitle() {
-    return title;
-  }
-
-
-  public void setTitle(String title) {
-    this.title = title;
-  }
-
 
   public UpdateLiveStreamLineupItem platformListingId(String platformListingId) {
     
@@ -181,6 +135,29 @@ public class UpdateLiveStreamLineupItem {
   }
 
 
+  public UpdateLiveStreamLineupItem title(String title) {
+    
+    this.title = title;
+    return this;
+  }
+
+   /**
+   * Get title
+   * @return title
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public String getTitle() {
+    return title;
+  }
+
+
+  public void setTitle(String title) {
+    this.title = title;
+  }
+
+
   public UpdateLiveStreamLineupItem priceCents(BigDecimal priceCents) {
     
     this.priceCents = priceCents;
@@ -227,6 +204,29 @@ public class UpdateLiveStreamLineupItem {
   }
 
 
+  public UpdateLiveStreamLineupItem available(Boolean available) {
+    
+    this.available = available;
+    return this;
+  }
+
+   /**
+   * Get available
+   * @return available
+  **/
+  @javax.annotation.Nonnull
+  @ApiModelProperty(required = true, value = "")
+
+  public Boolean getAvailable() {
+    return available;
+  }
+
+
+  public void setAvailable(Boolean available) {
+    this.available = available;
+  }
+
+
   public UpdateLiveStreamLineupItem pinned(Boolean pinned) {
     
     this.pinned = pinned;
@@ -259,13 +259,13 @@ public class UpdateLiveStreamLineupItem {
       return false;
     }
     UpdateLiveStreamLineupItem updateLiveStreamLineupItem = (UpdateLiveStreamLineupItem) o;
-    return Objects.equals(this.available, updateLiveStreamLineupItem.available) &&
-        Objects.equals(this.title, updateLiveStreamLineupItem.title) &&
-        Objects.equals(this.platformListingId, updateLiveStreamLineupItem.platformListingId) &&
+    return Objects.equals(this.platformListingId, updateLiveStreamLineupItem.platformListingId) &&
         Objects.equals(this.position, updateLiveStreamLineupItem.position) &&
         Objects.equals(this.slug, updateLiveStreamLineupItem.slug) &&
+        Objects.equals(this.title, updateLiveStreamLineupItem.title) &&
         Objects.equals(this.priceCents, updateLiveStreamLineupItem.priceCents) &&
         Objects.equals(this.imageUrl, updateLiveStreamLineupItem.imageUrl) &&
+        Objects.equals(this.available, updateLiveStreamLineupItem.available) &&
         Objects.equals(this.pinned, updateLiveStreamLineupItem.pinned);
   }
 
@@ -275,7 +275,7 @@ public class UpdateLiveStreamLineupItem {
 
   @Override
   public int hashCode() {
-    return Objects.hash(available, title, platformListingId, position, slug, priceCents, imageUrl, pinned);
+    return Objects.hash(platformListingId, position, slug, title, priceCents, imageUrl, available, pinned);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -289,13 +289,13 @@ public class UpdateLiveStreamLineupItem {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class UpdateLiveStreamLineupItem {\n");
-    sb.append("    available: ").append(toIndentedString(available)).append("\n");
-    sb.append("    title: ").append(toIndentedString(title)).append("\n");
     sb.append("    platformListingId: ").append(toIndentedString(platformListingId)).append("\n");
     sb.append("    position: ").append(toIndentedString(position)).append("\n");
     sb.append("    slug: ").append(toIndentedString(slug)).append("\n");
+    sb.append("    title: ").append(toIndentedString(title)).append("\n");
     sb.append("    priceCents: ").append(toIndentedString(priceCents)).append("\n");
     sb.append("    imageUrl: ").append(toIndentedString(imageUrl)).append("\n");
+    sb.append("    available: ").append(toIndentedString(available)).append("\n");
     sb.append("    pinned: ").append(toIndentedString(pinned)).append("\n");
     sb.append("}");
     return sb.toString();

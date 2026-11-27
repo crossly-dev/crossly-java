@@ -29,7 +29,7 @@ import org.openapitools.jackson.nullable.JsonNullable;
 /**
  * GetVaultMarketRiskReportResponsePartnerDcmPositions
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-11T23:44:48.922Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-27T19:42:43.186Z[Etc/UTC]")
 public class GetVaultMarketRiskReportResponsePartnerDcmPositions {
   public static final String SERIALIZED_NAME_SYMBOL = "symbol";
   @SerializedName(SERIALIZED_NAME_SYMBOL)
@@ -52,9 +52,9 @@ public class GetVaultMarketRiskReportResponsePartnerDcmPositions {
    */
   @JsonAdapter(SideEnum.Adapter.class)
   public enum SideEnum {
-    LONG("long"),
+    SHORT("short"),
     
-    SHORT("short");
+    LONG("long");
 
     private String value;
 

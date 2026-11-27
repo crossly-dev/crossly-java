@@ -31,11 +31,64 @@ import net.crossly.model.analytic.GetAnalyticTimeseryResponseSeries;
 /**
  * GetAnalyticTimeseryResponse
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-11T23:44:48.922Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-27T19:42:43.186Z[Etc/UTC]")
 public class GetAnalyticTimeseryResponse {
   public static final String SERIALIZED_NAME_DAYS = "days";
   @SerializedName(SERIALIZED_NAME_DAYS)
   private BigDecimal days;
+
+  /**
+   * Gets or Sets granularity
+   */
+  @JsonAdapter(GranularityEnum.Adapter.class)
+  public enum GranularityEnum {
+    DAY("day"),
+    
+    WEEK("week"),
+    
+    MONTH("month");
+
+    private String value;
+
+    GranularityEnum(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    @Override
+    public String toString() {
+      return String.valueOf(value);
+    }
+
+    public static GranularityEnum fromValue(String value) {
+      for (GranularityEnum b : GranularityEnum.values()) {
+        if (b.value.equals(value)) {
+          return b;
+        }
+      }
+      throw new IllegalArgumentException("Unexpected value '" + value + "'");
+    }
+
+    public static class Adapter extends TypeAdapter<GranularityEnum> {
+      @Override
+      public void write(final JsonWriter jsonWriter, final GranularityEnum enumeration) throws IOException {
+        jsonWriter.value(enumeration.getValue());
+      }
+
+      @Override
+      public GranularityEnum read(final JsonReader jsonReader) throws IOException {
+        String value =  jsonReader.nextString();
+        return GranularityEnum.fromValue(value);
+      }
+    }
+  }
+
+  public static final String SERIALIZED_NAME_GRANULARITY = "granularity";
+  @SerializedName(SERIALIZED_NAME_GRANULARITY)
+  private GranularityEnum granularity;
 
   public static final String SERIALIZED_NAME_SERIES = "series";
   @SerializedName(SERIALIZED_NAME_SERIES)
@@ -64,6 +117,29 @@ public class GetAnalyticTimeseryResponse {
 
   public void setDays(BigDecimal days) {
     this.days = days;
+  }
+
+
+  public GetAnalyticTimeseryResponse granularity(GranularityEnum granularity) {
+    
+    this.granularity = granularity;
+    return this;
+  }
+
+   /**
+   * Get granularity
+   * @return granularity
+  **/
+  @javax.annotation.Nonnull
+  @ApiModelProperty(required = true, value = "")
+
+  public GranularityEnum getGranularity() {
+    return granularity;
+  }
+
+
+  public void setGranularity(GranularityEnum granularity) {
+    this.granularity = granularity;
   }
 
 
@@ -105,12 +181,13 @@ public class GetAnalyticTimeseryResponse {
     }
     GetAnalyticTimeseryResponse getAnalyticTimeseryResponse = (GetAnalyticTimeseryResponse) o;
     return Objects.equals(this.days, getAnalyticTimeseryResponse.days) &&
+        Objects.equals(this.granularity, getAnalyticTimeseryResponse.granularity) &&
         Objects.equals(this.series, getAnalyticTimeseryResponse.series);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(days, series);
+    return Objects.hash(days, granularity, series);
   }
 
   @Override
@@ -118,6 +195,7 @@ public class GetAnalyticTimeseryResponse {
     StringBuilder sb = new StringBuilder();
     sb.append("class GetAnalyticTimeseryResponse {\n");
     sb.append("    days: ").append(toIndentedString(days)).append("\n");
+    sb.append("    granularity: ").append(toIndentedString(granularity)).append("\n");
     sb.append("    series: ").append(toIndentedString(series)).append("\n");
     sb.append("}");
     return sb.toString();

@@ -27,41 +27,18 @@ import java.io.IOException;
 /**
  * CreateBuyerOrderCancelResponseData
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-11T23:47:29.843Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-27T19:58:46.962Z[Etc/UTC]")
 public class CreateBuyerOrderCancelResponseData {
-  public static final String SERIALIZED_NAME_REFUNDED = "refunded";
-  @SerializedName(SERIALIZED_NAME_REFUNDED)
-  private Boolean refunded;
-
   public static final String SERIALIZED_NAME_OK = "ok";
   @SerializedName(SERIALIZED_NAME_OK)
   private Boolean ok;
 
+  public static final String SERIALIZED_NAME_REFUNDED = "refunded";
+  @SerializedName(SERIALIZED_NAME_REFUNDED)
+  private Boolean refunded;
+
   public CreateBuyerOrderCancelResponseData() { 
   }
-
-  public CreateBuyerOrderCancelResponseData refunded(Boolean refunded) {
-    
-    this.refunded = refunded;
-    return this;
-  }
-
-   /**
-   * false only for an order paid entirely with credit, which has no card charge to refund.
-   * @return refunded
-  **/
-  @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "false only for an order paid entirely with credit, which has no card charge to refund.")
-
-  public Boolean getRefunded() {
-    return refunded;
-  }
-
-
-  public void setRefunded(Boolean refunded) {
-    this.refunded = refunded;
-  }
-
 
   public CreateBuyerOrderCancelResponseData ok(Boolean ok) {
     
@@ -86,6 +63,29 @@ public class CreateBuyerOrderCancelResponseData {
   }
 
 
+  public CreateBuyerOrderCancelResponseData refunded(Boolean refunded) {
+    
+    this.refunded = refunded;
+    return this;
+  }
+
+   /**
+   * false only for an order paid entirely with credit, which has no card charge to refund.
+   * @return refunded
+  **/
+  @javax.annotation.Nonnull
+  @ApiModelProperty(required = true, value = "false only for an order paid entirely with credit, which has no card charge to refund.")
+
+  public Boolean getRefunded() {
+    return refunded;
+  }
+
+
+  public void setRefunded(Boolean refunded) {
+    this.refunded = refunded;
+  }
+
+
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -95,21 +95,21 @@ public class CreateBuyerOrderCancelResponseData {
       return false;
     }
     CreateBuyerOrderCancelResponseData createBuyerOrderCancelResponseData = (CreateBuyerOrderCancelResponseData) o;
-    return Objects.equals(this.refunded, createBuyerOrderCancelResponseData.refunded) &&
-        Objects.equals(this.ok, createBuyerOrderCancelResponseData.ok);
+    return Objects.equals(this.ok, createBuyerOrderCancelResponseData.ok) &&
+        Objects.equals(this.refunded, createBuyerOrderCancelResponseData.refunded);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(refunded, ok);
+    return Objects.hash(ok, refunded);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class CreateBuyerOrderCancelResponseData {\n");
-    sb.append("    refunded: ").append(toIndentedString(refunded)).append("\n");
     sb.append("    ok: ").append(toIndentedString(ok)).append("\n");
+    sb.append("    refunded: ").append(toIndentedString(refunded)).append("\n");
     sb.append("}");
     return sb.toString();
   }

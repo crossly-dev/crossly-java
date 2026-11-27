@@ -31,7 +31,7 @@ import org.threeten.bp.OffsetDateTime;
 /**
  * ListOrderScanFormsItem
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-11T23:44:48.922Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-27T19:42:43.186Z[Etc/UTC]")
 public class ListOrderScanFormsItem {
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
@@ -57,21 +57,21 @@ public class ListOrderScanFormsItem {
   @SerializedName(SERIALIZED_NAME_ORDER_IDS)
   private List<String> orderIds = new ArrayList<String>();
 
-  public static final String SERIALIZED_NAME_DOCUMENT_URL = "documentUrl";
-  @SerializedName(SERIALIZED_NAME_DOCUMENT_URL)
-  private String documentUrl;
-
-  public static final String SERIALIZED_NAME_SHIPPO_MANIFEST_ID = "shippoManifestId";
-  @SerializedName(SERIALIZED_NAME_SHIPPO_MANIFEST_ID)
-  private String shippoManifestId;
+  public static final String SERIALIZED_NAME_WARNINGS = "warnings";
+  @SerializedName(SERIALIZED_NAME_WARNINGS)
+  private List<String> warnings = new ArrayList<String>();
 
   public static final String SERIALIZED_NAME_SHIP_DATE = "shipDate";
   @SerializedName(SERIALIZED_NAME_SHIP_DATE)
   private String shipDate;
 
-  public static final String SERIALIZED_NAME_WARNINGS = "warnings";
-  @SerializedName(SERIALIZED_NAME_WARNINGS)
-  private List<String> warnings = new ArrayList<String>();
+  public static final String SERIALIZED_NAME_SHIPPO_MANIFEST_ID = "shippoManifestId";
+  @SerializedName(SERIALIZED_NAME_SHIPPO_MANIFEST_ID)
+  private String shippoManifestId;
+
+  public static final String SERIALIZED_NAME_DOCUMENT_URL = "documentUrl";
+  @SerializedName(SERIALIZED_NAME_DOCUMENT_URL)
+  private String documentUrl;
 
   public ListOrderScanFormsItem() { 
   }
@@ -219,75 +219,6 @@ public class ListOrderScanFormsItem {
   }
 
 
-  public ListOrderScanFormsItem documentUrl(String documentUrl) {
-    
-    this.documentUrl = documentUrl;
-    return this;
-  }
-
-   /**
-   * Get documentUrl
-   * @return documentUrl
-  **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
-
-  public String getDocumentUrl() {
-    return documentUrl;
-  }
-
-
-  public void setDocumentUrl(String documentUrl) {
-    this.documentUrl = documentUrl;
-  }
-
-
-  public ListOrderScanFormsItem shippoManifestId(String shippoManifestId) {
-    
-    this.shippoManifestId = shippoManifestId;
-    return this;
-  }
-
-   /**
-   * Get shippoManifestId
-   * @return shippoManifestId
-  **/
-  @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "")
-
-  public String getShippoManifestId() {
-    return shippoManifestId;
-  }
-
-
-  public void setShippoManifestId(String shippoManifestId) {
-    this.shippoManifestId = shippoManifestId;
-  }
-
-
-  public ListOrderScanFormsItem shipDate(String shipDate) {
-    
-    this.shipDate = shipDate;
-    return this;
-  }
-
-   /**
-   * Get shipDate
-   * @return shipDate
-  **/
-  @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "")
-
-  public String getShipDate() {
-    return shipDate;
-  }
-
-
-  public void setShipDate(String shipDate) {
-    this.shipDate = shipDate;
-  }
-
-
   public ListOrderScanFormsItem warnings(List<String> warnings) {
     
     this.warnings = warnings;
@@ -316,6 +247,75 @@ public class ListOrderScanFormsItem {
   }
 
 
+  public ListOrderScanFormsItem shipDate(String shipDate) {
+    
+    this.shipDate = shipDate;
+    return this;
+  }
+
+   /**
+   * Get shipDate
+   * @return shipDate
+  **/
+  @javax.annotation.Nonnull
+  @ApiModelProperty(required = true, value = "")
+
+  public String getShipDate() {
+    return shipDate;
+  }
+
+
+  public void setShipDate(String shipDate) {
+    this.shipDate = shipDate;
+  }
+
+
+  public ListOrderScanFormsItem shippoManifestId(String shippoManifestId) {
+    
+    this.shippoManifestId = shippoManifestId;
+    return this;
+  }
+
+   /**
+   * Get shippoManifestId
+   * @return shippoManifestId
+  **/
+  @javax.annotation.Nonnull
+  @ApiModelProperty(required = true, value = "")
+
+  public String getShippoManifestId() {
+    return shippoManifestId;
+  }
+
+
+  public void setShippoManifestId(String shippoManifestId) {
+    this.shippoManifestId = shippoManifestId;
+  }
+
+
+  public ListOrderScanFormsItem documentUrl(String documentUrl) {
+    
+    this.documentUrl = documentUrl;
+    return this;
+  }
+
+   /**
+   * Get documentUrl
+   * @return documentUrl
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public String getDocumentUrl() {
+    return documentUrl;
+  }
+
+
+  public void setDocumentUrl(String documentUrl) {
+    this.documentUrl = documentUrl;
+  }
+
+
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -331,10 +331,10 @@ public class ListOrderScanFormsItem {
         Objects.equals(this.status, listOrderScanFormsItem.status) &&
         Objects.equals(this.carrier, listOrderScanFormsItem.carrier) &&
         Objects.equals(this.orderIds, listOrderScanFormsItem.orderIds) &&
-        Objects.equals(this.documentUrl, listOrderScanFormsItem.documentUrl) &&
-        Objects.equals(this.shippoManifestId, listOrderScanFormsItem.shippoManifestId) &&
+        Objects.equals(this.warnings, listOrderScanFormsItem.warnings) &&
         Objects.equals(this.shipDate, listOrderScanFormsItem.shipDate) &&
-        Objects.equals(this.warnings, listOrderScanFormsItem.warnings);
+        Objects.equals(this.shippoManifestId, listOrderScanFormsItem.shippoManifestId) &&
+        Objects.equals(this.documentUrl, listOrderScanFormsItem.documentUrl);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -343,7 +343,7 @@ public class ListOrderScanFormsItem {
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, createdAt, userId, status, carrier, orderIds, documentUrl, shippoManifestId, shipDate, warnings);
+    return Objects.hash(id, createdAt, userId, status, carrier, orderIds, warnings, shipDate, shippoManifestId, documentUrl);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -363,10 +363,10 @@ public class ListOrderScanFormsItem {
     sb.append("    status: ").append(toIndentedString(status)).append("\n");
     sb.append("    carrier: ").append(toIndentedString(carrier)).append("\n");
     sb.append("    orderIds: ").append(toIndentedString(orderIds)).append("\n");
-    sb.append("    documentUrl: ").append(toIndentedString(documentUrl)).append("\n");
-    sb.append("    shippoManifestId: ").append(toIndentedString(shippoManifestId)).append("\n");
-    sb.append("    shipDate: ").append(toIndentedString(shipDate)).append("\n");
     sb.append("    warnings: ").append(toIndentedString(warnings)).append("\n");
+    sb.append("    shipDate: ").append(toIndentedString(shipDate)).append("\n");
+    sb.append("    shippoManifestId: ").append(toIndentedString(shippoManifestId)).append("\n");
+    sb.append("    documentUrl: ").append(toIndentedString(documentUrl)).append("\n");
     sb.append("}");
     return sb.toString();
   }

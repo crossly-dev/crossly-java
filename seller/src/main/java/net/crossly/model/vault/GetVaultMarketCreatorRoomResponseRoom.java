@@ -28,7 +28,7 @@ import org.openapitools.jackson.nullable.JsonNullable;
 /**
  * GetVaultMarketCreatorRoomResponseRoom
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-11T23:44:48.922Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-27T19:42:43.186Z[Etc/UTC]")
 public class GetVaultMarketCreatorRoomResponseRoom {
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
@@ -55,13 +55,13 @@ public class GetVaultMarketCreatorRoomResponseRoom {
    */
   @JsonAdapter(StatusEnum.Adapter.class)
   public enum StatusEnum {
-    APPLIED("applied"),
+    PAUSED("paused"),
     
     VERIFIED("verified"),
     
-    REJECTED("rejected"),
+    APPLIED("applied"),
     
-    PAUSED("paused");
+    REJECTED("rejected");
 
     private String value;
 

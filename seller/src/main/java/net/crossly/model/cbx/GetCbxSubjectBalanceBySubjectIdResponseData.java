@@ -27,11 +27,15 @@ import java.io.IOException;
 /**
  * GetCbxSubjectBalanceBySubjectIdResponseData
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-11T23:44:48.922Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-27T19:42:43.186Z[Etc/UTC]")
 public class GetCbxSubjectBalanceBySubjectIdResponseData {
   public static final String SERIALIZED_NAME_GRANTED_BASE_UNITS = "grantedBaseUnits";
   @SerializedName(SERIALIZED_NAME_GRANTED_BASE_UNITS)
   private String grantedBaseUnits;
+
+  public static final String SERIALIZED_NAME_FUNDING_RESTRICTED_BASE_UNITS = "fundingRestrictedBaseUnits";
+  @SerializedName(SERIALIZED_NAME_FUNDING_RESTRICTED_BASE_UNITS)
+  private String fundingRestrictedBaseUnits;
 
   public static final String SERIALIZED_NAME_EARNED_BASE_UNITS = "earnedBaseUnits";
   @SerializedName(SERIALIZED_NAME_EARNED_BASE_UNITS)
@@ -76,6 +80,29 @@ public class GetCbxSubjectBalanceBySubjectIdResponseData {
 
   public void setGrantedBaseUnits(String grantedBaseUnits) {
     this.grantedBaseUnits = grantedBaseUnits;
+  }
+
+
+  public GetCbxSubjectBalanceBySubjectIdResponseData fundingRestrictedBaseUnits(String fundingRestrictedBaseUnits) {
+    
+    this.fundingRestrictedBaseUnits = fundingRestrictedBaseUnits;
+    return this;
+  }
+
+   /**
+   * Get fundingRestrictedBaseUnits
+   * @return fundingRestrictedBaseUnits
+  **/
+  @javax.annotation.Nonnull
+  @ApiModelProperty(required = true, value = "")
+
+  public String getFundingRestrictedBaseUnits() {
+    return fundingRestrictedBaseUnits;
+  }
+
+
+  public void setFundingRestrictedBaseUnits(String fundingRestrictedBaseUnits) {
+    this.fundingRestrictedBaseUnits = fundingRestrictedBaseUnits;
   }
 
 
@@ -204,6 +231,7 @@ public class GetCbxSubjectBalanceBySubjectIdResponseData {
     }
     GetCbxSubjectBalanceBySubjectIdResponseData getCbxSubjectBalanceBySubjectIdResponseData = (GetCbxSubjectBalanceBySubjectIdResponseData) o;
     return Objects.equals(this.grantedBaseUnits, getCbxSubjectBalanceBySubjectIdResponseData.grantedBaseUnits) &&
+        Objects.equals(this.fundingRestrictedBaseUnits, getCbxSubjectBalanceBySubjectIdResponseData.fundingRestrictedBaseUnits) &&
         Objects.equals(this.earnedBaseUnits, getCbxSubjectBalanceBySubjectIdResponseData.earnedBaseUnits) &&
         Objects.equals(this.stakedBaseUnits, getCbxSubjectBalanceBySubjectIdResponseData.stakedBaseUnits) &&
         Objects.equals(this.earnedAvailableBaseUnits, getCbxSubjectBalanceBySubjectIdResponseData.earnedAvailableBaseUnits) &&
@@ -213,7 +241,7 @@ public class GetCbxSubjectBalanceBySubjectIdResponseData {
 
   @Override
   public int hashCode() {
-    return Objects.hash(grantedBaseUnits, earnedBaseUnits, stakedBaseUnits, earnedAvailableBaseUnits, connectedAvailableBaseUnits, totalSpendableBaseUnits);
+    return Objects.hash(grantedBaseUnits, fundingRestrictedBaseUnits, earnedBaseUnits, stakedBaseUnits, earnedAvailableBaseUnits, connectedAvailableBaseUnits, totalSpendableBaseUnits);
   }
 
   @Override
@@ -221,6 +249,7 @@ public class GetCbxSubjectBalanceBySubjectIdResponseData {
     StringBuilder sb = new StringBuilder();
     sb.append("class GetCbxSubjectBalanceBySubjectIdResponseData {\n");
     sb.append("    grantedBaseUnits: ").append(toIndentedString(grantedBaseUnits)).append("\n");
+    sb.append("    fundingRestrictedBaseUnits: ").append(toIndentedString(fundingRestrictedBaseUnits)).append("\n");
     sb.append("    earnedBaseUnits: ").append(toIndentedString(earnedBaseUnits)).append("\n");
     sb.append("    stakedBaseUnits: ").append(toIndentedString(stakedBaseUnits)).append("\n");
     sb.append("    earnedAvailableBaseUnits: ").append(toIndentedString(earnedAvailableBaseUnits)).append("\n");

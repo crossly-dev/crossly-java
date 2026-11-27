@@ -32,35 +32,35 @@ import org.openapitools.jackson.nullable.JsonNullable;
 /**
  * ListBuyerTotalRequestsItem
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-11T23:47:29.843Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-27T19:58:46.962Z[Etc/UTC]")
 public class ListBuyerTotalRequestsItem {
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
   private String id;
 
-  public static final String SERIALIZED_NAME_CREATED_AT = "createdAt";
-  @SerializedName(SERIALIZED_NAME_CREATED_AT)
-  private String createdAt;
+  public static final String SERIALIZED_NAME_SELLER_USER_ID = "sellerUserId";
+  @SerializedName(SERIALIZED_NAME_SELLER_USER_ID)
+  private String sellerUserId;
 
   public static final String SERIALIZED_NAME_STATUS = "status";
   @SerializedName(SERIALIZED_NAME_STATUS)
   private String status;
 
-  public static final String SERIALIZED_NAME_SELLER_USER_ID = "sellerUserId";
-  @SerializedName(SERIALIZED_NAME_SELLER_USER_ID)
-  private String sellerUserId;
-
   public static final String SERIALIZED_NAME_LINES = "lines";
   @SerializedName(SERIALIZED_NAME_LINES)
   private List<ListBuyerTotalRequestsItemLines> lines = new ArrayList<ListBuyerTotalRequestsItemLines>();
+
+  public static final String SERIALIZED_NAME_CREATED_AT = "createdAt";
+  @SerializedName(SERIALIZED_NAME_CREATED_AT)
+  private String createdAt;
 
   public static final String SERIALIZED_NAME_MATCHES_CART = "matchesCart";
   @SerializedName(SERIALIZED_NAME_MATCHES_CART)
   private Boolean matchesCart;
 
-  public static final String SERIALIZED_NAME_EXPIRES_AT = "expiresAt";
-  @SerializedName(SERIALIZED_NAME_EXPIRES_AT)
-  private String expiresAt;
+  public static final String SERIALIZED_NAME_SELLER_DISPLAY_NAME = "sellerDisplayName";
+  @SerializedName(SERIALIZED_NAME_SELLER_DISPLAY_NAME)
+  private String sellerDisplayName;
 
   public static final String SERIALIZED_NAME_QUOTED_SHIPPING_CENTS = "quotedShippingCents";
   @SerializedName(SERIALIZED_NAME_QUOTED_SHIPPING_CENTS)
@@ -70,9 +70,9 @@ public class ListBuyerTotalRequestsItem {
   @SerializedName(SERIALIZED_NAME_SELLER_MESSAGE)
   private String sellerMessage;
 
-  public static final String SERIALIZED_NAME_SELLER_DISPLAY_NAME = "sellerDisplayName";
-  @SerializedName(SERIALIZED_NAME_SELLER_DISPLAY_NAME)
-  private String sellerDisplayName;
+  public static final String SERIALIZED_NAME_EXPIRES_AT = "expiresAt";
+  @SerializedName(SERIALIZED_NAME_EXPIRES_AT)
+  private String expiresAt;
 
   public ListBuyerTotalRequestsItem() { 
   }
@@ -100,26 +100,26 @@ public class ListBuyerTotalRequestsItem {
   }
 
 
-  public ListBuyerTotalRequestsItem createdAt(String createdAt) {
+  public ListBuyerTotalRequestsItem sellerUserId(String sellerUserId) {
     
-    this.createdAt = createdAt;
+    this.sellerUserId = sellerUserId;
     return this;
   }
 
    /**
-   * Get createdAt
-   * @return createdAt
+   * Get sellerUserId
+   * @return sellerUserId
   **/
   @javax.annotation.Nonnull
   @ApiModelProperty(required = true, value = "")
 
-  public String getCreatedAt() {
-    return createdAt;
+  public String getSellerUserId() {
+    return sellerUserId;
   }
 
 
-  public void setCreatedAt(String createdAt) {
-    this.createdAt = createdAt;
+  public void setSellerUserId(String sellerUserId) {
+    this.sellerUserId = sellerUserId;
   }
 
 
@@ -143,29 +143,6 @@ public class ListBuyerTotalRequestsItem {
 
   public void setStatus(String status) {
     this.status = status;
-  }
-
-
-  public ListBuyerTotalRequestsItem sellerUserId(String sellerUserId) {
-    
-    this.sellerUserId = sellerUserId;
-    return this;
-  }
-
-   /**
-   * Get sellerUserId
-   * @return sellerUserId
-  **/
-  @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "")
-
-  public String getSellerUserId() {
-    return sellerUserId;
-  }
-
-
-  public void setSellerUserId(String sellerUserId) {
-    this.sellerUserId = sellerUserId;
   }
 
 
@@ -197,6 +174,29 @@ public class ListBuyerTotalRequestsItem {
   }
 
 
+  public ListBuyerTotalRequestsItem createdAt(String createdAt) {
+    
+    this.createdAt = createdAt;
+    return this;
+  }
+
+   /**
+   * Get createdAt
+   * @return createdAt
+  **/
+  @javax.annotation.Nonnull
+  @ApiModelProperty(required = true, value = "")
+
+  public String getCreatedAt() {
+    return createdAt;
+  }
+
+
+  public void setCreatedAt(String createdAt) {
+    this.createdAt = createdAt;
+  }
+
+
   public ListBuyerTotalRequestsItem matchesCart(Boolean matchesCart) {
     
     this.matchesCart = matchesCart;
@@ -220,26 +220,26 @@ public class ListBuyerTotalRequestsItem {
   }
 
 
-  public ListBuyerTotalRequestsItem expiresAt(String expiresAt) {
+  public ListBuyerTotalRequestsItem sellerDisplayName(String sellerDisplayName) {
     
-    this.expiresAt = expiresAt;
+    this.sellerDisplayName = sellerDisplayName;
     return this;
   }
 
    /**
-   * Get expiresAt
-   * @return expiresAt
+   * Get sellerDisplayName
+   * @return sellerDisplayName
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "")
 
-  public String getExpiresAt() {
-    return expiresAt;
+  public String getSellerDisplayName() {
+    return sellerDisplayName;
   }
 
 
-  public void setExpiresAt(String expiresAt) {
-    this.expiresAt = expiresAt;
+  public void setSellerDisplayName(String sellerDisplayName) {
+    this.sellerDisplayName = sellerDisplayName;
   }
 
 
@@ -289,26 +289,26 @@ public class ListBuyerTotalRequestsItem {
   }
 
 
-  public ListBuyerTotalRequestsItem sellerDisplayName(String sellerDisplayName) {
+  public ListBuyerTotalRequestsItem expiresAt(String expiresAt) {
     
-    this.sellerDisplayName = sellerDisplayName;
+    this.expiresAt = expiresAt;
     return this;
   }
 
    /**
-   * Get sellerDisplayName
-   * @return sellerDisplayName
+   * Get expiresAt
+   * @return expiresAt
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "")
 
-  public String getSellerDisplayName() {
-    return sellerDisplayName;
+  public String getExpiresAt() {
+    return expiresAt;
   }
 
 
-  public void setSellerDisplayName(String sellerDisplayName) {
-    this.sellerDisplayName = sellerDisplayName;
+  public void setExpiresAt(String expiresAt) {
+    this.expiresAt = expiresAt;
   }
 
 
@@ -322,15 +322,15 @@ public class ListBuyerTotalRequestsItem {
     }
     ListBuyerTotalRequestsItem listBuyerTotalRequestsItem = (ListBuyerTotalRequestsItem) o;
     return Objects.equals(this.id, listBuyerTotalRequestsItem.id) &&
-        Objects.equals(this.createdAt, listBuyerTotalRequestsItem.createdAt) &&
-        Objects.equals(this.status, listBuyerTotalRequestsItem.status) &&
         Objects.equals(this.sellerUserId, listBuyerTotalRequestsItem.sellerUserId) &&
+        Objects.equals(this.status, listBuyerTotalRequestsItem.status) &&
         Objects.equals(this.lines, listBuyerTotalRequestsItem.lines) &&
+        Objects.equals(this.createdAt, listBuyerTotalRequestsItem.createdAt) &&
         Objects.equals(this.matchesCart, listBuyerTotalRequestsItem.matchesCart) &&
-        Objects.equals(this.expiresAt, listBuyerTotalRequestsItem.expiresAt) &&
+        Objects.equals(this.sellerDisplayName, listBuyerTotalRequestsItem.sellerDisplayName) &&
         Objects.equals(this.quotedShippingCents, listBuyerTotalRequestsItem.quotedShippingCents) &&
         Objects.equals(this.sellerMessage, listBuyerTotalRequestsItem.sellerMessage) &&
-        Objects.equals(this.sellerDisplayName, listBuyerTotalRequestsItem.sellerDisplayName);
+        Objects.equals(this.expiresAt, listBuyerTotalRequestsItem.expiresAt);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -339,7 +339,7 @@ public class ListBuyerTotalRequestsItem {
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, createdAt, status, sellerUserId, lines, matchesCart, expiresAt, quotedShippingCents, sellerMessage, sellerDisplayName);
+    return Objects.hash(id, sellerUserId, status, lines, createdAt, matchesCart, sellerDisplayName, quotedShippingCents, sellerMessage, expiresAt);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -354,15 +354,15 @@ public class ListBuyerTotalRequestsItem {
     StringBuilder sb = new StringBuilder();
     sb.append("class ListBuyerTotalRequestsItem {\n");
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
-    sb.append("    createdAt: ").append(toIndentedString(createdAt)).append("\n");
-    sb.append("    status: ").append(toIndentedString(status)).append("\n");
     sb.append("    sellerUserId: ").append(toIndentedString(sellerUserId)).append("\n");
+    sb.append("    status: ").append(toIndentedString(status)).append("\n");
     sb.append("    lines: ").append(toIndentedString(lines)).append("\n");
+    sb.append("    createdAt: ").append(toIndentedString(createdAt)).append("\n");
     sb.append("    matchesCart: ").append(toIndentedString(matchesCart)).append("\n");
-    sb.append("    expiresAt: ").append(toIndentedString(expiresAt)).append("\n");
+    sb.append("    sellerDisplayName: ").append(toIndentedString(sellerDisplayName)).append("\n");
     sb.append("    quotedShippingCents: ").append(toIndentedString(quotedShippingCents)).append("\n");
     sb.append("    sellerMessage: ").append(toIndentedString(sellerMessage)).append("\n");
-    sb.append("    sellerDisplayName: ").append(toIndentedString(sellerDisplayName)).append("\n");
+    sb.append("    expiresAt: ").append(toIndentedString(expiresAt)).append("\n");
     sb.append("}");
     return sb.toString();
   }

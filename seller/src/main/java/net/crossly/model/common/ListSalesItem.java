@@ -25,6 +25,7 @@ import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import net.crossly.model.order.GetOrderResponseAppShare;
 import net.crossly.model.common.ListSalesItemDocuments;
 import org.openapitools.jackson.nullable.JsonNullable;
 import org.threeten.bp.OffsetDateTime;
@@ -32,8 +33,12 @@ import org.threeten.bp.OffsetDateTime;
 /**
  * ListSalesItem
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-11T23:44:48.922Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-27T19:42:43.186Z[Etc/UTC]")
 public class ListSalesItem {
+  public static final String SERIALIZED_NAME_APP_SHARE = "appShare";
+  @SerializedName(SERIALIZED_NAME_APP_SHARE)
+  private GetOrderResponseAppShare appShare;
+
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
   private String id;
@@ -46,17 +51,17 @@ public class ListSalesItem {
   @SerializedName(SERIALIZED_NAME_PLATFORM)
   private String platform;
 
-  public static final String SERIALIZED_NAME_CANCELLED_AT = "cancelledAt";
-  @SerializedName(SERIALIZED_NAME_CANCELLED_AT)
-  private OffsetDateTime cancelledAt;
+  public static final String SERIALIZED_NAME_NET_PROFIT = "netProfit";
+  @SerializedName(SERIALIZED_NAME_NET_PROFIT)
+  private String netProfit;
 
-  public static final String SERIALIZED_NAME_ORDER_ID = "orderId";
-  @SerializedName(SERIALIZED_NAME_ORDER_ID)
-  private String orderId;
+  public static final String SERIALIZED_NAME_SHIPPING_COST = "shippingCost";
+  @SerializedName(SERIALIZED_NAME_SHIPPING_COST)
+  private String shippingCost;
 
-  public static final String SERIALIZED_NAME_LISTING_ID = "listingId";
-  @SerializedName(SERIALIZED_NAME_LISTING_ID)
-  private String listingId;
+  public static final String SERIALIZED_NAME_SHIPPING_CHARGED = "shippingCharged";
+  @SerializedName(SERIALIZED_NAME_SHIPPING_CHARGED)
+  private String shippingCharged;
 
   public static final String SERIALIZED_NAME_INVENTORY_ITEM_ID = "inventoryItemId";
   @SerializedName(SERIALIZED_NAME_INVENTORY_ITEM_ID)
@@ -66,9 +71,17 @@ public class ListSalesItem {
   @SerializedName(SERIALIZED_NAME_CURRENCY)
   private String currency;
 
+  public static final String SERIALIZED_NAME_LISTING_ID = "listingId";
+  @SerializedName(SERIALIZED_NAME_LISTING_ID)
+  private String listingId;
+
   public static final String SERIALIZED_NAME_PLATFORM_LISTING_ID = "platformListingId";
   @SerializedName(SERIALIZED_NAME_PLATFORM_LISTING_ID)
   private String platformListingId;
+
+  public static final String SERIALIZED_NAME_STOREFRONT_ID = "storefrontId";
+  @SerializedName(SERIALIZED_NAME_STOREFRONT_ID)
+  private String storefrontId;
 
   public static final String SERIALIZED_NAME_PLATFORM_ORDER_ID = "platformOrderId";
   @SerializedName(SERIALIZED_NAME_PLATFORM_ORDER_ID)
@@ -78,9 +91,17 @@ public class ListSalesItem {
   @SerializedName(SERIALIZED_NAME_COST_OF_GOODS)
   private String costOfGoods;
 
+  public static final String SERIALIZED_NAME_CANCELLED_AT = "cancelledAt";
+  @SerializedName(SERIALIZED_NAME_CANCELLED_AT)
+  private OffsetDateTime cancelledAt;
+
   public static final String SERIALIZED_NAME_DELETED_AT = "deletedAt";
   @SerializedName(SERIALIZED_NAME_DELETED_AT)
   private OffsetDateTime deletedAt;
+
+  public static final String SERIALIZED_NAME_ORDER_ID = "orderId";
+  @SerializedName(SERIALIZED_NAME_ORDER_ID)
+  private String orderId;
 
   public static final String SERIALIZED_NAME_SALE_PRICE = "salePrice";
   @SerializedName(SERIALIZED_NAME_SALE_PRICE)
@@ -90,21 +111,9 @@ public class ListSalesItem {
   @SerializedName(SERIALIZED_NAME_PLATFORM_FEE)
   private String platformFee;
 
-  public static final String SERIALIZED_NAME_SHIPPING_COST = "shippingCost";
-  @SerializedName(SERIALIZED_NAME_SHIPPING_COST)
-  private String shippingCost;
-
-  public static final String SERIALIZED_NAME_NET_PROFIT = "netProfit";
-  @SerializedName(SERIALIZED_NAME_NET_PROFIT)
-  private String netProfit;
-
   public static final String SERIALIZED_NAME_TAX_COLLECTED = "taxCollected";
   @SerializedName(SERIALIZED_NAME_TAX_COLLECTED)
   private String taxCollected;
-
-  public static final String SERIALIZED_NAME_SHIPPING_CHARGED = "shippingCharged";
-  @SerializedName(SERIALIZED_NAME_SHIPPING_CHARGED)
-  private String shippingCharged;
 
   public static final String SERIALIZED_NAME_FEE_SOURCE = "feeSource";
   @SerializedName(SERIALIZED_NAME_FEE_SOURCE)
@@ -126,8 +135,43 @@ public class ListSalesItem {
   @SerializedName(SERIALIZED_NAME_REFUNDED_AMOUNT)
   private String refundedAmount;
 
+  public static final String SERIALIZED_NAME_DETAILS_PENDING = "detailsPending";
+  @SerializedName(SERIALIZED_NAME_DETAILS_PENDING)
+  private Boolean detailsPending;
+
+  public static final String SERIALIZED_NAME_VARIANT_SKU = "variantSku";
+  @SerializedName(SERIALIZED_NAME_VARIANT_SKU)
+  private String variantSku;
+
+  public static final String SERIALIZED_NAME_VARIANT_ID = "variantId";
+  @SerializedName(SERIALIZED_NAME_VARIANT_ID)
+  private String variantId;
+
   public ListSalesItem() { 
   }
+
+  public ListSalesItem appShare(GetOrderResponseAppShare appShare) {
+    
+    this.appShare = appShare;
+    return this;
+  }
+
+   /**
+   * Get appShare
+   * @return appShare
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public GetOrderResponseAppShare getAppShare() {
+    return appShare;
+  }
+
+
+  public void setAppShare(GetOrderResponseAppShare appShare) {
+    this.appShare = appShare;
+  }
+
 
   public ListSalesItem id(String id) {
     
@@ -198,72 +242,72 @@ public class ListSalesItem {
   }
 
 
-  public ListSalesItem cancelledAt(OffsetDateTime cancelledAt) {
+  public ListSalesItem netProfit(String netProfit) {
     
-    this.cancelledAt = cancelledAt;
+    this.netProfit = netProfit;
     return this;
   }
 
    /**
-   * Get cancelledAt
-   * @return cancelledAt
+   * Get netProfit
+   * @return netProfit
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "")
 
-  public OffsetDateTime getCancelledAt() {
-    return cancelledAt;
+  public String getNetProfit() {
+    return netProfit;
   }
 
 
-  public void setCancelledAt(OffsetDateTime cancelledAt) {
-    this.cancelledAt = cancelledAt;
+  public void setNetProfit(String netProfit) {
+    this.netProfit = netProfit;
   }
 
 
-  public ListSalesItem orderId(String orderId) {
+  public ListSalesItem shippingCost(String shippingCost) {
     
-    this.orderId = orderId;
+    this.shippingCost = shippingCost;
     return this;
   }
 
    /**
-   * Get orderId
-   * @return orderId
+   * Get shippingCost
+   * @return shippingCost
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "")
 
-  public String getOrderId() {
-    return orderId;
+  public String getShippingCost() {
+    return shippingCost;
   }
 
 
-  public void setOrderId(String orderId) {
-    this.orderId = orderId;
+  public void setShippingCost(String shippingCost) {
+    this.shippingCost = shippingCost;
   }
 
 
-  public ListSalesItem listingId(String listingId) {
+  public ListSalesItem shippingCharged(String shippingCharged) {
     
-    this.listingId = listingId;
+    this.shippingCharged = shippingCharged;
     return this;
   }
 
    /**
-   * Get listingId
-   * @return listingId
+   * Get shippingCharged
+   * @return shippingCharged
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "")
 
-  public String getListingId() {
-    return listingId;
+  public String getShippingCharged() {
+    return shippingCharged;
   }
 
 
-  public void setListingId(String listingId) {
-    this.listingId = listingId;
+  public void setShippingCharged(String shippingCharged) {
+    this.shippingCharged = shippingCharged;
   }
 
 
@@ -313,6 +357,29 @@ public class ListSalesItem {
   }
 
 
+  public ListSalesItem listingId(String listingId) {
+    
+    this.listingId = listingId;
+    return this;
+  }
+
+   /**
+   * Get listingId
+   * @return listingId
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public String getListingId() {
+    return listingId;
+  }
+
+
+  public void setListingId(String listingId) {
+    this.listingId = listingId;
+  }
+
+
   public ListSalesItem platformListingId(String platformListingId) {
     
     this.platformListingId = platformListingId;
@@ -333,6 +400,29 @@ public class ListSalesItem {
 
   public void setPlatformListingId(String platformListingId) {
     this.platformListingId = platformListingId;
+  }
+
+
+  public ListSalesItem storefrontId(String storefrontId) {
+    
+    this.storefrontId = storefrontId;
+    return this;
+  }
+
+   /**
+   * Get storefrontId
+   * @return storefrontId
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public String getStorefrontId() {
+    return storefrontId;
+  }
+
+
+  public void setStorefrontId(String storefrontId) {
+    this.storefrontId = storefrontId;
   }
 
 
@@ -382,6 +472,29 @@ public class ListSalesItem {
   }
 
 
+  public ListSalesItem cancelledAt(OffsetDateTime cancelledAt) {
+    
+    this.cancelledAt = cancelledAt;
+    return this;
+  }
+
+   /**
+   * Get cancelledAt
+   * @return cancelledAt
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public OffsetDateTime getCancelledAt() {
+    return cancelledAt;
+  }
+
+
+  public void setCancelledAt(OffsetDateTime cancelledAt) {
+    this.cancelledAt = cancelledAt;
+  }
+
+
   public ListSalesItem deletedAt(OffsetDateTime deletedAt) {
     
     this.deletedAt = deletedAt;
@@ -402,6 +515,29 @@ public class ListSalesItem {
 
   public void setDeletedAt(OffsetDateTime deletedAt) {
     this.deletedAt = deletedAt;
+  }
+
+
+  public ListSalesItem orderId(String orderId) {
+    
+    this.orderId = orderId;
+    return this;
+  }
+
+   /**
+   * Get orderId
+   * @return orderId
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public String getOrderId() {
+    return orderId;
+  }
+
+
+  public void setOrderId(String orderId) {
+    this.orderId = orderId;
   }
 
 
@@ -451,52 +587,6 @@ public class ListSalesItem {
   }
 
 
-  public ListSalesItem shippingCost(String shippingCost) {
-    
-    this.shippingCost = shippingCost;
-    return this;
-  }
-
-   /**
-   * Get shippingCost
-   * @return shippingCost
-  **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
-
-  public String getShippingCost() {
-    return shippingCost;
-  }
-
-
-  public void setShippingCost(String shippingCost) {
-    this.shippingCost = shippingCost;
-  }
-
-
-  public ListSalesItem netProfit(String netProfit) {
-    
-    this.netProfit = netProfit;
-    return this;
-  }
-
-   /**
-   * Get netProfit
-   * @return netProfit
-  **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
-
-  public String getNetProfit() {
-    return netProfit;
-  }
-
-
-  public void setNetProfit(String netProfit) {
-    this.netProfit = netProfit;
-  }
-
-
   public ListSalesItem taxCollected(String taxCollected) {
     
     this.taxCollected = taxCollected;
@@ -517,29 +607,6 @@ public class ListSalesItem {
 
   public void setTaxCollected(String taxCollected) {
     this.taxCollected = taxCollected;
-  }
-
-
-  public ListSalesItem shippingCharged(String shippingCharged) {
-    
-    this.shippingCharged = shippingCharged;
-    return this;
-  }
-
-   /**
-   * Get shippingCharged
-   * @return shippingCharged
-  **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
-
-  public String getShippingCharged() {
-    return shippingCharged;
-  }
-
-
-  public void setShippingCharged(String shippingCharged) {
-    this.shippingCharged = shippingCharged;
   }
 
 
@@ -666,6 +733,75 @@ public class ListSalesItem {
   }
 
 
+  public ListSalesItem detailsPending(Boolean detailsPending) {
+    
+    this.detailsPending = detailsPending;
+    return this;
+  }
+
+   /**
+   * Get detailsPending
+   * @return detailsPending
+  **/
+  @javax.annotation.Nonnull
+  @ApiModelProperty(required = true, value = "")
+
+  public Boolean getDetailsPending() {
+    return detailsPending;
+  }
+
+
+  public void setDetailsPending(Boolean detailsPending) {
+    this.detailsPending = detailsPending;
+  }
+
+
+  public ListSalesItem variantSku(String variantSku) {
+    
+    this.variantSku = variantSku;
+    return this;
+  }
+
+   /**
+   * Get variantSku
+   * @return variantSku
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public String getVariantSku() {
+    return variantSku;
+  }
+
+
+  public void setVariantSku(String variantSku) {
+    this.variantSku = variantSku;
+  }
+
+
+  public ListSalesItem variantId(String variantId) {
+    
+    this.variantId = variantId;
+    return this;
+  }
+
+   /**
+   * Get variantId
+   * @return variantId
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public String getVariantId() {
+    return variantId;
+  }
+
+
+  public void setVariantId(String variantId) {
+    this.variantId = variantId;
+  }
+
+
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -675,29 +811,34 @@ public class ListSalesItem {
       return false;
     }
     ListSalesItem listSalesItem = (ListSalesItem) o;
-    return Objects.equals(this.id, listSalesItem.id) &&
+    return Objects.equals(this.appShare, listSalesItem.appShare) &&
+        Objects.equals(this.id, listSalesItem.id) &&
         Objects.equals(this.userId, listSalesItem.userId) &&
         Objects.equals(this.platform, listSalesItem.platform) &&
-        Objects.equals(this.cancelledAt, listSalesItem.cancelledAt) &&
-        Objects.equals(this.orderId, listSalesItem.orderId) &&
-        Objects.equals(this.listingId, listSalesItem.listingId) &&
+        Objects.equals(this.netProfit, listSalesItem.netProfit) &&
+        Objects.equals(this.shippingCost, listSalesItem.shippingCost) &&
+        Objects.equals(this.shippingCharged, listSalesItem.shippingCharged) &&
         Objects.equals(this.inventoryItemId, listSalesItem.inventoryItemId) &&
         Objects.equals(this.currency, listSalesItem.currency) &&
+        Objects.equals(this.listingId, listSalesItem.listingId) &&
         Objects.equals(this.platformListingId, listSalesItem.platformListingId) &&
+        Objects.equals(this.storefrontId, listSalesItem.storefrontId) &&
         Objects.equals(this.platformOrderId, listSalesItem.platformOrderId) &&
         Objects.equals(this.costOfGoods, listSalesItem.costOfGoods) &&
+        Objects.equals(this.cancelledAt, listSalesItem.cancelledAt) &&
         Objects.equals(this.deletedAt, listSalesItem.deletedAt) &&
+        Objects.equals(this.orderId, listSalesItem.orderId) &&
         Objects.equals(this.salePrice, listSalesItem.salePrice) &&
         Objects.equals(this.platformFee, listSalesItem.platformFee) &&
-        Objects.equals(this.shippingCost, listSalesItem.shippingCost) &&
-        Objects.equals(this.netProfit, listSalesItem.netProfit) &&
         Objects.equals(this.taxCollected, listSalesItem.taxCollected) &&
-        Objects.equals(this.shippingCharged, listSalesItem.shippingCharged) &&
         Objects.equals(this.feeSource, listSalesItem.feeSource) &&
         Objects.equals(this.detectedBy, listSalesItem.detectedBy) &&
         Objects.equals(this.detectedAt, listSalesItem.detectedAt) &&
         Objects.equals(this.documents, listSalesItem.documents) &&
-        Objects.equals(this.refundedAmount, listSalesItem.refundedAmount);
+        Objects.equals(this.refundedAmount, listSalesItem.refundedAmount) &&
+        Objects.equals(this.detailsPending, listSalesItem.detailsPending) &&
+        Objects.equals(this.variantSku, listSalesItem.variantSku) &&
+        Objects.equals(this.variantId, listSalesItem.variantId);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -706,7 +847,7 @@ public class ListSalesItem {
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, userId, platform, cancelledAt, orderId, listingId, inventoryItemId, currency, platformListingId, platformOrderId, costOfGoods, deletedAt, salePrice, platformFee, shippingCost, netProfit, taxCollected, shippingCharged, feeSource, detectedBy, detectedAt, documents, refundedAmount);
+    return Objects.hash(appShare, id, userId, platform, netProfit, shippingCost, shippingCharged, inventoryItemId, currency, listingId, platformListingId, storefrontId, platformOrderId, costOfGoods, cancelledAt, deletedAt, orderId, salePrice, platformFee, taxCollected, feeSource, detectedBy, detectedAt, documents, refundedAmount, detailsPending, variantSku, variantId);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -720,29 +861,34 @@ public class ListSalesItem {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class ListSalesItem {\n");
+    sb.append("    appShare: ").append(toIndentedString(appShare)).append("\n");
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    userId: ").append(toIndentedString(userId)).append("\n");
     sb.append("    platform: ").append(toIndentedString(platform)).append("\n");
-    sb.append("    cancelledAt: ").append(toIndentedString(cancelledAt)).append("\n");
-    sb.append("    orderId: ").append(toIndentedString(orderId)).append("\n");
-    sb.append("    listingId: ").append(toIndentedString(listingId)).append("\n");
+    sb.append("    netProfit: ").append(toIndentedString(netProfit)).append("\n");
+    sb.append("    shippingCost: ").append(toIndentedString(shippingCost)).append("\n");
+    sb.append("    shippingCharged: ").append(toIndentedString(shippingCharged)).append("\n");
     sb.append("    inventoryItemId: ").append(toIndentedString(inventoryItemId)).append("\n");
     sb.append("    currency: ").append(toIndentedString(currency)).append("\n");
+    sb.append("    listingId: ").append(toIndentedString(listingId)).append("\n");
     sb.append("    platformListingId: ").append(toIndentedString(platformListingId)).append("\n");
+    sb.append("    storefrontId: ").append(toIndentedString(storefrontId)).append("\n");
     sb.append("    platformOrderId: ").append(toIndentedString(platformOrderId)).append("\n");
     sb.append("    costOfGoods: ").append(toIndentedString(costOfGoods)).append("\n");
+    sb.append("    cancelledAt: ").append(toIndentedString(cancelledAt)).append("\n");
     sb.append("    deletedAt: ").append(toIndentedString(deletedAt)).append("\n");
+    sb.append("    orderId: ").append(toIndentedString(orderId)).append("\n");
     sb.append("    salePrice: ").append(toIndentedString(salePrice)).append("\n");
     sb.append("    platformFee: ").append(toIndentedString(platformFee)).append("\n");
-    sb.append("    shippingCost: ").append(toIndentedString(shippingCost)).append("\n");
-    sb.append("    netProfit: ").append(toIndentedString(netProfit)).append("\n");
     sb.append("    taxCollected: ").append(toIndentedString(taxCollected)).append("\n");
-    sb.append("    shippingCharged: ").append(toIndentedString(shippingCharged)).append("\n");
     sb.append("    feeSource: ").append(toIndentedString(feeSource)).append("\n");
     sb.append("    detectedBy: ").append(toIndentedString(detectedBy)).append("\n");
     sb.append("    detectedAt: ").append(toIndentedString(detectedAt)).append("\n");
     sb.append("    documents: ").append(toIndentedString(documents)).append("\n");
     sb.append("    refundedAmount: ").append(toIndentedString(refundedAmount)).append("\n");
+    sb.append("    detailsPending: ").append(toIndentedString(detailsPending)).append("\n");
+    sb.append("    variantSku: ").append(toIndentedString(variantSku)).append("\n");
+    sb.append("    variantId: ").append(toIndentedString(variantId)).append("\n");
     sb.append("}");
     return sb.toString();
   }

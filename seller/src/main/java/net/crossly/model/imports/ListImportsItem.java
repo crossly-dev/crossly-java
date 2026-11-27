@@ -31,7 +31,7 @@ import org.threeten.bp.OffsetDateTime;
 /**
  * ListImportsItem
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-11T23:44:48.922Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-27T19:42:43.186Z[Etc/UTC]")
 public class ListImportsItem {
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
@@ -45,13 +45,13 @@ public class ListImportsItem {
   @SerializedName(SERIALIZED_NAME_USER_ID)
   private String userId;
 
-  public static final String SERIALIZED_NAME_STATUS = "status";
-  @SerializedName(SERIALIZED_NAME_STATUS)
-  private String status;
-
   public static final String SERIALIZED_NAME_PLATFORM = "platform";
   @SerializedName(SERIALIZED_NAME_PLATFORM)
   private String platform;
+
+  public static final String SERIALIZED_NAME_STATUS = "status";
+  @SerializedName(SERIALIZED_NAME_STATUS)
+  private String status;
 
   public static final String SERIALIZED_NAME_LAST_ERROR = "lastError";
   @SerializedName(SERIALIZED_NAME_LAST_ERROR)
@@ -60,10 +60,6 @@ public class ListImportsItem {
   public static final String SERIALIZED_NAME_STARTED_AT = "startedAt";
   @SerializedName(SERIALIZED_NAME_STARTED_AT)
   private OffsetDateTime startedAt;
-
-  public static final String SERIALIZED_NAME_BATCH_ID = "batchId";
-  @SerializedName(SERIALIZED_NAME_BATCH_ID)
-  private String batchId;
 
   public static final String SERIALIZED_NAME_FINISHED_AT = "finishedAt";
   @SerializedName(SERIALIZED_NAME_FINISHED_AT)
@@ -104,6 +100,10 @@ public class ListImportsItem {
   public static final String SERIALIZED_NAME_ERROR_COUNT = "errorCount";
   @SerializedName(SERIALIZED_NAME_ERROR_COUNT)
   private BigDecimal errorCount;
+
+  public static final String SERIALIZED_NAME_BATCH_ID = "batchId";
+  @SerializedName(SERIALIZED_NAME_BATCH_ID)
+  private String batchId;
 
   public static final String SERIALIZED_NAME_LIST_ON_CROSSLY = "listOnCrossly";
   @SerializedName(SERIALIZED_NAME_LIST_ON_CROSSLY)
@@ -185,29 +185,6 @@ public class ListImportsItem {
   }
 
 
-  public ListImportsItem status(String status) {
-    
-    this.status = status;
-    return this;
-  }
-
-   /**
-   * Get status
-   * @return status
-  **/
-  @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "")
-
-  public String getStatus() {
-    return status;
-  }
-
-
-  public void setStatus(String status) {
-    this.status = status;
-  }
-
-
   public ListImportsItem platform(String platform) {
     
     this.platform = platform;
@@ -228,6 +205,29 @@ public class ListImportsItem {
 
   public void setPlatform(String platform) {
     this.platform = platform;
+  }
+
+
+  public ListImportsItem status(String status) {
+    
+    this.status = status;
+    return this;
+  }
+
+   /**
+   * Get status
+   * @return status
+  **/
+  @javax.annotation.Nonnull
+  @ApiModelProperty(required = true, value = "")
+
+  public String getStatus() {
+    return status;
+  }
+
+
+  public void setStatus(String status) {
+    this.status = status;
   }
 
 
@@ -274,29 +274,6 @@ public class ListImportsItem {
 
   public void setStartedAt(OffsetDateTime startedAt) {
     this.startedAt = startedAt;
-  }
-
-
-  public ListImportsItem batchId(String batchId) {
-    
-    this.batchId = batchId;
-    return this;
-  }
-
-   /**
-   * Get batchId
-   * @return batchId
-  **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
-
-  public String getBatchId() {
-    return batchId;
-  }
-
-
-  public void setBatchId(String batchId) {
-    this.batchId = batchId;
   }
 
 
@@ -530,6 +507,29 @@ public class ListImportsItem {
   }
 
 
+  public ListImportsItem batchId(String batchId) {
+    
+    this.batchId = batchId;
+    return this;
+  }
+
+   /**
+   * Get batchId
+   * @return batchId
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public String getBatchId() {
+    return batchId;
+  }
+
+
+  public void setBatchId(String batchId) {
+    this.batchId = batchId;
+  }
+
+
   public ListImportsItem listOnCrossly(Boolean listOnCrossly) {
     
     this.listOnCrossly = listOnCrossly;
@@ -588,11 +588,10 @@ public class ListImportsItem {
     return Objects.equals(this.id, listImportsItem.id) &&
         Objects.equals(this.createdAt, listImportsItem.createdAt) &&
         Objects.equals(this.userId, listImportsItem.userId) &&
-        Objects.equals(this.status, listImportsItem.status) &&
         Objects.equals(this.platform, listImportsItem.platform) &&
+        Objects.equals(this.status, listImportsItem.status) &&
         Objects.equals(this.lastError, listImportsItem.lastError) &&
         Objects.equals(this.startedAt, listImportsItem.startedAt) &&
-        Objects.equals(this.batchId, listImportsItem.batchId) &&
         Objects.equals(this.finishedAt, listImportsItem.finishedAt) &&
         Objects.equals(this.filters, listImportsItem.filters) &&
         Objects.equals(this.importMode, listImportsItem.importMode) &&
@@ -603,6 +602,7 @@ public class ListImportsItem {
         Objects.equals(this.importedCount, listImportsItem.importedCount) &&
         Objects.equals(this.skippedCount, listImportsItem.skippedCount) &&
         Objects.equals(this.errorCount, listImportsItem.errorCount) &&
+        Objects.equals(this.batchId, listImportsItem.batchId) &&
         Objects.equals(this.listOnCrossly, listImportsItem.listOnCrossly) &&
         Objects.equals(this.crosslyListedAt, listImportsItem.crosslyListedAt);
   }
@@ -613,7 +613,7 @@ public class ListImportsItem {
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, createdAt, userId, status, platform, lastError, startedAt, batchId, finishedAt, filters, importMode, includeInactive, mergeIntoExistingListing, mergeIntoExistingInventory, totalCount, importedCount, skippedCount, errorCount, listOnCrossly, crosslyListedAt);
+    return Objects.hash(id, createdAt, userId, platform, status, lastError, startedAt, finishedAt, filters, importMode, includeInactive, mergeIntoExistingListing, mergeIntoExistingInventory, totalCount, importedCount, skippedCount, errorCount, batchId, listOnCrossly, crosslyListedAt);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -630,11 +630,10 @@ public class ListImportsItem {
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    createdAt: ").append(toIndentedString(createdAt)).append("\n");
     sb.append("    userId: ").append(toIndentedString(userId)).append("\n");
-    sb.append("    status: ").append(toIndentedString(status)).append("\n");
     sb.append("    platform: ").append(toIndentedString(platform)).append("\n");
+    sb.append("    status: ").append(toIndentedString(status)).append("\n");
     sb.append("    lastError: ").append(toIndentedString(lastError)).append("\n");
     sb.append("    startedAt: ").append(toIndentedString(startedAt)).append("\n");
-    sb.append("    batchId: ").append(toIndentedString(batchId)).append("\n");
     sb.append("    finishedAt: ").append(toIndentedString(finishedAt)).append("\n");
     sb.append("    filters: ").append(toIndentedString(filters)).append("\n");
     sb.append("    importMode: ").append(toIndentedString(importMode)).append("\n");
@@ -645,6 +644,7 @@ public class ListImportsItem {
     sb.append("    importedCount: ").append(toIndentedString(importedCount)).append("\n");
     sb.append("    skippedCount: ").append(toIndentedString(skippedCount)).append("\n");
     sb.append("    errorCount: ").append(toIndentedString(errorCount)).append("\n");
+    sb.append("    batchId: ").append(toIndentedString(batchId)).append("\n");
     sb.append("    listOnCrossly: ").append(toIndentedString(listOnCrossly)).append("\n");
     sb.append("    crosslyListedAt: ").append(toIndentedString(crosslyListedAt)).append("\n");
     sb.append("}");

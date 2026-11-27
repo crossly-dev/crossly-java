@@ -28,11 +28,13 @@ import java.util.ArrayList;
 import java.util.List;
 import net.crossly.model.analytic.GetAnalyticDashboardResponseAvgSalePriceByPlatform;
 import net.crossly.model.analytic.GetAnalyticDashboardResponseCancelRate;
+import net.crossly.model.analytic.GetAnalyticDashboardResponsePeriod;
 import net.crossly.model.analytic.GetAnalyticDashboardResponseRecentSales;
 import net.crossly.model.analytic.GetAnalyticDashboardResponseRevenue;
 import net.crossly.model.analytic.GetAnalyticDashboardResponseRevenueByDay;
 import net.crossly.model.analytic.GetAnalyticDashboardResponseSalesByPlatform;
 import net.crossly.model.analytic.GetAnalyticDashboardResponseSellThrough;
+import net.crossly.model.analytic.GetAnalyticDashboardResponseSellThroughCohort;
 import net.crossly.model.analytic.GetAnalyticDashboardResponseTop5ItemsByRevenue;
 import net.crossly.model.analytic.GetAnalyticDashboardResponseTopCategories;
 import org.openapitools.jackson.nullable.JsonNullable;
@@ -40,7 +42,7 @@ import org.openapitools.jackson.nullable.JsonNullable;
 /**
  * GetAnalyticDashboardResponse
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-11T23:44:48.922Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-27T19:42:43.186Z[Etc/UTC]")
 public class GetAnalyticDashboardResponse {
   public static final String SERIALIZED_NAME_REVENUE = "revenue";
   @SerializedName(SERIALIZED_NAME_REVENUE)
@@ -53,6 +55,10 @@ public class GetAnalyticDashboardResponse {
   public static final String SERIALIZED_NAME_SOLD_ITEMS_COUNT = "soldItemsCount";
   @SerializedName(SERIALIZED_NAME_SOLD_ITEMS_COUNT)
   private GetAnalyticDashboardResponseRevenue soldItemsCount;
+
+  public static final String SERIALIZED_NAME_PENDING_DETAILS_COUNT = "pendingDetailsCount";
+  @SerializedName(SERIALIZED_NAME_PENDING_DETAILS_COUNT)
+  private BigDecimal pendingDetailsCount;
 
   public static final String SERIALIZED_NAME_CANCELLED_COUNT = "cancelledCount";
   @SerializedName(SERIALIZED_NAME_CANCELLED_COUNT)
@@ -86,9 +92,17 @@ public class GetAnalyticDashboardResponse {
   @SerializedName(SERIALIZED_NAME_SELL_THROUGH)
   private GetAnalyticDashboardResponseSellThrough sellThrough;
 
+  public static final String SERIALIZED_NAME_SELL_THROUGH_COHORT = "sellThroughCohort";
+  @SerializedName(SERIALIZED_NAME_SELL_THROUGH_COHORT)
+  private GetAnalyticDashboardResponseSellThroughCohort sellThroughCohort;
+
   public static final String SERIALIZED_NAME_AVG_DAYS_TO_SELL = "avgDaysToSell";
   @SerializedName(SERIALIZED_NAME_AVG_DAYS_TO_SELL)
   private BigDecimal avgDaysToSell;
+
+  public static final String SERIALIZED_NAME_MEDIAN_DAYS_TO_SELL = "medianDaysToSell";
+  @SerializedName(SERIALIZED_NAME_MEDIAN_DAYS_TO_SELL)
+  private BigDecimal medianDaysToSell;
 
   public static final String SERIALIZED_NAME_SALES_BY_PLATFORM = "salesByPlatform";
   @SerializedName(SERIALIZED_NAME_SALES_BY_PLATFORM)
@@ -125,6 +139,10 @@ public class GetAnalyticDashboardResponse {
   public static final String SERIALIZED_NAME_AVAILABLE_LABELS = "availableLabels";
   @SerializedName(SERIALIZED_NAME_AVAILABLE_LABELS)
   private List<String> availableLabels = new ArrayList<String>();
+
+  public static final String SERIALIZED_NAME_PERIOD = "period";
+  @SerializedName(SERIALIZED_NAME_PERIOD)
+  private GetAnalyticDashboardResponsePeriod period;
 
   public GetAnalyticDashboardResponse() { 
   }
@@ -195,6 +213,29 @@ public class GetAnalyticDashboardResponse {
 
   public void setSoldItemsCount(GetAnalyticDashboardResponseRevenue soldItemsCount) {
     this.soldItemsCount = soldItemsCount;
+  }
+
+
+  public GetAnalyticDashboardResponse pendingDetailsCount(BigDecimal pendingDetailsCount) {
+    
+    this.pendingDetailsCount = pendingDetailsCount;
+    return this;
+  }
+
+   /**
+   * \&quot;N sales pending details\&quot;: in the period, not in revenue/profit/avg.
+   * @return pendingDetailsCount
+  **/
+  @javax.annotation.Nonnull
+  @ApiModelProperty(required = true, value = "\"N sales pending details\": in the period, not in revenue/profit/avg.")
+
+  public BigDecimal getPendingDetailsCount() {
+    return pendingDetailsCount;
+  }
+
+
+  public void setPendingDetailsCount(BigDecimal pendingDetailsCount) {
+    this.pendingDetailsCount = pendingDetailsCount;
   }
 
 
@@ -343,11 +384,11 @@ public class GetAnalyticDashboardResponse {
   }
 
    /**
-   * Get sellThroughRate
+   * 0–100 (legacy unit). The full cohort is &#x60;sellThroughCohort&#x60;.
    * @return sellThroughRate
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "0–100 (legacy unit). The full cohort is `sellThroughCohort`.")
 
   public BigDecimal getSellThroughRate() {
     return sellThroughRate;
@@ -382,6 +423,29 @@ public class GetAnalyticDashboardResponse {
   }
 
 
+  public GetAnalyticDashboardResponse sellThroughCohort(GetAnalyticDashboardResponseSellThroughCohort sellThroughCohort) {
+    
+    this.sellThroughCohort = sellThroughCohort;
+    return this;
+  }
+
+   /**
+   * Get sellThroughCohort
+   * @return sellThroughCohort
+  **/
+  @javax.annotation.Nonnull
+  @ApiModelProperty(required = true, value = "")
+
+  public GetAnalyticDashboardResponseSellThroughCohort getSellThroughCohort() {
+    return sellThroughCohort;
+  }
+
+
+  public void setSellThroughCohort(GetAnalyticDashboardResponseSellThroughCohort sellThroughCohort) {
+    this.sellThroughCohort = sellThroughCohort;
+  }
+
+
   public GetAnalyticDashboardResponse avgDaysToSell(BigDecimal avgDaysToSell) {
     
     this.avgDaysToSell = avgDaysToSell;
@@ -402,6 +466,29 @@ public class GetAnalyticDashboardResponse {
 
   public void setAvgDaysToSell(BigDecimal avgDaysToSell) {
     this.avgDaysToSell = avgDaysToSell;
+  }
+
+
+  public GetAnalyticDashboardResponse medianDaysToSell(BigDecimal medianDaysToSell) {
+    
+    this.medianDaysToSell = medianDaysToSell;
+    return this;
+  }
+
+   /**
+   * Get medianDaysToSell
+   * @return medianDaysToSell
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public BigDecimal getMedianDaysToSell() {
+    return medianDaysToSell;
+  }
+
+
+  public void setMedianDaysToSell(BigDecimal medianDaysToSell) {
+    this.medianDaysToSell = medianDaysToSell;
   }
 
 
@@ -657,6 +744,29 @@ public class GetAnalyticDashboardResponse {
   }
 
 
+  public GetAnalyticDashboardResponse period(GetAnalyticDashboardResponsePeriod period) {
+    
+    this.period = period;
+    return this;
+  }
+
+   /**
+   * Get period
+   * @return period
+  **/
+  @javax.annotation.Nonnull
+  @ApiModelProperty(required = true, value = "")
+
+  public GetAnalyticDashboardResponsePeriod getPeriod() {
+    return period;
+  }
+
+
+  public void setPeriod(GetAnalyticDashboardResponsePeriod period) {
+    this.period = period;
+  }
+
+
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -669,6 +779,7 @@ public class GetAnalyticDashboardResponse {
     return Objects.equals(this.revenue, getAnalyticDashboardResponse.revenue) &&
         Objects.equals(this.profit, getAnalyticDashboardResponse.profit) &&
         Objects.equals(this.soldItemsCount, getAnalyticDashboardResponse.soldItemsCount) &&
+        Objects.equals(this.pendingDetailsCount, getAnalyticDashboardResponse.pendingDetailsCount) &&
         Objects.equals(this.cancelledCount, getAnalyticDashboardResponse.cancelledCount) &&
         Objects.equals(this.cancelRate, getAnalyticDashboardResponse.cancelRate) &&
         Objects.equals(this.refundedAmount, getAnalyticDashboardResponse.refundedAmount) &&
@@ -677,7 +788,9 @@ public class GetAnalyticDashboardResponse {
         Objects.equals(this.avgSalePrice, getAnalyticDashboardResponse.avgSalePrice) &&
         Objects.equals(this.sellThroughRate, getAnalyticDashboardResponse.sellThroughRate) &&
         Objects.equals(this.sellThrough, getAnalyticDashboardResponse.sellThrough) &&
+        Objects.equals(this.sellThroughCohort, getAnalyticDashboardResponse.sellThroughCohort) &&
         Objects.equals(this.avgDaysToSell, getAnalyticDashboardResponse.avgDaysToSell) &&
+        Objects.equals(this.medianDaysToSell, getAnalyticDashboardResponse.medianDaysToSell) &&
         Objects.equals(this.salesByPlatform, getAnalyticDashboardResponse.salesByPlatform) &&
         Objects.equals(this.avgSalePriceByPlatform, getAnalyticDashboardResponse.avgSalePriceByPlatform) &&
         Objects.equals(this.revenueByDay, getAnalyticDashboardResponse.revenueByDay) &&
@@ -686,7 +799,8 @@ public class GetAnalyticDashboardResponse {
         Objects.equals(this.topBrands, getAnalyticDashboardResponse.topBrands) &&
         Objects.equals(this.top5ItemsByRevenue, getAnalyticDashboardResponse.top5ItemsByRevenue) &&
         Objects.equals(this.recentSales, getAnalyticDashboardResponse.recentSales) &&
-        Objects.equals(this.availableLabels, getAnalyticDashboardResponse.availableLabels);
+        Objects.equals(this.availableLabels, getAnalyticDashboardResponse.availableLabels) &&
+        Objects.equals(this.period, getAnalyticDashboardResponse.period);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -695,7 +809,7 @@ public class GetAnalyticDashboardResponse {
 
   @Override
   public int hashCode() {
-    return Objects.hash(revenue, profit, soldItemsCount, cancelledCount, cancelRate, refundedAmount, refundedCount, listedItemsCount, avgSalePrice, sellThroughRate, sellThrough, avgDaysToSell, salesByPlatform, avgSalePriceByPlatform, revenueByDay, topCategories, topSubcategories, topBrands, top5ItemsByRevenue, recentSales, availableLabels);
+    return Objects.hash(revenue, profit, soldItemsCount, pendingDetailsCount, cancelledCount, cancelRate, refundedAmount, refundedCount, listedItemsCount, avgSalePrice, sellThroughRate, sellThrough, sellThroughCohort, avgDaysToSell, medianDaysToSell, salesByPlatform, avgSalePriceByPlatform, revenueByDay, topCategories, topSubcategories, topBrands, top5ItemsByRevenue, recentSales, availableLabels, period);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -712,6 +826,7 @@ public class GetAnalyticDashboardResponse {
     sb.append("    revenue: ").append(toIndentedString(revenue)).append("\n");
     sb.append("    profit: ").append(toIndentedString(profit)).append("\n");
     sb.append("    soldItemsCount: ").append(toIndentedString(soldItemsCount)).append("\n");
+    sb.append("    pendingDetailsCount: ").append(toIndentedString(pendingDetailsCount)).append("\n");
     sb.append("    cancelledCount: ").append(toIndentedString(cancelledCount)).append("\n");
     sb.append("    cancelRate: ").append(toIndentedString(cancelRate)).append("\n");
     sb.append("    refundedAmount: ").append(toIndentedString(refundedAmount)).append("\n");
@@ -720,7 +835,9 @@ public class GetAnalyticDashboardResponse {
     sb.append("    avgSalePrice: ").append(toIndentedString(avgSalePrice)).append("\n");
     sb.append("    sellThroughRate: ").append(toIndentedString(sellThroughRate)).append("\n");
     sb.append("    sellThrough: ").append(toIndentedString(sellThrough)).append("\n");
+    sb.append("    sellThroughCohort: ").append(toIndentedString(sellThroughCohort)).append("\n");
     sb.append("    avgDaysToSell: ").append(toIndentedString(avgDaysToSell)).append("\n");
+    sb.append("    medianDaysToSell: ").append(toIndentedString(medianDaysToSell)).append("\n");
     sb.append("    salesByPlatform: ").append(toIndentedString(salesByPlatform)).append("\n");
     sb.append("    avgSalePriceByPlatform: ").append(toIndentedString(avgSalePriceByPlatform)).append("\n");
     sb.append("    revenueByDay: ").append(toIndentedString(revenueByDay)).append("\n");
@@ -730,6 +847,7 @@ public class GetAnalyticDashboardResponse {
     sb.append("    top5ItemsByRevenue: ").append(toIndentedString(top5ItemsByRevenue)).append("\n");
     sb.append("    recentSales: ").append(toIndentedString(recentSales)).append("\n");
     sb.append("    availableLabels: ").append(toIndentedString(availableLabels)).append("\n");
+    sb.append("    period: ").append(toIndentedString(period)).append("\n");
     sb.append("}");
     return sb.toString();
   }

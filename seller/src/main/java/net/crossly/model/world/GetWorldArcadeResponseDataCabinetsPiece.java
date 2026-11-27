@@ -31,7 +31,7 @@ import java.util.List;
  * The interactive piece it hosts, where it stands; null for Price Guess and an empty cabinet.
  */
 @ApiModel(description = "The interactive piece it hosts, where it stands; null for Price Guess and an empty cabinet.")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-11T23:44:48.922Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-27T19:42:43.186Z[Etc/UTC]")
 public class GetWorldArcadeResponseDataCabinetsPiece {
   public static final String SERIALIZED_NAME_MODEL = "model";
   @SerializedName(SERIALIZED_NAME_MODEL)

@@ -30,7 +30,7 @@ import org.threeten.bp.OffsetDateTime;
 /**
  * UpdateProductionPoResponsePo
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-11T23:44:48.922Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-27T19:42:43.186Z[Etc/UTC]")
 public class UpdateProductionPoResponsePo {
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
@@ -44,13 +44,21 @@ public class UpdateProductionPoResponsePo {
   @SerializedName(SERIALIZED_NAME_UPDATED_AT)
   private OffsetDateTime updatedAt;
 
+  public static final String SERIALIZED_NAME_STATUS = "status";
+  @SerializedName(SERIALIZED_NAME_STATUS)
+  private String status;
+
   public static final String SERIALIZED_NAME_NOTES = "notes";
   @SerializedName(SERIALIZED_NAME_NOTES)
   private String notes;
 
-  public static final String SERIALIZED_NAME_STATUS = "status";
-  @SerializedName(SERIALIZED_NAME_STATUS)
-  private String status;
+  public static final String SERIALIZED_NAME_SUPPLIER_NAME = "supplierName";
+  @SerializedName(SERIALIZED_NAME_SUPPLIER_NAME)
+  private String supplierName;
+
+  public static final String SERIALIZED_NAME_TRACKING_CODE = "trackingCode";
+  @SerializedName(SERIALIZED_NAME_TRACKING_CODE)
+  private String trackingCode;
 
   public static final String SERIALIZED_NAME_MERCHANT_ID = "merchantId";
   @SerializedName(SERIALIZED_NAME_MERCHANT_ID)
@@ -59,14 +67,6 @@ public class UpdateProductionPoResponsePo {
   public static final String SERIALIZED_NAME_CANDIDATE_ID = "candidateId";
   @SerializedName(SERIALIZED_NAME_CANDIDATE_ID)
   private String candidateId;
-
-  public static final String SERIALIZED_NAME_TRACKING_CODE = "trackingCode";
-  @SerializedName(SERIALIZED_NAME_TRACKING_CODE)
-  private String trackingCode;
-
-  public static final String SERIALIZED_NAME_SUPPLIER_NAME = "supplierName";
-  @SerializedName(SERIALIZED_NAME_SUPPLIER_NAME)
-  private String supplierName;
 
   public static final String SERIALIZED_NAME_SUPPLIER_CONTACT = "supplierContact";
   @SerializedName(SERIALIZED_NAME_SUPPLIER_CONTACT)
@@ -196,6 +196,29 @@ public class UpdateProductionPoResponsePo {
   }
 
 
+  public UpdateProductionPoResponsePo status(String status) {
+    
+    this.status = status;
+    return this;
+  }
+
+   /**
+   * Get status
+   * @return status
+  **/
+  @javax.annotation.Nonnull
+  @ApiModelProperty(required = true, value = "")
+
+  public String getStatus() {
+    return status;
+  }
+
+
+  public void setStatus(String status) {
+    this.status = status;
+  }
+
+
   public UpdateProductionPoResponsePo notes(String notes) {
     
     this.notes = notes;
@@ -219,26 +242,49 @@ public class UpdateProductionPoResponsePo {
   }
 
 
-  public UpdateProductionPoResponsePo status(String status) {
+  public UpdateProductionPoResponsePo supplierName(String supplierName) {
     
-    this.status = status;
+    this.supplierName = supplierName;
     return this;
   }
 
    /**
-   * Get status
-   * @return status
+   * Get supplierName
+   * @return supplierName
   **/
-  @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "")
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
 
-  public String getStatus() {
-    return status;
+  public String getSupplierName() {
+    return supplierName;
   }
 
 
-  public void setStatus(String status) {
-    this.status = status;
+  public void setSupplierName(String supplierName) {
+    this.supplierName = supplierName;
+  }
+
+
+  public UpdateProductionPoResponsePo trackingCode(String trackingCode) {
+    
+    this.trackingCode = trackingCode;
+    return this;
+  }
+
+   /**
+   * Get trackingCode
+   * @return trackingCode
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public String getTrackingCode() {
+    return trackingCode;
+  }
+
+
+  public void setTrackingCode(String trackingCode) {
+    this.trackingCode = trackingCode;
   }
 
 
@@ -285,52 +331,6 @@ public class UpdateProductionPoResponsePo {
 
   public void setCandidateId(String candidateId) {
     this.candidateId = candidateId;
-  }
-
-
-  public UpdateProductionPoResponsePo trackingCode(String trackingCode) {
-    
-    this.trackingCode = trackingCode;
-    return this;
-  }
-
-   /**
-   * Get trackingCode
-   * @return trackingCode
-  **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
-
-  public String getTrackingCode() {
-    return trackingCode;
-  }
-
-
-  public void setTrackingCode(String trackingCode) {
-    this.trackingCode = trackingCode;
-  }
-
-
-  public UpdateProductionPoResponsePo supplierName(String supplierName) {
-    
-    this.supplierName = supplierName;
-    return this;
-  }
-
-   /**
-   * Get supplierName
-   * @return supplierName
-  **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
-
-  public String getSupplierName() {
-    return supplierName;
-  }
-
-
-  public void setSupplierName(String supplierName) {
-    this.supplierName = supplierName;
   }
 
 
@@ -668,12 +668,12 @@ public class UpdateProductionPoResponsePo {
     return Objects.equals(this.id, updateProductionPoResponsePo.id) &&
         Objects.equals(this.createdAt, updateProductionPoResponsePo.createdAt) &&
         Objects.equals(this.updatedAt, updateProductionPoResponsePo.updatedAt) &&
-        Objects.equals(this.notes, updateProductionPoResponsePo.notes) &&
         Objects.equals(this.status, updateProductionPoResponsePo.status) &&
+        Objects.equals(this.notes, updateProductionPoResponsePo.notes) &&
+        Objects.equals(this.supplierName, updateProductionPoResponsePo.supplierName) &&
+        Objects.equals(this.trackingCode, updateProductionPoResponsePo.trackingCode) &&
         Objects.equals(this.merchantId, updateProductionPoResponsePo.merchantId) &&
         Objects.equals(this.candidateId, updateProductionPoResponsePo.candidateId) &&
-        Objects.equals(this.trackingCode, updateProductionPoResponsePo.trackingCode) &&
-        Objects.equals(this.supplierName, updateProductionPoResponsePo.supplierName) &&
         Objects.equals(this.supplierContact, updateProductionPoResponsePo.supplierContact) &&
         Objects.equals(this.freightMode, updateProductionPoResponsePo.freightMode) &&
         Objects.equals(this.estimateLandedCents, updateProductionPoResponsePo.estimateLandedCents) &&
@@ -696,7 +696,7 @@ public class UpdateProductionPoResponsePo {
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, createdAt, updatedAt, notes, status, merchantId, candidateId, trackingCode, supplierName, supplierContact, freightMode, estimateLandedCents, actualUnitFobCents, actualToolingCents, actualSamplesCents, actualFreightCents, actualDutyCents, actualQcCents, actualThreeplCents, actualLandedCents, sampleRounds, qcStatus, qcNotes);
+    return Objects.hash(id, createdAt, updatedAt, status, notes, supplierName, trackingCode, merchantId, candidateId, supplierContact, freightMode, estimateLandedCents, actualUnitFobCents, actualToolingCents, actualSamplesCents, actualFreightCents, actualDutyCents, actualQcCents, actualThreeplCents, actualLandedCents, sampleRounds, qcStatus, qcNotes);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -713,12 +713,12 @@ public class UpdateProductionPoResponsePo {
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    createdAt: ").append(toIndentedString(createdAt)).append("\n");
     sb.append("    updatedAt: ").append(toIndentedString(updatedAt)).append("\n");
-    sb.append("    notes: ").append(toIndentedString(notes)).append("\n");
     sb.append("    status: ").append(toIndentedString(status)).append("\n");
+    sb.append("    notes: ").append(toIndentedString(notes)).append("\n");
+    sb.append("    supplierName: ").append(toIndentedString(supplierName)).append("\n");
+    sb.append("    trackingCode: ").append(toIndentedString(trackingCode)).append("\n");
     sb.append("    merchantId: ").append(toIndentedString(merchantId)).append("\n");
     sb.append("    candidateId: ").append(toIndentedString(candidateId)).append("\n");
-    sb.append("    trackingCode: ").append(toIndentedString(trackingCode)).append("\n");
-    sb.append("    supplierName: ").append(toIndentedString(supplierName)).append("\n");
     sb.append("    supplierContact: ").append(toIndentedString(supplierContact)).append("\n");
     sb.append("    freightMode: ").append(toIndentedString(freightMode)).append("\n");
     sb.append("    estimateLandedCents: ").append(toIndentedString(estimateLandedCents)).append("\n");

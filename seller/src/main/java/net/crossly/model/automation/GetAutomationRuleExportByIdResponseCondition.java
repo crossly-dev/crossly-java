@@ -31,7 +31,7 @@ import java.util.Map;
  * Omit or set &#x60;type: &#39;none&#39;&#x60; to fire on every match.
  */
 @ApiModel(description = "Omit or set `type: 'none'` to fire on every match.")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-11T23:44:48.922Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-27T19:42:43.186Z[Etc/UTC]")
 public class GetAutomationRuleExportByIdResponseCondition {
   public static final String SERIALIZED_NAME_TYPE = "type";
   @SerializedName(SERIALIZED_NAME_TYPE)

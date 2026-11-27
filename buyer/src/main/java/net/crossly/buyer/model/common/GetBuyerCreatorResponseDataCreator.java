@@ -28,30 +28,53 @@ import org.openapitools.jackson.nullable.JsonNullable;
 /**
  * GetBuyerCreatorResponseDataCreator
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-11T23:47:29.843Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-27T19:58:46.962Z[Etc/UTC]")
 public class GetBuyerCreatorResponseDataCreator {
+  public static final String SERIALIZED_NAME_HANDLE = "handle";
+  @SerializedName(SERIALIZED_NAME_HANDLE)
+  private String handle;
+
   public static final String SERIALIZED_NAME_DISPLAY_NAME = "displayName";
   @SerializedName(SERIALIZED_NAME_DISPLAY_NAME)
   private String displayName;
-
-  public static final String SERIALIZED_NAME_AVATAR_URL = "avatarUrl";
-  @SerializedName(SERIALIZED_NAME_AVATAR_URL)
-  private String avatarUrl;
 
   public static final String SERIALIZED_NAME_BIO = "bio";
   @SerializedName(SERIALIZED_NAME_BIO)
   private String bio;
 
+  public static final String SERIALIZED_NAME_AVATAR_URL = "avatarUrl";
+  @SerializedName(SERIALIZED_NAME_AVATAR_URL)
+  private String avatarUrl;
+
   public static final String SERIALIZED_NAME_CODE = "code";
   @SerializedName(SERIALIZED_NAME_CODE)
   private String code;
 
-  public static final String SERIALIZED_NAME_HANDLE = "handle";
-  @SerializedName(SERIALIZED_NAME_HANDLE)
-  private String handle;
-
   public GetBuyerCreatorResponseDataCreator() { 
   }
+
+  public GetBuyerCreatorResponseDataCreator handle(String handle) {
+    
+    this.handle = handle;
+    return this;
+  }
+
+   /**
+   * Get handle
+   * @return handle
+  **/
+  @javax.annotation.Nonnull
+  @ApiModelProperty(required = true, value = "")
+
+  public String getHandle() {
+    return handle;
+  }
+
+
+  public void setHandle(String handle) {
+    this.handle = handle;
+  }
+
 
   public GetBuyerCreatorResponseDataCreator displayName(String displayName) {
     
@@ -73,29 +96,6 @@ public class GetBuyerCreatorResponseDataCreator {
 
   public void setDisplayName(String displayName) {
     this.displayName = displayName;
-  }
-
-
-  public GetBuyerCreatorResponseDataCreator avatarUrl(String avatarUrl) {
-    
-    this.avatarUrl = avatarUrl;
-    return this;
-  }
-
-   /**
-   * Get avatarUrl
-   * @return avatarUrl
-  **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
-
-  public String getAvatarUrl() {
-    return avatarUrl;
-  }
-
-
-  public void setAvatarUrl(String avatarUrl) {
-    this.avatarUrl = avatarUrl;
   }
 
 
@@ -122,6 +122,29 @@ public class GetBuyerCreatorResponseDataCreator {
   }
 
 
+  public GetBuyerCreatorResponseDataCreator avatarUrl(String avatarUrl) {
+    
+    this.avatarUrl = avatarUrl;
+    return this;
+  }
+
+   /**
+   * Get avatarUrl
+   * @return avatarUrl
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public String getAvatarUrl() {
+    return avatarUrl;
+  }
+
+
+  public void setAvatarUrl(String avatarUrl) {
+    this.avatarUrl = avatarUrl;
+  }
+
+
   public GetBuyerCreatorResponseDataCreator code(String code) {
     
     this.code = code;
@@ -145,29 +168,6 @@ public class GetBuyerCreatorResponseDataCreator {
   }
 
 
-  public GetBuyerCreatorResponseDataCreator handle(String handle) {
-    
-    this.handle = handle;
-    return this;
-  }
-
-   /**
-   * Get handle
-   * @return handle
-  **/
-  @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "")
-
-  public String getHandle() {
-    return handle;
-  }
-
-
-  public void setHandle(String handle) {
-    this.handle = handle;
-  }
-
-
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -177,11 +177,11 @@ public class GetBuyerCreatorResponseDataCreator {
       return false;
     }
     GetBuyerCreatorResponseDataCreator getBuyerCreatorResponseDataCreator = (GetBuyerCreatorResponseDataCreator) o;
-    return Objects.equals(this.displayName, getBuyerCreatorResponseDataCreator.displayName) &&
-        Objects.equals(this.avatarUrl, getBuyerCreatorResponseDataCreator.avatarUrl) &&
+    return Objects.equals(this.handle, getBuyerCreatorResponseDataCreator.handle) &&
+        Objects.equals(this.displayName, getBuyerCreatorResponseDataCreator.displayName) &&
         Objects.equals(this.bio, getBuyerCreatorResponseDataCreator.bio) &&
-        Objects.equals(this.code, getBuyerCreatorResponseDataCreator.code) &&
-        Objects.equals(this.handle, getBuyerCreatorResponseDataCreator.handle);
+        Objects.equals(this.avatarUrl, getBuyerCreatorResponseDataCreator.avatarUrl) &&
+        Objects.equals(this.code, getBuyerCreatorResponseDataCreator.code);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -190,7 +190,7 @@ public class GetBuyerCreatorResponseDataCreator {
 
   @Override
   public int hashCode() {
-    return Objects.hash(displayName, avatarUrl, bio, code, handle);
+    return Objects.hash(handle, displayName, bio, avatarUrl, code);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -204,11 +204,11 @@ public class GetBuyerCreatorResponseDataCreator {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class GetBuyerCreatorResponseDataCreator {\n");
-    sb.append("    displayName: ").append(toIndentedString(displayName)).append("\n");
-    sb.append("    avatarUrl: ").append(toIndentedString(avatarUrl)).append("\n");
-    sb.append("    bio: ").append(toIndentedString(bio)).append("\n");
-    sb.append("    code: ").append(toIndentedString(code)).append("\n");
     sb.append("    handle: ").append(toIndentedString(handle)).append("\n");
+    sb.append("    displayName: ").append(toIndentedString(displayName)).append("\n");
+    sb.append("    bio: ").append(toIndentedString(bio)).append("\n");
+    sb.append("    avatarUrl: ").append(toIndentedString(avatarUrl)).append("\n");
+    sb.append("    code: ").append(toIndentedString(code)).append("\n");
     sb.append("}");
     return sb.toString();
   }

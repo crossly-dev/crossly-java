@@ -26,18 +26,50 @@ import java.io.IOException;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
-import net.crossly.model.inbox.GetInboxResponseMessages;
+import net.crossly.model.inbox.CreateInboxSendOfferResponseMessage;
 import org.openapitools.jackson.nullable.JsonNullable;
 import org.threeten.bp.OffsetDateTime;
 
 /**
  * GetInboxResponse
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-11T23:44:48.922Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-27T19:42:43.186Z[Etc/UTC]")
 public class GetInboxResponse {
   public static final String SERIALIZED_NAME_MESSAGES = "messages";
   @SerializedName(SERIALIZED_NAME_MESSAGES)
-  private List<GetInboxResponseMessages> messages = new ArrayList<GetInboxResponseMessages>();
+  private List<CreateInboxSendOfferResponseMessage> messages = new ArrayList<CreateInboxSendOfferResponseMessage>();
+
+  public static final String SERIALIZED_NAME_LISTING_ID = "listingId";
+  @SerializedName(SERIALIZED_NAME_LISTING_ID)
+  private String listingId;
+
+  public static final String SERIALIZED_NAME_ITEM_TITLE = "itemTitle";
+  @SerializedName(SERIALIZED_NAME_ITEM_TITLE)
+  private String itemTitle;
+
+  public static final String SERIALIZED_NAME_ITEM_THUMBNAIL = "itemThumbnail";
+  @SerializedName(SERIALIZED_NAME_ITEM_THUMBNAIL)
+  private String itemThumbnail;
+
+  public static final String SERIALIZED_NAME_ITEM_URL = "itemUrl";
+  @SerializedName(SERIALIZED_NAME_ITEM_URL)
+  private String itemUrl;
+
+  public static final String SERIALIZED_NAME_CROSSLY_LISTING_SLUG = "crosslyListingSlug";
+  @SerializedName(SERIALIZED_NAME_CROSSLY_LISTING_SLUG)
+  private String crosslyListingSlug;
+
+  public static final String SERIALIZED_NAME_ITEM_PRICE = "itemPrice";
+  @SerializedName(SERIALIZED_NAME_ITEM_PRICE)
+  private BigDecimal itemPrice;
+
+  public static final String SERIALIZED_NAME_ITEM_CURRENCY = "itemCurrency";
+  @SerializedName(SERIALIZED_NAME_ITEM_CURRENCY)
+  private String itemCurrency;
+
+  public static final String SERIALIZED_NAME_CAN_SEND_OFFER = "canSendOffer";
+  @SerializedName(SERIALIZED_NAME_CAN_SEND_OFFER)
+  private Boolean canSendOffer;
 
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
@@ -51,21 +83,25 @@ public class GetInboxResponse {
   @SerializedName(SERIALIZED_NAME_USER_ID)
   private String userId;
 
-  public static final String SERIALIZED_NAME_STATUS = "status";
-  @SerializedName(SERIALIZED_NAME_STATUS)
-  private String status;
-
   public static final String SERIALIZED_NAME_PLATFORM = "platform";
   @SerializedName(SERIALIZED_NAME_PLATFORM)
   private String platform;
 
-  public static final String SERIALIZED_NAME_LISTING_ID = "listingId";
-  @SerializedName(SERIALIZED_NAME_LISTING_ID)
-  private String listingId;
-
   public static final String SERIALIZED_NAME_ACCOUNT_SLOT = "accountSlot";
   @SerializedName(SERIALIZED_NAME_ACCOUNT_SLOT)
   private BigDecimal accountSlot;
+
+  public static final String SERIALIZED_NAME_STATUS = "status";
+  @SerializedName(SERIALIZED_NAME_STATUS)
+  private String status;
+
+  public static final String SERIALIZED_NAME_SOURCE = "source";
+  @SerializedName(SERIALIZED_NAME_SOURCE)
+  private String source;
+
+  public static final String SERIALIZED_NAME_LABELS = "labels";
+  @SerializedName(SERIALIZED_NAME_LABELS)
+  private List<String> labels = new ArrayList<String>();
 
   public static final String SERIALIZED_NAME_INVENTORY_ITEM_ID = "inventoryItemId";
   @SerializedName(SERIALIZED_NAME_INVENTORY_ITEM_ID)
@@ -79,10 +115,6 @@ public class GetInboxResponse {
   @SerializedName(SERIALIZED_NAME_BUYER_USERNAME)
   private String buyerUsername;
 
-  public static final String SERIALIZED_NAME_SUBJECT = "subject";
-  @SerializedName(SERIALIZED_NAME_SUBJECT)
-  private String subject;
-
   public static final String SERIALIZED_NAME_PLATFORM_CONVERSATION_ID = "platformConversationId";
   @SerializedName(SERIALIZED_NAME_PLATFORM_CONVERSATION_ID)
   private String platformConversationId;
@@ -90,6 +122,14 @@ public class GetInboxResponse {
   public static final String SERIALIZED_NAME_BUYER_PLATFORM_ID = "buyerPlatformId";
   @SerializedName(SERIALIZED_NAME_BUYER_PLATFORM_ID)
   private String buyerPlatformId;
+
+  public static final String SERIALIZED_NAME_BUYER_AVATAR_URL = "buyerAvatarUrl";
+  @SerializedName(SERIALIZED_NAME_BUYER_AVATAR_URL)
+  private String buyerAvatarUrl;
+
+  public static final String SERIALIZED_NAME_SUBJECT = "subject";
+  @SerializedName(SERIALIZED_NAME_SUBJECT)
+  private String subject;
 
   public static final String SERIALIZED_NAME_IS_READ = "isRead";
   @SerializedName(SERIALIZED_NAME_IS_READ)
@@ -119,16 +159,24 @@ public class GetInboxResponse {
   @SerializedName(SERIALIZED_NAME_LAST_MESSAGE_AT)
   private OffsetDateTime lastMessageAt;
 
+  public static final String SERIALIZED_NAME_SUPERSEDED_AT = "supersededAt";
+  @SerializedName(SERIALIZED_NAME_SUPERSEDED_AT)
+  private OffsetDateTime supersededAt;
+
+  public static final String SERIALIZED_NAME_IS_STARRED = "isStarred";
+  @SerializedName(SERIALIZED_NAME_IS_STARRED)
+  private Boolean isStarred;
+
   public GetInboxResponse() { 
   }
 
-  public GetInboxResponse messages(List<GetInboxResponseMessages> messages) {
+  public GetInboxResponse messages(List<CreateInboxSendOfferResponseMessage> messages) {
     
     this.messages = messages;
     return this;
   }
 
-  public GetInboxResponse addMessagesItem(GetInboxResponseMessages messagesItem) {
+  public GetInboxResponse addMessagesItem(CreateInboxSendOfferResponseMessage messagesItem) {
     this.messages.add(messagesItem);
     return this;
   }
@@ -140,13 +188,197 @@ public class GetInboxResponse {
   @javax.annotation.Nonnull
   @ApiModelProperty(required = true, value = "")
 
-  public List<GetInboxResponseMessages> getMessages() {
+  public List<CreateInboxSendOfferResponseMessage> getMessages() {
     return messages;
   }
 
 
-  public void setMessages(List<GetInboxResponseMessages> messages) {
+  public void setMessages(List<CreateInboxSendOfferResponseMessage> messages) {
     this.messages = messages;
+  }
+
+
+  public GetInboxResponse listingId(String listingId) {
+    
+    this.listingId = listingId;
+    return this;
+  }
+
+   /**
+   * Get listingId
+   * @return listingId
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public String getListingId() {
+    return listingId;
+  }
+
+
+  public void setListingId(String listingId) {
+    this.listingId = listingId;
+  }
+
+
+  public GetInboxResponse itemTitle(String itemTitle) {
+    
+    this.itemTitle = itemTitle;
+    return this;
+  }
+
+   /**
+   * Get itemTitle
+   * @return itemTitle
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public String getItemTitle() {
+    return itemTitle;
+  }
+
+
+  public void setItemTitle(String itemTitle) {
+    this.itemTitle = itemTitle;
+  }
+
+
+  public GetInboxResponse itemThumbnail(String itemThumbnail) {
+    
+    this.itemThumbnail = itemThumbnail;
+    return this;
+  }
+
+   /**
+   * Get itemThumbnail
+   * @return itemThumbnail
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public String getItemThumbnail() {
+    return itemThumbnail;
+  }
+
+
+  public void setItemThumbnail(String itemThumbnail) {
+    this.itemThumbnail = itemThumbnail;
+  }
+
+
+  public GetInboxResponse itemUrl(String itemUrl) {
+    
+    this.itemUrl = itemUrl;
+    return this;
+  }
+
+   /**
+   * Get itemUrl
+   * @return itemUrl
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public String getItemUrl() {
+    return itemUrl;
+  }
+
+
+  public void setItemUrl(String itemUrl) {
+    this.itemUrl = itemUrl;
+  }
+
+
+  public GetInboxResponse crosslyListingSlug(String crosslyListingSlug) {
+    
+    this.crosslyListingSlug = crosslyListingSlug;
+    return this;
+  }
+
+   /**
+   * Get crosslyListingSlug
+   * @return crosslyListingSlug
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public String getCrosslyListingSlug() {
+    return crosslyListingSlug;
+  }
+
+
+  public void setCrosslyListingSlug(String crosslyListingSlug) {
+    this.crosslyListingSlug = crosslyListingSlug;
+  }
+
+
+  public GetInboxResponse itemPrice(BigDecimal itemPrice) {
+    
+    this.itemPrice = itemPrice;
+    return this;
+  }
+
+   /**
+   * Get itemPrice
+   * @return itemPrice
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public BigDecimal getItemPrice() {
+    return itemPrice;
+  }
+
+
+  public void setItemPrice(BigDecimal itemPrice) {
+    this.itemPrice = itemPrice;
+  }
+
+
+  public GetInboxResponse itemCurrency(String itemCurrency) {
+    
+    this.itemCurrency = itemCurrency;
+    return this;
+  }
+
+   /**
+   * Get itemCurrency
+   * @return itemCurrency
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public String getItemCurrency() {
+    return itemCurrency;
+  }
+
+
+  public void setItemCurrency(String itemCurrency) {
+    this.itemCurrency = itemCurrency;
+  }
+
+
+  public GetInboxResponse canSendOffer(Boolean canSendOffer) {
+    
+    this.canSendOffer = canSendOffer;
+    return this;
+  }
+
+   /**
+   * Get canSendOffer
+   * @return canSendOffer
+  **/
+  @javax.annotation.Nonnull
+  @ApiModelProperty(required = true, value = "")
+
+  public Boolean getCanSendOffer() {
+    return canSendOffer;
+  }
+
+
+  public void setCanSendOffer(Boolean canSendOffer) {
+    this.canSendOffer = canSendOffer;
   }
 
 
@@ -219,29 +451,6 @@ public class GetInboxResponse {
   }
 
 
-  public GetInboxResponse status(String status) {
-    
-    this.status = status;
-    return this;
-  }
-
-   /**
-   * Get status
-   * @return status
-  **/
-  @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "")
-
-  public String getStatus() {
-    return status;
-  }
-
-
-  public void setStatus(String status) {
-    this.status = status;
-  }
-
-
   public GetInboxResponse platform(String platform) {
     
     this.platform = platform;
@@ -265,29 +474,6 @@ public class GetInboxResponse {
   }
 
 
-  public GetInboxResponse listingId(String listingId) {
-    
-    this.listingId = listingId;
-    return this;
-  }
-
-   /**
-   * Get listingId
-   * @return listingId
-  **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
-
-  public String getListingId() {
-    return listingId;
-  }
-
-
-  public void setListingId(String listingId) {
-    this.listingId = listingId;
-  }
-
-
   public GetInboxResponse accountSlot(BigDecimal accountSlot) {
     
     this.accountSlot = accountSlot;
@@ -308,6 +494,80 @@ public class GetInboxResponse {
 
   public void setAccountSlot(BigDecimal accountSlot) {
     this.accountSlot = accountSlot;
+  }
+
+
+  public GetInboxResponse status(String status) {
+    
+    this.status = status;
+    return this;
+  }
+
+   /**
+   * Get status
+   * @return status
+  **/
+  @javax.annotation.Nonnull
+  @ApiModelProperty(required = true, value = "")
+
+  public String getStatus() {
+    return status;
+  }
+
+
+  public void setStatus(String status) {
+    this.status = status;
+  }
+
+
+  public GetInboxResponse source(String source) {
+    
+    this.source = source;
+    return this;
+  }
+
+   /**
+   * Get source
+   * @return source
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public String getSource() {
+    return source;
+  }
+
+
+  public void setSource(String source) {
+    this.source = source;
+  }
+
+
+  public GetInboxResponse labels(List<String> labels) {
+    
+    this.labels = labels;
+    return this;
+  }
+
+  public GetInboxResponse addLabelsItem(String labelsItem) {
+    this.labels.add(labelsItem);
+    return this;
+  }
+
+   /**
+   * Get labels
+   * @return labels
+  **/
+  @javax.annotation.Nonnull
+  @ApiModelProperty(required = true, value = "")
+
+  public List<String> getLabels() {
+    return labels;
+  }
+
+
+  public void setLabels(List<String> labels) {
+    this.labels = labels;
   }
 
 
@@ -380,29 +640,6 @@ public class GetInboxResponse {
   }
 
 
-  public GetInboxResponse subject(String subject) {
-    
-    this.subject = subject;
-    return this;
-  }
-
-   /**
-   * Get subject
-   * @return subject
-  **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
-
-  public String getSubject() {
-    return subject;
-  }
-
-
-  public void setSubject(String subject) {
-    this.subject = subject;
-  }
-
-
   public GetInboxResponse platformConversationId(String platformConversationId) {
     
     this.platformConversationId = platformConversationId;
@@ -446,6 +683,52 @@ public class GetInboxResponse {
 
   public void setBuyerPlatformId(String buyerPlatformId) {
     this.buyerPlatformId = buyerPlatformId;
+  }
+
+
+  public GetInboxResponse buyerAvatarUrl(String buyerAvatarUrl) {
+    
+    this.buyerAvatarUrl = buyerAvatarUrl;
+    return this;
+  }
+
+   /**
+   * Get buyerAvatarUrl
+   * @return buyerAvatarUrl
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public String getBuyerAvatarUrl() {
+    return buyerAvatarUrl;
+  }
+
+
+  public void setBuyerAvatarUrl(String buyerAvatarUrl) {
+    this.buyerAvatarUrl = buyerAvatarUrl;
+  }
+
+
+  public GetInboxResponse subject(String subject) {
+    
+    this.subject = subject;
+    return this;
+  }
+
+   /**
+   * Get subject
+   * @return subject
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public String getSubject() {
+    return subject;
+  }
+
+
+  public void setSubject(String subject) {
+    this.subject = subject;
   }
 
 
@@ -610,6 +893,52 @@ public class GetInboxResponse {
   }
 
 
+  public GetInboxResponse supersededAt(OffsetDateTime supersededAt) {
+    
+    this.supersededAt = supersededAt;
+    return this;
+  }
+
+   /**
+   * Get supersededAt
+   * @return supersededAt
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public OffsetDateTime getSupersededAt() {
+    return supersededAt;
+  }
+
+
+  public void setSupersededAt(OffsetDateTime supersededAt) {
+    this.supersededAt = supersededAt;
+  }
+
+
+  public GetInboxResponse isStarred(Boolean isStarred) {
+    
+    this.isStarred = isStarred;
+    return this;
+  }
+
+   /**
+   * Get isStarred
+   * @return isStarred
+  **/
+  @javax.annotation.Nonnull
+  @ApiModelProperty(required = true, value = "")
+
+  public Boolean getIsStarred() {
+    return isStarred;
+  }
+
+
+  public void setIsStarred(Boolean isStarred) {
+    this.isStarred = isStarred;
+  }
+
+
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -620,26 +949,38 @@ public class GetInboxResponse {
     }
     GetInboxResponse getInboxResponse = (GetInboxResponse) o;
     return Objects.equals(this.messages, getInboxResponse.messages) &&
+        Objects.equals(this.listingId, getInboxResponse.listingId) &&
+        Objects.equals(this.itemTitle, getInboxResponse.itemTitle) &&
+        Objects.equals(this.itemThumbnail, getInboxResponse.itemThumbnail) &&
+        Objects.equals(this.itemUrl, getInboxResponse.itemUrl) &&
+        Objects.equals(this.crosslyListingSlug, getInboxResponse.crosslyListingSlug) &&
+        Objects.equals(this.itemPrice, getInboxResponse.itemPrice) &&
+        Objects.equals(this.itemCurrency, getInboxResponse.itemCurrency) &&
+        Objects.equals(this.canSendOffer, getInboxResponse.canSendOffer) &&
         Objects.equals(this.id, getInboxResponse.id) &&
         Objects.equals(this.createdAt, getInboxResponse.createdAt) &&
         Objects.equals(this.userId, getInboxResponse.userId) &&
-        Objects.equals(this.status, getInboxResponse.status) &&
         Objects.equals(this.platform, getInboxResponse.platform) &&
-        Objects.equals(this.listingId, getInboxResponse.listingId) &&
         Objects.equals(this.accountSlot, getInboxResponse.accountSlot) &&
+        Objects.equals(this.status, getInboxResponse.status) &&
+        Objects.equals(this.source, getInboxResponse.source) &&
+        Objects.equals(this.labels, getInboxResponse.labels) &&
         Objects.equals(this.inventoryItemId, getInboxResponse.inventoryItemId) &&
         Objects.equals(this.platformListingId, getInboxResponse.platformListingId) &&
         Objects.equals(this.buyerUsername, getInboxResponse.buyerUsername) &&
-        Objects.equals(this.subject, getInboxResponse.subject) &&
         Objects.equals(this.platformConversationId, getInboxResponse.platformConversationId) &&
         Objects.equals(this.buyerPlatformId, getInboxResponse.buyerPlatformId) &&
+        Objects.equals(this.buyerAvatarUrl, getInboxResponse.buyerAvatarUrl) &&
+        Objects.equals(this.subject, getInboxResponse.subject) &&
         Objects.equals(this.isRead, getInboxResponse.isRead) &&
         Objects.equals(this.isHidden, getInboxResponse.isHidden) &&
         Objects.equals(this.hasOffer, getInboxResponse.hasOffer) &&
         Objects.equals(this.offerAmount, getInboxResponse.offerAmount) &&
         Objects.equals(this.offerStatus, getInboxResponse.offerStatus) &&
         Objects.equals(this.platformConversationUrl, getInboxResponse.platformConversationUrl) &&
-        Objects.equals(this.lastMessageAt, getInboxResponse.lastMessageAt);
+        Objects.equals(this.lastMessageAt, getInboxResponse.lastMessageAt) &&
+        Objects.equals(this.supersededAt, getInboxResponse.supersededAt) &&
+        Objects.equals(this.isStarred, getInboxResponse.isStarred);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -648,7 +989,7 @@ public class GetInboxResponse {
 
   @Override
   public int hashCode() {
-    return Objects.hash(messages, id, createdAt, userId, status, platform, listingId, accountSlot, inventoryItemId, platformListingId, buyerUsername, subject, platformConversationId, buyerPlatformId, isRead, isHidden, hasOffer, offerAmount, offerStatus, platformConversationUrl, lastMessageAt);
+    return Objects.hash(messages, listingId, itemTitle, itemThumbnail, itemUrl, crosslyListingSlug, itemPrice, itemCurrency, canSendOffer, id, createdAt, userId, platform, accountSlot, status, source, labels, inventoryItemId, platformListingId, buyerUsername, platformConversationId, buyerPlatformId, buyerAvatarUrl, subject, isRead, isHidden, hasOffer, offerAmount, offerStatus, platformConversationUrl, lastMessageAt, supersededAt, isStarred);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -663,19 +1004,29 @@ public class GetInboxResponse {
     StringBuilder sb = new StringBuilder();
     sb.append("class GetInboxResponse {\n");
     sb.append("    messages: ").append(toIndentedString(messages)).append("\n");
+    sb.append("    listingId: ").append(toIndentedString(listingId)).append("\n");
+    sb.append("    itemTitle: ").append(toIndentedString(itemTitle)).append("\n");
+    sb.append("    itemThumbnail: ").append(toIndentedString(itemThumbnail)).append("\n");
+    sb.append("    itemUrl: ").append(toIndentedString(itemUrl)).append("\n");
+    sb.append("    crosslyListingSlug: ").append(toIndentedString(crosslyListingSlug)).append("\n");
+    sb.append("    itemPrice: ").append(toIndentedString(itemPrice)).append("\n");
+    sb.append("    itemCurrency: ").append(toIndentedString(itemCurrency)).append("\n");
+    sb.append("    canSendOffer: ").append(toIndentedString(canSendOffer)).append("\n");
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    createdAt: ").append(toIndentedString(createdAt)).append("\n");
     sb.append("    userId: ").append(toIndentedString(userId)).append("\n");
-    sb.append("    status: ").append(toIndentedString(status)).append("\n");
     sb.append("    platform: ").append(toIndentedString(platform)).append("\n");
-    sb.append("    listingId: ").append(toIndentedString(listingId)).append("\n");
     sb.append("    accountSlot: ").append(toIndentedString(accountSlot)).append("\n");
+    sb.append("    status: ").append(toIndentedString(status)).append("\n");
+    sb.append("    source: ").append(toIndentedString(source)).append("\n");
+    sb.append("    labels: ").append(toIndentedString(labels)).append("\n");
     sb.append("    inventoryItemId: ").append(toIndentedString(inventoryItemId)).append("\n");
     sb.append("    platformListingId: ").append(toIndentedString(platformListingId)).append("\n");
     sb.append("    buyerUsername: ").append(toIndentedString(buyerUsername)).append("\n");
-    sb.append("    subject: ").append(toIndentedString(subject)).append("\n");
     sb.append("    platformConversationId: ").append(toIndentedString(platformConversationId)).append("\n");
     sb.append("    buyerPlatformId: ").append(toIndentedString(buyerPlatformId)).append("\n");
+    sb.append("    buyerAvatarUrl: ").append(toIndentedString(buyerAvatarUrl)).append("\n");
+    sb.append("    subject: ").append(toIndentedString(subject)).append("\n");
     sb.append("    isRead: ").append(toIndentedString(isRead)).append("\n");
     sb.append("    isHidden: ").append(toIndentedString(isHidden)).append("\n");
     sb.append("    hasOffer: ").append(toIndentedString(hasOffer)).append("\n");
@@ -683,6 +1034,8 @@ public class GetInboxResponse {
     sb.append("    offerStatus: ").append(toIndentedString(offerStatus)).append("\n");
     sb.append("    platformConversationUrl: ").append(toIndentedString(platformConversationUrl)).append("\n");
     sb.append("    lastMessageAt: ").append(toIndentedString(lastMessageAt)).append("\n");
+    sb.append("    supersededAt: ").append(toIndentedString(supersededAt)).append("\n");
+    sb.append("    isStarred: ").append(toIndentedString(isStarred)).append("\n");
     sb.append("}");
     return sb.toString();
   }

@@ -31,7 +31,7 @@ import org.openapitools.jackson.nullable.JsonNullable;
 /**
  * GetMainStageResponseUpcoming
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-11T23:44:48.922Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-27T19:42:43.186Z[Etc/UTC]")
 public class GetMainStageResponseUpcoming {
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
@@ -46,9 +46,9 @@ public class GetMainStageResponseUpcoming {
    */
   @JsonAdapter(KindEnum.Adapter.class)
   public enum KindEnum {
-    CREATOR_MEETUP("creator_meetup"),
-    
     BRAND_LAUNCH("brand_launch"),
+    
+    CREATOR_MEETUP("creator_meetup"),
     
     FESTIVAL("festival"),
     

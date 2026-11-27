@@ -28,19 +28,19 @@ import java.math.BigDecimal;
 /**
  * GetBuyerCollectionOfferResponseDataPending
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-11T23:47:29.843Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-27T19:58:46.962Z[Etc/UTC]")
 public class GetBuyerCollectionOfferResponseDataPending {
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
   private String id;
 
-  public static final String SERIALIZED_NAME_STATUS = "status";
-  @SerializedName(SERIALIZED_NAME_STATUS)
-  private String status;
-
   public static final String SERIALIZED_NAME_CENTS = "cents";
   @SerializedName(SERIALIZED_NAME_CENTS)
   private BigDecimal cents;
+
+  public static final String SERIALIZED_NAME_STATUS = "status";
+  @SerializedName(SERIALIZED_NAME_STATUS)
+  private String status;
 
   public GetBuyerCollectionOfferResponseDataPending() { 
   }
@@ -68,29 +68,6 @@ public class GetBuyerCollectionOfferResponseDataPending {
   }
 
 
-  public GetBuyerCollectionOfferResponseDataPending status(String status) {
-    
-    this.status = status;
-    return this;
-  }
-
-   /**
-   * Get status
-   * @return status
-  **/
-  @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "")
-
-  public String getStatus() {
-    return status;
-  }
-
-
-  public void setStatus(String status) {
-    this.status = status;
-  }
-
-
   public GetBuyerCollectionOfferResponseDataPending cents(BigDecimal cents) {
     
     this.cents = cents;
@@ -114,6 +91,29 @@ public class GetBuyerCollectionOfferResponseDataPending {
   }
 
 
+  public GetBuyerCollectionOfferResponseDataPending status(String status) {
+    
+    this.status = status;
+    return this;
+  }
+
+   /**
+   * Get status
+   * @return status
+  **/
+  @javax.annotation.Nonnull
+  @ApiModelProperty(required = true, value = "")
+
+  public String getStatus() {
+    return status;
+  }
+
+
+  public void setStatus(String status) {
+    this.status = status;
+  }
+
+
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -124,13 +124,13 @@ public class GetBuyerCollectionOfferResponseDataPending {
     }
     GetBuyerCollectionOfferResponseDataPending getBuyerCollectionOfferResponseDataPending = (GetBuyerCollectionOfferResponseDataPending) o;
     return Objects.equals(this.id, getBuyerCollectionOfferResponseDataPending.id) &&
-        Objects.equals(this.status, getBuyerCollectionOfferResponseDataPending.status) &&
-        Objects.equals(this.cents, getBuyerCollectionOfferResponseDataPending.cents);
+        Objects.equals(this.cents, getBuyerCollectionOfferResponseDataPending.cents) &&
+        Objects.equals(this.status, getBuyerCollectionOfferResponseDataPending.status);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, status, cents);
+    return Objects.hash(id, cents, status);
   }
 
   @Override
@@ -138,8 +138,8 @@ public class GetBuyerCollectionOfferResponseDataPending {
     StringBuilder sb = new StringBuilder();
     sb.append("class GetBuyerCollectionOfferResponseDataPending {\n");
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
-    sb.append("    status: ").append(toIndentedString(status)).append("\n");
     sb.append("    cents: ").append(toIndentedString(cents)).append("\n");
+    sb.append("    status: ").append(toIndentedString(status)).append("\n");
     sb.append("}");
     return sb.toString();
   }

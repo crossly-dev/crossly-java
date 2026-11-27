@@ -25,22 +25,72 @@ import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 import java.math.BigDecimal;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import org.openapitools.jackson.nullable.JsonNullable;
 import org.threeten.bp.OffsetDateTime;
 
 /**
  * ListAutomationRulesItem
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-11T23:44:48.922Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-27T19:42:43.186Z[Etc/UTC]")
 public class ListAutomationRulesItem {
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
   private String id;
 
+  public static final String SERIALIZED_NAME_USER_ID = "userId";
+  @SerializedName(SERIALIZED_NAME_USER_ID)
+  private String userId;
+
   public static final String SERIALIZED_NAME_NAME = "name";
   @SerializedName(SERIALIZED_NAME_NAME)
   private String name;
+
+  public static final String SERIALIZED_NAME_IS_ACTIVE = "isActive";
+  @SerializedName(SERIALIZED_NAME_IS_ACTIVE)
+  private Boolean isActive;
+
+  public static final String SERIALIZED_NAME_TRIGGER_TYPE = "triggerType";
+  @SerializedName(SERIALIZED_NAME_TRIGGER_TYPE)
+  private String triggerType;
+
+  public static final String SERIALIZED_NAME_TRIGGER_CONFIG = "triggerConfig";
+  @SerializedName(SERIALIZED_NAME_TRIGGER_CONFIG)
+  private Map<String, Object> triggerConfig = new HashMap<String, Object>();
+
+  public static final String SERIALIZED_NAME_CONDITION_TYPE = "conditionType";
+  @SerializedName(SERIALIZED_NAME_CONDITION_TYPE)
+  private String conditionType;
+
+  public static final String SERIALIZED_NAME_CONDITION_CONFIG = "conditionConfig";
+  @SerializedName(SERIALIZED_NAME_CONDITION_CONFIG)
+  private Map<String, Object> conditionConfig = null;
+
+  public static final String SERIALIZED_NAME_ACTION_TYPE = "actionType";
+  @SerializedName(SERIALIZED_NAME_ACTION_TYPE)
+  private String actionType;
+
+  public static final String SERIALIZED_NAME_ACTION_CONFIG = "actionConfig";
+  @SerializedName(SERIALIZED_NAME_ACTION_CONFIG)
+  private Map<String, Object> actionConfig = new HashMap<String, Object>();
+
+  public static final String SERIALIZED_NAME_PLATFORMS = "platforms";
+  @SerializedName(SERIALIZED_NAME_PLATFORMS)
+  private List<String> platforms = null;
+
+  public static final String SERIALIZED_NAME_LAST_RUN_AT = "lastRunAt";
+  @SerializedName(SERIALIZED_NAME_LAST_RUN_AT)
+  private OffsetDateTime lastRunAt;
+
+  public static final String SERIALIZED_NAME_NEXT_RUN_AT = "nextRunAt";
+  @SerializedName(SERIALIZED_NAME_NEXT_RUN_AT)
+  private OffsetDateTime nextRunAt;
+
+  public static final String SERIALIZED_NAME_RUN_COUNT = "runCount";
+  @SerializedName(SERIALIZED_NAME_RUN_COUNT)
+  private BigDecimal runCount;
 
   public static final String SERIALIZED_NAME_CREATED_AT = "createdAt";
   @SerializedName(SERIALIZED_NAME_CREATED_AT)
@@ -50,41 +100,9 @@ public class ListAutomationRulesItem {
   @SerializedName(SERIALIZED_NAME_UPDATED_AT)
   private OffsetDateTime updatedAt;
 
-  public static final String SERIALIZED_NAME_USER_ID = "userId";
-  @SerializedName(SERIALIZED_NAME_USER_ID)
-  private String userId;
-
-  public static final String SERIALIZED_NAME_IS_ACTIVE = "isActive";
-  @SerializedName(SERIALIZED_NAME_IS_ACTIVE)
-  private Boolean isActive;
-
-  public static final String SERIALIZED_NAME_PLATFORMS = "platforms";
-  @SerializedName(SERIALIZED_NAME_PLATFORMS)
-  private List<String> platforms = null;
-
-  public static final String SERIALIZED_NAME_NEXT_RUN_AT = "nextRunAt";
-  @SerializedName(SERIALIZED_NAME_NEXT_RUN_AT)
-  private OffsetDateTime nextRunAt;
-
-  public static final String SERIALIZED_NAME_LAST_RUN_AT = "lastRunAt";
-  @SerializedName(SERIALIZED_NAME_LAST_RUN_AT)
-  private OffsetDateTime lastRunAt;
-
-  public static final String SERIALIZED_NAME_TRIGGER_TYPE = "triggerType";
-  @SerializedName(SERIALIZED_NAME_TRIGGER_TYPE)
-  private String triggerType;
-
-  public static final String SERIALIZED_NAME_CONDITION_TYPE = "conditionType";
-  @SerializedName(SERIALIZED_NAME_CONDITION_TYPE)
-  private String conditionType;
-
-  public static final String SERIALIZED_NAME_ACTION_TYPE = "actionType";
-  @SerializedName(SERIALIZED_NAME_ACTION_TYPE)
-  private String actionType;
-
-  public static final String SERIALIZED_NAME_RUN_COUNT = "runCount";
-  @SerializedName(SERIALIZED_NAME_RUN_COUNT)
-  private BigDecimal runCount;
+  public static final String SERIALIZED_NAME_WORKFLOW_ID = "workflowId";
+  @SerializedName(SERIALIZED_NAME_WORKFLOW_ID)
+  private String workflowId;
 
   public ListAutomationRulesItem() { 
   }
@@ -112,6 +130,29 @@ public class ListAutomationRulesItem {
   }
 
 
+  public ListAutomationRulesItem userId(String userId) {
+    
+    this.userId = userId;
+    return this;
+  }
+
+   /**
+   * Get userId
+   * @return userId
+  **/
+  @javax.annotation.Nonnull
+  @ApiModelProperty(required = true, value = "")
+
+  public String getUserId() {
+    return userId;
+  }
+
+
+  public void setUserId(String userId) {
+    this.userId = userId;
+  }
+
+
   public ListAutomationRulesItem name(String name) {
     
     this.name = name;
@@ -132,6 +173,285 @@ public class ListAutomationRulesItem {
 
   public void setName(String name) {
     this.name = name;
+  }
+
+
+  public ListAutomationRulesItem isActive(Boolean isActive) {
+    
+    this.isActive = isActive;
+    return this;
+  }
+
+   /**
+   * Get isActive
+   * @return isActive
+  **/
+  @javax.annotation.Nonnull
+  @ApiModelProperty(required = true, value = "")
+
+  public Boolean getIsActive() {
+    return isActive;
+  }
+
+
+  public void setIsActive(Boolean isActive) {
+    this.isActive = isActive;
+  }
+
+
+  public ListAutomationRulesItem triggerType(String triggerType) {
+    
+    this.triggerType = triggerType;
+    return this;
+  }
+
+   /**
+   * Get triggerType
+   * @return triggerType
+  **/
+  @javax.annotation.Nonnull
+  @ApiModelProperty(required = true, value = "")
+
+  public String getTriggerType() {
+    return triggerType;
+  }
+
+
+  public void setTriggerType(String triggerType) {
+    this.triggerType = triggerType;
+  }
+
+
+  public ListAutomationRulesItem triggerConfig(Map<String, Object> triggerConfig) {
+    
+    this.triggerConfig = triggerConfig;
+    return this;
+  }
+
+  public ListAutomationRulesItem putTriggerConfigItem(String key, Object triggerConfigItem) {
+    this.triggerConfig.put(key, triggerConfigItem);
+    return this;
+  }
+
+   /**
+   * Get triggerConfig
+   * @return triggerConfig
+  **/
+  @javax.annotation.Nonnull
+  @ApiModelProperty(required = true, value = "")
+
+  public Map<String, Object> getTriggerConfig() {
+    return triggerConfig;
+  }
+
+
+  public void setTriggerConfig(Map<String, Object> triggerConfig) {
+    this.triggerConfig = triggerConfig;
+  }
+
+
+  public ListAutomationRulesItem conditionType(String conditionType) {
+    
+    this.conditionType = conditionType;
+    return this;
+  }
+
+   /**
+   * Get conditionType
+   * @return conditionType
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public String getConditionType() {
+    return conditionType;
+  }
+
+
+  public void setConditionType(String conditionType) {
+    this.conditionType = conditionType;
+  }
+
+
+  public ListAutomationRulesItem conditionConfig(Map<String, Object> conditionConfig) {
+    
+    this.conditionConfig = conditionConfig;
+    return this;
+  }
+
+  public ListAutomationRulesItem putConditionConfigItem(String key, Object conditionConfigItem) {
+    if (this.conditionConfig == null) {
+      this.conditionConfig = new HashMap<String, Object>();
+    }
+    this.conditionConfig.put(key, conditionConfigItem);
+    return this;
+  }
+
+   /**
+   * Get conditionConfig
+   * @return conditionConfig
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public Map<String, Object> getConditionConfig() {
+    return conditionConfig;
+  }
+
+
+  public void setConditionConfig(Map<String, Object> conditionConfig) {
+    this.conditionConfig = conditionConfig;
+  }
+
+
+  public ListAutomationRulesItem actionType(String actionType) {
+    
+    this.actionType = actionType;
+    return this;
+  }
+
+   /**
+   * Get actionType
+   * @return actionType
+  **/
+  @javax.annotation.Nonnull
+  @ApiModelProperty(required = true, value = "")
+
+  public String getActionType() {
+    return actionType;
+  }
+
+
+  public void setActionType(String actionType) {
+    this.actionType = actionType;
+  }
+
+
+  public ListAutomationRulesItem actionConfig(Map<String, Object> actionConfig) {
+    
+    this.actionConfig = actionConfig;
+    return this;
+  }
+
+  public ListAutomationRulesItem putActionConfigItem(String key, Object actionConfigItem) {
+    this.actionConfig.put(key, actionConfigItem);
+    return this;
+  }
+
+   /**
+   * Get actionConfig
+   * @return actionConfig
+  **/
+  @javax.annotation.Nonnull
+  @ApiModelProperty(required = true, value = "")
+
+  public Map<String, Object> getActionConfig() {
+    return actionConfig;
+  }
+
+
+  public void setActionConfig(Map<String, Object> actionConfig) {
+    this.actionConfig = actionConfig;
+  }
+
+
+  public ListAutomationRulesItem platforms(List<String> platforms) {
+    
+    this.platforms = platforms;
+    return this;
+  }
+
+  public ListAutomationRulesItem addPlatformsItem(String platformsItem) {
+    if (this.platforms == null) {
+      this.platforms = new ArrayList<String>();
+    }
+    this.platforms.add(platformsItem);
+    return this;
+  }
+
+   /**
+   * Get platforms
+   * @return platforms
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public List<String> getPlatforms() {
+    return platforms;
+  }
+
+
+  public void setPlatforms(List<String> platforms) {
+    this.platforms = platforms;
+  }
+
+
+  public ListAutomationRulesItem lastRunAt(OffsetDateTime lastRunAt) {
+    
+    this.lastRunAt = lastRunAt;
+    return this;
+  }
+
+   /**
+   * Get lastRunAt
+   * @return lastRunAt
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public OffsetDateTime getLastRunAt() {
+    return lastRunAt;
+  }
+
+
+  public void setLastRunAt(OffsetDateTime lastRunAt) {
+    this.lastRunAt = lastRunAt;
+  }
+
+
+  public ListAutomationRulesItem nextRunAt(OffsetDateTime nextRunAt) {
+    
+    this.nextRunAt = nextRunAt;
+    return this;
+  }
+
+   /**
+   * Get nextRunAt
+   * @return nextRunAt
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public OffsetDateTime getNextRunAt() {
+    return nextRunAt;
+  }
+
+
+  public void setNextRunAt(OffsetDateTime nextRunAt) {
+    this.nextRunAt = nextRunAt;
+  }
+
+
+  public ListAutomationRulesItem runCount(BigDecimal runCount) {
+    
+    this.runCount = runCount;
+    return this;
+  }
+
+   /**
+   * Get runCount
+   * @return runCount
+  **/
+  @javax.annotation.Nonnull
+  @ApiModelProperty(required = true, value = "")
+
+  public BigDecimal getRunCount() {
+    return runCount;
+  }
+
+
+  public void setRunCount(BigDecimal runCount) {
+    this.runCount = runCount;
   }
 
 
@@ -181,218 +501,26 @@ public class ListAutomationRulesItem {
   }
 
 
-  public ListAutomationRulesItem userId(String userId) {
+  public ListAutomationRulesItem workflowId(String workflowId) {
     
-    this.userId = userId;
+    this.workflowId = workflowId;
     return this;
   }
 
    /**
-   * Get userId
-   * @return userId
+   * The workflow this rule is (open it in /v1/workflows).
+   * @return workflowId
   **/
   @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "")
+  @ApiModelProperty(required = true, value = "The workflow this rule is (open it in /v1/workflows).")
 
-  public String getUserId() {
-    return userId;
+  public String getWorkflowId() {
+    return workflowId;
   }
 
 
-  public void setUserId(String userId) {
-    this.userId = userId;
-  }
-
-
-  public ListAutomationRulesItem isActive(Boolean isActive) {
-    
-    this.isActive = isActive;
-    return this;
-  }
-
-   /**
-   * Get isActive
-   * @return isActive
-  **/
-  @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "")
-
-  public Boolean getIsActive() {
-    return isActive;
-  }
-
-
-  public void setIsActive(Boolean isActive) {
-    this.isActive = isActive;
-  }
-
-
-  public ListAutomationRulesItem platforms(List<String> platforms) {
-    
-    this.platforms = platforms;
-    return this;
-  }
-
-  public ListAutomationRulesItem addPlatformsItem(String platformsItem) {
-    if (this.platforms == null) {
-      this.platforms = new ArrayList<String>();
-    }
-    this.platforms.add(platformsItem);
-    return this;
-  }
-
-   /**
-   * Get platforms
-   * @return platforms
-  **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
-
-  public List<String> getPlatforms() {
-    return platforms;
-  }
-
-
-  public void setPlatforms(List<String> platforms) {
-    this.platforms = platforms;
-  }
-
-
-  public ListAutomationRulesItem nextRunAt(OffsetDateTime nextRunAt) {
-    
-    this.nextRunAt = nextRunAt;
-    return this;
-  }
-
-   /**
-   * Get nextRunAt
-   * @return nextRunAt
-  **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
-
-  public OffsetDateTime getNextRunAt() {
-    return nextRunAt;
-  }
-
-
-  public void setNextRunAt(OffsetDateTime nextRunAt) {
-    this.nextRunAt = nextRunAt;
-  }
-
-
-  public ListAutomationRulesItem lastRunAt(OffsetDateTime lastRunAt) {
-    
-    this.lastRunAt = lastRunAt;
-    return this;
-  }
-
-   /**
-   * Get lastRunAt
-   * @return lastRunAt
-  **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
-
-  public OffsetDateTime getLastRunAt() {
-    return lastRunAt;
-  }
-
-
-  public void setLastRunAt(OffsetDateTime lastRunAt) {
-    this.lastRunAt = lastRunAt;
-  }
-
-
-  public ListAutomationRulesItem triggerType(String triggerType) {
-    
-    this.triggerType = triggerType;
-    return this;
-  }
-
-   /**
-   * Get triggerType
-   * @return triggerType
-  **/
-  @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "")
-
-  public String getTriggerType() {
-    return triggerType;
-  }
-
-
-  public void setTriggerType(String triggerType) {
-    this.triggerType = triggerType;
-  }
-
-
-  public ListAutomationRulesItem conditionType(String conditionType) {
-    
-    this.conditionType = conditionType;
-    return this;
-  }
-
-   /**
-   * Get conditionType
-   * @return conditionType
-  **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
-
-  public String getConditionType() {
-    return conditionType;
-  }
-
-
-  public void setConditionType(String conditionType) {
-    this.conditionType = conditionType;
-  }
-
-
-  public ListAutomationRulesItem actionType(String actionType) {
-    
-    this.actionType = actionType;
-    return this;
-  }
-
-   /**
-   * Get actionType
-   * @return actionType
-  **/
-  @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "")
-
-  public String getActionType() {
-    return actionType;
-  }
-
-
-  public void setActionType(String actionType) {
-    this.actionType = actionType;
-  }
-
-
-  public ListAutomationRulesItem runCount(BigDecimal runCount) {
-    
-    this.runCount = runCount;
-    return this;
-  }
-
-   /**
-   * Get runCount
-   * @return runCount
-  **/
-  @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "")
-
-  public BigDecimal getRunCount() {
-    return runCount;
-  }
-
-
-  public void setRunCount(BigDecimal runCount) {
-    this.runCount = runCount;
+  public void setWorkflowId(String workflowId) {
+    this.workflowId = workflowId;
   }
 
 
@@ -406,18 +534,22 @@ public class ListAutomationRulesItem {
     }
     ListAutomationRulesItem listAutomationRulesItem = (ListAutomationRulesItem) o;
     return Objects.equals(this.id, listAutomationRulesItem.id) &&
+        Objects.equals(this.userId, listAutomationRulesItem.userId) &&
         Objects.equals(this.name, listAutomationRulesItem.name) &&
+        Objects.equals(this.isActive, listAutomationRulesItem.isActive) &&
+        Objects.equals(this.triggerType, listAutomationRulesItem.triggerType) &&
+        Objects.equals(this.triggerConfig, listAutomationRulesItem.triggerConfig) &&
+        Objects.equals(this.conditionType, listAutomationRulesItem.conditionType) &&
+        Objects.equals(this.conditionConfig, listAutomationRulesItem.conditionConfig) &&
+        Objects.equals(this.actionType, listAutomationRulesItem.actionType) &&
+        Objects.equals(this.actionConfig, listAutomationRulesItem.actionConfig) &&
+        Objects.equals(this.platforms, listAutomationRulesItem.platforms) &&
+        Objects.equals(this.lastRunAt, listAutomationRulesItem.lastRunAt) &&
+        Objects.equals(this.nextRunAt, listAutomationRulesItem.nextRunAt) &&
+        Objects.equals(this.runCount, listAutomationRulesItem.runCount) &&
         Objects.equals(this.createdAt, listAutomationRulesItem.createdAt) &&
         Objects.equals(this.updatedAt, listAutomationRulesItem.updatedAt) &&
-        Objects.equals(this.userId, listAutomationRulesItem.userId) &&
-        Objects.equals(this.isActive, listAutomationRulesItem.isActive) &&
-        Objects.equals(this.platforms, listAutomationRulesItem.platforms) &&
-        Objects.equals(this.nextRunAt, listAutomationRulesItem.nextRunAt) &&
-        Objects.equals(this.lastRunAt, listAutomationRulesItem.lastRunAt) &&
-        Objects.equals(this.triggerType, listAutomationRulesItem.triggerType) &&
-        Objects.equals(this.conditionType, listAutomationRulesItem.conditionType) &&
-        Objects.equals(this.actionType, listAutomationRulesItem.actionType) &&
-        Objects.equals(this.runCount, listAutomationRulesItem.runCount);
+        Objects.equals(this.workflowId, listAutomationRulesItem.workflowId);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -426,7 +558,7 @@ public class ListAutomationRulesItem {
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, name, createdAt, updatedAt, userId, isActive, platforms, nextRunAt, lastRunAt, triggerType, conditionType, actionType, runCount);
+    return Objects.hash(id, userId, name, isActive, triggerType, triggerConfig, conditionType, conditionConfig, actionType, actionConfig, platforms, lastRunAt, nextRunAt, runCount, createdAt, updatedAt, workflowId);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -441,18 +573,22 @@ public class ListAutomationRulesItem {
     StringBuilder sb = new StringBuilder();
     sb.append("class ListAutomationRulesItem {\n");
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
+    sb.append("    userId: ").append(toIndentedString(userId)).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
+    sb.append("    isActive: ").append(toIndentedString(isActive)).append("\n");
+    sb.append("    triggerType: ").append(toIndentedString(triggerType)).append("\n");
+    sb.append("    triggerConfig: ").append(toIndentedString(triggerConfig)).append("\n");
+    sb.append("    conditionType: ").append(toIndentedString(conditionType)).append("\n");
+    sb.append("    conditionConfig: ").append(toIndentedString(conditionConfig)).append("\n");
+    sb.append("    actionType: ").append(toIndentedString(actionType)).append("\n");
+    sb.append("    actionConfig: ").append(toIndentedString(actionConfig)).append("\n");
+    sb.append("    platforms: ").append(toIndentedString(platforms)).append("\n");
+    sb.append("    lastRunAt: ").append(toIndentedString(lastRunAt)).append("\n");
+    sb.append("    nextRunAt: ").append(toIndentedString(nextRunAt)).append("\n");
+    sb.append("    runCount: ").append(toIndentedString(runCount)).append("\n");
     sb.append("    createdAt: ").append(toIndentedString(createdAt)).append("\n");
     sb.append("    updatedAt: ").append(toIndentedString(updatedAt)).append("\n");
-    sb.append("    userId: ").append(toIndentedString(userId)).append("\n");
-    sb.append("    isActive: ").append(toIndentedString(isActive)).append("\n");
-    sb.append("    platforms: ").append(toIndentedString(platforms)).append("\n");
-    sb.append("    nextRunAt: ").append(toIndentedString(nextRunAt)).append("\n");
-    sb.append("    lastRunAt: ").append(toIndentedString(lastRunAt)).append("\n");
-    sb.append("    triggerType: ").append(toIndentedString(triggerType)).append("\n");
-    sb.append("    conditionType: ").append(toIndentedString(conditionType)).append("\n");
-    sb.append("    actionType: ").append(toIndentedString(actionType)).append("\n");
-    sb.append("    runCount: ").append(toIndentedString(runCount)).append("\n");
+    sb.append("    workflowId: ").append(toIndentedString(workflowId)).append("\n");
     sb.append("}");
     return sb.toString();
   }

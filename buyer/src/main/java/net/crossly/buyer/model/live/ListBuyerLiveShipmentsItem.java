@@ -32,47 +32,47 @@ import org.openapitools.jackson.nullable.JsonNullable;
 /**
  * ListBuyerLiveShipmentsItem
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-11T23:47:29.843Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-27T19:58:46.962Z[Etc/UTC]")
 public class ListBuyerLiveShipmentsItem {
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
   private String id;
 
-  public static final String SERIALIZED_NAME_STATUS = "status";
-  @SerializedName(SERIALIZED_NAME_STATUS)
-  private String status;
-
-  public static final String SERIALIZED_NAME_ORDERS = "orders";
-  @SerializedName(SERIALIZED_NAME_ORDERS)
-  private List<ListBuyerLiveShipmentsItemOrders> orders = new ArrayList<ListBuyerLiveShipmentsItemOrders>();
-
-  public static final String SERIALIZED_NAME_CARRIER = "carrier";
-  @SerializedName(SERIALIZED_NAME_CARRIER)
-  private String carrier;
-
-  public static final String SERIALIZED_NAME_TRACKING_NUMBER = "trackingNumber";
-  @SerializedName(SERIALIZED_NAME_TRACKING_NUMBER)
-  private String trackingNumber;
-
-  public static final String SERIALIZED_NAME_LABEL_URL = "labelUrl";
-  @SerializedName(SERIALIZED_NAME_LABEL_URL)
-  private String labelUrl;
-
   public static final String SERIALIZED_NAME_STREAM_ID = "streamId";
   @SerializedName(SERIALIZED_NAME_STREAM_ID)
   private String streamId;
-
-  public static final String SERIALIZED_NAME_REFUNDED_POSTAGE_CENTS = "refundedPostageCents";
-  @SerializedName(SERIALIZED_NAME_REFUNDED_POSTAGE_CENTS)
-  private BigDecimal refundedPostageCents;
 
   public static final String SERIALIZED_NAME_STREAM_TITLE = "streamTitle";
   @SerializedName(SERIALIZED_NAME_STREAM_TITLE)
   private String streamTitle;
 
+  public static final String SERIALIZED_NAME_STATUS = "status";
+  @SerializedName(SERIALIZED_NAME_STATUS)
+  private String status;
+
   public static final String SERIALIZED_NAME_BUYER_NAME = "buyerName";
   @SerializedName(SERIALIZED_NAME_BUYER_NAME)
   private String buyerName;
+
+  public static final String SERIALIZED_NAME_TRACKING_NUMBER = "trackingNumber";
+  @SerializedName(SERIALIZED_NAME_TRACKING_NUMBER)
+  private String trackingNumber;
+
+  public static final String SERIALIZED_NAME_CARRIER = "carrier";
+  @SerializedName(SERIALIZED_NAME_CARRIER)
+  private String carrier;
+
+  public static final String SERIALIZED_NAME_LABEL_URL = "labelUrl";
+  @SerializedName(SERIALIZED_NAME_LABEL_URL)
+  private String labelUrl;
+
+  public static final String SERIALIZED_NAME_REFUNDED_POSTAGE_CENTS = "refundedPostageCents";
+  @SerializedName(SERIALIZED_NAME_REFUNDED_POSTAGE_CENTS)
+  private BigDecimal refundedPostageCents;
+
+  public static final String SERIALIZED_NAME_ORDERS = "orders";
+  @SerializedName(SERIALIZED_NAME_ORDERS)
+  private List<ListBuyerLiveShipmentsItemOrders> orders = new ArrayList<ListBuyerLiveShipmentsItemOrders>();
 
   public ListBuyerLiveShipmentsItem() { 
   }
@@ -100,6 +100,52 @@ public class ListBuyerLiveShipmentsItem {
   }
 
 
+  public ListBuyerLiveShipmentsItem streamId(String streamId) {
+    
+    this.streamId = streamId;
+    return this;
+  }
+
+   /**
+   * Get streamId
+   * @return streamId
+  **/
+  @javax.annotation.Nonnull
+  @ApiModelProperty(required = true, value = "")
+
+  public String getStreamId() {
+    return streamId;
+  }
+
+
+  public void setStreamId(String streamId) {
+    this.streamId = streamId;
+  }
+
+
+  public ListBuyerLiveShipmentsItem streamTitle(String streamTitle) {
+    
+    this.streamTitle = streamTitle;
+    return this;
+  }
+
+   /**
+   * Get streamTitle
+   * @return streamTitle
+  **/
+  @javax.annotation.Nonnull
+  @ApiModelProperty(required = true, value = "")
+
+  public String getStreamTitle() {
+    return streamTitle;
+  }
+
+
+  public void setStreamTitle(String streamTitle) {
+    this.streamTitle = streamTitle;
+  }
+
+
   public ListBuyerLiveShipmentsItem status(String status) {
     
     this.status = status;
@@ -120,6 +166,121 @@ public class ListBuyerLiveShipmentsItem {
 
   public void setStatus(String status) {
     this.status = status;
+  }
+
+
+  public ListBuyerLiveShipmentsItem buyerName(String buyerName) {
+    
+    this.buyerName = buyerName;
+    return this;
+  }
+
+   /**
+   * Get buyerName
+   * @return buyerName
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public String getBuyerName() {
+    return buyerName;
+  }
+
+
+  public void setBuyerName(String buyerName) {
+    this.buyerName = buyerName;
+  }
+
+
+  public ListBuyerLiveShipmentsItem trackingNumber(String trackingNumber) {
+    
+    this.trackingNumber = trackingNumber;
+    return this;
+  }
+
+   /**
+   * Get trackingNumber
+   * @return trackingNumber
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public String getTrackingNumber() {
+    return trackingNumber;
+  }
+
+
+  public void setTrackingNumber(String trackingNumber) {
+    this.trackingNumber = trackingNumber;
+  }
+
+
+  public ListBuyerLiveShipmentsItem carrier(String carrier) {
+    
+    this.carrier = carrier;
+    return this;
+  }
+
+   /**
+   * Get carrier
+   * @return carrier
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public String getCarrier() {
+    return carrier;
+  }
+
+
+  public void setCarrier(String carrier) {
+    this.carrier = carrier;
+  }
+
+
+  public ListBuyerLiveShipmentsItem labelUrl(String labelUrl) {
+    
+    this.labelUrl = labelUrl;
+    return this;
+  }
+
+   /**
+   * Get labelUrl
+   * @return labelUrl
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public String getLabelUrl() {
+    return labelUrl;
+  }
+
+
+  public void setLabelUrl(String labelUrl) {
+    this.labelUrl = labelUrl;
+  }
+
+
+  public ListBuyerLiveShipmentsItem refundedPostageCents(BigDecimal refundedPostageCents) {
+    
+    this.refundedPostageCents = refundedPostageCents;
+    return this;
+  }
+
+   /**
+   * Get refundedPostageCents
+   * @return refundedPostageCents
+  **/
+  @javax.annotation.Nonnull
+  @ApiModelProperty(required = true, value = "")
+
+  public BigDecimal getRefundedPostageCents() {
+    return refundedPostageCents;
+  }
+
+
+  public void setRefundedPostageCents(BigDecimal refundedPostageCents) {
+    this.refundedPostageCents = refundedPostageCents;
   }
 
 
@@ -151,167 +312,6 @@ public class ListBuyerLiveShipmentsItem {
   }
 
 
-  public ListBuyerLiveShipmentsItem carrier(String carrier) {
-    
-    this.carrier = carrier;
-    return this;
-  }
-
-   /**
-   * Get carrier
-   * @return carrier
-  **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
-
-  public String getCarrier() {
-    return carrier;
-  }
-
-
-  public void setCarrier(String carrier) {
-    this.carrier = carrier;
-  }
-
-
-  public ListBuyerLiveShipmentsItem trackingNumber(String trackingNumber) {
-    
-    this.trackingNumber = trackingNumber;
-    return this;
-  }
-
-   /**
-   * Get trackingNumber
-   * @return trackingNumber
-  **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
-
-  public String getTrackingNumber() {
-    return trackingNumber;
-  }
-
-
-  public void setTrackingNumber(String trackingNumber) {
-    this.trackingNumber = trackingNumber;
-  }
-
-
-  public ListBuyerLiveShipmentsItem labelUrl(String labelUrl) {
-    
-    this.labelUrl = labelUrl;
-    return this;
-  }
-
-   /**
-   * Get labelUrl
-   * @return labelUrl
-  **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
-
-  public String getLabelUrl() {
-    return labelUrl;
-  }
-
-
-  public void setLabelUrl(String labelUrl) {
-    this.labelUrl = labelUrl;
-  }
-
-
-  public ListBuyerLiveShipmentsItem streamId(String streamId) {
-    
-    this.streamId = streamId;
-    return this;
-  }
-
-   /**
-   * Get streamId
-   * @return streamId
-  **/
-  @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "")
-
-  public String getStreamId() {
-    return streamId;
-  }
-
-
-  public void setStreamId(String streamId) {
-    this.streamId = streamId;
-  }
-
-
-  public ListBuyerLiveShipmentsItem refundedPostageCents(BigDecimal refundedPostageCents) {
-    
-    this.refundedPostageCents = refundedPostageCents;
-    return this;
-  }
-
-   /**
-   * Get refundedPostageCents
-   * @return refundedPostageCents
-  **/
-  @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "")
-
-  public BigDecimal getRefundedPostageCents() {
-    return refundedPostageCents;
-  }
-
-
-  public void setRefundedPostageCents(BigDecimal refundedPostageCents) {
-    this.refundedPostageCents = refundedPostageCents;
-  }
-
-
-  public ListBuyerLiveShipmentsItem streamTitle(String streamTitle) {
-    
-    this.streamTitle = streamTitle;
-    return this;
-  }
-
-   /**
-   * Get streamTitle
-   * @return streamTitle
-  **/
-  @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "")
-
-  public String getStreamTitle() {
-    return streamTitle;
-  }
-
-
-  public void setStreamTitle(String streamTitle) {
-    this.streamTitle = streamTitle;
-  }
-
-
-  public ListBuyerLiveShipmentsItem buyerName(String buyerName) {
-    
-    this.buyerName = buyerName;
-    return this;
-  }
-
-   /**
-   * Get buyerName
-   * @return buyerName
-  **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
-
-  public String getBuyerName() {
-    return buyerName;
-  }
-
-
-  public void setBuyerName(String buyerName) {
-    this.buyerName = buyerName;
-  }
-
-
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -322,15 +322,15 @@ public class ListBuyerLiveShipmentsItem {
     }
     ListBuyerLiveShipmentsItem listBuyerLiveShipmentsItem = (ListBuyerLiveShipmentsItem) o;
     return Objects.equals(this.id, listBuyerLiveShipmentsItem.id) &&
-        Objects.equals(this.status, listBuyerLiveShipmentsItem.status) &&
-        Objects.equals(this.orders, listBuyerLiveShipmentsItem.orders) &&
-        Objects.equals(this.carrier, listBuyerLiveShipmentsItem.carrier) &&
-        Objects.equals(this.trackingNumber, listBuyerLiveShipmentsItem.trackingNumber) &&
-        Objects.equals(this.labelUrl, listBuyerLiveShipmentsItem.labelUrl) &&
         Objects.equals(this.streamId, listBuyerLiveShipmentsItem.streamId) &&
-        Objects.equals(this.refundedPostageCents, listBuyerLiveShipmentsItem.refundedPostageCents) &&
         Objects.equals(this.streamTitle, listBuyerLiveShipmentsItem.streamTitle) &&
-        Objects.equals(this.buyerName, listBuyerLiveShipmentsItem.buyerName);
+        Objects.equals(this.status, listBuyerLiveShipmentsItem.status) &&
+        Objects.equals(this.buyerName, listBuyerLiveShipmentsItem.buyerName) &&
+        Objects.equals(this.trackingNumber, listBuyerLiveShipmentsItem.trackingNumber) &&
+        Objects.equals(this.carrier, listBuyerLiveShipmentsItem.carrier) &&
+        Objects.equals(this.labelUrl, listBuyerLiveShipmentsItem.labelUrl) &&
+        Objects.equals(this.refundedPostageCents, listBuyerLiveShipmentsItem.refundedPostageCents) &&
+        Objects.equals(this.orders, listBuyerLiveShipmentsItem.orders);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -339,7 +339,7 @@ public class ListBuyerLiveShipmentsItem {
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, status, orders, carrier, trackingNumber, labelUrl, streamId, refundedPostageCents, streamTitle, buyerName);
+    return Objects.hash(id, streamId, streamTitle, status, buyerName, trackingNumber, carrier, labelUrl, refundedPostageCents, orders);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -354,15 +354,15 @@ public class ListBuyerLiveShipmentsItem {
     StringBuilder sb = new StringBuilder();
     sb.append("class ListBuyerLiveShipmentsItem {\n");
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
-    sb.append("    status: ").append(toIndentedString(status)).append("\n");
-    sb.append("    orders: ").append(toIndentedString(orders)).append("\n");
-    sb.append("    carrier: ").append(toIndentedString(carrier)).append("\n");
-    sb.append("    trackingNumber: ").append(toIndentedString(trackingNumber)).append("\n");
-    sb.append("    labelUrl: ").append(toIndentedString(labelUrl)).append("\n");
     sb.append("    streamId: ").append(toIndentedString(streamId)).append("\n");
-    sb.append("    refundedPostageCents: ").append(toIndentedString(refundedPostageCents)).append("\n");
     sb.append("    streamTitle: ").append(toIndentedString(streamTitle)).append("\n");
+    sb.append("    status: ").append(toIndentedString(status)).append("\n");
     sb.append("    buyerName: ").append(toIndentedString(buyerName)).append("\n");
+    sb.append("    trackingNumber: ").append(toIndentedString(trackingNumber)).append("\n");
+    sb.append("    carrier: ").append(toIndentedString(carrier)).append("\n");
+    sb.append("    labelUrl: ").append(toIndentedString(labelUrl)).append("\n");
+    sb.append("    refundedPostageCents: ").append(toIndentedString(refundedPostageCents)).append("\n");
+    sb.append("    orders: ").append(toIndentedString(orders)).append("\n");
     sb.append("}");
     return sb.toString();
   }

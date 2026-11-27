@@ -28,7 +28,7 @@ import java.io.IOException;
  * On a call-mode key (tier B / C, or an A key mid-call) the opening order rests for the next call and can only fill at its uncross: which call, and a plain-words note for the position view. Null on a continuous key.
  */
 @ApiModel(description = "On a call-mode key (tier B / C, or an A key mid-call) the opening order rests for the next call and can only fill at its uncross: which call, and a plain-words note for the position view. Null on a continuous key.")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-11T23:44:48.922Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-27T19:42:43.186Z[Etc/UTC]")
 public class CreateVaultMarketLongResponseWaitsForCall {
   /**
    * Gets or Sets kind

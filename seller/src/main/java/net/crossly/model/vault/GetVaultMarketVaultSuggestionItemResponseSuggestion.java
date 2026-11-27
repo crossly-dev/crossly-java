@@ -26,6 +26,7 @@ import java.io.IOException;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
+import net.crossly.model.vault.GetVaultMarketVaultSuggestionItemResponseSuggestionFractionalize;
 import net.crossly.model.vault.GetVaultMarketVaultSuggestionItemResponseSuggestionInstantExit;
 import net.crossly.model.vault.GetVaultMarketVaultSuggestionItemResponseSuggestionMarket;
 import net.crossly.model.vault.GetVaultMarketVaultSuggestionItemResponseSuggestionParts;
@@ -35,7 +36,7 @@ import org.openapitools.jackson.nullable.JsonNullable;
 /**
  * GetVaultMarketVaultSuggestionItemResponseSuggestion
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-11T23:44:48.922Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-27T19:42:43.186Z[Etc/UTC]")
 public class GetVaultMarketVaultSuggestionItemResponseSuggestion {
   public static final String SERIALIZED_NAME_INVENTORY_ITEM_ID = "inventoryItemId";
   @SerializedName(SERIALIZED_NAME_INVENTORY_ITEM_ID)
@@ -212,6 +213,10 @@ public class GetVaultMarketVaultSuggestionItemResponseSuggestion {
   public static final String SERIALIZED_NAME_MARKET_PATH = "marketPath";
   @SerializedName(SERIALIZED_NAME_MARKET_PATH)
   private String marketPath;
+
+  public static final String SERIALIZED_NAME_FRACTIONALIZE = "fractionalize";
+  @SerializedName(SERIALIZED_NAME_FRACTIONALIZE)
+  private GetVaultMarketVaultSuggestionItemResponseSuggestionFractionalize fractionalize;
 
   public GetVaultMarketVaultSuggestionItemResponseSuggestion() { 
   }
@@ -681,6 +686,29 @@ public class GetVaultMarketVaultSuggestionItemResponseSuggestion {
   }
 
 
+  public GetVaultMarketVaultSuggestionItemResponseSuggestion fractionalize(GetVaultMarketVaultSuggestionItemResponseSuggestionFractionalize fractionalize) {
+    
+    this.fractionalize = fractionalize;
+    return this;
+  }
+
+   /**
+   * Get fractionalize
+   * @return fractionalize
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public GetVaultMarketVaultSuggestionItemResponseSuggestionFractionalize getFractionalize() {
+    return fractionalize;
+  }
+
+
+  public void setFractionalize(GetVaultMarketVaultSuggestionItemResponseSuggestionFractionalize fractionalize) {
+    this.fractionalize = fractionalize;
+  }
+
+
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -709,7 +737,8 @@ public class GetVaultMarketVaultSuggestionItemResponseSuggestion {
         Objects.equals(this.strength, getVaultMarketVaultSuggestionItemResponseSuggestion.strength) &&
         Objects.equals(this.parts, getVaultMarketVaultSuggestionItemResponseSuggestion.parts) &&
         Objects.equals(this.reasons, getVaultMarketVaultSuggestionItemResponseSuggestion.reasons) &&
-        Objects.equals(this.marketPath, getVaultMarketVaultSuggestionItemResponseSuggestion.marketPath);
+        Objects.equals(this.marketPath, getVaultMarketVaultSuggestionItemResponseSuggestion.marketPath) &&
+        Objects.equals(this.fractionalize, getVaultMarketVaultSuggestionItemResponseSuggestion.fractionalize);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -718,7 +747,7 @@ public class GetVaultMarketVaultSuggestionItemResponseSuggestion {
 
   @Override
   public int hashCode() {
-    return Objects.hash(inventoryItemId, title, imageUrl, unitsToSend, bookKey, variantId, condition, gradeKey, market, instantExit, listPriceCents, exitVsListBps, exitBasis, daysListed, vaultFee, score, strength, parts, reasons, marketPath);
+    return Objects.hash(inventoryItemId, title, imageUrl, unitsToSend, bookKey, variantId, condition, gradeKey, market, instantExit, listPriceCents, exitVsListBps, exitBasis, daysListed, vaultFee, score, strength, parts, reasons, marketPath, fractionalize);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -752,6 +781,7 @@ public class GetVaultMarketVaultSuggestionItemResponseSuggestion {
     sb.append("    parts: ").append(toIndentedString(parts)).append("\n");
     sb.append("    reasons: ").append(toIndentedString(reasons)).append("\n");
     sb.append("    marketPath: ").append(toIndentedString(marketPath)).append("\n");
+    sb.append("    fractionalize: ").append(toIndentedString(fractionalize)).append("\n");
     sb.append("}");
     return sb.toString();
   }

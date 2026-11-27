@@ -29,6 +29,8 @@ import com.google.gson.stream.JsonWriter;
 @JsonAdapter(UpdateWorldEmoteWheelResponseDataWheelItem.Adapter.class)
 public enum UpdateWorldEmoteWheelResponseDataWheelItem {
   
+  PHONE("phone"),
+  
   SPIN("spin"),
   
   WAVE("wave"),
@@ -68,6 +70,60 @@ public enum UpdateWorldEmoteWheelResponseDataWheelItem {
   HIGH_FIVE("high_five"),
   
   HANDSHAKE("handshake"),
+  
+  FACEPALM("facepalm"),
+  
+  THINK("think"),
+  
+  LAUGH("laugh"),
+  
+  SIGH("sigh"),
+  
+  NO("no"),
+  
+  FIST_PUMP("fist_pump"),
+  
+  VICTORY("victory"),
+  
+  YAWN("yawn"),
+  
+  SALUTE("salute"),
+  
+  BIG_WAVE("big_wave"),
+  
+  BECKON("beckon"),
+  
+  SHUSH("shush"),
+  
+  KISS("kiss"),
+  
+  PEACE("peace"),
+  
+  HEART("heart"),
+  
+  SWAY("sway"),
+  
+  VIBE("vibe"),
+  
+  AIR_GUITAR("air_guitar"),
+  
+  ROBOT("robot"),
+  
+  DISCO("disco"),
+  
+  GAVEL("gavel"),
+  
+  HAGGLE("haggle"),
+  
+  ARMS_CROSSED("arms_crossed"),
+  
+  HANDS_ON_HIPS("hands_on_hips"),
+  
+  KNEEL("kneel"),
+  
+  FIST_BUMP("fist_bump"),
+  
+  DANCE_OFF("dance_off"),
   
   SHOWOFF("showoff"),
   

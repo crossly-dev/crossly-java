@@ -29,7 +29,7 @@ import java.math.BigDecimal;
  * The band they actually shop in, from retail prices they were looking at.
  */
 @ApiModel(description = "The band they actually shop in, from retail prices they were looking at.")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-11T23:47:29.843Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-27T19:58:46.962Z[Etc/UTC]")
 public class GetBuyerPreferenceResponseDataPriceBand {
   public static final String SERIALIZED_NAME_P25_CENTS = "p25Cents";
   @SerializedName(SERIALIZED_NAME_P25_CENTS)

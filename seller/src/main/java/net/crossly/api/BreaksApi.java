@@ -27,12 +27,12 @@ import com.google.gson.reflect.TypeToken;
 import java.io.IOException;
 
 
-import net.crossly.model.breaks.CreateBreakCancelResponse;
 import net.crossly.model.breaks.CreateBreakDrawResponse;
 import net.crossly.model.breaks.CreateBreakResponse;
 import net.crossly.model.common.Error;
 import net.crossly.model.breaks.GetBreakResponse;
 import net.crossly.model.breaks.ListBreaksResponse;
+import net.crossly.model.group.UpdateGroupBuyResponse;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
@@ -302,7 +302,7 @@ public class BreaksApi {
      * Cancel a break before any spot is paid for; after that, refund those orders instead (409).
      * 
      * @param id  (required)
-     * @return CreateBreakCancelResponse
+     * @return UpdateGroupBuyResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -316,8 +316,8 @@ public class BreaksApi {
         <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
      </table>
      */
-    public CreateBreakCancelResponse createBreakCancel(String id) throws ApiException {
-        ApiResponse<CreateBreakCancelResponse> localVarResp = createBreakCancelWithHttpInfo(id);
+    public UpdateGroupBuyResponse createBreakCancel(String id) throws ApiException {
+        ApiResponse<UpdateGroupBuyResponse> localVarResp = createBreakCancelWithHttpInfo(id);
         return localVarResp.getData();
     }
 
@@ -325,7 +325,7 @@ public class BreaksApi {
      * Cancel a break before any spot is paid for; after that, refund those orders instead (409).
      * 
      * @param id  (required)
-     * @return ApiResponse&lt;CreateBreakCancelResponse&gt;
+     * @return ApiResponse&lt;UpdateGroupBuyResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -339,9 +339,9 @@ public class BreaksApi {
         <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<CreateBreakCancelResponse> createBreakCancelWithHttpInfo(String id) throws ApiException {
+    public ApiResponse<UpdateGroupBuyResponse> createBreakCancelWithHttpInfo(String id) throws ApiException {
         okhttp3.Call localVarCall = createBreakCancelValidateBeforeCall(id, null);
-        Type localVarReturnType = new TypeToken<CreateBreakCancelResponse>(){}.getType();
+        Type localVarReturnType = new TypeToken<UpdateGroupBuyResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -364,10 +364,10 @@ public class BreaksApi {
         <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call createBreakCancelAsync(String id, final ApiCallback<CreateBreakCancelResponse> _callback) throws ApiException {
+    public okhttp3.Call createBreakCancelAsync(String id, final ApiCallback<UpdateGroupBuyResponse> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = createBreakCancelValidateBeforeCall(id, _callback);
-        Type localVarReturnType = new TypeToken<CreateBreakCancelResponse>(){}.getType();
+        Type localVarReturnType = new TypeToken<UpdateGroupBuyResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -606,7 +606,7 @@ public class BreaksApi {
      * Mark the product opened on stream.
      * 
      * @param id  (required)
-     * @return CreateBreakCancelResponse
+     * @return UpdateGroupBuyResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -620,8 +620,8 @@ public class BreaksApi {
         <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
      </table>
      */
-    public CreateBreakCancelResponse createBreakOpened(String id) throws ApiException {
-        ApiResponse<CreateBreakCancelResponse> localVarResp = createBreakOpenedWithHttpInfo(id);
+    public UpdateGroupBuyResponse createBreakOpened(String id) throws ApiException {
+        ApiResponse<UpdateGroupBuyResponse> localVarResp = createBreakOpenedWithHttpInfo(id);
         return localVarResp.getData();
     }
 
@@ -629,7 +629,7 @@ public class BreaksApi {
      * Mark the product opened on stream.
      * 
      * @param id  (required)
-     * @return ApiResponse&lt;CreateBreakCancelResponse&gt;
+     * @return ApiResponse&lt;UpdateGroupBuyResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -643,9 +643,9 @@ public class BreaksApi {
         <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<CreateBreakCancelResponse> createBreakOpenedWithHttpInfo(String id) throws ApiException {
+    public ApiResponse<UpdateGroupBuyResponse> createBreakOpenedWithHttpInfo(String id) throws ApiException {
         okhttp3.Call localVarCall = createBreakOpenedValidateBeforeCall(id, null);
-        Type localVarReturnType = new TypeToken<CreateBreakCancelResponse>(){}.getType();
+        Type localVarReturnType = new TypeToken<UpdateGroupBuyResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -668,10 +668,10 @@ public class BreaksApi {
         <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call createBreakOpenedAsync(String id, final ApiCallback<CreateBreakCancelResponse> _callback) throws ApiException {
+    public okhttp3.Call createBreakOpenedAsync(String id, final ApiCallback<UpdateGroupBuyResponse> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = createBreakOpenedValidateBeforeCall(id, _callback);
-        Type localVarReturnType = new TypeToken<CreateBreakCancelResponse>(){}.getType();
+        Type localVarReturnType = new TypeToken<UpdateGroupBuyResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -766,7 +766,7 @@ public class BreaksApi {
      * 
      * @param id  (required)
      * @param spotId  (required)
-     * @return CreateBreakCancelResponse
+     * @return UpdateGroupBuyResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -780,8 +780,8 @@ public class BreaksApi {
         <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
      </table>
      */
-    public CreateBreakCancelResponse createBreakSpotHit(String id, String spotId) throws ApiException {
-        ApiResponse<CreateBreakCancelResponse> localVarResp = createBreakSpotHitWithHttpInfo(id, spotId);
+    public UpdateGroupBuyResponse createBreakSpotHit(String id, String spotId) throws ApiException {
+        ApiResponse<UpdateGroupBuyResponse> localVarResp = createBreakSpotHitWithHttpInfo(id, spotId);
         return localVarResp.getData();
     }
 
@@ -790,7 +790,7 @@ public class BreaksApi {
      * 
      * @param id  (required)
      * @param spotId  (required)
-     * @return ApiResponse&lt;CreateBreakCancelResponse&gt;
+     * @return ApiResponse&lt;UpdateGroupBuyResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -804,9 +804,9 @@ public class BreaksApi {
         <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<CreateBreakCancelResponse> createBreakSpotHitWithHttpInfo(String id, String spotId) throws ApiException {
+    public ApiResponse<UpdateGroupBuyResponse> createBreakSpotHitWithHttpInfo(String id, String spotId) throws ApiException {
         okhttp3.Call localVarCall = createBreakSpotHitValidateBeforeCall(id, spotId, null);
-        Type localVarReturnType = new TypeToken<CreateBreakCancelResponse>(){}.getType();
+        Type localVarReturnType = new TypeToken<UpdateGroupBuyResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -830,10 +830,10 @@ public class BreaksApi {
         <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call createBreakSpotHitAsync(String id, String spotId, final ApiCallback<CreateBreakCancelResponse> _callback) throws ApiException {
+    public okhttp3.Call createBreakSpotHitAsync(String id, String spotId, final ApiCallback<UpdateGroupBuyResponse> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = createBreakSpotHitValidateBeforeCall(id, spotId, _callback);
-        Type localVarReturnType = new TypeToken<CreateBreakCancelResponse>(){}.getType();
+        Type localVarReturnType = new TypeToken<UpdateGroupBuyResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }

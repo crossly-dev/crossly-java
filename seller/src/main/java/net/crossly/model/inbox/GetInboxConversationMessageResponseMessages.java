@@ -32,7 +32,7 @@ import org.threeten.bp.OffsetDateTime;
 /**
  * GetInboxConversationMessageResponseMessages
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-11T23:44:48.922Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-27T19:42:43.186Z[Etc/UTC]")
 public class GetInboxConversationMessageResponseMessages {
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
@@ -85,6 +85,67 @@ public class GetInboxConversationMessageResponseMessages {
   public static final String SERIALIZED_NAME_AI_TRIAGED_AT = "aiTriagedAt";
   @SerializedName(SERIALIZED_NAME_AI_TRIAGED_AT)
   private OffsetDateTime aiTriagedAt;
+
+  public static final String SERIALIZED_NAME_OFFER_AMOUNT = "offerAmount";
+  @SerializedName(SERIALIZED_NAME_OFFER_AMOUNT)
+  private String offerAmount;
+
+  /**
+   * Gets or Sets offerStatus
+   */
+  @JsonAdapter(OfferStatusEnum.Adapter.class)
+  public enum OfferStatusEnum {
+    PENDING("pending"),
+    
+    ACCEPTED("accepted"),
+    
+    DECLINED("declined"),
+    
+    EXPIRED("expired"),
+    
+    VOIDED("voided");
+
+    private String value;
+
+    OfferStatusEnum(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    @Override
+    public String toString() {
+      return String.valueOf(value);
+    }
+
+    public static OfferStatusEnum fromValue(String value) {
+      for (OfferStatusEnum b : OfferStatusEnum.values()) {
+        if (b.value.equals(value)) {
+          return b;
+        }
+      }
+      return null;
+    }
+
+    public static class Adapter extends TypeAdapter<OfferStatusEnum> {
+      @Override
+      public void write(final JsonWriter jsonWriter, final OfferStatusEnum enumeration) throws IOException {
+        jsonWriter.value(enumeration.getValue());
+      }
+
+      @Override
+      public OfferStatusEnum read(final JsonReader jsonReader) throws IOException {
+        String value =  jsonReader.nextString();
+        return OfferStatusEnum.fromValue(value);
+      }
+    }
+  }
+
+  public static final String SERIALIZED_NAME_OFFER_STATUS = "offerStatus";
+  @SerializedName(SERIALIZED_NAME_OFFER_STATUS)
+  private OfferStatusEnum offerStatus;
 
   public GetInboxConversationMessageResponseMessages() { 
   }
@@ -396,6 +457,52 @@ public class GetInboxConversationMessageResponseMessages {
   }
 
 
+  public GetInboxConversationMessageResponseMessages offerAmount(String offerAmount) {
+    
+    this.offerAmount = offerAmount;
+    return this;
+  }
+
+   /**
+   * Get offerAmount
+   * @return offerAmount
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public String getOfferAmount() {
+    return offerAmount;
+  }
+
+
+  public void setOfferAmount(String offerAmount) {
+    this.offerAmount = offerAmount;
+  }
+
+
+  public GetInboxConversationMessageResponseMessages offerStatus(OfferStatusEnum offerStatus) {
+    
+    this.offerStatus = offerStatus;
+    return this;
+  }
+
+   /**
+   * Get offerStatus
+   * @return offerStatus
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public OfferStatusEnum getOfferStatus() {
+    return offerStatus;
+  }
+
+
+  public void setOfferStatus(OfferStatusEnum offerStatus) {
+    this.offerStatus = offerStatus;
+  }
+
+
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -417,7 +524,9 @@ public class GetInboxConversationMessageResponseMessages {
         Objects.equals(this.aiUrgency, getInboxConversationMessageResponseMessages.aiUrgency) &&
         Objects.equals(this.aiScamScore, getInboxConversationMessageResponseMessages.aiScamScore) &&
         Objects.equals(this.aiSuggestedReply, getInboxConversationMessageResponseMessages.aiSuggestedReply) &&
-        Objects.equals(this.aiTriagedAt, getInboxConversationMessageResponseMessages.aiTriagedAt);
+        Objects.equals(this.aiTriagedAt, getInboxConversationMessageResponseMessages.aiTriagedAt) &&
+        Objects.equals(this.offerAmount, getInboxConversationMessageResponseMessages.offerAmount) &&
+        Objects.equals(this.offerStatus, getInboxConversationMessageResponseMessages.offerStatus);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -426,7 +535,7 @@ public class GetInboxConversationMessageResponseMessages {
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, conversationId, platformMessageId, sender, body, attachments, sentAt, syncedAt, aiIntent, aiUrgency, aiScamScore, aiSuggestedReply, aiTriagedAt);
+    return Objects.hash(id, conversationId, platformMessageId, sender, body, attachments, sentAt, syncedAt, aiIntent, aiUrgency, aiScamScore, aiSuggestedReply, aiTriagedAt, offerAmount, offerStatus);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -453,6 +562,8 @@ public class GetInboxConversationMessageResponseMessages {
     sb.append("    aiScamScore: ").append(toIndentedString(aiScamScore)).append("\n");
     sb.append("    aiSuggestedReply: ").append(toIndentedString(aiSuggestedReply)).append("\n");
     sb.append("    aiTriagedAt: ").append(toIndentedString(aiTriagedAt)).append("\n");
+    sb.append("    offerAmount: ").append(toIndentedString(offerAmount)).append("\n");
+    sb.append("    offerStatus: ").append(toIndentedString(offerStatus)).append("\n");
     sb.append("}");
     return sb.toString();
   }

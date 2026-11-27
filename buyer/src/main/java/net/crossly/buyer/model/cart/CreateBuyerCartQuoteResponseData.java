@@ -33,31 +33,31 @@ import org.openapitools.jackson.nullable.JsonNullable;
 /**
  * CreateBuyerCartQuoteResponseData
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-11T23:47:29.843Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-27T19:58:46.962Z[Etc/UTC]")
 public class CreateBuyerCartQuoteResponseData {
-  public static final String SERIALIZED_NAME_CURRENCY = "currency";
-  @SerializedName(SERIALIZED_NAME_CURRENCY)
-  private String currency;
-
   public static final String SERIALIZED_NAME_KIND = "kind";
   @SerializedName(SERIALIZED_NAME_KIND)
   private String kind;
 
-  public static final String SERIALIZED_NAME_TAX_CENTS = "taxCents";
-  @SerializedName(SERIALIZED_NAME_TAX_CENTS)
-  private BigDecimal taxCents;
+  public static final String SERIALIZED_NAME_ITEMS_TOTAL_CENTS = "itemsTotalCents";
+  @SerializedName(SERIALIZED_NAME_ITEMS_TOTAL_CENTS)
+  private BigDecimal itemsTotalCents;
 
   public static final String SERIALIZED_NAME_SHIPPING_CENTS = "shippingCents";
   @SerializedName(SERIALIZED_NAME_SHIPPING_CENTS)
   private BigDecimal shippingCents;
 
+  public static final String SERIALIZED_NAME_TAX_CENTS = "taxCents";
+  @SerializedName(SERIALIZED_NAME_TAX_CENTS)
+  private BigDecimal taxCents;
+
   public static final String SERIALIZED_NAME_TOTAL_CENTS = "totalCents";
   @SerializedName(SERIALIZED_NAME_TOTAL_CENTS)
   private BigDecimal totalCents;
 
-  public static final String SERIALIZED_NAME_ITEMS_TOTAL_CENTS = "itemsTotalCents";
-  @SerializedName(SERIALIZED_NAME_ITEMS_TOTAL_CENTS)
-  private BigDecimal itemsTotalCents;
+  public static final String SERIALIZED_NAME_CURRENCY = "currency";
+  @SerializedName(SERIALIZED_NAME_CURRENCY)
+  private String currency;
 
   public static final String SERIALIZED_NAME_PICKUP_CART_ITEM_IDS = "pickupCartItemIds";
   @SerializedName(SERIALIZED_NAME_PICKUP_CART_ITEM_IDS)
@@ -143,29 +143,6 @@ public class CreateBuyerCartQuoteResponseData {
   public CreateBuyerCartQuoteResponseData() { 
   }
 
-  public CreateBuyerCartQuoteResponseData currency(String currency) {
-    
-    this.currency = currency;
-    return this;
-  }
-
-   /**
-   * Get currency
-   * @return currency
-  **/
-  @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "")
-
-  public String getCurrency() {
-    return currency;
-  }
-
-
-  public void setCurrency(String currency) {
-    this.currency = currency;
-  }
-
-
   public CreateBuyerCartQuoteResponseData kind(String kind) {
     
     this.kind = kind;
@@ -189,26 +166,26 @@ public class CreateBuyerCartQuoteResponseData {
   }
 
 
-  public CreateBuyerCartQuoteResponseData taxCents(BigDecimal taxCents) {
+  public CreateBuyerCartQuoteResponseData itemsTotalCents(BigDecimal itemsTotalCents) {
     
-    this.taxCents = taxCents;
+    this.itemsTotalCents = itemsTotalCents;
     return this;
   }
 
    /**
-   * Get taxCents
-   * @return taxCents
+   * Get itemsTotalCents
+   * @return itemsTotalCents
   **/
   @javax.annotation.Nonnull
   @ApiModelProperty(required = true, value = "")
 
-  public BigDecimal getTaxCents() {
-    return taxCents;
+  public BigDecimal getItemsTotalCents() {
+    return itemsTotalCents;
   }
 
 
-  public void setTaxCents(BigDecimal taxCents) {
-    this.taxCents = taxCents;
+  public void setItemsTotalCents(BigDecimal itemsTotalCents) {
+    this.itemsTotalCents = itemsTotalCents;
   }
 
 
@@ -235,6 +212,29 @@ public class CreateBuyerCartQuoteResponseData {
   }
 
 
+  public CreateBuyerCartQuoteResponseData taxCents(BigDecimal taxCents) {
+    
+    this.taxCents = taxCents;
+    return this;
+  }
+
+   /**
+   * Get taxCents
+   * @return taxCents
+  **/
+  @javax.annotation.Nonnull
+  @ApiModelProperty(required = true, value = "")
+
+  public BigDecimal getTaxCents() {
+    return taxCents;
+  }
+
+
+  public void setTaxCents(BigDecimal taxCents) {
+    this.taxCents = taxCents;
+  }
+
+
   public CreateBuyerCartQuoteResponseData totalCents(BigDecimal totalCents) {
     
     this.totalCents = totalCents;
@@ -258,26 +258,26 @@ public class CreateBuyerCartQuoteResponseData {
   }
 
 
-  public CreateBuyerCartQuoteResponseData itemsTotalCents(BigDecimal itemsTotalCents) {
+  public CreateBuyerCartQuoteResponseData currency(String currency) {
     
-    this.itemsTotalCents = itemsTotalCents;
+    this.currency = currency;
     return this;
   }
 
    /**
-   * Get itemsTotalCents
-   * @return itemsTotalCents
+   * Get currency
+   * @return currency
   **/
   @javax.annotation.Nonnull
   @ApiModelProperty(required = true, value = "")
 
-  public BigDecimal getItemsTotalCents() {
-    return itemsTotalCents;
+  public String getCurrency() {
+    return currency;
   }
 
 
-  public void setItemsTotalCents(BigDecimal itemsTotalCents) {
-    this.itemsTotalCents = itemsTotalCents;
+  public void setCurrency(String currency) {
+    this.currency = currency;
   }
 
 
@@ -495,12 +495,12 @@ public class CreateBuyerCartQuoteResponseData {
       return false;
     }
     CreateBuyerCartQuoteResponseData createBuyerCartQuoteResponseData = (CreateBuyerCartQuoteResponseData) o;
-    return Objects.equals(this.currency, createBuyerCartQuoteResponseData.currency) &&
-        Objects.equals(this.kind, createBuyerCartQuoteResponseData.kind) &&
-        Objects.equals(this.taxCents, createBuyerCartQuoteResponseData.taxCents) &&
-        Objects.equals(this.shippingCents, createBuyerCartQuoteResponseData.shippingCents) &&
-        Objects.equals(this.totalCents, createBuyerCartQuoteResponseData.totalCents) &&
+    return Objects.equals(this.kind, createBuyerCartQuoteResponseData.kind) &&
         Objects.equals(this.itemsTotalCents, createBuyerCartQuoteResponseData.itemsTotalCents) &&
+        Objects.equals(this.shippingCents, createBuyerCartQuoteResponseData.shippingCents) &&
+        Objects.equals(this.taxCents, createBuyerCartQuoteResponseData.taxCents) &&
+        Objects.equals(this.totalCents, createBuyerCartQuoteResponseData.totalCents) &&
+        Objects.equals(this.currency, createBuyerCartQuoteResponseData.currency) &&
         Objects.equals(this.pickupCartItemIds, createBuyerCartQuoteResponseData.pickupCartItemIds) &&
         Objects.equals(this.taxComplete, createBuyerCartQuoteResponseData.taxComplete) &&
         Objects.equals(this.dutiesCents, createBuyerCartQuoteResponseData.dutiesCents) &&
@@ -517,7 +517,7 @@ public class CreateBuyerCartQuoteResponseData {
 
   @Override
   public int hashCode() {
-    return Objects.hash(currency, kind, taxCents, shippingCents, totalCents, itemsTotalCents, pickupCartItemIds, taxComplete, dutiesCents, dutiesStatus, dutiesNotice, shippingOptions, shippingServiceBySeller, shippingDestinationCountry);
+    return Objects.hash(kind, itemsTotalCents, shippingCents, taxCents, totalCents, currency, pickupCartItemIds, taxComplete, dutiesCents, dutiesStatus, dutiesNotice, shippingOptions, shippingServiceBySeller, shippingDestinationCountry);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -531,12 +531,12 @@ public class CreateBuyerCartQuoteResponseData {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class CreateBuyerCartQuoteResponseData {\n");
-    sb.append("    currency: ").append(toIndentedString(currency)).append("\n");
     sb.append("    kind: ").append(toIndentedString(kind)).append("\n");
-    sb.append("    taxCents: ").append(toIndentedString(taxCents)).append("\n");
-    sb.append("    shippingCents: ").append(toIndentedString(shippingCents)).append("\n");
-    sb.append("    totalCents: ").append(toIndentedString(totalCents)).append("\n");
     sb.append("    itemsTotalCents: ").append(toIndentedString(itemsTotalCents)).append("\n");
+    sb.append("    shippingCents: ").append(toIndentedString(shippingCents)).append("\n");
+    sb.append("    taxCents: ").append(toIndentedString(taxCents)).append("\n");
+    sb.append("    totalCents: ").append(toIndentedString(totalCents)).append("\n");
+    sb.append("    currency: ").append(toIndentedString(currency)).append("\n");
     sb.append("    pickupCartItemIds: ").append(toIndentedString(pickupCartItemIds)).append("\n");
     sb.append("    taxComplete: ").append(toIndentedString(taxComplete)).append("\n");
     sb.append("    dutiesCents: ").append(toIndentedString(dutiesCents)).append("\n");

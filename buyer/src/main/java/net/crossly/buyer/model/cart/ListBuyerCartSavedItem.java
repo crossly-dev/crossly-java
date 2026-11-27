@@ -29,35 +29,31 @@ import org.openapitools.jackson.nullable.JsonNullable;
 /**
  * ListBuyerCartSavedItem
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-11T23:47:29.843Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-27T19:58:46.962Z[Etc/UTC]")
 public class ListBuyerCartSavedItem {
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
   private String id;
 
-  public static final String SERIALIZED_NAME_QUANTITY = "quantity";
-  @SerializedName(SERIALIZED_NAME_QUANTITY)
-  private BigDecimal quantity;
-
-  public static final String SERIALIZED_NAME_TITLE = "title";
-  @SerializedName(SERIALIZED_NAME_TITLE)
-  private String title;
-
   public static final String SERIALIZED_NAME_PLATFORM_LISTING_ID = "platformListingId";
   @SerializedName(SERIALIZED_NAME_PLATFORM_LISTING_ID)
   private String platformListingId;
-
-  public static final String SERIALIZED_NAME_SELLER_USER_ID = "sellerUserId";
-  @SerializedName(SERIALIZED_NAME_SELLER_USER_ID)
-  private String sellerUserId;
 
   public static final String SERIALIZED_NAME_SLUG = "slug";
   @SerializedName(SERIALIZED_NAME_SLUG)
   private String slug;
 
+  public static final String SERIALIZED_NAME_TITLE = "title";
+  @SerializedName(SERIALIZED_NAME_TITLE)
+  private String title;
+
   public static final String SERIALIZED_NAME_PRICE_CENTS = "priceCents";
   @SerializedName(SERIALIZED_NAME_PRICE_CENTS)
   private BigDecimal priceCents;
+
+  public static final String SERIALIZED_NAME_QUANTITY = "quantity";
+  @SerializedName(SERIALIZED_NAME_QUANTITY)
+  private BigDecimal quantity;
 
   public static final String SERIALIZED_NAME_IN_STOCK = "inStock";
   @SerializedName(SERIALIZED_NAME_IN_STOCK)
@@ -67,17 +63,33 @@ public class ListBuyerCartSavedItem {
   @SerializedName(SERIALIZED_NAME_AVAILABLE_QUANTITY)
   private BigDecimal availableQuantity;
 
+  public static final String SERIALIZED_NAME_SELLER_USER_ID = "sellerUserId";
+  @SerializedName(SERIALIZED_NAME_SELLER_USER_ID)
+  private String sellerUserId;
+
   public static final String SERIALIZED_NAME_SAVED_AT = "savedAt";
   @SerializedName(SERIALIZED_NAME_SAVED_AT)
   private String savedAt;
+
+  public static final String SERIALIZED_NAME_THUMBNAIL = "thumbnail";
+  @SerializedName(SERIALIZED_NAME_THUMBNAIL)
+  private String thumbnail;
 
   public static final String SERIALIZED_NAME_SELLER_DISPLAY_NAME = "sellerDisplayName";
   @SerializedName(SERIALIZED_NAME_SELLER_DISPLAY_NAME)
   private String sellerDisplayName;
 
-  public static final String SERIALIZED_NAME_THUMBNAIL = "thumbnail";
-  @SerializedName(SERIALIZED_NAME_THUMBNAIL)
-  private String thumbnail;
+  public static final String SERIALIZED_NAME_LISTING_VARIANT_ID = "listingVariantId";
+  @SerializedName(SERIALIZED_NAME_LISTING_VARIANT_ID)
+  private String listingVariantId;
+
+  public static final String SERIALIZED_NAME_VARIANT_NAME = "variantName";
+  @SerializedName(SERIALIZED_NAME_VARIANT_NAME)
+  private String variantName;
+
+  public static final String SERIALIZED_NAME_NEEDS_OPTION = "needsOption";
+  @SerializedName(SERIALIZED_NAME_NEEDS_OPTION)
+  private Boolean needsOption;
 
   public ListBuyerCartSavedItem() { 
   }
@@ -105,52 +117,6 @@ public class ListBuyerCartSavedItem {
   }
 
 
-  public ListBuyerCartSavedItem quantity(BigDecimal quantity) {
-    
-    this.quantity = quantity;
-    return this;
-  }
-
-   /**
-   * Get quantity
-   * @return quantity
-  **/
-  @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "")
-
-  public BigDecimal getQuantity() {
-    return quantity;
-  }
-
-
-  public void setQuantity(BigDecimal quantity) {
-    this.quantity = quantity;
-  }
-
-
-  public ListBuyerCartSavedItem title(String title) {
-    
-    this.title = title;
-    return this;
-  }
-
-   /**
-   * Get title
-   * @return title
-  **/
-  @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "")
-
-  public String getTitle() {
-    return title;
-  }
-
-
-  public void setTitle(String title) {
-    this.title = title;
-  }
-
-
   public ListBuyerCartSavedItem platformListingId(String platformListingId) {
     
     this.platformListingId = platformListingId;
@@ -171,29 +137,6 @@ public class ListBuyerCartSavedItem {
 
   public void setPlatformListingId(String platformListingId) {
     this.platformListingId = platformListingId;
-  }
-
-
-  public ListBuyerCartSavedItem sellerUserId(String sellerUserId) {
-    
-    this.sellerUserId = sellerUserId;
-    return this;
-  }
-
-   /**
-   * Get sellerUserId
-   * @return sellerUserId
-  **/
-  @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "")
-
-  public String getSellerUserId() {
-    return sellerUserId;
-  }
-
-
-  public void setSellerUserId(String sellerUserId) {
-    this.sellerUserId = sellerUserId;
   }
 
 
@@ -220,6 +163,29 @@ public class ListBuyerCartSavedItem {
   }
 
 
+  public ListBuyerCartSavedItem title(String title) {
+    
+    this.title = title;
+    return this;
+  }
+
+   /**
+   * Get title
+   * @return title
+  **/
+  @javax.annotation.Nonnull
+  @ApiModelProperty(required = true, value = "")
+
+  public String getTitle() {
+    return title;
+  }
+
+
+  public void setTitle(String title) {
+    this.title = title;
+  }
+
+
   public ListBuyerCartSavedItem priceCents(BigDecimal priceCents) {
     
     this.priceCents = priceCents;
@@ -240,6 +206,29 @@ public class ListBuyerCartSavedItem {
 
   public void setPriceCents(BigDecimal priceCents) {
     this.priceCents = priceCents;
+  }
+
+
+  public ListBuyerCartSavedItem quantity(BigDecimal quantity) {
+    
+    this.quantity = quantity;
+    return this;
+  }
+
+   /**
+   * Get quantity
+   * @return quantity
+  **/
+  @javax.annotation.Nonnull
+  @ApiModelProperty(required = true, value = "")
+
+  public BigDecimal getQuantity() {
+    return quantity;
+  }
+
+
+  public void setQuantity(BigDecimal quantity) {
+    this.quantity = quantity;
   }
 
 
@@ -289,6 +278,29 @@ public class ListBuyerCartSavedItem {
   }
 
 
+  public ListBuyerCartSavedItem sellerUserId(String sellerUserId) {
+    
+    this.sellerUserId = sellerUserId;
+    return this;
+  }
+
+   /**
+   * Get sellerUserId
+   * @return sellerUserId
+  **/
+  @javax.annotation.Nonnull
+  @ApiModelProperty(required = true, value = "")
+
+  public String getSellerUserId() {
+    return sellerUserId;
+  }
+
+
+  public void setSellerUserId(String sellerUserId) {
+    this.sellerUserId = sellerUserId;
+  }
+
+
   public ListBuyerCartSavedItem savedAt(String savedAt) {
     
     this.savedAt = savedAt;
@@ -309,29 +321,6 @@ public class ListBuyerCartSavedItem {
 
   public void setSavedAt(String savedAt) {
     this.savedAt = savedAt;
-  }
-
-
-  public ListBuyerCartSavedItem sellerDisplayName(String sellerDisplayName) {
-    
-    this.sellerDisplayName = sellerDisplayName;
-    return this;
-  }
-
-   /**
-   * Get sellerDisplayName
-   * @return sellerDisplayName
-  **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
-
-  public String getSellerDisplayName() {
-    return sellerDisplayName;
-  }
-
-
-  public void setSellerDisplayName(String sellerDisplayName) {
-    this.sellerDisplayName = sellerDisplayName;
   }
 
 
@@ -358,6 +347,98 @@ public class ListBuyerCartSavedItem {
   }
 
 
+  public ListBuyerCartSavedItem sellerDisplayName(String sellerDisplayName) {
+    
+    this.sellerDisplayName = sellerDisplayName;
+    return this;
+  }
+
+   /**
+   * Get sellerDisplayName
+   * @return sellerDisplayName
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public String getSellerDisplayName() {
+    return sellerDisplayName;
+  }
+
+
+  public void setSellerDisplayName(String sellerDisplayName) {
+    this.sellerDisplayName = sellerDisplayName;
+  }
+
+
+  public ListBuyerCartSavedItem listingVariantId(String listingVariantId) {
+    
+    this.listingVariantId = listingVariantId;
+    return this;
+  }
+
+   /**
+   * The option it was saved as (catalog &#x60;variants[].id&#x60;), restored on move-to-cart; null otherwise.
+   * @return listingVariantId
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "The option it was saved as (catalog `variants[].id`), restored on move-to-cart; null otherwise.")
+
+  public String getListingVariantId() {
+    return listingVariantId;
+  }
+
+
+  public void setListingVariantId(String listingVariantId) {
+    this.listingVariantId = listingVariantId;
+  }
+
+
+  public ListBuyerCartSavedItem variantName(String variantName) {
+    
+    this.variantName = variantName;
+    return this;
+  }
+
+   /**
+   * That option&#39;s label (\&quot;M\&quot;).
+   * @return variantName
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "That option's label (\"M\").")
+
+  public String getVariantName() {
+    return variantName;
+  }
+
+
+  public void setVariantName(String variantName) {
+    this.variantName = variantName;
+  }
+
+
+  public ListBuyerCartSavedItem needsOption(Boolean needsOption) {
+    
+    this.needsOption = needsOption;
+    return this;
+  }
+
+   /**
+   * The listing has options and this item names none: add it again with an option (move-to-cart refuses).
+   * @return needsOption
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "The listing has options and this item names none: add it again with an option (move-to-cart refuses).")
+
+  public Boolean getNeedsOption() {
+    return needsOption;
+  }
+
+
+  public void setNeedsOption(Boolean needsOption) {
+    this.needsOption = needsOption;
+  }
+
+
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -368,17 +449,20 @@ public class ListBuyerCartSavedItem {
     }
     ListBuyerCartSavedItem listBuyerCartSavedItem = (ListBuyerCartSavedItem) o;
     return Objects.equals(this.id, listBuyerCartSavedItem.id) &&
-        Objects.equals(this.quantity, listBuyerCartSavedItem.quantity) &&
-        Objects.equals(this.title, listBuyerCartSavedItem.title) &&
         Objects.equals(this.platformListingId, listBuyerCartSavedItem.platformListingId) &&
-        Objects.equals(this.sellerUserId, listBuyerCartSavedItem.sellerUserId) &&
         Objects.equals(this.slug, listBuyerCartSavedItem.slug) &&
+        Objects.equals(this.title, listBuyerCartSavedItem.title) &&
         Objects.equals(this.priceCents, listBuyerCartSavedItem.priceCents) &&
+        Objects.equals(this.quantity, listBuyerCartSavedItem.quantity) &&
         Objects.equals(this.inStock, listBuyerCartSavedItem.inStock) &&
         Objects.equals(this.availableQuantity, listBuyerCartSavedItem.availableQuantity) &&
+        Objects.equals(this.sellerUserId, listBuyerCartSavedItem.sellerUserId) &&
         Objects.equals(this.savedAt, listBuyerCartSavedItem.savedAt) &&
+        Objects.equals(this.thumbnail, listBuyerCartSavedItem.thumbnail) &&
         Objects.equals(this.sellerDisplayName, listBuyerCartSavedItem.sellerDisplayName) &&
-        Objects.equals(this.thumbnail, listBuyerCartSavedItem.thumbnail);
+        Objects.equals(this.listingVariantId, listBuyerCartSavedItem.listingVariantId) &&
+        Objects.equals(this.variantName, listBuyerCartSavedItem.variantName) &&
+        Objects.equals(this.needsOption, listBuyerCartSavedItem.needsOption);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -387,7 +471,7 @@ public class ListBuyerCartSavedItem {
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, quantity, title, platformListingId, sellerUserId, slug, priceCents, inStock, availableQuantity, savedAt, sellerDisplayName, thumbnail);
+    return Objects.hash(id, platformListingId, slug, title, priceCents, quantity, inStock, availableQuantity, sellerUserId, savedAt, thumbnail, sellerDisplayName, listingVariantId, variantName, needsOption);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -402,17 +486,20 @@ public class ListBuyerCartSavedItem {
     StringBuilder sb = new StringBuilder();
     sb.append("class ListBuyerCartSavedItem {\n");
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
-    sb.append("    quantity: ").append(toIndentedString(quantity)).append("\n");
-    sb.append("    title: ").append(toIndentedString(title)).append("\n");
     sb.append("    platformListingId: ").append(toIndentedString(platformListingId)).append("\n");
-    sb.append("    sellerUserId: ").append(toIndentedString(sellerUserId)).append("\n");
     sb.append("    slug: ").append(toIndentedString(slug)).append("\n");
+    sb.append("    title: ").append(toIndentedString(title)).append("\n");
     sb.append("    priceCents: ").append(toIndentedString(priceCents)).append("\n");
+    sb.append("    quantity: ").append(toIndentedString(quantity)).append("\n");
     sb.append("    inStock: ").append(toIndentedString(inStock)).append("\n");
     sb.append("    availableQuantity: ").append(toIndentedString(availableQuantity)).append("\n");
+    sb.append("    sellerUserId: ").append(toIndentedString(sellerUserId)).append("\n");
     sb.append("    savedAt: ").append(toIndentedString(savedAt)).append("\n");
-    sb.append("    sellerDisplayName: ").append(toIndentedString(sellerDisplayName)).append("\n");
     sb.append("    thumbnail: ").append(toIndentedString(thumbnail)).append("\n");
+    sb.append("    sellerDisplayName: ").append(toIndentedString(sellerDisplayName)).append("\n");
+    sb.append("    listingVariantId: ").append(toIndentedString(listingVariantId)).append("\n");
+    sb.append("    variantName: ").append(toIndentedString(variantName)).append("\n");
+    sb.append("    needsOption: ").append(toIndentedString(needsOption)).append("\n");
     sb.append("}");
     return sb.toString();
   }

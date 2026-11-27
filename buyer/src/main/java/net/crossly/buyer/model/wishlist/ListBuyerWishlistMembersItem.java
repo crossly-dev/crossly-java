@@ -27,15 +27,15 @@ import java.io.IOException;
 /**
  * ListBuyerWishlistMembersItem
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-11T23:47:29.843Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-27T19:58:46.962Z[Etc/UTC]")
 public class ListBuyerWishlistMembersItem {
-  public static final String SERIALIZED_NAME_NAME = "name";
-  @SerializedName(SERIALIZED_NAME_NAME)
-  private String name;
-
   public static final String SERIALIZED_NAME_USER_ID = "userId";
   @SerializedName(SERIALIZED_NAME_USER_ID)
   private String userId;
+
+  public static final String SERIALIZED_NAME_NAME = "name";
+  @SerializedName(SERIALIZED_NAME_NAME)
+  private String name;
 
   public static final String SERIALIZED_NAME_JOINED_AT = "joinedAt";
   @SerializedName(SERIALIZED_NAME_JOINED_AT)
@@ -43,29 +43,6 @@ public class ListBuyerWishlistMembersItem {
 
   public ListBuyerWishlistMembersItem() { 
   }
-
-  public ListBuyerWishlistMembersItem name(String name) {
-    
-    this.name = name;
-    return this;
-  }
-
-   /**
-   * Get name
-   * @return name
-  **/
-  @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "")
-
-  public String getName() {
-    return name;
-  }
-
-
-  public void setName(String name) {
-    this.name = name;
-  }
-
 
   public ListBuyerWishlistMembersItem userId(String userId) {
     
@@ -87,6 +64,29 @@ public class ListBuyerWishlistMembersItem {
 
   public void setUserId(String userId) {
     this.userId = userId;
+  }
+
+
+  public ListBuyerWishlistMembersItem name(String name) {
+    
+    this.name = name;
+    return this;
+  }
+
+   /**
+   * Get name
+   * @return name
+  **/
+  @javax.annotation.Nonnull
+  @ApiModelProperty(required = true, value = "")
+
+  public String getName() {
+    return name;
+  }
+
+
+  public void setName(String name) {
+    this.name = name;
   }
 
 
@@ -122,22 +122,22 @@ public class ListBuyerWishlistMembersItem {
       return false;
     }
     ListBuyerWishlistMembersItem listBuyerWishlistMembersItem = (ListBuyerWishlistMembersItem) o;
-    return Objects.equals(this.name, listBuyerWishlistMembersItem.name) &&
-        Objects.equals(this.userId, listBuyerWishlistMembersItem.userId) &&
+    return Objects.equals(this.userId, listBuyerWishlistMembersItem.userId) &&
+        Objects.equals(this.name, listBuyerWishlistMembersItem.name) &&
         Objects.equals(this.joinedAt, listBuyerWishlistMembersItem.joinedAt);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(name, userId, joinedAt);
+    return Objects.hash(userId, name, joinedAt);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class ListBuyerWishlistMembersItem {\n");
-    sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    userId: ").append(toIndentedString(userId)).append("\n");
+    sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    joinedAt: ").append(toIndentedString(joinedAt)).append("\n");
     sb.append("}");
     return sb.toString();

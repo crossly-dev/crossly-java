@@ -29,7 +29,7 @@ import org.openapitools.jackson.nullable.JsonNullable;
 /**
  * CreateMagicScanResponseTopHits
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-11T23:44:48.922Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-27T19:42:43.186Z[Etc/UTC]")
 public class CreateMagicScanResponseTopHits {
   public static final String SERIALIZED_NAME_PLATFORM = "platform";
   @SerializedName(SERIALIZED_NAME_PLATFORM)
@@ -58,6 +58,26 @@ public class CreateMagicScanResponseTopHits {
   public static final String SERIALIZED_NAME_VISUAL_SIM = "visualSim";
   @SerializedName(SERIALIZED_NAME_VISUAL_SIM)
   private BigDecimal visualSim;
+
+  public static final String SERIALIZED_NAME_AGREEMENT = "agreement";
+  @SerializedName(SERIALIZED_NAME_AGREEMENT)
+  private BigDecimal agreement;
+
+  public static final String SERIALIZED_NAME_CARRIES_IDENTIFIER = "carriesIdentifier";
+  @SerializedName(SERIALIZED_NAME_CARRIES_IDENTIFIER)
+  private Boolean carriesIdentifier;
+
+  public static final String SERIALIZED_NAME_PRICE_OUTLIER = "priceOutlier";
+  @SerializedName(SERIALIZED_NAME_PRICE_OUTLIER)
+  private Boolean priceOutlier;
+
+  public static final String SERIALIZED_NAME_CONDITION = "condition";
+  @SerializedName(SERIALIZED_NAME_CONDITION)
+  private String condition;
+
+  public static final String SERIALIZED_NAME_BRAND = "brand";
+  @SerializedName(SERIALIZED_NAME_BRAND)
+  private String brand;
 
   /**
    * &#39;active&#39; &#x3D; currently for sale; &#39;sold&#39; &#x3D; historical comp. UI renders distinct badges so the seller can see both at a glance.
@@ -109,6 +129,61 @@ public class CreateMagicScanResponseTopHits {
   public static final String SERIALIZED_NAME_STATE = "state";
   @SerializedName(SERIALIZED_NAME_STATE)
   private StateEnum state;
+
+  public static final String SERIALIZED_NAME_SHIPPING_CENTS = "shippingCents";
+  @SerializedName(SERIALIZED_NAME_SHIPPING_CENTS)
+  private BigDecimal shippingCents;
+
+  /**
+   * Auction vs fixed price, where the platform says; an active auction&#39;s price is a bid (compPriceIsBid).
+   */
+  @JsonAdapter(FormatEnum.Adapter.class)
+  public enum FormatEnum {
+    AUCTION("auction"),
+    
+    FIXED_PRICE("fixed_price");
+
+    private String value;
+
+    FormatEnum(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    @Override
+    public String toString() {
+      return String.valueOf(value);
+    }
+
+    public static FormatEnum fromValue(String value) {
+      for (FormatEnum b : FormatEnum.values()) {
+        if (b.value.equals(value)) {
+          return b;
+        }
+      }
+      return null;
+    }
+
+    public static class Adapter extends TypeAdapter<FormatEnum> {
+      @Override
+      public void write(final JsonWriter jsonWriter, final FormatEnum enumeration) throws IOException {
+        jsonWriter.value(enumeration.getValue());
+      }
+
+      @Override
+      public FormatEnum read(final JsonReader jsonReader) throws IOException {
+        String value =  jsonReader.nextString();
+        return FormatEnum.fromValue(value);
+      }
+    }
+  }
+
+  public static final String SERIALIZED_NAME_FORMAT = "format";
+  @SerializedName(SERIALIZED_NAME_FORMAT)
+  private FormatEnum format;
 
   public CreateMagicScanResponseTopHits() { 
   }
@@ -235,11 +310,11 @@ public class CreateMagicScanResponseTopHits {
   }
 
    /**
-   * Origin marker for the UI badge.
+   * Origin marker for the UI badge. Every eBay hit is an image-search hit (&#39;ebay-image&#39;); &#39;ebay-text&#39; is kept in the union only for rows cached before that was fixed.
    * @return origin
   **/
   @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "Origin marker for the UI badge.")
+  @ApiModelProperty(required = true, value = "Origin marker for the UI badge. Every eBay hit is an image-search hit ('ebay-image'); 'ebay-text' is kept in the union only for rows cached before that was fixed.")
 
   public String getOrigin() {
     return origin;
@@ -258,11 +333,11 @@ public class CreateMagicScanResponseTopHits {
   }
 
    /**
-   * CLIP cosine [0,1]; populated after the visual-rank pass.
+   * CLIP cosine [0,1]; populated after the visual-rank pass. ABSENT &#x3D; unscored (no image, CLIP down) — never filled in with a made-up value.
    * @return visualSim
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "CLIP cosine [0,1]; populated after the visual-rank pass.")
+  @ApiModelProperty(value = "CLIP cosine [0,1]; populated after the visual-rank pass. ABSENT = unscored (no image, CLIP down) — never filled in with a made-up value.")
 
   public BigDecimal getVisualSim() {
     return visualSim;
@@ -271,6 +346,121 @@ public class CreateMagicScanResponseTopHits {
 
   public void setVisualSim(BigDecimal visualSim) {
     this.visualSim = visualSim;
+  }
+
+
+  public CreateMagicScanResponseTopHits agreement(BigDecimal agreement) {
+    
+    this.agreement = agreement;
+    return this;
+  }
+
+   /**
+   * Title agreement with the match reference after the hard gates (rank.ts).
+   * @return agreement
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "Title agreement with the match reference after the hard gates (rank.ts).")
+
+  public BigDecimal getAgreement() {
+    return agreement;
+  }
+
+
+  public void setAgreement(BigDecimal agreement) {
+    this.agreement = agreement;
+  }
+
+
+  public CreateMagicScanResponseTopHits carriesIdentifier(Boolean carriesIdentifier) {
+    
+    this.carriesIdentifier = carriesIdentifier;
+    return this;
+  }
+
+   /**
+   * True when the comp states the photo&#39;s own identifier (GTIN / style code).
+   * @return carriesIdentifier
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "True when the comp states the photo's own identifier (GTIN / style code).")
+
+  public Boolean getCarriesIdentifier() {
+    return carriesIdentifier;
+  }
+
+
+  public void setCarriesIdentifier(Boolean carriesIdentifier) {
+    this.carriesIdentifier = carriesIdentifier;
+  }
+
+
+  public CreateMagicScanResponseTopHits priceOutlier(Boolean priceOutlier) {
+    
+    this.priceOutlier = priceOutlier;
+    return this;
+  }
+
+   /**
+   * Price outlier within its condition / grade bucket: shown, but not used for pricing.
+   * @return priceOutlier
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "Price outlier within its condition / grade bucket: shown, but not used for pricing.")
+
+  public Boolean getPriceOutlier() {
+    return priceOutlier;
+  }
+
+
+  public void setPriceOutlier(Boolean priceOutlier) {
+    this.priceOutlier = priceOutlier;
+  }
+
+
+  public CreateMagicScanResponseTopHits condition(String condition) {
+    
+    this.condition = condition;
+    return this;
+  }
+
+   /**
+   * Condition text the platform reported, for the pricing buckets.
+   * @return condition
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "Condition text the platform reported, for the pricing buckets.")
+
+  public String getCondition() {
+    return condition;
+  }
+
+
+  public void setCondition(String condition) {
+    this.condition = condition;
+  }
+
+
+  public CreateMagicScanResponseTopHits brand(String brand) {
+    
+    this.brand = brand;
+    return this;
+  }
+
+   /**
+   * Brand the platform reported, for the brand gate at verdict time.
+   * @return brand
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "Brand the platform reported, for the brand gate at verdict time.")
+
+  public String getBrand() {
+    return brand;
+  }
+
+
+  public void setBrand(String brand) {
+    this.brand = brand;
   }
 
 
@@ -297,6 +487,52 @@ public class CreateMagicScanResponseTopHits {
   }
 
 
+  public CreateMagicScanResponseTopHits shippingCents(BigDecimal shippingCents) {
+    
+    this.shippingCents = shippingCents;
+    return this;
+  }
+
+   /**
+   * Shipping in cents (0 &#x3D; free), where the platform reports it (ExternalSoldComp.shippingCents).
+   * @return shippingCents
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "Shipping in cents (0 = free), where the platform reports it (ExternalSoldComp.shippingCents).")
+
+  public BigDecimal getShippingCents() {
+    return shippingCents;
+  }
+
+
+  public void setShippingCents(BigDecimal shippingCents) {
+    this.shippingCents = shippingCents;
+  }
+
+
+  public CreateMagicScanResponseTopHits format(FormatEnum format) {
+    
+    this.format = format;
+    return this;
+  }
+
+   /**
+   * Auction vs fixed price, where the platform says; an active auction&#39;s price is a bid (compPriceIsBid).
+   * @return format
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "Auction vs fixed price, where the platform says; an active auction's price is a bid (compPriceIsBid).")
+
+  public FormatEnum getFormat() {
+    return format;
+  }
+
+
+  public void setFormat(FormatEnum format) {
+    this.format = format;
+  }
+
+
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -313,7 +549,14 @@ public class CreateMagicScanResponseTopHits {
         Objects.equals(this.listingUrl, createMagicScanResponseTopHits.listingUrl) &&
         Objects.equals(this.origin, createMagicScanResponseTopHits.origin) &&
         Objects.equals(this.visualSim, createMagicScanResponseTopHits.visualSim) &&
-        Objects.equals(this.state, createMagicScanResponseTopHits.state);
+        Objects.equals(this.agreement, createMagicScanResponseTopHits.agreement) &&
+        Objects.equals(this.carriesIdentifier, createMagicScanResponseTopHits.carriesIdentifier) &&
+        Objects.equals(this.priceOutlier, createMagicScanResponseTopHits.priceOutlier) &&
+        Objects.equals(this.condition, createMagicScanResponseTopHits.condition) &&
+        Objects.equals(this.brand, createMagicScanResponseTopHits.brand) &&
+        Objects.equals(this.state, createMagicScanResponseTopHits.state) &&
+        Objects.equals(this.shippingCents, createMagicScanResponseTopHits.shippingCents) &&
+        Objects.equals(this.format, createMagicScanResponseTopHits.format);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -322,7 +565,7 @@ public class CreateMagicScanResponseTopHits {
 
   @Override
   public int hashCode() {
-    return Objects.hash(platform, title, priceCents, imageUrl, listingUrl, origin, visualSim, state);
+    return Objects.hash(platform, title, priceCents, imageUrl, listingUrl, origin, visualSim, agreement, carriesIdentifier, priceOutlier, condition, brand, state, shippingCents, format);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -343,7 +586,14 @@ public class CreateMagicScanResponseTopHits {
     sb.append("    listingUrl: ").append(toIndentedString(listingUrl)).append("\n");
     sb.append("    origin: ").append(toIndentedString(origin)).append("\n");
     sb.append("    visualSim: ").append(toIndentedString(visualSim)).append("\n");
+    sb.append("    agreement: ").append(toIndentedString(agreement)).append("\n");
+    sb.append("    carriesIdentifier: ").append(toIndentedString(carriesIdentifier)).append("\n");
+    sb.append("    priceOutlier: ").append(toIndentedString(priceOutlier)).append("\n");
+    sb.append("    condition: ").append(toIndentedString(condition)).append("\n");
+    sb.append("    brand: ").append(toIndentedString(brand)).append("\n");
     sb.append("    state: ").append(toIndentedString(state)).append("\n");
+    sb.append("    shippingCents: ").append(toIndentedString(shippingCents)).append("\n");
+    sb.append("    format: ").append(toIndentedString(format)).append("\n");
     sb.append("}");
     return sb.toString();
   }

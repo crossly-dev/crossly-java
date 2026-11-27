@@ -27,41 +27,18 @@ import java.io.IOException;
 /**
  * CreateBuyerTogetherResponseData
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-11T23:47:29.843Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-27T19:58:46.962Z[Etc/UTC]")
 public class CreateBuyerTogetherResponseData {
-  public static final String SERIALIZED_NAME_ID = "id";
-  @SerializedName(SERIALIZED_NAME_ID)
-  private String id;
-
   public static final String SERIALIZED_NAME_CODE = "code";
   @SerializedName(SERIALIZED_NAME_CODE)
   private String code;
 
+  public static final String SERIALIZED_NAME_ID = "id";
+  @SerializedName(SERIALIZED_NAME_ID)
+  private String id;
+
   public CreateBuyerTogetherResponseData() { 
   }
-
-  public CreateBuyerTogetherResponseData id(String id) {
-    
-    this.id = id;
-    return this;
-  }
-
-   /**
-   * Get id
-   * @return id
-  **/
-  @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "")
-
-  public String getId() {
-    return id;
-  }
-
-
-  public void setId(String id) {
-    this.id = id;
-  }
-
 
   public CreateBuyerTogetherResponseData code(String code) {
     
@@ -86,6 +63,29 @@ public class CreateBuyerTogetherResponseData {
   }
 
 
+  public CreateBuyerTogetherResponseData id(String id) {
+    
+    this.id = id;
+    return this;
+  }
+
+   /**
+   * Get id
+   * @return id
+  **/
+  @javax.annotation.Nonnull
+  @ApiModelProperty(required = true, value = "")
+
+  public String getId() {
+    return id;
+  }
+
+
+  public void setId(String id) {
+    this.id = id;
+  }
+
+
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -95,21 +95,21 @@ public class CreateBuyerTogetherResponseData {
       return false;
     }
     CreateBuyerTogetherResponseData createBuyerTogetherResponseData = (CreateBuyerTogetherResponseData) o;
-    return Objects.equals(this.id, createBuyerTogetherResponseData.id) &&
-        Objects.equals(this.code, createBuyerTogetherResponseData.code);
+    return Objects.equals(this.code, createBuyerTogetherResponseData.code) &&
+        Objects.equals(this.id, createBuyerTogetherResponseData.id);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, code);
+    return Objects.hash(code, id);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class CreateBuyerTogetherResponseData {\n");
-    sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    code: ").append(toIndentedString(code)).append("\n");
+    sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("}");
     return sb.toString();
   }

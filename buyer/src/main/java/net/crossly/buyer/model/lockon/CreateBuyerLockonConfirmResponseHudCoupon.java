@@ -28,7 +28,7 @@ import java.io.IOException;
  * A code to try at the retailer, when there is one worth trying.  Separate from the fact chips because it is the one thing on this card the buyer has to CARRY somewhere — chips are read and forgotten, a code is copied. Null unless the recommendation is a retailer and a live code clears the offer&#39;s minimum spend.
  */
 @ApiModel(description = "A code to try at the retailer, when there is one worth trying.  Separate from the fact chips because it is the one thing on this card the buyer has to CARRY somewhere — chips are read and forgotten, a code is copied. Null unless the recommendation is a retailer and a live code clears the offer's minimum spend.")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-11T23:47:29.843Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-27T19:58:46.962Z[Etc/UTC]")
 public class CreateBuyerLockonConfirmResponseHudCoupon {
   public static final String SERIALIZED_NAME_CODE = "code";
   @SerializedName(SERIALIZED_NAME_CODE)

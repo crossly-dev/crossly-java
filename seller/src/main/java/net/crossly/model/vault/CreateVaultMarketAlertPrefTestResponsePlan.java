@@ -27,7 +27,7 @@ import java.io.IOException;
 /**
  * CreateVaultMarketAlertPrefTestResponsePlan
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-11T23:44:48.922Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-27T19:42:43.186Z[Etc/UTC]")
 public class CreateVaultMarketAlertPrefTestResponsePlan {
   /**
    * Gets or Sets email
@@ -85,61 +85,6 @@ public class CreateVaultMarketAlertPrefTestResponsePlan {
   private EmailEnum email;
 
   /**
-   * Gets or Sets webhook
-   */
-  @JsonAdapter(WebhookEnum.Adapter.class)
-  public enum WebhookEnum {
-    UNAVAILABLE("unavailable"),
-    
-    OFF("off"),
-    
-    SEND("send"),
-    
-    QUIET("quiet");
-
-    private String value;
-
-    WebhookEnum(String value) {
-      this.value = value;
-    }
-
-    public String getValue() {
-      return value;
-    }
-
-    @Override
-    public String toString() {
-      return String.valueOf(value);
-    }
-
-    public static WebhookEnum fromValue(String value) {
-      for (WebhookEnum b : WebhookEnum.values()) {
-        if (b.value.equals(value)) {
-          return b;
-        }
-      }
-      throw new IllegalArgumentException("Unexpected value '" + value + "'");
-    }
-
-    public static class Adapter extends TypeAdapter<WebhookEnum> {
-      @Override
-      public void write(final JsonWriter jsonWriter, final WebhookEnum enumeration) throws IOException {
-        jsonWriter.value(enumeration.getValue());
-      }
-
-      @Override
-      public WebhookEnum read(final JsonReader jsonReader) throws IOException {
-        String value =  jsonReader.nextString();
-        return WebhookEnum.fromValue(value);
-      }
-    }
-  }
-
-  public static final String SERIALIZED_NAME_WEBHOOK = "webhook";
-  @SerializedName(SERIALIZED_NAME_WEBHOOK)
-  private WebhookEnum webhook;
-
-  /**
    * Gets or Sets push
    */
   @JsonAdapter(PushEnum.Adapter.class)
@@ -193,6 +138,61 @@ public class CreateVaultMarketAlertPrefTestResponsePlan {
   public static final String SERIALIZED_NAME_PUSH = "push";
   @SerializedName(SERIALIZED_NAME_PUSH)
   private PushEnum push;
+
+  /**
+   * Gets or Sets webhook
+   */
+  @JsonAdapter(WebhookEnum.Adapter.class)
+  public enum WebhookEnum {
+    UNAVAILABLE("unavailable"),
+    
+    OFF("off"),
+    
+    SEND("send"),
+    
+    QUIET("quiet");
+
+    private String value;
+
+    WebhookEnum(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    @Override
+    public String toString() {
+      return String.valueOf(value);
+    }
+
+    public static WebhookEnum fromValue(String value) {
+      for (WebhookEnum b : WebhookEnum.values()) {
+        if (b.value.equals(value)) {
+          return b;
+        }
+      }
+      throw new IllegalArgumentException("Unexpected value '" + value + "'");
+    }
+
+    public static class Adapter extends TypeAdapter<WebhookEnum> {
+      @Override
+      public void write(final JsonWriter jsonWriter, final WebhookEnum enumeration) throws IOException {
+        jsonWriter.value(enumeration.getValue());
+      }
+
+      @Override
+      public WebhookEnum read(final JsonReader jsonReader) throws IOException {
+        String value =  jsonReader.nextString();
+        return WebhookEnum.fromValue(value);
+      }
+    }
+  }
+
+  public static final String SERIALIZED_NAME_WEBHOOK = "webhook";
+  @SerializedName(SERIALIZED_NAME_WEBHOOK)
+  private WebhookEnum webhook;
 
   /**
    * Gets or Sets telegram
@@ -330,29 +330,6 @@ public class CreateVaultMarketAlertPrefTestResponsePlan {
   }
 
 
-  public CreateVaultMarketAlertPrefTestResponsePlan webhook(WebhookEnum webhook) {
-    
-    this.webhook = webhook;
-    return this;
-  }
-
-   /**
-   * Get webhook
-   * @return webhook
-  **/
-  @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "")
-
-  public WebhookEnum getWebhook() {
-    return webhook;
-  }
-
-
-  public void setWebhook(WebhookEnum webhook) {
-    this.webhook = webhook;
-  }
-
-
   public CreateVaultMarketAlertPrefTestResponsePlan push(PushEnum push) {
     
     this.push = push;
@@ -373,6 +350,29 @@ public class CreateVaultMarketAlertPrefTestResponsePlan {
 
   public void setPush(PushEnum push) {
     this.push = push;
+  }
+
+
+  public CreateVaultMarketAlertPrefTestResponsePlan webhook(WebhookEnum webhook) {
+    
+    this.webhook = webhook;
+    return this;
+  }
+
+   /**
+   * Get webhook
+   * @return webhook
+  **/
+  @javax.annotation.Nonnull
+  @ApiModelProperty(required = true, value = "")
+
+  public WebhookEnum getWebhook() {
+    return webhook;
+  }
+
+
+  public void setWebhook(WebhookEnum webhook) {
+    this.webhook = webhook;
   }
 
 
@@ -432,15 +432,15 @@ public class CreateVaultMarketAlertPrefTestResponsePlan {
     }
     CreateVaultMarketAlertPrefTestResponsePlan createVaultMarketAlertPrefTestResponsePlan = (CreateVaultMarketAlertPrefTestResponsePlan) o;
     return Objects.equals(this.email, createVaultMarketAlertPrefTestResponsePlan.email) &&
-        Objects.equals(this.webhook, createVaultMarketAlertPrefTestResponsePlan.webhook) &&
         Objects.equals(this.push, createVaultMarketAlertPrefTestResponsePlan.push) &&
+        Objects.equals(this.webhook, createVaultMarketAlertPrefTestResponsePlan.webhook) &&
         Objects.equals(this.telegram, createVaultMarketAlertPrefTestResponsePlan.telegram) &&
         Objects.equals(this.terminal, createVaultMarketAlertPrefTestResponsePlan.terminal);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(email, webhook, push, telegram, terminal);
+    return Objects.hash(email, push, webhook, telegram, terminal);
   }
 
   @Override
@@ -448,8 +448,8 @@ public class CreateVaultMarketAlertPrefTestResponsePlan {
     StringBuilder sb = new StringBuilder();
     sb.append("class CreateVaultMarketAlertPrefTestResponsePlan {\n");
     sb.append("    email: ").append(toIndentedString(email)).append("\n");
-    sb.append("    webhook: ").append(toIndentedString(webhook)).append("\n");
     sb.append("    push: ").append(toIndentedString(push)).append("\n");
+    sb.append("    webhook: ").append(toIndentedString(webhook)).append("\n");
     sb.append("    telegram: ").append(toIndentedString(telegram)).append("\n");
     sb.append("    terminal: ").append(toIndentedString(terminal)).append("\n");
     sb.append("}");

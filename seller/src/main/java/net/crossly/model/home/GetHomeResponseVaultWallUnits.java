@@ -29,7 +29,7 @@ import org.openapitools.jackson.nullable.JsonNullable;
 /**
  * GetHomeResponseVaultWallUnits
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-11T23:44:48.922Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-27T19:42:43.186Z[Etc/UTC]")
 public class GetHomeResponseVaultWallUnits {
   public static final String SERIALIZED_NAME_TITLE = "title";
   @SerializedName(SERIALIZED_NAME_TITLE)
@@ -157,11 +157,11 @@ public class GetHomeResponseVaultWallUnits {
   }
 
    /**
-   * The book key, for a click through to its market (/shop/vault/markets/&lt;bookKey&gt;).
+   * The book key, for a click through to its market (/trading/&lt;bookKey&gt;).
    * @return bookKey
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The book key, for a click through to its market (/shop/vault/markets/<bookKey>).")
+  @ApiModelProperty(value = "The book key, for a click through to its market (/trading/<bookKey>).")
 
   public String getBookKey() {
     return bookKey;

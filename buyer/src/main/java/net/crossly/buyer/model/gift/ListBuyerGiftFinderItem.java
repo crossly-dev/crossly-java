@@ -29,7 +29,7 @@ import org.openapitools.jackson.nullable.JsonNullable;
 /**
  * ListBuyerGiftFinderItem
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-11T23:47:29.843Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-27T19:58:46.962Z[Etc/UTC]")
 public class ListBuyerGiftFinderItem {
   public static final String SERIALIZED_NAME_SLUG = "slug";
   @SerializedName(SERIALIZED_NAME_SLUG)
@@ -43,13 +43,13 @@ public class ListBuyerGiftFinderItem {
   @SerializedName(SERIALIZED_NAME_TITLE)
   private String title;
 
-  public static final String SERIALIZED_NAME_SALE_PRICE_CENTS = "salePriceCents";
-  @SerializedName(SERIALIZED_NAME_SALE_PRICE_CENTS)
-  private BigDecimal salePriceCents;
-
   public static final String SERIALIZED_NAME_THUMBNAIL = "thumbnail";
   @SerializedName(SERIALIZED_NAME_THUMBNAIL)
   private String thumbnail;
+
+  public static final String SERIALIZED_NAME_SALE_PRICE_CENTS = "salePriceCents";
+  @SerializedName(SERIALIZED_NAME_SALE_PRICE_CENTS)
+  private BigDecimal salePriceCents;
 
   public ListBuyerGiftFinderItem() { 
   }
@@ -123,29 +123,6 @@ public class ListBuyerGiftFinderItem {
   }
 
 
-  public ListBuyerGiftFinderItem salePriceCents(BigDecimal salePriceCents) {
-    
-    this.salePriceCents = salePriceCents;
-    return this;
-  }
-
-   /**
-   * Get salePriceCents
-   * @return salePriceCents
-  **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
-
-  public BigDecimal getSalePriceCents() {
-    return salePriceCents;
-  }
-
-
-  public void setSalePriceCents(BigDecimal salePriceCents) {
-    this.salePriceCents = salePriceCents;
-  }
-
-
   public ListBuyerGiftFinderItem thumbnail(String thumbnail) {
     
     this.thumbnail = thumbnail;
@@ -169,6 +146,29 @@ public class ListBuyerGiftFinderItem {
   }
 
 
+  public ListBuyerGiftFinderItem salePriceCents(BigDecimal salePriceCents) {
+    
+    this.salePriceCents = salePriceCents;
+    return this;
+  }
+
+   /**
+   * Get salePriceCents
+   * @return salePriceCents
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public BigDecimal getSalePriceCents() {
+    return salePriceCents;
+  }
+
+
+  public void setSalePriceCents(BigDecimal salePriceCents) {
+    this.salePriceCents = salePriceCents;
+  }
+
+
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -181,8 +181,8 @@ public class ListBuyerGiftFinderItem {
     return Objects.equals(this.slug, listBuyerGiftFinderItem.slug) &&
         Objects.equals(this.priceCents, listBuyerGiftFinderItem.priceCents) &&
         Objects.equals(this.title, listBuyerGiftFinderItem.title) &&
-        Objects.equals(this.salePriceCents, listBuyerGiftFinderItem.salePriceCents) &&
-        Objects.equals(this.thumbnail, listBuyerGiftFinderItem.thumbnail);
+        Objects.equals(this.thumbnail, listBuyerGiftFinderItem.thumbnail) &&
+        Objects.equals(this.salePriceCents, listBuyerGiftFinderItem.salePriceCents);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -191,7 +191,7 @@ public class ListBuyerGiftFinderItem {
 
   @Override
   public int hashCode() {
-    return Objects.hash(slug, priceCents, title, salePriceCents, thumbnail);
+    return Objects.hash(slug, priceCents, title, thumbnail, salePriceCents);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -208,8 +208,8 @@ public class ListBuyerGiftFinderItem {
     sb.append("    slug: ").append(toIndentedString(slug)).append("\n");
     sb.append("    priceCents: ").append(toIndentedString(priceCents)).append("\n");
     sb.append("    title: ").append(toIndentedString(title)).append("\n");
-    sb.append("    salePriceCents: ").append(toIndentedString(salePriceCents)).append("\n");
     sb.append("    thumbnail: ").append(toIndentedString(thumbnail)).append("\n");
+    sb.append("    salePriceCents: ").append(toIndentedString(salePriceCents)).append("\n");
     sb.append("}");
     return sb.toString();
   }

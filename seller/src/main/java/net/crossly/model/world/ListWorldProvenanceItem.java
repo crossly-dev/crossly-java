@@ -28,7 +28,7 @@ import org.openapitools.jackson.nullable.JsonNullable;
 /**
  * ListWorldProvenanceItem
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-11T23:44:48.922Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-27T19:42:43.186Z[Etc/UTC]")
 public class ListWorldProvenanceItem {
   public static final String SERIALIZED_NAME_PLATFORM_LISTING_ID = "platformListingId";
   @SerializedName(SERIALIZED_NAME_PLATFORM_LISTING_ID)
@@ -43,13 +43,13 @@ public class ListWorldProvenanceItem {
    */
   @JsonAdapter(KindEnum.Adapter.class)
   public enum KindEnum {
-    AUCTION("auction"),
-    
     WINDOW("window"),
     
-    AGENT("agent"),
+    AUCTION("auction"),
     
     ROOM("room"),
+    
+    AGENT("agent"),
     
     STALL("stall"),
     

@@ -24,13 +24,93 @@ import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 import java.math.BigDecimal;
+import java.util.ArrayList;
+import java.util.List;
+import net.crossly.buyer.model.catalog.CreateBuyerCatalogListingRentalQuoteResponseDataBuyout;
+import net.crossly.buyer.model.catalog.CreateBuyerCatalogListingRentalQuoteResponseDataCancellation;
+import net.crossly.buyer.model.catalog.CreateBuyerCatalogListingRentalQuoteResponseDataLines;
 import org.openapitools.jackson.nullable.JsonNullable;
 
 /**
  * CreateBuyerCatalogListingRentalQuoteResponseData
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-11T23:47:29.843Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-27T19:58:46.962Z[Etc/UTC]")
 public class CreateBuyerCatalogListingRentalQuoteResponseData {
+  /**
+   * Gets or Sets fulfilment
+   */
+  @JsonAdapter(FulfilmentEnum.Adapter.class)
+  public enum FulfilmentEnum {
+    SHIP("ship"),
+    
+    PICKUP("pickup");
+
+    private String value;
+
+    FulfilmentEnum(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    @Override
+    public String toString() {
+      return String.valueOf(value);
+    }
+
+    public static FulfilmentEnum fromValue(String value) {
+      for (FulfilmentEnum b : FulfilmentEnum.values()) {
+        if (b.value.equals(value)) {
+          return b;
+        }
+      }
+      throw new IllegalArgumentException("Unexpected value '" + value + "'");
+    }
+
+    public static class Adapter extends TypeAdapter<FulfilmentEnum> {
+      @Override
+      public void write(final JsonWriter jsonWriter, final FulfilmentEnum enumeration) throws IOException {
+        jsonWriter.value(enumeration.getValue());
+      }
+
+      @Override
+      public FulfilmentEnum read(final JsonReader jsonReader) throws IOException {
+        String value =  jsonReader.nextString();
+        return FulfilmentEnum.fromValue(value);
+      }
+    }
+  }
+
+  public static final String SERIALIZED_NAME_FULFILMENT = "fulfilment";
+  @SerializedName(SERIALIZED_NAME_FULFILMENT)
+  private FulfilmentEnum fulfilment;
+
+  public static final String SERIALIZED_NAME_SHIPPING_CENTS = "shippingCents";
+  @SerializedName(SERIALIZED_NAME_SHIPPING_CENTS)
+  private BigDecimal shippingCents;
+
+  public static final String SERIALIZED_NAME_TOTAL_CENTS = "totalCents";
+  @SerializedName(SERIALIZED_NAME_TOTAL_CENTS)
+  private BigDecimal totalCents;
+
+  public static final String SERIALIZED_NAME_NEEDS_APPROVAL = "needsApproval";
+  @SerializedName(SERIALIZED_NAME_NEEDS_APPROVAL)
+  private Boolean needsApproval;
+
+  public static final String SERIALIZED_NAME_CANCELLATION = "cancellation";
+  @SerializedName(SERIALIZED_NAME_CANCELLATION)
+  private CreateBuyerCatalogListingRentalQuoteResponseDataCancellation cancellation;
+
+  public static final String SERIALIZED_NAME_BUYOUT = "buyout";
+  @SerializedName(SERIALIZED_NAME_BUYOUT)
+  private CreateBuyerCatalogListingRentalQuoteResponseDataBuyout buyout;
+
+  public static final String SERIALIZED_NAME_PROBLEM = "problem";
+  @SerializedName(SERIALIZED_NAME_PROBLEM)
+  private String problem;
+
   public static final String SERIALIZED_NAME_START_DATE = "startDate";
   @SerializedName(SERIALIZED_NAME_START_DATE)
   private String startDate;
@@ -43,28 +123,201 @@ public class CreateBuyerCatalogListingRentalQuoteResponseData {
   @SerializedName(SERIALIZED_NAME_DAYS)
   private BigDecimal days;
 
-  public static final String SERIALIZED_NAME_PROBLEM = "problem";
-  @SerializedName(SERIALIZED_NAME_PROBLEM)
-  private String problem;
+  public static final String SERIALIZED_NAME_UNIT = "unit";
+  @SerializedName(SERIALIZED_NAME_UNIT)
+  private BigDecimal unit;
+
+  public static final String SERIALIZED_NAME_LINES = "lines";
+  @SerializedName(SERIALIZED_NAME_LINES)
+  private List<CreateBuyerCatalogListingRentalQuoteResponseDataLines> lines = new ArrayList<CreateBuyerCatalogListingRentalQuoteResponseDataLines>();
 
   public static final String SERIALIZED_NAME_RENT_CENTS = "rentCents";
   @SerializedName(SERIALIZED_NAME_RENT_CENTS)
   private BigDecimal rentCents;
 
+  public static final String SERIALIZED_NAME_CLEANING_FEE_CENTS = "cleaningFeeCents";
+  @SerializedName(SERIALIZED_NAME_CLEANING_FEE_CENTS)
+  private BigDecimal cleaningFeeCents;
+
+  public static final String SERIALIZED_NAME_DAMAGE_WAIVER_CENTS = "damageWaiverCents";
+  @SerializedName(SERIALIZED_NAME_DAMAGE_WAIVER_CENTS)
+  private BigDecimal damageWaiverCents;
+
   public static final String SERIALIZED_NAME_DEPOSIT_CENTS = "depositCents";
   @SerializedName(SERIALIZED_NAME_DEPOSIT_CENTS)
   private BigDecimal depositCents;
 
-  public static final String SERIALIZED_NAME_SHIPPING_CENTS = "shippingCents";
-  @SerializedName(SERIALIZED_NAME_SHIPPING_CENTS)
-  private BigDecimal shippingCents;
+  public static final String SERIALIZED_NAME_DEPOSIT_NOTE = "depositNote";
+  @SerializedName(SERIALIZED_NAME_DEPOSIT_NOTE)
+  private String depositNote;
 
-  public static final String SERIALIZED_NAME_TOTAL_CENTS = "totalCents";
-  @SerializedName(SERIALIZED_NAME_TOTAL_CENTS)
-  private BigDecimal totalCents;
+  public static final String SERIALIZED_NAME_CHARGEABLE_CENTS = "chargeableCents";
+  @SerializedName(SERIALIZED_NAME_CHARGEABLE_CENTS)
+  private BigDecimal chargeableCents;
 
   public CreateBuyerCatalogListingRentalQuoteResponseData() { 
   }
+
+  public CreateBuyerCatalogListingRentalQuoteResponseData fulfilment(FulfilmentEnum fulfilment) {
+    
+    this.fulfilment = fulfilment;
+    return this;
+  }
+
+   /**
+   * Get fulfilment
+   * @return fulfilment
+  **/
+  @javax.annotation.Nonnull
+  @ApiModelProperty(required = true, value = "")
+
+  public FulfilmentEnum getFulfilment() {
+    return fulfilment;
+  }
+
+
+  public void setFulfilment(FulfilmentEnum fulfilment) {
+    this.fulfilment = fulfilment;
+  }
+
+
+  public CreateBuyerCatalogListingRentalQuoteResponseData shippingCents(BigDecimal shippingCents) {
+    
+    this.shippingCents = shippingCents;
+    return this;
+  }
+
+   /**
+   * Get shippingCents
+   * @return shippingCents
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public BigDecimal getShippingCents() {
+    return shippingCents;
+  }
+
+
+  public void setShippingCents(BigDecimal shippingCents) {
+    this.shippingCents = shippingCents;
+  }
+
+
+  public CreateBuyerCatalogListingRentalQuoteResponseData totalCents(BigDecimal totalCents) {
+    
+    this.totalCents = totalCents;
+    return this;
+  }
+
+   /**
+   * Get totalCents
+   * @return totalCents
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public BigDecimal getTotalCents() {
+    return totalCents;
+  }
+
+
+  public void setTotalCents(BigDecimal totalCents) {
+    this.totalCents = totalCents;
+  }
+
+
+  public CreateBuyerCatalogListingRentalQuoteResponseData needsApproval(Boolean needsApproval) {
+    
+    this.needsApproval = needsApproval;
+    return this;
+  }
+
+   /**
+   * Get needsApproval
+   * @return needsApproval
+  **/
+  @javax.annotation.Nonnull
+  @ApiModelProperty(required = true, value = "")
+
+  public Boolean getNeedsApproval() {
+    return needsApproval;
+  }
+
+
+  public void setNeedsApproval(Boolean needsApproval) {
+    this.needsApproval = needsApproval;
+  }
+
+
+  public CreateBuyerCatalogListingRentalQuoteResponseData cancellation(CreateBuyerCatalogListingRentalQuoteResponseDataCancellation cancellation) {
+    
+    this.cancellation = cancellation;
+    return this;
+  }
+
+   /**
+   * Get cancellation
+   * @return cancellation
+  **/
+  @javax.annotation.Nonnull
+  @ApiModelProperty(required = true, value = "")
+
+  public CreateBuyerCatalogListingRentalQuoteResponseDataCancellation getCancellation() {
+    return cancellation;
+  }
+
+
+  public void setCancellation(CreateBuyerCatalogListingRentalQuoteResponseDataCancellation cancellation) {
+    this.cancellation = cancellation;
+  }
+
+
+  public CreateBuyerCatalogListingRentalQuoteResponseData buyout(CreateBuyerCatalogListingRentalQuoteResponseDataBuyout buyout) {
+    
+    this.buyout = buyout;
+    return this;
+  }
+
+   /**
+   * Get buyout
+   * @return buyout
+  **/
+  @javax.annotation.Nonnull
+  @ApiModelProperty(required = true, value = "")
+
+  public CreateBuyerCatalogListingRentalQuoteResponseDataBuyout getBuyout() {
+    return buyout;
+  }
+
+
+  public void setBuyout(CreateBuyerCatalogListingRentalQuoteResponseDataBuyout buyout) {
+    this.buyout = buyout;
+  }
+
+
+  public CreateBuyerCatalogListingRentalQuoteResponseData problem(String problem) {
+    
+    this.problem = problem;
+    return this;
+  }
+
+   /**
+   * Get problem
+   * @return problem
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public String getProblem() {
+    return problem;
+  }
+
+
+  public void setProblem(String problem) {
+    this.problem = problem;
+  }
+
 
   public CreateBuyerCatalogListingRentalQuoteResponseData startDate(String startDate) {
     
@@ -135,26 +388,54 @@ public class CreateBuyerCatalogListingRentalQuoteResponseData {
   }
 
 
-  public CreateBuyerCatalogListingRentalQuoteResponseData problem(String problem) {
+  public CreateBuyerCatalogListingRentalQuoteResponseData unit(BigDecimal unit) {
     
-    this.problem = problem;
+    this.unit = unit;
     return this;
   }
 
    /**
-   * Get problem
-   * @return problem
+   * The unit the booking would hold (null when none is free).
+   * @return unit
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "The unit the booking would hold (null when none is free).")
 
-  public String getProblem() {
-    return problem;
+  public BigDecimal getUnit() {
+    return unit;
   }
 
 
-  public void setProblem(String problem) {
-    this.problem = problem;
+  public void setUnit(BigDecimal unit) {
+    this.unit = unit;
+  }
+
+
+  public CreateBuyerCatalogListingRentalQuoteResponseData lines(List<CreateBuyerCatalogListingRentalQuoteResponseDataLines> lines) {
+    
+    this.lines = lines;
+    return this;
+  }
+
+  public CreateBuyerCatalogListingRentalQuoteResponseData addLinesItem(CreateBuyerCatalogListingRentalQuoteResponseDataLines linesItem) {
+    this.lines.add(linesItem);
+    return this;
+  }
+
+   /**
+   * Get lines
+   * @return lines
+  **/
+  @javax.annotation.Nonnull
+  @ApiModelProperty(required = true, value = "")
+
+  public List<CreateBuyerCatalogListingRentalQuoteResponseDataLines> getLines() {
+    return lines;
+  }
+
+
+  public void setLines(List<CreateBuyerCatalogListingRentalQuoteResponseDataLines> lines) {
+    this.lines = lines;
   }
 
 
@@ -165,11 +446,11 @@ public class CreateBuyerCatalogListingRentalQuoteResponseData {
   }
 
    /**
-   * Get rentCents
+   * Rent after discounts.
    * @return rentCents
   **/
   @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "")
+  @ApiModelProperty(required = true, value = "Rent after discounts.")
 
   public BigDecimal getRentCents() {
     return rentCents;
@@ -178,6 +459,52 @@ public class CreateBuyerCatalogListingRentalQuoteResponseData {
 
   public void setRentCents(BigDecimal rentCents) {
     this.rentCents = rentCents;
+  }
+
+
+  public CreateBuyerCatalogListingRentalQuoteResponseData cleaningFeeCents(BigDecimal cleaningFeeCents) {
+    
+    this.cleaningFeeCents = cleaningFeeCents;
+    return this;
+  }
+
+   /**
+   * Get cleaningFeeCents
+   * @return cleaningFeeCents
+  **/
+  @javax.annotation.Nonnull
+  @ApiModelProperty(required = true, value = "")
+
+  public BigDecimal getCleaningFeeCents() {
+    return cleaningFeeCents;
+  }
+
+
+  public void setCleaningFeeCents(BigDecimal cleaningFeeCents) {
+    this.cleaningFeeCents = cleaningFeeCents;
+  }
+
+
+  public CreateBuyerCatalogListingRentalQuoteResponseData damageWaiverCents(BigDecimal damageWaiverCents) {
+    
+    this.damageWaiverCents = damageWaiverCents;
+    return this;
+  }
+
+   /**
+   * Get damageWaiverCents
+   * @return damageWaiverCents
+  **/
+  @javax.annotation.Nonnull
+  @ApiModelProperty(required = true, value = "")
+
+  public BigDecimal getDamageWaiverCents() {
+    return damageWaiverCents;
+  }
+
+
+  public void setDamageWaiverCents(BigDecimal damageWaiverCents) {
+    this.damageWaiverCents = damageWaiverCents;
   }
 
 
@@ -204,49 +531,49 @@ public class CreateBuyerCatalogListingRentalQuoteResponseData {
   }
 
 
-  public CreateBuyerCatalogListingRentalQuoteResponseData shippingCents(BigDecimal shippingCents) {
+  public CreateBuyerCatalogListingRentalQuoteResponseData depositNote(String depositNote) {
     
-    this.shippingCents = shippingCents;
+    this.depositNote = depositNote;
     return this;
   }
 
    /**
-   * Get shippingCents
-   * @return shippingCents
+   * Why the deposit is 0 or lowered, when it is.
+   * @return depositNote
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "Why the deposit is 0 or lowered, when it is.")
 
-  public BigDecimal getShippingCents() {
-    return shippingCents;
+  public String getDepositNote() {
+    return depositNote;
   }
 
 
-  public void setShippingCents(BigDecimal shippingCents) {
-    this.shippingCents = shippingCents;
+  public void setDepositNote(String depositNote) {
+    this.depositNote = depositNote;
   }
 
 
-  public CreateBuyerCatalogListingRentalQuoteResponseData totalCents(BigDecimal totalCents) {
+  public CreateBuyerCatalogListingRentalQuoteResponseData chargeableCents(BigDecimal chargeableCents) {
     
-    this.totalCents = totalCents;
+    this.chargeableCents = chargeableCents;
     return this;
   }
 
    /**
-   * Get totalCents
-   * @return totalCents
+   * Everything but shipping and the deposit: what the seller&#39;s fee is taken on.
+   * @return chargeableCents
   **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
+  @javax.annotation.Nonnull
+  @ApiModelProperty(required = true, value = "Everything but shipping and the deposit: what the seller's fee is taken on.")
 
-  public BigDecimal getTotalCents() {
-    return totalCents;
+  public BigDecimal getChargeableCents() {
+    return chargeableCents;
   }
 
 
-  public void setTotalCents(BigDecimal totalCents) {
-    this.totalCents = totalCents;
+  public void setChargeableCents(BigDecimal chargeableCents) {
+    this.chargeableCents = chargeableCents;
   }
 
 
@@ -259,14 +586,24 @@ public class CreateBuyerCatalogListingRentalQuoteResponseData {
       return false;
     }
     CreateBuyerCatalogListingRentalQuoteResponseData createBuyerCatalogListingRentalQuoteResponseData = (CreateBuyerCatalogListingRentalQuoteResponseData) o;
-    return Objects.equals(this.startDate, createBuyerCatalogListingRentalQuoteResponseData.startDate) &&
+    return Objects.equals(this.fulfilment, createBuyerCatalogListingRentalQuoteResponseData.fulfilment) &&
+        Objects.equals(this.shippingCents, createBuyerCatalogListingRentalQuoteResponseData.shippingCents) &&
+        Objects.equals(this.totalCents, createBuyerCatalogListingRentalQuoteResponseData.totalCents) &&
+        Objects.equals(this.needsApproval, createBuyerCatalogListingRentalQuoteResponseData.needsApproval) &&
+        Objects.equals(this.cancellation, createBuyerCatalogListingRentalQuoteResponseData.cancellation) &&
+        Objects.equals(this.buyout, createBuyerCatalogListingRentalQuoteResponseData.buyout) &&
+        Objects.equals(this.problem, createBuyerCatalogListingRentalQuoteResponseData.problem) &&
+        Objects.equals(this.startDate, createBuyerCatalogListingRentalQuoteResponseData.startDate) &&
         Objects.equals(this.endDate, createBuyerCatalogListingRentalQuoteResponseData.endDate) &&
         Objects.equals(this.days, createBuyerCatalogListingRentalQuoteResponseData.days) &&
-        Objects.equals(this.problem, createBuyerCatalogListingRentalQuoteResponseData.problem) &&
+        Objects.equals(this.unit, createBuyerCatalogListingRentalQuoteResponseData.unit) &&
+        Objects.equals(this.lines, createBuyerCatalogListingRentalQuoteResponseData.lines) &&
         Objects.equals(this.rentCents, createBuyerCatalogListingRentalQuoteResponseData.rentCents) &&
+        Objects.equals(this.cleaningFeeCents, createBuyerCatalogListingRentalQuoteResponseData.cleaningFeeCents) &&
+        Objects.equals(this.damageWaiverCents, createBuyerCatalogListingRentalQuoteResponseData.damageWaiverCents) &&
         Objects.equals(this.depositCents, createBuyerCatalogListingRentalQuoteResponseData.depositCents) &&
-        Objects.equals(this.shippingCents, createBuyerCatalogListingRentalQuoteResponseData.shippingCents) &&
-        Objects.equals(this.totalCents, createBuyerCatalogListingRentalQuoteResponseData.totalCents);
+        Objects.equals(this.depositNote, createBuyerCatalogListingRentalQuoteResponseData.depositNote) &&
+        Objects.equals(this.chargeableCents, createBuyerCatalogListingRentalQuoteResponseData.chargeableCents);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -275,7 +612,7 @@ public class CreateBuyerCatalogListingRentalQuoteResponseData {
 
   @Override
   public int hashCode() {
-    return Objects.hash(startDate, endDate, days, problem, rentCents, depositCents, shippingCents, totalCents);
+    return Objects.hash(fulfilment, shippingCents, totalCents, needsApproval, cancellation, buyout, problem, startDate, endDate, days, unit, lines, rentCents, cleaningFeeCents, damageWaiverCents, depositCents, depositNote, chargeableCents);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -289,14 +626,24 @@ public class CreateBuyerCatalogListingRentalQuoteResponseData {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class CreateBuyerCatalogListingRentalQuoteResponseData {\n");
+    sb.append("    fulfilment: ").append(toIndentedString(fulfilment)).append("\n");
+    sb.append("    shippingCents: ").append(toIndentedString(shippingCents)).append("\n");
+    sb.append("    totalCents: ").append(toIndentedString(totalCents)).append("\n");
+    sb.append("    needsApproval: ").append(toIndentedString(needsApproval)).append("\n");
+    sb.append("    cancellation: ").append(toIndentedString(cancellation)).append("\n");
+    sb.append("    buyout: ").append(toIndentedString(buyout)).append("\n");
+    sb.append("    problem: ").append(toIndentedString(problem)).append("\n");
     sb.append("    startDate: ").append(toIndentedString(startDate)).append("\n");
     sb.append("    endDate: ").append(toIndentedString(endDate)).append("\n");
     sb.append("    days: ").append(toIndentedString(days)).append("\n");
-    sb.append("    problem: ").append(toIndentedString(problem)).append("\n");
+    sb.append("    unit: ").append(toIndentedString(unit)).append("\n");
+    sb.append("    lines: ").append(toIndentedString(lines)).append("\n");
     sb.append("    rentCents: ").append(toIndentedString(rentCents)).append("\n");
+    sb.append("    cleaningFeeCents: ").append(toIndentedString(cleaningFeeCents)).append("\n");
+    sb.append("    damageWaiverCents: ").append(toIndentedString(damageWaiverCents)).append("\n");
     sb.append("    depositCents: ").append(toIndentedString(depositCents)).append("\n");
-    sb.append("    shippingCents: ").append(toIndentedString(shippingCents)).append("\n");
-    sb.append("    totalCents: ").append(toIndentedString(totalCents)).append("\n");
+    sb.append("    depositNote: ").append(toIndentedString(depositNote)).append("\n");
+    sb.append("    chargeableCents: ").append(toIndentedString(chargeableCents)).append("\n");
     sb.append("}");
     return sb.toString();
   }

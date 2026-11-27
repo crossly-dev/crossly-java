@@ -28,13 +28,13 @@ import java.util.ArrayList;
 import java.util.List;
 import net.crossly.model.game.ListGameBreakUpcomingItemHits;
 import net.crossly.model.game.ListGameBreakUpcomingItemSpots;
-import net.crossly.model.common.SlugName;
+import net.crossly.model.common.NameSlug;
 import org.openapitools.jackson.nullable.JsonNullable;
 
 /**
  * ListGameBreakUpcomingItem
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-11T23:44:48.922Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-27T19:42:43.186Z[Etc/UTC]")
 public class ListGameBreakUpcomingItem {
   public static final String SERIALIZED_NAME_BREAK_ID = "breakId";
   @SerializedName(SERIALIZED_NAME_BREAK_ID)
@@ -56,13 +56,17 @@ public class ListGameBreakUpcomingItem {
   @SerializedName(SERIALIZED_NAME_STARTS_AT)
   private String startsAt;
 
+  public static final String SERIALIZED_NAME_DOORS_OPEN_AT = "doorsOpenAt";
+  @SerializedName(SERIALIZED_NAME_DOORS_OPEN_AT)
+  private String doorsOpenAt;
+
   public static final String SERIALIZED_NAME_LIVE = "live";
   @SerializedName(SERIALIZED_NAME_LIVE)
   private Boolean live;
 
   public static final String SERIALIZED_NAME_SHOP = "shop";
   @SerializedName(SERIALIZED_NAME_SHOP)
-  private SlugName shop;
+  private NameSlug shop;
 
   public static final String SERIALIZED_NAME_BUY_URL = "buyUrl";
   @SerializedName(SERIALIZED_NAME_BUY_URL)
@@ -198,6 +202,29 @@ public class ListGameBreakUpcomingItem {
   }
 
 
+  public ListGameBreakUpcomingItem doorsOpenAt(String doorsOpenAt) {
+    
+    this.doorsOpenAt = doorsOpenAt;
+    return this;
+  }
+
+   /**
+   * When the viewer gets in (ISO): the start, or earlier for a loyalty member with the seller&#39;s &#x60;live_early_entry&#x60; perk. Null with no start. Optional: a board read without a viewer leaves it at the start.
+   * @return doorsOpenAt
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "When the viewer gets in (ISO): the start, or earlier for a loyalty member with the seller's `live_early_entry` perk. Null with no start. Optional: a board read without a viewer leaves it at the start.")
+
+  public String getDoorsOpenAt() {
+    return doorsOpenAt;
+  }
+
+
+  public void setDoorsOpenAt(String doorsOpenAt) {
+    this.doorsOpenAt = doorsOpenAt;
+  }
+
+
   public ListGameBreakUpcomingItem live(Boolean live) {
     
     this.live = live;
@@ -221,7 +248,7 @@ public class ListGameBreakUpcomingItem {
   }
 
 
-  public ListGameBreakUpcomingItem shop(SlugName shop) {
+  public ListGameBreakUpcomingItem shop(NameSlug shop) {
     
     this.shop = shop;
     return this;
@@ -234,12 +261,12 @@ public class ListGameBreakUpcomingItem {
   @javax.annotation.Nonnull
   @ApiModelProperty(required = true, value = "")
 
-  public SlugName getShop() {
+  public NameSlug getShop() {
     return shop;
   }
 
 
-  public void setShop(SlugName shop) {
+  public void setShop(NameSlug shop) {
     this.shop = shop;
   }
 
@@ -360,6 +387,7 @@ public class ListGameBreakUpcomingItem {
         Objects.equals(this.product, listGameBreakUpcomingItem.product) &&
         Objects.equals(this.status, listGameBreakUpcomingItem.status) &&
         Objects.equals(this.startsAt, listGameBreakUpcomingItem.startsAt) &&
+        Objects.equals(this.doorsOpenAt, listGameBreakUpcomingItem.doorsOpenAt) &&
         Objects.equals(this.live, listGameBreakUpcomingItem.live) &&
         Objects.equals(this.shop, listGameBreakUpcomingItem.shop) &&
         Objects.equals(this.buyUrl, listGameBreakUpcomingItem.buyUrl) &&
@@ -374,7 +402,7 @@ public class ListGameBreakUpcomingItem {
 
   @Override
   public int hashCode() {
-    return Objects.hash(breakId, title, product, status, startsAt, live, shop, buyUrl, spotsLeft, spots, hits);
+    return Objects.hash(breakId, title, product, status, startsAt, doorsOpenAt, live, shop, buyUrl, spotsLeft, spots, hits);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -393,6 +421,7 @@ public class ListGameBreakUpcomingItem {
     sb.append("    product: ").append(toIndentedString(product)).append("\n");
     sb.append("    status: ").append(toIndentedString(status)).append("\n");
     sb.append("    startsAt: ").append(toIndentedString(startsAt)).append("\n");
+    sb.append("    doorsOpenAt: ").append(toIndentedString(doorsOpenAt)).append("\n");
     sb.append("    live: ").append(toIndentedString(live)).append("\n");
     sb.append("    shop: ").append(toIndentedString(shop)).append("\n");
     sb.append("    buyUrl: ").append(toIndentedString(buyUrl)).append("\n");

@@ -29,7 +29,7 @@ import org.openapitools.jackson.nullable.JsonNullable;
 /**
  * CreateBuyerAuctionPayResponseData
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-11T23:47:29.843Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-27T19:58:46.962Z[Etc/UTC]")
 public class CreateBuyerAuctionPayResponseData {
   public static final String SERIALIZED_NAME_PAID = "paid";
   @SerializedName(SERIALIZED_NAME_PAID)
@@ -39,13 +39,13 @@ public class CreateBuyerAuctionPayResponseData {
   @SerializedName(SERIALIZED_NAME_CLIENT_SECRET)
   private String clientSecret;
 
-  public static final String SERIALIZED_NAME_AMOUNT_CENTS = "amountCents";
-  @SerializedName(SERIALIZED_NAME_AMOUNT_CENTS)
-  private BigDecimal amountCents;
-
   public static final String SERIALIZED_NAME_PAYMENT_INTENT_ID = "paymentIntentId";
   @SerializedName(SERIALIZED_NAME_PAYMENT_INTENT_ID)
   private String paymentIntentId;
+
+  public static final String SERIALIZED_NAME_AMOUNT_CENTS = "amountCents";
+  @SerializedName(SERIALIZED_NAME_AMOUNT_CENTS)
+  private BigDecimal amountCents;
 
   public CreateBuyerAuctionPayResponseData() { 
   }
@@ -96,29 +96,6 @@ public class CreateBuyerAuctionPayResponseData {
   }
 
 
-  public CreateBuyerAuctionPayResponseData amountCents(BigDecimal amountCents) {
-    
-    this.amountCents = amountCents;
-    return this;
-  }
-
-   /**
-   * Get amountCents
-   * @return amountCents
-  **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
-
-  public BigDecimal getAmountCents() {
-    return amountCents;
-  }
-
-
-  public void setAmountCents(BigDecimal amountCents) {
-    this.amountCents = amountCents;
-  }
-
-
   public CreateBuyerAuctionPayResponseData paymentIntentId(String paymentIntentId) {
     
     this.paymentIntentId = paymentIntentId;
@@ -142,6 +119,29 @@ public class CreateBuyerAuctionPayResponseData {
   }
 
 
+  public CreateBuyerAuctionPayResponseData amountCents(BigDecimal amountCents) {
+    
+    this.amountCents = amountCents;
+    return this;
+  }
+
+   /**
+   * Get amountCents
+   * @return amountCents
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public BigDecimal getAmountCents() {
+    return amountCents;
+  }
+
+
+  public void setAmountCents(BigDecimal amountCents) {
+    this.amountCents = amountCents;
+  }
+
+
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -153,8 +153,8 @@ public class CreateBuyerAuctionPayResponseData {
     CreateBuyerAuctionPayResponseData createBuyerAuctionPayResponseData = (CreateBuyerAuctionPayResponseData) o;
     return Objects.equals(this.paid, createBuyerAuctionPayResponseData.paid) &&
         Objects.equals(this.clientSecret, createBuyerAuctionPayResponseData.clientSecret) &&
-        Objects.equals(this.amountCents, createBuyerAuctionPayResponseData.amountCents) &&
-        Objects.equals(this.paymentIntentId, createBuyerAuctionPayResponseData.paymentIntentId);
+        Objects.equals(this.paymentIntentId, createBuyerAuctionPayResponseData.paymentIntentId) &&
+        Objects.equals(this.amountCents, createBuyerAuctionPayResponseData.amountCents);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -163,7 +163,7 @@ public class CreateBuyerAuctionPayResponseData {
 
   @Override
   public int hashCode() {
-    return Objects.hash(paid, clientSecret, amountCents, paymentIntentId);
+    return Objects.hash(paid, clientSecret, paymentIntentId, amountCents);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -179,8 +179,8 @@ public class CreateBuyerAuctionPayResponseData {
     sb.append("class CreateBuyerAuctionPayResponseData {\n");
     sb.append("    paid: ").append(toIndentedString(paid)).append("\n");
     sb.append("    clientSecret: ").append(toIndentedString(clientSecret)).append("\n");
-    sb.append("    amountCents: ").append(toIndentedString(amountCents)).append("\n");
     sb.append("    paymentIntentId: ").append(toIndentedString(paymentIntentId)).append("\n");
+    sb.append("    amountCents: ").append(toIndentedString(amountCents)).append("\n");
     sb.append("}");
     return sb.toString();
   }

@@ -31,19 +31,19 @@ import org.openapitools.jackson.nullable.JsonNullable;
 /**
  * GetBuyerPurchaseDeliveryResponseData
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-11T23:47:29.843Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-27T19:58:46.962Z[Etc/UTC]")
 public class GetBuyerPurchaseDeliveryResponseData {
   public static final String SERIALIZED_NAME_PICKUP_POINT = "pickupPoint";
   @SerializedName(SERIALIZED_NAME_PICKUP_POINT)
   private Map<String, Object> pickupPoint = null;
 
-  public static final String SERIALIZED_NAME_CARRIER = "carrier";
-  @SerializedName(SERIALIZED_NAME_CARRIER)
-  private String carrier;
-
   public static final String SERIALIZED_NAME_TRACKING_NUMBER = "trackingNumber";
   @SerializedName(SERIALIZED_NAME_TRACKING_NUMBER)
   private String trackingNumber;
+
+  public static final String SERIALIZED_NAME_CARRIER = "carrier";
+  @SerializedName(SERIALIZED_NAME_CARRIER)
+  private String carrier;
 
   public static final String SERIALIZED_NAME_CONSOLIDATION = "consolidation";
   @SerializedName(SERIALIZED_NAME_CONSOLIDATION)
@@ -83,29 +83,6 @@ public class GetBuyerPurchaseDeliveryResponseData {
   }
 
 
-  public GetBuyerPurchaseDeliveryResponseData carrier(String carrier) {
-    
-    this.carrier = carrier;
-    return this;
-  }
-
-   /**
-   * Get carrier
-   * @return carrier
-  **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
-
-  public String getCarrier() {
-    return carrier;
-  }
-
-
-  public void setCarrier(String carrier) {
-    this.carrier = carrier;
-  }
-
-
   public GetBuyerPurchaseDeliveryResponseData trackingNumber(String trackingNumber) {
     
     this.trackingNumber = trackingNumber;
@@ -126,6 +103,29 @@ public class GetBuyerPurchaseDeliveryResponseData {
 
   public void setTrackingNumber(String trackingNumber) {
     this.trackingNumber = trackingNumber;
+  }
+
+
+  public GetBuyerPurchaseDeliveryResponseData carrier(String carrier) {
+    
+    this.carrier = carrier;
+    return this;
+  }
+
+   /**
+   * Get carrier
+   * @return carrier
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public String getCarrier() {
+    return carrier;
+  }
+
+
+  public void setCarrier(String carrier) {
+    this.carrier = carrier;
   }
 
 
@@ -170,8 +170,8 @@ public class GetBuyerPurchaseDeliveryResponseData {
     }
     GetBuyerPurchaseDeliveryResponseData getBuyerPurchaseDeliveryResponseData = (GetBuyerPurchaseDeliveryResponseData) o;
     return Objects.equals(this.pickupPoint, getBuyerPurchaseDeliveryResponseData.pickupPoint) &&
-        Objects.equals(this.carrier, getBuyerPurchaseDeliveryResponseData.carrier) &&
         Objects.equals(this.trackingNumber, getBuyerPurchaseDeliveryResponseData.trackingNumber) &&
+        Objects.equals(this.carrier, getBuyerPurchaseDeliveryResponseData.carrier) &&
         Objects.equals(this.consolidation, getBuyerPurchaseDeliveryResponseData.consolidation);
   }
 
@@ -181,7 +181,7 @@ public class GetBuyerPurchaseDeliveryResponseData {
 
   @Override
   public int hashCode() {
-    return Objects.hash(pickupPoint, carrier, trackingNumber, consolidation);
+    return Objects.hash(pickupPoint, trackingNumber, carrier, consolidation);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -196,8 +196,8 @@ public class GetBuyerPurchaseDeliveryResponseData {
     StringBuilder sb = new StringBuilder();
     sb.append("class GetBuyerPurchaseDeliveryResponseData {\n");
     sb.append("    pickupPoint: ").append(toIndentedString(pickupPoint)).append("\n");
-    sb.append("    carrier: ").append(toIndentedString(carrier)).append("\n");
     sb.append("    trackingNumber: ").append(toIndentedString(trackingNumber)).append("\n");
+    sb.append("    carrier: ").append(toIndentedString(carrier)).append("\n");
     sb.append("    consolidation: ").append(toIndentedString(consolidation)).append("\n");
     sb.append("}");
     return sb.toString();

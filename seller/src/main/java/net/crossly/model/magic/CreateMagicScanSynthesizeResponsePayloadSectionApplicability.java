@@ -28,7 +28,7 @@ import java.io.IOException;
  * Deterministic (NO-AI) applicability hint for the heavyweight optional form sections (vehicle compatibility, EU EPR / energy label, hazmat). Computed from the resolved category + seller region via &#x60;applicableOptionalSections&#x60;; the form pre-checks each section&#39;s \&quot;this item needs …\&quot; toggle from it. Additive + best-effort.
  */
 @ApiModel(description = "Deterministic (NO-AI) applicability hint for the heavyweight optional form sections (vehicle compatibility, EU EPR / energy label, hazmat). Computed from the resolved category + seller region via `applicableOptionalSections`; the form pre-checks each section's \"this item needs …\" toggle from it. Additive + best-effort.")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-11T23:44:48.922Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-27T19:42:43.186Z[Etc/UTC]")
 public class CreateMagicScanSynthesizeResponsePayloadSectionApplicability {
   public static final String SERIALIZED_NAME_VEHICLE_COMPAT = "vehicleCompat";
   @SerializedName(SERIALIZED_NAME_VEHICLE_COMPAT)

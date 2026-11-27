@@ -25,12 +25,11 @@ import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 import java.math.BigDecimal;
 import org.openapitools.jackson.nullable.JsonNullable;
-import org.threeten.bp.OffsetDateTime;
 
 /**
  * GetAnalyticDashboardResponseTop5ItemsByRevenue
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-11T23:44:48.922Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-27T19:42:43.186Z[Etc/UTC]")
 public class GetAnalyticDashboardResponseTop5ItemsByRevenue {
   public static final String SERIALIZED_NAME_SALE_ID = "saleId";
   @SerializedName(SERIALIZED_NAME_SALE_ID)
@@ -48,9 +47,9 @@ public class GetAnalyticDashboardResponseTop5ItemsByRevenue {
   @SerializedName(SERIALIZED_NAME_NET_PROFIT)
   private BigDecimal netProfit;
 
-  public static final String SERIALIZED_NAME_DETECTED_AT = "detectedAt";
-  @SerializedName(SERIALIZED_NAME_DETECTED_AT)
-  private OffsetDateTime detectedAt;
+  public static final String SERIALIZED_NAME_REVENUE = "revenue";
+  @SerializedName(SERIALIZED_NAME_REVENUE)
+  private BigDecimal revenue;
 
   public static final String SERIALIZED_NAME_ITEM_TITLE = "itemTitle";
   @SerializedName(SERIALIZED_NAME_ITEM_TITLE)
@@ -155,26 +154,26 @@ public class GetAnalyticDashboardResponseTop5ItemsByRevenue {
   }
 
 
-  public GetAnalyticDashboardResponseTop5ItemsByRevenue detectedAt(OffsetDateTime detectedAt) {
+  public GetAnalyticDashboardResponseTop5ItemsByRevenue revenue(BigDecimal revenue) {
     
-    this.detectedAt = detectedAt;
+    this.revenue = revenue;
     return this;
   }
 
    /**
-   * Get detectedAt
-   * @return detectedAt
+   * Get revenue
+   * @return revenue
   **/
   @javax.annotation.Nonnull
   @ApiModelProperty(required = true, value = "")
 
-  public OffsetDateTime getDetectedAt() {
-    return detectedAt;
+  public BigDecimal getRevenue() {
+    return revenue;
   }
 
 
-  public void setDetectedAt(OffsetDateTime detectedAt) {
-    this.detectedAt = detectedAt;
+  public void setRevenue(BigDecimal revenue) {
+    this.revenue = revenue;
   }
 
 
@@ -211,8 +210,8 @@ public class GetAnalyticDashboardResponseTop5ItemsByRevenue {
    * Get itemImage
    * @return itemImage
   **/
-  @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "")
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
 
   public String getItemImage() {
     return itemImage;
@@ -237,7 +236,7 @@ public class GetAnalyticDashboardResponseTop5ItemsByRevenue {
         Objects.equals(this.platform, getAnalyticDashboardResponseTop5ItemsByRevenue.platform) &&
         Objects.equals(this.salePrice, getAnalyticDashboardResponseTop5ItemsByRevenue.salePrice) &&
         Objects.equals(this.netProfit, getAnalyticDashboardResponseTop5ItemsByRevenue.netProfit) &&
-        Objects.equals(this.detectedAt, getAnalyticDashboardResponseTop5ItemsByRevenue.detectedAt) &&
+        Objects.equals(this.revenue, getAnalyticDashboardResponseTop5ItemsByRevenue.revenue) &&
         Objects.equals(this.itemTitle, getAnalyticDashboardResponseTop5ItemsByRevenue.itemTitle) &&
         Objects.equals(this.itemImage, getAnalyticDashboardResponseTop5ItemsByRevenue.itemImage);
   }
@@ -248,7 +247,7 @@ public class GetAnalyticDashboardResponseTop5ItemsByRevenue {
 
   @Override
   public int hashCode() {
-    return Objects.hash(saleId, platform, salePrice, netProfit, detectedAt, itemTitle, itemImage);
+    return Objects.hash(saleId, platform, salePrice, netProfit, revenue, itemTitle, itemImage);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -266,7 +265,7 @@ public class GetAnalyticDashboardResponseTop5ItemsByRevenue {
     sb.append("    platform: ").append(toIndentedString(platform)).append("\n");
     sb.append("    salePrice: ").append(toIndentedString(salePrice)).append("\n");
     sb.append("    netProfit: ").append(toIndentedString(netProfit)).append("\n");
-    sb.append("    detectedAt: ").append(toIndentedString(detectedAt)).append("\n");
+    sb.append("    revenue: ").append(toIndentedString(revenue)).append("\n");
     sb.append("    itemTitle: ").append(toIndentedString(itemTitle)).append("\n");
     sb.append("    itemImage: ").append(toIndentedString(itemImage)).append("\n");
     sb.append("}");

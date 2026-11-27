@@ -29,7 +29,7 @@ import org.openapitools.jackson.nullable.JsonNullable;
 /**
  * ListBuyerPacksItemTiers
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-11T23:47:29.843Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-27T19:58:46.962Z[Etc/UTC]")
 public class ListBuyerPacksItemTiers {
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
@@ -39,14 +39,6 @@ public class ListBuyerPacksItemTiers {
   @SerializedName(SERIALIZED_NAME_NAME)
   private String name;
 
-  public static final String SERIALIZED_NAME_AVAILABLE = "available";
-  @SerializedName(SERIALIZED_NAME_AVAILABLE)
-  private BigDecimal available;
-
-  public static final String SERIALIZED_NAME_MIN_VALUE_CENTS = "minValueCents";
-  @SerializedName(SERIALIZED_NAME_MIN_VALUE_CENTS)
-  private BigDecimal minValueCents;
-
   public static final String SERIALIZED_NAME_WEIGHT = "weight";
   @SerializedName(SERIALIZED_NAME_WEIGHT)
   private BigDecimal weight;
@@ -54,6 +46,14 @@ public class ListBuyerPacksItemTiers {
   public static final String SERIALIZED_NAME_ODDS_PCT = "oddsPct";
   @SerializedName(SERIALIZED_NAME_ODDS_PCT)
   private BigDecimal oddsPct;
+
+  public static final String SERIALIZED_NAME_AVAILABLE = "available";
+  @SerializedName(SERIALIZED_NAME_AVAILABLE)
+  private BigDecimal available;
+
+  public static final String SERIALIZED_NAME_MIN_VALUE_CENTS = "minValueCents";
+  @SerializedName(SERIALIZED_NAME_MIN_VALUE_CENTS)
+  private BigDecimal minValueCents;
 
   public static final String SERIALIZED_NAME_MAX_VALUE_CENTS = "maxValueCents";
   @SerializedName(SERIALIZED_NAME_MAX_VALUE_CENTS)
@@ -112,52 +112,6 @@ public class ListBuyerPacksItemTiers {
   }
 
 
-  public ListBuyerPacksItemTiers available(BigDecimal available) {
-    
-    this.available = available;
-    return this;
-  }
-
-   /**
-   * Get available
-   * @return available
-  **/
-  @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "")
-
-  public BigDecimal getAvailable() {
-    return available;
-  }
-
-
-  public void setAvailable(BigDecimal available) {
-    this.available = available;
-  }
-
-
-  public ListBuyerPacksItemTiers minValueCents(BigDecimal minValueCents) {
-    
-    this.minValueCents = minValueCents;
-    return this;
-  }
-
-   /**
-   * Get minValueCents
-   * @return minValueCents
-  **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
-
-  public BigDecimal getMinValueCents() {
-    return minValueCents;
-  }
-
-
-  public void setMinValueCents(BigDecimal minValueCents) {
-    this.minValueCents = minValueCents;
-  }
-
-
   public ListBuyerPacksItemTiers weight(BigDecimal weight) {
     
     this.weight = weight;
@@ -201,6 +155,52 @@ public class ListBuyerPacksItemTiers {
 
   public void setOddsPct(BigDecimal oddsPct) {
     this.oddsPct = oddsPct;
+  }
+
+
+  public ListBuyerPacksItemTiers available(BigDecimal available) {
+    
+    this.available = available;
+    return this;
+  }
+
+   /**
+   * Get available
+   * @return available
+  **/
+  @javax.annotation.Nonnull
+  @ApiModelProperty(required = true, value = "")
+
+  public BigDecimal getAvailable() {
+    return available;
+  }
+
+
+  public void setAvailable(BigDecimal available) {
+    this.available = available;
+  }
+
+
+  public ListBuyerPacksItemTiers minValueCents(BigDecimal minValueCents) {
+    
+    this.minValueCents = minValueCents;
+    return this;
+  }
+
+   /**
+   * Get minValueCents
+   * @return minValueCents
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public BigDecimal getMinValueCents() {
+    return minValueCents;
+  }
+
+
+  public void setMinValueCents(BigDecimal minValueCents) {
+    this.minValueCents = minValueCents;
   }
 
 
@@ -261,10 +261,10 @@ public class ListBuyerPacksItemTiers {
     ListBuyerPacksItemTiers listBuyerPacksItemTiers = (ListBuyerPacksItemTiers) o;
     return Objects.equals(this.id, listBuyerPacksItemTiers.id) &&
         Objects.equals(this.name, listBuyerPacksItemTiers.name) &&
-        Objects.equals(this.available, listBuyerPacksItemTiers.available) &&
-        Objects.equals(this.minValueCents, listBuyerPacksItemTiers.minValueCents) &&
         Objects.equals(this.weight, listBuyerPacksItemTiers.weight) &&
         Objects.equals(this.oddsPct, listBuyerPacksItemTiers.oddsPct) &&
+        Objects.equals(this.available, listBuyerPacksItemTiers.available) &&
+        Objects.equals(this.minValueCents, listBuyerPacksItemTiers.minValueCents) &&
         Objects.equals(this.maxValueCents, listBuyerPacksItemTiers.maxValueCents) &&
         Objects.equals(this.avgValueCents, listBuyerPacksItemTiers.avgValueCents);
   }
@@ -275,7 +275,7 @@ public class ListBuyerPacksItemTiers {
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, name, available, minValueCents, weight, oddsPct, maxValueCents, avgValueCents);
+    return Objects.hash(id, name, weight, oddsPct, available, minValueCents, maxValueCents, avgValueCents);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -291,10 +291,10 @@ public class ListBuyerPacksItemTiers {
     sb.append("class ListBuyerPacksItemTiers {\n");
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
-    sb.append("    available: ").append(toIndentedString(available)).append("\n");
-    sb.append("    minValueCents: ").append(toIndentedString(minValueCents)).append("\n");
     sb.append("    weight: ").append(toIndentedString(weight)).append("\n");
     sb.append("    oddsPct: ").append(toIndentedString(oddsPct)).append("\n");
+    sb.append("    available: ").append(toIndentedString(available)).append("\n");
+    sb.append("    minValueCents: ").append(toIndentedString(minValueCents)).append("\n");
     sb.append("    maxValueCents: ").append(toIndentedString(maxValueCents)).append("\n");
     sb.append("    avgValueCents: ").append(toIndentedString(avgValueCents)).append("\n");
     sb.append("}");

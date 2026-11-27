@@ -24,12 +24,15 @@ import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 import java.math.BigDecimal;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 import org.openapitools.jackson.nullable.JsonNullable;
 
 /**
  * CreateDaoProposalOpenResponseData
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-11T23:44:48.922Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-27T19:42:43.186Z[Etc/UTC]")
 public class CreateDaoProposalOpenResponseData {
   public static final String SERIALIZED_NAME_ELIGIBLE_VOTERS = "eligibleVoters";
   @SerializedName(SERIALIZED_NAME_ELIGIBLE_VOTERS)
@@ -106,6 +109,14 @@ public class CreateDaoProposalOpenResponseData {
   public static final String SERIALIZED_NAME_CHARITY_GOAL_ID = "charityGoalId";
   @SerializedName(SERIALIZED_NAME_CHARITY_GOAL_ID)
   private String charityGoalId;
+
+  public static final String SERIALIZED_NAME_PROPOSAL_KIND = "proposalKind";
+  @SerializedName(SERIALIZED_NAME_PROPOSAL_KIND)
+  private String proposalKind;
+
+  public static final String SERIALIZED_NAME_PARAMS = "params";
+  @SerializedName(SERIALIZED_NAME_PARAMS)
+  private Map<String, Object> params = null;
 
   public static final String SERIALIZED_NAME_CREATED_AT = "createdAt";
   @SerializedName(SERIALIZED_NAME_CREATED_AT)
@@ -551,6 +562,60 @@ public class CreateDaoProposalOpenResponseData {
   }
 
 
+  public CreateDaoProposalOpenResponseData proposalKind(String proposalKind) {
+    
+    this.proposalKind = proposalKind;
+    return this;
+  }
+
+   /**
+   * Get proposalKind
+   * @return proposalKind
+  **/
+  @javax.annotation.Nonnull
+  @ApiModelProperty(required = true, value = "")
+
+  public String getProposalKind() {
+    return proposalKind;
+  }
+
+
+  public void setProposalKind(String proposalKind) {
+    this.proposalKind = proposalKind;
+  }
+
+
+  public CreateDaoProposalOpenResponseData params(Map<String, Object> params) {
+    
+    this.params = params;
+    return this;
+  }
+
+  public CreateDaoProposalOpenResponseData putParamsItem(String key, Object paramsItem) {
+    if (this.params == null) {
+      this.params = new HashMap<String, Object>();
+    }
+    this.params.put(key, paramsItem);
+    return this;
+  }
+
+   /**
+   * Get params
+   * @return params
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public Map<String, Object> getParams() {
+    return params;
+  }
+
+
+  public void setParams(Map<String, Object> params) {
+    this.params = params;
+  }
+
+
   public CreateDaoProposalOpenResponseData createdAt(String createdAt) {
     
     this.createdAt = createdAt;
@@ -602,6 +667,8 @@ public class CreateDaoProposalOpenResponseData {
         Objects.equals(this.talliedAt, createDaoProposalOpenResponseData.talliedAt) &&
         Objects.equals(this.vetoedReason, createDaoProposalOpenResponseData.vetoedReason) &&
         Objects.equals(this.charityGoalId, createDaoProposalOpenResponseData.charityGoalId) &&
+        Objects.equals(this.proposalKind, createDaoProposalOpenResponseData.proposalKind) &&
+        Objects.equals(this.params, createDaoProposalOpenResponseData.params) &&
         Objects.equals(this.createdAt, createDaoProposalOpenResponseData.createdAt);
   }
 
@@ -611,7 +678,7 @@ public class CreateDaoProposalOpenResponseData {
 
   @Override
   public int hashCode() {
-    return Objects.hash(eligibleVoters, id, title, body, beneficiaryKind, beneficiaryNote, requestedBaseUnits, status, totalVotingPower, powerFor, powerAgainst, powerAbstain, quorumBps, passThresholdBps, opensAt, closesAt, talliedAt, vetoedReason, charityGoalId, createdAt);
+    return Objects.hash(eligibleVoters, id, title, body, beneficiaryKind, beneficiaryNote, requestedBaseUnits, status, totalVotingPower, powerFor, powerAgainst, powerAbstain, quorumBps, passThresholdBps, opensAt, closesAt, talliedAt, vetoedReason, charityGoalId, proposalKind, params, createdAt);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -644,6 +711,8 @@ public class CreateDaoProposalOpenResponseData {
     sb.append("    talliedAt: ").append(toIndentedString(talliedAt)).append("\n");
     sb.append("    vetoedReason: ").append(toIndentedString(vetoedReason)).append("\n");
     sb.append("    charityGoalId: ").append(toIndentedString(charityGoalId)).append("\n");
+    sb.append("    proposalKind: ").append(toIndentedString(proposalKind)).append("\n");
+    sb.append("    params: ").append(toIndentedString(params)).append("\n");
     sb.append("    createdAt: ").append(toIndentedString(createdAt)).append("\n");
     sb.append("}");
     return sb.toString();

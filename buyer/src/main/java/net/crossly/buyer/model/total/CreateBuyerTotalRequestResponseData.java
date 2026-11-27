@@ -27,41 +27,18 @@ import java.io.IOException;
 /**
  * CreateBuyerTotalRequestResponseData
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-11T23:47:29.843Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-27T19:58:46.962Z[Etc/UTC]")
 public class CreateBuyerTotalRequestResponseData {
-  public static final String SERIALIZED_NAME_ID = "id";
-  @SerializedName(SERIALIZED_NAME_ID)
-  private String id;
-
   public static final String SERIALIZED_NAME_OK = "ok";
   @SerializedName(SERIALIZED_NAME_OK)
   private Boolean ok;
 
+  public static final String SERIALIZED_NAME_ID = "id";
+  @SerializedName(SERIALIZED_NAME_ID)
+  private String id;
+
   public CreateBuyerTotalRequestResponseData() { 
   }
-
-  public CreateBuyerTotalRequestResponseData id(String id) {
-    
-    this.id = id;
-    return this;
-  }
-
-   /**
-   * Get id
-   * @return id
-  **/
-  @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "")
-
-  public String getId() {
-    return id;
-  }
-
-
-  public void setId(String id) {
-    this.id = id;
-  }
-
 
   public CreateBuyerTotalRequestResponseData ok(Boolean ok) {
     
@@ -86,6 +63,29 @@ public class CreateBuyerTotalRequestResponseData {
   }
 
 
+  public CreateBuyerTotalRequestResponseData id(String id) {
+    
+    this.id = id;
+    return this;
+  }
+
+   /**
+   * Get id
+   * @return id
+  **/
+  @javax.annotation.Nonnull
+  @ApiModelProperty(required = true, value = "")
+
+  public String getId() {
+    return id;
+  }
+
+
+  public void setId(String id) {
+    this.id = id;
+  }
+
+
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -95,21 +95,21 @@ public class CreateBuyerTotalRequestResponseData {
       return false;
     }
     CreateBuyerTotalRequestResponseData createBuyerTotalRequestResponseData = (CreateBuyerTotalRequestResponseData) o;
-    return Objects.equals(this.id, createBuyerTotalRequestResponseData.id) &&
-        Objects.equals(this.ok, createBuyerTotalRequestResponseData.ok);
+    return Objects.equals(this.ok, createBuyerTotalRequestResponseData.ok) &&
+        Objects.equals(this.id, createBuyerTotalRequestResponseData.id);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, ok);
+    return Objects.hash(ok, id);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class CreateBuyerTotalRequestResponseData {\n");
-    sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    ok: ").append(toIndentedString(ok)).append("\n");
+    sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("}");
     return sb.toString();
   }

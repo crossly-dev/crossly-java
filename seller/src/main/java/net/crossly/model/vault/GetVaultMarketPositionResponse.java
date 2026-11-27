@@ -26,6 +26,7 @@ import java.io.IOException;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
+import net.crossly.model.vault.GetVaultMarketPositionResponseAuctionsItem;
 import net.crossly.model.vault.GetVaultMarketPositionResponseInstructions;
 import net.crossly.model.vault.GetVaultMarketPositionResponseLegs;
 import net.crossly.model.vault.GetVaultMarketPositionResponseLoans;
@@ -35,7 +36,7 @@ import org.openapitools.jackson.nullable.JsonNullable;
 /**
  * GetVaultMarketPositionResponse
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-11T23:44:48.922Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-27T19:42:43.186Z[Etc/UTC]")
 public class GetVaultMarketPositionResponse {
   public static final String SERIALIZED_NAME_LOANS = "loans";
   @SerializedName(SERIALIZED_NAME_LOANS)
@@ -43,7 +44,7 @@ public class GetVaultMarketPositionResponse {
 
   public static final String SERIALIZED_NAME_AUCTIONS = "auctions";
   @SerializedName(SERIALIZED_NAME_AUCTIONS)
-  private List<Object> auctions = new ArrayList<Object>();
+  private List<GetVaultMarketPositionResponseAuctionsItem> auctions = new ArrayList<GetVaultMarketPositionResponseAuctionsItem>();
 
   public static final String SERIALIZED_NAME_INSTRUCTIONS = "instructions";
   @SerializedName(SERIALIZED_NAME_INSTRUCTIONS)
@@ -66,9 +67,9 @@ public class GetVaultMarketPositionResponse {
    */
   @JsonAdapter(KindEnum.Adapter.class)
   public enum KindEnum {
-    LONG("long"),
+    SHORT("short"),
     
-    SHORT("short");
+    LONG("long");
 
     private String value;
 
@@ -271,13 +272,13 @@ public class GetVaultMarketPositionResponse {
   }
 
 
-  public GetVaultMarketPositionResponse auctions(List<Object> auctions) {
+  public GetVaultMarketPositionResponse auctions(List<GetVaultMarketPositionResponseAuctionsItem> auctions) {
     
     this.auctions = auctions;
     return this;
   }
 
-  public GetVaultMarketPositionResponse addAuctionsItem(Object auctionsItem) {
+  public GetVaultMarketPositionResponse addAuctionsItem(GetVaultMarketPositionResponseAuctionsItem auctionsItem) {
     this.auctions.add(auctionsItem);
     return this;
   }
@@ -289,12 +290,12 @@ public class GetVaultMarketPositionResponse {
   @javax.annotation.Nonnull
   @ApiModelProperty(required = true, value = "")
 
-  public List<Object> getAuctions() {
+  public List<GetVaultMarketPositionResponseAuctionsItem> getAuctions() {
     return auctions;
   }
 
 
-  public void setAuctions(List<Object> auctions) {
+  public void setAuctions(List<GetVaultMarketPositionResponseAuctionsItem> auctions) {
     this.auctions = auctions;
   }
 

@@ -34,7 +34,7 @@ import org.threeten.bp.OffsetDateTime;
 /**
  * CreateWeb3OrderResponseOrder
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-11T23:44:48.922Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-27T19:42:43.186Z[Etc/UTC]")
 public class CreateWeb3OrderResponseOrder {
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
@@ -52,22 +52,18 @@ public class CreateWeb3OrderResponseOrder {
   @SerializedName(SERIALIZED_NAME_USER_ID)
   private String userId;
 
-  public static final String SERIALIZED_NAME_QUANTITY = "quantity";
-  @SerializedName(SERIALIZED_NAME_QUANTITY)
-  private BigDecimal quantity;
-
   /**
    * Gets or Sets status
    */
   @JsonAdapter(StatusEnum.Adapter.class)
   public enum StatusEnum {
-    OPEN("open"),
-    
-    FILLED("filled"),
-    
     CANCELLED("cancelled"),
     
+    OPEN("open"),
+    
     EXPIRED("expired"),
+    
+    FILLED("filled"),
     
     INVALID("invalid");
 
@@ -113,6 +109,10 @@ public class CreateWeb3OrderResponseOrder {
   @SerializedName(SERIALIZED_NAME_STATUS)
   private StatusEnum status;
 
+  public static final String SERIALIZED_NAME_QUANTITY = "quantity";
+  @SerializedName(SERIALIZED_NAME_QUANTITY)
+  private BigDecimal quantity;
+
   public static final String SERIALIZED_NAME_INVENTORY_ITEM_ID = "inventoryItemId";
   @SerializedName(SERIALIZED_NAME_INVENTORY_ITEM_ID)
   private String inventoryItemId;
@@ -129,6 +129,10 @@ public class CreateWeb3OrderResponseOrder {
   @SerializedName(SERIALIZED_NAME_LAST_CHECKED_AT)
   private OffsetDateTime lastCheckedAt;
 
+  public static final String SERIALIZED_NAME_STOREFRONT_ID = "storefrontId";
+  @SerializedName(SERIALIZED_NAME_STOREFRONT_ID)
+  private String storefrontId;
+
   /**
    * Gets or Sets kind
    */
@@ -136,11 +140,11 @@ public class CreateWeb3OrderResponseOrder {
   public enum KindEnum {
     BUNDLE("bundle"),
     
+    OFFER("offer"),
+    
     LISTING("listing"),
     
     PRIVATE_LISTING("private_listing"),
-    
-    OFFER("offer"),
     
     COLLECTION_OFFER("collection_offer"),
     
@@ -188,13 +192,17 @@ public class CreateWeb3OrderResponseOrder {
   @SerializedName(SERIALIZED_NAME_KIND)
   private KindEnum kind;
 
+  public static final String SERIALIZED_NAME_MARKETPLACE = "marketplace";
+  @SerializedName(SERIALIZED_NAME_MARKETPLACE)
+  private String marketplace;
+
+  public static final String SERIALIZED_NAME_TOKEN_ID = "tokenId";
+  @SerializedName(SERIALIZED_NAME_TOKEN_ID)
+  private String tokenId;
+
   public static final String SERIALIZED_NAME_EXTERNAL_URL = "externalUrl";
   @SerializedName(SERIALIZED_NAME_EXTERNAL_URL)
   private String externalUrl;
-
-  public static final String SERIALIZED_NAME_WALLET_ID = "walletId";
-  @SerializedName(SERIALIZED_NAME_WALLET_ID)
-  private String walletId;
 
   public static final String SERIALIZED_NAME_CHAIN = "chain";
   @SerializedName(SERIALIZED_NAME_CHAIN)
@@ -204,21 +212,13 @@ public class CreateWeb3OrderResponseOrder {
   @SerializedName(SERIALIZED_NAME_CONTRACT)
   private String contract;
 
-  public static final String SERIALIZED_NAME_TOKEN_ID = "tokenId";
-  @SerializedName(SERIALIZED_NAME_TOKEN_ID)
-  private String tokenId;
-
-  public static final String SERIALIZED_NAME_COLLECTION_NAME = "collectionName";
-  @SerializedName(SERIALIZED_NAME_COLLECTION_NAME)
-  private String collectionName;
-
   public static final String SERIALIZED_NAME_ORDER_HASH = "orderHash";
   @SerializedName(SERIALIZED_NAME_ORDER_HASH)
   private String orderHash;
 
-  public static final String SERIALIZED_NAME_MARKETPLACE = "marketplace";
-  @SerializedName(SERIALIZED_NAME_MARKETPLACE)
-  private String marketplace;
+  public static final String SERIALIZED_NAME_WALLET_ID = "walletId";
+  @SerializedName(SERIALIZED_NAME_WALLET_ID)
+  private String walletId;
 
   public static final String SERIALIZED_NAME_MAKER = "maker";
   @SerializedName(SERIALIZED_NAME_MAKER)
@@ -255,6 +255,10 @@ public class CreateWeb3OrderResponseOrder {
   public static final String SERIALIZED_NAME_ITEM_IMAGE = "itemImage";
   @SerializedName(SERIALIZED_NAME_ITEM_IMAGE)
   private String itemImage;
+
+  public static final String SERIALIZED_NAME_COLLECTION_NAME = "collectionName";
+  @SerializedName(SERIALIZED_NAME_COLLECTION_NAME)
+  private String collectionName;
 
   public static final String SERIALIZED_NAME_TAKER = "taker";
   @SerializedName(SERIALIZED_NAME_TAKER)
@@ -371,29 +375,6 @@ public class CreateWeb3OrderResponseOrder {
   }
 
 
-  public CreateWeb3OrderResponseOrder quantity(BigDecimal quantity) {
-    
-    this.quantity = quantity;
-    return this;
-  }
-
-   /**
-   * Get quantity
-   * @return quantity
-  **/
-  @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "")
-
-  public BigDecimal getQuantity() {
-    return quantity;
-  }
-
-
-  public void setQuantity(BigDecimal quantity) {
-    this.quantity = quantity;
-  }
-
-
   public CreateWeb3OrderResponseOrder status(StatusEnum status) {
     
     this.status = status;
@@ -414,6 +395,29 @@ public class CreateWeb3OrderResponseOrder {
 
   public void setStatus(StatusEnum status) {
     this.status = status;
+  }
+
+
+  public CreateWeb3OrderResponseOrder quantity(BigDecimal quantity) {
+    
+    this.quantity = quantity;
+    return this;
+  }
+
+   /**
+   * Get quantity
+   * @return quantity
+  **/
+  @javax.annotation.Nonnull
+  @ApiModelProperty(required = true, value = "")
+
+  public BigDecimal getQuantity() {
+    return quantity;
+  }
+
+
+  public void setQuantity(BigDecimal quantity) {
+    this.quantity = quantity;
   }
 
 
@@ -517,6 +521,29 @@ public class CreateWeb3OrderResponseOrder {
   }
 
 
+  public CreateWeb3OrderResponseOrder storefrontId(String storefrontId) {
+    
+    this.storefrontId = storefrontId;
+    return this;
+  }
+
+   /**
+   * Get storefrontId
+   * @return storefrontId
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public String getStorefrontId() {
+    return storefrontId;
+  }
+
+
+  public void setStorefrontId(String storefrontId) {
+    this.storefrontId = storefrontId;
+  }
+
+
   public CreateWeb3OrderResponseOrder kind(KindEnum kind) {
     
     this.kind = kind;
@@ -540,6 +567,52 @@ public class CreateWeb3OrderResponseOrder {
   }
 
 
+  public CreateWeb3OrderResponseOrder marketplace(String marketplace) {
+    
+    this.marketplace = marketplace;
+    return this;
+  }
+
+   /**
+   * Get marketplace
+   * @return marketplace
+  **/
+  @javax.annotation.Nonnull
+  @ApiModelProperty(required = true, value = "")
+
+  public String getMarketplace() {
+    return marketplace;
+  }
+
+
+  public void setMarketplace(String marketplace) {
+    this.marketplace = marketplace;
+  }
+
+
+  public CreateWeb3OrderResponseOrder tokenId(String tokenId) {
+    
+    this.tokenId = tokenId;
+    return this;
+  }
+
+   /**
+   * Get tokenId
+   * @return tokenId
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public String getTokenId() {
+    return tokenId;
+  }
+
+
+  public void setTokenId(String tokenId) {
+    this.tokenId = tokenId;
+  }
+
+
   public CreateWeb3OrderResponseOrder externalUrl(String externalUrl) {
     
     this.externalUrl = externalUrl;
@@ -560,29 +633,6 @@ public class CreateWeb3OrderResponseOrder {
 
   public void setExternalUrl(String externalUrl) {
     this.externalUrl = externalUrl;
-  }
-
-
-  public CreateWeb3OrderResponseOrder walletId(String walletId) {
-    
-    this.walletId = walletId;
-    return this;
-  }
-
-   /**
-   * Get walletId
-   * @return walletId
-  **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
-
-  public String getWalletId() {
-    return walletId;
-  }
-
-
-  public void setWalletId(String walletId) {
-    this.walletId = walletId;
   }
 
 
@@ -632,52 +682,6 @@ public class CreateWeb3OrderResponseOrder {
   }
 
 
-  public CreateWeb3OrderResponseOrder tokenId(String tokenId) {
-    
-    this.tokenId = tokenId;
-    return this;
-  }
-
-   /**
-   * Get tokenId
-   * @return tokenId
-  **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
-
-  public String getTokenId() {
-    return tokenId;
-  }
-
-
-  public void setTokenId(String tokenId) {
-    this.tokenId = tokenId;
-  }
-
-
-  public CreateWeb3OrderResponseOrder collectionName(String collectionName) {
-    
-    this.collectionName = collectionName;
-    return this;
-  }
-
-   /**
-   * Get collectionName
-   * @return collectionName
-  **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
-
-  public String getCollectionName() {
-    return collectionName;
-  }
-
-
-  public void setCollectionName(String collectionName) {
-    this.collectionName = collectionName;
-  }
-
-
   public CreateWeb3OrderResponseOrder orderHash(String orderHash) {
     
     this.orderHash = orderHash;
@@ -701,26 +705,26 @@ public class CreateWeb3OrderResponseOrder {
   }
 
 
-  public CreateWeb3OrderResponseOrder marketplace(String marketplace) {
+  public CreateWeb3OrderResponseOrder walletId(String walletId) {
     
-    this.marketplace = marketplace;
+    this.walletId = walletId;
     return this;
   }
 
    /**
-   * Get marketplace
-   * @return marketplace
+   * Get walletId
+   * @return walletId
   **/
-  @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "")
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
 
-  public String getMarketplace() {
-    return marketplace;
+  public String getWalletId() {
+    return walletId;
   }
 
 
-  public void setMarketplace(String marketplace) {
-    this.marketplace = marketplace;
+  public void setWalletId(String walletId) {
+    this.walletId = walletId;
   }
 
 
@@ -931,6 +935,29 @@ public class CreateWeb3OrderResponseOrder {
   }
 
 
+  public CreateWeb3OrderResponseOrder collectionName(String collectionName) {
+    
+    this.collectionName = collectionName;
+    return this;
+  }
+
+   /**
+   * Get collectionName
+   * @return collectionName
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public String getCollectionName() {
+    return collectionName;
+  }
+
+
+  public void setCollectionName(String collectionName) {
+    this.collectionName = collectionName;
+  }
+
+
   public CreateWeb3OrderResponseOrder taker(String taker) {
     
     this.taker = taker;
@@ -1059,21 +1086,21 @@ public class CreateWeb3OrderResponseOrder {
         Objects.equals(this.createdAt, createWeb3OrderResponseOrder.createdAt) &&
         Objects.equals(this.updatedAt, createWeb3OrderResponseOrder.updatedAt) &&
         Objects.equals(this.userId, createWeb3OrderResponseOrder.userId) &&
-        Objects.equals(this.quantity, createWeb3OrderResponseOrder.quantity) &&
         Objects.equals(this.status, createWeb3OrderResponseOrder.status) &&
+        Objects.equals(this.quantity, createWeb3OrderResponseOrder.quantity) &&
         Objects.equals(this.inventoryItemId, createWeb3OrderResponseOrder.inventoryItemId) &&
         Objects.equals(this.currency, createWeb3OrderResponseOrder.currency) &&
         Objects.equals(this.bundle, createWeb3OrderResponseOrder.bundle) &&
         Objects.equals(this.lastCheckedAt, createWeb3OrderResponseOrder.lastCheckedAt) &&
+        Objects.equals(this.storefrontId, createWeb3OrderResponseOrder.storefrontId) &&
         Objects.equals(this.kind, createWeb3OrderResponseOrder.kind) &&
+        Objects.equals(this.marketplace, createWeb3OrderResponseOrder.marketplace) &&
+        Objects.equals(this.tokenId, createWeb3OrderResponseOrder.tokenId) &&
         Objects.equals(this.externalUrl, createWeb3OrderResponseOrder.externalUrl) &&
-        Objects.equals(this.walletId, createWeb3OrderResponseOrder.walletId) &&
         Objects.equals(this.chain, createWeb3OrderResponseOrder.chain) &&
         Objects.equals(this.contract, createWeb3OrderResponseOrder.contract) &&
-        Objects.equals(this.tokenId, createWeb3OrderResponseOrder.tokenId) &&
-        Objects.equals(this.collectionName, createWeb3OrderResponseOrder.collectionName) &&
         Objects.equals(this.orderHash, createWeb3OrderResponseOrder.orderHash) &&
-        Objects.equals(this.marketplace, createWeb3OrderResponseOrder.marketplace) &&
+        Objects.equals(this.walletId, createWeb3OrderResponseOrder.walletId) &&
         Objects.equals(this.maker, createWeb3OrderResponseOrder.maker) &&
         Objects.equals(this.priceWei, createWeb3OrderResponseOrder.priceWei) &&
         Objects.equals(this.endPriceWei, createWeb3OrderResponseOrder.endPriceWei) &&
@@ -1083,6 +1110,7 @@ public class CreateWeb3OrderResponseOrder {
         Objects.equals(this.statusReason, createWeb3OrderResponseOrder.statusReason) &&
         Objects.equals(this.itemName, createWeb3OrderResponseOrder.itemName) &&
         Objects.equals(this.itemImage, createWeb3OrderResponseOrder.itemImage) &&
+        Objects.equals(this.collectionName, createWeb3OrderResponseOrder.collectionName) &&
         Objects.equals(this.taker, createWeb3OrderResponseOrder.taker) &&
         Objects.equals(this.filledTx, createWeb3OrderResponseOrder.filledTx) &&
         Objects.equals(this.filledAt, createWeb3OrderResponseOrder.filledAt) &&
@@ -1096,7 +1124,7 @@ public class CreateWeb3OrderResponseOrder {
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, createdAt, updatedAt, userId, quantity, status, inventoryItemId, currency, bundle, lastCheckedAt, kind, externalUrl, walletId, chain, contract, tokenId, collectionName, orderHash, marketplace, maker, priceWei, endPriceWei, startTime, endTime, signature, statusReason, itemName, itemImage, taker, filledTx, filledAt, criteria, reservedFor);
+    return Objects.hash(id, createdAt, updatedAt, userId, status, quantity, inventoryItemId, currency, bundle, lastCheckedAt, storefrontId, kind, marketplace, tokenId, externalUrl, chain, contract, orderHash, walletId, maker, priceWei, endPriceWei, startTime, endTime, signature, statusReason, itemName, itemImage, collectionName, taker, filledTx, filledAt, criteria, reservedFor);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -1114,21 +1142,21 @@ public class CreateWeb3OrderResponseOrder {
     sb.append("    createdAt: ").append(toIndentedString(createdAt)).append("\n");
     sb.append("    updatedAt: ").append(toIndentedString(updatedAt)).append("\n");
     sb.append("    userId: ").append(toIndentedString(userId)).append("\n");
-    sb.append("    quantity: ").append(toIndentedString(quantity)).append("\n");
     sb.append("    status: ").append(toIndentedString(status)).append("\n");
+    sb.append("    quantity: ").append(toIndentedString(quantity)).append("\n");
     sb.append("    inventoryItemId: ").append(toIndentedString(inventoryItemId)).append("\n");
     sb.append("    currency: ").append(toIndentedString(currency)).append("\n");
     sb.append("    bundle: ").append(toIndentedString(bundle)).append("\n");
     sb.append("    lastCheckedAt: ").append(toIndentedString(lastCheckedAt)).append("\n");
+    sb.append("    storefrontId: ").append(toIndentedString(storefrontId)).append("\n");
     sb.append("    kind: ").append(toIndentedString(kind)).append("\n");
+    sb.append("    marketplace: ").append(toIndentedString(marketplace)).append("\n");
+    sb.append("    tokenId: ").append(toIndentedString(tokenId)).append("\n");
     sb.append("    externalUrl: ").append(toIndentedString(externalUrl)).append("\n");
-    sb.append("    walletId: ").append(toIndentedString(walletId)).append("\n");
     sb.append("    chain: ").append(toIndentedString(chain)).append("\n");
     sb.append("    contract: ").append(toIndentedString(contract)).append("\n");
-    sb.append("    tokenId: ").append(toIndentedString(tokenId)).append("\n");
-    sb.append("    collectionName: ").append(toIndentedString(collectionName)).append("\n");
     sb.append("    orderHash: ").append(toIndentedString(orderHash)).append("\n");
-    sb.append("    marketplace: ").append(toIndentedString(marketplace)).append("\n");
+    sb.append("    walletId: ").append(toIndentedString(walletId)).append("\n");
     sb.append("    maker: ").append(toIndentedString(maker)).append("\n");
     sb.append("    priceWei: ").append(toIndentedString(priceWei)).append("\n");
     sb.append("    endPriceWei: ").append(toIndentedString(endPriceWei)).append("\n");
@@ -1138,6 +1166,7 @@ public class CreateWeb3OrderResponseOrder {
     sb.append("    statusReason: ").append(toIndentedString(statusReason)).append("\n");
     sb.append("    itemName: ").append(toIndentedString(itemName)).append("\n");
     sb.append("    itemImage: ").append(toIndentedString(itemImage)).append("\n");
+    sb.append("    collectionName: ").append(toIndentedString(collectionName)).append("\n");
     sb.append("    taker: ").append(toIndentedString(taker)).append("\n");
     sb.append("    filledTx: ").append(toIndentedString(filledTx)).append("\n");
     sb.append("    filledAt: ").append(toIndentedString(filledAt)).append("\n");

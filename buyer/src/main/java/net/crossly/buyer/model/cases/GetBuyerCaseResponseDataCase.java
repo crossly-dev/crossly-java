@@ -31,19 +31,19 @@ import org.openapitools.jackson.nullable.JsonNullable;
 /**
  * GetBuyerCaseResponseDataCase
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-11T23:47:29.843Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-27T19:58:46.962Z[Etc/UTC]")
 public class GetBuyerCaseResponseDataCase {
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
   private String id;
 
-  public static final String SERIALIZED_NAME_CREATED_AT = "createdAt";
-  @SerializedName(SERIALIZED_NAME_CREATED_AT)
-  private String createdAt;
+  public static final String SERIALIZED_NAME_PURCHASE_ID = "purchaseId";
+  @SerializedName(SERIALIZED_NAME_PURCHASE_ID)
+  private String purchaseId;
 
-  public static final String SERIALIZED_NAME_UPDATED_AT = "updatedAt";
-  @SerializedName(SERIALIZED_NAME_UPDATED_AT)
-  private String updatedAt;
+  public static final String SERIALIZED_NAME_SELLER_USER_ID = "sellerUserId";
+  @SerializedName(SERIALIZED_NAME_SELLER_USER_ID)
+  private String sellerUserId;
 
   public static final String SERIALIZED_NAME_REASON = "reason";
   @SerializedName(SERIALIZED_NAME_REASON)
@@ -53,17 +53,13 @@ public class GetBuyerCaseResponseDataCase {
   @SerializedName(SERIALIZED_NAME_STATE)
   private String state;
 
-  public static final String SERIALIZED_NAME_SELLER_USER_ID = "sellerUserId";
-  @SerializedName(SERIALIZED_NAME_SELLER_USER_ID)
-  private String sellerUserId;
+  public static final String SERIALIZED_NAME_CREATED_AT = "createdAt";
+  @SerializedName(SERIALIZED_NAME_CREATED_AT)
+  private String createdAt;
 
-  public static final String SERIALIZED_NAME_PURCHASE_ID = "purchaseId";
-  @SerializedName(SERIALIZED_NAME_PURCHASE_ID)
-  private String purchaseId;
-
-  public static final String SERIALIZED_NAME_RESOLVED_AT = "resolvedAt";
-  @SerializedName(SERIALIZED_NAME_RESOLVED_AT)
-  private String resolvedAt;
+  public static final String SERIALIZED_NAME_UPDATED_AT = "updatedAt";
+  @SerializedName(SERIALIZED_NAME_UPDATED_AT)
+  private String updatedAt;
 
   public static final String SERIALIZED_NAME_BUYER_NOTE = "buyerNote";
   @SerializedName(SERIALIZED_NAME_BUYER_NOTE)
@@ -93,6 +89,10 @@ public class GetBuyerCaseResponseDataCase {
   @SerializedName(SERIALIZED_NAME_RESOLVED_DECISION)
   private String resolvedDecision;
 
+  public static final String SERIALIZED_NAME_RESOLVED_AT = "resolvedAt";
+  @SerializedName(SERIALIZED_NAME_RESOLVED_AT)
+  private String resolvedAt;
+
   public GetBuyerCaseResponseDataCase() { 
   }
 
@@ -119,49 +119,49 @@ public class GetBuyerCaseResponseDataCase {
   }
 
 
-  public GetBuyerCaseResponseDataCase createdAt(String createdAt) {
+  public GetBuyerCaseResponseDataCase purchaseId(String purchaseId) {
     
-    this.createdAt = createdAt;
+    this.purchaseId = purchaseId;
     return this;
   }
 
    /**
-   * Get createdAt
-   * @return createdAt
+   * Get purchaseId
+   * @return purchaseId
   **/
   @javax.annotation.Nonnull
   @ApiModelProperty(required = true, value = "")
 
-  public String getCreatedAt() {
-    return createdAt;
+  public String getPurchaseId() {
+    return purchaseId;
   }
 
 
-  public void setCreatedAt(String createdAt) {
-    this.createdAt = createdAt;
+  public void setPurchaseId(String purchaseId) {
+    this.purchaseId = purchaseId;
   }
 
 
-  public GetBuyerCaseResponseDataCase updatedAt(String updatedAt) {
+  public GetBuyerCaseResponseDataCase sellerUserId(String sellerUserId) {
     
-    this.updatedAt = updatedAt;
+    this.sellerUserId = sellerUserId;
     return this;
   }
 
    /**
-   * Get updatedAt
-   * @return updatedAt
+   * Get sellerUserId
+   * @return sellerUserId
   **/
   @javax.annotation.Nonnull
   @ApiModelProperty(required = true, value = "")
 
-  public String getUpdatedAt() {
-    return updatedAt;
+  public String getSellerUserId() {
+    return sellerUserId;
   }
 
 
-  public void setUpdatedAt(String updatedAt) {
-    this.updatedAt = updatedAt;
+  public void setSellerUserId(String sellerUserId) {
+    this.sellerUserId = sellerUserId;
   }
 
 
@@ -211,72 +211,49 @@ public class GetBuyerCaseResponseDataCase {
   }
 
 
-  public GetBuyerCaseResponseDataCase sellerUserId(String sellerUserId) {
+  public GetBuyerCaseResponseDataCase createdAt(String createdAt) {
     
-    this.sellerUserId = sellerUserId;
+    this.createdAt = createdAt;
     return this;
   }
 
    /**
-   * Get sellerUserId
-   * @return sellerUserId
+   * Get createdAt
+   * @return createdAt
   **/
   @javax.annotation.Nonnull
   @ApiModelProperty(required = true, value = "")
 
-  public String getSellerUserId() {
-    return sellerUserId;
+  public String getCreatedAt() {
+    return createdAt;
   }
 
 
-  public void setSellerUserId(String sellerUserId) {
-    this.sellerUserId = sellerUserId;
+  public void setCreatedAt(String createdAt) {
+    this.createdAt = createdAt;
   }
 
 
-  public GetBuyerCaseResponseDataCase purchaseId(String purchaseId) {
+  public GetBuyerCaseResponseDataCase updatedAt(String updatedAt) {
     
-    this.purchaseId = purchaseId;
+    this.updatedAt = updatedAt;
     return this;
   }
 
    /**
-   * Get purchaseId
-   * @return purchaseId
+   * Get updatedAt
+   * @return updatedAt
   **/
   @javax.annotation.Nonnull
   @ApiModelProperty(required = true, value = "")
 
-  public String getPurchaseId() {
-    return purchaseId;
+  public String getUpdatedAt() {
+    return updatedAt;
   }
 
 
-  public void setPurchaseId(String purchaseId) {
-    this.purchaseId = purchaseId;
-  }
-
-
-  public GetBuyerCaseResponseDataCase resolvedAt(String resolvedAt) {
-    
-    this.resolvedAt = resolvedAt;
-    return this;
-  }
-
-   /**
-   * Get resolvedAt
-   * @return resolvedAt
-  **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
-
-  public String getResolvedAt() {
-    return resolvedAt;
-  }
-
-
-  public void setResolvedAt(String resolvedAt) {
-    this.resolvedAt = resolvedAt;
+  public void setUpdatedAt(String updatedAt) {
+    this.updatedAt = updatedAt;
   }
 
 
@@ -449,6 +426,29 @@ public class GetBuyerCaseResponseDataCase {
   }
 
 
+  public GetBuyerCaseResponseDataCase resolvedAt(String resolvedAt) {
+    
+    this.resolvedAt = resolvedAt;
+    return this;
+  }
+
+   /**
+   * Get resolvedAt
+   * @return resolvedAt
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public String getResolvedAt() {
+    return resolvedAt;
+  }
+
+
+  public void setResolvedAt(String resolvedAt) {
+    this.resolvedAt = resolvedAt;
+  }
+
+
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -459,20 +459,20 @@ public class GetBuyerCaseResponseDataCase {
     }
     GetBuyerCaseResponseDataCase getBuyerCaseResponseDataCase = (GetBuyerCaseResponseDataCase) o;
     return Objects.equals(this.id, getBuyerCaseResponseDataCase.id) &&
-        Objects.equals(this.createdAt, getBuyerCaseResponseDataCase.createdAt) &&
-        Objects.equals(this.updatedAt, getBuyerCaseResponseDataCase.updatedAt) &&
+        Objects.equals(this.purchaseId, getBuyerCaseResponseDataCase.purchaseId) &&
+        Objects.equals(this.sellerUserId, getBuyerCaseResponseDataCase.sellerUserId) &&
         Objects.equals(this.reason, getBuyerCaseResponseDataCase.reason) &&
         Objects.equals(this.state, getBuyerCaseResponseDataCase.state) &&
-        Objects.equals(this.sellerUserId, getBuyerCaseResponseDataCase.sellerUserId) &&
-        Objects.equals(this.purchaseId, getBuyerCaseResponseDataCase.purchaseId) &&
-        Objects.equals(this.resolvedAt, getBuyerCaseResponseDataCase.resolvedAt) &&
+        Objects.equals(this.createdAt, getBuyerCaseResponseDataCase.createdAt) &&
+        Objects.equals(this.updatedAt, getBuyerCaseResponseDataCase.updatedAt) &&
         Objects.equals(this.buyerNote, getBuyerCaseResponseDataCase.buyerNote) &&
         Objects.equals(this.photoUrls, getBuyerCaseResponseDataCase.photoUrls) &&
         Objects.equals(this.awaitingParty, getBuyerCaseResponseDataCase.awaitingParty) &&
         Objects.equals(this.escalateAfter, getBuyerCaseResponseDataCase.escalateAfter) &&
         Objects.equals(this.offeredRefundCents, getBuyerCaseResponseDataCase.offeredRefundCents) &&
         Objects.equals(this.resolvedRefundCents, getBuyerCaseResponseDataCase.resolvedRefundCents) &&
-        Objects.equals(this.resolvedDecision, getBuyerCaseResponseDataCase.resolvedDecision);
+        Objects.equals(this.resolvedDecision, getBuyerCaseResponseDataCase.resolvedDecision) &&
+        Objects.equals(this.resolvedAt, getBuyerCaseResponseDataCase.resolvedAt);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -481,7 +481,7 @@ public class GetBuyerCaseResponseDataCase {
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, createdAt, updatedAt, reason, state, sellerUserId, purchaseId, resolvedAt, buyerNote, photoUrls, awaitingParty, escalateAfter, offeredRefundCents, resolvedRefundCents, resolvedDecision);
+    return Objects.hash(id, purchaseId, sellerUserId, reason, state, createdAt, updatedAt, buyerNote, photoUrls, awaitingParty, escalateAfter, offeredRefundCents, resolvedRefundCents, resolvedDecision, resolvedAt);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -496,13 +496,12 @@ public class GetBuyerCaseResponseDataCase {
     StringBuilder sb = new StringBuilder();
     sb.append("class GetBuyerCaseResponseDataCase {\n");
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
-    sb.append("    createdAt: ").append(toIndentedString(createdAt)).append("\n");
-    sb.append("    updatedAt: ").append(toIndentedString(updatedAt)).append("\n");
+    sb.append("    purchaseId: ").append(toIndentedString(purchaseId)).append("\n");
+    sb.append("    sellerUserId: ").append(toIndentedString(sellerUserId)).append("\n");
     sb.append("    reason: ").append(toIndentedString(reason)).append("\n");
     sb.append("    state: ").append(toIndentedString(state)).append("\n");
-    sb.append("    sellerUserId: ").append(toIndentedString(sellerUserId)).append("\n");
-    sb.append("    purchaseId: ").append(toIndentedString(purchaseId)).append("\n");
-    sb.append("    resolvedAt: ").append(toIndentedString(resolvedAt)).append("\n");
+    sb.append("    createdAt: ").append(toIndentedString(createdAt)).append("\n");
+    sb.append("    updatedAt: ").append(toIndentedString(updatedAt)).append("\n");
     sb.append("    buyerNote: ").append(toIndentedString(buyerNote)).append("\n");
     sb.append("    photoUrls: ").append(toIndentedString(photoUrls)).append("\n");
     sb.append("    awaitingParty: ").append(toIndentedString(awaitingParty)).append("\n");
@@ -510,6 +509,7 @@ public class GetBuyerCaseResponseDataCase {
     sb.append("    offeredRefundCents: ").append(toIndentedString(offeredRefundCents)).append("\n");
     sb.append("    resolvedRefundCents: ").append(toIndentedString(resolvedRefundCents)).append("\n");
     sb.append("    resolvedDecision: ").append(toIndentedString(resolvedDecision)).append("\n");
+    sb.append("    resolvedAt: ").append(toIndentedString(resolvedAt)).append("\n");
     sb.append("}");
     return sb.toString();
   }

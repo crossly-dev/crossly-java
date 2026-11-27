@@ -29,15 +29,13 @@ import org.openapitools.jackson.nullable.JsonNullable;
 /**
  * GetVaultMarketLiquidityResponseComponents
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-11T23:44:48.922Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-27T19:42:43.186Z[Etc/UTC]")
 public class GetVaultMarketLiquidityResponseComponents {
   /**
    * Gets or Sets name
    */
   @JsonAdapter(NameEnum.Adapter.class)
   public enum NameEnum {
-    SPREADBPS("spreadBps"),
-    
     TRADES30D("trades30d"),
     
     TRADES90D("trades90d"),
@@ -45,6 +43,8 @@ public class GetVaultMarketLiquidityResponseComponents {
     COUNTERPARTIES90D("counterparties90d"),
     
     MEDIANGAPDAYS("medianGapDays"),
+    
+    SPREADBPS("spreadBps"),
     
     TWOSIDEDSHARE("twoSidedShare"),
     
@@ -113,9 +113,9 @@ public class GetVaultMarketLiquidityResponseComponents {
    */
   @JsonAdapter(BetterEnum.Adapter.class)
   public enum BetterEnum {
-    HIGH("high"),
+    LOW("low"),
     
-    LOW("low");
+    HIGH("high");
 
     private String value;
 

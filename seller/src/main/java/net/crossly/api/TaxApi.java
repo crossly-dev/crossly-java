@@ -29,9 +29,14 @@ import java.io.IOException;
 
 import net.crossly.model.common.CreateMileageResponse;
 import net.crossly.model.common.Error;
+import net.crossly.model.book.GetBookTaxProfileResponse;
 import net.crossly.model.common.GetMileageSummaryResponse;
-import net.crossly.model.common.GetTaxScheduleCResponse;
+import net.crossly.model.order.GetOrderSalesTaxResponse;
+import net.crossly.model.tax.GetTaxSalesTaxResponse;
+import net.crossly.model.tax.GetTaxScheduleCResponse;
 import net.crossly.model.common.ListMileageResponse;
+import net.crossly.model.tax.ListTaxCrosslyCollectsResponse;
+import net.crossly.model.tax.ListTaxSalesTaxNotCollectedResponse;
 import net.crossly.model.common.OkResponse;
 import java.util.UUID;
 
@@ -373,7 +378,7 @@ public class TaxApi {
         return localVarCall;
     }
     /**
-     * Build call for getMileageSummary
+     * Build call for getBookTaxProfile
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -389,7 +394,7 @@ public class TaxApi {
         <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getMileageSummaryCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getBookTaxProfileCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
 
         // Operation Servers
@@ -407,7 +412,7 @@ public class TaxApi {
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/v1/mileage/summary";
+        String localVarPath = "/v1/books/tax-profile";
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -436,18 +441,18 @@ public class TaxApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getMileageSummaryValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getBookTaxProfileValidateBeforeCall(final ApiCallback _callback) throws ApiException {
         
 
-        okhttp3.Call localVarCall = getMileageSummaryCall(_callback);
+        okhttp3.Call localVarCall = getBookTaxProfileCall(_callback);
         return localVarCall;
 
     }
 
     /**
-     * Annual mileage totals + IRS deduction.
+     * Your tax profile: time zone for books boundaries, filing status, state, set-aside and rate assumptions, accounting method, and business name, EIN and address.
      * 
-     * @return GetMileageSummaryResponse
+     * @return GetBookTaxProfileResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -461,15 +466,15 @@ public class TaxApi {
         <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
      </table>
      */
-    public GetMileageSummaryResponse getMileageSummary() throws ApiException {
-        ApiResponse<GetMileageSummaryResponse> localVarResp = getMileageSummaryWithHttpInfo();
+    public GetBookTaxProfileResponse getBookTaxProfile() throws ApiException {
+        ApiResponse<GetBookTaxProfileResponse> localVarResp = getBookTaxProfileWithHttpInfo();
         return localVarResp.getData();
     }
 
     /**
-     * Annual mileage totals + IRS deduction.
+     * Your tax profile: time zone for books boundaries, filing status, state, set-aside and rate assumptions, accounting method, and business name, EIN and address.
      * 
-     * @return ApiResponse&lt;GetMileageSummaryResponse&gt;
+     * @return ApiResponse&lt;GetBookTaxProfileResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -483,14 +488,14 @@ public class TaxApi {
         <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<GetMileageSummaryResponse> getMileageSummaryWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = getMileageSummaryValidateBeforeCall(null);
-        Type localVarReturnType = new TypeToken<GetMileageSummaryResponse>(){}.getType();
+    public ApiResponse<GetBookTaxProfileResponse> getBookTaxProfileWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = getBookTaxProfileValidateBeforeCall(null);
+        Type localVarReturnType = new TypeToken<GetBookTaxProfileResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
-     * Annual mileage totals + IRS deduction. (asynchronously)
+     * Your tax profile: time zone for books boundaries, filing status, state, set-aside and rate assumptions, accounting method, and business name, EIN and address. (asynchronously)
      * 
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -507,10 +512,470 @@ public class TaxApi {
         <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getMileageSummaryAsync(final ApiCallback<GetMileageSummaryResponse> _callback) throws ApiException {
+    public okhttp3.Call getBookTaxProfileAsync(final ApiCallback<GetBookTaxProfileResponse> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getMileageSummaryValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = getBookTaxProfileValidateBeforeCall(_callback);
+        Type localVarReturnType = new TypeToken<GetBookTaxProfileResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for getMileageSummary
+     * @param year Calendar tax year. Default the current year. (optional)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getMileageSummaryCall(Integer year, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/v1/mileage/summary";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        if (year != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("year", year));
+        }
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "PersonalAccessToken" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call getMileageSummaryValidateBeforeCall(Integer year, final ApiCallback _callback) throws ApiException {
+        
+
+        okhttp3.Call localVarCall = getMileageSummaryCall(year, _callback);
+        return localVarCall;
+
+    }
+
+    /**
+     * Annual mileage totals + IRS deduction. Each trip is priced at the IRS rate on its own date (2026 has two rates, listed in &#x60;rates&#x60;); &#x60;ratePerMile&#x60; is the January rate.
+     * 
+     * @param year Calendar tax year. Default the current year. (optional)
+     * @return GetMileageSummaryResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public GetMileageSummaryResponse getMileageSummary(Integer year) throws ApiException {
+        ApiResponse<GetMileageSummaryResponse> localVarResp = getMileageSummaryWithHttpInfo(year);
+        return localVarResp.getData();
+    }
+
+    /**
+     * Annual mileage totals + IRS deduction. Each trip is priced at the IRS rate on its own date (2026 has two rates, listed in &#x60;rates&#x60;); &#x60;ratePerMile&#x60; is the January rate.
+     * 
+     * @param year Calendar tax year. Default the current year. (optional)
+     * @return ApiResponse&lt;GetMileageSummaryResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<GetMileageSummaryResponse> getMileageSummaryWithHttpInfo(Integer year) throws ApiException {
+        okhttp3.Call localVarCall = getMileageSummaryValidateBeforeCall(year, null);
         Type localVarReturnType = new TypeToken<GetMileageSummaryResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Annual mileage totals + IRS deduction. Each trip is priced at the IRS rate on its own date (2026 has two rates, listed in &#x60;rates&#x60;); &#x60;ratePerMile&#x60; is the January rate. (asynchronously)
+     * 
+     * @param year Calendar tax year. Default the current year. (optional)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getMileageSummaryAsync(Integer year, final ApiCallback<GetMileageSummaryResponse> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = getMileageSummaryValidateBeforeCall(year, _callback);
+        Type localVarReturnType = new TypeToken<GetMileageSummaryResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for getOrderSalesTax
+     * @param id  (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getOrderSalesTaxCall(UUID id, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/v1/orders/{id}/sales-tax"
+            .replaceAll("\\{" + "id" + "\\}", localVarApiClient.escapeString(id.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "PersonalAccessToken" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call getOrderSalesTaxValidateBeforeCall(UUID id, final ApiCallback _callback) throws ApiException {
+        
+        // verify the required parameter 'id' is set
+        if (id == null) {
+            throw new ApiException("Missing the required parameter 'id' when calling getOrderSalesTax(Async)");
+        }
+        
+
+        okhttp3.Call localVarCall = getOrderSalesTaxCall(id, _callback);
+        return localVarCall;
+
+    }
+
+    /**
+     * Who collected sales tax on one Crossly marketplace order, where, and the seller notice.
+     * 
+     * @param id  (required)
+     * @return GetOrderSalesTaxResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public GetOrderSalesTaxResponse getOrderSalesTax(UUID id) throws ApiException {
+        ApiResponse<GetOrderSalesTaxResponse> localVarResp = getOrderSalesTaxWithHttpInfo(id);
+        return localVarResp.getData();
+    }
+
+    /**
+     * Who collected sales tax on one Crossly marketplace order, where, and the seller notice.
+     * 
+     * @param id  (required)
+     * @return ApiResponse&lt;GetOrderSalesTaxResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<GetOrderSalesTaxResponse> getOrderSalesTaxWithHttpInfo(UUID id) throws ApiException {
+        okhttp3.Call localVarCall = getOrderSalesTaxValidateBeforeCall(id, null);
+        Type localVarReturnType = new TypeToken<GetOrderSalesTaxResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Who collected sales tax on one Crossly marketplace order, where, and the seller notice. (asynchronously)
+     * 
+     * @param id  (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getOrderSalesTaxAsync(UUID id, final ApiCallback<GetOrderSalesTaxResponse> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = getOrderSalesTaxValidateBeforeCall(id, _callback);
+        Type localVarReturnType = new TypeToken<GetOrderSalesTaxResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for getTaxSalesTax
+     * @param from YYYY-MM-DD, inclusive. Default 1 January this year. (optional)
+     * @param to YYYY-MM-DD, inclusive. Default now. (optional)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getTaxSalesTaxCall(String from, String to, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/v1/tax/sales-tax";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        if (from != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("from", from));
+        }
+
+        if (to != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("to", to));
+        }
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "PersonalAccessToken" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call getTaxSalesTaxValidateBeforeCall(String from, String to, final ApiCallback _callback) throws ApiException {
+        
+
+        okhttp3.Call localVarCall = getTaxSalesTaxCall(from, to, _callback);
+        return localVarCall;
+
+    }
+
+    /**
+     * Crossly marketplace sales Crossly did not collect sales tax on, by jurisdiction.
+     * 
+     * @param from YYYY-MM-DD, inclusive. Default 1 January this year. (optional)
+     * @param to YYYY-MM-DD, inclusive. Default now. (optional)
+     * @return GetTaxSalesTaxResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public GetTaxSalesTaxResponse getTaxSalesTax(String from, String to) throws ApiException {
+        ApiResponse<GetTaxSalesTaxResponse> localVarResp = getTaxSalesTaxWithHttpInfo(from, to);
+        return localVarResp.getData();
+    }
+
+    /**
+     * Crossly marketplace sales Crossly did not collect sales tax on, by jurisdiction.
+     * 
+     * @param from YYYY-MM-DD, inclusive. Default 1 January this year. (optional)
+     * @param to YYYY-MM-DD, inclusive. Default now. (optional)
+     * @return ApiResponse&lt;GetTaxSalesTaxResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<GetTaxSalesTaxResponse> getTaxSalesTaxWithHttpInfo(String from, String to) throws ApiException {
+        okhttp3.Call localVarCall = getTaxSalesTaxValidateBeforeCall(from, to, null);
+        Type localVarReturnType = new TypeToken<GetTaxSalesTaxResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Crossly marketplace sales Crossly did not collect sales tax on, by jurisdiction. (asynchronously)
+     * 
+     * @param from YYYY-MM-DD, inclusive. Default 1 January this year. (optional)
+     * @param to YYYY-MM-DD, inclusive. Default now. (optional)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getTaxSalesTaxAsync(String from, String to, final ApiCallback<GetTaxSalesTaxResponse> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = getTaxSalesTaxValidateBeforeCall(from, to, _callback);
+        Type localVarReturnType = new TypeToken<GetTaxSalesTaxResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -587,7 +1052,7 @@ public class TaxApi {
     }
 
     /**
-     * Schedule C JSON for a tax year.
+     * Schedule C JSON for a tax year (default the current year), from the same P&amp;L as GET /v1/books: line 1 gross receipts before refunds, line 2 refunds, COGS in Part III, completed sales only. GET /v1/books has the full P&amp;L by period.
      * 
      * @return GetTaxScheduleCResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -609,7 +1074,7 @@ public class TaxApi {
     }
 
     /**
-     * Schedule C JSON for a tax year.
+     * Schedule C JSON for a tax year (default the current year), from the same P&amp;L as GET /v1/books: line 1 gross receipts before refunds, line 2 refunds, COGS in Part III, completed sales only. GET /v1/books has the full P&amp;L by period.
      * 
      * @return ApiResponse&lt;GetTaxScheduleCResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -632,7 +1097,7 @@ public class TaxApi {
     }
 
     /**
-     * Schedule C JSON for a tax year. (asynchronously)
+     * Schedule C JSON for a tax year (default the current year), from the same P&amp;L as GET /v1/books: line 1 gross receipts before refunds, line 2 refunds, COGS in Part III, completed sales only. GET /v1/books has the full P&amp;L by period. (asynchronously)
      * 
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -658,6 +1123,11 @@ public class TaxApi {
     }
     /**
      * Build call for listMileage
+     * @param year Only trips dated in this calendar year. (optional)
+     * @param from YYYY-MM-DD, inclusive. Only trips on or after this date. Combines with year. (optional)
+     * @param to YYYY-MM-DD, inclusive. Only trips on or before this date; from &lt;&#x3D; to. (optional)
+     * @param page 1-indexed page. Default 1. (optional)
+     * @param limit Rows per page, default 100, clamped to 500. (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -673,7 +1143,7 @@ public class TaxApi {
         <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call listMileageCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call listMileageCall(Integer year, String from, String to, Integer page, Integer limit, final ApiCallback _callback) throws ApiException {
         String basePath = null;
 
         // Operation Servers
@@ -692,6 +1162,183 @@ public class TaxApi {
 
         // create path and map variables
         String localVarPath = "/v1/mileage";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        if (year != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("year", year));
+        }
+
+        if (from != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("from", from));
+        }
+
+        if (to != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("to", to));
+        }
+
+        if (page != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("page", page));
+        }
+
+        if (limit != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("limit", limit));
+        }
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "PersonalAccessToken" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call listMileageValidateBeforeCall(Integer year, String from, String to, Integer page, Integer limit, final ApiCallback _callback) throws ApiException {
+        
+
+        okhttp3.Call localVarCall = listMileageCall(year, from, to, page, limit, _callback);
+        return localVarCall;
+
+    }
+
+    /**
+     * List mileage entries, newest trip first, paged (limit up to 500). Narrow by year and/or an inclusive from/to date range.
+     * 
+     * @param year Only trips dated in this calendar year. (optional)
+     * @param from YYYY-MM-DD, inclusive. Only trips on or after this date. Combines with year. (optional)
+     * @param to YYYY-MM-DD, inclusive. Only trips on or before this date; from &lt;&#x3D; to. (optional)
+     * @param page 1-indexed page. Default 1. (optional)
+     * @param limit Rows per page, default 100, clamped to 500. (optional)
+     * @return ListMileageResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public ListMileageResponse listMileage(Integer year, String from, String to, Integer page, Integer limit) throws ApiException {
+        ApiResponse<ListMileageResponse> localVarResp = listMileageWithHttpInfo(year, from, to, page, limit);
+        return localVarResp.getData();
+    }
+
+    /**
+     * List mileage entries, newest trip first, paged (limit up to 500). Narrow by year and/or an inclusive from/to date range.
+     * 
+     * @param year Only trips dated in this calendar year. (optional)
+     * @param from YYYY-MM-DD, inclusive. Only trips on or after this date. Combines with year. (optional)
+     * @param to YYYY-MM-DD, inclusive. Only trips on or before this date; from &lt;&#x3D; to. (optional)
+     * @param page 1-indexed page. Default 1. (optional)
+     * @param limit Rows per page, default 100, clamped to 500. (optional)
+     * @return ApiResponse&lt;ListMileageResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<ListMileageResponse> listMileageWithHttpInfo(Integer year, String from, String to, Integer page, Integer limit) throws ApiException {
+        okhttp3.Call localVarCall = listMileageValidateBeforeCall(year, from, to, page, limit, null);
+        Type localVarReturnType = new TypeToken<ListMileageResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * List mileage entries, newest trip first, paged (limit up to 500). Narrow by year and/or an inclusive from/to date range. (asynchronously)
+     * 
+     * @param year Only trips dated in this calendar year. (optional)
+     * @param from YYYY-MM-DD, inclusive. Only trips on or after this date. Combines with year. (optional)
+     * @param to YYYY-MM-DD, inclusive. Only trips on or before this date; from &lt;&#x3D; to. (optional)
+     * @param page 1-indexed page. Default 1. (optional)
+     * @param limit Rows per page, default 100, clamped to 500. (optional)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call listMileageAsync(Integer year, String from, String to, Integer page, Integer limit, final ApiCallback<ListMileageResponse> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = listMileageValidateBeforeCall(year, from, to, page, limit, _callback);
+        Type localVarReturnType = new TypeToken<ListMileageResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for listTaxCrosslyCollects
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call listTaxCrosslyCollectsCall(final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/v1/tax/crossly-collects";
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -720,18 +1367,18 @@ public class TaxApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call listMileageValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call listTaxCrosslyCollectsValidateBeforeCall(final ApiCallback _callback) throws ApiException {
         
 
-        okhttp3.Call localVarCall = listMileageCall(_callback);
+        okhttp3.Call localVarCall = listTaxCrosslyCollectsCall(_callback);
         return localVarCall;
 
     }
 
     /**
-     * List mileage entries.
+     * Where Crossly collects sales tax today (its active Stripe Tax registrations).
      * 
-     * @return ListMileageResponse
+     * @return ListTaxCrosslyCollectsResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -745,15 +1392,15 @@ public class TaxApi {
         <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
      </table>
      */
-    public ListMileageResponse listMileage() throws ApiException {
-        ApiResponse<ListMileageResponse> localVarResp = listMileageWithHttpInfo();
+    public ListTaxCrosslyCollectsResponse listTaxCrosslyCollects() throws ApiException {
+        ApiResponse<ListTaxCrosslyCollectsResponse> localVarResp = listTaxCrosslyCollectsWithHttpInfo();
         return localVarResp.getData();
     }
 
     /**
-     * List mileage entries.
+     * Where Crossly collects sales tax today (its active Stripe Tax registrations).
      * 
-     * @return ApiResponse&lt;ListMileageResponse&gt;
+     * @return ApiResponse&lt;ListTaxCrosslyCollectsResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -767,14 +1414,14 @@ public class TaxApi {
         <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<ListMileageResponse> listMileageWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = listMileageValidateBeforeCall(null);
-        Type localVarReturnType = new TypeToken<ListMileageResponse>(){}.getType();
+    public ApiResponse<ListTaxCrosslyCollectsResponse> listTaxCrosslyCollectsWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = listTaxCrosslyCollectsValidateBeforeCall(null);
+        Type localVarReturnType = new TypeToken<ListTaxCrosslyCollectsResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
-     * List mileage entries. (asynchronously)
+     * Where Crossly collects sales tax today (its active Stripe Tax registrations). (asynchronously)
      * 
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -791,10 +1438,326 @@ public class TaxApi {
         <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call listMileageAsync(final ApiCallback<ListMileageResponse> _callback) throws ApiException {
+    public okhttp3.Call listTaxCrosslyCollectsAsync(final ApiCallback<ListTaxCrosslyCollectsResponse> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = listMileageValidateBeforeCall(_callback);
-        Type localVarReturnType = new TypeToken<ListMileageResponse>(){}.getType();
+        okhttp3.Call localVarCall = listTaxCrosslyCollectsValidateBeforeCall(_callback);
+        Type localVarReturnType = new TypeToken<ListTaxCrosslyCollectsResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for listTaxSalesTaxNotCollected
+     * @param from  (optional)
+     * @param to  (optional)
+     * @param page  (optional)
+     * @param limit  (optional)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call listTaxSalesTaxNotCollectedCall(String from, String to, Integer page, Integer limit, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/v1/tax/sales-tax/not-collected";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        if (from != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("from", from));
+        }
+
+        if (to != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("to", to));
+        }
+
+        if (page != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("page", page));
+        }
+
+        if (limit != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("limit", limit));
+        }
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "PersonalAccessToken" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call listTaxSalesTaxNotCollectedValidateBeforeCall(String from, String to, Integer page, Integer limit, final ApiCallback _callback) throws ApiException {
+        
+
+        okhttp3.Call localVarCall = listTaxSalesTaxNotCollectedCall(from, to, page, limit, _callback);
+        return localVarCall;
+
+    }
+
+    /**
+     * The individual Crossly sales Crossly did not collect sales tax on, newest first.
+     * 
+     * @param from  (optional)
+     * @param to  (optional)
+     * @param page  (optional)
+     * @param limit  (optional)
+     * @return ListTaxSalesTaxNotCollectedResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public ListTaxSalesTaxNotCollectedResponse listTaxSalesTaxNotCollected(String from, String to, Integer page, Integer limit) throws ApiException {
+        ApiResponse<ListTaxSalesTaxNotCollectedResponse> localVarResp = listTaxSalesTaxNotCollectedWithHttpInfo(from, to, page, limit);
+        return localVarResp.getData();
+    }
+
+    /**
+     * The individual Crossly sales Crossly did not collect sales tax on, newest first.
+     * 
+     * @param from  (optional)
+     * @param to  (optional)
+     * @param page  (optional)
+     * @param limit  (optional)
+     * @return ApiResponse&lt;ListTaxSalesTaxNotCollectedResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<ListTaxSalesTaxNotCollectedResponse> listTaxSalesTaxNotCollectedWithHttpInfo(String from, String to, Integer page, Integer limit) throws ApiException {
+        okhttp3.Call localVarCall = listTaxSalesTaxNotCollectedValidateBeforeCall(from, to, page, limit, null);
+        Type localVarReturnType = new TypeToken<ListTaxSalesTaxNotCollectedResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * The individual Crossly sales Crossly did not collect sales tax on, newest first. (asynchronously)
+     * 
+     * @param from  (optional)
+     * @param to  (optional)
+     * @param page  (optional)
+     * @param limit  (optional)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call listTaxSalesTaxNotCollectedAsync(String from, String to, Integer page, Integer limit, final ApiCallback<ListTaxSalesTaxNotCollectedResponse> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = listTaxSalesTaxNotCollectedValidateBeforeCall(from, to, page, limit, _callback);
+        Type localVarReturnType = new TypeToken<ListTaxSalesTaxNotCollectedResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for updateBookTaxProfile
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call updateBookTaxProfileCall(final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/v1/books/tax-profile";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "PersonalAccessToken" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "PUT", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call updateBookTaxProfileValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        
+
+        okhttp3.Call localVarCall = updateBookTaxProfileCall(_callback);
+        return localVarCall;
+
+    }
+
+    /**
+     * Update your tax profile: time zone, filing status, state, set-aside and rate assumptions (basis points), accounting method, business name, EIN and address. Fields left out are unchanged.
+     * 
+     * @return GetBookTaxProfileResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public GetBookTaxProfileResponse updateBookTaxProfile() throws ApiException {
+        ApiResponse<GetBookTaxProfileResponse> localVarResp = updateBookTaxProfileWithHttpInfo();
+        return localVarResp.getData();
+    }
+
+    /**
+     * Update your tax profile: time zone, filing status, state, set-aside and rate assumptions (basis points), accounting method, business name, EIN and address. Fields left out are unchanged.
+     * 
+     * @return ApiResponse&lt;GetBookTaxProfileResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<GetBookTaxProfileResponse> updateBookTaxProfileWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = updateBookTaxProfileValidateBeforeCall(null);
+        Type localVarReturnType = new TypeToken<GetBookTaxProfileResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Update your tax profile: time zone, filing status, state, set-aside and rate assumptions (basis points), accounting method, business name, EIN and address. Fields left out are unchanged. (asynchronously)
+     * 
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call updateBookTaxProfileAsync(final ApiCallback<GetBookTaxProfileResponse> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = updateBookTaxProfileValidateBeforeCall(_callback);
+        Type localVarReturnType = new TypeToken<GetBookTaxProfileResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }

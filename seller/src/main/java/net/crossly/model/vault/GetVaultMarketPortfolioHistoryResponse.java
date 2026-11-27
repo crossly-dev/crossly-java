@@ -27,11 +27,12 @@ import java.util.ArrayList;
 import java.util.List;
 import net.crossly.model.vault.GetVaultMarketPortfolioHistoryResponseNow;
 import net.crossly.model.vault.GetVaultMarketPortfolioHistoryResponseSeries;
+import net.crossly.model.vault.GetVaultMarketPortfolioHistoryResponseToday;
 
 /**
  * GetVaultMarketPortfolioHistoryResponse
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-11T23:44:48.922Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-27T19:42:43.186Z[Etc/UTC]")
 public class GetVaultMarketPortfolioHistoryResponse {
   public static final String SERIALIZED_NAME_SERIES = "series";
   @SerializedName(SERIALIZED_NAME_SERIES)
@@ -40,6 +41,10 @@ public class GetVaultMarketPortfolioHistoryResponse {
   public static final String SERIALIZED_NAME_NOW = "now";
   @SerializedName(SERIALIZED_NAME_NOW)
   private GetVaultMarketPortfolioHistoryResponseNow now;
+
+  public static final String SERIALIZED_NAME_TODAY = "today";
+  @SerializedName(SERIALIZED_NAME_TODAY)
+  private GetVaultMarketPortfolioHistoryResponseToday today;
 
   public GetVaultMarketPortfolioHistoryResponse() { 
   }
@@ -95,6 +100,29 @@ public class GetVaultMarketPortfolioHistoryResponse {
   }
 
 
+  public GetVaultMarketPortfolioHistoryResponse today(GetVaultMarketPortfolioHistoryResponseToday today) {
+    
+    this.today = today;
+    return this;
+  }
+
+   /**
+   * Get today
+   * @return today
+  **/
+  @javax.annotation.Nonnull
+  @ApiModelProperty(required = true, value = "")
+
+  public GetVaultMarketPortfolioHistoryResponseToday getToday() {
+    return today;
+  }
+
+
+  public void setToday(GetVaultMarketPortfolioHistoryResponseToday today) {
+    this.today = today;
+  }
+
+
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -105,12 +133,13 @@ public class GetVaultMarketPortfolioHistoryResponse {
     }
     GetVaultMarketPortfolioHistoryResponse getVaultMarketPortfolioHistoryResponse = (GetVaultMarketPortfolioHistoryResponse) o;
     return Objects.equals(this.series, getVaultMarketPortfolioHistoryResponse.series) &&
-        Objects.equals(this.now, getVaultMarketPortfolioHistoryResponse.now);
+        Objects.equals(this.now, getVaultMarketPortfolioHistoryResponse.now) &&
+        Objects.equals(this.today, getVaultMarketPortfolioHistoryResponse.today);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(series, now);
+    return Objects.hash(series, now, today);
   }
 
   @Override
@@ -119,6 +148,7 @@ public class GetVaultMarketPortfolioHistoryResponse {
     sb.append("class GetVaultMarketPortfolioHistoryResponse {\n");
     sb.append("    series: ").append(toIndentedString(series)).append("\n");
     sb.append("    now: ").append(toIndentedString(now)).append("\n");
+    sb.append("    today: ").append(toIndentedString(today)).append("\n");
     sb.append("}");
     return sb.toString();
   }

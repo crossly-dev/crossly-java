@@ -26,12 +26,13 @@ import java.io.IOException;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
+import net.crossly.model.inventory.CreateInventoryCsvImportResponseCapacity;
 import net.crossly.model.inventory.CreateInventoryCsvImportResponseProblems;
 
 /**
  * CreateInventoryCsvImportResponse
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-11T23:44:48.922Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-27T19:42:43.186Z[Etc/UTC]")
 public class CreateInventoryCsvImportResponse {
   public static final String SERIALIZED_NAME_PROBLEMS = "problems";
   @SerializedName(SERIALIZED_NAME_PROBLEMS)
@@ -64,6 +65,14 @@ public class CreateInventoryCsvImportResponse {
   public static final String SERIALIZED_NAME_LISTINGS_CREATED = "listingsCreated";
   @SerializedName(SERIALIZED_NAME_LISTINGS_CREATED)
   private BigDecimal listingsCreated;
+
+  public static final String SERIALIZED_NAME_SKIPPED_OVER_LIMIT = "skippedOverLimit";
+  @SerializedName(SERIALIZED_NAME_SKIPPED_OVER_LIMIT)
+  private BigDecimal skippedOverLimit;
+
+  public static final String SERIALIZED_NAME_CAPACITY = "capacity";
+  @SerializedName(SERIALIZED_NAME_CAPACITY)
+  private CreateInventoryCsvImportResponseCapacity capacity;
 
   public static final String SERIALIZED_NAME_DRY_RUN = "dryRun";
   @SerializedName(SERIALIZED_NAME_DRY_RUN)
@@ -153,11 +162,11 @@ public class CreateInventoryCsvImportResponse {
   }
 
    /**
-   * Get created
+   * New items written — or, on a dry run, that WOULD be written.
    * @return created
   **/
   @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "")
+  @ApiModelProperty(required = true, value = "New items written — or, on a dry run, that WOULD be written.")
 
   public BigDecimal getCreated() {
     return created;
@@ -176,11 +185,11 @@ public class CreateInventoryCsvImportResponse {
   }
 
    /**
-   * Get updated
+   * Existing items updated by SKU — or, on a dry run, that would be.
    * @return updated
   **/
   @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "")
+  @ApiModelProperty(required = true, value = "Existing items updated by SKU — or, on a dry run, that would be.")
 
   public BigDecimal getUpdated() {
     return updated;
@@ -199,11 +208,11 @@ public class CreateInventoryCsvImportResponse {
   }
 
    /**
-   * Rows that mapped cleanly. &#x60;created + updated&#x60; when not a dry run.
+   * Rows that can be imported: &#x60;created + updated + skippedOverLimit&#x60;. Zero means the file has nothing usable in it.
    * @return usable
   **/
   @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "Rows that mapped cleanly. `created + updated` when not a dry run.")
+  @ApiModelProperty(required = true, value = "Rows that can be imported: `created + updated + skippedOverLimit`. Zero means the file has nothing usable in it.")
 
   public BigDecimal getUsable() {
     return usable;
@@ -261,6 +270,52 @@ public class CreateInventoryCsvImportResponse {
   }
 
 
+  public CreateInventoryCsvImportResponse skippedOverLimit(BigDecimal skippedOverLimit) {
+    
+    this.skippedOverLimit = skippedOverLimit;
+    return this;
+  }
+
+   /**
+   * New rows left out because the monthly item limit was reached.
+   * @return skippedOverLimit
+  **/
+  @javax.annotation.Nonnull
+  @ApiModelProperty(required = true, value = "New rows left out because the monthly item limit was reached.")
+
+  public BigDecimal getSkippedOverLimit() {
+    return skippedOverLimit;
+  }
+
+
+  public void setSkippedOverLimit(BigDecimal skippedOverLimit) {
+    this.skippedOverLimit = skippedOverLimit;
+  }
+
+
+  public CreateInventoryCsvImportResponse capacity(CreateInventoryCsvImportResponseCapacity capacity) {
+    
+    this.capacity = capacity;
+    return this;
+  }
+
+   /**
+   * Get capacity
+   * @return capacity
+  **/
+  @javax.annotation.Nonnull
+  @ApiModelProperty(required = true, value = "")
+
+  public CreateInventoryCsvImportResponseCapacity getCapacity() {
+    return capacity;
+  }
+
+
+  public void setCapacity(CreateInventoryCsvImportResponseCapacity capacity) {
+    this.capacity = capacity;
+  }
+
+
   public CreateInventoryCsvImportResponse dryRun(Boolean dryRun) {
     
     this.dryRun = dryRun;
@@ -301,12 +356,14 @@ public class CreateInventoryCsvImportResponse {
         Objects.equals(this.usable, createInventoryCsvImportResponse.usable) &&
         Objects.equals(this.totalRows, createInventoryCsvImportResponse.totalRows) &&
         Objects.equals(this.listingsCreated, createInventoryCsvImportResponse.listingsCreated) &&
+        Objects.equals(this.skippedOverLimit, createInventoryCsvImportResponse.skippedOverLimit) &&
+        Objects.equals(this.capacity, createInventoryCsvImportResponse.capacity) &&
         Objects.equals(this.dryRun, createInventoryCsvImportResponse.dryRun);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(problems, problemCount, maxRows, created, updated, usable, totalRows, listingsCreated, dryRun);
+    return Objects.hash(problems, problemCount, maxRows, created, updated, usable, totalRows, listingsCreated, skippedOverLimit, capacity, dryRun);
   }
 
   @Override
@@ -321,6 +378,8 @@ public class CreateInventoryCsvImportResponse {
     sb.append("    usable: ").append(toIndentedString(usable)).append("\n");
     sb.append("    totalRows: ").append(toIndentedString(totalRows)).append("\n");
     sb.append("    listingsCreated: ").append(toIndentedString(listingsCreated)).append("\n");
+    sb.append("    skippedOverLimit: ").append(toIndentedString(skippedOverLimit)).append("\n");
+    sb.append("    capacity: ").append(toIndentedString(capacity)).append("\n");
     sb.append("    dryRun: ").append(toIndentedString(dryRun)).append("\n");
     sb.append("}");
     return sb.toString();

@@ -29,7 +29,7 @@ import org.openapitools.jackson.nullable.JsonNullable;
 /**
  * ListVaultMarketPositionsRiskItem
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-11T23:44:48.922Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-27T19:42:43.186Z[Etc/UTC]")
 public class ListVaultMarketPositionsRiskItem {
   public static final String SERIALIZED_NAME_DISTANCE_TO_LIQUIDATION_BPS = "distanceToLiquidationBps";
   @SerializedName(SERIALIZED_NAME_DISTANCE_TO_LIQUIDATION_BPS)
@@ -107,9 +107,9 @@ public class ListVaultMarketPositionsRiskItem {
    */
   @JsonAdapter(KindEnum.Adapter.class)
   public enum KindEnum {
-    LONG("long"),
+    SHORT("short"),
     
-    SHORT("short");
+    LONG("long");
 
     private String value;
 
@@ -166,9 +166,9 @@ public class ListVaultMarketPositionsRiskItem {
    */
   @JsonAdapter(TierEnum.Adapter.class)
   public enum TierEnum {
-    STANDARD("standard"),
-    
     CLOSED("closed"),
+    
+    STANDARD("standard"),
     
     DEEP("deep"),
     
@@ -229,11 +229,11 @@ public class ListVaultMarketPositionsRiskItem {
    */
   @JsonAdapter(MarginStateEnum.Adapter.class)
   public enum MarginStateEnum {
-    BUY_IN("buy_in"),
-    
     HEALTHY("healthy"),
     
-    CALL("call");
+    CALL("call"),
+    
+    BUY_IN("buy_in");
 
     private String value;
 

@@ -23,13 +23,14 @@ import com.google.gson.stream.JsonWriter;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
+import net.crossly.model.main.GetMainStageResponseStreamLot;
 import org.openapitools.jackson.nullable.JsonNullable;
 
 /**
  * The live event&#39;s screen: a lineup host&#39;s stream while they are on air.
  */
 @ApiModel(description = "The live event's screen: a lineup host's stream while they are on air.")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-11T23:44:48.922Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-27T19:42:43.186Z[Etc/UTC]")
 public class GetMainStageResponseStream {
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
@@ -50,6 +51,10 @@ public class GetMainStageResponseStream {
   public static final String SERIALIZED_NAME_HOST = "host";
   @SerializedName(SERIALIZED_NAME_HOST)
   private String host;
+
+  public static final String SERIALIZED_NAME_LOT = "lot";
+  @SerializedName(SERIALIZED_NAME_LOT)
+  private GetMainStageResponseStreamLot lot;
 
   public GetMainStageResponseStream() { 
   }
@@ -169,6 +174,29 @@ public class GetMainStageResponseStream {
   }
 
 
+  public GetMainStageResponseStream lot(GetMainStageResponseStreamLot lot) {
+    
+    this.lot = lot;
+    return this;
+  }
+
+   /**
+   * Get lot
+   * @return lot
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public GetMainStageResponseStreamLot getLot() {
+    return lot;
+  }
+
+
+  public void setLot(GetMainStageResponseStreamLot lot) {
+    this.lot = lot;
+  }
+
+
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -182,7 +210,8 @@ public class GetMainStageResponseStream {
         Objects.equals(this.title, getMainStageResponseStream.title) &&
         Objects.equals(this.playbackUrl, getMainStageResponseStream.playbackUrl) &&
         Objects.equals(this.coverImageUrl, getMainStageResponseStream.coverImageUrl) &&
-        Objects.equals(this.host, getMainStageResponseStream.host);
+        Objects.equals(this.host, getMainStageResponseStream.host) &&
+        Objects.equals(this.lot, getMainStageResponseStream.lot);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -191,7 +220,7 @@ public class GetMainStageResponseStream {
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, title, playbackUrl, coverImageUrl, host);
+    return Objects.hash(id, title, playbackUrl, coverImageUrl, host, lot);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -210,6 +239,7 @@ public class GetMainStageResponseStream {
     sb.append("    playbackUrl: ").append(toIndentedString(playbackUrl)).append("\n");
     sb.append("    coverImageUrl: ").append(toIndentedString(coverImageUrl)).append("\n");
     sb.append("    host: ").append(toIndentedString(host)).append("\n");
+    sb.append("    lot: ").append(toIndentedString(lot)).append("\n");
     sb.append("}");
     return sb.toString();
   }

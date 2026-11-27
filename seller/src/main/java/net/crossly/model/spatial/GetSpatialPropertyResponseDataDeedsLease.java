@@ -30,7 +30,7 @@ import org.threeten.bp.OffsetDateTime;
 /**
  * GetSpatialPropertyResponseDataDeedsLease
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-11T23:44:48.922Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-27T19:42:43.186Z[Etc/UTC]")
 public class GetSpatialPropertyResponseDataDeedsLease {
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
@@ -44,25 +44,25 @@ public class GetSpatialPropertyResponseDataDeedsLease {
   @SerializedName(SERIALIZED_NAME_STATUS)
   private String status;
 
-  public static final String SERIALIZED_NAME_ENDED_AT = "endedAt";
-  @SerializedName(SERIALIZED_NAME_ENDED_AT)
-  private OffsetDateTime endedAt;
-
   public static final String SERIALIZED_NAME_OWNER_USER_ID = "ownerUserId";
   @SerializedName(SERIALIZED_NAME_OWNER_USER_ID)
   private String ownerUserId;
 
-  public static final String SERIALIZED_NAME_END_REASON = "endReason";
-  @SerializedName(SERIALIZED_NAME_END_REASON)
-  private String endReason;
+  public static final String SERIALIZED_NAME_ENDED_AT = "endedAt";
+  @SerializedName(SERIALIZED_NAME_ENDED_AT)
+  private OffsetDateTime endedAt;
 
-  public static final String SERIALIZED_NAME_PAID_THROUGH = "paidThrough";
-  @SerializedName(SERIALIZED_NAME_PAID_THROUGH)
-  private OffsetDateTime paidThrough;
+  public static final String SERIALIZED_NAME_RAIL = "rail";
+  @SerializedName(SERIALIZED_NAME_RAIL)
+  private String rail;
 
   public static final String SERIALIZED_NAME_PLOT_ID = "plotId";
   @SerializedName(SERIALIZED_NAME_PLOT_ID)
   private String plotId;
+
+  public static final String SERIALIZED_NAME_PAID_THROUGH = "paidThrough";
+  @SerializedName(SERIALIZED_NAME_PAID_THROUGH)
+  private OffsetDateTime paidThrough;
 
   public static final String SERIALIZED_NAME_DEED_ID = "deedId";
   @SerializedName(SERIALIZED_NAME_DEED_ID)
@@ -83,6 +83,26 @@ public class GetSpatialPropertyResponseDataDeedsLease {
   public static final String SERIALIZED_NAME_TERMS_FROZEN_AT = "termsFrozenAt";
   @SerializedName(SERIALIZED_NAME_TERMS_FROZEN_AT)
   private OffsetDateTime termsFrozenAt;
+
+  public static final String SERIALIZED_NAME_END_REASON = "endReason";
+  @SerializedName(SERIALIZED_NAME_END_REASON)
+  private String endReason;
+
+  public static final String SERIALIZED_NAME_AUTOPAY = "autopay";
+  @SerializedName(SERIALIZED_NAME_AUTOPAY)
+  private Boolean autopay;
+
+  public static final String SERIALIZED_NAME_ADDRESS = "address";
+  @SerializedName(SERIALIZED_NAME_ADDRESS)
+  private String address;
+
+  public static final String SERIALIZED_NAME_LABEL = "label";
+  @SerializedName(SERIALIZED_NAME_LABEL)
+  private String label;
+
+  public static final String SERIALIZED_NAME_TENANT_NAME = "tenantName";
+  @SerializedName(SERIALIZED_NAME_TENANT_NAME)
+  private String tenantName;
 
   public GetSpatialPropertyResponseDataDeedsLease() { 
   }
@@ -156,29 +176,6 @@ public class GetSpatialPropertyResponseDataDeedsLease {
   }
 
 
-  public GetSpatialPropertyResponseDataDeedsLease endedAt(OffsetDateTime endedAt) {
-    
-    this.endedAt = endedAt;
-    return this;
-  }
-
-   /**
-   * Get endedAt
-   * @return endedAt
-  **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
-
-  public OffsetDateTime getEndedAt() {
-    return endedAt;
-  }
-
-
-  public void setEndedAt(OffsetDateTime endedAt) {
-    this.endedAt = endedAt;
-  }
-
-
   public GetSpatialPropertyResponseDataDeedsLease ownerUserId(String ownerUserId) {
     
     this.ownerUserId = ownerUserId;
@@ -202,49 +199,49 @@ public class GetSpatialPropertyResponseDataDeedsLease {
   }
 
 
-  public GetSpatialPropertyResponseDataDeedsLease endReason(String endReason) {
+  public GetSpatialPropertyResponseDataDeedsLease endedAt(OffsetDateTime endedAt) {
     
-    this.endReason = endReason;
+    this.endedAt = endedAt;
     return this;
   }
 
    /**
-   * Get endReason
-   * @return endReason
+   * Get endedAt
+   * @return endedAt
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "")
 
-  public String getEndReason() {
-    return endReason;
+  public OffsetDateTime getEndedAt() {
+    return endedAt;
   }
 
 
-  public void setEndReason(String endReason) {
-    this.endReason = endReason;
+  public void setEndedAt(OffsetDateTime endedAt) {
+    this.endedAt = endedAt;
   }
 
 
-  public GetSpatialPropertyResponseDataDeedsLease paidThrough(OffsetDateTime paidThrough) {
+  public GetSpatialPropertyResponseDataDeedsLease rail(String rail) {
     
-    this.paidThrough = paidThrough;
+    this.rail = rail;
     return this;
   }
 
    /**
-   * Get paidThrough
-   * @return paidThrough
+   * Get rail
+   * @return rail
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "")
 
-  public OffsetDateTime getPaidThrough() {
-    return paidThrough;
+  public String getRail() {
+    return rail;
   }
 
 
-  public void setPaidThrough(OffsetDateTime paidThrough) {
-    this.paidThrough = paidThrough;
+  public void setRail(String rail) {
+    this.rail = rail;
   }
 
 
@@ -268,6 +265,29 @@ public class GetSpatialPropertyResponseDataDeedsLease {
 
   public void setPlotId(String plotId) {
     this.plotId = plotId;
+  }
+
+
+  public GetSpatialPropertyResponseDataDeedsLease paidThrough(OffsetDateTime paidThrough) {
+    
+    this.paidThrough = paidThrough;
+    return this;
+  }
+
+   /**
+   * Get paidThrough
+   * @return paidThrough
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public OffsetDateTime getPaidThrough() {
+    return paidThrough;
+  }
+
+
+  public void setPaidThrough(OffsetDateTime paidThrough) {
+    this.paidThrough = paidThrough;
   }
 
 
@@ -386,6 +406,121 @@ public class GetSpatialPropertyResponseDataDeedsLease {
   }
 
 
+  public GetSpatialPropertyResponseDataDeedsLease endReason(String endReason) {
+    
+    this.endReason = endReason;
+    return this;
+  }
+
+   /**
+   * Get endReason
+   * @return endReason
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public String getEndReason() {
+    return endReason;
+  }
+
+
+  public void setEndReason(String endReason) {
+    this.endReason = endReason;
+  }
+
+
+  public GetSpatialPropertyResponseDataDeedsLease autopay(Boolean autopay) {
+    
+    this.autopay = autopay;
+    return this;
+  }
+
+   /**
+   * Get autopay
+   * @return autopay
+  **/
+  @javax.annotation.Nonnull
+  @ApiModelProperty(required = true, value = "")
+
+  public Boolean getAutopay() {
+    return autopay;
+  }
+
+
+  public void setAutopay(Boolean autopay) {
+    this.autopay = autopay;
+  }
+
+
+  public GetSpatialPropertyResponseDataDeedsLease address(String address) {
+    
+    this.address = address;
+    return this;
+  }
+
+   /**
+   * Get address
+   * @return address
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public String getAddress() {
+    return address;
+  }
+
+
+  public void setAddress(String address) {
+    this.address = address;
+  }
+
+
+  public GetSpatialPropertyResponseDataDeedsLease label(String label) {
+    
+    this.label = label;
+    return this;
+  }
+
+   /**
+   * Get label
+   * @return label
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public String getLabel() {
+    return label;
+  }
+
+
+  public void setLabel(String label) {
+    this.label = label;
+  }
+
+
+  public GetSpatialPropertyResponseDataDeedsLease tenantName(String tenantName) {
+    
+    this.tenantName = tenantName;
+    return this;
+  }
+
+   /**
+   * Get tenantName
+   * @return tenantName
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public String getTenantName() {
+    return tenantName;
+  }
+
+
+  public void setTenantName(String tenantName) {
+    this.tenantName = tenantName;
+  }
+
+
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -398,16 +533,21 @@ public class GetSpatialPropertyResponseDataDeedsLease {
     return Objects.equals(this.id, getSpatialPropertyResponseDataDeedsLease.id) &&
         Objects.equals(this.createdAt, getSpatialPropertyResponseDataDeedsLease.createdAt) &&
         Objects.equals(this.status, getSpatialPropertyResponseDataDeedsLease.status) &&
-        Objects.equals(this.endedAt, getSpatialPropertyResponseDataDeedsLease.endedAt) &&
         Objects.equals(this.ownerUserId, getSpatialPropertyResponseDataDeedsLease.ownerUserId) &&
-        Objects.equals(this.endReason, getSpatialPropertyResponseDataDeedsLease.endReason) &&
-        Objects.equals(this.paidThrough, getSpatialPropertyResponseDataDeedsLease.paidThrough) &&
+        Objects.equals(this.endedAt, getSpatialPropertyResponseDataDeedsLease.endedAt) &&
+        Objects.equals(this.rail, getSpatialPropertyResponseDataDeedsLease.rail) &&
         Objects.equals(this.plotId, getSpatialPropertyResponseDataDeedsLease.plotId) &&
+        Objects.equals(this.paidThrough, getSpatialPropertyResponseDataDeedsLease.paidThrough) &&
         Objects.equals(this.deedId, getSpatialPropertyResponseDataDeedsLease.deedId) &&
         Objects.equals(this.tenantUserId, getSpatialPropertyResponseDataDeedsLease.tenantUserId) &&
         Objects.equals(this.tenantSceneId, getSpatialPropertyResponseDataDeedsLease.tenantSceneId) &&
         Objects.equals(this.rentWeeklyCents, getSpatialPropertyResponseDataDeedsLease.rentWeeklyCents) &&
-        Objects.equals(this.termsFrozenAt, getSpatialPropertyResponseDataDeedsLease.termsFrozenAt);
+        Objects.equals(this.termsFrozenAt, getSpatialPropertyResponseDataDeedsLease.termsFrozenAt) &&
+        Objects.equals(this.endReason, getSpatialPropertyResponseDataDeedsLease.endReason) &&
+        Objects.equals(this.autopay, getSpatialPropertyResponseDataDeedsLease.autopay) &&
+        Objects.equals(this.address, getSpatialPropertyResponseDataDeedsLease.address) &&
+        Objects.equals(this.label, getSpatialPropertyResponseDataDeedsLease.label) &&
+        Objects.equals(this.tenantName, getSpatialPropertyResponseDataDeedsLease.tenantName);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -416,7 +556,7 @@ public class GetSpatialPropertyResponseDataDeedsLease {
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, createdAt, status, endedAt, ownerUserId, endReason, paidThrough, plotId, deedId, tenantUserId, tenantSceneId, rentWeeklyCents, termsFrozenAt);
+    return Objects.hash(id, createdAt, status, ownerUserId, endedAt, rail, plotId, paidThrough, deedId, tenantUserId, tenantSceneId, rentWeeklyCents, termsFrozenAt, endReason, autopay, address, label, tenantName);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -433,16 +573,21 @@ public class GetSpatialPropertyResponseDataDeedsLease {
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    createdAt: ").append(toIndentedString(createdAt)).append("\n");
     sb.append("    status: ").append(toIndentedString(status)).append("\n");
-    sb.append("    endedAt: ").append(toIndentedString(endedAt)).append("\n");
     sb.append("    ownerUserId: ").append(toIndentedString(ownerUserId)).append("\n");
-    sb.append("    endReason: ").append(toIndentedString(endReason)).append("\n");
-    sb.append("    paidThrough: ").append(toIndentedString(paidThrough)).append("\n");
+    sb.append("    endedAt: ").append(toIndentedString(endedAt)).append("\n");
+    sb.append("    rail: ").append(toIndentedString(rail)).append("\n");
     sb.append("    plotId: ").append(toIndentedString(plotId)).append("\n");
+    sb.append("    paidThrough: ").append(toIndentedString(paidThrough)).append("\n");
     sb.append("    deedId: ").append(toIndentedString(deedId)).append("\n");
     sb.append("    tenantUserId: ").append(toIndentedString(tenantUserId)).append("\n");
     sb.append("    tenantSceneId: ").append(toIndentedString(tenantSceneId)).append("\n");
     sb.append("    rentWeeklyCents: ").append(toIndentedString(rentWeeklyCents)).append("\n");
     sb.append("    termsFrozenAt: ").append(toIndentedString(termsFrozenAt)).append("\n");
+    sb.append("    endReason: ").append(toIndentedString(endReason)).append("\n");
+    sb.append("    autopay: ").append(toIndentedString(autopay)).append("\n");
+    sb.append("    address: ").append(toIndentedString(address)).append("\n");
+    sb.append("    label: ").append(toIndentedString(label)).append("\n");
+    sb.append("    tenantName: ").append(toIndentedString(tenantName)).append("\n");
     sb.append("}");
     return sb.toString();
   }

@@ -31,22 +31,68 @@ import org.openapitools.jackson.nullable.JsonNullable;
  * Community-library metadata. Server ignores; UI may render.
  */
 @ApiModel(description = "Community-library metadata. Server ignores; UI may render.")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-11T23:44:48.922Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-27T19:42:43.186Z[Etc/UTC]")
 public class GetAutomationRuleExportByIdResponseMetadata {
-  public static final String SERIALIZED_NAME_TAGS = "tags";
-  @SerializedName(SERIALIZED_NAME_TAGS)
-  private List<String> tags = null;
+  public static final String SERIALIZED_NAME_AUTHOR = "author";
+  @SerializedName(SERIALIZED_NAME_AUTHOR)
+  private String author;
 
   public static final String SERIALIZED_NAME_SOURCE_URL = "sourceUrl";
   @SerializedName(SERIALIZED_NAME_SOURCE_URL)
   private String sourceUrl;
 
-  public static final String SERIALIZED_NAME_AUTHOR = "author";
-  @SerializedName(SERIALIZED_NAME_AUTHOR)
-  private String author;
+  public static final String SERIALIZED_NAME_TAGS = "tags";
+  @SerializedName(SERIALIZED_NAME_TAGS)
+  private List<String> tags = null;
 
   public GetAutomationRuleExportByIdResponseMetadata() { 
   }
+
+  public GetAutomationRuleExportByIdResponseMetadata author(String author) {
+    
+    this.author = author;
+    return this;
+  }
+
+   /**
+   * Get author
+   * @return author
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public String getAuthor() {
+    return author;
+  }
+
+
+  public void setAuthor(String author) {
+    this.author = author;
+  }
+
+
+  public GetAutomationRuleExportByIdResponseMetadata sourceUrl(String sourceUrl) {
+    
+    this.sourceUrl = sourceUrl;
+    return this;
+  }
+
+   /**
+   * Get sourceUrl
+   * @return sourceUrl
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public String getSourceUrl() {
+    return sourceUrl;
+  }
+
+
+  public void setSourceUrl(String sourceUrl) {
+    this.sourceUrl = sourceUrl;
+  }
+
 
   public GetAutomationRuleExportByIdResponseMetadata tags(List<String> tags) {
     
@@ -79,52 +125,6 @@ public class GetAutomationRuleExportByIdResponseMetadata {
   }
 
 
-  public GetAutomationRuleExportByIdResponseMetadata sourceUrl(String sourceUrl) {
-    
-    this.sourceUrl = sourceUrl;
-    return this;
-  }
-
-   /**
-   * Get sourceUrl
-   * @return sourceUrl
-  **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
-
-  public String getSourceUrl() {
-    return sourceUrl;
-  }
-
-
-  public void setSourceUrl(String sourceUrl) {
-    this.sourceUrl = sourceUrl;
-  }
-
-
-  public GetAutomationRuleExportByIdResponseMetadata author(String author) {
-    
-    this.author = author;
-    return this;
-  }
-
-   /**
-   * Get author
-   * @return author
-  **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
-
-  public String getAuthor() {
-    return author;
-  }
-
-
-  public void setAuthor(String author) {
-    this.author = author;
-  }
-
-
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -134,9 +134,9 @@ public class GetAutomationRuleExportByIdResponseMetadata {
       return false;
     }
     GetAutomationRuleExportByIdResponseMetadata getAutomationRuleExportByIdResponseMetadata = (GetAutomationRuleExportByIdResponseMetadata) o;
-    return Objects.equals(this.tags, getAutomationRuleExportByIdResponseMetadata.tags) &&
+    return Objects.equals(this.author, getAutomationRuleExportByIdResponseMetadata.author) &&
         Objects.equals(this.sourceUrl, getAutomationRuleExportByIdResponseMetadata.sourceUrl) &&
-        Objects.equals(this.author, getAutomationRuleExportByIdResponseMetadata.author);
+        Objects.equals(this.tags, getAutomationRuleExportByIdResponseMetadata.tags);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -145,7 +145,7 @@ public class GetAutomationRuleExportByIdResponseMetadata {
 
   @Override
   public int hashCode() {
-    return Objects.hash(tags, sourceUrl, author);
+    return Objects.hash(author, sourceUrl, tags);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -159,9 +159,9 @@ public class GetAutomationRuleExportByIdResponseMetadata {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class GetAutomationRuleExportByIdResponseMetadata {\n");
-    sb.append("    tags: ").append(toIndentedString(tags)).append("\n");
-    sb.append("    sourceUrl: ").append(toIndentedString(sourceUrl)).append("\n");
     sb.append("    author: ").append(toIndentedString(author)).append("\n");
+    sb.append("    sourceUrl: ").append(toIndentedString(sourceUrl)).append("\n");
+    sb.append("    tags: ").append(toIndentedString(tags)).append("\n");
     sb.append("}");
     return sb.toString();
   }

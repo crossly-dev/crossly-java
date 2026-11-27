@@ -35,7 +35,7 @@ import org.openapitools.jackson.nullable.JsonNullable;
 /**
  * GetStallQuoteResponseQuote
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-11T23:44:48.922Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-27T19:42:43.186Z[Etc/UTC]")
 public class GetStallQuoteResponseQuote {
   public static final String SERIALIZED_NAME_STREET = "street";
   @SerializedName(SERIALIZED_NAME_STREET)
@@ -64,6 +64,63 @@ public class GetStallQuoteResponseQuote {
   public static final String SERIALIZED_NAME_RAILS = "rails";
   @SerializedName(SERIALIZED_NAME_RAILS)
   private List<GetStallQuoteResponseQuoteRailsItem> rails = new ArrayList<GetStallQuoteResponseQuoteRailsItem>();
+
+  /**
+   * Gets or Sets boothKind
+   */
+  @JsonAdapter(BoothKindEnum.Adapter.class)
+  public enum BoothKindEnum {
+    BOOTH("booth"),
+    
+    CART("cart"),
+    
+    PAVILION("pavilion");
+
+    private String value;
+
+    BoothKindEnum(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    @Override
+    public String toString() {
+      return String.valueOf(value);
+    }
+
+    public static BoothKindEnum fromValue(String value) {
+      for (BoothKindEnum b : BoothKindEnum.values()) {
+        if (b.value.equals(value)) {
+          return b;
+        }
+      }
+      throw new IllegalArgumentException("Unexpected value '" + value + "'");
+    }
+
+    public static class Adapter extends TypeAdapter<BoothKindEnum> {
+      @Override
+      public void write(final JsonWriter jsonWriter, final BoothKindEnum enumeration) throws IOException {
+        jsonWriter.value(enumeration.getValue());
+      }
+
+      @Override
+      public BoothKindEnum read(final JsonReader jsonReader) throws IOException {
+        String value =  jsonReader.nextString();
+        return BoothKindEnum.fromValue(value);
+      }
+    }
+  }
+
+  public static final String SERIALIZED_NAME_BOOTH_KIND = "boothKind";
+  @SerializedName(SERIALIZED_NAME_BOOTH_KIND)
+  private BoothKindEnum boothKind;
+
+  public static final String SERIALIZED_NAME_CAPACITY = "capacity";
+  @SerializedName(SERIALIZED_NAME_CAPACITY)
+  private BigDecimal capacity;
 
   public static final String SERIALIZED_NAME_BOOKABLE = "bookable";
   @SerializedName(SERIALIZED_NAME_BOOKABLE)
@@ -247,6 +304,52 @@ public class GetStallQuoteResponseQuote {
   }
 
 
+  public GetStallQuoteResponseQuote boothKind(BoothKindEnum boothKind) {
+    
+    this.boothKind = boothKind;
+    return this;
+  }
+
+   /**
+   * Get boothKind
+   * @return boothKind
+  **/
+  @javax.annotation.Nonnull
+  @ApiModelProperty(required = true, value = "")
+
+  public BoothKindEnum getBoothKind() {
+    return boothKind;
+  }
+
+
+  public void setBoothKind(BoothKindEnum boothKind) {
+    this.boothKind = boothKind;
+  }
+
+
+  public GetStallQuoteResponseQuote capacity(BigDecimal capacity) {
+    
+    this.capacity = capacity;
+    return this;
+  }
+
+   /**
+   * Get capacity
+   * @return capacity
+  **/
+  @javax.annotation.Nonnull
+  @ApiModelProperty(required = true, value = "")
+
+  public BigDecimal getCapacity() {
+    return capacity;
+  }
+
+
+  public void setCapacity(BigDecimal capacity) {
+    this.capacity = capacity;
+  }
+
+
   public GetStallQuoteResponseQuote bookable(Boolean bookable) {
     
     this.bookable = bookable;
@@ -309,6 +412,8 @@ public class GetStallQuoteResponseQuote {
         Objects.equals(this.units, getStallQuoteResponseQuote.units) &&
         Objects.equals(this.quote, getStallQuoteResponseQuote.quote) &&
         Objects.equals(this.rails, getStallQuoteResponseQuote.rails) &&
+        Objects.equals(this.boothKind, getStallQuoteResponseQuote.boothKind) &&
+        Objects.equals(this.capacity, getStallQuoteResponseQuote.capacity) &&
         Objects.equals(this.bookable, getStallQuoteResponseQuote.bookable) &&
         Objects.equals(this.unbookableReason, getStallQuoteResponseQuote.unbookableReason);
   }
@@ -319,7 +424,7 @@ public class GetStallQuoteResponseQuote {
 
   @Override
   public int hashCode() {
-    return Objects.hash(street, spotIndex, owner, open, units, quote, rails, bookable, unbookableReason);
+    return Objects.hash(street, spotIndex, owner, open, units, quote, rails, boothKind, capacity, bookable, unbookableReason);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -340,6 +445,8 @@ public class GetStallQuoteResponseQuote {
     sb.append("    units: ").append(toIndentedString(units)).append("\n");
     sb.append("    quote: ").append(toIndentedString(quote)).append("\n");
     sb.append("    rails: ").append(toIndentedString(rails)).append("\n");
+    sb.append("    boothKind: ").append(toIndentedString(boothKind)).append("\n");
+    sb.append("    capacity: ").append(toIndentedString(capacity)).append("\n");
     sb.append("    bookable: ").append(toIndentedString(bookable)).append("\n");
     sb.append("    unbookableReason: ").append(toIndentedString(unbookableReason)).append("\n");
     sb.append("}");

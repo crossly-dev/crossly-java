@@ -30,7 +30,7 @@ import org.threeten.bp.OffsetDateTime;
 /**
  * ListInventoryActivityItem
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-11T23:44:48.922Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-27T19:42:43.186Z[Etc/UTC]")
 public class ListInventoryActivityItem {
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
@@ -48,17 +48,17 @@ public class ListInventoryActivityItem {
   @SerializedName(SERIALIZED_NAME_PLATFORM)
   private String platform;
 
-  public static final String SERIALIZED_NAME_TYPE = "type";
-  @SerializedName(SERIALIZED_NAME_TYPE)
-  private String type;
+  public static final String SERIALIZED_NAME_INVENTORY_ITEM_ID = "inventoryItemId";
+  @SerializedName(SERIALIZED_NAME_INVENTORY_ITEM_ID)
+  private String inventoryItemId;
 
   public static final String SERIALIZED_NAME_ORDER_ID = "orderId";
   @SerializedName(SERIALIZED_NAME_ORDER_ID)
   private String orderId;
 
-  public static final String SERIALIZED_NAME_INVENTORY_ITEM_ID = "inventoryItemId";
-  @SerializedName(SERIALIZED_NAME_INVENTORY_ITEM_ID)
-  private String inventoryItemId;
+  public static final String SERIALIZED_NAME_TYPE = "type";
+  @SerializedName(SERIALIZED_NAME_TYPE)
+  private String type;
 
   public static final String SERIALIZED_NAME_DELTA = "delta";
   @SerializedName(SERIALIZED_NAME_DELTA)
@@ -171,26 +171,26 @@ public class ListInventoryActivityItem {
   }
 
 
-  public ListInventoryActivityItem type(String type) {
+  public ListInventoryActivityItem inventoryItemId(String inventoryItemId) {
     
-    this.type = type;
+    this.inventoryItemId = inventoryItemId;
     return this;
   }
 
    /**
-   * Get type
-   * @return type
+   * Get inventoryItemId
+   * @return inventoryItemId
   **/
-  @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "")
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
 
-  public String getType() {
-    return type;
+  public String getInventoryItemId() {
+    return inventoryItemId;
   }
 
 
-  public void setType(String type) {
-    this.type = type;
+  public void setInventoryItemId(String inventoryItemId) {
+    this.inventoryItemId = inventoryItemId;
   }
 
 
@@ -217,26 +217,26 @@ public class ListInventoryActivityItem {
   }
 
 
-  public ListInventoryActivityItem inventoryItemId(String inventoryItemId) {
+  public ListInventoryActivityItem type(String type) {
     
-    this.inventoryItemId = inventoryItemId;
+    this.type = type;
     return this;
   }
 
    /**
-   * Get inventoryItemId
-   * @return inventoryItemId
+   * Get type
+   * @return type
   **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
+  @javax.annotation.Nonnull
+  @ApiModelProperty(required = true, value = "")
 
-  public String getInventoryItemId() {
-    return inventoryItemId;
+  public String getType() {
+    return type;
   }
 
 
-  public void setInventoryItemId(String inventoryItemId) {
-    this.inventoryItemId = inventoryItemId;
+  public void setType(String type) {
+    this.type = type;
   }
 
 
@@ -345,9 +345,9 @@ public class ListInventoryActivityItem {
         Objects.equals(this.createdAt, listInventoryActivityItem.createdAt) &&
         Objects.equals(this.userId, listInventoryActivityItem.userId) &&
         Objects.equals(this.platform, listInventoryActivityItem.platform) &&
-        Objects.equals(this.type, listInventoryActivityItem.type) &&
-        Objects.equals(this.orderId, listInventoryActivityItem.orderId) &&
         Objects.equals(this.inventoryItemId, listInventoryActivityItem.inventoryItemId) &&
+        Objects.equals(this.orderId, listInventoryActivityItem.orderId) &&
+        Objects.equals(this.type, listInventoryActivityItem.type) &&
         Objects.equals(this.delta, listInventoryActivityItem.delta) &&
         Objects.equals(this.quantityBefore, listInventoryActivityItem.quantityBefore) &&
         Objects.equals(this.quantityAfter, listInventoryActivityItem.quantityAfter) &&
@@ -360,7 +360,7 @@ public class ListInventoryActivityItem {
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, createdAt, userId, platform, type, orderId, inventoryItemId, delta, quantityBefore, quantityAfter, saleId);
+    return Objects.hash(id, createdAt, userId, platform, inventoryItemId, orderId, type, delta, quantityBefore, quantityAfter, saleId);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -378,9 +378,9 @@ public class ListInventoryActivityItem {
     sb.append("    createdAt: ").append(toIndentedString(createdAt)).append("\n");
     sb.append("    userId: ").append(toIndentedString(userId)).append("\n");
     sb.append("    platform: ").append(toIndentedString(platform)).append("\n");
-    sb.append("    type: ").append(toIndentedString(type)).append("\n");
-    sb.append("    orderId: ").append(toIndentedString(orderId)).append("\n");
     sb.append("    inventoryItemId: ").append(toIndentedString(inventoryItemId)).append("\n");
+    sb.append("    orderId: ").append(toIndentedString(orderId)).append("\n");
+    sb.append("    type: ").append(toIndentedString(type)).append("\n");
     sb.append("    delta: ").append(toIndentedString(delta)).append("\n");
     sb.append("    quantityBefore: ").append(toIndentedString(quantityBefore)).append("\n");
     sb.append("    quantityAfter: ").append(toIndentedString(quantityAfter)).append("\n");

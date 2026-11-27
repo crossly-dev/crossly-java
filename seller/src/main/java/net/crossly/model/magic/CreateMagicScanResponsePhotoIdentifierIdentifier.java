@@ -27,16 +27,16 @@ import java.io.IOException;
 /**
  * CreateMagicScanResponsePhotoIdentifierIdentifier
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-11T23:44:48.922Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-27T19:42:43.186Z[Etc/UTC]")
 public class CreateMagicScanResponsePhotoIdentifierIdentifier {
   /**
    * Gets or Sets namespace
    */
   @JsonAdapter(NamespaceEnum.Adapter.class)
   public enum NamespaceEnum {
-    STYLE_CODE("style_code"),
-    
     GTIN("gtin"),
+    
+    STYLE_CODE("style_code"),
     
     LEGO_SET("lego_set"),
     

@@ -30,7 +30,7 @@ import org.threeten.bp.OffsetDateTime;
 /**
  * CreateNftMarketListingResponseListing
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-11T23:44:48.922Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-27T19:42:43.186Z[Etc/UTC]")
 public class CreateNftMarketListingResponseListing {
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
@@ -52,10 +52,6 @@ public class CreateNftMarketListingResponseListing {
   @SerializedName(SERIALIZED_NAME_SOLD_AT)
   private OffsetDateTime soldAt;
 
-  public static final String SERIALIZED_NAME_SELLER_USER_ID = "sellerUserId";
-  @SerializedName(SERIALIZED_NAME_SELLER_USER_ID)
-  private String sellerUserId;
-
   public static final String SERIALIZED_NAME_BUYER_USER_ID = "buyerUserId";
   @SerializedName(SERIALIZED_NAME_BUYER_USER_ID)
   private String buyerUserId;
@@ -64,13 +60,17 @@ public class CreateNftMarketListingResponseListing {
   @SerializedName(SERIALIZED_NAME_PRICE_CENTS)
   private BigDecimal priceCents;
 
-  public static final String SERIALIZED_NAME_MERCHANT_ID = "merchantId";
-  @SerializedName(SERIALIZED_NAME_MERCHANT_ID)
-  private String merchantId;
+  public static final String SERIALIZED_NAME_SELLER_USER_ID = "sellerUserId";
+  @SerializedName(SERIALIZED_NAME_SELLER_USER_ID)
+  private String sellerUserId;
 
   public static final String SERIALIZED_NAME_COSMETIC_ID = "cosmeticId";
   @SerializedName(SERIALIZED_NAME_COSMETIC_ID)
   private String cosmeticId;
+
+  public static final String SERIALIZED_NAME_MERCHANT_ID = "merchantId";
+  @SerializedName(SERIALIZED_NAME_MERCHANT_ID)
+  private String merchantId;
 
   public static final String SERIALIZED_NAME_OWNERSHIP_ID = "ownershipId";
   @SerializedName(SERIALIZED_NAME_OWNERSHIP_ID)
@@ -202,29 +202,6 @@ public class CreateNftMarketListingResponseListing {
   }
 
 
-  public CreateNftMarketListingResponseListing sellerUserId(String sellerUserId) {
-    
-    this.sellerUserId = sellerUserId;
-    return this;
-  }
-
-   /**
-   * Get sellerUserId
-   * @return sellerUserId
-  **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
-
-  public String getSellerUserId() {
-    return sellerUserId;
-  }
-
-
-  public void setSellerUserId(String sellerUserId) {
-    this.sellerUserId = sellerUserId;
-  }
-
-
   public CreateNftMarketListingResponseListing buyerUserId(String buyerUserId) {
     
     this.buyerUserId = buyerUserId;
@@ -271,26 +248,26 @@ public class CreateNftMarketListingResponseListing {
   }
 
 
-  public CreateNftMarketListingResponseListing merchantId(String merchantId) {
+  public CreateNftMarketListingResponseListing sellerUserId(String sellerUserId) {
     
-    this.merchantId = merchantId;
+    this.sellerUserId = sellerUserId;
     return this;
   }
 
    /**
-   * Get merchantId
-   * @return merchantId
+   * Get sellerUserId
+   * @return sellerUserId
   **/
-  @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "")
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
 
-  public String getMerchantId() {
-    return merchantId;
+  public String getSellerUserId() {
+    return sellerUserId;
   }
 
 
-  public void setMerchantId(String merchantId) {
-    this.merchantId = merchantId;
+  public void setSellerUserId(String sellerUserId) {
+    this.sellerUserId = sellerUserId;
   }
 
 
@@ -314,6 +291,29 @@ public class CreateNftMarketListingResponseListing {
 
   public void setCosmeticId(String cosmeticId) {
     this.cosmeticId = cosmeticId;
+  }
+
+
+  public CreateNftMarketListingResponseListing merchantId(String merchantId) {
+    
+    this.merchantId = merchantId;
+    return this;
+  }
+
+   /**
+   * Get merchantId
+   * @return merchantId
+  **/
+  @javax.annotation.Nonnull
+  @ApiModelProperty(required = true, value = "")
+
+  public String getMerchantId() {
+    return merchantId;
+  }
+
+
+  public void setMerchantId(String merchantId) {
+    this.merchantId = merchantId;
   }
 
 
@@ -400,11 +400,11 @@ public class CreateNftMarketListingResponseListing {
         Objects.equals(this.updatedAt, createNftMarketListingResponseListing.updatedAt) &&
         Objects.equals(this.status, createNftMarketListingResponseListing.status) &&
         Objects.equals(this.soldAt, createNftMarketListingResponseListing.soldAt) &&
-        Objects.equals(this.sellerUserId, createNftMarketListingResponseListing.sellerUserId) &&
         Objects.equals(this.buyerUserId, createNftMarketListingResponseListing.buyerUserId) &&
         Objects.equals(this.priceCents, createNftMarketListingResponseListing.priceCents) &&
-        Objects.equals(this.merchantId, createNftMarketListingResponseListing.merchantId) &&
+        Objects.equals(this.sellerUserId, createNftMarketListingResponseListing.sellerUserId) &&
         Objects.equals(this.cosmeticId, createNftMarketListingResponseListing.cosmeticId) &&
+        Objects.equals(this.merchantId, createNftMarketListingResponseListing.merchantId) &&
         Objects.equals(this.ownershipId, createNftMarketListingResponseListing.ownershipId) &&
         Objects.equals(this.sellerSubjectId, createNftMarketListingResponseListing.sellerSubjectId) &&
         Objects.equals(this.txSig, createNftMarketListingResponseListing.txSig);
@@ -416,7 +416,7 @@ public class CreateNftMarketListingResponseListing {
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, createdAt, updatedAt, status, soldAt, sellerUserId, buyerUserId, priceCents, merchantId, cosmeticId, ownershipId, sellerSubjectId, txSig);
+    return Objects.hash(id, createdAt, updatedAt, status, soldAt, buyerUserId, priceCents, sellerUserId, cosmeticId, merchantId, ownershipId, sellerSubjectId, txSig);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -435,11 +435,11 @@ public class CreateNftMarketListingResponseListing {
     sb.append("    updatedAt: ").append(toIndentedString(updatedAt)).append("\n");
     sb.append("    status: ").append(toIndentedString(status)).append("\n");
     sb.append("    soldAt: ").append(toIndentedString(soldAt)).append("\n");
-    sb.append("    sellerUserId: ").append(toIndentedString(sellerUserId)).append("\n");
     sb.append("    buyerUserId: ").append(toIndentedString(buyerUserId)).append("\n");
     sb.append("    priceCents: ").append(toIndentedString(priceCents)).append("\n");
-    sb.append("    merchantId: ").append(toIndentedString(merchantId)).append("\n");
+    sb.append("    sellerUserId: ").append(toIndentedString(sellerUserId)).append("\n");
     sb.append("    cosmeticId: ").append(toIndentedString(cosmeticId)).append("\n");
+    sb.append("    merchantId: ").append(toIndentedString(merchantId)).append("\n");
     sb.append("    ownershipId: ").append(toIndentedString(ownershipId)).append("\n");
     sb.append("    sellerSubjectId: ").append(toIndentedString(sellerSubjectId)).append("\n");
     sb.append("    txSig: ").append(toIndentedString(txSig)).append("\n");

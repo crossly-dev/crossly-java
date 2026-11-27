@@ -30,15 +30,13 @@ import net.crossly.model.spatial.GetSpatialSceneWarehouseResponseDataShellWall;
  * Walls and floor, from the room&#39;s cosmetics (resolveShell).
  */
 @ApiModel(description = "Walls and floor, from the room's cosmetics (resolveShell).")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-11T23:44:48.922Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-27T19:42:43.186Z[Etc/UTC]")
 public class GetSpatialSceneWarehouseResponseDataShell {
   /**
    * Gets or Sets theme
    */
   @JsonAdapter(ThemeEnum.Adapter.class)
   public enum ThemeEnum {
-    STORYBOOK("storybook"),
-    
     STUDIO("studio"),
     
     NOIR("noir"),
@@ -47,7 +45,9 @@ public class GetSpatialSceneWarehouseResponseDataShell {
     
     VITRINE("vitrine"),
     
-    STREET("street");
+    STREET("street"),
+    
+    STORYBOOK("storybook");
 
     private String value;
 

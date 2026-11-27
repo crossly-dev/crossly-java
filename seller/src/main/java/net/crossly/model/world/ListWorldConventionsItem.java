@@ -30,7 +30,7 @@ import org.threeten.bp.OffsetDateTime;
 /**
  * ListWorldConventionsItem
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-11T23:44:48.922Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-27T19:42:43.186Z[Etc/UTC]")
 public class ListWorldConventionsItem {
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
@@ -79,6 +79,22 @@ public class ListWorldConventionsItem {
   public static final String SERIALIZED_NAME_PUBLIC_SLUG = "publicSlug";
   @SerializedName(SERIALIZED_NAME_PUBLIC_SLUG)
   private String publicSlug;
+
+  public static final String SERIALIZED_NAME_TIERED = "tiered";
+  @SerializedName(SERIALIZED_NAME_TIERED)
+  private Boolean tiered;
+
+  public static final String SERIALIZED_NAME_DOORS_OPEN_AT = "doorsOpenAt";
+  @SerializedName(SERIALIZED_NAME_DOORS_OPEN_AT)
+  private OffsetDateTime doorsOpenAt;
+
+  public static final String SERIALIZED_NAME_YOUR_DOORS_OPEN_AT = "yourDoorsOpenAt";
+  @SerializedName(SERIALIZED_NAME_YOUR_DOORS_OPEN_AT)
+  private String yourDoorsOpenAt;
+
+  public static final String SERIALIZED_NAME_DOORS_OPEN = "doorsOpen";
+  @SerializedName(SERIALIZED_NAME_DOORS_OPEN)
+  private Boolean doorsOpen;
 
   public ListWorldConventionsItem() { 
   }
@@ -359,6 +375,98 @@ public class ListWorldConventionsItem {
   }
 
 
+  public ListWorldConventionsItem tiered(Boolean tiered) {
+    
+    this.tiered = tiered;
+    return this;
+  }
+
+   /**
+   * A full-page convention (a rented hall, booth tiers; spec WD4): sellers book a tier on its booth page.
+   * @return tiered
+  **/
+  @javax.annotation.Nonnull
+  @ApiModelProperty(required = true, value = "A full-page convention (a rented hall, booth tiers; spec WD4): sellers book a tier on its booth page.")
+
+  public Boolean getTiered() {
+    return tiered;
+  }
+
+
+  public void setTiered(Boolean tiered) {
+    this.tiered = tiered;
+  }
+
+
+  public ListWorldConventionsItem doorsOpenAt(OffsetDateTime doorsOpenAt) {
+    
+    this.doorsOpenAt = doorsOpenAt;
+    return this;
+  }
+
+   /**
+   * When the doors open for visitors: the start (or when the host takes it live, if sooner).
+   * @return doorsOpenAt
+  **/
+  @javax.annotation.Nonnull
+  @ApiModelProperty(required = true, value = "When the doors open for visitors: the start (or when the host takes it live, if sooner).")
+
+  public OffsetDateTime getDoorsOpenAt() {
+    return doorsOpenAt;
+  }
+
+
+  public void setDoorsOpenAt(OffsetDateTime doorsOpenAt) {
+    this.doorsOpenAt = doorsOpenAt;
+  }
+
+
+  public ListWorldConventionsItem yourDoorsOpenAt(String yourDoorsOpenAt) {
+    
+    this.yourDoorsOpenAt = yourDoorsOpenAt;
+    return this;
+  }
+
+   /**
+   * For a signed-in viewer (doors.ts): when THEIR doors open (earlier with live_early_entry), and whether they are.
+   * @return yourDoorsOpenAt
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "For a signed-in viewer (doors.ts): when THEIR doors open (earlier with live_early_entry), and whether they are.")
+
+  public String getYourDoorsOpenAt() {
+    return yourDoorsOpenAt;
+  }
+
+
+  public void setYourDoorsOpenAt(String yourDoorsOpenAt) {
+    this.yourDoorsOpenAt = yourDoorsOpenAt;
+  }
+
+
+  public ListWorldConventionsItem doorsOpen(Boolean doorsOpen) {
+    
+    this.doorsOpen = doorsOpen;
+    return this;
+  }
+
+   /**
+   * Get doorsOpen
+   * @return doorsOpen
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public Boolean getDoorsOpen() {
+    return doorsOpen;
+  }
+
+
+  public void setDoorsOpen(Boolean doorsOpen) {
+    this.doorsOpen = doorsOpen;
+  }
+
+
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -379,7 +487,11 @@ public class ListWorldConventionsItem {
         Objects.equals(this.revenueShareBps, listWorldConventionsItem.revenueShareBps) &&
         Objects.equals(this.tableCount, listWorldConventionsItem.tableCount) &&
         Objects.equals(this.exhibitorCount, listWorldConventionsItem.exhibitorCount) &&
-        Objects.equals(this.publicSlug, listWorldConventionsItem.publicSlug);
+        Objects.equals(this.publicSlug, listWorldConventionsItem.publicSlug) &&
+        Objects.equals(this.tiered, listWorldConventionsItem.tiered) &&
+        Objects.equals(this.doorsOpenAt, listWorldConventionsItem.doorsOpenAt) &&
+        Objects.equals(this.yourDoorsOpenAt, listWorldConventionsItem.yourDoorsOpenAt) &&
+        Objects.equals(this.doorsOpen, listWorldConventionsItem.doorsOpen);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -388,7 +500,7 @@ public class ListWorldConventionsItem {
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, title, categorySlug, startsAt, endsAt, status, entryModel, entryFeeCents, revenueShareBps, tableCount, exhibitorCount, publicSlug);
+    return Objects.hash(id, title, categorySlug, startsAt, endsAt, status, entryModel, entryFeeCents, revenueShareBps, tableCount, exhibitorCount, publicSlug, tiered, doorsOpenAt, yourDoorsOpenAt, doorsOpen);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -414,6 +526,10 @@ public class ListWorldConventionsItem {
     sb.append("    tableCount: ").append(toIndentedString(tableCount)).append("\n");
     sb.append("    exhibitorCount: ").append(toIndentedString(exhibitorCount)).append("\n");
     sb.append("    publicSlug: ").append(toIndentedString(publicSlug)).append("\n");
+    sb.append("    tiered: ").append(toIndentedString(tiered)).append("\n");
+    sb.append("    doorsOpenAt: ").append(toIndentedString(doorsOpenAt)).append("\n");
+    sb.append("    yourDoorsOpenAt: ").append(toIndentedString(yourDoorsOpenAt)).append("\n");
+    sb.append("    doorsOpen: ").append(toIndentedString(doorsOpen)).append("\n");
     sb.append("}");
     return sb.toString();
   }

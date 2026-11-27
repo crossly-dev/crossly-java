@@ -29,13 +29,15 @@ import org.openapitools.jackson.nullable.JsonNullable;
 /**
  * GetSpatialEmoteResponseView
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-11T23:44:48.922Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-27T19:42:43.186Z[Etc/UTC]")
 public class GetSpatialEmoteResponseView {
   /**
    * Gets or Sets slot
    */
   @JsonAdapter(SlotEnum.Adapter.class)
   public enum SlotEnum {
+    PHONE("phone"),
+    
     SPIN("spin"),
     
     WAVE("wave"),
@@ -75,6 +77,60 @@ public class GetSpatialEmoteResponseView {
     HIGH_FIVE("high_five"),
     
     HANDSHAKE("handshake"),
+    
+    FACEPALM("facepalm"),
+    
+    THINK("think"),
+    
+    LAUGH("laugh"),
+    
+    SIGH("sigh"),
+    
+    NO("no"),
+    
+    FIST_PUMP("fist_pump"),
+    
+    VICTORY("victory"),
+    
+    YAWN("yawn"),
+    
+    SALUTE("salute"),
+    
+    BIG_WAVE("big_wave"),
+    
+    BECKON("beckon"),
+    
+    SHUSH("shush"),
+    
+    KISS("kiss"),
+    
+    PEACE("peace"),
+    
+    HEART("heart"),
+    
+    SWAY("sway"),
+    
+    VIBE("vibe"),
+    
+    AIR_GUITAR("air_guitar"),
+    
+    ROBOT("robot"),
+    
+    DISCO("disco"),
+    
+    GAVEL("gavel"),
+    
+    HAGGLE("haggle"),
+    
+    ARMS_CROSSED("arms_crossed"),
+    
+    HANDS_ON_HIPS("hands_on_hips"),
+    
+    KNEEL("kneel"),
+    
+    FIST_BUMP("fist_bump"),
+    
+    DANCE_OFF("dance_off"),
     
     SHOWOFF("showoff"),
     

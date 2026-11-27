@@ -28,7 +28,7 @@ import org.openapitools.jackson.nullable.JsonNullable;
 /**
  * CreateBuyerLockonConfirmResponseHudFacts
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-11T23:47:29.843Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-27T19:58:46.962Z[Etc/UTC]")
 public class CreateBuyerLockonConfirmResponseHudFacts {
   public static final String SERIALIZED_NAME_LABEL = "label";
   @SerializedName(SERIALIZED_NAME_LABEL)
@@ -43,11 +43,11 @@ public class CreateBuyerLockonConfirmResponseHudFacts {
    */
   @JsonAdapter(ToneEnum.Adapter.class)
   public enum ToneEnum {
-    GOOD("good"),
+    NEUTRAL("neutral"),
     
     WARN("warn"),
     
-    NEUTRAL("neutral");
+    GOOD("good");
 
     private String value;
 

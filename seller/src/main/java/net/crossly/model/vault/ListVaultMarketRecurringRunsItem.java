@@ -29,7 +29,7 @@ import org.openapitools.jackson.nullable.JsonNullable;
 /**
  * ListVaultMarketRecurringRunsItem
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-11T23:44:48.922Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-27T19:42:43.186Z[Etc/UTC]")
 public class ListVaultMarketRecurringRunsItem {
   public static final String SERIALIZED_NAME_DUE_AT = "dueAt";
   @SerializedName(SERIALIZED_NAME_DUE_AT)
@@ -51,13 +51,13 @@ public class ListVaultMarketRecurringRunsItem {
   @SerializedName(SERIALIZED_NAME_STATUS)
   private String status;
 
-  public static final String SERIALIZED_NAME_REASON = "reason";
-  @SerializedName(SERIALIZED_NAME_REASON)
-  private String reason;
-
   public static final String SERIALIZED_NAME_ORDER_ID = "orderId";
   @SerializedName(SERIALIZED_NAME_ORDER_ID)
   private String orderId;
+
+  public static final String SERIALIZED_NAME_REASON = "reason";
+  @SerializedName(SERIALIZED_NAME_REASON)
+  private String reason;
 
   public static final String SERIALIZED_NAME_MARK_CENTS = "markCents";
   @SerializedName(SERIALIZED_NAME_MARK_CENTS)
@@ -197,29 +197,6 @@ public class ListVaultMarketRecurringRunsItem {
   }
 
 
-  public ListVaultMarketRecurringRunsItem reason(String reason) {
-    
-    this.reason = reason;
-    return this;
-  }
-
-   /**
-   * Get reason
-   * @return reason
-  **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
-
-  public String getReason() {
-    return reason;
-  }
-
-
-  public void setReason(String reason) {
-    this.reason = reason;
-  }
-
-
   public ListVaultMarketRecurringRunsItem orderId(String orderId) {
     
     this.orderId = orderId;
@@ -240,6 +217,29 @@ public class ListVaultMarketRecurringRunsItem {
 
   public void setOrderId(String orderId) {
     this.orderId = orderId;
+  }
+
+
+  public ListVaultMarketRecurringRunsItem reason(String reason) {
+    
+    this.reason = reason;
+    return this;
+  }
+
+   /**
+   * Get reason
+   * @return reason
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public String getReason() {
+    return reason;
+  }
+
+
+  public void setReason(String reason) {
+    this.reason = reason;
   }
 
 
@@ -372,8 +372,8 @@ public class ListVaultMarketRecurringRunsItem {
         Objects.equals(this.id, listVaultMarketRecurringRunsItem.id) &&
         Objects.equals(this.userId, listVaultMarketRecurringRunsItem.userId) &&
         Objects.equals(this.status, listVaultMarketRecurringRunsItem.status) &&
-        Objects.equals(this.reason, listVaultMarketRecurringRunsItem.reason) &&
         Objects.equals(this.orderId, listVaultMarketRecurringRunsItem.orderId) &&
+        Objects.equals(this.reason, listVaultMarketRecurringRunsItem.reason) &&
         Objects.equals(this.markCents, listVaultMarketRecurringRunsItem.markCents) &&
         Objects.equals(this.limitCents, listVaultMarketRecurringRunsItem.limitCents) &&
         Objects.equals(this.filledCents, listVaultMarketRecurringRunsItem.filledCents) &&
@@ -387,7 +387,7 @@ public class ListVaultMarketRecurringRunsItem {
 
   @Override
   public int hashCode() {
-    return Objects.hash(dueAt, createdAt, id, userId, status, reason, orderId, markCents, limitCents, filledCents, scheduleId, usedBackup);
+    return Objects.hash(dueAt, createdAt, id, userId, status, orderId, reason, markCents, limitCents, filledCents, scheduleId, usedBackup);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -406,8 +406,8 @@ public class ListVaultMarketRecurringRunsItem {
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    userId: ").append(toIndentedString(userId)).append("\n");
     sb.append("    status: ").append(toIndentedString(status)).append("\n");
-    sb.append("    reason: ").append(toIndentedString(reason)).append("\n");
     sb.append("    orderId: ").append(toIndentedString(orderId)).append("\n");
+    sb.append("    reason: ").append(toIndentedString(reason)).append("\n");
     sb.append("    markCents: ").append(toIndentedString(markCents)).append("\n");
     sb.append("    limitCents: ").append(toIndentedString(limitCents)).append("\n");
     sb.append("    filledCents: ").append(toIndentedString(filledCents)).append("\n");

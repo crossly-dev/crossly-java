@@ -27,7 +27,7 @@ import java.io.IOException;
 /**
  * GetVaultMarketFollowSharingResponseExplain
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-11T23:44:48.922Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-27T19:42:43.186Z[Etc/UTC]")
 public class GetVaultMarketFollowSharingResponseExplain {
   public static final String SERIALIZED_NAME_ORDERS = "orders";
   @SerializedName(SERIALIZED_NAME_ORDERS)
@@ -37,10 +37,6 @@ public class GetVaultMarketFollowSharingResponseExplain {
   @SerializedName(SERIALIZED_NAME_SALES)
   private String sales;
 
-  public static final String SERIALIZED_NAME_HALL_LOANS = "hallLoans";
-  @SerializedName(SERIALIZED_NAME_HALL_LOANS)
-  private String hallLoans;
-
   public static final String SERIALIZED_NAME_LEADERBOARD = "leaderboard";
   @SerializedName(SERIALIZED_NAME_LEADERBOARD)
   private String leaderboard;
@@ -48,6 +44,10 @@ public class GetVaultMarketFollowSharingResponseExplain {
   public static final String SERIALIZED_NAME_DEPOSITS = "deposits";
   @SerializedName(SERIALIZED_NAME_DEPOSITS)
   private String deposits;
+
+  public static final String SERIALIZED_NAME_HALL_LOANS = "hallLoans";
+  @SerializedName(SERIALIZED_NAME_HALL_LOANS)
+  private String hallLoans;
 
   public GetVaultMarketFollowSharingResponseExplain() { 
   }
@@ -98,29 +98,6 @@ public class GetVaultMarketFollowSharingResponseExplain {
   }
 
 
-  public GetVaultMarketFollowSharingResponseExplain hallLoans(String hallLoans) {
-    
-    this.hallLoans = hallLoans;
-    return this;
-  }
-
-   /**
-   * Get hallLoans
-   * @return hallLoans
-  **/
-  @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "")
-
-  public String getHallLoans() {
-    return hallLoans;
-  }
-
-
-  public void setHallLoans(String hallLoans) {
-    this.hallLoans = hallLoans;
-  }
-
-
   public GetVaultMarketFollowSharingResponseExplain leaderboard(String leaderboard) {
     
     this.leaderboard = leaderboard;
@@ -167,6 +144,29 @@ public class GetVaultMarketFollowSharingResponseExplain {
   }
 
 
+  public GetVaultMarketFollowSharingResponseExplain hallLoans(String hallLoans) {
+    
+    this.hallLoans = hallLoans;
+    return this;
+  }
+
+   /**
+   * Get hallLoans
+   * @return hallLoans
+  **/
+  @javax.annotation.Nonnull
+  @ApiModelProperty(required = true, value = "")
+
+  public String getHallLoans() {
+    return hallLoans;
+  }
+
+
+  public void setHallLoans(String hallLoans) {
+    this.hallLoans = hallLoans;
+  }
+
+
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -178,14 +178,14 @@ public class GetVaultMarketFollowSharingResponseExplain {
     GetVaultMarketFollowSharingResponseExplain getVaultMarketFollowSharingResponseExplain = (GetVaultMarketFollowSharingResponseExplain) o;
     return Objects.equals(this.orders, getVaultMarketFollowSharingResponseExplain.orders) &&
         Objects.equals(this.sales, getVaultMarketFollowSharingResponseExplain.sales) &&
-        Objects.equals(this.hallLoans, getVaultMarketFollowSharingResponseExplain.hallLoans) &&
         Objects.equals(this.leaderboard, getVaultMarketFollowSharingResponseExplain.leaderboard) &&
-        Objects.equals(this.deposits, getVaultMarketFollowSharingResponseExplain.deposits);
+        Objects.equals(this.deposits, getVaultMarketFollowSharingResponseExplain.deposits) &&
+        Objects.equals(this.hallLoans, getVaultMarketFollowSharingResponseExplain.hallLoans);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(orders, sales, hallLoans, leaderboard, deposits);
+    return Objects.hash(orders, sales, leaderboard, deposits, hallLoans);
   }
 
   @Override
@@ -194,9 +194,9 @@ public class GetVaultMarketFollowSharingResponseExplain {
     sb.append("class GetVaultMarketFollowSharingResponseExplain {\n");
     sb.append("    orders: ").append(toIndentedString(orders)).append("\n");
     sb.append("    sales: ").append(toIndentedString(sales)).append("\n");
-    sb.append("    hallLoans: ").append(toIndentedString(hallLoans)).append("\n");
     sb.append("    leaderboard: ").append(toIndentedString(leaderboard)).append("\n");
     sb.append("    deposits: ").append(toIndentedString(deposits)).append("\n");
+    sb.append("    hallLoans: ").append(toIndentedString(hallLoans)).append("\n");
     sb.append("}");
     return sb.toString();
   }

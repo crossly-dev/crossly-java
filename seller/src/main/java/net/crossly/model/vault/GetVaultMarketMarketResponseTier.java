@@ -29,16 +29,16 @@ import org.openapitools.jackson.nullable.JsonNullable;
 /**
  * GetVaultMarketMarketResponseTier
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-11T23:44:48.922Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-27T19:42:43.186Z[Etc/UTC]")
 public class GetVaultMarketMarketResponseTier {
   /**
    * Gets or Sets tier
    */
   @JsonAdapter(TierEnum.Adapter.class)
   public enum TierEnum {
-    STANDARD("standard"),
-    
     CLOSED("closed"),
+    
+    STANDARD("standard"),
     
     DEEP("deep"),
     
@@ -123,11 +123,11 @@ public class GetVaultMarketMarketResponseTier {
    */
   @JsonAdapter(LiquidityTierEnum.Adapter.class)
   public enum LiquidityTierEnum {
+    C("C"),
+    
     A("A"),
     
     B("B"),
-    
-    C("C"),
     
     D("D");
 

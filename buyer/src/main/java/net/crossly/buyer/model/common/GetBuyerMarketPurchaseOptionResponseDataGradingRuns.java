@@ -28,27 +28,27 @@ import java.math.BigDecimal;
 /**
  * GetBuyerMarketPurchaseOptionResponseDataGradingRuns
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-11T23:47:29.843Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-27T19:58:46.962Z[Etc/UTC]")
 public class GetBuyerMarketPurchaseOptionResponseDataGradingRuns {
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
   private String id;
 
-  public static final String SERIALIZED_NAME_PRICE_CENTS = "priceCents";
-  @SerializedName(SERIALIZED_NAME_PRICE_CENTS)
-  private BigDecimal priceCents;
+  public static final String SERIALIZED_NAME_GRADER_NAME = "graderName";
+  @SerializedName(SERIALIZED_NAME_GRADER_NAME)
+  private String graderName;
 
   public static final String SERIALIZED_NAME_TIER_NAME = "tierName";
   @SerializedName(SERIALIZED_NAME_TIER_NAME)
   private String tierName;
 
+  public static final String SERIALIZED_NAME_PRICE_CENTS = "priceCents";
+  @SerializedName(SERIALIZED_NAME_PRICE_CENTS)
+  private BigDecimal priceCents;
+
   public static final String SERIALIZED_NAME_CUTOFF_AT = "cutoffAt";
   @SerializedName(SERIALIZED_NAME_CUTOFF_AT)
   private String cutoffAt;
-
-  public static final String SERIALIZED_NAME_GRADER_NAME = "graderName";
-  @SerializedName(SERIALIZED_NAME_GRADER_NAME)
-  private String graderName;
 
   public GetBuyerMarketPurchaseOptionResponseDataGradingRuns() { 
   }
@@ -76,26 +76,26 @@ public class GetBuyerMarketPurchaseOptionResponseDataGradingRuns {
   }
 
 
-  public GetBuyerMarketPurchaseOptionResponseDataGradingRuns priceCents(BigDecimal priceCents) {
+  public GetBuyerMarketPurchaseOptionResponseDataGradingRuns graderName(String graderName) {
     
-    this.priceCents = priceCents;
+    this.graderName = graderName;
     return this;
   }
 
    /**
-   * Get priceCents
-   * @return priceCents
+   * Get graderName
+   * @return graderName
   **/
   @javax.annotation.Nonnull
   @ApiModelProperty(required = true, value = "")
 
-  public BigDecimal getPriceCents() {
-    return priceCents;
+  public String getGraderName() {
+    return graderName;
   }
 
 
-  public void setPriceCents(BigDecimal priceCents) {
-    this.priceCents = priceCents;
+  public void setGraderName(String graderName) {
+    this.graderName = graderName;
   }
 
 
@@ -122,6 +122,29 @@ public class GetBuyerMarketPurchaseOptionResponseDataGradingRuns {
   }
 
 
+  public GetBuyerMarketPurchaseOptionResponseDataGradingRuns priceCents(BigDecimal priceCents) {
+    
+    this.priceCents = priceCents;
+    return this;
+  }
+
+   /**
+   * Get priceCents
+   * @return priceCents
+  **/
+  @javax.annotation.Nonnull
+  @ApiModelProperty(required = true, value = "")
+
+  public BigDecimal getPriceCents() {
+    return priceCents;
+  }
+
+
+  public void setPriceCents(BigDecimal priceCents) {
+    this.priceCents = priceCents;
+  }
+
+
   public GetBuyerMarketPurchaseOptionResponseDataGradingRuns cutoffAt(String cutoffAt) {
     
     this.cutoffAt = cutoffAt;
@@ -145,29 +168,6 @@ public class GetBuyerMarketPurchaseOptionResponseDataGradingRuns {
   }
 
 
-  public GetBuyerMarketPurchaseOptionResponseDataGradingRuns graderName(String graderName) {
-    
-    this.graderName = graderName;
-    return this;
-  }
-
-   /**
-   * Get graderName
-   * @return graderName
-  **/
-  @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "")
-
-  public String getGraderName() {
-    return graderName;
-  }
-
-
-  public void setGraderName(String graderName) {
-    this.graderName = graderName;
-  }
-
-
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -178,15 +178,15 @@ public class GetBuyerMarketPurchaseOptionResponseDataGradingRuns {
     }
     GetBuyerMarketPurchaseOptionResponseDataGradingRuns getBuyerMarketPurchaseOptionResponseDataGradingRuns = (GetBuyerMarketPurchaseOptionResponseDataGradingRuns) o;
     return Objects.equals(this.id, getBuyerMarketPurchaseOptionResponseDataGradingRuns.id) &&
-        Objects.equals(this.priceCents, getBuyerMarketPurchaseOptionResponseDataGradingRuns.priceCents) &&
+        Objects.equals(this.graderName, getBuyerMarketPurchaseOptionResponseDataGradingRuns.graderName) &&
         Objects.equals(this.tierName, getBuyerMarketPurchaseOptionResponseDataGradingRuns.tierName) &&
-        Objects.equals(this.cutoffAt, getBuyerMarketPurchaseOptionResponseDataGradingRuns.cutoffAt) &&
-        Objects.equals(this.graderName, getBuyerMarketPurchaseOptionResponseDataGradingRuns.graderName);
+        Objects.equals(this.priceCents, getBuyerMarketPurchaseOptionResponseDataGradingRuns.priceCents) &&
+        Objects.equals(this.cutoffAt, getBuyerMarketPurchaseOptionResponseDataGradingRuns.cutoffAt);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, priceCents, tierName, cutoffAt, graderName);
+    return Objects.hash(id, graderName, tierName, priceCents, cutoffAt);
   }
 
   @Override
@@ -194,10 +194,10 @@ public class GetBuyerMarketPurchaseOptionResponseDataGradingRuns {
     StringBuilder sb = new StringBuilder();
     sb.append("class GetBuyerMarketPurchaseOptionResponseDataGradingRuns {\n");
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
-    sb.append("    priceCents: ").append(toIndentedString(priceCents)).append("\n");
-    sb.append("    tierName: ").append(toIndentedString(tierName)).append("\n");
-    sb.append("    cutoffAt: ").append(toIndentedString(cutoffAt)).append("\n");
     sb.append("    graderName: ").append(toIndentedString(graderName)).append("\n");
+    sb.append("    tierName: ").append(toIndentedString(tierName)).append("\n");
+    sb.append("    priceCents: ").append(toIndentedString(priceCents)).append("\n");
+    sb.append("    cutoffAt: ").append(toIndentedString(cutoffAt)).append("\n");
     sb.append("}");
     return sb.toString();
   }

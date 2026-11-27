@@ -28,7 +28,7 @@ import java.io.IOException;
  * Set when the tokens are at a pop-up stall on that street (the booking), not in a boutique.
  */
 @ApiModel(description = "Set when the tokens are at a pop-up stall on that street (the booking), not in a boutique.")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-11T23:44:48.922Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-27T19:42:43.186Z[Etc/UTC]")
 public class ListGameHuntsItemStall {
   public static final String SERIALIZED_NAME_BOOKING_ID = "bookingId";
   @SerializedName(SERIALIZED_NAME_BOOKING_ID)

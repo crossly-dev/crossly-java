@@ -12,6 +12,7 @@ Method | HTTP request | Description
 [**deleteMeTemplateShare**](TemplatesApi.md#deleteMeTemplateShare) | **DELETE** /v1/me/templates/{id}/share | Revoke a template share link.
 [**getMeTemplate**](TemplatesApi.md#getMeTemplate) | **GET** /v1/me/templates/{id} | Fetch one template in full.
 [**getMeTemplateSuggest**](TemplatesApi.md#getMeTemplateSuggest) | **GET** /v1/me/templates/suggest | The seller&#39;s default template for a category.
+[**getPublicTemplate**](TemplatesApi.md#getPublicTemplate) | **GET** /v1/public/templates/{token} | A shared template by its share token (public, no auth).
 [**listMeTemplates**](TemplatesApi.md#listMeTemplates) | **GET** /v1/me/templates | List the seller&#39;s templates.
 [**updateMeTemplate**](TemplatesApi.md#updateMeTemplate) | **PATCH** /v1/me/templates/{id} | Patch a template.
 
@@ -561,6 +562,72 @@ This endpoint does not need any parameter.
 ### Authorization
 
 [PersonalAccessToken](../README.md#PersonalAccessToken)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**400** | Error |  -  |
+**401** | Error |  -  |
+**403** | Error |  -  |
+**404** | Error |  -  |
+**429** | Error |  -  |
+**500** | Error |  -  |
+
+<a name="getPublicTemplate"></a>
+# **getPublicTemplate**
+> GetPublicTemplateResponse getPublicTemplate(token)
+
+A shared template by its share token (public, no auth).
+
+### Example
+```java
+// Import classes:
+import net.crossly.ApiClient;
+import net.crossly.ApiException;
+import net.crossly.Configuration;
+import net.crossly.models.*;
+import net.crossly.api.TemplatesApi;
+
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("https://crossly.net/api");
+
+    TemplatesApi apiInstance = new TemplatesApi(defaultClient);
+    String token = "token_example"; // String | 
+    try {
+      GetPublicTemplateResponse result = apiInstance.getPublicTemplate(token);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling TemplatesApi#getPublicTemplate");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **token** | **String**|  |
+
+### Return type
+
+**GetPublicTemplateResponse**
+
+### Authorization
+
+No authorization required
 
 ### HTTP request headers
 

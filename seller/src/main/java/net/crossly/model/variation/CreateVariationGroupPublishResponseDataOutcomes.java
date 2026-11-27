@@ -24,13 +24,15 @@ import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import org.openapitools.jackson.nullable.JsonNullable;
 
 /**
  * CreateVariationGroupPublishResponseDataOutcomes
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-11T23:44:48.922Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-27T19:42:43.186Z[Etc/UTC]")
 public class CreateVariationGroupPublishResponseDataOutcomes {
   public static final String SERIALIZED_NAME_PLATFORM = "platform";
   @SerializedName(SERIALIZED_NAME_PLATFORM)
@@ -41,9 +43,9 @@ public class CreateVariationGroupPublishResponseDataOutcomes {
    */
   @JsonAdapter(ModeEnum.Adapter.class)
   public enum ModeEnum {
-    GROUPED("grouped"),
+    SEPARATE("separate"),
     
-    SEPARATE("separate");
+    GROUPED("grouped");
 
     private String value;
 
@@ -98,6 +100,22 @@ public class CreateVariationGroupPublishResponseDataOutcomes {
   public static final String SERIALIZED_NAME_JOB_IDS = "jobIds";
   @SerializedName(SERIALIZED_NAME_JOB_IDS)
   private List<String> jobIds = null;
+
+  public static final String SERIALIZED_NAME_MEMBERS = "members";
+  @SerializedName(SERIALIZED_NAME_MEMBERS)
+  private List<Map<String, Object>> members = null;
+
+  public static final String SERIALIZED_NAME_FAILED = "failed";
+  @SerializedName(SERIALIZED_NAME_FAILED)
+  private List<Map<String, Object>> failed = null;
+
+  public static final String SERIALIZED_NAME_AFTER_RECORDED = "afterRecorded";
+  @SerializedName(SERIALIZED_NAME_AFTER_RECORDED)
+  private Map<String, Object> afterRecorded = null;
+
+  public static final String SERIALIZED_NAME_OWN_OPTION_ROWS = "ownOptionRows";
+  @SerializedName(SERIALIZED_NAME_OWN_OPTION_ROWS)
+  private Boolean ownOptionRows;
 
   public static final String SERIALIZED_NAME_WARNINGS = "warnings";
   @SerializedName(SERIALIZED_NAME_WARNINGS)
@@ -233,6 +251,122 @@ public class CreateVariationGroupPublishResponseDataOutcomes {
   }
 
 
+  public CreateVariationGroupPublishResponseDataOutcomes members(List<Map<String, Object>> members) {
+    
+    this.members = members;
+    return this;
+  }
+
+  public CreateVariationGroupPublishResponseDataOutcomes addMembersItem(Map<String, Object> membersItem) {
+    if (this.members == null) {
+      this.members = new ArrayList<Map<String, Object>>();
+    }
+    this.members.add(membersItem);
+    return this;
+  }
+
+   /**
+   * Grouped: every option that went live, with its own id on the platform. publishGroupToPlatform records one platform_listings row per entry (variation-publish-members.ts), so a sale or delist acts on that option.
+   * @return members
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "Grouped: every option that went live, with its own id on the platform. publishGroupToPlatform records one platform_listings row per entry (variation-publish-members.ts), so a sale or delist acts on that option.")
+
+  public List<Map<String, Object>> getMembers() {
+    return members;
+  }
+
+
+  public void setMembers(List<Map<String, Object>> members) {
+    this.members = members;
+  }
+
+
+  public CreateVariationGroupPublishResponseDataOutcomes failed(List<Map<String, Object>> failed) {
+    
+    this.failed = failed;
+    return this;
+  }
+
+  public CreateVariationGroupPublishResponseDataOutcomes addFailedItem(Map<String, Object> failedItem) {
+    if (this.failed == null) {
+      this.failed = new ArrayList<Map<String, Object>>();
+    }
+    this.failed.add(failedItem);
+    return this;
+  }
+
+   /**
+   * Grouped: options that did not go live. Reported in &#x60;warnings&#x60;; the live ones are still recorded.
+   * @return failed
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "Grouped: options that did not go live. Reported in `warnings`; the live ones are still recorded.")
+
+  public List<Map<String, Object>> getFailed() {
+    return failed;
+  }
+
+
+  public void setFailed(List<Map<String, Object>> failed) {
+    this.failed = failed;
+  }
+
+
+  public CreateVariationGroupPublishResponseDataOutcomes afterRecorded(Map<String, Object> afterRecorded) {
+    
+    this.afterRecorded = afterRecorded;
+    return this;
+  }
+
+  public CreateVariationGroupPublishResponseDataOutcomes putAfterRecordedItem(String key, Object afterRecordedItem) {
+    if (this.afterRecorded == null) {
+      this.afterRecorded = new HashMap<String, Object>();
+    }
+    this.afterRecorded.put(key, afterRecordedItem);
+    return this;
+  }
+
+   /**
+   * Grouped: work that needs the option rows to exist (a POS stock base, markPosPushed), run right after they are recorded. Returns warnings for the seller; must not throw for one option.
+   * @return afterRecorded
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "Grouped: work that needs the option rows to exist (a POS stock base, markPosPushed), run right after they are recorded. Returns warnings for the seller; must not throw for one option.")
+
+  public Map<String, Object> getAfterRecorded() {
+    return afterRecorded;
+  }
+
+
+  public void setAfterRecorded(Map<String, Object> afterRecorded) {
+    this.afterRecorded = afterRecorded;
+  }
+
+
+  public CreateVariationGroupPublishResponseDataOutcomes ownOptionRows(Boolean ownOptionRows) {
+    
+    this.ownOptionRows = ownOptionRows;
+    return this;
+  }
+
+   /**
+   * The publisher tracks its options itself, not as platform_listings rows (Crossly: crossly_listing_variants with the member listing id, variation-publish-crossly.ts), so no &#x60;members&#x60; is not a gap.
+   * @return ownOptionRows
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "The publisher tracks its options itself, not as platform_listings rows (Crossly: crossly_listing_variants with the member listing id, variation-publish-crossly.ts), so no `members` is not a gap.")
+
+  public Boolean getOwnOptionRows() {
+    return ownOptionRows;
+  }
+
+
+  public void setOwnOptionRows(Boolean ownOptionRows) {
+    this.ownOptionRows = ownOptionRows;
+  }
+
+
   public CreateVariationGroupPublishResponseDataOutcomes warnings(List<String> warnings) {
     
     this.warnings = warnings;
@@ -298,6 +432,10 @@ public class CreateVariationGroupPublishResponseDataOutcomes {
         Objects.equals(this.ok, createVariationGroupPublishResponseDataOutcomes.ok) &&
         Objects.equals(this.listingId, createVariationGroupPublishResponseDataOutcomes.listingId) &&
         Objects.equals(this.jobIds, createVariationGroupPublishResponseDataOutcomes.jobIds) &&
+        Objects.equals(this.members, createVariationGroupPublishResponseDataOutcomes.members) &&
+        Objects.equals(this.failed, createVariationGroupPublishResponseDataOutcomes.failed) &&
+        Objects.equals(this.afterRecorded, createVariationGroupPublishResponseDataOutcomes.afterRecorded) &&
+        Objects.equals(this.ownOptionRows, createVariationGroupPublishResponseDataOutcomes.ownOptionRows) &&
         Objects.equals(this.warnings, createVariationGroupPublishResponseDataOutcomes.warnings) &&
         Objects.equals(this.error, createVariationGroupPublishResponseDataOutcomes.error);
   }
@@ -308,7 +446,7 @@ public class CreateVariationGroupPublishResponseDataOutcomes {
 
   @Override
   public int hashCode() {
-    return Objects.hash(platform, mode, ok, listingId, jobIds, warnings, error);
+    return Objects.hash(platform, mode, ok, listingId, jobIds, members, failed, afterRecorded, ownOptionRows, warnings, error);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -327,6 +465,10 @@ public class CreateVariationGroupPublishResponseDataOutcomes {
     sb.append("    ok: ").append(toIndentedString(ok)).append("\n");
     sb.append("    listingId: ").append(toIndentedString(listingId)).append("\n");
     sb.append("    jobIds: ").append(toIndentedString(jobIds)).append("\n");
+    sb.append("    members: ").append(toIndentedString(members)).append("\n");
+    sb.append("    failed: ").append(toIndentedString(failed)).append("\n");
+    sb.append("    afterRecorded: ").append(toIndentedString(afterRecorded)).append("\n");
+    sb.append("    ownOptionRows: ").append(toIndentedString(ownOptionRows)).append("\n");
     sb.append("    warnings: ").append(toIndentedString(warnings)).append("\n");
     sb.append("    error: ").append(toIndentedString(error)).append("\n");
     sb.append("}");

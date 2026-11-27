@@ -25,8 +25,8 @@ import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-import net.crossly.model.vault.GetVaultMarketProofOfReserveByDayResponse;
 import net.crossly.model.vault.GetVaultMarketProofOfReserveResponseAnchoring;
+import net.crossly.model.vault.GetVaultMarketProofOfReserveResponseHistory;
 import net.crossly.model.vault.GetVaultMarketProofOfReserveResponseLatest;
 import net.crossly.model.vault.GetVaultMarketProofOfReserveResponseMethod;
 import org.openapitools.jackson.nullable.JsonNullable;
@@ -34,7 +34,7 @@ import org.openapitools.jackson.nullable.JsonNullable;
 /**
  * GetVaultMarketProofOfReserveResponse
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-11T23:44:48.922Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-27T19:42:43.186Z[Etc/UTC]")
 public class GetVaultMarketProofOfReserveResponse {
   public static final String SERIALIZED_NAME_LATEST = "latest";
   @SerializedName(SERIALIZED_NAME_LATEST)
@@ -42,7 +42,7 @@ public class GetVaultMarketProofOfReserveResponse {
 
   public static final String SERIALIZED_NAME_HISTORY = "history";
   @SerializedName(SERIALIZED_NAME_HISTORY)
-  private List<GetVaultMarketProofOfReserveByDayResponse> history = new ArrayList<GetVaultMarketProofOfReserveByDayResponse>();
+  private List<GetVaultMarketProofOfReserveResponseHistory> history = new ArrayList<GetVaultMarketProofOfReserveResponseHistory>();
 
   public static final String SERIALIZED_NAME_ANCHORING = "anchoring";
   @SerializedName(SERIALIZED_NAME_ANCHORING)
@@ -78,13 +78,13 @@ public class GetVaultMarketProofOfReserveResponse {
   }
 
 
-  public GetVaultMarketProofOfReserveResponse history(List<GetVaultMarketProofOfReserveByDayResponse> history) {
+  public GetVaultMarketProofOfReserveResponse history(List<GetVaultMarketProofOfReserveResponseHistory> history) {
     
     this.history = history;
     return this;
   }
 
-  public GetVaultMarketProofOfReserveResponse addHistoryItem(GetVaultMarketProofOfReserveByDayResponse historyItem) {
+  public GetVaultMarketProofOfReserveResponse addHistoryItem(GetVaultMarketProofOfReserveResponseHistory historyItem) {
     this.history.add(historyItem);
     return this;
   }
@@ -96,12 +96,12 @@ public class GetVaultMarketProofOfReserveResponse {
   @javax.annotation.Nonnull
   @ApiModelProperty(required = true, value = "")
 
-  public List<GetVaultMarketProofOfReserveByDayResponse> getHistory() {
+  public List<GetVaultMarketProofOfReserveResponseHistory> getHistory() {
     return history;
   }
 
 
-  public void setHistory(List<GetVaultMarketProofOfReserveByDayResponse> history) {
+  public void setHistory(List<GetVaultMarketProofOfReserveResponseHistory> history) {
     this.history = history;
   }
 

@@ -26,14 +26,15 @@ import java.io.IOException;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
+import net.crossly.model.vault.GetVaultMarketGradingSignalResponseCta;
+import net.crossly.model.vault.GetVaultMarketGradingSignalResponseGraded;
 import net.crossly.model.vault.GetVaultMarketGradingSignalResponseGraders;
-import net.crossly.model.vault.GetVaultMarketKeyStatResponse;
 import org.openapitools.jackson.nullable.JsonNullable;
 
 /**
  * GetVaultMarketGradingSignalResponse
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-11T23:44:48.922Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-27T19:42:43.186Z[Etc/UTC]")
 public class GetVaultMarketGradingSignalResponse {
   public static final String SERIALIZED_NAME_BOOK_KEY = "bookKey";
   @SerializedName(SERIALIZED_NAME_BOOK_KEY)
@@ -50,11 +51,11 @@ public class GetVaultMarketGradingSignalResponse {
   public enum RawMarkQualityEnum {
     NONE("none"),
     
+    C("C"),
+    
     A("A"),
     
-    B("B"),
-    
-    C("C");
+    B("B");
 
     private String value;
 
@@ -100,7 +101,7 @@ public class GetVaultMarketGradingSignalResponse {
 
   public static final String SERIALIZED_NAME_GRADED = "graded";
   @SerializedName(SERIALIZED_NAME_GRADED)
-  private List<GetVaultMarketKeyStatResponse> graded = new ArrayList<GetVaultMarketKeyStatResponse>();
+  private List<GetVaultMarketGradingSignalResponseGraded> graded = new ArrayList<GetVaultMarketGradingSignalResponseGraded>();
 
   public static final String SERIALIZED_NAME_GRADERS = "graders";
   @SerializedName(SERIALIZED_NAME_GRADERS)
@@ -115,9 +116,9 @@ public class GetVaultMarketGradingSignalResponse {
    */
   @JsonAdapter(RawTierEnum.Adapter.class)
   public enum RawTierEnum {
-    STANDARD("standard"),
-    
     CLOSED("closed"),
+    
+    STANDARD("standard"),
     
     DEEP("deep"),
     
@@ -172,6 +173,10 @@ public class GetVaultMarketGradingSignalResponse {
   public static final String SERIALIZED_NAME_MY_RAW_UNITS = "myRawUnits";
   @SerializedName(SERIALIZED_NAME_MY_RAW_UNITS)
   private BigDecimal myRawUnits;
+
+  public static final String SERIALIZED_NAME_CTA = "cta";
+  @SerializedName(SERIALIZED_NAME_CTA)
+  private GetVaultMarketGradingSignalResponseCta cta;
 
   public GetVaultMarketGradingSignalResponse() { 
   }
@@ -245,13 +250,13 @@ public class GetVaultMarketGradingSignalResponse {
   }
 
 
-  public GetVaultMarketGradingSignalResponse graded(List<GetVaultMarketKeyStatResponse> graded) {
+  public GetVaultMarketGradingSignalResponse graded(List<GetVaultMarketGradingSignalResponseGraded> graded) {
     
     this.graded = graded;
     return this;
   }
 
-  public GetVaultMarketGradingSignalResponse addGradedItem(GetVaultMarketKeyStatResponse gradedItem) {
+  public GetVaultMarketGradingSignalResponse addGradedItem(GetVaultMarketGradingSignalResponseGraded gradedItem) {
     this.graded.add(gradedItem);
     return this;
   }
@@ -263,12 +268,12 @@ public class GetVaultMarketGradingSignalResponse {
   @javax.annotation.Nonnull
   @ApiModelProperty(required = true, value = "")
 
-  public List<GetVaultMarketKeyStatResponse> getGraded() {
+  public List<GetVaultMarketGradingSignalResponseGraded> getGraded() {
     return graded;
   }
 
 
-  public void setGraded(List<GetVaultMarketKeyStatResponse> graded) {
+  public void setGraded(List<GetVaultMarketGradingSignalResponseGraded> graded) {
     this.graded = graded;
   }
 
@@ -398,6 +403,29 @@ public class GetVaultMarketGradingSignalResponse {
   }
 
 
+  public GetVaultMarketGradingSignalResponse cta(GetVaultMarketGradingSignalResponseCta cta) {
+    
+    this.cta = cta;
+    return this;
+  }
+
+   /**
+   * Get cta
+   * @return cta
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public GetVaultMarketGradingSignalResponseCta getCta() {
+    return cta;
+  }
+
+
+  public void setCta(GetVaultMarketGradingSignalResponseCta cta) {
+    this.cta = cta;
+  }
+
+
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -415,7 +443,8 @@ public class GetVaultMarketGradingSignalResponse {
         Objects.equals(this.worthIt, getVaultMarketGradingSignalResponse.worthIt) &&
         Objects.equals(this.rawTier, getVaultMarketGradingSignalResponse.rawTier) &&
         Objects.equals(this.myUnits, getVaultMarketGradingSignalResponse.myUnits) &&
-        Objects.equals(this.myRawUnits, getVaultMarketGradingSignalResponse.myRawUnits);
+        Objects.equals(this.myRawUnits, getVaultMarketGradingSignalResponse.myRawUnits) &&
+        Objects.equals(this.cta, getVaultMarketGradingSignalResponse.cta);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -424,7 +453,7 @@ public class GetVaultMarketGradingSignalResponse {
 
   @Override
   public int hashCode() {
-    return Objects.hash(bookKey, rawMarkCents, rawMarkQuality, graded, graders, worthIt, rawTier, myUnits, myRawUnits);
+    return Objects.hash(bookKey, rawMarkCents, rawMarkQuality, graded, graders, worthIt, rawTier, myUnits, myRawUnits, cta);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -447,6 +476,7 @@ public class GetVaultMarketGradingSignalResponse {
     sb.append("    rawTier: ").append(toIndentedString(rawTier)).append("\n");
     sb.append("    myUnits: ").append(toIndentedString(myUnits)).append("\n");
     sb.append("    myRawUnits: ").append(toIndentedString(myRawUnits)).append("\n");
+    sb.append("    cta: ").append(toIndentedString(cta)).append("\n");
     sb.append("}");
     return sb.toString();
   }

@@ -23,130 +23,85 @@ import com.google.gson.stream.JsonWriter;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
-import net.crossly.model.vault.GetVaultMarketAlertPrefResponseMatrixPrice;
+import net.crossly.model.vault.GetVaultMarketAlertPrefResponseMatrixAccount;
 
 /**
  * GetVaultMarketAlertPrefResponseMatrix
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-11T23:44:48.922Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-27T19:42:43.186Z[Etc/UTC]")
 public class GetVaultMarketAlertPrefResponseMatrix {
+  public static final String SERIALIZED_NAME_ACCOUNT = "account";
+  @SerializedName(SERIALIZED_NAME_ACCOUNT)
+  private GetVaultMarketAlertPrefResponseMatrixAccount account;
+
   public static final String SERIALIZED_NAME_PRICE = "price";
   @SerializedName(SERIALIZED_NAME_PRICE)
-  private GetVaultMarketAlertPrefResponseMatrixPrice price;
-
-  public static final String SERIALIZED_NAME_AUCTION = "auction";
-  @SerializedName(SERIALIZED_NAME_AUCTION)
-  private GetVaultMarketAlertPrefResponseMatrixPrice auction;
+  private GetVaultMarketAlertPrefResponseMatrixAccount price;
 
   public static final String SERIALIZED_NAME_FILL = "fill";
   @SerializedName(SERIALIZED_NAME_FILL)
-  private GetVaultMarketAlertPrefResponseMatrixPrice fill;
+  private GetVaultMarketAlertPrefResponseMatrixAccount fill;
 
-  public static final String SERIALIZED_NAME_ACCOUNT = "account";
-  @SerializedName(SERIALIZED_NAME_ACCOUNT)
-  private GetVaultMarketAlertPrefResponseMatrixPrice account;
+  public static final String SERIALIZED_NAME_AUCTION = "auction";
+  @SerializedName(SERIALIZED_NAME_AUCTION)
+  private GetVaultMarketAlertPrefResponseMatrixAccount auction;
+
+  public static final String SERIALIZED_NAME_PREDICTION = "prediction";
+  @SerializedName(SERIALIZED_NAME_PREDICTION)
+  private GetVaultMarketAlertPrefResponseMatrixAccount prediction;
+
+  public static final String SERIALIZED_NAME_OPTION_EXPIRY = "option_expiry";
+  @SerializedName(SERIALIZED_NAME_OPTION_EXPIRY)
+  private GetVaultMarketAlertPrefResponseMatrixAccount optionExpiry;
 
   public static final String SERIALIZED_NAME_MARGIN_CALL = "margin_call";
   @SerializedName(SERIALIZED_NAME_MARGIN_CALL)
-  private GetVaultMarketAlertPrefResponseMatrixPrice marginCall;
+  private GetVaultMarketAlertPrefResponseMatrixAccount marginCall;
 
   public static final String SERIALIZED_NAME_ADL = "adl";
   @SerializedName(SERIALIZED_NAME_ADL)
-  private GetVaultMarketAlertPrefResponseMatrixPrice adl;
+  private GetVaultMarketAlertPrefResponseMatrixAccount adl;
 
   public static final String SERIALIZED_NAME_P2P_LOAN = "p2p_loan";
   @SerializedName(SERIALIZED_NAME_P2P_LOAN)
-  private GetVaultMarketAlertPrefResponseMatrixPrice p2pLoan;
+  private GetVaultMarketAlertPrefResponseMatrixAccount p2pLoan;
 
   public static final String SERIALIZED_NAME_MARKET_OPEN = "market_open";
   @SerializedName(SERIALIZED_NAME_MARKET_OPEN)
-  private GetVaultMarketAlertPrefResponseMatrixPrice marketOpen;
+  private GetVaultMarketAlertPrefResponseMatrixAccount marketOpen;
 
   public static final String SERIALIZED_NAME_RECEIPT_TOKEN = "receipt_token";
   @SerializedName(SERIALIZED_NAME_RECEIPT_TOKEN)
-  private GetVaultMarketAlertPrefResponseMatrixPrice receiptToken;
+  private GetVaultMarketAlertPrefResponseMatrixAccount receiptToken;
 
   public static final String SERIALIZED_NAME_SET_GOAL = "set_goal";
   @SerializedName(SERIALIZED_NAME_SET_GOAL)
-  private GetVaultMarketAlertPrefResponseMatrixPrice setGoal;
+  private GetVaultMarketAlertPrefResponseMatrixAccount setGoal;
 
   public static final String SERIALIZED_NAME_FOLLOW = "follow";
   @SerializedName(SERIALIZED_NAME_FOLLOW)
-  private GetVaultMarketAlertPrefResponseMatrixPrice follow;
+  private GetVaultMarketAlertPrefResponseMatrixAccount follow;
+
+  public static final String SERIALIZED_NAME_SHARE_OFFERING = "share_offering";
+  @SerializedName(SERIALIZED_NAME_SHARE_OFFERING)
+  private GetVaultMarketAlertPrefResponseMatrixAccount shareOffering;
+
+  public static final String SERIALIZED_NAME_SHARE_VOTE = "share_vote";
+  @SerializedName(SERIALIZED_NAME_SHARE_VOTE)
+  private GetVaultMarketAlertPrefResponseMatrixAccount shareVote;
+
+  public static final String SERIALIZED_NAME_OPTION_SETTLEMENT = "option_settlement";
+  @SerializedName(SERIALIZED_NAME_OPTION_SETTLEMENT)
+  private GetVaultMarketAlertPrefResponseMatrixAccount optionSettlement;
+
+  public static final String SERIALIZED_NAME_PREDICTION_ODDS = "prediction_odds";
+  @SerializedName(SERIALIZED_NAME_PREDICTION_ODDS)
+  private GetVaultMarketAlertPrefResponseMatrixAccount predictionOdds;
 
   public GetVaultMarketAlertPrefResponseMatrix() { 
   }
 
-  public GetVaultMarketAlertPrefResponseMatrix price(GetVaultMarketAlertPrefResponseMatrixPrice price) {
-    
-    this.price = price;
-    return this;
-  }
-
-   /**
-   * Get price
-   * @return price
-  **/
-  @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "")
-
-  public GetVaultMarketAlertPrefResponseMatrixPrice getPrice() {
-    return price;
-  }
-
-
-  public void setPrice(GetVaultMarketAlertPrefResponseMatrixPrice price) {
-    this.price = price;
-  }
-
-
-  public GetVaultMarketAlertPrefResponseMatrix auction(GetVaultMarketAlertPrefResponseMatrixPrice auction) {
-    
-    this.auction = auction;
-    return this;
-  }
-
-   /**
-   * Get auction
-   * @return auction
-  **/
-  @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "")
-
-  public GetVaultMarketAlertPrefResponseMatrixPrice getAuction() {
-    return auction;
-  }
-
-
-  public void setAuction(GetVaultMarketAlertPrefResponseMatrixPrice auction) {
-    this.auction = auction;
-  }
-
-
-  public GetVaultMarketAlertPrefResponseMatrix fill(GetVaultMarketAlertPrefResponseMatrixPrice fill) {
-    
-    this.fill = fill;
-    return this;
-  }
-
-   /**
-   * Get fill
-   * @return fill
-  **/
-  @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "")
-
-  public GetVaultMarketAlertPrefResponseMatrixPrice getFill() {
-    return fill;
-  }
-
-
-  public void setFill(GetVaultMarketAlertPrefResponseMatrixPrice fill) {
-    this.fill = fill;
-  }
-
-
-  public GetVaultMarketAlertPrefResponseMatrix account(GetVaultMarketAlertPrefResponseMatrixPrice account) {
+  public GetVaultMarketAlertPrefResponseMatrix account(GetVaultMarketAlertPrefResponseMatrixAccount account) {
     
     this.account = account;
     return this;
@@ -159,17 +114,132 @@ public class GetVaultMarketAlertPrefResponseMatrix {
   @javax.annotation.Nonnull
   @ApiModelProperty(required = true, value = "")
 
-  public GetVaultMarketAlertPrefResponseMatrixPrice getAccount() {
+  public GetVaultMarketAlertPrefResponseMatrixAccount getAccount() {
     return account;
   }
 
 
-  public void setAccount(GetVaultMarketAlertPrefResponseMatrixPrice account) {
+  public void setAccount(GetVaultMarketAlertPrefResponseMatrixAccount account) {
     this.account = account;
   }
 
 
-  public GetVaultMarketAlertPrefResponseMatrix marginCall(GetVaultMarketAlertPrefResponseMatrixPrice marginCall) {
+  public GetVaultMarketAlertPrefResponseMatrix price(GetVaultMarketAlertPrefResponseMatrixAccount price) {
+    
+    this.price = price;
+    return this;
+  }
+
+   /**
+   * Get price
+   * @return price
+  **/
+  @javax.annotation.Nonnull
+  @ApiModelProperty(required = true, value = "")
+
+  public GetVaultMarketAlertPrefResponseMatrixAccount getPrice() {
+    return price;
+  }
+
+
+  public void setPrice(GetVaultMarketAlertPrefResponseMatrixAccount price) {
+    this.price = price;
+  }
+
+
+  public GetVaultMarketAlertPrefResponseMatrix fill(GetVaultMarketAlertPrefResponseMatrixAccount fill) {
+    
+    this.fill = fill;
+    return this;
+  }
+
+   /**
+   * Get fill
+   * @return fill
+  **/
+  @javax.annotation.Nonnull
+  @ApiModelProperty(required = true, value = "")
+
+  public GetVaultMarketAlertPrefResponseMatrixAccount getFill() {
+    return fill;
+  }
+
+
+  public void setFill(GetVaultMarketAlertPrefResponseMatrixAccount fill) {
+    this.fill = fill;
+  }
+
+
+  public GetVaultMarketAlertPrefResponseMatrix auction(GetVaultMarketAlertPrefResponseMatrixAccount auction) {
+    
+    this.auction = auction;
+    return this;
+  }
+
+   /**
+   * Get auction
+   * @return auction
+  **/
+  @javax.annotation.Nonnull
+  @ApiModelProperty(required = true, value = "")
+
+  public GetVaultMarketAlertPrefResponseMatrixAccount getAuction() {
+    return auction;
+  }
+
+
+  public void setAuction(GetVaultMarketAlertPrefResponseMatrixAccount auction) {
+    this.auction = auction;
+  }
+
+
+  public GetVaultMarketAlertPrefResponseMatrix prediction(GetVaultMarketAlertPrefResponseMatrixAccount prediction) {
+    
+    this.prediction = prediction;
+    return this;
+  }
+
+   /**
+   * Get prediction
+   * @return prediction
+  **/
+  @javax.annotation.Nonnull
+  @ApiModelProperty(required = true, value = "")
+
+  public GetVaultMarketAlertPrefResponseMatrixAccount getPrediction() {
+    return prediction;
+  }
+
+
+  public void setPrediction(GetVaultMarketAlertPrefResponseMatrixAccount prediction) {
+    this.prediction = prediction;
+  }
+
+
+  public GetVaultMarketAlertPrefResponseMatrix optionExpiry(GetVaultMarketAlertPrefResponseMatrixAccount optionExpiry) {
+    
+    this.optionExpiry = optionExpiry;
+    return this;
+  }
+
+   /**
+   * Get optionExpiry
+   * @return optionExpiry
+  **/
+  @javax.annotation.Nonnull
+  @ApiModelProperty(required = true, value = "")
+
+  public GetVaultMarketAlertPrefResponseMatrixAccount getOptionExpiry() {
+    return optionExpiry;
+  }
+
+
+  public void setOptionExpiry(GetVaultMarketAlertPrefResponseMatrixAccount optionExpiry) {
+    this.optionExpiry = optionExpiry;
+  }
+
+
+  public GetVaultMarketAlertPrefResponseMatrix marginCall(GetVaultMarketAlertPrefResponseMatrixAccount marginCall) {
     
     this.marginCall = marginCall;
     return this;
@@ -182,17 +252,17 @@ public class GetVaultMarketAlertPrefResponseMatrix {
   @javax.annotation.Nonnull
   @ApiModelProperty(required = true, value = "")
 
-  public GetVaultMarketAlertPrefResponseMatrixPrice getMarginCall() {
+  public GetVaultMarketAlertPrefResponseMatrixAccount getMarginCall() {
     return marginCall;
   }
 
 
-  public void setMarginCall(GetVaultMarketAlertPrefResponseMatrixPrice marginCall) {
+  public void setMarginCall(GetVaultMarketAlertPrefResponseMatrixAccount marginCall) {
     this.marginCall = marginCall;
   }
 
 
-  public GetVaultMarketAlertPrefResponseMatrix adl(GetVaultMarketAlertPrefResponseMatrixPrice adl) {
+  public GetVaultMarketAlertPrefResponseMatrix adl(GetVaultMarketAlertPrefResponseMatrixAccount adl) {
     
     this.adl = adl;
     return this;
@@ -205,17 +275,17 @@ public class GetVaultMarketAlertPrefResponseMatrix {
   @javax.annotation.Nonnull
   @ApiModelProperty(required = true, value = "")
 
-  public GetVaultMarketAlertPrefResponseMatrixPrice getAdl() {
+  public GetVaultMarketAlertPrefResponseMatrixAccount getAdl() {
     return adl;
   }
 
 
-  public void setAdl(GetVaultMarketAlertPrefResponseMatrixPrice adl) {
+  public void setAdl(GetVaultMarketAlertPrefResponseMatrixAccount adl) {
     this.adl = adl;
   }
 
 
-  public GetVaultMarketAlertPrefResponseMatrix p2pLoan(GetVaultMarketAlertPrefResponseMatrixPrice p2pLoan) {
+  public GetVaultMarketAlertPrefResponseMatrix p2pLoan(GetVaultMarketAlertPrefResponseMatrixAccount p2pLoan) {
     
     this.p2pLoan = p2pLoan;
     return this;
@@ -228,17 +298,17 @@ public class GetVaultMarketAlertPrefResponseMatrix {
   @javax.annotation.Nonnull
   @ApiModelProperty(required = true, value = "")
 
-  public GetVaultMarketAlertPrefResponseMatrixPrice getP2pLoan() {
+  public GetVaultMarketAlertPrefResponseMatrixAccount getP2pLoan() {
     return p2pLoan;
   }
 
 
-  public void setP2pLoan(GetVaultMarketAlertPrefResponseMatrixPrice p2pLoan) {
+  public void setP2pLoan(GetVaultMarketAlertPrefResponseMatrixAccount p2pLoan) {
     this.p2pLoan = p2pLoan;
   }
 
 
-  public GetVaultMarketAlertPrefResponseMatrix marketOpen(GetVaultMarketAlertPrefResponseMatrixPrice marketOpen) {
+  public GetVaultMarketAlertPrefResponseMatrix marketOpen(GetVaultMarketAlertPrefResponseMatrixAccount marketOpen) {
     
     this.marketOpen = marketOpen;
     return this;
@@ -251,17 +321,17 @@ public class GetVaultMarketAlertPrefResponseMatrix {
   @javax.annotation.Nonnull
   @ApiModelProperty(required = true, value = "")
 
-  public GetVaultMarketAlertPrefResponseMatrixPrice getMarketOpen() {
+  public GetVaultMarketAlertPrefResponseMatrixAccount getMarketOpen() {
     return marketOpen;
   }
 
 
-  public void setMarketOpen(GetVaultMarketAlertPrefResponseMatrixPrice marketOpen) {
+  public void setMarketOpen(GetVaultMarketAlertPrefResponseMatrixAccount marketOpen) {
     this.marketOpen = marketOpen;
   }
 
 
-  public GetVaultMarketAlertPrefResponseMatrix receiptToken(GetVaultMarketAlertPrefResponseMatrixPrice receiptToken) {
+  public GetVaultMarketAlertPrefResponseMatrix receiptToken(GetVaultMarketAlertPrefResponseMatrixAccount receiptToken) {
     
     this.receiptToken = receiptToken;
     return this;
@@ -274,17 +344,17 @@ public class GetVaultMarketAlertPrefResponseMatrix {
   @javax.annotation.Nonnull
   @ApiModelProperty(required = true, value = "")
 
-  public GetVaultMarketAlertPrefResponseMatrixPrice getReceiptToken() {
+  public GetVaultMarketAlertPrefResponseMatrixAccount getReceiptToken() {
     return receiptToken;
   }
 
 
-  public void setReceiptToken(GetVaultMarketAlertPrefResponseMatrixPrice receiptToken) {
+  public void setReceiptToken(GetVaultMarketAlertPrefResponseMatrixAccount receiptToken) {
     this.receiptToken = receiptToken;
   }
 
 
-  public GetVaultMarketAlertPrefResponseMatrix setGoal(GetVaultMarketAlertPrefResponseMatrixPrice setGoal) {
+  public GetVaultMarketAlertPrefResponseMatrix setGoal(GetVaultMarketAlertPrefResponseMatrixAccount setGoal) {
     
     this.setGoal = setGoal;
     return this;
@@ -297,17 +367,17 @@ public class GetVaultMarketAlertPrefResponseMatrix {
   @javax.annotation.Nonnull
   @ApiModelProperty(required = true, value = "")
 
-  public GetVaultMarketAlertPrefResponseMatrixPrice getSetGoal() {
+  public GetVaultMarketAlertPrefResponseMatrixAccount getSetGoal() {
     return setGoal;
   }
 
 
-  public void setSetGoal(GetVaultMarketAlertPrefResponseMatrixPrice setGoal) {
+  public void setSetGoal(GetVaultMarketAlertPrefResponseMatrixAccount setGoal) {
     this.setGoal = setGoal;
   }
 
 
-  public GetVaultMarketAlertPrefResponseMatrix follow(GetVaultMarketAlertPrefResponseMatrixPrice follow) {
+  public GetVaultMarketAlertPrefResponseMatrix follow(GetVaultMarketAlertPrefResponseMatrixAccount follow) {
     
     this.follow = follow;
     return this;
@@ -320,13 +390,105 @@ public class GetVaultMarketAlertPrefResponseMatrix {
   @javax.annotation.Nonnull
   @ApiModelProperty(required = true, value = "")
 
-  public GetVaultMarketAlertPrefResponseMatrixPrice getFollow() {
+  public GetVaultMarketAlertPrefResponseMatrixAccount getFollow() {
     return follow;
   }
 
 
-  public void setFollow(GetVaultMarketAlertPrefResponseMatrixPrice follow) {
+  public void setFollow(GetVaultMarketAlertPrefResponseMatrixAccount follow) {
     this.follow = follow;
+  }
+
+
+  public GetVaultMarketAlertPrefResponseMatrix shareOffering(GetVaultMarketAlertPrefResponseMatrixAccount shareOffering) {
+    
+    this.shareOffering = shareOffering;
+    return this;
+  }
+
+   /**
+   * Get shareOffering
+   * @return shareOffering
+  **/
+  @javax.annotation.Nonnull
+  @ApiModelProperty(required = true, value = "")
+
+  public GetVaultMarketAlertPrefResponseMatrixAccount getShareOffering() {
+    return shareOffering;
+  }
+
+
+  public void setShareOffering(GetVaultMarketAlertPrefResponseMatrixAccount shareOffering) {
+    this.shareOffering = shareOffering;
+  }
+
+
+  public GetVaultMarketAlertPrefResponseMatrix shareVote(GetVaultMarketAlertPrefResponseMatrixAccount shareVote) {
+    
+    this.shareVote = shareVote;
+    return this;
+  }
+
+   /**
+   * Get shareVote
+   * @return shareVote
+  **/
+  @javax.annotation.Nonnull
+  @ApiModelProperty(required = true, value = "")
+
+  public GetVaultMarketAlertPrefResponseMatrixAccount getShareVote() {
+    return shareVote;
+  }
+
+
+  public void setShareVote(GetVaultMarketAlertPrefResponseMatrixAccount shareVote) {
+    this.shareVote = shareVote;
+  }
+
+
+  public GetVaultMarketAlertPrefResponseMatrix optionSettlement(GetVaultMarketAlertPrefResponseMatrixAccount optionSettlement) {
+    
+    this.optionSettlement = optionSettlement;
+    return this;
+  }
+
+   /**
+   * Get optionSettlement
+   * @return optionSettlement
+  **/
+  @javax.annotation.Nonnull
+  @ApiModelProperty(required = true, value = "")
+
+  public GetVaultMarketAlertPrefResponseMatrixAccount getOptionSettlement() {
+    return optionSettlement;
+  }
+
+
+  public void setOptionSettlement(GetVaultMarketAlertPrefResponseMatrixAccount optionSettlement) {
+    this.optionSettlement = optionSettlement;
+  }
+
+
+  public GetVaultMarketAlertPrefResponseMatrix predictionOdds(GetVaultMarketAlertPrefResponseMatrixAccount predictionOdds) {
+    
+    this.predictionOdds = predictionOdds;
+    return this;
+  }
+
+   /**
+   * Get predictionOdds
+   * @return predictionOdds
+  **/
+  @javax.annotation.Nonnull
+  @ApiModelProperty(required = true, value = "")
+
+  public GetVaultMarketAlertPrefResponseMatrixAccount getPredictionOdds() {
+    return predictionOdds;
+  }
+
+
+  public void setPredictionOdds(GetVaultMarketAlertPrefResponseMatrixAccount predictionOdds) {
+    this.predictionOdds = predictionOdds;
   }
 
 
@@ -339,32 +501,40 @@ public class GetVaultMarketAlertPrefResponseMatrix {
       return false;
     }
     GetVaultMarketAlertPrefResponseMatrix getVaultMarketAlertPrefResponseMatrix = (GetVaultMarketAlertPrefResponseMatrix) o;
-    return Objects.equals(this.price, getVaultMarketAlertPrefResponseMatrix.price) &&
-        Objects.equals(this.auction, getVaultMarketAlertPrefResponseMatrix.auction) &&
+    return Objects.equals(this.account, getVaultMarketAlertPrefResponseMatrix.account) &&
+        Objects.equals(this.price, getVaultMarketAlertPrefResponseMatrix.price) &&
         Objects.equals(this.fill, getVaultMarketAlertPrefResponseMatrix.fill) &&
-        Objects.equals(this.account, getVaultMarketAlertPrefResponseMatrix.account) &&
+        Objects.equals(this.auction, getVaultMarketAlertPrefResponseMatrix.auction) &&
+        Objects.equals(this.prediction, getVaultMarketAlertPrefResponseMatrix.prediction) &&
+        Objects.equals(this.optionExpiry, getVaultMarketAlertPrefResponseMatrix.optionExpiry) &&
         Objects.equals(this.marginCall, getVaultMarketAlertPrefResponseMatrix.marginCall) &&
         Objects.equals(this.adl, getVaultMarketAlertPrefResponseMatrix.adl) &&
         Objects.equals(this.p2pLoan, getVaultMarketAlertPrefResponseMatrix.p2pLoan) &&
         Objects.equals(this.marketOpen, getVaultMarketAlertPrefResponseMatrix.marketOpen) &&
         Objects.equals(this.receiptToken, getVaultMarketAlertPrefResponseMatrix.receiptToken) &&
         Objects.equals(this.setGoal, getVaultMarketAlertPrefResponseMatrix.setGoal) &&
-        Objects.equals(this.follow, getVaultMarketAlertPrefResponseMatrix.follow);
+        Objects.equals(this.follow, getVaultMarketAlertPrefResponseMatrix.follow) &&
+        Objects.equals(this.shareOffering, getVaultMarketAlertPrefResponseMatrix.shareOffering) &&
+        Objects.equals(this.shareVote, getVaultMarketAlertPrefResponseMatrix.shareVote) &&
+        Objects.equals(this.optionSettlement, getVaultMarketAlertPrefResponseMatrix.optionSettlement) &&
+        Objects.equals(this.predictionOdds, getVaultMarketAlertPrefResponseMatrix.predictionOdds);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(price, auction, fill, account, marginCall, adl, p2pLoan, marketOpen, receiptToken, setGoal, follow);
+    return Objects.hash(account, price, fill, auction, prediction, optionExpiry, marginCall, adl, p2pLoan, marketOpen, receiptToken, setGoal, follow, shareOffering, shareVote, optionSettlement, predictionOdds);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class GetVaultMarketAlertPrefResponseMatrix {\n");
-    sb.append("    price: ").append(toIndentedString(price)).append("\n");
-    sb.append("    auction: ").append(toIndentedString(auction)).append("\n");
-    sb.append("    fill: ").append(toIndentedString(fill)).append("\n");
     sb.append("    account: ").append(toIndentedString(account)).append("\n");
+    sb.append("    price: ").append(toIndentedString(price)).append("\n");
+    sb.append("    fill: ").append(toIndentedString(fill)).append("\n");
+    sb.append("    auction: ").append(toIndentedString(auction)).append("\n");
+    sb.append("    prediction: ").append(toIndentedString(prediction)).append("\n");
+    sb.append("    optionExpiry: ").append(toIndentedString(optionExpiry)).append("\n");
     sb.append("    marginCall: ").append(toIndentedString(marginCall)).append("\n");
     sb.append("    adl: ").append(toIndentedString(adl)).append("\n");
     sb.append("    p2pLoan: ").append(toIndentedString(p2pLoan)).append("\n");
@@ -372,6 +542,10 @@ public class GetVaultMarketAlertPrefResponseMatrix {
     sb.append("    receiptToken: ").append(toIndentedString(receiptToken)).append("\n");
     sb.append("    setGoal: ").append(toIndentedString(setGoal)).append("\n");
     sb.append("    follow: ").append(toIndentedString(follow)).append("\n");
+    sb.append("    shareOffering: ").append(toIndentedString(shareOffering)).append("\n");
+    sb.append("    shareVote: ").append(toIndentedString(shareVote)).append("\n");
+    sb.append("    optionSettlement: ").append(toIndentedString(optionSettlement)).append("\n");
+    sb.append("    predictionOdds: ").append(toIndentedString(predictionOdds)).append("\n");
     sb.append("}");
     return sb.toString();
   }

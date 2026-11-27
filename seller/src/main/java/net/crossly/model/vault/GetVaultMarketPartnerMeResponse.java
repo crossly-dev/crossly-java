@@ -23,17 +23,22 @@ import com.google.gson.stream.JsonWriter;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
+import net.crossly.model.vault.GetVaultMarketPartnerMeResponseIdentity;
 import net.crossly.model.vault.GetVaultMarketPartnerMeResponsePartnership;
 import org.openapitools.jackson.nullable.JsonNullable;
 
 /**
  * GetVaultMarketPartnerMeResponse
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-11T23:44:48.922Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-27T19:42:43.186Z[Etc/UTC]")
 public class GetVaultMarketPartnerMeResponse {
   public static final String SERIALIZED_NAME_PARTNERSHIP = "partnership";
   @SerializedName(SERIALIZED_NAME_PARTNERSHIP)
   private GetVaultMarketPartnerMeResponsePartnership partnership;
+
+  public static final String SERIALIZED_NAME_IDENTITY = "identity";
+  @SerializedName(SERIALIZED_NAME_IDENTITY)
+  private GetVaultMarketPartnerMeResponseIdentity identity;
 
   public GetVaultMarketPartnerMeResponse() { 
   }
@@ -61,6 +66,29 @@ public class GetVaultMarketPartnerMeResponse {
   }
 
 
+  public GetVaultMarketPartnerMeResponse identity(GetVaultMarketPartnerMeResponseIdentity identity) {
+    
+    this.identity = identity;
+    return this;
+  }
+
+   /**
+   * Get identity
+   * @return identity
+  **/
+  @javax.annotation.Nonnull
+  @ApiModelProperty(required = true, value = "")
+
+  public GetVaultMarketPartnerMeResponseIdentity getIdentity() {
+    return identity;
+  }
+
+
+  public void setIdentity(GetVaultMarketPartnerMeResponseIdentity identity) {
+    this.identity = identity;
+  }
+
+
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -70,7 +98,8 @@ public class GetVaultMarketPartnerMeResponse {
       return false;
     }
     GetVaultMarketPartnerMeResponse getVaultMarketPartnerMeResponse = (GetVaultMarketPartnerMeResponse) o;
-    return Objects.equals(this.partnership, getVaultMarketPartnerMeResponse.partnership);
+    return Objects.equals(this.partnership, getVaultMarketPartnerMeResponse.partnership) &&
+        Objects.equals(this.identity, getVaultMarketPartnerMeResponse.identity);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -79,7 +108,7 @@ public class GetVaultMarketPartnerMeResponse {
 
   @Override
   public int hashCode() {
-    return Objects.hash(partnership);
+    return Objects.hash(partnership, identity);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -94,6 +123,7 @@ public class GetVaultMarketPartnerMeResponse {
     StringBuilder sb = new StringBuilder();
     sb.append("class GetVaultMarketPartnerMeResponse {\n");
     sb.append("    partnership: ").append(toIndentedString(partnership)).append("\n");
+    sb.append("    identity: ").append(toIndentedString(identity)).append("\n");
     sb.append("}");
     return sb.toString();
   }

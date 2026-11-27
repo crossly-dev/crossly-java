@@ -30,7 +30,7 @@ import net.crossly.model.spatial.GetSpatialSceneWarehouseResponseDataRoomFloor;
  * The room around the racks — same shape as a resolved scene&#39;s &#x60;room&#x60;, so a client that already draws rooms draws this one the same way.
  */
 @ApiModel(description = "The room around the racks — same shape as a resolved scene's `room`, so a client that already draws rooms draws this one the same way.")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-11T23:44:48.922Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-27T19:42:43.186Z[Etc/UTC]")
 public class GetSpatialSceneWarehouseResponseDataRoom {
   public static final String SERIALIZED_NAME_FLOOR = "floor";
   @SerializedName(SERIALIZED_NAME_FLOOR)

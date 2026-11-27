@@ -27,12 +27,45 @@ import com.google.gson.reflect.TypeToken;
 import java.io.IOException;
 
 
+import net.crossly.model.action.CreateActionLogExportRequest;
+import net.crossly.model.action.CreateActionLogSearchTranslateRequest;
+import net.crossly.model.action.CreateActionLogSearchTranslateResponse;
+import net.crossly.model.detected.CreateDetectedEventEventConfirmRequest;
+import net.crossly.model.detected.CreateDetectedEventEventUndoResponse;
+import net.crossly.model.detected.CreateDetectedEventRulePlaceRequest;
+import net.crossly.model.detected.CreateDetectedEventRulePlaceResponse;
+import net.crossly.model.detected.CreateDetectedEventRuleReorderRequest;
+import net.crossly.model.detected.CreateDetectedEventRuleReorderResponse;
+import net.crossly.model.detected.CreateDetectedEventRuleRequest;
+import net.crossly.model.detected.CreateDetectedEventRuleResetDefaultRequest;
+import net.crossly.model.detected.CreateDetectedEventRuleResponse;
+import net.crossly.model.detected.CreateDetectedEventSimulateImpactRequest;
+import net.crossly.model.detected.CreateDetectedEventSimulateImpactResponse;
+import net.crossly.model.detected.CreateDetectedEventSimulateRequest;
+import net.crossly.model.detected.CreateDetectedEventSimulateResponse;
+import net.crossly.model.email.CreateEmailEventConfirmRequest;
+import net.crossly.model.email.CreateEmailEventConfirmResponse;
+import net.crossly.model.event.CreateEventPolicyDecisionConfirmResponse;
+import net.crossly.model.common.DeleteStoryResponse;
 import net.crossly.model.common.Error;
-import net.crossly.model.common.GetActionLogFacetResponse;
-import net.crossly.model.common.ListActionLogCallsResponse;
-import net.crossly.model.common.ListActionLogItem;
-import net.crossly.model.common.ListActionLogResponse;
+import net.crossly.model.action.GetActionLogExportDownloadResponse;
+import net.crossly.model.action.GetActionLogExportResponse;
+import net.crossly.model.action.GetActionLogFacetResponse;
+import net.crossly.model.detected.GetDetectedEventEventResponse;
+import net.crossly.model.event.GetEventPolicyResponse;
+import net.crossly.model.common.IdStatusResponse;
+import net.crossly.model.action.ListActionLogCallsResponse;
+import net.crossly.model.action.ListActionLogHistogramResponse;
+import net.crossly.model.action.ListActionLogItem;
+import net.crossly.model.action.ListActionLogResponse;
+import net.crossly.model.detected.ListDetectedEventEventsResponse;
+import net.crossly.model.detected.ListDetectedEventRulesResponse;
+import net.crossly.model.email.ListEmailEventsResponse;
+import net.crossly.model.event.ListEventPolicyDecisionsResponse;
+import org.threeten.bp.OffsetDateTime;
 import java.util.UUID;
+import net.crossly.model.event.UpdateEventPolicyRuleRequest;
+import net.crossly.model.event.UpdateEventPolicyRuleResponse;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
@@ -77,6 +110,2296 @@ public class ActivityApi {
         this.localCustomBaseUrl = customBaseUrl;
     }
 
+    /**
+     * Build call for createActionLogExport
+     * @param createActionLogExportRequest  (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call createActionLogExportCall(CreateActionLogExportRequest createActionLogExportRequest, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = createActionLogExportRequest;
+
+        // create path and map variables
+        String localVarPath = "/v1/action-log/exports";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "PersonalAccessToken" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call createActionLogExportValidateBeforeCall(CreateActionLogExportRequest createActionLogExportRequest, final ApiCallback _callback) throws ApiException {
+        
+        // verify the required parameter 'createActionLogExportRequest' is set
+        if (createActionLogExportRequest == null) {
+            throw new ApiException("Missing the required parameter 'createActionLogExportRequest' when calling createActionLogExport(Async)");
+        }
+        
+
+        okhttp3.Call localVarCall = createActionLogExportCall(createActionLogExportRequest, _callback);
+        return localVarCall;
+
+    }
+
+    /**
+     * Queue an export of the Activity Log: every event (csv, ndjson, pdf) or a summary report (pdf, ndjson). Poll GET /api/v1/action-log/exports/{exportId}, then download it. Exports never contain IP addresses.
+     * 
+     * @param createActionLogExportRequest  (required)
+     * @return GetActionLogExportResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public GetActionLogExportResponse createActionLogExport(CreateActionLogExportRequest createActionLogExportRequest) throws ApiException {
+        ApiResponse<GetActionLogExportResponse> localVarResp = createActionLogExportWithHttpInfo(createActionLogExportRequest);
+        return localVarResp.getData();
+    }
+
+    /**
+     * Queue an export of the Activity Log: every event (csv, ndjson, pdf) or a summary report (pdf, ndjson). Poll GET /api/v1/action-log/exports/{exportId}, then download it. Exports never contain IP addresses.
+     * 
+     * @param createActionLogExportRequest  (required)
+     * @return ApiResponse&lt;GetActionLogExportResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<GetActionLogExportResponse> createActionLogExportWithHttpInfo(CreateActionLogExportRequest createActionLogExportRequest) throws ApiException {
+        okhttp3.Call localVarCall = createActionLogExportValidateBeforeCall(createActionLogExportRequest, null);
+        Type localVarReturnType = new TypeToken<GetActionLogExportResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Queue an export of the Activity Log: every event (csv, ndjson, pdf) or a summary report (pdf, ndjson). Poll GET /api/v1/action-log/exports/{exportId}, then download it. Exports never contain IP addresses. (asynchronously)
+     * 
+     * @param createActionLogExportRequest  (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call createActionLogExportAsync(CreateActionLogExportRequest createActionLogExportRequest, final ApiCallback<GetActionLogExportResponse> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = createActionLogExportValidateBeforeCall(createActionLogExportRequest, _callback);
+        Type localVarReturnType = new TypeToken<GetActionLogExportResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for createActionLogSearchTranslate
+     * @param createActionLogSearchTranslateRequest  (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Default Response </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call createActionLogSearchTranslateCall(CreateActionLogSearchTranslateRequest createActionLogSearchTranslateRequest, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = createActionLogSearchTranslateRequest;
+
+        // create path and map variables
+        String localVarPath = "/v1/action-log/search/translate";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "PersonalAccessToken" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call createActionLogSearchTranslateValidateBeforeCall(CreateActionLogSearchTranslateRequest createActionLogSearchTranslateRequest, final ApiCallback _callback) throws ApiException {
+        
+        // verify the required parameter 'createActionLogSearchTranslateRequest' is set
+        if (createActionLogSearchTranslateRequest == null) {
+            throw new ApiException("Missing the required parameter 'createActionLogSearchTranslateRequest' when calling createActionLogSearchTranslate(Async)");
+        }
+        
+
+        okhttp3.Call localVarCall = createActionLogSearchTranslateCall(createActionLogSearchTranslateRequest, _callback);
+        return localVarCall;
+
+    }
+
+    /**
+     * Turn a question in words (\&quot;failed delists on Mercari last week\&quot;) into an Activity Log search: pass the returned &#x60;q&#x60; to GET /api/v1/action-log (or the histogram and csv/ndjson exports). Nothing is run. A 404 with details.code &#x60;not_enabled&#x60; means natural-language search is off for this account.
+     * 
+     * @param createActionLogSearchTranslateRequest  (required)
+     * @return CreateActionLogSearchTranslateResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Default Response </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public CreateActionLogSearchTranslateResponse createActionLogSearchTranslate(CreateActionLogSearchTranslateRequest createActionLogSearchTranslateRequest) throws ApiException {
+        ApiResponse<CreateActionLogSearchTranslateResponse> localVarResp = createActionLogSearchTranslateWithHttpInfo(createActionLogSearchTranslateRequest);
+        return localVarResp.getData();
+    }
+
+    /**
+     * Turn a question in words (\&quot;failed delists on Mercari last week\&quot;) into an Activity Log search: pass the returned &#x60;q&#x60; to GET /api/v1/action-log (or the histogram and csv/ndjson exports). Nothing is run. A 404 with details.code &#x60;not_enabled&#x60; means natural-language search is off for this account.
+     * 
+     * @param createActionLogSearchTranslateRequest  (required)
+     * @return ApiResponse&lt;CreateActionLogSearchTranslateResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Default Response </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<CreateActionLogSearchTranslateResponse> createActionLogSearchTranslateWithHttpInfo(CreateActionLogSearchTranslateRequest createActionLogSearchTranslateRequest) throws ApiException {
+        okhttp3.Call localVarCall = createActionLogSearchTranslateValidateBeforeCall(createActionLogSearchTranslateRequest, null);
+        Type localVarReturnType = new TypeToken<CreateActionLogSearchTranslateResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Turn a question in words (\&quot;failed delists on Mercari last week\&quot;) into an Activity Log search: pass the returned &#x60;q&#x60; to GET /api/v1/action-log (or the histogram and csv/ndjson exports). Nothing is run. A 404 with details.code &#x60;not_enabled&#x60; means natural-language search is off for this account. (asynchronously)
+     * 
+     * @param createActionLogSearchTranslateRequest  (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Default Response </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call createActionLogSearchTranslateAsync(CreateActionLogSearchTranslateRequest createActionLogSearchTranslateRequest, final ApiCallback<CreateActionLogSearchTranslateResponse> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = createActionLogSearchTranslateValidateBeforeCall(createActionLogSearchTranslateRequest, _callback);
+        Type localVarReturnType = new TypeToken<CreateActionLogSearchTranslateResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for createDetectedEventEventConfirm
+     * @param id  (required)
+     * @param createDetectedEventEventConfirmRequest  (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call createDetectedEventEventConfirmCall(UUID id, CreateDetectedEventEventConfirmRequest createDetectedEventEventConfirmRequest, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = createDetectedEventEventConfirmRequest;
+
+        // create path and map variables
+        String localVarPath = "/v1/detected-events/events/{id}/confirm"
+            .replaceAll("\\{" + "id" + "\\}", localVarApiClient.escapeString(id.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "PersonalAccessToken" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call createDetectedEventEventConfirmValidateBeforeCall(UUID id, CreateDetectedEventEventConfirmRequest createDetectedEventEventConfirmRequest, final ApiCallback _callback) throws ApiException {
+        
+        // verify the required parameter 'id' is set
+        if (id == null) {
+            throw new ApiException("Missing the required parameter 'id' when calling createDetectedEventEventConfirm(Async)");
+        }
+        
+        // verify the required parameter 'createDetectedEventEventConfirmRequest' is set
+        if (createDetectedEventEventConfirmRequest == null) {
+            throw new ApiException("Missing the required parameter 'createDetectedEventEventConfirmRequest' when calling createDetectedEventEventConfirm(Async)");
+        }
+        
+
+        okhttp3.Call localVarCall = createDetectedEventEventConfirmCall(id, createDetectedEventEventConfirmRequest, _callback);
+        return localVarCall;
+
+    }
+
+    /**
+     * Answer an open ask (canConfirm true): optionally which item it is (itemId, one of the match candidates) and which actions to run instead of the ask&#39;s preselected ones. Returns the event. 409 ask_not_open when the event is not waiting.
+     * 
+     * @param id  (required)
+     * @param createDetectedEventEventConfirmRequest  (required)
+     * @return CreateDetectedEventEventUndoResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public CreateDetectedEventEventUndoResponse createDetectedEventEventConfirm(UUID id, CreateDetectedEventEventConfirmRequest createDetectedEventEventConfirmRequest) throws ApiException {
+        ApiResponse<CreateDetectedEventEventUndoResponse> localVarResp = createDetectedEventEventConfirmWithHttpInfo(id, createDetectedEventEventConfirmRequest);
+        return localVarResp.getData();
+    }
+
+    /**
+     * Answer an open ask (canConfirm true): optionally which item it is (itemId, one of the match candidates) and which actions to run instead of the ask&#39;s preselected ones. Returns the event. 409 ask_not_open when the event is not waiting.
+     * 
+     * @param id  (required)
+     * @param createDetectedEventEventConfirmRequest  (required)
+     * @return ApiResponse&lt;CreateDetectedEventEventUndoResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<CreateDetectedEventEventUndoResponse> createDetectedEventEventConfirmWithHttpInfo(UUID id, CreateDetectedEventEventConfirmRequest createDetectedEventEventConfirmRequest) throws ApiException {
+        okhttp3.Call localVarCall = createDetectedEventEventConfirmValidateBeforeCall(id, createDetectedEventEventConfirmRequest, null);
+        Type localVarReturnType = new TypeToken<CreateDetectedEventEventUndoResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Answer an open ask (canConfirm true): optionally which item it is (itemId, one of the match candidates) and which actions to run instead of the ask&#39;s preselected ones. Returns the event. 409 ask_not_open when the event is not waiting. (asynchronously)
+     * 
+     * @param id  (required)
+     * @param createDetectedEventEventConfirmRequest  (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call createDetectedEventEventConfirmAsync(UUID id, CreateDetectedEventEventConfirmRequest createDetectedEventEventConfirmRequest, final ApiCallback<CreateDetectedEventEventUndoResponse> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = createDetectedEventEventConfirmValidateBeforeCall(id, createDetectedEventEventConfirmRequest, _callback);
+        Type localVarReturnType = new TypeToken<CreateDetectedEventEventUndoResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for createDetectedEventEventUndo
+     * @param id  (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call createDetectedEventEventUndoCall(UUID id, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/v1/detected-events/events/{id}/undo"
+            .replaceAll("\\{" + "id" + "\\}", localVarApiClient.escapeString(id.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "PersonalAccessToken" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call createDetectedEventEventUndoValidateBeforeCall(UUID id, final ApiCallback _callback) throws ApiException {
+        
+        // verify the required parameter 'id' is set
+        if (id == null) {
+            throw new ApiException("Missing the required parameter 'id' when calling createDetectedEventEventUndo(Async)");
+        }
+        
+
+        okhttp3.Call localVarCall = createDetectedEventEventUndoCall(id, _callback);
+        return localVarCall;
+
+    }
+
+    /**
+     * Undo what Crossly did for an event (canUndo true): every executed action&#39;s stored inverse runs, newest first (restore stock, relist, unlink…). Returns the event. 409 nothing_to_undo when nothing is reversible.
+     * 
+     * @param id  (required)
+     * @return CreateDetectedEventEventUndoResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public CreateDetectedEventEventUndoResponse createDetectedEventEventUndo(UUID id) throws ApiException {
+        ApiResponse<CreateDetectedEventEventUndoResponse> localVarResp = createDetectedEventEventUndoWithHttpInfo(id);
+        return localVarResp.getData();
+    }
+
+    /**
+     * Undo what Crossly did for an event (canUndo true): every executed action&#39;s stored inverse runs, newest first (restore stock, relist, unlink…). Returns the event. 409 nothing_to_undo when nothing is reversible.
+     * 
+     * @param id  (required)
+     * @return ApiResponse&lt;CreateDetectedEventEventUndoResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<CreateDetectedEventEventUndoResponse> createDetectedEventEventUndoWithHttpInfo(UUID id) throws ApiException {
+        okhttp3.Call localVarCall = createDetectedEventEventUndoValidateBeforeCall(id, null);
+        Type localVarReturnType = new TypeToken<CreateDetectedEventEventUndoResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Undo what Crossly did for an event (canUndo true): every executed action&#39;s stored inverse runs, newest first (restore stock, relist, unlink…). Returns the event. 409 nothing_to_undo when nothing is reversible. (asynchronously)
+     * 
+     * @param id  (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call createDetectedEventEventUndoAsync(UUID id, final ApiCallback<CreateDetectedEventEventUndoResponse> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = createDetectedEventEventUndoValidateBeforeCall(id, _callback);
+        Type localVarReturnType = new TypeToken<CreateDetectedEventEventUndoResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for createDetectedEventRule
+     * @param createDetectedEventRuleRequest  (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call createDetectedEventRuleCall(CreateDetectedEventRuleRequest createDetectedEventRuleRequest, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = createDetectedEventRuleRequest;
+
+        // create path and map variables
+        String localVarPath = "/v1/detected-events/rules";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "PersonalAccessToken" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call createDetectedEventRuleValidateBeforeCall(CreateDetectedEventRuleRequest createDetectedEventRuleRequest, final ApiCallback _callback) throws ApiException {
+        
+        // verify the required parameter 'createDetectedEventRuleRequest' is set
+        if (createDetectedEventRuleRequest == null) {
+            throw new ApiException("Missing the required parameter 'createDetectedEventRuleRequest' when calling createDetectedEventRule(Async)");
+        }
+        
+
+        okhttp3.Call localVarCall = createDetectedEventRuleCall(createDetectedEventRuleRequest, _callback);
+        return localVarCall;
+
+    }
+
+    /**
+     * Create a detection rule: which detected events it applies to (filter + optional condition over any event axis) and what Crossly does then (and else). Without order it is placed most-specific-first, above the default set. Returns the stored rule with its id.
+     * 
+     * @param createDetectedEventRuleRequest  (required)
+     * @return CreateDetectedEventRuleResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public CreateDetectedEventRuleResponse createDetectedEventRule(CreateDetectedEventRuleRequest createDetectedEventRuleRequest) throws ApiException {
+        ApiResponse<CreateDetectedEventRuleResponse> localVarResp = createDetectedEventRuleWithHttpInfo(createDetectedEventRuleRequest);
+        return localVarResp.getData();
+    }
+
+    /**
+     * Create a detection rule: which detected events it applies to (filter + optional condition over any event axis) and what Crossly does then (and else). Without order it is placed most-specific-first, above the default set. Returns the stored rule with its id.
+     * 
+     * @param createDetectedEventRuleRequest  (required)
+     * @return ApiResponse&lt;CreateDetectedEventRuleResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<CreateDetectedEventRuleResponse> createDetectedEventRuleWithHttpInfo(CreateDetectedEventRuleRequest createDetectedEventRuleRequest) throws ApiException {
+        okhttp3.Call localVarCall = createDetectedEventRuleValidateBeforeCall(createDetectedEventRuleRequest, null);
+        Type localVarReturnType = new TypeToken<CreateDetectedEventRuleResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Create a detection rule: which detected events it applies to (filter + optional condition over any event axis) and what Crossly does then (and else). Without order it is placed most-specific-first, above the default set. Returns the stored rule with its id. (asynchronously)
+     * 
+     * @param createDetectedEventRuleRequest  (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call createDetectedEventRuleAsync(CreateDetectedEventRuleRequest createDetectedEventRuleRequest, final ApiCallback<CreateDetectedEventRuleResponse> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = createDetectedEventRuleValidateBeforeCall(createDetectedEventRuleRequest, _callback);
+        Type localVarReturnType = new TypeToken<CreateDetectedEventRuleResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for createDetectedEventRulePlace
+     * @param createDetectedEventRulePlaceRequest  (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call createDetectedEventRulePlaceCall(CreateDetectedEventRulePlaceRequest createDetectedEventRulePlaceRequest, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = createDetectedEventRulePlaceRequest;
+
+        // create path and map variables
+        String localVarPath = "/v1/detected-events/rules/place";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "PersonalAccessToken" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call createDetectedEventRulePlaceValidateBeforeCall(CreateDetectedEventRulePlaceRequest createDetectedEventRulePlaceRequest, final ApiCallback _callback) throws ApiException {
+        
+        // verify the required parameter 'createDetectedEventRulePlaceRequest' is set
+        if (createDetectedEventRulePlaceRequest == null) {
+            throw new ApiException("Missing the required parameter 'createDetectedEventRulePlaceRequest' when calling createDetectedEventRulePlace(Async)");
+        }
+        
+
+        okhttp3.Call localVarCall = createDetectedEventRulePlaceCall(createDetectedEventRulePlaceRequest, _callback);
+        return localVarCall;
+
+    }
+
+    /**
+     * Save one rule and the whole evaluation order in one transaction: rule.id is an existing id (replace) or any new client id (create); ids is every rule id top-down, naming the rule by that id. Returns the stored rule and the list.
+     * 
+     * @param createDetectedEventRulePlaceRequest  (required)
+     * @return CreateDetectedEventRulePlaceResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public CreateDetectedEventRulePlaceResponse createDetectedEventRulePlace(CreateDetectedEventRulePlaceRequest createDetectedEventRulePlaceRequest) throws ApiException {
+        ApiResponse<CreateDetectedEventRulePlaceResponse> localVarResp = createDetectedEventRulePlaceWithHttpInfo(createDetectedEventRulePlaceRequest);
+        return localVarResp.getData();
+    }
+
+    /**
+     * Save one rule and the whole evaluation order in one transaction: rule.id is an existing id (replace) or any new client id (create); ids is every rule id top-down, naming the rule by that id. Returns the stored rule and the list.
+     * 
+     * @param createDetectedEventRulePlaceRequest  (required)
+     * @return ApiResponse&lt;CreateDetectedEventRulePlaceResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<CreateDetectedEventRulePlaceResponse> createDetectedEventRulePlaceWithHttpInfo(CreateDetectedEventRulePlaceRequest createDetectedEventRulePlaceRequest) throws ApiException {
+        okhttp3.Call localVarCall = createDetectedEventRulePlaceValidateBeforeCall(createDetectedEventRulePlaceRequest, null);
+        Type localVarReturnType = new TypeToken<CreateDetectedEventRulePlaceResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Save one rule and the whole evaluation order in one transaction: rule.id is an existing id (replace) or any new client id (create); ids is every rule id top-down, naming the rule by that id. Returns the stored rule and the list. (asynchronously)
+     * 
+     * @param createDetectedEventRulePlaceRequest  (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call createDetectedEventRulePlaceAsync(CreateDetectedEventRulePlaceRequest createDetectedEventRulePlaceRequest, final ApiCallback<CreateDetectedEventRulePlaceResponse> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = createDetectedEventRulePlaceValidateBeforeCall(createDetectedEventRulePlaceRequest, _callback);
+        Type localVarReturnType = new TypeToken<CreateDetectedEventRulePlaceResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for createDetectedEventRuleReorder
+     * @param createDetectedEventRuleReorderRequest  (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call createDetectedEventRuleReorderCall(CreateDetectedEventRuleReorderRequest createDetectedEventRuleReorderRequest, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = createDetectedEventRuleReorderRequest;
+
+        // create path and map variables
+        String localVarPath = "/v1/detected-events/rules/reorder";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "PersonalAccessToken" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call createDetectedEventRuleReorderValidateBeforeCall(CreateDetectedEventRuleReorderRequest createDetectedEventRuleReorderRequest, final ApiCallback _callback) throws ApiException {
+        
+        // verify the required parameter 'createDetectedEventRuleReorderRequest' is set
+        if (createDetectedEventRuleReorderRequest == null) {
+            throw new ApiException("Missing the required parameter 'createDetectedEventRuleReorderRequest' when calling createDetectedEventRuleReorder(Async)");
+        }
+        
+
+        okhttp3.Call localVarCall = createDetectedEventRuleReorderCall(createDetectedEventRuleReorderRequest, _callback);
+        return localVarCall;
+
+    }
+
+    /**
+     * Set the evaluation order: ids top-down, defaults included (ids from the rules list). Rules are re-numbered 10, 20, 30…; a default moved above one of your rules is stored as your edit. Returns the list.
+     * 
+     * @param createDetectedEventRuleReorderRequest  (required)
+     * @return CreateDetectedEventRuleReorderResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public CreateDetectedEventRuleReorderResponse createDetectedEventRuleReorder(CreateDetectedEventRuleReorderRequest createDetectedEventRuleReorderRequest) throws ApiException {
+        ApiResponse<CreateDetectedEventRuleReorderResponse> localVarResp = createDetectedEventRuleReorderWithHttpInfo(createDetectedEventRuleReorderRequest);
+        return localVarResp.getData();
+    }
+
+    /**
+     * Set the evaluation order: ids top-down, defaults included (ids from the rules list). Rules are re-numbered 10, 20, 30…; a default moved above one of your rules is stored as your edit. Returns the list.
+     * 
+     * @param createDetectedEventRuleReorderRequest  (required)
+     * @return ApiResponse&lt;CreateDetectedEventRuleReorderResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<CreateDetectedEventRuleReorderResponse> createDetectedEventRuleReorderWithHttpInfo(CreateDetectedEventRuleReorderRequest createDetectedEventRuleReorderRequest) throws ApiException {
+        okhttp3.Call localVarCall = createDetectedEventRuleReorderValidateBeforeCall(createDetectedEventRuleReorderRequest, null);
+        Type localVarReturnType = new TypeToken<CreateDetectedEventRuleReorderResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Set the evaluation order: ids top-down, defaults included (ids from the rules list). Rules are re-numbered 10, 20, 30…; a default moved above one of your rules is stored as your edit. Returns the list. (asynchronously)
+     * 
+     * @param createDetectedEventRuleReorderRequest  (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call createDetectedEventRuleReorderAsync(CreateDetectedEventRuleReorderRequest createDetectedEventRuleReorderRequest, final ApiCallback<CreateDetectedEventRuleReorderResponse> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = createDetectedEventRuleReorderValidateBeforeCall(createDetectedEventRuleReorderRequest, _callback);
+        Type localVarReturnType = new TypeToken<CreateDetectedEventRuleReorderResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for createDetectedEventRuleResetDefault
+     * @param createDetectedEventRuleResetDefaultRequest  (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call createDetectedEventRuleResetDefaultCall(CreateDetectedEventRuleResetDefaultRequest createDetectedEventRuleResetDefaultRequest, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = createDetectedEventRuleResetDefaultRequest;
+
+        // create path and map variables
+        String localVarPath = "/v1/detected-events/rules/reset-defaults";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "PersonalAccessToken" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call createDetectedEventRuleResetDefaultValidateBeforeCall(CreateDetectedEventRuleResetDefaultRequest createDetectedEventRuleResetDefaultRequest, final ApiCallback _callback) throws ApiException {
+        
+        // verify the required parameter 'createDetectedEventRuleResetDefaultRequest' is set
+        if (createDetectedEventRuleResetDefaultRequest == null) {
+            throw new ApiException("Missing the required parameter 'createDetectedEventRuleResetDefaultRequest' when calling createDetectedEventRuleResetDefault(Async)");
+        }
+        
+
+        okhttp3.Call localVarCall = createDetectedEventRuleResetDefaultCall(createDetectedEventRuleResetDefaultRequest, _callback);
+        return localVarCall;
+
+    }
+
+    /**
+     * Drop your edits of the shipped default rules (keys, or all when omitted). Returns the list.
+     * 
+     * @param createDetectedEventRuleResetDefaultRequest  (required)
+     * @return CreateDetectedEventRuleReorderResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public CreateDetectedEventRuleReorderResponse createDetectedEventRuleResetDefault(CreateDetectedEventRuleResetDefaultRequest createDetectedEventRuleResetDefaultRequest) throws ApiException {
+        ApiResponse<CreateDetectedEventRuleReorderResponse> localVarResp = createDetectedEventRuleResetDefaultWithHttpInfo(createDetectedEventRuleResetDefaultRequest);
+        return localVarResp.getData();
+    }
+
+    /**
+     * Drop your edits of the shipped default rules (keys, or all when omitted). Returns the list.
+     * 
+     * @param createDetectedEventRuleResetDefaultRequest  (required)
+     * @return ApiResponse&lt;CreateDetectedEventRuleReorderResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<CreateDetectedEventRuleReorderResponse> createDetectedEventRuleResetDefaultWithHttpInfo(CreateDetectedEventRuleResetDefaultRequest createDetectedEventRuleResetDefaultRequest) throws ApiException {
+        okhttp3.Call localVarCall = createDetectedEventRuleResetDefaultValidateBeforeCall(createDetectedEventRuleResetDefaultRequest, null);
+        Type localVarReturnType = new TypeToken<CreateDetectedEventRuleReorderResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Drop your edits of the shipped default rules (keys, or all when omitted). Returns the list. (asynchronously)
+     * 
+     * @param createDetectedEventRuleResetDefaultRequest  (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call createDetectedEventRuleResetDefaultAsync(CreateDetectedEventRuleResetDefaultRequest createDetectedEventRuleResetDefaultRequest, final ApiCallback<CreateDetectedEventRuleReorderResponse> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = createDetectedEventRuleResetDefaultValidateBeforeCall(createDetectedEventRuleResetDefaultRequest, _callback);
+        Type localVarReturnType = new TypeToken<CreateDetectedEventRuleReorderResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for createDetectedEventSimulate
+     * @param createDetectedEventSimulateRequest  (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call createDetectedEventSimulateCall(CreateDetectedEventSimulateRequest createDetectedEventSimulateRequest, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = createDetectedEventSimulateRequest;
+
+        // create path and map variables
+        String localVarPath = "/v1/detected-events/simulate";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "PersonalAccessToken" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call createDetectedEventSimulateValidateBeforeCall(CreateDetectedEventSimulateRequest createDetectedEventSimulateRequest, final ApiCallback _callback) throws ApiException {
+        
+        // verify the required parameter 'createDetectedEventSimulateRequest' is set
+        if (createDetectedEventSimulateRequest == null) {
+            throw new ApiException("Missing the required parameter 'createDetectedEventSimulateRequest' when calling createDetectedEventSimulate(Async)");
+        }
+        
+
+        okhttp3.Call localVarCall = createDetectedEventSimulateCall(createDetectedEventSimulateRequest, _callback);
+        return localVarCall;
+
+    }
+
+    /**
+     * Run one event through the rules without acting: the winning rule, rules it shadowed, the trace, the guards that held actions back and the plan per target with how it would run (direct / relay / ask / skip). event needs only kind; every axis left out takes its default. rules &#x3D; an unsaved draft list.
+     * 
+     * @param createDetectedEventSimulateRequest  (required)
+     * @return CreateDetectedEventSimulateResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public CreateDetectedEventSimulateResponse createDetectedEventSimulate(CreateDetectedEventSimulateRequest createDetectedEventSimulateRequest) throws ApiException {
+        ApiResponse<CreateDetectedEventSimulateResponse> localVarResp = createDetectedEventSimulateWithHttpInfo(createDetectedEventSimulateRequest);
+        return localVarResp.getData();
+    }
+
+    /**
+     * Run one event through the rules without acting: the winning rule, rules it shadowed, the trace, the guards that held actions back and the plan per target with how it would run (direct / relay / ask / skip). event needs only kind; every axis left out takes its default. rules &#x3D; an unsaved draft list.
+     * 
+     * @param createDetectedEventSimulateRequest  (required)
+     * @return ApiResponse&lt;CreateDetectedEventSimulateResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<CreateDetectedEventSimulateResponse> createDetectedEventSimulateWithHttpInfo(CreateDetectedEventSimulateRequest createDetectedEventSimulateRequest) throws ApiException {
+        okhttp3.Call localVarCall = createDetectedEventSimulateValidateBeforeCall(createDetectedEventSimulateRequest, null);
+        Type localVarReturnType = new TypeToken<CreateDetectedEventSimulateResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Run one event through the rules without acting: the winning rule, rules it shadowed, the trace, the guards that held actions back and the plan per target with how it would run (direct / relay / ask / skip). event needs only kind; every axis left out takes its default. rules &#x3D; an unsaved draft list. (asynchronously)
+     * 
+     * @param createDetectedEventSimulateRequest  (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call createDetectedEventSimulateAsync(CreateDetectedEventSimulateRequest createDetectedEventSimulateRequest, final ApiCallback<CreateDetectedEventSimulateResponse> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = createDetectedEventSimulateValidateBeforeCall(createDetectedEventSimulateRequest, _callback);
+        Type localVarReturnType = new TypeToken<CreateDetectedEventSimulateResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for createDetectedEventSimulateImpact
+     * @param createDetectedEventSimulateImpactRequest  (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call createDetectedEventSimulateImpactCall(CreateDetectedEventSimulateImpactRequest createDetectedEventSimulateImpactRequest, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = createDetectedEventSimulateImpactRequest;
+
+        // create path and map variables
+        String localVarPath = "/v1/detected-events/simulate/impact";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "PersonalAccessToken" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call createDetectedEventSimulateImpactValidateBeforeCall(CreateDetectedEventSimulateImpactRequest createDetectedEventSimulateImpactRequest, final ApiCallback _callback) throws ApiException {
+        
+        // verify the required parameter 'createDetectedEventSimulateImpactRequest' is set
+        if (createDetectedEventSimulateImpactRequest == null) {
+            throw new ApiException("Missing the required parameter 'createDetectedEventSimulateImpactRequest' when calling createDetectedEventSimulateImpact(Async)");
+        }
+        
+
+        okhttp3.Call localVarCall = createDetectedEventSimulateImpactCall(createDetectedEventSimulateImpactRequest, _callback);
+        return localVarCall;
+
+    }
+
+    /**
+     * What a rule edit would change: your detected events of the last days (default 30, at most 500) re-resolved against the draft rules and against the stored ones. Per event: winning rule and actions before and after, and whether it changed. Nothing runs.
+     * 
+     * @param createDetectedEventSimulateImpactRequest  (required)
+     * @return CreateDetectedEventSimulateImpactResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public CreateDetectedEventSimulateImpactResponse createDetectedEventSimulateImpact(CreateDetectedEventSimulateImpactRequest createDetectedEventSimulateImpactRequest) throws ApiException {
+        ApiResponse<CreateDetectedEventSimulateImpactResponse> localVarResp = createDetectedEventSimulateImpactWithHttpInfo(createDetectedEventSimulateImpactRequest);
+        return localVarResp.getData();
+    }
+
+    /**
+     * What a rule edit would change: your detected events of the last days (default 30, at most 500) re-resolved against the draft rules and against the stored ones. Per event: winning rule and actions before and after, and whether it changed. Nothing runs.
+     * 
+     * @param createDetectedEventSimulateImpactRequest  (required)
+     * @return ApiResponse&lt;CreateDetectedEventSimulateImpactResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<CreateDetectedEventSimulateImpactResponse> createDetectedEventSimulateImpactWithHttpInfo(CreateDetectedEventSimulateImpactRequest createDetectedEventSimulateImpactRequest) throws ApiException {
+        okhttp3.Call localVarCall = createDetectedEventSimulateImpactValidateBeforeCall(createDetectedEventSimulateImpactRequest, null);
+        Type localVarReturnType = new TypeToken<CreateDetectedEventSimulateImpactResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * What a rule edit would change: your detected events of the last days (default 30, at most 500) re-resolved against the draft rules and against the stored ones. Per event: winning rule and actions before and after, and whether it changed. Nothing runs. (asynchronously)
+     * 
+     * @param createDetectedEventSimulateImpactRequest  (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call createDetectedEventSimulateImpactAsync(CreateDetectedEventSimulateImpactRequest createDetectedEventSimulateImpactRequest, final ApiCallback<CreateDetectedEventSimulateImpactResponse> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = createDetectedEventSimulateImpactValidateBeforeCall(createDetectedEventSimulateImpactRequest, _callback);
+        Type localVarReturnType = new TypeToken<CreateDetectedEventSimulateImpactResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for createEmailEventConfirm
+     * @param id  (required)
+     * @param createEmailEventConfirmRequest  (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call createEmailEventConfirmCall(UUID id, CreateEmailEventConfirmRequest createEmailEventConfirmRequest, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = createEmailEventConfirmRequest;
+
+        // create path and map variables
+        String localVarPath = "/v1/email-events/{id}/confirm"
+            .replaceAll("\\{" + "id" + "\\}", localVarApiClient.escapeString(id.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "PersonalAccessToken" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call createEmailEventConfirmValidateBeforeCall(UUID id, CreateEmailEventConfirmRequest createEmailEventConfirmRequest, final ApiCallback _callback) throws ApiException {
+        
+        // verify the required parameter 'id' is set
+        if (id == null) {
+            throw new ApiException("Missing the required parameter 'id' when calling createEmailEventConfirm(Async)");
+        }
+        
+        // verify the required parameter 'createEmailEventConfirmRequest' is set
+        if (createEmailEventConfirmRequest == null) {
+            throw new ApiException("Missing the required parameter 'createEmailEventConfirmRequest' when calling createEmailEventConfirm(Async)");
+        }
+        
+
+        okhttp3.Call localVarCall = createEmailEventConfirmCall(id, createEmailEventConfirmRequest, _callback);
+        return localVarCall;
+
+    }
+
+    /**
+     * Confirm an email-detected event: re-run it as certain (a possible sale records the sale and delists the item elsewhere). When several listings could be meant, pass platformListingDbId to choose one.
+     * 
+     * @param id  (required)
+     * @param createEmailEventConfirmRequest  (required)
+     * @return CreateEmailEventConfirmResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public CreateEmailEventConfirmResponse createEmailEventConfirm(UUID id, CreateEmailEventConfirmRequest createEmailEventConfirmRequest) throws ApiException {
+        ApiResponse<CreateEmailEventConfirmResponse> localVarResp = createEmailEventConfirmWithHttpInfo(id, createEmailEventConfirmRequest);
+        return localVarResp.getData();
+    }
+
+    /**
+     * Confirm an email-detected event: re-run it as certain (a possible sale records the sale and delists the item elsewhere). When several listings could be meant, pass platformListingDbId to choose one.
+     * 
+     * @param id  (required)
+     * @param createEmailEventConfirmRequest  (required)
+     * @return ApiResponse&lt;CreateEmailEventConfirmResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<CreateEmailEventConfirmResponse> createEmailEventConfirmWithHttpInfo(UUID id, CreateEmailEventConfirmRequest createEmailEventConfirmRequest) throws ApiException {
+        okhttp3.Call localVarCall = createEmailEventConfirmValidateBeforeCall(id, createEmailEventConfirmRequest, null);
+        Type localVarReturnType = new TypeToken<CreateEmailEventConfirmResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Confirm an email-detected event: re-run it as certain (a possible sale records the sale and delists the item elsewhere). When several listings could be meant, pass platformListingDbId to choose one. (asynchronously)
+     * 
+     * @param id  (required)
+     * @param createEmailEventConfirmRequest  (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call createEmailEventConfirmAsync(UUID id, CreateEmailEventConfirmRequest createEmailEventConfirmRequest, final ApiCallback<CreateEmailEventConfirmResponse> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = createEmailEventConfirmValidateBeforeCall(id, createEmailEventConfirmRequest, _callback);
+        Type localVarReturnType = new TypeToken<CreateEmailEventConfirmResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for createEmailEventDismiss
+     * @param id  (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call createEmailEventDismissCall(UUID id, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/v1/email-events/{id}/dismiss"
+            .replaceAll("\\{" + "id" + "\\}", localVarApiClient.escapeString(id.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "PersonalAccessToken" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call createEmailEventDismissValidateBeforeCall(UUID id, final ApiCallback _callback) throws ApiException {
+        
+        // verify the required parameter 'id' is set
+        if (id == null) {
+            throw new ApiException("Missing the required parameter 'id' when calling createEmailEventDismiss(Async)");
+        }
+        
+
+        okhttp3.Call localVarCall = createEmailEventDismissCall(id, _callback);
+        return localVarCall;
+
+    }
+
+    /**
+     * Dismiss an email-detected event (\&quot;not a sale\&quot;): closes the card without acting.
+     * 
+     * @param id  (required)
+     * @return IdStatusResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public IdStatusResponse createEmailEventDismiss(UUID id) throws ApiException {
+        ApiResponse<IdStatusResponse> localVarResp = createEmailEventDismissWithHttpInfo(id);
+        return localVarResp.getData();
+    }
+
+    /**
+     * Dismiss an email-detected event (\&quot;not a sale\&quot;): closes the card without acting.
+     * 
+     * @param id  (required)
+     * @return ApiResponse&lt;IdStatusResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<IdStatusResponse> createEmailEventDismissWithHttpInfo(UUID id) throws ApiException {
+        okhttp3.Call localVarCall = createEmailEventDismissValidateBeforeCall(id, null);
+        Type localVarReturnType = new TypeToken<IdStatusResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Dismiss an email-detected event (\&quot;not a sale\&quot;): closes the card without acting. (asynchronously)
+     * 
+     * @param id  (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call createEmailEventDismissAsync(UUID id, final ApiCallback<IdStatusResponse> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = createEmailEventDismissValidateBeforeCall(id, _callback);
+        Type localVarReturnType = new TypeToken<IdStatusResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for createEventPolicyDecisionConfirm
+     * @param id  (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call createEventPolicyDecisionConfirmCall(UUID id, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/v1/event-policies/decisions/{id}/confirm"
+            .replaceAll("\\{" + "id" + "\\}", localVarApiClient.escapeString(id.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "PersonalAccessToken" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call createEventPolicyDecisionConfirmValidateBeforeCall(UUID id, final ApiCallback _callback) throws ApiException {
+        
+        // verify the required parameter 'id' is set
+        if (id == null) {
+            throw new ApiException("Missing the required parameter 'id' when calling createEventPolicyDecisionConfirm(Async)");
+        }
+        
+
+        okhttp3.Call localVarCall = createEventPolicyDecisionConfirmCall(id, _callback);
+        return localVarCall;
+
+    }
+
+    /**
+     * Confirm a review decision from a webhook, order poller or app relay (canConfirm true): the event runs again with the seller confirmed, so a review rule runs the strongest allowed non-review action for that cell. Returns the new decision. 409 when the decision was already confirmed or is not confirmable (email review decisions are confirmed on their review card).
+     * 
+     * @param id  (required)
+     * @return CreateEventPolicyDecisionConfirmResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public CreateEventPolicyDecisionConfirmResponse createEventPolicyDecisionConfirm(UUID id) throws ApiException {
+        ApiResponse<CreateEventPolicyDecisionConfirmResponse> localVarResp = createEventPolicyDecisionConfirmWithHttpInfo(id);
+        return localVarResp.getData();
+    }
+
+    /**
+     * Confirm a review decision from a webhook, order poller or app relay (canConfirm true): the event runs again with the seller confirmed, so a review rule runs the strongest allowed non-review action for that cell. Returns the new decision. 409 when the decision was already confirmed or is not confirmable (email review decisions are confirmed on their review card).
+     * 
+     * @param id  (required)
+     * @return ApiResponse&lt;CreateEventPolicyDecisionConfirmResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<CreateEventPolicyDecisionConfirmResponse> createEventPolicyDecisionConfirmWithHttpInfo(UUID id) throws ApiException {
+        okhttp3.Call localVarCall = createEventPolicyDecisionConfirmValidateBeforeCall(id, null);
+        Type localVarReturnType = new TypeToken<CreateEventPolicyDecisionConfirmResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Confirm a review decision from a webhook, order poller or app relay (canConfirm true): the event runs again with the seller confirmed, so a review rule runs the strongest allowed non-review action for that cell. Returns the new decision. 409 when the decision was already confirmed or is not confirmable (email review decisions are confirmed on their review card). (asynchronously)
+     * 
+     * @param id  (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call createEventPolicyDecisionConfirmAsync(UUID id, final ApiCallback<CreateEventPolicyDecisionConfirmResponse> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = createEventPolicyDecisionConfirmValidateBeforeCall(id, _callback);
+        Type localVarReturnType = new TypeToken<CreateEventPolicyDecisionConfirmResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for deleteDetectedEventRule
+     * @param id  (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call deleteDetectedEventRuleCall(String id, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/v1/detected-events/rules/{id}"
+            .replaceAll("\\{" + "id" + "\\}", localVarApiClient.escapeString(id.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "PersonalAccessToken" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "DELETE", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call deleteDetectedEventRuleValidateBeforeCall(String id, final ApiCallback _callback) throws ApiException {
+        
+        // verify the required parameter 'id' is set
+        if (id == null) {
+            throw new ApiException("Missing the required parameter 'id' when calling deleteDetectedEventRule(Async)");
+        }
+        
+
+        okhttp3.Call localVarCall = deleteDetectedEventRuleCall(id, _callback);
+        return localVarCall;
+
+    }
+
+    /**
+     * Delete a detection rule. Deleting your edit of a default (its id, or default:&lt;key&gt;) brings the shipped default back; deleting a translated event-policy rule deletes that policy rule too.
+     * 
+     * @param id  (required)
+     * @return DeleteStoryResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public DeleteStoryResponse deleteDetectedEventRule(String id) throws ApiException {
+        ApiResponse<DeleteStoryResponse> localVarResp = deleteDetectedEventRuleWithHttpInfo(id);
+        return localVarResp.getData();
+    }
+
+    /**
+     * Delete a detection rule. Deleting your edit of a default (its id, or default:&lt;key&gt;) brings the shipped default back; deleting a translated event-policy rule deletes that policy rule too.
+     * 
+     * @param id  (required)
+     * @return ApiResponse&lt;DeleteStoryResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<DeleteStoryResponse> deleteDetectedEventRuleWithHttpInfo(String id) throws ApiException {
+        okhttp3.Call localVarCall = deleteDetectedEventRuleValidateBeforeCall(id, null);
+        Type localVarReturnType = new TypeToken<DeleteStoryResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Delete a detection rule. Deleting your edit of a default (its id, or default:&lt;key&gt;) brings the shipped default back; deleting a translated event-policy rule deletes that policy rule too. (asynchronously)
+     * 
+     * @param id  (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call deleteDetectedEventRuleAsync(String id, final ApiCallback<DeleteStoryResponse> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = deleteDetectedEventRuleValidateBeforeCall(id, _callback);
+        Type localVarReturnType = new TypeToken<DeleteStoryResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for deleteEventPolicyRule
+     * @param id  (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call deleteEventPolicyRuleCall(UUID id, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/v1/event-policies/rules/{id}"
+            .replaceAll("\\{" + "id" + "\\}", localVarApiClient.escapeString(id.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "PersonalAccessToken" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "DELETE", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call deleteEventPolicyRuleValidateBeforeCall(UUID id, final ApiCallback _callback) throws ApiException {
+        
+        // verify the required parameter 'id' is set
+        if (id == null) {
+            throw new ApiException("Missing the required parameter 'id' when calling deleteEventPolicyRule(Async)");
+        }
+        
+
+        okhttp3.Call localVarCall = deleteEventPolicyRuleCall(id, _callback);
+        return localVarCall;
+
+    }
+
+    /**
+     * Delete a rule: its cell falls back to the next scope (platform → global → the built-in default).
+     * 
+     * @param id  (required)
+     * @return DeleteStoryResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public DeleteStoryResponse deleteEventPolicyRule(UUID id) throws ApiException {
+        ApiResponse<DeleteStoryResponse> localVarResp = deleteEventPolicyRuleWithHttpInfo(id);
+        return localVarResp.getData();
+    }
+
+    /**
+     * Delete a rule: its cell falls back to the next scope (platform → global → the built-in default).
+     * 
+     * @param id  (required)
+     * @return ApiResponse&lt;DeleteStoryResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<DeleteStoryResponse> deleteEventPolicyRuleWithHttpInfo(UUID id) throws ApiException {
+        okhttp3.Call localVarCall = deleteEventPolicyRuleValidateBeforeCall(id, null);
+        Type localVarReturnType = new TypeToken<DeleteStoryResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Delete a rule: its cell falls back to the next scope (platform → global → the built-in default). (asynchronously)
+     * 
+     * @param id  (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call deleteEventPolicyRuleAsync(UUID id, final ApiCallback<DeleteStoryResponse> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = deleteEventPolicyRuleValidateBeforeCall(id, _callback);
+        Type localVarReturnType = new TypeToken<DeleteStoryResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
     /**
      * Build call for getActionLog
      * @param id  (required)
@@ -157,7 +2480,7 @@ public class ActivityApi {
     }
 
     /**
-     * Get one action-log event by id (ownership-checked).
+     * One Activity Log event by id, with &#x60;view&#x60; including its steps and, for bulk jobs, its children.
      * 
      * @param id  (required)
      * @return ListActionLogItem
@@ -180,7 +2503,7 @@ public class ActivityApi {
     }
 
     /**
-     * Get one action-log event by id (ownership-checked).
+     * One Activity Log event by id, with &#x60;view&#x60; including its steps and, for bulk jobs, its children.
      * 
      * @param id  (required)
      * @return ApiResponse&lt;ListActionLogItem&gt;
@@ -204,7 +2527,7 @@ public class ActivityApi {
     }
 
     /**
-     * Get one action-log event by id (ownership-checked). (asynchronously)
+     * One Activity Log event by id, with &#x60;view&#x60; including its steps and, for bulk jobs, its children. (asynchronously)
      * 
      * @param id  (required)
      * @param _callback The callback to be executed when the API call finishes
@@ -226,6 +2549,310 @@ public class ActivityApi {
 
         okhttp3.Call localVarCall = getActionLogValidateBeforeCall(id, _callback);
         Type localVarReturnType = new TypeToken<ListActionLogItem>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for getActionLogExport
+     * @param exportId  (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getActionLogExportCall(String exportId, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/v1/action-log/exports/{exportId}"
+            .replaceAll("\\{" + "exportId" + "\\}", localVarApiClient.escapeString(exportId.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "PersonalAccessToken" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call getActionLogExportValidateBeforeCall(String exportId, final ApiCallback _callback) throws ApiException {
+        
+        // verify the required parameter 'exportId' is set
+        if (exportId == null) {
+            throw new ApiException("Missing the required parameter 'exportId' when calling getActionLogExport(Async)");
+        }
+        
+
+        okhttp3.Call localVarCall = getActionLogExportCall(exportId, _callback);
+        return localVarCall;
+
+    }
+
+    /**
+     * The state of one Activity Log export.
+     * 
+     * @param exportId  (required)
+     * @return GetActionLogExportResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public GetActionLogExportResponse getActionLogExport(String exportId) throws ApiException {
+        ApiResponse<GetActionLogExportResponse> localVarResp = getActionLogExportWithHttpInfo(exportId);
+        return localVarResp.getData();
+    }
+
+    /**
+     * The state of one Activity Log export.
+     * 
+     * @param exportId  (required)
+     * @return ApiResponse&lt;GetActionLogExportResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<GetActionLogExportResponse> getActionLogExportWithHttpInfo(String exportId) throws ApiException {
+        okhttp3.Call localVarCall = getActionLogExportValidateBeforeCall(exportId, null);
+        Type localVarReturnType = new TypeToken<GetActionLogExportResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * The state of one Activity Log export. (asynchronously)
+     * 
+     * @param exportId  (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getActionLogExportAsync(String exportId, final ApiCallback<GetActionLogExportResponse> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = getActionLogExportValidateBeforeCall(exportId, _callback);
+        Type localVarReturnType = new TypeToken<GetActionLogExportResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for getActionLogExportDownload
+     * @param exportId  (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getActionLogExportDownloadCall(String exportId, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/v1/action-log/exports/{exportId}/download"
+            .replaceAll("\\{" + "exportId" + "\\}", localVarApiClient.escapeString(exportId.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "PersonalAccessToken" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call getActionLogExportDownloadValidateBeforeCall(String exportId, final ApiCallback _callback) throws ApiException {
+        
+        // verify the required parameter 'exportId' is set
+        if (exportId == null) {
+            throw new ApiException("Missing the required parameter 'exportId' when calling getActionLogExportDownload(Async)");
+        }
+        
+
+        okhttp3.Call localVarCall = getActionLogExportDownloadCall(exportId, _callback);
+        return localVarCall;
+
+    }
+
+    /**
+     * Download a finished Activity Log export (for 24 hours after it completes).
+     * 
+     * @param exportId  (required)
+     * @return GetActionLogExportDownloadResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public GetActionLogExportDownloadResponse getActionLogExportDownload(String exportId) throws ApiException {
+        ApiResponse<GetActionLogExportDownloadResponse> localVarResp = getActionLogExportDownloadWithHttpInfo(exportId);
+        return localVarResp.getData();
+    }
+
+    /**
+     * Download a finished Activity Log export (for 24 hours after it completes).
+     * 
+     * @param exportId  (required)
+     * @return ApiResponse&lt;GetActionLogExportDownloadResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<GetActionLogExportDownloadResponse> getActionLogExportDownloadWithHttpInfo(String exportId) throws ApiException {
+        okhttp3.Call localVarCall = getActionLogExportDownloadValidateBeforeCall(exportId, null);
+        Type localVarReturnType = new TypeToken<GetActionLogExportDownloadResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Download a finished Activity Log export (for 24 hours after it completes). (asynchronously)
+     * 
+     * @param exportId  (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getActionLogExportDownloadAsync(String exportId, final ApiCallback<GetActionLogExportDownloadResponse> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = getActionLogExportDownloadValidateBeforeCall(exportId, _callback);
+        Type localVarReturnType = new TypeToken<GetActionLogExportDownloadResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -302,7 +2929,7 @@ public class ActivityApi {
     }
 
     /**
-     * Distinct platforms / actions / categories present in the caller&#39;s action log (last 90 days) — powers filter dropdowns before you query.
+     * Filter options of the caller&#39;s Activity Log (last 90 days): areas with their actions and counts, the team members who acted, platforms and outcomes.
      * 
      * @return GetActionLogFacetResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -324,7 +2951,7 @@ public class ActivityApi {
     }
 
     /**
-     * Distinct platforms / actions / categories present in the caller&#39;s action log (last 90 days) — powers filter dropdowns before you query.
+     * Filter options of the caller&#39;s Activity Log (last 90 days): areas with their actions and counts, the team members who acted, platforms and outcomes.
      * 
      * @return ApiResponse&lt;GetActionLogFacetResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -347,7 +2974,7 @@ public class ActivityApi {
     }
 
     /**
-     * Distinct platforms / actions / categories present in the caller&#39;s action log (last 90 days) — powers filter dropdowns before you query. (asynchronously)
+     * Filter options of the caller&#39;s Activity Log (last 90 days): areas with their actions and counts, the team members who acted, platforms and outcomes. (asynchronously)
      * 
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -372,18 +2999,8 @@ public class ActivityApi {
         return localVarCall;
     }
     /**
-     * Build call for listActionLog
-     * @param platform  (optional)
-     * @param action  (optional)
-     * @param category  (optional)
-     * @param status  (optional)
-     * @param source  (optional)
-     * @param targetType  (optional)
-     * @param targetId  (optional)
-     * @param since ISO lower bound (inclusive) on created_at. (optional)
-     * @param until ISO upper bound (exclusive) on created_at. (optional)
-     * @param limit  (optional, default to 50)
-     * @param offset  (optional, default to 0)
+     * Build call for getDetectedEventEvent
+     * @param id  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -399,7 +3016,332 @@ public class ActivityApi {
         <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call listActionLogCall(String platform, String action, String category, String status, String source, String targetType, String targetId, String since, String until, Integer limit, Integer offset, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getDetectedEventEventCall(UUID id, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/v1/detected-events/events/{id}"
+            .replaceAll("\\{" + "id" + "\\}", localVarApiClient.escapeString(id.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "PersonalAccessToken" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call getDetectedEventEventValidateBeforeCall(UUID id, final ApiCallback _callback) throws ApiException {
+        
+        // verify the required parameter 'id' is set
+        if (id == null) {
+            throw new ApiException("Missing the required parameter 'id' when calling getDetectedEventEvent(Async)");
+        }
+        
+
+        okhttp3.Call localVarCall = getDetectedEventEventCall(id, _callback);
+        return localVarCall;
+
+    }
+
+    /**
+     * One detected event with every report of it (first + corroborations, with correlation and contradiction), the guards that held actions back, the plan and each executed action&#39;s outcome and reversibility.
+     * 
+     * @param id  (required)
+     * @return GetDetectedEventEventResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public GetDetectedEventEventResponse getDetectedEventEvent(UUID id) throws ApiException {
+        ApiResponse<GetDetectedEventEventResponse> localVarResp = getDetectedEventEventWithHttpInfo(id);
+        return localVarResp.getData();
+    }
+
+    /**
+     * One detected event with every report of it (first + corroborations, with correlation and contradiction), the guards that held actions back, the plan and each executed action&#39;s outcome and reversibility.
+     * 
+     * @param id  (required)
+     * @return ApiResponse&lt;GetDetectedEventEventResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<GetDetectedEventEventResponse> getDetectedEventEventWithHttpInfo(UUID id) throws ApiException {
+        okhttp3.Call localVarCall = getDetectedEventEventValidateBeforeCall(id, null);
+        Type localVarReturnType = new TypeToken<GetDetectedEventEventResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * One detected event with every report of it (first + corroborations, with correlation and contradiction), the guards that held actions back, the plan and each executed action&#39;s outcome and reversibility. (asynchronously)
+     * 
+     * @param id  (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getDetectedEventEventAsync(UUID id, final ApiCallback<GetDetectedEventEventResponse> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = getDetectedEventEventValidateBeforeCall(id, _callback);
+        Type localVarReturnType = new TypeToken<GetDetectedEventEventResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for getEventPolicy
+     * @param platform  (optional)
+     * @param appId  (optional)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getEventPolicyCall(String platform, UUID appId, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/v1/event-policies";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        if (platform != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("platform", platform));
+        }
+
+        if (appId != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("appId", appId));
+        }
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "PersonalAccessToken" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call getEventPolicyValidateBeforeCall(String platform, UUID appId, final ApiCallback _callback) throws ApiException {
+        
+
+        okhttp3.Call localVarCall = getEventPolicyCall(platform, appId, _callback);
+        return localVarCall;
+
+    }
+
+    /**
+     * What Crossly does with each detected marketplace event (sale, listing ended, offer, cancellation, label, shipped, delivered, refund, return, payout, message), per who owns the item (crossly, imported, app_managed, other_tool, untracked). Each matrix cell lists the allowed actions and the effective one, with the scope it comes from (app &gt; platform &gt; global &gt; default). Pass platform (or appId) to see the matrix as that platform&#39;s (or app&#39;s) items see it. Also returns the rules, platforms and connected apps.
+     * 
+     * @param platform  (optional)
+     * @param appId  (optional)
+     * @return GetEventPolicyResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public GetEventPolicyResponse getEventPolicy(String platform, UUID appId) throws ApiException {
+        ApiResponse<GetEventPolicyResponse> localVarResp = getEventPolicyWithHttpInfo(platform, appId);
+        return localVarResp.getData();
+    }
+
+    /**
+     * What Crossly does with each detected marketplace event (sale, listing ended, offer, cancellation, label, shipped, delivered, refund, return, payout, message), per who owns the item (crossly, imported, app_managed, other_tool, untracked). Each matrix cell lists the allowed actions and the effective one, with the scope it comes from (app &gt; platform &gt; global &gt; default). Pass platform (or appId) to see the matrix as that platform&#39;s (or app&#39;s) items see it. Also returns the rules, platforms and connected apps.
+     * 
+     * @param platform  (optional)
+     * @param appId  (optional)
+     * @return ApiResponse&lt;GetEventPolicyResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<GetEventPolicyResponse> getEventPolicyWithHttpInfo(String platform, UUID appId) throws ApiException {
+        okhttp3.Call localVarCall = getEventPolicyValidateBeforeCall(platform, appId, null);
+        Type localVarReturnType = new TypeToken<GetEventPolicyResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * What Crossly does with each detected marketplace event (sale, listing ended, offer, cancellation, label, shipped, delivered, refund, return, payout, message), per who owns the item (crossly, imported, app_managed, other_tool, untracked). Each matrix cell lists the allowed actions and the effective one, with the scope it comes from (app &gt; platform &gt; global &gt; default). Pass platform (or appId) to see the matrix as that platform&#39;s (or app&#39;s) items see it. Also returns the rules, platforms and connected apps. (asynchronously)
+     * 
+     * @param platform  (optional)
+     * @param appId  (optional)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getEventPolicyAsync(String platform, UUID appId, final ApiCallback<GetEventPolicyResponse> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = getEventPolicyValidateBeforeCall(platform, appId, _callback);
+        Type localVarReturnType = new TypeToken<GetEventPolicyResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for listActionLog
+     * @param platform Platform id (&#x60;ebay&#x60;, &#x60;poshmark&#x60;, ...). (optional)
+     * @param action A canonical action key (&#x60;listing.delist&#x60;, see the public action catalog) or a legacy action word. (optional)
+     * @param category  (optional)
+     * @param area A seller area: every action of that area (the grouped filter of the dashboard). (optional)
+     * @param status  (optional)
+     * @param source  (optional)
+     * @param targetType With targetId: events about that object (any of their targets). (optional)
+     * @param targetId  (optional)
+     * @param actorUserId Only what one team member did. (optional)
+     * @param q A search in the activity query language (&#x60;action:listing.* -outcome:failure \&quot;free text\&quot;&#x60;), ANDed with the other filters. POST /api/v1/action-log/search/translate turns a question in words into one. (optional)
+     * @param since Inclusive lower bound on when the action happened. (optional)
+     * @param until Exclusive upper bound. (optional)
+     * @param at Jump to a time: the page starts at the newest event at or before it. (optional)
+     * @param cursor &#x60;pagination.nextCursor&#x60; of the previous page. (optional)
+     * @param limit  (optional, default to 50)
+     * @param offset Deprecated: use cursor. offset + limit may reach at most 1000 events. (optional)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call listActionLogCall(String platform, String action, String category, String area, String status, String source, String targetType, String targetId, String actorUserId, String q, OffsetDateTime since, OffsetDateTime until, OffsetDateTime at, String cursor, Integer limit, Integer offset, final ApiCallback _callback) throws ApiException {
         String basePath = null;
 
         // Operation Servers
@@ -437,6 +3379,10 @@ public class ActivityApi {
             localVarQueryParams.addAll(localVarApiClient.parameterToPair("category", category));
         }
 
+        if (area != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("area", area));
+        }
+
         if (status != null) {
             localVarQueryParams.addAll(localVarApiClient.parameterToPair("status", status));
         }
@@ -453,12 +3399,28 @@ public class ActivityApi {
             localVarQueryParams.addAll(localVarApiClient.parameterToPair("targetId", targetId));
         }
 
+        if (actorUserId != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("actorUserId", actorUserId));
+        }
+
+        if (q != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("q", q));
+        }
+
         if (since != null) {
             localVarQueryParams.addAll(localVarApiClient.parameterToPair("since", since));
         }
 
         if (until != null) {
             localVarQueryParams.addAll(localVarApiClient.parameterToPair("until", until));
+        }
+
+        if (at != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("at", at));
+        }
+
+        if (cursor != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("cursor", cursor));
         }
 
         if (limit != null) {
@@ -490,28 +3452,33 @@ public class ActivityApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call listActionLogValidateBeforeCall(String platform, String action, String category, String status, String source, String targetType, String targetId, String since, String until, Integer limit, Integer offset, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call listActionLogValidateBeforeCall(String platform, String action, String category, String area, String status, String source, String targetType, String targetId, String actorUserId, String q, OffsetDateTime since, OffsetDateTime until, OffsetDateTime at, String cursor, Integer limit, Integer offset, final ApiCallback _callback) throws ApiException {
         
 
-        okhttp3.Call localVarCall = listActionLogCall(platform, action, category, status, source, targetType, targetId, since, until, limit, offset, _callback);
+        okhttp3.Call localVarCall = listActionLogCall(platform, action, category, area, status, source, targetType, targetId, actorUserId, q, since, until, at, cursor, limit, offset, _callback);
         return localVarCall;
 
     }
 
     /**
-     * List action-log events — the semantic \&quot;what happened\&quot; record of every user + platform action. Filter by platform / action / category / status / source / target, and a since/until created_at window.
+     * List Activity Log events, newest first. Each event carries &#x60;view&#x60; (title, sentence, fields, failure advice, who did it) and typed &#x60;detail&#x60;. Page with &#x60;cursor&#x60;; &#x60;pagination.total&#x60; counts matches.
      * 
-     * @param platform  (optional)
-     * @param action  (optional)
+     * @param platform Platform id (&#x60;ebay&#x60;, &#x60;poshmark&#x60;, ...). (optional)
+     * @param action A canonical action key (&#x60;listing.delist&#x60;, see the public action catalog) or a legacy action word. (optional)
      * @param category  (optional)
+     * @param area A seller area: every action of that area (the grouped filter of the dashboard). (optional)
      * @param status  (optional)
      * @param source  (optional)
-     * @param targetType  (optional)
+     * @param targetType With targetId: events about that object (any of their targets). (optional)
      * @param targetId  (optional)
-     * @param since ISO lower bound (inclusive) on created_at. (optional)
-     * @param until ISO upper bound (exclusive) on created_at. (optional)
+     * @param actorUserId Only what one team member did. (optional)
+     * @param q A search in the activity query language (&#x60;action:listing.* -outcome:failure \&quot;free text\&quot;&#x60;), ANDed with the other filters. POST /api/v1/action-log/search/translate turns a question in words into one. (optional)
+     * @param since Inclusive lower bound on when the action happened. (optional)
+     * @param until Exclusive upper bound. (optional)
+     * @param at Jump to a time: the page starts at the newest event at or before it. (optional)
+     * @param cursor &#x60;pagination.nextCursor&#x60; of the previous page. (optional)
      * @param limit  (optional, default to 50)
-     * @param offset  (optional, default to 0)
+     * @param offset Deprecated: use cursor. offset + limit may reach at most 1000 events. (optional)
      * @return ListActionLogResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -526,25 +3493,30 @@ public class ActivityApi {
         <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
      </table>
      */
-    public ListActionLogResponse listActionLog(String platform, String action, String category, String status, String source, String targetType, String targetId, String since, String until, Integer limit, Integer offset) throws ApiException {
-        ApiResponse<ListActionLogResponse> localVarResp = listActionLogWithHttpInfo(platform, action, category, status, source, targetType, targetId, since, until, limit, offset);
+    public ListActionLogResponse listActionLog(String platform, String action, String category, String area, String status, String source, String targetType, String targetId, String actorUserId, String q, OffsetDateTime since, OffsetDateTime until, OffsetDateTime at, String cursor, Integer limit, Integer offset) throws ApiException {
+        ApiResponse<ListActionLogResponse> localVarResp = listActionLogWithHttpInfo(platform, action, category, area, status, source, targetType, targetId, actorUserId, q, since, until, at, cursor, limit, offset);
         return localVarResp.getData();
     }
 
     /**
-     * List action-log events — the semantic \&quot;what happened\&quot; record of every user + platform action. Filter by platform / action / category / status / source / target, and a since/until created_at window.
+     * List Activity Log events, newest first. Each event carries &#x60;view&#x60; (title, sentence, fields, failure advice, who did it) and typed &#x60;detail&#x60;. Page with &#x60;cursor&#x60;; &#x60;pagination.total&#x60; counts matches.
      * 
-     * @param platform  (optional)
-     * @param action  (optional)
+     * @param platform Platform id (&#x60;ebay&#x60;, &#x60;poshmark&#x60;, ...). (optional)
+     * @param action A canonical action key (&#x60;listing.delist&#x60;, see the public action catalog) or a legacy action word. (optional)
      * @param category  (optional)
+     * @param area A seller area: every action of that area (the grouped filter of the dashboard). (optional)
      * @param status  (optional)
      * @param source  (optional)
-     * @param targetType  (optional)
+     * @param targetType With targetId: events about that object (any of their targets). (optional)
      * @param targetId  (optional)
-     * @param since ISO lower bound (inclusive) on created_at. (optional)
-     * @param until ISO upper bound (exclusive) on created_at. (optional)
+     * @param actorUserId Only what one team member did. (optional)
+     * @param q A search in the activity query language (&#x60;action:listing.* -outcome:failure \&quot;free text\&quot;&#x60;), ANDed with the other filters. POST /api/v1/action-log/search/translate turns a question in words into one. (optional)
+     * @param since Inclusive lower bound on when the action happened. (optional)
+     * @param until Exclusive upper bound. (optional)
+     * @param at Jump to a time: the page starts at the newest event at or before it. (optional)
+     * @param cursor &#x60;pagination.nextCursor&#x60; of the previous page. (optional)
      * @param limit  (optional, default to 50)
-     * @param offset  (optional, default to 0)
+     * @param offset Deprecated: use cursor. offset + limit may reach at most 1000 events. (optional)
      * @return ApiResponse&lt;ListActionLogResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -559,26 +3531,31 @@ public class ActivityApi {
         <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<ListActionLogResponse> listActionLogWithHttpInfo(String platform, String action, String category, String status, String source, String targetType, String targetId, String since, String until, Integer limit, Integer offset) throws ApiException {
-        okhttp3.Call localVarCall = listActionLogValidateBeforeCall(platform, action, category, status, source, targetType, targetId, since, until, limit, offset, null);
+    public ApiResponse<ListActionLogResponse> listActionLogWithHttpInfo(String platform, String action, String category, String area, String status, String source, String targetType, String targetId, String actorUserId, String q, OffsetDateTime since, OffsetDateTime until, OffsetDateTime at, String cursor, Integer limit, Integer offset) throws ApiException {
+        okhttp3.Call localVarCall = listActionLogValidateBeforeCall(platform, action, category, area, status, source, targetType, targetId, actorUserId, q, since, until, at, cursor, limit, offset, null);
         Type localVarReturnType = new TypeToken<ListActionLogResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
-     * List action-log events — the semantic \&quot;what happened\&quot; record of every user + platform action. Filter by platform / action / category / status / source / target, and a since/until created_at window. (asynchronously)
+     * List Activity Log events, newest first. Each event carries &#x60;view&#x60; (title, sentence, fields, failure advice, who did it) and typed &#x60;detail&#x60;. Page with &#x60;cursor&#x60;; &#x60;pagination.total&#x60; counts matches. (asynchronously)
      * 
-     * @param platform  (optional)
-     * @param action  (optional)
+     * @param platform Platform id (&#x60;ebay&#x60;, &#x60;poshmark&#x60;, ...). (optional)
+     * @param action A canonical action key (&#x60;listing.delist&#x60;, see the public action catalog) or a legacy action word. (optional)
      * @param category  (optional)
+     * @param area A seller area: every action of that area (the grouped filter of the dashboard). (optional)
      * @param status  (optional)
      * @param source  (optional)
-     * @param targetType  (optional)
+     * @param targetType With targetId: events about that object (any of their targets). (optional)
      * @param targetId  (optional)
-     * @param since ISO lower bound (inclusive) on created_at. (optional)
-     * @param until ISO upper bound (exclusive) on created_at. (optional)
+     * @param actorUserId Only what one team member did. (optional)
+     * @param q A search in the activity query language (&#x60;action:listing.* -outcome:failure \&quot;free text\&quot;&#x60;), ANDed with the other filters. POST /api/v1/action-log/search/translate turns a question in words into one. (optional)
+     * @param since Inclusive lower bound on when the action happened. (optional)
+     * @param until Exclusive upper bound. (optional)
+     * @param at Jump to a time: the page starts at the newest event at or before it. (optional)
+     * @param cursor &#x60;pagination.nextCursor&#x60; of the previous page. (optional)
      * @param limit  (optional, default to 50)
-     * @param offset  (optional, default to 0)
+     * @param offset Deprecated: use cursor. offset + limit may reach at most 1000 events. (optional)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -594,9 +3571,9 @@ public class ActivityApi {
         <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call listActionLogAsync(String platform, String action, String category, String status, String source, String targetType, String targetId, String since, String until, Integer limit, Integer offset, final ApiCallback<ListActionLogResponse> _callback) throws ApiException {
+    public okhttp3.Call listActionLogAsync(String platform, String action, String category, String area, String status, String source, String targetType, String targetId, String actorUserId, String q, OffsetDateTime since, OffsetDateTime until, OffsetDateTime at, String cursor, Integer limit, Integer offset, final ApiCallback<ListActionLogResponse> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = listActionLogValidateBeforeCall(platform, action, category, status, source, targetType, targetId, since, until, limit, offset, _callback);
+        okhttp3.Call localVarCall = listActionLogValidateBeforeCall(platform, action, category, area, status, source, targetType, targetId, actorUserId, q, since, until, at, cursor, limit, offset, _callback);
         Type localVarReturnType = new TypeToken<ListActionLogResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -681,7 +3658,7 @@ public class ActivityApi {
     }
 
     /**
-     * The outbound platform HTTP calls under an event (oldest first) — url, method, status, latency, redacted request/response bodies, proxy + recipe/hash. Answers \&quot;what was sent / what went wrong\&quot;.
+     * The outbound platform HTTP calls under an event (oldest first) — platform, operation, method, host, status, latency, error class/message, proxy + recipe id. Answers \&quot;what was sent / what went wrong\&quot;. The URL path, request/response bodies and persisted-query hash are never returned.
      * 
      * @param id  (required)
      * @return ListActionLogCallsResponse
@@ -704,7 +3681,7 @@ public class ActivityApi {
     }
 
     /**
-     * The outbound platform HTTP calls under an event (oldest first) — url, method, status, latency, redacted request/response bodies, proxy + recipe/hash. Answers \&quot;what was sent / what went wrong\&quot;.
+     * The outbound platform HTTP calls under an event (oldest first) — platform, operation, method, host, status, latency, error class/message, proxy + recipe id. Answers \&quot;what was sent / what went wrong\&quot;. The URL path, request/response bodies and persisted-query hash are never returned.
      * 
      * @param id  (required)
      * @return ApiResponse&lt;ListActionLogCallsResponse&gt;
@@ -728,7 +3705,7 @@ public class ActivityApi {
     }
 
     /**
-     * The outbound platform HTTP calls under an event (oldest first) — url, method, status, latency, redacted request/response bodies, proxy + recipe/hash. Answers \&quot;what was sent / what went wrong\&quot;. (asynchronously)
+     * The outbound platform HTTP calls under an event (oldest first) — platform, operation, method, host, status, latency, error class/message, proxy + recipe id. Answers \&quot;what was sent / what went wrong\&quot;. The URL path, request/response bodies and persisted-query hash are never returned. (asynchronously)
      * 
      * @param id  (required)
      * @param _callback The callback to be executed when the API call finishes
@@ -750,6 +3727,1236 @@ public class ActivityApi {
 
         okhttp3.Call localVarCall = listActionLogCallsValidateBeforeCall(id, _callback);
         Type localVarReturnType = new TypeToken<ListActionLogCallsResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for listActionLogHistogram
+     * @param platform Platform id (&#x60;ebay&#x60;, &#x60;poshmark&#x60;, ...). (optional)
+     * @param action A canonical action key (&#x60;listing.delist&#x60;, see the public action catalog) or a legacy action word. (optional)
+     * @param category  (optional)
+     * @param area A seller area: every action of that area (the grouped filter of the dashboard). (optional)
+     * @param status  (optional)
+     * @param source  (optional)
+     * @param targetType With targetId: events about that object (any of their targets). (optional)
+     * @param targetId  (optional)
+     * @param actorUserId Only what one team member did. (optional)
+     * @param q A search in the activity query language (&#x60;action:listing.* -outcome:failure \&quot;free text\&quot;&#x60;), ANDed with the other filters. POST /api/v1/action-log/search/translate turns a question in words into one. (optional)
+     * @param since Inclusive lower bound on when the action happened. (optional)
+     * @param until Exclusive upper bound. (optional)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call listActionLogHistogramCall(String platform, String action, String category, String area, String status, String source, String targetType, String targetId, String actorUserId, String q, OffsetDateTime since, OffsetDateTime until, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/v1/action-log/histogram";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        if (platform != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("platform", platform));
+        }
+
+        if (action != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("action", action));
+        }
+
+        if (category != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("category", category));
+        }
+
+        if (area != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("area", area));
+        }
+
+        if (status != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("status", status));
+        }
+
+        if (source != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("source", source));
+        }
+
+        if (targetType != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("targetType", targetType));
+        }
+
+        if (targetId != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("targetId", targetId));
+        }
+
+        if (actorUserId != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("actorUserId", actorUserId));
+        }
+
+        if (q != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("q", q));
+        }
+
+        if (since != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("since", since));
+        }
+
+        if (until != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("until", until));
+        }
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "PersonalAccessToken" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call listActionLogHistogramValidateBeforeCall(String platform, String action, String category, String area, String status, String source, String targetType, String targetId, String actorUserId, String q, OffsetDateTime since, OffsetDateTime until, final ApiCallback _callback) throws ApiException {
+        
+
+        okhttp3.Call localVarCall = listActionLogHistogramCall(platform, action, category, area, status, source, targetType, targetId, actorUserId, q, since, until, _callback);
+        return localVarCall;
+
+    }
+
+    /**
+     * Events per UTC day for the list filters (default: the last 30 days; at most 366).
+     * 
+     * @param platform Platform id (&#x60;ebay&#x60;, &#x60;poshmark&#x60;, ...). (optional)
+     * @param action A canonical action key (&#x60;listing.delist&#x60;, see the public action catalog) or a legacy action word. (optional)
+     * @param category  (optional)
+     * @param area A seller area: every action of that area (the grouped filter of the dashboard). (optional)
+     * @param status  (optional)
+     * @param source  (optional)
+     * @param targetType With targetId: events about that object (any of their targets). (optional)
+     * @param targetId  (optional)
+     * @param actorUserId Only what one team member did. (optional)
+     * @param q A search in the activity query language (&#x60;action:listing.* -outcome:failure \&quot;free text\&quot;&#x60;), ANDed with the other filters. POST /api/v1/action-log/search/translate turns a question in words into one. (optional)
+     * @param since Inclusive lower bound on when the action happened. (optional)
+     * @param until Exclusive upper bound. (optional)
+     * @return ListActionLogHistogramResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public ListActionLogHistogramResponse listActionLogHistogram(String platform, String action, String category, String area, String status, String source, String targetType, String targetId, String actorUserId, String q, OffsetDateTime since, OffsetDateTime until) throws ApiException {
+        ApiResponse<ListActionLogHistogramResponse> localVarResp = listActionLogHistogramWithHttpInfo(platform, action, category, area, status, source, targetType, targetId, actorUserId, q, since, until);
+        return localVarResp.getData();
+    }
+
+    /**
+     * Events per UTC day for the list filters (default: the last 30 days; at most 366).
+     * 
+     * @param platform Platform id (&#x60;ebay&#x60;, &#x60;poshmark&#x60;, ...). (optional)
+     * @param action A canonical action key (&#x60;listing.delist&#x60;, see the public action catalog) or a legacy action word. (optional)
+     * @param category  (optional)
+     * @param area A seller area: every action of that area (the grouped filter of the dashboard). (optional)
+     * @param status  (optional)
+     * @param source  (optional)
+     * @param targetType With targetId: events about that object (any of their targets). (optional)
+     * @param targetId  (optional)
+     * @param actorUserId Only what one team member did. (optional)
+     * @param q A search in the activity query language (&#x60;action:listing.* -outcome:failure \&quot;free text\&quot;&#x60;), ANDed with the other filters. POST /api/v1/action-log/search/translate turns a question in words into one. (optional)
+     * @param since Inclusive lower bound on when the action happened. (optional)
+     * @param until Exclusive upper bound. (optional)
+     * @return ApiResponse&lt;ListActionLogHistogramResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<ListActionLogHistogramResponse> listActionLogHistogramWithHttpInfo(String platform, String action, String category, String area, String status, String source, String targetType, String targetId, String actorUserId, String q, OffsetDateTime since, OffsetDateTime until) throws ApiException {
+        okhttp3.Call localVarCall = listActionLogHistogramValidateBeforeCall(platform, action, category, area, status, source, targetType, targetId, actorUserId, q, since, until, null);
+        Type localVarReturnType = new TypeToken<ListActionLogHistogramResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Events per UTC day for the list filters (default: the last 30 days; at most 366). (asynchronously)
+     * 
+     * @param platform Platform id (&#x60;ebay&#x60;, &#x60;poshmark&#x60;, ...). (optional)
+     * @param action A canonical action key (&#x60;listing.delist&#x60;, see the public action catalog) or a legacy action word. (optional)
+     * @param category  (optional)
+     * @param area A seller area: every action of that area (the grouped filter of the dashboard). (optional)
+     * @param status  (optional)
+     * @param source  (optional)
+     * @param targetType With targetId: events about that object (any of their targets). (optional)
+     * @param targetId  (optional)
+     * @param actorUserId Only what one team member did. (optional)
+     * @param q A search in the activity query language (&#x60;action:listing.* -outcome:failure \&quot;free text\&quot;&#x60;), ANDed with the other filters. POST /api/v1/action-log/search/translate turns a question in words into one. (optional)
+     * @param since Inclusive lower bound on when the action happened. (optional)
+     * @param until Exclusive upper bound. (optional)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call listActionLogHistogramAsync(String platform, String action, String category, String area, String status, String source, String targetType, String targetId, String actorUserId, String q, OffsetDateTime since, OffsetDateTime until, final ApiCallback<ListActionLogHistogramResponse> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = listActionLogHistogramValidateBeforeCall(platform, action, category, area, status, source, targetType, targetId, actorUserId, q, since, until, _callback);
+        Type localVarReturnType = new TypeToken<ListActionLogHistogramResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for listDetectedEventEvents
+     * @param kinds  (optional)
+     * @param platforms  (optional)
+     * @param accounts Comma-separated platform account ids (scope.account). (optional)
+     * @param statuses Comma-separated: acted, held, asked, confirmed, ignored, undone, failed, received, corrected (optional)
+     * @param since  (optional)
+     * @param cursor  (optional)
+     * @param limit  (optional)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call listDetectedEventEventsCall(String kinds, String platforms, String accounts, String statuses, OffsetDateTime since, String cursor, Integer limit, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/v1/detected-events/events";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        if (kinds != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("kinds", kinds));
+        }
+
+        if (platforms != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("platforms", platforms));
+        }
+
+        if (accounts != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("accounts", accounts));
+        }
+
+        if (statuses != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("statuses", statuses));
+        }
+
+        if (since != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("since", since));
+        }
+
+        if (cursor != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("cursor", cursor));
+        }
+
+        if (limit != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("limit", limit));
+        }
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "PersonalAccessToken" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call listDetectedEventEventsValidateBeforeCall(String kinds, String platforms, String accounts, String statuses, OffsetDateTime since, String cursor, Integer limit, final ApiCallback _callback) throws ApiException {
+        
+
+        okhttp3.Call localVarCall = listDetectedEventEventsCall(kinds, platforms, accounts, statuses, since, cursor, limit, _callback);
+        return localVarCall;
+
+    }
+
+    /**
+     * Every event Crossly detected (sales, order changes, listing changes, offers, messages, account notices), newest first: all its axes, the rule that decided it, its corroborating reports, the plan per target and how each action went, with canConfirm (an open ask) and canUndo. Cursor-paged; filter by kinds, platforms statuses and accounts (comma-separated) and since (ISO time).
+     * 
+     * @param kinds  (optional)
+     * @param platforms  (optional)
+     * @param accounts Comma-separated platform account ids (scope.account). (optional)
+     * @param statuses Comma-separated: acted, held, asked, confirmed, ignored, undone, failed, received, corrected (optional)
+     * @param since  (optional)
+     * @param cursor  (optional)
+     * @param limit  (optional)
+     * @return ListDetectedEventEventsResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public ListDetectedEventEventsResponse listDetectedEventEvents(String kinds, String platforms, String accounts, String statuses, OffsetDateTime since, String cursor, Integer limit) throws ApiException {
+        ApiResponse<ListDetectedEventEventsResponse> localVarResp = listDetectedEventEventsWithHttpInfo(kinds, platforms, accounts, statuses, since, cursor, limit);
+        return localVarResp.getData();
+    }
+
+    /**
+     * Every event Crossly detected (sales, order changes, listing changes, offers, messages, account notices), newest first: all its axes, the rule that decided it, its corroborating reports, the plan per target and how each action went, with canConfirm (an open ask) and canUndo. Cursor-paged; filter by kinds, platforms statuses and accounts (comma-separated) and since (ISO time).
+     * 
+     * @param kinds  (optional)
+     * @param platforms  (optional)
+     * @param accounts Comma-separated platform account ids (scope.account). (optional)
+     * @param statuses Comma-separated: acted, held, asked, confirmed, ignored, undone, failed, received, corrected (optional)
+     * @param since  (optional)
+     * @param cursor  (optional)
+     * @param limit  (optional)
+     * @return ApiResponse&lt;ListDetectedEventEventsResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<ListDetectedEventEventsResponse> listDetectedEventEventsWithHttpInfo(String kinds, String platforms, String accounts, String statuses, OffsetDateTime since, String cursor, Integer limit) throws ApiException {
+        okhttp3.Call localVarCall = listDetectedEventEventsValidateBeforeCall(kinds, platforms, accounts, statuses, since, cursor, limit, null);
+        Type localVarReturnType = new TypeToken<ListDetectedEventEventsResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Every event Crossly detected (sales, order changes, listing changes, offers, messages, account notices), newest first: all its axes, the rule that decided it, its corroborating reports, the plan per target and how each action went, with canConfirm (an open ask) and canUndo. Cursor-paged; filter by kinds, platforms statuses and accounts (comma-separated) and since (ISO time). (asynchronously)
+     * 
+     * @param kinds  (optional)
+     * @param platforms  (optional)
+     * @param accounts Comma-separated platform account ids (scope.account). (optional)
+     * @param statuses Comma-separated: acted, held, asked, confirmed, ignored, undone, failed, received, corrected (optional)
+     * @param since  (optional)
+     * @param cursor  (optional)
+     * @param limit  (optional)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call listDetectedEventEventsAsync(String kinds, String platforms, String accounts, String statuses, OffsetDateTime since, String cursor, Integer limit, final ApiCallback<ListDetectedEventEventsResponse> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = listDetectedEventEventsValidateBeforeCall(kinds, platforms, accounts, statuses, since, cursor, limit, _callback);
+        Type localVarReturnType = new TypeToken<ListDetectedEventEventsResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for listDetectedEventRules
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call listDetectedEventRulesCall(final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/v1/detected-events/rules";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "PersonalAccessToken" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call listDetectedEventRulesValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        
+
+        okhttp3.Call localVarCall = listDetectedEventRulesCall(_callback);
+        return localVarCall;
+
+    }
+
+    /**
+     * The seller&#39;s detection rules, top-down in the order they are evaluated (first match wins unless a rule says continue): the seller&#39;s own rules, translations of their event-policy rules (source legacy), then the shipped default set (source default, ids default:&lt;key&gt;; a stored edit of a default replaces it). Each rule has a filter (event kinds, platforms, accounts, apps, tags, items), an optional condition over any event axis, the actions it runs (then / else) and its guard loosenings.
+     * 
+     * @return ListDetectedEventRulesResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public ListDetectedEventRulesResponse listDetectedEventRules() throws ApiException {
+        ApiResponse<ListDetectedEventRulesResponse> localVarResp = listDetectedEventRulesWithHttpInfo();
+        return localVarResp.getData();
+    }
+
+    /**
+     * The seller&#39;s detection rules, top-down in the order they are evaluated (first match wins unless a rule says continue): the seller&#39;s own rules, translations of their event-policy rules (source legacy), then the shipped default set (source default, ids default:&lt;key&gt;; a stored edit of a default replaces it). Each rule has a filter (event kinds, platforms, accounts, apps, tags, items), an optional condition over any event axis, the actions it runs (then / else) and its guard loosenings.
+     * 
+     * @return ApiResponse&lt;ListDetectedEventRulesResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<ListDetectedEventRulesResponse> listDetectedEventRulesWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = listDetectedEventRulesValidateBeforeCall(null);
+        Type localVarReturnType = new TypeToken<ListDetectedEventRulesResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * The seller&#39;s detection rules, top-down in the order they are evaluated (first match wins unless a rule says continue): the seller&#39;s own rules, translations of their event-policy rules (source legacy), then the shipped default set (source default, ids default:&lt;key&gt;; a stored edit of a default replaces it). Each rule has a filter (event kinds, platforms, accounts, apps, tags, items), an optional condition over any event axis, the actions it runs (then / else) and its guard loosenings. (asynchronously)
+     * 
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call listDetectedEventRulesAsync(final ApiCallback<ListDetectedEventRulesResponse> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = listDetectedEventRulesValidateBeforeCall(_callback);
+        Type localVarReturnType = new TypeToken<ListDetectedEventRulesResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for listEmailEvents
+     * @param status  (optional, default to needs_review)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call listEmailEventsCall(String status, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/v1/email-events";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        if (status != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("status", status));
+        }
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "PersonalAccessToken" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call listEmailEventsValidateBeforeCall(String status, final ApiCallback _callback) throws ApiException {
+        
+
+        okhttp3.Call localVarCall = listEmailEventsCall(status, _callback);
+        return localVarCall;
+
+    }
+
+    /**
+     * List email-detected events waiting for the seller (status&#x3D;needs_review): a possible sale, ended listing, cancellation or other event an email reported that was not certain enough to act on automatically.
+     * 
+     * @param status  (optional, default to needs_review)
+     * @return ListEmailEventsResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public ListEmailEventsResponse listEmailEvents(String status) throws ApiException {
+        ApiResponse<ListEmailEventsResponse> localVarResp = listEmailEventsWithHttpInfo(status);
+        return localVarResp.getData();
+    }
+
+    /**
+     * List email-detected events waiting for the seller (status&#x3D;needs_review): a possible sale, ended listing, cancellation or other event an email reported that was not certain enough to act on automatically.
+     * 
+     * @param status  (optional, default to needs_review)
+     * @return ApiResponse&lt;ListEmailEventsResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<ListEmailEventsResponse> listEmailEventsWithHttpInfo(String status) throws ApiException {
+        okhttp3.Call localVarCall = listEmailEventsValidateBeforeCall(status, null);
+        Type localVarReturnType = new TypeToken<ListEmailEventsResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * List email-detected events waiting for the seller (status&#x3D;needs_review): a possible sale, ended listing, cancellation or other event an email reported that was not certain enough to act on automatically. (asynchronously)
+     * 
+     * @param status  (optional, default to needs_review)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call listEmailEventsAsync(String status, final ApiCallback<ListEmailEventsResponse> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = listEmailEventsValidateBeforeCall(status, _callback);
+        Type localVarReturnType = new TypeToken<ListEmailEventsResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for listEventPolicyDecisions
+     * @param cursor  (optional)
+     * @param limit  (optional)
+     * @param event  (optional)
+     * @param ownership  (optional)
+     * @param platform  (optional)
+     * @param outcome  (optional)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call listEventPolicyDecisionsCall(String cursor, Integer limit, String event, String ownership, String platform, String outcome, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/v1/event-policies/decisions";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        if (cursor != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("cursor", cursor));
+        }
+
+        if (limit != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("limit", limit));
+        }
+
+        if (event != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("event", event));
+        }
+
+        if (ownership != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("ownership", ownership));
+        }
+
+        if (platform != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("platform", platform));
+        }
+
+        if (outcome != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("outcome", outcome));
+        }
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "PersonalAccessToken" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call listEventPolicyDecisionsValidateBeforeCall(String cursor, Integer limit, String event, String ownership, String platform, String outcome, final ApiCallback _callback) throws ApiException {
+        
+
+        okhttp3.Call localVarCall = listEventPolicyDecisionsCall(cursor, limit, event, ownership, platform, outcome, _callback);
+        return localVarCall;
+
+    }
+
+    /**
+     * The decision log, newest first: for each detected event, what the rule or default asked for, what was done (after capability fallback and the email confidence ceiling), the rule that decided it, and the outcome (done / skipped / failed / review). Cursor-paged; filter by event, ownership, platform or outcome (outcome&#x3D;review: still waiting for the seller). Kept 90 days.
+     * 
+     * @param cursor  (optional)
+     * @param limit  (optional)
+     * @param event  (optional)
+     * @param ownership  (optional)
+     * @param platform  (optional)
+     * @param outcome  (optional)
+     * @return ListEventPolicyDecisionsResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public ListEventPolicyDecisionsResponse listEventPolicyDecisions(String cursor, Integer limit, String event, String ownership, String platform, String outcome) throws ApiException {
+        ApiResponse<ListEventPolicyDecisionsResponse> localVarResp = listEventPolicyDecisionsWithHttpInfo(cursor, limit, event, ownership, platform, outcome);
+        return localVarResp.getData();
+    }
+
+    /**
+     * The decision log, newest first: for each detected event, what the rule or default asked for, what was done (after capability fallback and the email confidence ceiling), the rule that decided it, and the outcome (done / skipped / failed / review). Cursor-paged; filter by event, ownership, platform or outcome (outcome&#x3D;review: still waiting for the seller). Kept 90 days.
+     * 
+     * @param cursor  (optional)
+     * @param limit  (optional)
+     * @param event  (optional)
+     * @param ownership  (optional)
+     * @param platform  (optional)
+     * @param outcome  (optional)
+     * @return ApiResponse&lt;ListEventPolicyDecisionsResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<ListEventPolicyDecisionsResponse> listEventPolicyDecisionsWithHttpInfo(String cursor, Integer limit, String event, String ownership, String platform, String outcome) throws ApiException {
+        okhttp3.Call localVarCall = listEventPolicyDecisionsValidateBeforeCall(cursor, limit, event, ownership, platform, outcome, null);
+        Type localVarReturnType = new TypeToken<ListEventPolicyDecisionsResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * The decision log, newest first: for each detected event, what the rule or default asked for, what was done (after capability fallback and the email confidence ceiling), the rule that decided it, and the outcome (done / skipped / failed / review). Cursor-paged; filter by event, ownership, platform or outcome (outcome&#x3D;review: still waiting for the seller). Kept 90 days. (asynchronously)
+     * 
+     * @param cursor  (optional)
+     * @param limit  (optional)
+     * @param event  (optional)
+     * @param ownership  (optional)
+     * @param platform  (optional)
+     * @param outcome  (optional)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call listEventPolicyDecisionsAsync(String cursor, Integer limit, String event, String ownership, String platform, String outcome, final ApiCallback<ListEventPolicyDecisionsResponse> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = listEventPolicyDecisionsValidateBeforeCall(cursor, limit, event, ownership, platform, outcome, _callback);
+        Type localVarReturnType = new TypeToken<ListEventPolicyDecisionsResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for updateDetectedEventRule
+     * @param id  (required)
+     * @param createDetectedEventRuleRequest  (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call updateDetectedEventRuleCall(String id, CreateDetectedEventRuleRequest createDetectedEventRuleRequest, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = createDetectedEventRuleRequest;
+
+        // create path and map variables
+        String localVarPath = "/v1/detected-events/rules/{id}"
+            .replaceAll("\\{" + "id" + "\\}", localVarApiClient.escapeString(id.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "PersonalAccessToken" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "PUT", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call updateDetectedEventRuleValidateBeforeCall(String id, CreateDetectedEventRuleRequest createDetectedEventRuleRequest, final ApiCallback _callback) throws ApiException {
+        
+        // verify the required parameter 'id' is set
+        if (id == null) {
+            throw new ApiException("Missing the required parameter 'id' when calling updateDetectedEventRule(Async)");
+        }
+        
+        // verify the required parameter 'createDetectedEventRuleRequest' is set
+        if (createDetectedEventRuleRequest == null) {
+            throw new ApiException("Missing the required parameter 'createDetectedEventRuleRequest' when calling updateDetectedEventRule(Async)");
+        }
+        
+
+        okhttp3.Call localVarCall = updateDetectedEventRuleCall(id, createDetectedEventRuleRequest, _callback);
+        return localVarCall;
+
+    }
+
+    /**
+     * Replace a detection rule. An id default:&lt;key&gt; stores your edit of that shipped default (delete it, or reset-defaults, to go back to the shipped one).
+     * 
+     * @param id  (required)
+     * @param createDetectedEventRuleRequest  (required)
+     * @return CreateDetectedEventRuleResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public CreateDetectedEventRuleResponse updateDetectedEventRule(String id, CreateDetectedEventRuleRequest createDetectedEventRuleRequest) throws ApiException {
+        ApiResponse<CreateDetectedEventRuleResponse> localVarResp = updateDetectedEventRuleWithHttpInfo(id, createDetectedEventRuleRequest);
+        return localVarResp.getData();
+    }
+
+    /**
+     * Replace a detection rule. An id default:&lt;key&gt; stores your edit of that shipped default (delete it, or reset-defaults, to go back to the shipped one).
+     * 
+     * @param id  (required)
+     * @param createDetectedEventRuleRequest  (required)
+     * @return ApiResponse&lt;CreateDetectedEventRuleResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<CreateDetectedEventRuleResponse> updateDetectedEventRuleWithHttpInfo(String id, CreateDetectedEventRuleRequest createDetectedEventRuleRequest) throws ApiException {
+        okhttp3.Call localVarCall = updateDetectedEventRuleValidateBeforeCall(id, createDetectedEventRuleRequest, null);
+        Type localVarReturnType = new TypeToken<CreateDetectedEventRuleResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Replace a detection rule. An id default:&lt;key&gt; stores your edit of that shipped default (delete it, or reset-defaults, to go back to the shipped one). (asynchronously)
+     * 
+     * @param id  (required)
+     * @param createDetectedEventRuleRequest  (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call updateDetectedEventRuleAsync(String id, CreateDetectedEventRuleRequest createDetectedEventRuleRequest, final ApiCallback<CreateDetectedEventRuleResponse> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = updateDetectedEventRuleValidateBeforeCall(id, createDetectedEventRuleRequest, _callback);
+        Type localVarReturnType = new TypeToken<CreateDetectedEventRuleResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for updateEventPolicyRule
+     * @param updateEventPolicyRuleRequest  (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call updateEventPolicyRuleCall(UpdateEventPolicyRuleRequest updateEventPolicyRuleRequest, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = updateEventPolicyRuleRequest;
+
+        // create path and map variables
+        String localVarPath = "/v1/event-policies/rules";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "PersonalAccessToken" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "PUT", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call updateEventPolicyRuleValidateBeforeCall(UpdateEventPolicyRuleRequest updateEventPolicyRuleRequest, final ApiCallback _callback) throws ApiException {
+        
+        // verify the required parameter 'updateEventPolicyRuleRequest' is set
+        if (updateEventPolicyRuleRequest == null) {
+            throw new ApiException("Missing the required parameter 'updateEventPolicyRuleRequest' when calling updateEventPolicyRule(Async)");
+        }
+        
+
+        okhttp3.Call localVarCall = updateEventPolicyRuleCall(updateEventPolicyRuleRequest, _callback);
+        return localVarCall;
+
+    }
+
+    /**
+     * Set what Crossly does with one kind of detected event for one kind of item: scope global (scopeValue null), platform (scopeValue &#x3D; platform id) or app (scopeValue &#x3D; OAuth app id, app_managed items only). Replaces the rule for the same cell and scope. The action must be one the matrix allows for that cell; import actions exist only for untracked items.
+     * 
+     * @param updateEventPolicyRuleRequest  (required)
+     * @return UpdateEventPolicyRuleResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public UpdateEventPolicyRuleResponse updateEventPolicyRule(UpdateEventPolicyRuleRequest updateEventPolicyRuleRequest) throws ApiException {
+        ApiResponse<UpdateEventPolicyRuleResponse> localVarResp = updateEventPolicyRuleWithHttpInfo(updateEventPolicyRuleRequest);
+        return localVarResp.getData();
+    }
+
+    /**
+     * Set what Crossly does with one kind of detected event for one kind of item: scope global (scopeValue null), platform (scopeValue &#x3D; platform id) or app (scopeValue &#x3D; OAuth app id, app_managed items only). Replaces the rule for the same cell and scope. The action must be one the matrix allows for that cell; import actions exist only for untracked items.
+     * 
+     * @param updateEventPolicyRuleRequest  (required)
+     * @return ApiResponse&lt;UpdateEventPolicyRuleResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<UpdateEventPolicyRuleResponse> updateEventPolicyRuleWithHttpInfo(UpdateEventPolicyRuleRequest updateEventPolicyRuleRequest) throws ApiException {
+        okhttp3.Call localVarCall = updateEventPolicyRuleValidateBeforeCall(updateEventPolicyRuleRequest, null);
+        Type localVarReturnType = new TypeToken<UpdateEventPolicyRuleResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Set what Crossly does with one kind of detected event for one kind of item: scope global (scopeValue null), platform (scopeValue &#x3D; platform id) or app (scopeValue &#x3D; OAuth app id, app_managed items only). Replaces the rule for the same cell and scope. The action must be one the matrix allows for that cell; import actions exist only for untracked items. (asynchronously)
+     * 
+     * @param updateEventPolicyRuleRequest  (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call updateEventPolicyRuleAsync(UpdateEventPolicyRuleRequest updateEventPolicyRuleRequest, final ApiCallback<UpdateEventPolicyRuleResponse> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = updateEventPolicyRuleValidateBeforeCall(updateEventPolicyRuleRequest, _callback);
+        Type localVarReturnType = new TypeToken<UpdateEventPolicyRuleResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }

@@ -152,7 +152,7 @@ public class TeamApi {
     }
 
     /**
-     * Accept a pending team invitation by raw token.
+     * Accept a team invitation by the raw token from its link.
      * 
      * @return CreateTeamAcceptResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -174,7 +174,7 @@ public class TeamApi {
     }
 
     /**
-     * Accept a pending team invitation by raw token.
+     * Accept a team invitation by the raw token from its link.
      * 
      * @return ApiResponse&lt;CreateTeamAcceptResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -197,7 +197,7 @@ public class TeamApi {
     }
 
     /**
-     * Accept a pending team invitation by raw token. (asynchronously)
+     * Accept a team invitation by the raw token from its link. (asynchronously)
      * 
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -294,7 +294,7 @@ public class TeamApi {
     }
 
     /**
-     * Mint a team invitation; returns the one-time accept URL.
+     * Issue a team invitation; returns the one-time accept URL (nothing is emailed).
      * 
      * @return CreateTeamInviteResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -316,7 +316,7 @@ public class TeamApi {
     }
 
     /**
-     * Mint a team invitation; returns the one-time accept URL.
+     * Issue a team invitation; returns the one-time accept URL (nothing is emailed).
      * 
      * @return ApiResponse&lt;CreateTeamInviteResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -339,7 +339,7 @@ public class TeamApi {
     }
 
     /**
-     * Mint a team invitation; returns the one-time accept URL. (asynchronously)
+     * Issue a team invitation; returns the one-time accept URL (nothing is emailed). (asynchronously)
      * 
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call

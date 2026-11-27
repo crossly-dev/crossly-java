@@ -41,7 +41,9 @@ public enum GetVaultMarketLearnByConceptResponseRelatedItem {
   
   INDEXES("indexes"),
   
-  MARKS("marks");
+  MARKS("marks"),
+  
+  VAULT_SHARES("vault-shares");
 
   private String value;
 

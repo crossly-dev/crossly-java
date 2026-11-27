@@ -30,7 +30,7 @@ import org.threeten.bp.OffsetDateTime;
 /**
  * CreateWorldConventionResponseData
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-11T23:44:48.922Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-27T19:42:43.186Z[Etc/UTC]")
 public class CreateWorldConventionResponseData {
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
@@ -44,18 +44,22 @@ public class CreateWorldConventionResponseData {
   @SerializedName(SERIALIZED_NAME_UPDATED_AT)
   private OffsetDateTime updatedAt;
 
+  public static final String SERIALIZED_NAME_DESCRIPTION = "description";
+  @SerializedName(SERIALIZED_NAME_DESCRIPTION)
+  private String description;
+
   /**
    * Gets or Sets status
    */
   @JsonAdapter(StatusEnum.Adapter.class)
   public enum StatusEnum {
-    LIVE("live"),
-    
     DRAFT("draft"),
     
-    OPEN("open"),
+    LIVE("live"),
     
     CANCELLED("cancelled"),
+    
+    OPEN("open"),
     
     ENDED("ended");
 
@@ -105,25 +109,41 @@ public class CreateWorldConventionResponseData {
   @SerializedName(SERIALIZED_NAME_TITLE)
   private String title;
 
+  public static final String SERIALIZED_NAME_STOREFRONT_ID = "storefrontId";
+  @SerializedName(SERIALIZED_NAME_STOREFRONT_ID)
+  private String storefrontId;
+
   public static final String SERIALIZED_NAME_ENDS_AT = "endsAt";
   @SerializedName(SERIALIZED_NAME_ENDS_AT)
   private OffsetDateTime endsAt;
-
-  public static final String SERIALIZED_NAME_CATEGORY_SLUG = "categorySlug";
-  @SerializedName(SERIALIZED_NAME_CATEGORY_SLUG)
-  private String categorySlug;
-
-  public static final String SERIALIZED_NAME_HOST_USER_ID = "hostUserId";
-  @SerializedName(SERIALIZED_NAME_HOST_USER_ID)
-  private String hostUserId;
 
   public static final String SERIALIZED_NAME_STARTS_AT = "startsAt";
   @SerializedName(SERIALIZED_NAME_STARTS_AT)
   private OffsetDateTime startsAt;
 
+  public static final String SERIALIZED_NAME_TIMEZONE = "timezone";
+  @SerializedName(SERIALIZED_NAME_TIMEZONE)
+  private String timezone;
+
+  public static final String SERIALIZED_NAME_CATEGORY_SLUG = "categorySlug";
+  @SerializedName(SERIALIZED_NAME_CATEGORY_SLUG)
+  private String categorySlug;
+
+  public static final String SERIALIZED_NAME_THEME = "theme";
+  @SerializedName(SERIALIZED_NAME_THEME)
+  private String theme;
+
+  public static final String SERIALIZED_NAME_SELLER_EVENT_ID = "sellerEventId";
+  @SerializedName(SERIALIZED_NAME_SELLER_EVENT_ID)
+  private String sellerEventId;
+
   public static final String SERIALIZED_NAME_SCENE_ID = "sceneId";
   @SerializedName(SERIALIZED_NAME_SCENE_ID)
   private String sceneId;
+
+  public static final String SERIALIZED_NAME_HOST_USER_ID = "hostUserId";
+  @SerializedName(SERIALIZED_NAME_HOST_USER_ID)
+  private String hostUserId;
 
   /**
    * Gets or Sets entryModel
@@ -132,9 +152,9 @@ public class CreateWorldConventionResponseData {
   public enum EntryModelEnum {
     FREE("free"),
     
-    INVITE("invite"),
-    
     FEE("fee"),
+    
+    INVITE("invite"),
     
     REVENUE_SHARE("revenue_share");
 
@@ -191,6 +211,30 @@ public class CreateWorldConventionResponseData {
   public static final String SERIALIZED_NAME_TABLE_COUNT = "tableCount";
   @SerializedName(SERIALIZED_NAME_TABLE_COUNT)
   private BigDecimal tableCount;
+
+  public static final String SERIALIZED_NAME_VENUE_BOOKING_ID = "venueBookingId";
+  @SerializedName(SERIALIZED_NAME_VENUE_BOOKING_ID)
+  private String venueBookingId;
+
+  public static final String SERIALIZED_NAME_OPENS_HOUR = "opensHour";
+  @SerializedName(SERIALIZED_NAME_OPENS_HOUR)
+  private BigDecimal opensHour;
+
+  public static final String SERIALIZED_NAME_CLOSES_HOUR = "closesHour";
+  @SerializedName(SERIALIZED_NAME_CLOSES_HOUR)
+  private BigDecimal closesHour;
+
+  public static final String SERIALIZED_NAME_FLOOR_PLAN_VERSION = "floorPlanVersion";
+  @SerializedName(SERIALIZED_NAME_FLOOR_PLAN_VERSION)
+  private BigDecimal floorPlanVersion;
+
+  public static final String SERIALIZED_NAME_BOOKING_MODE = "bookingMode";
+  @SerializedName(SERIALIZED_NAME_BOOKING_MODE)
+  private String bookingMode;
+
+  public static final String SERIALIZED_NAME_WALK_INS = "walkIns";
+  @SerializedName(SERIALIZED_NAME_WALK_INS)
+  private BigDecimal walkIns;
 
   public CreateWorldConventionResponseData() { 
   }
@@ -264,6 +308,29 @@ public class CreateWorldConventionResponseData {
   }
 
 
+  public CreateWorldConventionResponseData description(String description) {
+    
+    this.description = description;
+    return this;
+  }
+
+   /**
+   * Get description
+   * @return description
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public String getDescription() {
+    return description;
+  }
+
+
+  public void setDescription(String description) {
+    this.description = description;
+  }
+
+
   public CreateWorldConventionResponseData status(StatusEnum status) {
     
     this.status = status;
@@ -310,6 +377,29 @@ public class CreateWorldConventionResponseData {
   }
 
 
+  public CreateWorldConventionResponseData storefrontId(String storefrontId) {
+    
+    this.storefrontId = storefrontId;
+    return this;
+  }
+
+   /**
+   * Get storefrontId
+   * @return storefrontId
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public String getStorefrontId() {
+    return storefrontId;
+  }
+
+
+  public void setStorefrontId(String storefrontId) {
+    this.storefrontId = storefrontId;
+  }
+
+
   public CreateWorldConventionResponseData endsAt(OffsetDateTime endsAt) {
     
     this.endsAt = endsAt;
@@ -330,52 +420,6 @@ public class CreateWorldConventionResponseData {
 
   public void setEndsAt(OffsetDateTime endsAt) {
     this.endsAt = endsAt;
-  }
-
-
-  public CreateWorldConventionResponseData categorySlug(String categorySlug) {
-    
-    this.categorySlug = categorySlug;
-    return this;
-  }
-
-   /**
-   * Get categorySlug
-   * @return categorySlug
-  **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
-
-  public String getCategorySlug() {
-    return categorySlug;
-  }
-
-
-  public void setCategorySlug(String categorySlug) {
-    this.categorySlug = categorySlug;
-  }
-
-
-  public CreateWorldConventionResponseData hostUserId(String hostUserId) {
-    
-    this.hostUserId = hostUserId;
-    return this;
-  }
-
-   /**
-   * Get hostUserId
-   * @return hostUserId
-  **/
-  @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "")
-
-  public String getHostUserId() {
-    return hostUserId;
-  }
-
-
-  public void setHostUserId(String hostUserId) {
-    this.hostUserId = hostUserId;
   }
 
 
@@ -402,6 +446,98 @@ public class CreateWorldConventionResponseData {
   }
 
 
+  public CreateWorldConventionResponseData timezone(String timezone) {
+    
+    this.timezone = timezone;
+    return this;
+  }
+
+   /**
+   * Get timezone
+   * @return timezone
+  **/
+  @javax.annotation.Nonnull
+  @ApiModelProperty(required = true, value = "")
+
+  public String getTimezone() {
+    return timezone;
+  }
+
+
+  public void setTimezone(String timezone) {
+    this.timezone = timezone;
+  }
+
+
+  public CreateWorldConventionResponseData categorySlug(String categorySlug) {
+    
+    this.categorySlug = categorySlug;
+    return this;
+  }
+
+   /**
+   * Get categorySlug
+   * @return categorySlug
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public String getCategorySlug() {
+    return categorySlug;
+  }
+
+
+  public void setCategorySlug(String categorySlug) {
+    this.categorySlug = categorySlug;
+  }
+
+
+  public CreateWorldConventionResponseData theme(String theme) {
+    
+    this.theme = theme;
+    return this;
+  }
+
+   /**
+   * Get theme
+   * @return theme
+  **/
+  @javax.annotation.Nonnull
+  @ApiModelProperty(required = true, value = "")
+
+  public String getTheme() {
+    return theme;
+  }
+
+
+  public void setTheme(String theme) {
+    this.theme = theme;
+  }
+
+
+  public CreateWorldConventionResponseData sellerEventId(String sellerEventId) {
+    
+    this.sellerEventId = sellerEventId;
+    return this;
+  }
+
+   /**
+   * Get sellerEventId
+   * @return sellerEventId
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public String getSellerEventId() {
+    return sellerEventId;
+  }
+
+
+  public void setSellerEventId(String sellerEventId) {
+    this.sellerEventId = sellerEventId;
+  }
+
+
   public CreateWorldConventionResponseData sceneId(String sceneId) {
     
     this.sceneId = sceneId;
@@ -422,6 +558,29 @@ public class CreateWorldConventionResponseData {
 
   public void setSceneId(String sceneId) {
     this.sceneId = sceneId;
+  }
+
+
+  public CreateWorldConventionResponseData hostUserId(String hostUserId) {
+    
+    this.hostUserId = hostUserId;
+    return this;
+  }
+
+   /**
+   * Get hostUserId
+   * @return hostUserId
+  **/
+  @javax.annotation.Nonnull
+  @ApiModelProperty(required = true, value = "")
+
+  public String getHostUserId() {
+    return hostUserId;
+  }
+
+
+  public void setHostUserId(String hostUserId) {
+    this.hostUserId = hostUserId;
   }
 
 
@@ -517,6 +676,144 @@ public class CreateWorldConventionResponseData {
   }
 
 
+  public CreateWorldConventionResponseData venueBookingId(String venueBookingId) {
+    
+    this.venueBookingId = venueBookingId;
+    return this;
+  }
+
+   /**
+   * Get venueBookingId
+   * @return venueBookingId
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public String getVenueBookingId() {
+    return venueBookingId;
+  }
+
+
+  public void setVenueBookingId(String venueBookingId) {
+    this.venueBookingId = venueBookingId;
+  }
+
+
+  public CreateWorldConventionResponseData opensHour(BigDecimal opensHour) {
+    
+    this.opensHour = opensHour;
+    return this;
+  }
+
+   /**
+   * Get opensHour
+   * @return opensHour
+  **/
+  @javax.annotation.Nonnull
+  @ApiModelProperty(required = true, value = "")
+
+  public BigDecimal getOpensHour() {
+    return opensHour;
+  }
+
+
+  public void setOpensHour(BigDecimal opensHour) {
+    this.opensHour = opensHour;
+  }
+
+
+  public CreateWorldConventionResponseData closesHour(BigDecimal closesHour) {
+    
+    this.closesHour = closesHour;
+    return this;
+  }
+
+   /**
+   * Get closesHour
+   * @return closesHour
+  **/
+  @javax.annotation.Nonnull
+  @ApiModelProperty(required = true, value = "")
+
+  public BigDecimal getClosesHour() {
+    return closesHour;
+  }
+
+
+  public void setClosesHour(BigDecimal closesHour) {
+    this.closesHour = closesHour;
+  }
+
+
+  public CreateWorldConventionResponseData floorPlanVersion(BigDecimal floorPlanVersion) {
+    
+    this.floorPlanVersion = floorPlanVersion;
+    return this;
+  }
+
+   /**
+   * Get floorPlanVersion
+   * @return floorPlanVersion
+  **/
+  @javax.annotation.Nonnull
+  @ApiModelProperty(required = true, value = "")
+
+  public BigDecimal getFloorPlanVersion() {
+    return floorPlanVersion;
+  }
+
+
+  public void setFloorPlanVersion(BigDecimal floorPlanVersion) {
+    this.floorPlanVersion = floorPlanVersion;
+  }
+
+
+  public CreateWorldConventionResponseData bookingMode(String bookingMode) {
+    
+    this.bookingMode = bookingMode;
+    return this;
+  }
+
+   /**
+   * Get bookingMode
+   * @return bookingMode
+  **/
+  @javax.annotation.Nonnull
+  @ApiModelProperty(required = true, value = "")
+
+  public String getBookingMode() {
+    return bookingMode;
+  }
+
+
+  public void setBookingMode(String bookingMode) {
+    this.bookingMode = bookingMode;
+  }
+
+
+  public CreateWorldConventionResponseData walkIns(BigDecimal walkIns) {
+    
+    this.walkIns = walkIns;
+    return this;
+  }
+
+   /**
+   * Get walkIns
+   * @return walkIns
+  **/
+  @javax.annotation.Nonnull
+  @ApiModelProperty(required = true, value = "")
+
+  public BigDecimal getWalkIns() {
+    return walkIns;
+  }
+
+
+  public void setWalkIns(BigDecimal walkIns) {
+    this.walkIns = walkIns;
+  }
+
+
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -529,17 +826,28 @@ public class CreateWorldConventionResponseData {
     return Objects.equals(this.id, createWorldConventionResponseData.id) &&
         Objects.equals(this.createdAt, createWorldConventionResponseData.createdAt) &&
         Objects.equals(this.updatedAt, createWorldConventionResponseData.updatedAt) &&
+        Objects.equals(this.description, createWorldConventionResponseData.description) &&
         Objects.equals(this.status, createWorldConventionResponseData.status) &&
         Objects.equals(this.title, createWorldConventionResponseData.title) &&
+        Objects.equals(this.storefrontId, createWorldConventionResponseData.storefrontId) &&
         Objects.equals(this.endsAt, createWorldConventionResponseData.endsAt) &&
-        Objects.equals(this.categorySlug, createWorldConventionResponseData.categorySlug) &&
-        Objects.equals(this.hostUserId, createWorldConventionResponseData.hostUserId) &&
         Objects.equals(this.startsAt, createWorldConventionResponseData.startsAt) &&
+        Objects.equals(this.timezone, createWorldConventionResponseData.timezone) &&
+        Objects.equals(this.categorySlug, createWorldConventionResponseData.categorySlug) &&
+        Objects.equals(this.theme, createWorldConventionResponseData.theme) &&
+        Objects.equals(this.sellerEventId, createWorldConventionResponseData.sellerEventId) &&
         Objects.equals(this.sceneId, createWorldConventionResponseData.sceneId) &&
+        Objects.equals(this.hostUserId, createWorldConventionResponseData.hostUserId) &&
         Objects.equals(this.entryModel, createWorldConventionResponseData.entryModel) &&
         Objects.equals(this.entryFeeCents, createWorldConventionResponseData.entryFeeCents) &&
         Objects.equals(this.revenueShareBps, createWorldConventionResponseData.revenueShareBps) &&
-        Objects.equals(this.tableCount, createWorldConventionResponseData.tableCount);
+        Objects.equals(this.tableCount, createWorldConventionResponseData.tableCount) &&
+        Objects.equals(this.venueBookingId, createWorldConventionResponseData.venueBookingId) &&
+        Objects.equals(this.opensHour, createWorldConventionResponseData.opensHour) &&
+        Objects.equals(this.closesHour, createWorldConventionResponseData.closesHour) &&
+        Objects.equals(this.floorPlanVersion, createWorldConventionResponseData.floorPlanVersion) &&
+        Objects.equals(this.bookingMode, createWorldConventionResponseData.bookingMode) &&
+        Objects.equals(this.walkIns, createWorldConventionResponseData.walkIns);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -548,7 +856,7 @@ public class CreateWorldConventionResponseData {
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, createdAt, updatedAt, status, title, endsAt, categorySlug, hostUserId, startsAt, sceneId, entryModel, entryFeeCents, revenueShareBps, tableCount);
+    return Objects.hash(id, createdAt, updatedAt, description, status, title, storefrontId, endsAt, startsAt, timezone, categorySlug, theme, sellerEventId, sceneId, hostUserId, entryModel, entryFeeCents, revenueShareBps, tableCount, venueBookingId, opensHour, closesHour, floorPlanVersion, bookingMode, walkIns);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -565,17 +873,28 @@ public class CreateWorldConventionResponseData {
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    createdAt: ").append(toIndentedString(createdAt)).append("\n");
     sb.append("    updatedAt: ").append(toIndentedString(updatedAt)).append("\n");
+    sb.append("    description: ").append(toIndentedString(description)).append("\n");
     sb.append("    status: ").append(toIndentedString(status)).append("\n");
     sb.append("    title: ").append(toIndentedString(title)).append("\n");
+    sb.append("    storefrontId: ").append(toIndentedString(storefrontId)).append("\n");
     sb.append("    endsAt: ").append(toIndentedString(endsAt)).append("\n");
-    sb.append("    categorySlug: ").append(toIndentedString(categorySlug)).append("\n");
-    sb.append("    hostUserId: ").append(toIndentedString(hostUserId)).append("\n");
     sb.append("    startsAt: ").append(toIndentedString(startsAt)).append("\n");
+    sb.append("    timezone: ").append(toIndentedString(timezone)).append("\n");
+    sb.append("    categorySlug: ").append(toIndentedString(categorySlug)).append("\n");
+    sb.append("    theme: ").append(toIndentedString(theme)).append("\n");
+    sb.append("    sellerEventId: ").append(toIndentedString(sellerEventId)).append("\n");
     sb.append("    sceneId: ").append(toIndentedString(sceneId)).append("\n");
+    sb.append("    hostUserId: ").append(toIndentedString(hostUserId)).append("\n");
     sb.append("    entryModel: ").append(toIndentedString(entryModel)).append("\n");
     sb.append("    entryFeeCents: ").append(toIndentedString(entryFeeCents)).append("\n");
     sb.append("    revenueShareBps: ").append(toIndentedString(revenueShareBps)).append("\n");
     sb.append("    tableCount: ").append(toIndentedString(tableCount)).append("\n");
+    sb.append("    venueBookingId: ").append(toIndentedString(venueBookingId)).append("\n");
+    sb.append("    opensHour: ").append(toIndentedString(opensHour)).append("\n");
+    sb.append("    closesHour: ").append(toIndentedString(closesHour)).append("\n");
+    sb.append("    floorPlanVersion: ").append(toIndentedString(floorPlanVersion)).append("\n");
+    sb.append("    bookingMode: ").append(toIndentedString(bookingMode)).append("\n");
+    sb.append("    walkIns: ").append(toIndentedString(walkIns)).append("\n");
     sb.append("}");
     return sb.toString();
   }

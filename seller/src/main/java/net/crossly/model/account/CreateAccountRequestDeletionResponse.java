@@ -29,7 +29,7 @@ import org.threeten.bp.OffsetDateTime;
 /**
  * CreateAccountRequestDeletionResponse
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-11T23:44:48.922Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-27T19:42:43.186Z[Etc/UTC]")
 public class CreateAccountRequestDeletionResponse {
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
@@ -42,6 +42,10 @@ public class CreateAccountRequestDeletionResponse {
   public static final String SERIALIZED_NAME_GRACE_DAYS = "graceDays";
   @SerializedName(SERIALIZED_NAME_GRACE_DAYS)
   private BigDecimal graceDays;
+
+  public static final String SERIALIZED_NAME_SUBSCRIPTIONS_ENDING = "subscriptionsEnding";
+  @SerializedName(SERIALIZED_NAME_SUBSCRIPTIONS_ENDING)
+  private BigDecimal subscriptionsEnding;
 
   public CreateAccountRequestDeletionResponse() { 
   }
@@ -115,6 +119,29 @@ public class CreateAccountRequestDeletionResponse {
   }
 
 
+  public CreateAccountRequestDeletionResponse subscriptionsEnding(BigDecimal subscriptionsEnding) {
+    
+    this.subscriptionsEnding = subscriptionsEnding;
+    return this;
+  }
+
+   /**
+   * Get subscriptionsEnding
+   * @return subscriptionsEnding
+  **/
+  @javax.annotation.Nonnull
+  @ApiModelProperty(required = true, value = "")
+
+  public BigDecimal getSubscriptionsEnding() {
+    return subscriptionsEnding;
+  }
+
+
+  public void setSubscriptionsEnding(BigDecimal subscriptionsEnding) {
+    this.subscriptionsEnding = subscriptionsEnding;
+  }
+
+
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -126,12 +153,13 @@ public class CreateAccountRequestDeletionResponse {
     CreateAccountRequestDeletionResponse createAccountRequestDeletionResponse = (CreateAccountRequestDeletionResponse) o;
     return Objects.equals(this.id, createAccountRequestDeletionResponse.id) &&
         Objects.equals(this.scheduledFor, createAccountRequestDeletionResponse.scheduledFor) &&
-        Objects.equals(this.graceDays, createAccountRequestDeletionResponse.graceDays);
+        Objects.equals(this.graceDays, createAccountRequestDeletionResponse.graceDays) &&
+        Objects.equals(this.subscriptionsEnding, createAccountRequestDeletionResponse.subscriptionsEnding);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, scheduledFor, graceDays);
+    return Objects.hash(id, scheduledFor, graceDays, subscriptionsEnding);
   }
 
   @Override
@@ -141,6 +169,7 @@ public class CreateAccountRequestDeletionResponse {
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    scheduledFor: ").append(toIndentedString(scheduledFor)).append("\n");
     sb.append("    graceDays: ").append(toIndentedString(graceDays)).append("\n");
+    sb.append("    subscriptionsEnding: ").append(toIndentedString(subscriptionsEnding)).append("\n");
     sb.append("}");
     return sb.toString();
   }

@@ -25,13 +25,13 @@ import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-import net.crossly.model.common.ListReferenceCountriesItemSubdivisions;
+import net.crossly.model.common.CodeName;
 import org.openapitools.jackson.nullable.JsonNullable;
 
 /**
  * ListReferenceCountriesItem
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-11T23:44:48.922Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-27T19:42:43.186Z[Etc/UTC]")
 public class ListReferenceCountriesItem {
   public static final String SERIALIZED_NAME_CODE = "code";
   @SerializedName(SERIALIZED_NAME_CODE)
@@ -71,7 +71,7 @@ public class ListReferenceCountriesItem {
 
   public static final String SERIALIZED_NAME_SUBDIVISIONS = "subdivisions";
   @SerializedName(SERIALIZED_NAME_SUBDIVISIONS)
-  private List<ListReferenceCountriesItemSubdivisions> subdivisions = null;
+  private List<CodeName> subdivisions = null;
 
   public static final String SERIALIZED_NAME_EMBARGOED = "embargoed";
   @SerializedName(SERIALIZED_NAME_EMBARGOED)
@@ -292,15 +292,15 @@ public class ListReferenceCountriesItem {
   }
 
 
-  public ListReferenceCountriesItem subdivisions(List<ListReferenceCountriesItemSubdivisions> subdivisions) {
+  public ListReferenceCountriesItem subdivisions(List<CodeName> subdivisions) {
     
     this.subdivisions = subdivisions;
     return this;
   }
 
-  public ListReferenceCountriesItem addSubdivisionsItem(ListReferenceCountriesItemSubdivisions subdivisionsItem) {
+  public ListReferenceCountriesItem addSubdivisionsItem(CodeName subdivisionsItem) {
     if (this.subdivisions == null) {
-      this.subdivisions = new ArrayList<ListReferenceCountriesItemSubdivisions>();
+      this.subdivisions = new ArrayList<CodeName>();
     }
     this.subdivisions.add(subdivisionsItem);
     return this;
@@ -313,12 +313,12 @@ public class ListReferenceCountriesItem {
   @javax.annotation.Nullable
   @ApiModelProperty(value = "")
 
-  public List<ListReferenceCountriesItemSubdivisions> getSubdivisions() {
+  public List<CodeName> getSubdivisions() {
     return subdivisions;
   }
 
 
-  public void setSubdivisions(List<ListReferenceCountriesItemSubdivisions> subdivisions) {
+  public void setSubdivisions(List<CodeName> subdivisions) {
     this.subdivisions = subdivisions;
   }
 

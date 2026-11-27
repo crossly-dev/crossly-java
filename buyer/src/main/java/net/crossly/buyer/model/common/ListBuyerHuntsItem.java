@@ -28,7 +28,7 @@ import java.math.BigDecimal;
 /**
  * ListBuyerHuntsItem
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-11T23:47:29.843Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-27T19:58:46.962Z[Etc/UTC]")
 public class ListBuyerHuntsItem {
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
@@ -42,10 +42,6 @@ public class ListBuyerHuntsItem {
   @SerializedName(SERIALIZED_NAME_MODE)
   private String mode;
 
-  public static final String SERIALIZED_NAME_STATUS = "status";
-  @SerializedName(SERIALIZED_NAME_STATUS)
-  private String status;
-
   public static final String SERIALIZED_NAME_MAX_PRICE_CENTS = "maxPriceCents";
   @SerializedName(SERIALIZED_NAME_MAX_PRICE_CENTS)
   private BigDecimal maxPriceCents;
@@ -53,6 +49,10 @@ public class ListBuyerHuntsItem {
   public static final String SERIALIZED_NAME_BUYS_LEFT = "buysLeft";
   @SerializedName(SERIALIZED_NAME_BUYS_LEFT)
   private BigDecimal buysLeft;
+
+  public static final String SERIALIZED_NAME_STATUS = "status";
+  @SerializedName(SERIALIZED_NAME_STATUS)
+  private String status;
 
   public ListBuyerHuntsItem() { 
   }
@@ -126,29 +126,6 @@ public class ListBuyerHuntsItem {
   }
 
 
-  public ListBuyerHuntsItem status(String status) {
-    
-    this.status = status;
-    return this;
-  }
-
-   /**
-   * Get status
-   * @return status
-  **/
-  @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "")
-
-  public String getStatus() {
-    return status;
-  }
-
-
-  public void setStatus(String status) {
-    this.status = status;
-  }
-
-
   public ListBuyerHuntsItem maxPriceCents(BigDecimal maxPriceCents) {
     
     this.maxPriceCents = maxPriceCents;
@@ -195,6 +172,29 @@ public class ListBuyerHuntsItem {
   }
 
 
+  public ListBuyerHuntsItem status(String status) {
+    
+    this.status = status;
+    return this;
+  }
+
+   /**
+   * Get status
+   * @return status
+  **/
+  @javax.annotation.Nonnull
+  @ApiModelProperty(required = true, value = "")
+
+  public String getStatus() {
+    return status;
+  }
+
+
+  public void setStatus(String status) {
+    this.status = status;
+  }
+
+
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -207,14 +207,14 @@ public class ListBuyerHuntsItem {
     return Objects.equals(this.id, listBuyerHuntsItem.id) &&
         Objects.equals(this.name, listBuyerHuntsItem.name) &&
         Objects.equals(this.mode, listBuyerHuntsItem.mode) &&
-        Objects.equals(this.status, listBuyerHuntsItem.status) &&
         Objects.equals(this.maxPriceCents, listBuyerHuntsItem.maxPriceCents) &&
-        Objects.equals(this.buysLeft, listBuyerHuntsItem.buysLeft);
+        Objects.equals(this.buysLeft, listBuyerHuntsItem.buysLeft) &&
+        Objects.equals(this.status, listBuyerHuntsItem.status);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, name, mode, status, maxPriceCents, buysLeft);
+    return Objects.hash(id, name, mode, maxPriceCents, buysLeft, status);
   }
 
   @Override
@@ -224,9 +224,9 @@ public class ListBuyerHuntsItem {
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    mode: ").append(toIndentedString(mode)).append("\n");
-    sb.append("    status: ").append(toIndentedString(status)).append("\n");
     sb.append("    maxPriceCents: ").append(toIndentedString(maxPriceCents)).append("\n");
     sb.append("    buysLeft: ").append(toIndentedString(buysLeft)).append("\n");
+    sb.append("    status: ").append(toIndentedString(status)).append("\n");
     sb.append("}");
     return sb.toString();
   }

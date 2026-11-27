@@ -29,7 +29,7 @@ import org.openapitools.jackson.nullable.JsonNullable;
  * Lent by a member from their vault (Wave 8.2, hall-loans): their plaque line. Absent on catalogue picks.
  */
 @ApiModel(description = "Lent by a member from their vault (Wave 8.2, hall-loans): their plaque line. Absent on catalogue picks.")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-11T23:44:48.922Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-27T19:42:43.186Z[Etc/UTC]")
 public class GetWorldHallResponseDataExhibitsLoan {
   public static final String SERIALIZED_NAME_LENDER = "lender";
   @SerializedName(SERIALIZED_NAME_LENDER)

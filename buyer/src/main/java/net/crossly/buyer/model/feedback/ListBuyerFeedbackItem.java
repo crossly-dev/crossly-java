@@ -29,23 +29,47 @@ import org.openapitools.jackson.nullable.JsonNullable;
 /**
  * ListBuyerFeedbackItem
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-11T23:47:29.843Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-27T19:58:46.962Z[Etc/UTC]")
 public class ListBuyerFeedbackItem {
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
   private String id;
 
-  public static final String SERIALIZED_NAME_CREATED_AT = "createdAt";
-  @SerializedName(SERIALIZED_NAME_CREATED_AT)
-  private String createdAt;
-
   public static final String SERIALIZED_NAME_RATING = "rating";
   @SerializedName(SERIALIZED_NAME_RATING)
   private BigDecimal rating;
 
+  public static final String SERIALIZED_NAME_CREATED_AT = "createdAt";
+  @SerializedName(SERIALIZED_NAME_CREATED_AT)
+  private String createdAt;
+
   public static final String SERIALIZED_NAME_BODY = "body";
   @SerializedName(SERIALIZED_NAME_BODY)
   private String body;
+
+  public static final String SERIALIZED_NAME_REVISED_AT = "revisedAt";
+  @SerializedName(SERIALIZED_NAME_REVISED_AT)
+  private String revisedAt;
+
+  public static final String SERIALIZED_NAME_SELLER_REPLY = "sellerReply";
+  @SerializedName(SERIALIZED_NAME_SELLER_REPLY)
+  private String sellerReply;
+
+  public static final String SERIALIZED_NAME_SELLER_REPLIED_AT = "sellerRepliedAt";
+  @SerializedName(SERIALIZED_NAME_SELLER_REPLIED_AT)
+  private String sellerRepliedAt;
+
+  public static final String SERIALIZED_NAME_SELLER_NAME = "sellerName";
+  @SerializedName(SERIALIZED_NAME_SELLER_NAME)
+  private String sellerName;
+
+  public static final String SERIALIZED_NAME_ITEM_TITLE = "itemTitle";
+  @SerializedName(SERIALIZED_NAME_ITEM_TITLE)
+  private String itemTitle;
+
+  public static final String SERIALIZED_NAME_RATING_AS_DESCRIBED = "ratingAsDescribed";
+  @SerializedName(SERIALIZED_NAME_RATING_AS_DESCRIBED)
+  private BigDecimal ratingAsDescribed;
 
   public static final String SERIALIZED_NAME_RATING_COMMUNICATION = "ratingCommunication";
   @SerializedName(SERIALIZED_NAME_RATING_COMMUNICATION)
@@ -58,30 +82,6 @@ public class ListBuyerFeedbackItem {
   public static final String SERIALIZED_NAME_RATING_SHIP_COST = "ratingShipCost";
   @SerializedName(SERIALIZED_NAME_RATING_SHIP_COST)
   private BigDecimal ratingShipCost;
-
-  public static final String SERIALIZED_NAME_RATING_AS_DESCRIBED = "ratingAsDescribed";
-  @SerializedName(SERIALIZED_NAME_RATING_AS_DESCRIBED)
-  private BigDecimal ratingAsDescribed;
-
-  public static final String SERIALIZED_NAME_SELLER_REPLY = "sellerReply";
-  @SerializedName(SERIALIZED_NAME_SELLER_REPLY)
-  private String sellerReply;
-
-  public static final String SERIALIZED_NAME_SELLER_REPLIED_AT = "sellerRepliedAt";
-  @SerializedName(SERIALIZED_NAME_SELLER_REPLIED_AT)
-  private String sellerRepliedAt;
-
-  public static final String SERIALIZED_NAME_REVISED_AT = "revisedAt";
-  @SerializedName(SERIALIZED_NAME_REVISED_AT)
-  private String revisedAt;
-
-  public static final String SERIALIZED_NAME_ITEM_TITLE = "itemTitle";
-  @SerializedName(SERIALIZED_NAME_ITEM_TITLE)
-  private String itemTitle;
-
-  public static final String SERIALIZED_NAME_SELLER_NAME = "sellerName";
-  @SerializedName(SERIALIZED_NAME_SELLER_NAME)
-  private String sellerName;
 
   public ListBuyerFeedbackItem() { 
   }
@@ -109,29 +109,6 @@ public class ListBuyerFeedbackItem {
   }
 
 
-  public ListBuyerFeedbackItem createdAt(String createdAt) {
-    
-    this.createdAt = createdAt;
-    return this;
-  }
-
-   /**
-   * Get createdAt
-   * @return createdAt
-  **/
-  @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "")
-
-  public String getCreatedAt() {
-    return createdAt;
-  }
-
-
-  public void setCreatedAt(String createdAt) {
-    this.createdAt = createdAt;
-  }
-
-
   public ListBuyerFeedbackItem rating(BigDecimal rating) {
     
     this.rating = rating;
@@ -155,6 +132,29 @@ public class ListBuyerFeedbackItem {
   }
 
 
+  public ListBuyerFeedbackItem createdAt(String createdAt) {
+    
+    this.createdAt = createdAt;
+    return this;
+  }
+
+   /**
+   * Get createdAt
+   * @return createdAt
+  **/
+  @javax.annotation.Nonnull
+  @ApiModelProperty(required = true, value = "")
+
+  public String getCreatedAt() {
+    return createdAt;
+  }
+
+
+  public void setCreatedAt(String createdAt) {
+    this.createdAt = createdAt;
+  }
+
+
   public ListBuyerFeedbackItem body(String body) {
     
     this.body = body;
@@ -175,6 +175,144 @@ public class ListBuyerFeedbackItem {
 
   public void setBody(String body) {
     this.body = body;
+  }
+
+
+  public ListBuyerFeedbackItem revisedAt(String revisedAt) {
+    
+    this.revisedAt = revisedAt;
+    return this;
+  }
+
+   /**
+   * Get revisedAt
+   * @return revisedAt
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public String getRevisedAt() {
+    return revisedAt;
+  }
+
+
+  public void setRevisedAt(String revisedAt) {
+    this.revisedAt = revisedAt;
+  }
+
+
+  public ListBuyerFeedbackItem sellerReply(String sellerReply) {
+    
+    this.sellerReply = sellerReply;
+    return this;
+  }
+
+   /**
+   * Get sellerReply
+   * @return sellerReply
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public String getSellerReply() {
+    return sellerReply;
+  }
+
+
+  public void setSellerReply(String sellerReply) {
+    this.sellerReply = sellerReply;
+  }
+
+
+  public ListBuyerFeedbackItem sellerRepliedAt(String sellerRepliedAt) {
+    
+    this.sellerRepliedAt = sellerRepliedAt;
+    return this;
+  }
+
+   /**
+   * Get sellerRepliedAt
+   * @return sellerRepliedAt
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public String getSellerRepliedAt() {
+    return sellerRepliedAt;
+  }
+
+
+  public void setSellerRepliedAt(String sellerRepliedAt) {
+    this.sellerRepliedAt = sellerRepliedAt;
+  }
+
+
+  public ListBuyerFeedbackItem sellerName(String sellerName) {
+    
+    this.sellerName = sellerName;
+    return this;
+  }
+
+   /**
+   * Get sellerName
+   * @return sellerName
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public String getSellerName() {
+    return sellerName;
+  }
+
+
+  public void setSellerName(String sellerName) {
+    this.sellerName = sellerName;
+  }
+
+
+  public ListBuyerFeedbackItem itemTitle(String itemTitle) {
+    
+    this.itemTitle = itemTitle;
+    return this;
+  }
+
+   /**
+   * Get itemTitle
+   * @return itemTitle
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public String getItemTitle() {
+    return itemTitle;
+  }
+
+
+  public void setItemTitle(String itemTitle) {
+    this.itemTitle = itemTitle;
+  }
+
+
+  public ListBuyerFeedbackItem ratingAsDescribed(BigDecimal ratingAsDescribed) {
+    
+    this.ratingAsDescribed = ratingAsDescribed;
+    return this;
+  }
+
+   /**
+   * Get ratingAsDescribed
+   * @return ratingAsDescribed
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public BigDecimal getRatingAsDescribed() {
+    return ratingAsDescribed;
+  }
+
+
+  public void setRatingAsDescribed(BigDecimal ratingAsDescribed) {
+    this.ratingAsDescribed = ratingAsDescribed;
   }
 
 
@@ -247,144 +385,6 @@ public class ListBuyerFeedbackItem {
   }
 
 
-  public ListBuyerFeedbackItem ratingAsDescribed(BigDecimal ratingAsDescribed) {
-    
-    this.ratingAsDescribed = ratingAsDescribed;
-    return this;
-  }
-
-   /**
-   * Get ratingAsDescribed
-   * @return ratingAsDescribed
-  **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
-
-  public BigDecimal getRatingAsDescribed() {
-    return ratingAsDescribed;
-  }
-
-
-  public void setRatingAsDescribed(BigDecimal ratingAsDescribed) {
-    this.ratingAsDescribed = ratingAsDescribed;
-  }
-
-
-  public ListBuyerFeedbackItem sellerReply(String sellerReply) {
-    
-    this.sellerReply = sellerReply;
-    return this;
-  }
-
-   /**
-   * Get sellerReply
-   * @return sellerReply
-  **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
-
-  public String getSellerReply() {
-    return sellerReply;
-  }
-
-
-  public void setSellerReply(String sellerReply) {
-    this.sellerReply = sellerReply;
-  }
-
-
-  public ListBuyerFeedbackItem sellerRepliedAt(String sellerRepliedAt) {
-    
-    this.sellerRepliedAt = sellerRepliedAt;
-    return this;
-  }
-
-   /**
-   * Get sellerRepliedAt
-   * @return sellerRepliedAt
-  **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
-
-  public String getSellerRepliedAt() {
-    return sellerRepliedAt;
-  }
-
-
-  public void setSellerRepliedAt(String sellerRepliedAt) {
-    this.sellerRepliedAt = sellerRepliedAt;
-  }
-
-
-  public ListBuyerFeedbackItem revisedAt(String revisedAt) {
-    
-    this.revisedAt = revisedAt;
-    return this;
-  }
-
-   /**
-   * Get revisedAt
-   * @return revisedAt
-  **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
-
-  public String getRevisedAt() {
-    return revisedAt;
-  }
-
-
-  public void setRevisedAt(String revisedAt) {
-    this.revisedAt = revisedAt;
-  }
-
-
-  public ListBuyerFeedbackItem itemTitle(String itemTitle) {
-    
-    this.itemTitle = itemTitle;
-    return this;
-  }
-
-   /**
-   * Get itemTitle
-   * @return itemTitle
-  **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
-
-  public String getItemTitle() {
-    return itemTitle;
-  }
-
-
-  public void setItemTitle(String itemTitle) {
-    this.itemTitle = itemTitle;
-  }
-
-
-  public ListBuyerFeedbackItem sellerName(String sellerName) {
-    
-    this.sellerName = sellerName;
-    return this;
-  }
-
-   /**
-   * Get sellerName
-   * @return sellerName
-  **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
-
-  public String getSellerName() {
-    return sellerName;
-  }
-
-
-  public void setSellerName(String sellerName) {
-    this.sellerName = sellerName;
-  }
-
-
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -395,18 +395,18 @@ public class ListBuyerFeedbackItem {
     }
     ListBuyerFeedbackItem listBuyerFeedbackItem = (ListBuyerFeedbackItem) o;
     return Objects.equals(this.id, listBuyerFeedbackItem.id) &&
-        Objects.equals(this.createdAt, listBuyerFeedbackItem.createdAt) &&
         Objects.equals(this.rating, listBuyerFeedbackItem.rating) &&
+        Objects.equals(this.createdAt, listBuyerFeedbackItem.createdAt) &&
         Objects.equals(this.body, listBuyerFeedbackItem.body) &&
-        Objects.equals(this.ratingCommunication, listBuyerFeedbackItem.ratingCommunication) &&
-        Objects.equals(this.ratingShipSpeed, listBuyerFeedbackItem.ratingShipSpeed) &&
-        Objects.equals(this.ratingShipCost, listBuyerFeedbackItem.ratingShipCost) &&
-        Objects.equals(this.ratingAsDescribed, listBuyerFeedbackItem.ratingAsDescribed) &&
+        Objects.equals(this.revisedAt, listBuyerFeedbackItem.revisedAt) &&
         Objects.equals(this.sellerReply, listBuyerFeedbackItem.sellerReply) &&
         Objects.equals(this.sellerRepliedAt, listBuyerFeedbackItem.sellerRepliedAt) &&
-        Objects.equals(this.revisedAt, listBuyerFeedbackItem.revisedAt) &&
+        Objects.equals(this.sellerName, listBuyerFeedbackItem.sellerName) &&
         Objects.equals(this.itemTitle, listBuyerFeedbackItem.itemTitle) &&
-        Objects.equals(this.sellerName, listBuyerFeedbackItem.sellerName);
+        Objects.equals(this.ratingAsDescribed, listBuyerFeedbackItem.ratingAsDescribed) &&
+        Objects.equals(this.ratingCommunication, listBuyerFeedbackItem.ratingCommunication) &&
+        Objects.equals(this.ratingShipSpeed, listBuyerFeedbackItem.ratingShipSpeed) &&
+        Objects.equals(this.ratingShipCost, listBuyerFeedbackItem.ratingShipCost);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -415,7 +415,7 @@ public class ListBuyerFeedbackItem {
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, createdAt, rating, body, ratingCommunication, ratingShipSpeed, ratingShipCost, ratingAsDescribed, sellerReply, sellerRepliedAt, revisedAt, itemTitle, sellerName);
+    return Objects.hash(id, rating, createdAt, body, revisedAt, sellerReply, sellerRepliedAt, sellerName, itemTitle, ratingAsDescribed, ratingCommunication, ratingShipSpeed, ratingShipCost);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -430,18 +430,18 @@ public class ListBuyerFeedbackItem {
     StringBuilder sb = new StringBuilder();
     sb.append("class ListBuyerFeedbackItem {\n");
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
-    sb.append("    createdAt: ").append(toIndentedString(createdAt)).append("\n");
     sb.append("    rating: ").append(toIndentedString(rating)).append("\n");
+    sb.append("    createdAt: ").append(toIndentedString(createdAt)).append("\n");
     sb.append("    body: ").append(toIndentedString(body)).append("\n");
+    sb.append("    revisedAt: ").append(toIndentedString(revisedAt)).append("\n");
+    sb.append("    sellerReply: ").append(toIndentedString(sellerReply)).append("\n");
+    sb.append("    sellerRepliedAt: ").append(toIndentedString(sellerRepliedAt)).append("\n");
+    sb.append("    sellerName: ").append(toIndentedString(sellerName)).append("\n");
+    sb.append("    itemTitle: ").append(toIndentedString(itemTitle)).append("\n");
+    sb.append("    ratingAsDescribed: ").append(toIndentedString(ratingAsDescribed)).append("\n");
     sb.append("    ratingCommunication: ").append(toIndentedString(ratingCommunication)).append("\n");
     sb.append("    ratingShipSpeed: ").append(toIndentedString(ratingShipSpeed)).append("\n");
     sb.append("    ratingShipCost: ").append(toIndentedString(ratingShipCost)).append("\n");
-    sb.append("    ratingAsDescribed: ").append(toIndentedString(ratingAsDescribed)).append("\n");
-    sb.append("    sellerReply: ").append(toIndentedString(sellerReply)).append("\n");
-    sb.append("    sellerRepliedAt: ").append(toIndentedString(sellerRepliedAt)).append("\n");
-    sb.append("    revisedAt: ").append(toIndentedString(revisedAt)).append("\n");
-    sb.append("    itemTitle: ").append(toIndentedString(itemTitle)).append("\n");
-    sb.append("    sellerName: ").append(toIndentedString(sellerName)).append("\n");
     sb.append("}");
     return sb.toString();
   }

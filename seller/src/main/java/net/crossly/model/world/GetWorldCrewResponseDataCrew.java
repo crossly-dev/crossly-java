@@ -29,7 +29,7 @@ import org.openapitools.jackson.nullable.JsonNullable;
  * &#x60;homeSlug&#x60;: the crew&#39;s hangout -- its owner&#39;s home, when they have one that is not locked (Wave 4.9).
  */
 @ApiModel(description = "`homeSlug`: the crew's hangout -- its owner's home, when they have one that is not locked (Wave 4.9).")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-11T23:44:48.922Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-27T19:42:43.186Z[Etc/UTC]")
 public class GetWorldCrewResponseDataCrew {
   public static final String SERIALIZED_NAME_NAME = "name";
   @SerializedName(SERIALIZED_NAME_NAME)

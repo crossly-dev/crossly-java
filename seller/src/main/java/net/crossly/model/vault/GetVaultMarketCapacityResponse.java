@@ -26,11 +26,12 @@ import java.io.IOException;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
+import net.crossly.model.vault.GetVaultMarketCapacityResponsePerKeyItem;
 
 /**
  * GetVaultMarketCapacityResponse
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-11T23:44:48.922Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-27T19:42:43.186Z[Etc/UTC]")
 public class GetVaultMarketCapacityResponse {
   public static final String SERIALIZED_NAME_INDEX = "index";
   @SerializedName(SERIALIZED_NAME_INDEX)
@@ -74,7 +75,7 @@ public class GetVaultMarketCapacityResponse {
 
   public static final String SERIALIZED_NAME_PER_KEY = "perKey";
   @SerializedName(SERIALIZED_NAME_PER_KEY)
-  private List<Object> perKey = new ArrayList<Object>();
+  private List<GetVaultMarketCapacityResponsePerKeyItem> perKey = new ArrayList<GetVaultMarketCapacityResponsePerKeyItem>();
 
   public static final String SERIALIZED_NAME_NOTES = "notes";
   @SerializedName(SERIALIZED_NAME_NOTES)
@@ -318,13 +319,13 @@ public class GetVaultMarketCapacityResponse {
   }
 
 
-  public GetVaultMarketCapacityResponse perKey(List<Object> perKey) {
+  public GetVaultMarketCapacityResponse perKey(List<GetVaultMarketCapacityResponsePerKeyItem> perKey) {
     
     this.perKey = perKey;
     return this;
   }
 
-  public GetVaultMarketCapacityResponse addPerKeyItem(Object perKeyItem) {
+  public GetVaultMarketCapacityResponse addPerKeyItem(GetVaultMarketCapacityResponsePerKeyItem perKeyItem) {
     this.perKey.add(perKeyItem);
     return this;
   }
@@ -336,12 +337,12 @@ public class GetVaultMarketCapacityResponse {
   @javax.annotation.Nonnull
   @ApiModelProperty(required = true, value = "")
 
-  public List<Object> getPerKey() {
+  public List<GetVaultMarketCapacityResponsePerKeyItem> getPerKey() {
     return perKey;
   }
 
 
-  public void setPerKey(List<Object> perKey) {
+  public void setPerKey(List<GetVaultMarketCapacityResponsePerKeyItem> perKey) {
     this.perKey = perKey;
   }
 

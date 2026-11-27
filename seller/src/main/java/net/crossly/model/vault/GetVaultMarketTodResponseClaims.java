@@ -28,7 +28,7 @@ import org.openapitools.jackson.nullable.JsonNullable;
 /**
  * GetVaultMarketTodResponseClaims
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-11T23:44:48.922Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-27T19:42:43.186Z[Etc/UTC]")
 public class GetVaultMarketTodResponseClaims {
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
@@ -41,6 +41,8 @@ public class GetVaultMarketTodResponseClaims {
   public enum StatusEnum {
     DRAFT("draft"),
     
+    SUBMITTED("submitted"),
+    
     REJECTED("rejected"),
     
     WITHDRAWN("withdrawn"),
@@ -48,8 +50,6 @@ public class GetVaultMarketTodResponseClaims {
     RELEASED("released"),
     
     WAITING("waiting"),
-    
-    SUBMITTED("submitted"),
     
     NEEDS_INFO("needs_info"),
     

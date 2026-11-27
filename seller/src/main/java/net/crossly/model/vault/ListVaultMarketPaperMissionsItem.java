@@ -29,15 +29,13 @@ import org.openapitools.jackson.nullable.JsonNullable;
 /**
  * ListVaultMarketPaperMissionsItem
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-11T23:44:48.922Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-27T19:42:43.186Z[Etc/UTC]")
 public class ListVaultMarketPaperMissionsItem {
   /**
    * Gets or Sets key
    */
   @JsonAdapter(KeyEnum.Adapter.class)
   public enum KeyEnum {
-    ROUND_TRIP("round_trip"),
-    
     FIRST_FILL("first_fill"),
     
     READ_MARK("read_mark"),
@@ -50,7 +48,17 @@ public class ListVaultMarketPaperMissionsItem {
     
     PRICE_WATCH("price_watch"),
     
-    MINI_SET("mini_set");
+    ROUND_TRIP("round_trip"),
+    
+    MINI_SET("mini_set"),
+    
+    SHARE_FIRST("share_first"),
+    
+    SHARE_QUEUE("share_queue"),
+    
+    OPTION_FIRST("option_first"),
+    
+    OPTION_EXPIRY("option_expiry");
 
     private String value;
 
@@ -133,13 +141,13 @@ public class ListVaultMarketPaperMissionsItem {
   public enum ActionEnum {
     MARKET("market"),
     
-    ASSISTANT("assistant"),
-    
     PAPER("paper"),
     
-    MARK_CHECK("mark_check"),
+    ASSISTANT("assistant"),
     
-    SETS("sets");
+    SETS("sets"),
+    
+    MARK_CHECK("mark_check");
 
     private String value;
 
@@ -190,7 +198,9 @@ public class ListVaultMarketPaperMissionsItem {
   public enum LearnEnum {
     INSTANT_EXIT("instant-exit"),
     
-    MARKS("marks");
+    MARKS("marks"),
+    
+    VAULT_SHARES("vault-shares");
 
     private String value;
 

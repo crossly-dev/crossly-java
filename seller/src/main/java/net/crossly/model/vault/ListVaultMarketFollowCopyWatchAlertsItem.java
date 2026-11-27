@@ -24,16 +24,21 @@ import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 import java.math.BigDecimal;
+import net.crossly.model.vault.ListVaultMarketFollowCopyWatchAlertsItemBy;
 import org.openapitools.jackson.nullable.JsonNullable;
 
 /**
  * ListVaultMarketFollowCopyWatchAlertsItem
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-11T23:44:48.922Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-27T19:42:43.186Z[Etc/UTC]")
 public class ListVaultMarketFollowCopyWatchAlertsItem {
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
   private String id;
+
+  public static final String SERIALIZED_NAME_BY = "by";
+  @SerializedName(SERIALIZED_NAME_BY)
+  private ListVaultMarketFollowCopyWatchAlertsItemBy by;
 
   /**
    * Gets or Sets side
@@ -153,6 +158,29 @@ public class ListVaultMarketFollowCopyWatchAlertsItem {
 
   public void setId(String id) {
     this.id = id;
+  }
+
+
+  public ListVaultMarketFollowCopyWatchAlertsItem by(ListVaultMarketFollowCopyWatchAlertsItemBy by) {
+    
+    this.by = by;
+    return this;
+  }
+
+   /**
+   * Get by
+   * @return by
+  **/
+  @javax.annotation.Nonnull
+  @ApiModelProperty(required = true, value = "")
+
+  public ListVaultMarketFollowCopyWatchAlertsItemBy getBy() {
+    return by;
+  }
+
+
+  public void setBy(ListVaultMarketFollowCopyWatchAlertsItemBy by) {
+    this.by = by;
   }
 
 
@@ -442,6 +470,7 @@ public class ListVaultMarketFollowCopyWatchAlertsItem {
     }
     ListVaultMarketFollowCopyWatchAlertsItem listVaultMarketFollowCopyWatchAlertsItem = (ListVaultMarketFollowCopyWatchAlertsItem) o;
     return Objects.equals(this.id, listVaultMarketFollowCopyWatchAlertsItem.id) &&
+        Objects.equals(this.by, listVaultMarketFollowCopyWatchAlertsItem.by) &&
         Objects.equals(this.side, listVaultMarketFollowCopyWatchAlertsItem.side) &&
         Objects.equals(this.quantity, listVaultMarketFollowCopyWatchAlertsItem.quantity) &&
         Objects.equals(this.limitCents, listVaultMarketFollowCopyWatchAlertsItem.limitCents) &&
@@ -462,7 +491,7 @@ public class ListVaultMarketFollowCopyWatchAlertsItem {
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, side, quantity, limitCents, bookKey, name, label, imageUrl, placedAt, at, read, stillResting, marketHref);
+    return Objects.hash(id, by, side, quantity, limitCents, bookKey, name, label, imageUrl, placedAt, at, read, stillResting, marketHref);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -477,6 +506,7 @@ public class ListVaultMarketFollowCopyWatchAlertsItem {
     StringBuilder sb = new StringBuilder();
     sb.append("class ListVaultMarketFollowCopyWatchAlertsItem {\n");
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
+    sb.append("    by: ").append(toIndentedString(by)).append("\n");
     sb.append("    side: ").append(toIndentedString(side)).append("\n");
     sb.append("    quantity: ").append(toIndentedString(quantity)).append("\n");
     sb.append("    limitCents: ").append(toIndentedString(limitCents)).append("\n");

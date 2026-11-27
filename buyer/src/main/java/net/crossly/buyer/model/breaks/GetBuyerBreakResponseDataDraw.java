@@ -28,41 +28,18 @@ import java.math.BigDecimal;
 /**
  * GetBuyerBreakResponseDataDraw
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-11T23:47:29.843Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-27T19:58:46.962Z[Etc/UTC]")
 public class GetBuyerBreakResponseDataDraw {
-  public static final String SERIALIZED_NAME_POSITION = "position";
-  @SerializedName(SERIALIZED_NAME_POSITION)
-  private BigDecimal position;
-
   public static final String SERIALIZED_NAME_ENTRY = "entry";
   @SerializedName(SERIALIZED_NAME_ENTRY)
   private BigDecimal entry;
 
+  public static final String SERIALIZED_NAME_POSITION = "position";
+  @SerializedName(SERIALIZED_NAME_POSITION)
+  private BigDecimal position;
+
   public GetBuyerBreakResponseDataDraw() { 
   }
-
-  public GetBuyerBreakResponseDataDraw position(BigDecimal position) {
-    
-    this.position = position;
-    return this;
-  }
-
-   /**
-   * Get position
-   * @return position
-  **/
-  @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "")
-
-  public BigDecimal getPosition() {
-    return position;
-  }
-
-
-  public void setPosition(BigDecimal position) {
-    this.position = position;
-  }
-
 
   public GetBuyerBreakResponseDataDraw entry(BigDecimal entry) {
     
@@ -87,6 +64,29 @@ public class GetBuyerBreakResponseDataDraw {
   }
 
 
+  public GetBuyerBreakResponseDataDraw position(BigDecimal position) {
+    
+    this.position = position;
+    return this;
+  }
+
+   /**
+   * Get position
+   * @return position
+  **/
+  @javax.annotation.Nonnull
+  @ApiModelProperty(required = true, value = "")
+
+  public BigDecimal getPosition() {
+    return position;
+  }
+
+
+  public void setPosition(BigDecimal position) {
+    this.position = position;
+  }
+
+
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -96,21 +96,21 @@ public class GetBuyerBreakResponseDataDraw {
       return false;
     }
     GetBuyerBreakResponseDataDraw getBuyerBreakResponseDataDraw = (GetBuyerBreakResponseDataDraw) o;
-    return Objects.equals(this.position, getBuyerBreakResponseDataDraw.position) &&
-        Objects.equals(this.entry, getBuyerBreakResponseDataDraw.entry);
+    return Objects.equals(this.entry, getBuyerBreakResponseDataDraw.entry) &&
+        Objects.equals(this.position, getBuyerBreakResponseDataDraw.position);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(position, entry);
+    return Objects.hash(entry, position);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class GetBuyerBreakResponseDataDraw {\n");
-    sb.append("    position: ").append(toIndentedString(position)).append("\n");
     sb.append("    entry: ").append(toIndentedString(entry)).append("\n");
+    sb.append("    position: ").append(toIndentedString(position)).append("\n");
     sb.append("}");
     return sb.toString();
   }

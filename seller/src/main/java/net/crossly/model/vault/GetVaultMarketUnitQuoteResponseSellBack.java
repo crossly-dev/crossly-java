@@ -29,7 +29,7 @@ import java.math.BigDecimal;
  * The pack&#39;s own sell-back for this pull, while it is still open.
  */
 @ApiModel(description = "The pack's own sell-back for this pull, while it is still open.")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-11T23:44:48.922Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-27T19:42:43.186Z[Etc/UTC]")
 public class GetVaultMarketUnitQuoteResponseSellBack {
   public static final String SERIALIZED_NAME_CREDIT_CENTS = "creditCents";
   @SerializedName(SERIALIZED_NAME_CREDIT_CENTS)

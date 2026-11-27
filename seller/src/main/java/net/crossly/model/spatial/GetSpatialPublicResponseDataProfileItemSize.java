@@ -29,7 +29,7 @@ import java.math.BigDecimal;
  * Fallback physical size of one item. Used when the catalog does not publish real dimensions for this product. See the module docblock: where the catalog knows, the catalog wins.
  */
 @ApiModel(description = "Fallback physical size of one item. Used when the catalog does not publish real dimensions for this product. See the module docblock: where the catalog knows, the catalog wins.")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-11T23:44:48.922Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-27T19:42:43.186Z[Etc/UTC]")
 public class GetSpatialPublicResponseDataProfileItemSize {
   public static final String SERIALIZED_NAME_X = "x";
   @SerializedName(SERIALIZED_NAME_X)

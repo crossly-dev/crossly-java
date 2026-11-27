@@ -23,24 +23,27 @@ import com.google.gson.stream.JsonWriter;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
-import net.crossly.model.automation.CreateAutomationRuleValidateRecipeResponseDetails;
+import java.math.BigDecimal;
+import java.util.ArrayList;
+import java.util.List;
+import net.crossly.model.automation.CreateAutomationRuleValidateRecipeResponseResults;
 
 /**
  * CreateAutomationRuleValidateRecipeResponse
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-11T23:44:48.922Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-27T19:42:43.186Z[Etc/UTC]")
 public class CreateAutomationRuleValidateRecipeResponse {
   public static final String SERIALIZED_NAME_VALID = "valid";
   @SerializedName(SERIALIZED_NAME_VALID)
   private Boolean valid;
 
-  public static final String SERIALIZED_NAME_ERROR = "error";
-  @SerializedName(SERIALIZED_NAME_ERROR)
-  private String error;
+  public static final String SERIALIZED_NAME_COUNT = "count";
+  @SerializedName(SERIALIZED_NAME_COUNT)
+  private BigDecimal count;
 
-  public static final String SERIALIZED_NAME_DETAILS = "details";
-  @SerializedName(SERIALIZED_NAME_DETAILS)
-  private CreateAutomationRuleValidateRecipeResponseDetails details;
+  public static final String SERIALIZED_NAME_RESULTS = "results";
+  @SerializedName(SERIALIZED_NAME_RESULTS)
+  private List<CreateAutomationRuleValidateRecipeResponseResults> results = new ArrayList<CreateAutomationRuleValidateRecipeResponseResults>();
 
   public CreateAutomationRuleValidateRecipeResponse() { 
   }
@@ -68,49 +71,54 @@ public class CreateAutomationRuleValidateRecipeResponse {
   }
 
 
-  public CreateAutomationRuleValidateRecipeResponse error(String error) {
+  public CreateAutomationRuleValidateRecipeResponse count(BigDecimal count) {
     
-    this.error = error;
+    this.count = count;
     return this;
   }
 
    /**
-   * Get error
-   * @return error
+   * Get count
+   * @return count
   **/
   @javax.annotation.Nonnull
   @ApiModelProperty(required = true, value = "")
 
-  public String getError() {
-    return error;
+  public BigDecimal getCount() {
+    return count;
   }
 
 
-  public void setError(String error) {
-    this.error = error;
+  public void setCount(BigDecimal count) {
+    this.count = count;
   }
 
 
-  public CreateAutomationRuleValidateRecipeResponse details(CreateAutomationRuleValidateRecipeResponseDetails details) {
+  public CreateAutomationRuleValidateRecipeResponse results(List<CreateAutomationRuleValidateRecipeResponseResults> results) {
     
-    this.details = details;
+    this.results = results;
+    return this;
+  }
+
+  public CreateAutomationRuleValidateRecipeResponse addResultsItem(CreateAutomationRuleValidateRecipeResponseResults resultsItem) {
+    this.results.add(resultsItem);
     return this;
   }
 
    /**
-   * Get details
-   * @return details
+   * Get results
+   * @return results
   **/
   @javax.annotation.Nonnull
   @ApiModelProperty(required = true, value = "")
 
-  public CreateAutomationRuleValidateRecipeResponseDetails getDetails() {
-    return details;
+  public List<CreateAutomationRuleValidateRecipeResponseResults> getResults() {
+    return results;
   }
 
 
-  public void setDetails(CreateAutomationRuleValidateRecipeResponseDetails details) {
-    this.details = details;
+  public void setResults(List<CreateAutomationRuleValidateRecipeResponseResults> results) {
+    this.results = results;
   }
 
 
@@ -124,13 +132,13 @@ public class CreateAutomationRuleValidateRecipeResponse {
     }
     CreateAutomationRuleValidateRecipeResponse createAutomationRuleValidateRecipeResponse = (CreateAutomationRuleValidateRecipeResponse) o;
     return Objects.equals(this.valid, createAutomationRuleValidateRecipeResponse.valid) &&
-        Objects.equals(this.error, createAutomationRuleValidateRecipeResponse.error) &&
-        Objects.equals(this.details, createAutomationRuleValidateRecipeResponse.details);
+        Objects.equals(this.count, createAutomationRuleValidateRecipeResponse.count) &&
+        Objects.equals(this.results, createAutomationRuleValidateRecipeResponse.results);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(valid, error, details);
+    return Objects.hash(valid, count, results);
   }
 
   @Override
@@ -138,8 +146,8 @@ public class CreateAutomationRuleValidateRecipeResponse {
     StringBuilder sb = new StringBuilder();
     sb.append("class CreateAutomationRuleValidateRecipeResponse {\n");
     sb.append("    valid: ").append(toIndentedString(valid)).append("\n");
-    sb.append("    error: ").append(toIndentedString(error)).append("\n");
-    sb.append("    details: ").append(toIndentedString(details)).append("\n");
+    sb.append("    count: ").append(toIndentedString(count)).append("\n");
+    sb.append("    results: ").append(toIndentedString(results)).append("\n");
     sb.append("}");
     return sb.toString();
   }

@@ -24,12 +24,13 @@ import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 import java.math.BigDecimal;
+import net.crossly.buyer.model.catalog.CreateBuyerCatalogListingRentalResponseDataQuote;
 import org.openapitools.jackson.nullable.JsonNullable;
 
 /**
  * CreateBuyerCatalogListingRentalResponseData
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-11T23:47:29.843Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-27T19:58:46.962Z[Etc/UTC]")
 public class CreateBuyerCatalogListingRentalResponseData {
   public static final String SERIALIZED_NAME_RENTAL_ID = "rentalId";
   @SerializedName(SERIALIZED_NAME_RENTAL_ID)
@@ -46,6 +47,10 @@ public class CreateBuyerCatalogListingRentalResponseData {
   public static final String SERIALIZED_NAME_NEEDS_APPROVAL = "needsApproval";
   @SerializedName(SERIALIZED_NAME_NEEDS_APPROVAL)
   private Boolean needsApproval;
+
+  public static final String SERIALIZED_NAME_QUOTE = "quote";
+  @SerializedName(SERIALIZED_NAME_QUOTE)
+  private CreateBuyerCatalogListingRentalResponseDataQuote quote;
 
   public CreateBuyerCatalogListingRentalResponseData() { 
   }
@@ -142,6 +147,29 @@ public class CreateBuyerCatalogListingRentalResponseData {
   }
 
 
+  public CreateBuyerCatalogListingRentalResponseData quote(CreateBuyerCatalogListingRentalResponseDataQuote quote) {
+    
+    this.quote = quote;
+    return this;
+  }
+
+   /**
+   * Get quote
+   * @return quote
+  **/
+  @javax.annotation.Nonnull
+  @ApiModelProperty(required = true, value = "")
+
+  public CreateBuyerCatalogListingRentalResponseDataQuote getQuote() {
+    return quote;
+  }
+
+
+  public void setQuote(CreateBuyerCatalogListingRentalResponseDataQuote quote) {
+    this.quote = quote;
+  }
+
+
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -154,7 +182,8 @@ public class CreateBuyerCatalogListingRentalResponseData {
     return Objects.equals(this.rentalId, createBuyerCatalogListingRentalResponseData.rentalId) &&
         Objects.equals(this.clientSecret, createBuyerCatalogListingRentalResponseData.clientSecret) &&
         Objects.equals(this.totalCents, createBuyerCatalogListingRentalResponseData.totalCents) &&
-        Objects.equals(this.needsApproval, createBuyerCatalogListingRentalResponseData.needsApproval);
+        Objects.equals(this.needsApproval, createBuyerCatalogListingRentalResponseData.needsApproval) &&
+        Objects.equals(this.quote, createBuyerCatalogListingRentalResponseData.quote);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -163,7 +192,7 @@ public class CreateBuyerCatalogListingRentalResponseData {
 
   @Override
   public int hashCode() {
-    return Objects.hash(rentalId, clientSecret, totalCents, needsApproval);
+    return Objects.hash(rentalId, clientSecret, totalCents, needsApproval, quote);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -181,6 +210,7 @@ public class CreateBuyerCatalogListingRentalResponseData {
     sb.append("    clientSecret: ").append(toIndentedString(clientSecret)).append("\n");
     sb.append("    totalCents: ").append(toIndentedString(totalCents)).append("\n");
     sb.append("    needsApproval: ").append(toIndentedString(needsApproval)).append("\n");
+    sb.append("    quote: ").append(toIndentedString(quote)).append("\n");
     sb.append("}");
     return sb.toString();
   }

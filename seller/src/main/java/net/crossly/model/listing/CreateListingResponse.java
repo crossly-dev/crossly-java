@@ -27,13 +27,14 @@ import java.util.ArrayList;
 import java.util.List;
 import net.crossly.model.listing.CreateListingResponseJobs;
 import net.crossly.model.listing.CreateListingResponseSkipped;
+import net.crossly.model.listing.CreateListingResponseWarnings;
 import net.crossly.model.common.IdResponse;
 import org.openapitools.jackson.nullable.JsonNullable;
 
 /**
  * CreateListingResponse
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-11T23:44:48.922Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-27T19:42:43.186Z[Etc/UTC]")
 public class CreateListingResponse {
   public static final String SERIALIZED_NAME_LISTING = "listing";
   @SerializedName(SERIALIZED_NAME_LISTING)
@@ -50,6 +51,18 @@ public class CreateListingResponse {
   public static final String SERIALIZED_NAME_BULK_JOB_ID = "bulkJobId";
   @SerializedName(SERIALIZED_NAME_BULK_JOB_ID)
   private String bulkJobId;
+
+  public static final String SERIALIZED_NAME_CLIENT_REFERENCE_ID = "clientReferenceId";
+  @SerializedName(SERIALIZED_NAME_CLIENT_REFERENCE_ID)
+  private String clientReferenceId;
+
+  public static final String SERIALIZED_NAME_EXISTING = "existing";
+  @SerializedName(SERIALIZED_NAME_EXISTING)
+  private Boolean existing;
+
+  public static final String SERIALIZED_NAME_WARNINGS = "warnings";
+  @SerializedName(SERIALIZED_NAME_WARNINGS)
+  private List<CreateListingResponseWarnings> warnings = null;
 
   public CreateListingResponse() { 
   }
@@ -89,11 +102,11 @@ public class CreateListingResponse {
   }
 
    /**
-   * Get jobs
+   * One dispatched crosspost job per accepted platform.
    * @return jobs
   **/
   @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "")
+  @ApiModelProperty(required = true, value = "One dispatched crosspost job per accepted platform.")
 
   public List<CreateListingResponseJobs> getJobs() {
     return jobs;
@@ -117,11 +130,11 @@ public class CreateListingResponse {
   }
 
    /**
-   * Get skipped
+   * Platforms not dispatched, and why (category gate, dropship_not_allowed_on_platform, a dispatch refusal such as validation_error \&quot;Add a weight before listing\&quot;, ...). The listing itself was created.
    * @return skipped
   **/
   @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "")
+  @ApiModelProperty(required = true, value = "Platforms not dispatched, and why (category gate, dropship_not_allowed_on_platform, a dispatch refusal such as validation_error \"Add a weight before listing\", ...). The listing itself was created.")
 
   public List<CreateListingResponseSkipped> getSkipped() {
     return skipped;
@@ -156,6 +169,83 @@ public class CreateListingResponse {
   }
 
 
+  public CreateListingResponse clientReferenceId(String clientReferenceId) {
+    
+    this.clientReferenceId = clientReferenceId;
+    return this;
+  }
+
+   /**
+   * Get clientReferenceId
+   * @return clientReferenceId
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public String getClientReferenceId() {
+    return clientReferenceId;
+  }
+
+
+  public void setClientReferenceId(String clientReferenceId) {
+    this.clientReferenceId = clientReferenceId;
+  }
+
+
+  public CreateListingResponse existing(Boolean existing) {
+    
+    this.existing = existing;
+    return this;
+  }
+
+   /**
+   * Get existing
+   * @return existing
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public Boolean getExisting() {
+    return existing;
+  }
+
+
+  public void setExisting(Boolean existing) {
+    this.existing = existing;
+  }
+
+
+  public CreateListingResponse warnings(List<CreateListingResponseWarnings> warnings) {
+    
+    this.warnings = warnings;
+    return this;
+  }
+
+  public CreateListingResponse addWarningsItem(CreateListingResponseWarnings warningsItem) {
+    if (this.warnings == null) {
+      this.warnings = new ArrayList<CreateListingResponseWarnings>();
+    }
+    this.warnings.add(warningsItem);
+    return this;
+  }
+
+   /**
+   * Soft item-specifics problems (strictItemSpecifics off) and eBay fields accepted but mapped or ignored.
+   * @return warnings
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "Soft item-specifics problems (strictItemSpecifics off) and eBay fields accepted but mapped or ignored.")
+
+  public List<CreateListingResponseWarnings> getWarnings() {
+    return warnings;
+  }
+
+
+  public void setWarnings(List<CreateListingResponseWarnings> warnings) {
+    this.warnings = warnings;
+  }
+
+
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -168,7 +258,10 @@ public class CreateListingResponse {
     return Objects.equals(this.listing, createListingResponse.listing) &&
         Objects.equals(this.jobs, createListingResponse.jobs) &&
         Objects.equals(this.skipped, createListingResponse.skipped) &&
-        Objects.equals(this.bulkJobId, createListingResponse.bulkJobId);
+        Objects.equals(this.bulkJobId, createListingResponse.bulkJobId) &&
+        Objects.equals(this.clientReferenceId, createListingResponse.clientReferenceId) &&
+        Objects.equals(this.existing, createListingResponse.existing) &&
+        Objects.equals(this.warnings, createListingResponse.warnings);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -177,7 +270,7 @@ public class CreateListingResponse {
 
   @Override
   public int hashCode() {
-    return Objects.hash(listing, jobs, skipped, bulkJobId);
+    return Objects.hash(listing, jobs, skipped, bulkJobId, clientReferenceId, existing, warnings);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -195,6 +288,9 @@ public class CreateListingResponse {
     sb.append("    jobs: ").append(toIndentedString(jobs)).append("\n");
     sb.append("    skipped: ").append(toIndentedString(skipped)).append("\n");
     sb.append("    bulkJobId: ").append(toIndentedString(bulkJobId)).append("\n");
+    sb.append("    clientReferenceId: ").append(toIndentedString(clientReferenceId)).append("\n");
+    sb.append("    existing: ").append(toIndentedString(existing)).append("\n");
+    sb.append("    warnings: ").append(toIndentedString(warnings)).append("\n");
     sb.append("}");
     return sb.toString();
   }

@@ -31,7 +31,7 @@ import org.openapitools.jackson.nullable.JsonNullable;
 /**
  * CreateCbxWalletPaymentConfirmResponseData
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-11T23:44:48.922Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-27T19:42:43.186Z[Etc/UTC]")
 public class CreateCbxWalletPaymentConfirmResponseData {
   public static final String SERIALIZED_NAME_PAYMENT_ID = "paymentId";
   @SerializedName(SERIALIZED_NAME_PAYMENT_ID)
@@ -46,9 +46,9 @@ public class CreateCbxWalletPaymentConfirmResponseData {
    */
   @JsonAdapter(ReleaseDecisionEnum.Adapter.class)
   public enum ReleaseDecisionEnum {
-    REVIEW("review"),
-    
     RELEASE("release"),
+    
+    REVIEW("review"),
     
     REFUSE("refuse");
 

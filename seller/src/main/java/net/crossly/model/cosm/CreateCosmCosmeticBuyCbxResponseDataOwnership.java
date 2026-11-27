@@ -30,7 +30,7 @@ import org.threeten.bp.OffsetDateTime;
 /**
  * CreateCosmCosmeticBuyCbxResponseDataOwnership
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-11T23:44:48.922Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-27T19:42:43.186Z[Etc/UTC]")
 public class CreateCosmCosmeticBuyCbxResponseDataOwnership {
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
@@ -40,29 +40,21 @@ public class CreateCosmCosmeticBuyCbxResponseDataOwnership {
   @SerializedName(SERIALIZED_NAME_ACQUIRED_AT)
   private OffsetDateTime acquiredAt;
 
-  public static final String SERIALIZED_NAME_RETIRED_AT = "retiredAt";
-  @SerializedName(SERIALIZED_NAME_RETIRED_AT)
-  private OffsetDateTime retiredAt;
+  public static final String SERIALIZED_NAME_COSMETIC_ID = "cosmeticId";
+  @SerializedName(SERIALIZED_NAME_COSMETIC_ID)
+  private String cosmeticId;
 
   public static final String SERIALIZED_NAME_MERCHANT_ID = "merchantId";
   @SerializedName(SERIALIZED_NAME_MERCHANT_ID)
   private String merchantId;
 
-  public static final String SERIALIZED_NAME_COSMETIC_ID = "cosmeticId";
-  @SerializedName(SERIALIZED_NAME_COSMETIC_ID)
-  private String cosmeticId;
+  public static final String SERIALIZED_NAME_RETIRED_AT = "retiredAt";
+  @SerializedName(SERIALIZED_NAME_RETIRED_AT)
+  private OffsetDateTime retiredAt;
 
   public static final String SERIALIZED_NAME_SUBJECT_ID = "subjectId";
   @SerializedName(SERIALIZED_NAME_SUBJECT_ID)
   private String subjectId;
-
-  public static final String SERIALIZED_NAME_LEDGER_ID = "ledgerId";
-  @SerializedName(SERIALIZED_NAME_LEDGER_ID)
-  private String ledgerId;
-
-  public static final String SERIALIZED_NAME_EDITION_NUMBER = "editionNumber";
-  @SerializedName(SERIALIZED_NAME_EDITION_NUMBER)
-  private BigDecimal editionNumber;
 
   public static final String SERIALIZED_NAME_ACQUIRED_VIA = "acquiredVia";
   @SerializedName(SERIALIZED_NAME_ACQUIRED_VIA)
@@ -75,6 +67,14 @@ public class CreateCosmCosmeticBuyCbxResponseDataOwnership {
   public static final String SERIALIZED_NAME_PAID_CENTS = "paidCents";
   @SerializedName(SERIALIZED_NAME_PAID_CENTS)
   private BigDecimal paidCents;
+
+  public static final String SERIALIZED_NAME_LEDGER_ID = "ledgerId";
+  @SerializedName(SERIALIZED_NAME_LEDGER_ID)
+  private String ledgerId;
+
+  public static final String SERIALIZED_NAME_EDITION_NUMBER = "editionNumber";
+  @SerializedName(SERIALIZED_NAME_EDITION_NUMBER)
+  private BigDecimal editionNumber;
 
   public static final String SERIALIZED_NAME_PAYMENT_REF = "paymentRef";
   @SerializedName(SERIALIZED_NAME_PAYMENT_REF)
@@ -137,26 +137,26 @@ public class CreateCosmCosmeticBuyCbxResponseDataOwnership {
   }
 
 
-  public CreateCosmCosmeticBuyCbxResponseDataOwnership retiredAt(OffsetDateTime retiredAt) {
+  public CreateCosmCosmeticBuyCbxResponseDataOwnership cosmeticId(String cosmeticId) {
     
-    this.retiredAt = retiredAt;
+    this.cosmeticId = cosmeticId;
     return this;
   }
 
    /**
-   * Get retiredAt
-   * @return retiredAt
+   * Get cosmeticId
+   * @return cosmeticId
   **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
+  @javax.annotation.Nonnull
+  @ApiModelProperty(required = true, value = "")
 
-  public OffsetDateTime getRetiredAt() {
-    return retiredAt;
+  public String getCosmeticId() {
+    return cosmeticId;
   }
 
 
-  public void setRetiredAt(OffsetDateTime retiredAt) {
-    this.retiredAt = retiredAt;
+  public void setCosmeticId(String cosmeticId) {
+    this.cosmeticId = cosmeticId;
   }
 
 
@@ -183,26 +183,26 @@ public class CreateCosmCosmeticBuyCbxResponseDataOwnership {
   }
 
 
-  public CreateCosmCosmeticBuyCbxResponseDataOwnership cosmeticId(String cosmeticId) {
+  public CreateCosmCosmeticBuyCbxResponseDataOwnership retiredAt(OffsetDateTime retiredAt) {
     
-    this.cosmeticId = cosmeticId;
+    this.retiredAt = retiredAt;
     return this;
   }
 
    /**
-   * Get cosmeticId
-   * @return cosmeticId
+   * Get retiredAt
+   * @return retiredAt
   **/
-  @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "")
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
 
-  public String getCosmeticId() {
-    return cosmeticId;
+  public OffsetDateTime getRetiredAt() {
+    return retiredAt;
   }
 
 
-  public void setCosmeticId(String cosmeticId) {
-    this.cosmeticId = cosmeticId;
+  public void setRetiredAt(OffsetDateTime retiredAt) {
+    this.retiredAt = retiredAt;
   }
 
 
@@ -226,52 +226,6 @@ public class CreateCosmCosmeticBuyCbxResponseDataOwnership {
 
   public void setSubjectId(String subjectId) {
     this.subjectId = subjectId;
-  }
-
-
-  public CreateCosmCosmeticBuyCbxResponseDataOwnership ledgerId(String ledgerId) {
-    
-    this.ledgerId = ledgerId;
-    return this;
-  }
-
-   /**
-   * Get ledgerId
-   * @return ledgerId
-  **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
-
-  public String getLedgerId() {
-    return ledgerId;
-  }
-
-
-  public void setLedgerId(String ledgerId) {
-    this.ledgerId = ledgerId;
-  }
-
-
-  public CreateCosmCosmeticBuyCbxResponseDataOwnership editionNumber(BigDecimal editionNumber) {
-    
-    this.editionNumber = editionNumber;
-    return this;
-  }
-
-   /**
-   * Get editionNumber
-   * @return editionNumber
-  **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
-
-  public BigDecimal getEditionNumber() {
-    return editionNumber;
-  }
-
-
-  public void setEditionNumber(BigDecimal editionNumber) {
-    this.editionNumber = editionNumber;
   }
 
 
@@ -341,6 +295,52 @@ public class CreateCosmCosmeticBuyCbxResponseDataOwnership {
 
   public void setPaidCents(BigDecimal paidCents) {
     this.paidCents = paidCents;
+  }
+
+
+  public CreateCosmCosmeticBuyCbxResponseDataOwnership ledgerId(String ledgerId) {
+    
+    this.ledgerId = ledgerId;
+    return this;
+  }
+
+   /**
+   * Get ledgerId
+   * @return ledgerId
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public String getLedgerId() {
+    return ledgerId;
+  }
+
+
+  public void setLedgerId(String ledgerId) {
+    this.ledgerId = ledgerId;
+  }
+
+
+  public CreateCosmCosmeticBuyCbxResponseDataOwnership editionNumber(BigDecimal editionNumber) {
+    
+    this.editionNumber = editionNumber;
+    return this;
+  }
+
+   /**
+   * Get editionNumber
+   * @return editionNumber
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public BigDecimal getEditionNumber() {
+    return editionNumber;
+  }
+
+
+  public void setEditionNumber(BigDecimal editionNumber) {
+    this.editionNumber = editionNumber;
   }
 
 
@@ -424,15 +424,15 @@ public class CreateCosmCosmeticBuyCbxResponseDataOwnership {
     CreateCosmCosmeticBuyCbxResponseDataOwnership createCosmCosmeticBuyCbxResponseDataOwnership = (CreateCosmCosmeticBuyCbxResponseDataOwnership) o;
     return Objects.equals(this.id, createCosmCosmeticBuyCbxResponseDataOwnership.id) &&
         Objects.equals(this.acquiredAt, createCosmCosmeticBuyCbxResponseDataOwnership.acquiredAt) &&
-        Objects.equals(this.retiredAt, createCosmCosmeticBuyCbxResponseDataOwnership.retiredAt) &&
-        Objects.equals(this.merchantId, createCosmCosmeticBuyCbxResponseDataOwnership.merchantId) &&
         Objects.equals(this.cosmeticId, createCosmCosmeticBuyCbxResponseDataOwnership.cosmeticId) &&
+        Objects.equals(this.merchantId, createCosmCosmeticBuyCbxResponseDataOwnership.merchantId) &&
+        Objects.equals(this.retiredAt, createCosmCosmeticBuyCbxResponseDataOwnership.retiredAt) &&
         Objects.equals(this.subjectId, createCosmCosmeticBuyCbxResponseDataOwnership.subjectId) &&
-        Objects.equals(this.ledgerId, createCosmCosmeticBuyCbxResponseDataOwnership.ledgerId) &&
-        Objects.equals(this.editionNumber, createCosmCosmeticBuyCbxResponseDataOwnership.editionNumber) &&
         Objects.equals(this.acquiredVia, createCosmCosmeticBuyCbxResponseDataOwnership.acquiredVia) &&
         Objects.equals(this.bound, createCosmCosmeticBuyCbxResponseDataOwnership.bound) &&
         Objects.equals(this.paidCents, createCosmCosmeticBuyCbxResponseDataOwnership.paidCents) &&
+        Objects.equals(this.ledgerId, createCosmCosmeticBuyCbxResponseDataOwnership.ledgerId) &&
+        Objects.equals(this.editionNumber, createCosmCosmeticBuyCbxResponseDataOwnership.editionNumber) &&
         Objects.equals(this.paymentRef, createCosmCosmeticBuyCbxResponseDataOwnership.paymentRef) &&
         Objects.equals(this.retiredReason, createCosmCosmeticBuyCbxResponseDataOwnership.retiredReason) &&
         Objects.equals(this.requestRef, createCosmCosmeticBuyCbxResponseDataOwnership.requestRef);
@@ -444,7 +444,7 @@ public class CreateCosmCosmeticBuyCbxResponseDataOwnership {
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, acquiredAt, retiredAt, merchantId, cosmeticId, subjectId, ledgerId, editionNumber, acquiredVia, bound, paidCents, paymentRef, retiredReason, requestRef);
+    return Objects.hash(id, acquiredAt, cosmeticId, merchantId, retiredAt, subjectId, acquiredVia, bound, paidCents, ledgerId, editionNumber, paymentRef, retiredReason, requestRef);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -460,15 +460,15 @@ public class CreateCosmCosmeticBuyCbxResponseDataOwnership {
     sb.append("class CreateCosmCosmeticBuyCbxResponseDataOwnership {\n");
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    acquiredAt: ").append(toIndentedString(acquiredAt)).append("\n");
-    sb.append("    retiredAt: ").append(toIndentedString(retiredAt)).append("\n");
-    sb.append("    merchantId: ").append(toIndentedString(merchantId)).append("\n");
     sb.append("    cosmeticId: ").append(toIndentedString(cosmeticId)).append("\n");
+    sb.append("    merchantId: ").append(toIndentedString(merchantId)).append("\n");
+    sb.append("    retiredAt: ").append(toIndentedString(retiredAt)).append("\n");
     sb.append("    subjectId: ").append(toIndentedString(subjectId)).append("\n");
-    sb.append("    ledgerId: ").append(toIndentedString(ledgerId)).append("\n");
-    sb.append("    editionNumber: ").append(toIndentedString(editionNumber)).append("\n");
     sb.append("    acquiredVia: ").append(toIndentedString(acquiredVia)).append("\n");
     sb.append("    bound: ").append(toIndentedString(bound)).append("\n");
     sb.append("    paidCents: ").append(toIndentedString(paidCents)).append("\n");
+    sb.append("    ledgerId: ").append(toIndentedString(ledgerId)).append("\n");
+    sb.append("    editionNumber: ").append(toIndentedString(editionNumber)).append("\n");
     sb.append("    paymentRef: ").append(toIndentedString(paymentRef)).append("\n");
     sb.append("    retiredReason: ").append(toIndentedString(retiredReason)).append("\n");
     sb.append("    requestRef: ").append(toIndentedString(requestRef)).append("\n");

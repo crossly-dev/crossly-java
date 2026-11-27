@@ -31,9 +31,9 @@ import net.crossly.model.catalog.CreateCatalogMatchConfirmResponse;
 import net.crossly.model.inventory.CreateInventoryBulkArchiveResponse;
 import net.crossly.model.inventory.CreateInventoryBulkDeleteResponse;
 import net.crossly.model.inventory.CreateInventoryBulkQuantityResponse;
+import net.crossly.model.inventory.CreateInventoryBulkRestoreResponse;
 import net.crossly.model.inventory.CreateInventoryCatalogMatchRefreshResponse;
 import net.crossly.model.inventory.CreateInventoryCsvImportResponse;
-import net.crossly.model.inventory.CreateInventoryLabelRenameResponse;
 import net.crossly.model.inventory.CreateInventoryMergeResponse;
 import net.crossly.model.inventory.CreateInventoryResponse;
 import net.crossly.model.inventory.CreateInventoryUnitIdentifierResponse;
@@ -42,7 +42,6 @@ import net.crossly.model.listing.CreateListingBulkUpdateResponse;
 import net.crossly.model.spatial.CreateSpatialPropertyDeedLeaseResponse;
 import net.crossly.model.spatial.CreateSpatialPropertyDeedListResponse;
 import net.crossly.model.spatial.CreateSpatialPropertyDeedMaintenanceResponse;
-import net.crossly.model.spatial.CreateSpatialPropertyLeaseAcceptResponse;
 import net.crossly.model.spatial.CreateSpatialPropertyLeaseEndResponse;
 import net.crossly.model.spatial.CreateSpatialPropertyLeaseRentResponse;
 import net.crossly.model.spatial.CreateSpatialPropertyListingBuyResponse;
@@ -51,9 +50,13 @@ import net.crossly.model.spatial.CreateSpatialStreetClaimResponse;
 import net.crossly.model.spatial.CreateSpatialStreetOwnedUpkeepResponse;
 import net.crossly.model.spatial.CreateSpatialStreetPlotBuyResponse;
 import net.crossly.model.world.CreateWorldCrewLeaveResponse;
+import net.crossly.model.world.CreateWorldMarketPlotRentResponse;
 import net.crossly.model.world.CreateWorldPartyWishlistResponse;
 import net.crossly.model.world.DeleteWorldJobShiftResponse;
 import net.crossly.model.common.Error;
+import net.crossly.model.analytic.GetAnalyticInventoryResponse;
+import net.crossly.model.game.GetGameEventSummaryResponse;
+import net.crossly.model.game.GetGameHuntBuildResponse;
 import net.crossly.model.game.GetGameLeaderboardResponse;
 import net.crossly.model.home.GetHomeResponse;
 import net.crossly.model.inventory.GetInventoryAgingResponse;
@@ -83,12 +86,14 @@ import net.crossly.model.spatial.GetSpatialShopStaffResponse;
 import net.crossly.model.spatial.GetSpatialStreetFoundingResponse;
 import net.crossly.model.spatial.GetSpatialStreetPlotQuoteResponse;
 import net.crossly.model.spatial.GetSpatialStreetResponse;
+import net.crossly.model.world.GetWorldPulseResponse;
 import net.crossly.model.world.GetWorldRoomFunnelResponse;
 import net.crossly.model.world.GetWorldShelfResponse;
 import net.crossly.model.world.GetWorldSkusCheapestResponse;
 import net.crossly.model.catalog.ListCatalogMatchesResponse;
 import net.crossly.model.common.ListFestivalsResponse;
 import net.crossly.model.game.ListGameBreakUpcomingResponse;
+import net.crossly.model.game.ListGameHuntMineResponse;
 import net.crossly.model.game.ListGameHuntsResponse;
 import net.crossly.model.game.ListGameResultMineResponse;
 import net.crossly.model.home.ListHomeMineBuildersResponse;
@@ -123,6 +128,7 @@ import net.crossly.model.common.SpatialStreetResponse;
 import java.util.UUID;
 import net.crossly.model.spatial.UpdateSpatialEmployeeConfigResponse;
 import net.crossly.model.spatial.UpdateSpatialShopStaffWageResponse;
+import net.crossly.model.common.UpdatedResponse;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
@@ -1112,8 +1118,8 @@ public class InventoryApi {
     }
 
     /**
-     * Set / add / subtract stock across many items, syncing live listings.
-     * 
+     * Set / add / subtract stock across many items, or set a stock per item; syncs live listings.
+     * Two bodies. {ids, mode: \&quot;set\&quot;|\&quot;increase\&quot;|\&quot;decrease\&quot;, value, syncMarketplaces?} applies one value to every id. {mode: \&quot;set\&quot;, items: [{id, quantity}], syncMarketplaces?} sets each item to its own quantity (1-5000 items, each id once; a repeated id, more than 5000 items, or a body mixing items with ids/value is a 400 naming both shapes). The value is the AVAILABLE stock (reserved units of open orders are kept). Stock changes at once; live listings are pushed in the background against the returned bulkJobId (anything dropping to 0 is delisted). Response: {affected, skipped, bulkJobId?}: skipped &#x3D; ids that did not move (already at that number, or not yours). Send an Idempotency-Key to retry safely.
      * @return CreateInventoryBulkQuantityResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -1134,8 +1140,8 @@ public class InventoryApi {
     }
 
     /**
-     * Set / add / subtract stock across many items, syncing live listings.
-     * 
+     * Set / add / subtract stock across many items, or set a stock per item; syncs live listings.
+     * Two bodies. {ids, mode: \&quot;set\&quot;|\&quot;increase\&quot;|\&quot;decrease\&quot;, value, syncMarketplaces?} applies one value to every id. {mode: \&quot;set\&quot;, items: [{id, quantity}], syncMarketplaces?} sets each item to its own quantity (1-5000 items, each id once; a repeated id, more than 5000 items, or a body mixing items with ids/value is a 400 naming both shapes). The value is the AVAILABLE stock (reserved units of open orders are kept). Stock changes at once; live listings are pushed in the background against the returned bulkJobId (anything dropping to 0 is delisted). Response: {affected, skipped, bulkJobId?}: skipped &#x3D; ids that did not move (already at that number, or not yours). Send an Idempotency-Key to retry safely.
      * @return ApiResponse&lt;CreateInventoryBulkQuantityResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -1157,8 +1163,8 @@ public class InventoryApi {
     }
 
     /**
-     * Set / add / subtract stock across many items, syncing live listings. (asynchronously)
-     * 
+     * Set / add / subtract stock across many items, or set a stock per item; syncs live listings. (asynchronously)
+     * Two bodies. {ids, mode: \&quot;set\&quot;|\&quot;increase\&quot;|\&quot;decrease\&quot;, value, syncMarketplaces?} applies one value to every id. {mode: \&quot;set\&quot;, items: [{id, quantity}], syncMarketplaces?} sets each item to its own quantity (1-5000 items, each id once; a repeated id, more than 5000 items, or a body mixing items with ids/value is a 400 naming both shapes). The value is the AVAILABLE stock (reserved units of open orders are kept). Stock changes at once; live listings are pushed in the background against the returned bulkJobId (anything dropping to 0 is delisted). Response: {affected, skipped, bulkJobId?}: skipped &#x3D; ids that did not move (already at that number, or not yours). Send an Idempotency-Key to retry safely.
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -1178,6 +1184,148 @@ public class InventoryApi {
 
         okhttp3.Call localVarCall = createInventoryBulkQuantityValidateBeforeCall(_callback);
         Type localVarReturnType = new TypeToken<CreateInventoryBulkQuantityResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for createInventoryBulkRestore
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call createInventoryBulkRestoreCall(final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/v1/inventory/bulk-restore";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "PersonalAccessToken" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call createInventoryBulkRestoreValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        
+
+        okhttp3.Call localVarCall = createInventoryBulkRestoreCall(_callback);
+        return localVarCall;
+
+    }
+
+    /**
+     * Restore archived inventory items (status returns to active, or sold_out when no stock).
+     * 
+     * @return CreateInventoryBulkRestoreResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public CreateInventoryBulkRestoreResponse createInventoryBulkRestore() throws ApiException {
+        ApiResponse<CreateInventoryBulkRestoreResponse> localVarResp = createInventoryBulkRestoreWithHttpInfo();
+        return localVarResp.getData();
+    }
+
+    /**
+     * Restore archived inventory items (status returns to active, or sold_out when no stock).
+     * 
+     * @return ApiResponse&lt;CreateInventoryBulkRestoreResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<CreateInventoryBulkRestoreResponse> createInventoryBulkRestoreWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = createInventoryBulkRestoreValidateBeforeCall(null);
+        Type localVarReturnType = new TypeToken<CreateInventoryBulkRestoreResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Restore archived inventory items (status returns to active, or sold_out when no stock). (asynchronously)
+     * 
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call createInventoryBulkRestoreAsync(final ApiCallback<CreateInventoryBulkRestoreResponse> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = createInventoryBulkRestoreValidateBeforeCall(_callback);
+        Type localVarReturnType = new TypeToken<CreateInventoryBulkRestoreResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -1692,7 +1840,7 @@ public class InventoryApi {
     /**
      * Rename a label across every inventory item.
      * 
-     * @return CreateInventoryLabelRenameResponse
+     * @return UpdatedResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -1706,15 +1854,15 @@ public class InventoryApi {
         <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
      </table>
      */
-    public CreateInventoryLabelRenameResponse createInventoryLabelRename() throws ApiException {
-        ApiResponse<CreateInventoryLabelRenameResponse> localVarResp = createInventoryLabelRenameWithHttpInfo();
+    public UpdatedResponse createInventoryLabelRename() throws ApiException {
+        ApiResponse<UpdatedResponse> localVarResp = createInventoryLabelRenameWithHttpInfo();
         return localVarResp.getData();
     }
 
     /**
      * Rename a label across every inventory item.
      * 
-     * @return ApiResponse&lt;CreateInventoryLabelRenameResponse&gt;
+     * @return ApiResponse&lt;UpdatedResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -1728,9 +1876,9 @@ public class InventoryApi {
         <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<CreateInventoryLabelRenameResponse> createInventoryLabelRenameWithHttpInfo() throws ApiException {
+    public ApiResponse<UpdatedResponse> createInventoryLabelRenameWithHttpInfo() throws ApiException {
         okhttp3.Call localVarCall = createInventoryLabelRenameValidateBeforeCall(null);
-        Type localVarReturnType = new TypeToken<CreateInventoryLabelRenameResponse>(){}.getType();
+        Type localVarReturnType = new TypeToken<UpdatedResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -1752,10 +1900,10 @@ public class InventoryApi {
         <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call createInventoryLabelRenameAsync(final ApiCallback<CreateInventoryLabelRenameResponse> _callback) throws ApiException {
+    public okhttp3.Call createInventoryLabelRenameAsync(final ApiCallback<UpdatedResponse> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = createInventoryLabelRenameValidateBeforeCall(_callback);
-        Type localVarReturnType = new TypeToken<CreateInventoryLabelRenameResponse>(){}.getType();
+        Type localVarReturnType = new TypeToken<UpdatedResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -2734,7 +2882,7 @@ public class InventoryApi {
      * Take a plot on lease.
      * Pays the first week to the owner from your EARNED CBX and moves your (public) shop onto the plot.
      * @param id  (required)
-     * @return CreateSpatialPropertyLeaseAcceptResponse
+     * @return CreateWorldMarketPlotRentResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -2748,8 +2896,8 @@ public class InventoryApi {
         <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
      </table>
      */
-    public CreateSpatialPropertyLeaseAcceptResponse createSpatialPropertyLeaseAccept(String id) throws ApiException {
-        ApiResponse<CreateSpatialPropertyLeaseAcceptResponse> localVarResp = createSpatialPropertyLeaseAcceptWithHttpInfo(id);
+    public CreateWorldMarketPlotRentResponse createSpatialPropertyLeaseAccept(String id) throws ApiException {
+        ApiResponse<CreateWorldMarketPlotRentResponse> localVarResp = createSpatialPropertyLeaseAcceptWithHttpInfo(id);
         return localVarResp.getData();
     }
 
@@ -2757,7 +2905,7 @@ public class InventoryApi {
      * Take a plot on lease.
      * Pays the first week to the owner from your EARNED CBX and moves your (public) shop onto the plot.
      * @param id  (required)
-     * @return ApiResponse&lt;CreateSpatialPropertyLeaseAcceptResponse&gt;
+     * @return ApiResponse&lt;CreateWorldMarketPlotRentResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -2771,9 +2919,9 @@ public class InventoryApi {
         <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<CreateSpatialPropertyLeaseAcceptResponse> createSpatialPropertyLeaseAcceptWithHttpInfo(String id) throws ApiException {
+    public ApiResponse<CreateWorldMarketPlotRentResponse> createSpatialPropertyLeaseAcceptWithHttpInfo(String id) throws ApiException {
         okhttp3.Call localVarCall = createSpatialPropertyLeaseAcceptValidateBeforeCall(id, null);
-        Type localVarReturnType = new TypeToken<CreateSpatialPropertyLeaseAcceptResponse>(){}.getType();
+        Type localVarReturnType = new TypeToken<CreateWorldMarketPlotRentResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -2796,10 +2944,10 @@ public class InventoryApi {
         <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call createSpatialPropertyLeaseAcceptAsync(String id, final ApiCallback<CreateSpatialPropertyLeaseAcceptResponse> _callback) throws ApiException {
+    public okhttp3.Call createSpatialPropertyLeaseAcceptAsync(String id, final ApiCallback<CreateWorldMarketPlotRentResponse> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = createSpatialPropertyLeaseAcceptValidateBeforeCall(id, _callback);
-        Type localVarReturnType = new TypeToken<CreateSpatialPropertyLeaseAcceptResponse>(){}.getType();
+        Type localVarReturnType = new TypeToken<CreateWorldMarketPlotRentResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -2884,7 +3032,7 @@ public class InventoryApi {
 
     /**
      * End a lease (owner or tenant).
-     * The tenant&#39;s shop gets a free Main Street address again.
+     * The tenant&#39;s showroom leaves the plot.
      * @param id  (required)
      * @return CreateSpatialPropertyLeaseEndResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -2907,7 +3055,7 @@ public class InventoryApi {
 
     /**
      * End a lease (owner or tenant).
-     * The tenant&#39;s shop gets a free Main Street address again.
+     * The tenant&#39;s showroom leaves the plot.
      * @param id  (required)
      * @return ApiResponse&lt;CreateSpatialPropertyLeaseEndResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -2931,7 +3079,7 @@ public class InventoryApi {
 
     /**
      * End a lease (owner or tenant). (asynchronously)
-     * The tenant&#39;s shop gets a free Main Street address again.
+     * The tenant&#39;s showroom leaves the plot.
      * @param id  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -4628,6 +4776,548 @@ public class InventoryApi {
         return localVarCall;
     }
     /**
+     * Build call for getAnalyticInventory
+     * @param range Reporting window. Default 30d. custom needs from and to. (optional)
+     * @param from YYYY-MM-DD, inclusive, in tz. Only with range&#x3D;custom. (optional)
+     * @param to YYYY-MM-DD, inclusive, in tz. Only with range&#x3D;custom. (optional)
+     * @param compare Comparison window for deltas: prev (same length just before), yoy, none, custom (cmpFrom/cmpTo). (optional)
+     * @param cmpFrom YYYY-MM-DD. Only with compare&#x3D;custom. (optional)
+     * @param cmpTo YYYY-MM-DD. Only with compare&#x3D;custom. (optional)
+     * @param labels Comma-separated inventory labels (any of them). (optional)
+     * @param platforms Comma-separated platform ids. (optional)
+     * @param category Canonical main-category key. (optional)
+     * @param brand Brand name. (optional)
+     * @param tz IANA time zone for day boundaries. Default UTC. An invalid name is a 400. (optional)
+     * @param maturity Days an item has to sell within to count as sold in the cohort. Default 30. (optional)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getAnalyticInventoryCall(String range, String from, String to, String compare, String cmpFrom, String cmpTo, String labels, String platforms, String category, String brand, String tz, Integer maturity, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/v1/analytics/inventory";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        if (range != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("range", range));
+        }
+
+        if (from != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("from", from));
+        }
+
+        if (to != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("to", to));
+        }
+
+        if (compare != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("compare", compare));
+        }
+
+        if (cmpFrom != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("cmpFrom", cmpFrom));
+        }
+
+        if (cmpTo != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("cmpTo", cmpTo));
+        }
+
+        if (labels != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("labels", labels));
+        }
+
+        if (platforms != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("platforms", platforms));
+        }
+
+        if (category != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("category", category));
+        }
+
+        if (brand != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("brand", brand));
+        }
+
+        if (tz != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("tz", tz));
+        }
+
+        if (maturity != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("maturity", maturity));
+        }
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "PersonalAccessToken" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call getAnalyticInventoryValidateBeforeCall(String range, String from, String to, String compare, String cmpFrom, String cmpTo, String labels, String platforms, String category, String brand, String tz, Integer maturity, final ApiCallback _callback) throws ApiException {
+        
+
+        okhttp3.Call localVarCall = getAnalyticInventoryCall(range, from, to, compare, cmpFrom, cmpTo, labels, platforms, category, brand, tz, maturity, _callback);
+        return localVarCall;
+
+    }
+
+    /**
+     * Unsold stock: aging buckets with cost, listed value and market value, the 20 listings most in need of attention, shelf value over time, cohort sell-through at the chosen maturity, listed vs sold velocity and data health.
+     * 
+     * @param range Reporting window. Default 30d. custom needs from and to. (optional)
+     * @param from YYYY-MM-DD, inclusive, in tz. Only with range&#x3D;custom. (optional)
+     * @param to YYYY-MM-DD, inclusive, in tz. Only with range&#x3D;custom. (optional)
+     * @param compare Comparison window for deltas: prev (same length just before), yoy, none, custom (cmpFrom/cmpTo). (optional)
+     * @param cmpFrom YYYY-MM-DD. Only with compare&#x3D;custom. (optional)
+     * @param cmpTo YYYY-MM-DD. Only with compare&#x3D;custom. (optional)
+     * @param labels Comma-separated inventory labels (any of them). (optional)
+     * @param platforms Comma-separated platform ids. (optional)
+     * @param category Canonical main-category key. (optional)
+     * @param brand Brand name. (optional)
+     * @param tz IANA time zone for day boundaries. Default UTC. An invalid name is a 400. (optional)
+     * @param maturity Days an item has to sell within to count as sold in the cohort. Default 30. (optional)
+     * @return GetAnalyticInventoryResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public GetAnalyticInventoryResponse getAnalyticInventory(String range, String from, String to, String compare, String cmpFrom, String cmpTo, String labels, String platforms, String category, String brand, String tz, Integer maturity) throws ApiException {
+        ApiResponse<GetAnalyticInventoryResponse> localVarResp = getAnalyticInventoryWithHttpInfo(range, from, to, compare, cmpFrom, cmpTo, labels, platforms, category, brand, tz, maturity);
+        return localVarResp.getData();
+    }
+
+    /**
+     * Unsold stock: aging buckets with cost, listed value and market value, the 20 listings most in need of attention, shelf value over time, cohort sell-through at the chosen maturity, listed vs sold velocity and data health.
+     * 
+     * @param range Reporting window. Default 30d. custom needs from and to. (optional)
+     * @param from YYYY-MM-DD, inclusive, in tz. Only with range&#x3D;custom. (optional)
+     * @param to YYYY-MM-DD, inclusive, in tz. Only with range&#x3D;custom. (optional)
+     * @param compare Comparison window for deltas: prev (same length just before), yoy, none, custom (cmpFrom/cmpTo). (optional)
+     * @param cmpFrom YYYY-MM-DD. Only with compare&#x3D;custom. (optional)
+     * @param cmpTo YYYY-MM-DD. Only with compare&#x3D;custom. (optional)
+     * @param labels Comma-separated inventory labels (any of them). (optional)
+     * @param platforms Comma-separated platform ids. (optional)
+     * @param category Canonical main-category key. (optional)
+     * @param brand Brand name. (optional)
+     * @param tz IANA time zone for day boundaries. Default UTC. An invalid name is a 400. (optional)
+     * @param maturity Days an item has to sell within to count as sold in the cohort. Default 30. (optional)
+     * @return ApiResponse&lt;GetAnalyticInventoryResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<GetAnalyticInventoryResponse> getAnalyticInventoryWithHttpInfo(String range, String from, String to, String compare, String cmpFrom, String cmpTo, String labels, String platforms, String category, String brand, String tz, Integer maturity) throws ApiException {
+        okhttp3.Call localVarCall = getAnalyticInventoryValidateBeforeCall(range, from, to, compare, cmpFrom, cmpTo, labels, platforms, category, brand, tz, maturity, null);
+        Type localVarReturnType = new TypeToken<GetAnalyticInventoryResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Unsold stock: aging buckets with cost, listed value and market value, the 20 listings most in need of attention, shelf value over time, cohort sell-through at the chosen maturity, listed vs sold velocity and data health. (asynchronously)
+     * 
+     * @param range Reporting window. Default 30d. custom needs from and to. (optional)
+     * @param from YYYY-MM-DD, inclusive, in tz. Only with range&#x3D;custom. (optional)
+     * @param to YYYY-MM-DD, inclusive, in tz. Only with range&#x3D;custom. (optional)
+     * @param compare Comparison window for deltas: prev (same length just before), yoy, none, custom (cmpFrom/cmpTo). (optional)
+     * @param cmpFrom YYYY-MM-DD. Only with compare&#x3D;custom. (optional)
+     * @param cmpTo YYYY-MM-DD. Only with compare&#x3D;custom. (optional)
+     * @param labels Comma-separated inventory labels (any of them). (optional)
+     * @param platforms Comma-separated platform ids. (optional)
+     * @param category Canonical main-category key. (optional)
+     * @param brand Brand name. (optional)
+     * @param tz IANA time zone for day boundaries. Default UTC. An invalid name is a 400. (optional)
+     * @param maturity Days an item has to sell within to count as sold in the cohort. Default 30. (optional)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getAnalyticInventoryAsync(String range, String from, String to, String compare, String cmpFrom, String cmpTo, String labels, String platforms, String category, String brand, String tz, Integer maturity, final ApiCallback<GetAnalyticInventoryResponse> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = getAnalyticInventoryValidateBeforeCall(range, from, to, compare, cmpFrom, cmpTo, labels, platforms, category, brand, tz, maturity, _callback);
+        Type localVarReturnType = new TypeToken<GetAnalyticInventoryResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for getGameEventSummary
+     * @param eventId  (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getGameEventSummaryCall(UUID eventId, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/v1/games/events/{eventId}/summary"
+            .replaceAll("\\{" + "eventId" + "\\}", localVarApiClient.escapeString(eventId.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "PersonalAccessToken" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call getGameEventSummaryValidateBeforeCall(UUID eventId, final ApiCallback _callback) throws ApiException {
+        
+        // verify the required parameter 'eventId' is set
+        if (eventId == null) {
+            throw new ApiException("Missing the required parameter 'eventId' when calling getGameEventSummary(Async)");
+        }
+        
+
+        okhttp3.Call localVarCall = getGameEventSummaryCall(eventId, _callback);
+        return localVarCall;
+
+    }
+
+    /**
+     * The results of one of your metaverse events (a Branding event of type scavenger_hunt or pack_break): for a hunt -- status, place, coins and clues, players, finishers, winners (place, masked name, when) and the rewards paid or failed per kind; for a pack break -- status, whether it is live on the stage, spots, spots sold and hits revealed. 404 for an event that is not a World event of yours.
+     * 
+     * @param eventId  (required)
+     * @return GetGameEventSummaryResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public GetGameEventSummaryResponse getGameEventSummary(UUID eventId) throws ApiException {
+        ApiResponse<GetGameEventSummaryResponse> localVarResp = getGameEventSummaryWithHttpInfo(eventId);
+        return localVarResp.getData();
+    }
+
+    /**
+     * The results of one of your metaverse events (a Branding event of type scavenger_hunt or pack_break): for a hunt -- status, place, coins and clues, players, finishers, winners (place, masked name, when) and the rewards paid or failed per kind; for a pack break -- status, whether it is live on the stage, spots, spots sold and hits revealed. 404 for an event that is not a World event of yours.
+     * 
+     * @param eventId  (required)
+     * @return ApiResponse&lt;GetGameEventSummaryResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<GetGameEventSummaryResponse> getGameEventSummaryWithHttpInfo(UUID eventId) throws ApiException {
+        okhttp3.Call localVarCall = getGameEventSummaryValidateBeforeCall(eventId, null);
+        Type localVarReturnType = new TypeToken<GetGameEventSummaryResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * The results of one of your metaverse events (a Branding event of type scavenger_hunt or pack_break): for a hunt -- status, place, coins and clues, players, finishers, winners (place, masked name, when) and the rewards paid or failed per kind; for a pack break -- status, whether it is live on the stage, spots, spots sold and hits revealed. 404 for an event that is not a World event of yours. (asynchronously)
+     * 
+     * @param eventId  (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getGameEventSummaryAsync(UUID eventId, final ApiCallback<GetGameEventSummaryResponse> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = getGameEventSummaryValidateBeforeCall(eventId, _callback);
+        Type localVarReturnType = new TypeToken<GetGameEventSummaryResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for getGameHuntBuild
+     * @param id  (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getGameHuntBuildCall(UUID id, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/v1/games/hunts/{id}/build"
+            .replaceAll("\\{" + "id" + "\\}", localVarApiClient.escapeString(id.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "PersonalAccessToken" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call getGameHuntBuildValidateBeforeCall(UUID id, final ApiCallback _callback) throws ApiException {
+        
+        // verify the required parameter 'id' is set
+        if (id == null) {
+            throw new ApiException("Missing the required parameter 'id' when calling getGameHuntBuild(Async)");
+        }
+        
+
+        okhttp3.Call localVarCall = getGameHuntBuildCall(id, _callback);
+        return localVarCall;
+
+    }
+
+    /**
+     * One of your scavenger hunts as the in-world builder sees it: place, rules (days, time limit, hints, winners, ordered), rewards, the build document (coins and clue signs with positions), what still blocks publishing, and buildLink -- the Worlds app link that opens the builder. Read-only: coins are placed in the World.
+     * 
+     * @param id  (required)
+     * @return GetGameHuntBuildResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public GetGameHuntBuildResponse getGameHuntBuild(UUID id) throws ApiException {
+        ApiResponse<GetGameHuntBuildResponse> localVarResp = getGameHuntBuildWithHttpInfo(id);
+        return localVarResp.getData();
+    }
+
+    /**
+     * One of your scavenger hunts as the in-world builder sees it: place, rules (days, time limit, hints, winners, ordered), rewards, the build document (coins and clue signs with positions), what still blocks publishing, and buildLink -- the Worlds app link that opens the builder. Read-only: coins are placed in the World.
+     * 
+     * @param id  (required)
+     * @return ApiResponse&lt;GetGameHuntBuildResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<GetGameHuntBuildResponse> getGameHuntBuildWithHttpInfo(UUID id) throws ApiException {
+        okhttp3.Call localVarCall = getGameHuntBuildValidateBeforeCall(id, null);
+        Type localVarReturnType = new TypeToken<GetGameHuntBuildResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * One of your scavenger hunts as the in-world builder sees it: place, rules (days, time limit, hints, winners, ordered), rewards, the build document (coins and clue signs with positions), what still blocks publishing, and buildLink -- the Worlds app link that opens the builder. Read-only: coins are placed in the World. (asynchronously)
+     * 
+     * @param id  (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getGameHuntBuildAsync(UUID id, final ApiCallback<GetGameHuntBuildResponse> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = getGameHuntBuildValidateBeforeCall(id, _callback);
+        Type localVarReturnType = new TypeToken<GetGameHuntBuildResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
      * Build call for getGameLeaderboard
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -5288,7 +5978,7 @@ public class InventoryApi {
     }
 
     /**
-     * Unsold stock by age (0-7, 7-30, 30-90, 90+ days, unlisted), each bucket with a recommendation.
+     * Unsold stock by days since first listed (unlisted, 0-7, 7-30, 30-90, 90+), each bucket with items, units, known cost (items without a cost counted separately) and listed value.
      * 
      * @return GetInventoryAgingResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -5310,7 +6000,7 @@ public class InventoryApi {
     }
 
     /**
-     * Unsold stock by age (0-7, 7-30, 30-90, 90+ days, unlisted), each bucket with a recommendation.
+     * Unsold stock by days since first listed (unlisted, 0-7, 7-30, 30-90, 90+), each bucket with items, units, known cost (items without a cost counted separately) and listed value.
      * 
      * @return ApiResponse&lt;GetInventoryAgingResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -5333,7 +6023,7 @@ public class InventoryApi {
     }
 
     /**
-     * Unsold stock by age (0-7, 7-30, 30-90, 90+ days, unlisted), each bucket with a recommendation. (asynchronously)
+     * Unsold stock by days since first listed (unlisted, 0-7, 7-30, 30-90, 90+), each bucket with items, units, known cost (items without a cost counted separately) and listed value. (asynchronously)
      * 
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -6008,7 +6698,7 @@ public class InventoryApi {
     }
 
     /**
-     * Cohort sell-through for a window (default: the 30 days ending 30 days ago) against the previous window of the same length.
+     * Cohort sell-through: of the items first listed in the window (default 30-60 days ago), the share sold within 30 days of listing, with n, immature items left out, and the change vs the previous window in percentage points (pp).
      * 
      * @return GetInventorySellThroughResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -6030,7 +6720,7 @@ public class InventoryApi {
     }
 
     /**
-     * Cohort sell-through for a window (default: the 30 days ending 30 days ago) against the previous window of the same length.
+     * Cohort sell-through: of the items first listed in the window (default 30-60 days ago), the share sold within 30 days of listing, with n, immature items left out, and the change vs the previous window in percentage points (pp).
      * 
      * @return ApiResponse&lt;GetInventorySellThroughResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -6053,7 +6743,7 @@ public class InventoryApi {
     }
 
     /**
-     * Cohort sell-through for a window (default: the 30 days ending 30 days ago) against the previous window of the same length. (asynchronously)
+     * Cohort sell-through: of the items first listed in the window (default 30-60 days ago), the share sold within 30 days of listing, with n, immature items left out, and the change vs the previous window in percentage points (pp). (asynchronously)
      * 
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -6305,7 +6995,7 @@ public class InventoryApi {
     }
 
     /**
-     * Portfolio value of unsold stock over time, oldest first (one point per nightly snapshot).
+     * Cost and listed value of unsold stock over time, oldest first (one point per nightly snapshot).
      * 
      * @return GetInventoryValueHistoryResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -6327,7 +7017,7 @@ public class InventoryApi {
     }
 
     /**
-     * Portfolio value of unsold stock over time, oldest first (one point per nightly snapshot).
+     * Cost and listed value of unsold stock over time, oldest first (one point per nightly snapshot).
      * 
      * @return ApiResponse&lt;GetInventoryValueHistoryResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -6350,7 +7040,7 @@ public class InventoryApi {
     }
 
     /**
-     * Portfolio value of unsold stock over time, oldest first (one point per nightly snapshot). (asynchronously)
+     * Cost and listed value of unsold stock over time, oldest first (one point per nightly snapshot). (asynchronously)
      * 
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -9054,6 +9744,148 @@ public class InventoryApi {
         return localVarCall;
     }
     /**
+     * Build call for getWorldPulse
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getWorldPulseCall(final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/v1/world/pulse";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "PersonalAccessToken" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call getWorldPulseValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        
+
+        okhttp3.Call localVarCall = getWorldPulseCall(_callback);
+        return localVarCall;
+
+    }
+
+    /**
+     * Crossly World&#39;s pulse, aggregated with no people in it: the public world shops that made a sale today (slugs only -- never counts, amounts or buyers), the times the world&#39;s shops passed each sales milestone today (each fires a fireworks show), and what Crossly Cares took in this month against the Commons fountain&#39;s mark.
+     * 
+     * @return GetWorldPulseResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public GetWorldPulseResponse getWorldPulse() throws ApiException {
+        ApiResponse<GetWorldPulseResponse> localVarResp = getWorldPulseWithHttpInfo();
+        return localVarResp.getData();
+    }
+
+    /**
+     * Crossly World&#39;s pulse, aggregated with no people in it: the public world shops that made a sale today (slugs only -- never counts, amounts or buyers), the times the world&#39;s shops passed each sales milestone today (each fires a fireworks show), and what Crossly Cares took in this month against the Commons fountain&#39;s mark.
+     * 
+     * @return ApiResponse&lt;GetWorldPulseResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<GetWorldPulseResponse> getWorldPulseWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = getWorldPulseValidateBeforeCall(null);
+        Type localVarReturnType = new TypeToken<GetWorldPulseResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Crossly World&#39;s pulse, aggregated with no people in it: the public world shops that made a sale today (slugs only -- never counts, amounts or buyers), the times the world&#39;s shops passed each sales milestone today (each fires a fireworks show), and what Crossly Cares took in this month against the Commons fountain&#39;s mark. (asynchronously)
+     * 
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getWorldPulseAsync(final ApiCallback<GetWorldPulseResponse> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = getWorldPulseValidateBeforeCall(_callback);
+        Type localVarReturnType = new TypeToken<GetWorldPulseResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
      * Build call for getWorldRoomFunnel
      * @param sceneId  (required)
      * @param days  (optional)
@@ -9960,6 +10792,148 @@ public class InventoryApi {
         return localVarCall;
     }
     /**
+     * Build call for listGameHuntMine
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call listGameHuntMineCall(final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/v1/games/hunts/mine";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "PersonalAccessToken" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call listGameHuntMineValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        
+
+        okhttp3.Call localVarCall = listGameHuntMineCall(_callback);
+        return localVarCall;
+
+    }
+
+    /**
+     * Your scavenger hunts (spec WD6: made from Branding events, built in Crossly World), newest first: title, place slug, the event it belongs to (eventId), your discount code if it rewards one, whether it is a draft (not yet built and published), live or ended, its coins, and how many people finished.
+     * 
+     * @return ListGameHuntMineResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public ListGameHuntMineResponse listGameHuntMine() throws ApiException {
+        ApiResponse<ListGameHuntMineResponse> localVarResp = listGameHuntMineWithHttpInfo();
+        return localVarResp.getData();
+    }
+
+    /**
+     * Your scavenger hunts (spec WD6: made from Branding events, built in Crossly World), newest first: title, place slug, the event it belongs to (eventId), your discount code if it rewards one, whether it is a draft (not yet built and published), live or ended, its coins, and how many people finished.
+     * 
+     * @return ApiResponse&lt;ListGameHuntMineResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<ListGameHuntMineResponse> listGameHuntMineWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = listGameHuntMineValidateBeforeCall(null);
+        Type localVarReturnType = new TypeToken<ListGameHuntMineResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Your scavenger hunts (spec WD6: made from Branding events, built in Crossly World), newest first: title, place slug, the event it belongs to (eventId), your discount code if it rewards one, whether it is a draft (not yet built and published), live or ended, its coins, and how many people finished. (asynchronously)
+     * 
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call listGameHuntMineAsync(final ApiCallback<ListGameHuntMineResponse> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = listGameHuntMineValidateBeforeCall(_callback);
+        Type localVarReturnType = new TypeToken<ListGameHuntMineResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
      * Build call for listGameHunts
      * @param place  (optional)
      * @param _callback Callback for upload/download progress
@@ -10544,6 +11518,8 @@ public class InventoryApi {
      * @param kind Physical goods or Web3 assets (NFTs). Omit for both. (optional)
      * @param platforms Comma-separated marketplaces, e.g. \&quot;ebay,vinted\&quot;. Items live (an active listing) on any of them. (optional)
      * @param platformMode \&quot;not_listed\&quot; inverts &#x60;platforms&#x60;: items live on none of them. Default \&quot;listed\&quot;. (optional)
+     * @param sku Exact SKU match: look up the row a supplier product maps to. (optional)
+     * @param updatedSince Only rows created or changed at or after this time (ISO 8601), oldest change first. Poll with the updatedAt of the last row you saw. (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -10559,7 +11535,7 @@ public class InventoryApi {
         <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call listInventoryCall(Integer page, Integer limit, String search, String status, String kind, String platforms, String platformMode, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call listInventoryCall(Integer page, Integer limit, String search, String status, String kind, String platforms, String platformMode, String sku, OffsetDateTime updatedSince, final ApiCallback _callback) throws ApiException {
         String basePath = null;
 
         // Operation Servers
@@ -10613,6 +11589,14 @@ public class InventoryApi {
             localVarQueryParams.addAll(localVarApiClient.parameterToPair("platformMode", platformMode));
         }
 
+        if (sku != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("sku", sku));
+        }
+
+        if (updatedSince != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("updatedSince", updatedSince));
+        }
+
         final String[] localVarAccepts = {
             "application/json"
         };
@@ -10634,10 +11618,10 @@ public class InventoryApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call listInventoryValidateBeforeCall(Integer page, Integer limit, String search, String status, String kind, String platforms, String platformMode, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call listInventoryValidateBeforeCall(Integer page, Integer limit, String search, String status, String kind, String platforms, String platformMode, String sku, OffsetDateTime updatedSince, final ApiCallback _callback) throws ApiException {
         
 
-        okhttp3.Call localVarCall = listInventoryCall(page, limit, search, status, kind, platforms, platformMode, _callback);
+        okhttp3.Call localVarCall = listInventoryCall(page, limit, search, status, kind, platforms, platformMode, sku, updatedSince, _callback);
         return localVarCall;
 
     }
@@ -10652,6 +11636,8 @@ public class InventoryApi {
      * @param kind Physical goods or Web3 assets (NFTs). Omit for both. (optional)
      * @param platforms Comma-separated marketplaces, e.g. \&quot;ebay,vinted\&quot;. Items live (an active listing) on any of them. (optional)
      * @param platformMode \&quot;not_listed\&quot; inverts &#x60;platforms&#x60;: items live on none of them. Default \&quot;listed\&quot;. (optional)
+     * @param sku Exact SKU match: look up the row a supplier product maps to. (optional)
+     * @param updatedSince Only rows created or changed at or after this time (ISO 8601), oldest change first. Poll with the updatedAt of the last row you saw. (optional)
      * @return ListInventoryResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -10666,8 +11652,8 @@ public class InventoryApi {
         <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
      </table>
      */
-    public ListInventoryResponse listInventory(Integer page, Integer limit, String search, String status, String kind, String platforms, String platformMode) throws ApiException {
-        ApiResponse<ListInventoryResponse> localVarResp = listInventoryWithHttpInfo(page, limit, search, status, kind, platforms, platformMode);
+    public ListInventoryResponse listInventory(Integer page, Integer limit, String search, String status, String kind, String platforms, String platformMode, String sku, OffsetDateTime updatedSince) throws ApiException {
+        ApiResponse<ListInventoryResponse> localVarResp = listInventoryWithHttpInfo(page, limit, search, status, kind, platforms, platformMode, sku, updatedSince);
         return localVarResp.getData();
     }
 
@@ -10681,6 +11667,8 @@ public class InventoryApi {
      * @param kind Physical goods or Web3 assets (NFTs). Omit for both. (optional)
      * @param platforms Comma-separated marketplaces, e.g. \&quot;ebay,vinted\&quot;. Items live (an active listing) on any of them. (optional)
      * @param platformMode \&quot;not_listed\&quot; inverts &#x60;platforms&#x60;: items live on none of them. Default \&quot;listed\&quot;. (optional)
+     * @param sku Exact SKU match: look up the row a supplier product maps to. (optional)
+     * @param updatedSince Only rows created or changed at or after this time (ISO 8601), oldest change first. Poll with the updatedAt of the last row you saw. (optional)
      * @return ApiResponse&lt;ListInventoryResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -10695,8 +11683,8 @@ public class InventoryApi {
         <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<ListInventoryResponse> listInventoryWithHttpInfo(Integer page, Integer limit, String search, String status, String kind, String platforms, String platformMode) throws ApiException {
-        okhttp3.Call localVarCall = listInventoryValidateBeforeCall(page, limit, search, status, kind, platforms, platformMode, null);
+    public ApiResponse<ListInventoryResponse> listInventoryWithHttpInfo(Integer page, Integer limit, String search, String status, String kind, String platforms, String platformMode, String sku, OffsetDateTime updatedSince) throws ApiException {
+        okhttp3.Call localVarCall = listInventoryValidateBeforeCall(page, limit, search, status, kind, platforms, platformMode, sku, updatedSince, null);
         Type localVarReturnType = new TypeToken<ListInventoryResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -10711,6 +11699,8 @@ public class InventoryApi {
      * @param kind Physical goods or Web3 assets (NFTs). Omit for both. (optional)
      * @param platforms Comma-separated marketplaces, e.g. \&quot;ebay,vinted\&quot;. Items live (an active listing) on any of them. (optional)
      * @param platformMode \&quot;not_listed\&quot; inverts &#x60;platforms&#x60;: items live on none of them. Default \&quot;listed\&quot;. (optional)
+     * @param sku Exact SKU match: look up the row a supplier product maps to. (optional)
+     * @param updatedSince Only rows created or changed at or after this time (ISO 8601), oldest change first. Poll with the updatedAt of the last row you saw. (optional)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -10726,9 +11716,9 @@ public class InventoryApi {
         <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call listInventoryAsync(Integer page, Integer limit, String search, String status, String kind, String platforms, String platformMode, final ApiCallback<ListInventoryResponse> _callback) throws ApiException {
+    public okhttp3.Call listInventoryAsync(Integer page, Integer limit, String search, String status, String kind, String platforms, String platformMode, String sku, OffsetDateTime updatedSince, final ApiCallback<ListInventoryResponse> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = listInventoryValidateBeforeCall(page, limit, search, status, kind, platforms, platformMode, _callback);
+        okhttp3.Call localVarCall = listInventoryValidateBeforeCall(page, limit, search, status, kind, platforms, platformMode, sku, updatedSince, _callback);
         Type localVarReturnType = new TypeToken<ListInventoryResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;

@@ -31,15 +31,15 @@ import org.openapitools.jackson.nullable.JsonNullable;
 /**
  * GetBuyerCheckoutUsdcResponseData
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-11T23:47:29.843Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-27T19:58:46.962Z[Etc/UTC]")
 public class GetBuyerCheckoutUsdcResponseData {
-  public static final String SERIALIZED_NAME_REASON = "reason";
-  @SerializedName(SERIALIZED_NAME_REASON)
-  private String reason;
-
   public static final String SERIALIZED_NAME_AVAILABLE = "available";
   @SerializedName(SERIALIZED_NAME_AVAILABLE)
   private Boolean available;
+
+  public static final String SERIALIZED_NAME_REASON = "reason";
+  @SerializedName(SERIALIZED_NAME_REASON)
+  private String reason;
 
   public static final String SERIALIZED_NAME_MAX_CENTS = "maxCents";
   @SerializedName(SERIALIZED_NAME_MAX_CENTS)
@@ -51,29 +51,6 @@ public class GetBuyerCheckoutUsdcResponseData {
 
   public GetBuyerCheckoutUsdcResponseData() { 
   }
-
-  public GetBuyerCheckoutUsdcResponseData reason(String reason) {
-    
-    this.reason = reason;
-    return this;
-  }
-
-   /**
-   * Get reason
-   * @return reason
-  **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
-
-  public String getReason() {
-    return reason;
-  }
-
-
-  public void setReason(String reason) {
-    this.reason = reason;
-  }
-
 
   public GetBuyerCheckoutUsdcResponseData available(Boolean available) {
     
@@ -95,6 +72,29 @@ public class GetBuyerCheckoutUsdcResponseData {
 
   public void setAvailable(Boolean available) {
     this.available = available;
+  }
+
+
+  public GetBuyerCheckoutUsdcResponseData reason(String reason) {
+    
+    this.reason = reason;
+    return this;
+  }
+
+   /**
+   * Get reason
+   * @return reason
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public String getReason() {
+    return reason;
+  }
+
+
+  public void setReason(String reason) {
+    this.reason = reason;
   }
 
 
@@ -158,8 +158,8 @@ public class GetBuyerCheckoutUsdcResponseData {
       return false;
     }
     GetBuyerCheckoutUsdcResponseData getBuyerCheckoutUsdcResponseData = (GetBuyerCheckoutUsdcResponseData) o;
-    return Objects.equals(this.reason, getBuyerCheckoutUsdcResponseData.reason) &&
-        Objects.equals(this.available, getBuyerCheckoutUsdcResponseData.available) &&
+    return Objects.equals(this.available, getBuyerCheckoutUsdcResponseData.available) &&
+        Objects.equals(this.reason, getBuyerCheckoutUsdcResponseData.reason) &&
         Objects.equals(this.maxCents, getBuyerCheckoutUsdcResponseData.maxCents) &&
         Objects.equals(this.networks, getBuyerCheckoutUsdcResponseData.networks);
   }
@@ -170,7 +170,7 @@ public class GetBuyerCheckoutUsdcResponseData {
 
   @Override
   public int hashCode() {
-    return Objects.hash(reason, available, maxCents, networks);
+    return Objects.hash(available, reason, maxCents, networks);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -184,8 +184,8 @@ public class GetBuyerCheckoutUsdcResponseData {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class GetBuyerCheckoutUsdcResponseData {\n");
-    sb.append("    reason: ").append(toIndentedString(reason)).append("\n");
     sb.append("    available: ").append(toIndentedString(available)).append("\n");
+    sb.append("    reason: ").append(toIndentedString(reason)).append("\n");
     sb.append("    maxCents: ").append(toIndentedString(maxCents)).append("\n");
     sb.append("    networks: ").append(toIndentedString(networks)).append("\n");
     sb.append("}");

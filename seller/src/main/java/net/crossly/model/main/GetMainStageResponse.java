@@ -26,6 +26,7 @@ import java.io.IOException;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
+import net.crossly.model.main.GetMainStageResponseHouse;
 import net.crossly.model.main.GetMainStageResponseLive;
 import net.crossly.model.main.GetMainStageResponseStream;
 import net.crossly.model.main.GetMainStageResponseUpcoming;
@@ -34,7 +35,7 @@ import org.openapitools.jackson.nullable.JsonNullable;
 /**
  * GetMainStageResponse
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-11T23:44:48.922Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-27T19:42:43.186Z[Etc/UTC]")
 public class GetMainStageResponse {
   public static final String SERIALIZED_NAME_SLUG = "slug";
   @SerializedName(SERIALIZED_NAME_SLUG)
@@ -63,6 +64,10 @@ public class GetMainStageResponse {
   public static final String SERIALIZED_NAME_STREAM = "stream";
   @SerializedName(SERIALIZED_NAME_STREAM)
   private GetMainStageResponseStream stream;
+
+  public static final String SERIALIZED_NAME_HOUSE = "house";
+  @SerializedName(SERIALIZED_NAME_HOUSE)
+  private GetMainStageResponseHouse house;
 
   public GetMainStageResponse() { 
   }
@@ -233,6 +238,29 @@ public class GetMainStageResponse {
   }
 
 
+  public GetMainStageResponse house(GetMainStageResponseHouse house) {
+    
+    this.house = house;
+    return this;
+  }
+
+   /**
+   * Get house
+   * @return house
+  **/
+  @javax.annotation.Nonnull
+  @ApiModelProperty(required = true, value = "")
+
+  public GetMainStageResponseHouse getHouse() {
+    return house;
+  }
+
+
+  public void setHouse(GetMainStageResponseHouse house) {
+    this.house = house;
+  }
+
+
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -248,7 +276,8 @@ public class GetMainStageResponse {
         Objects.equals(this.here, getMainStageResponse.here) &&
         Objects.equals(this.live, getMainStageResponse.live) &&
         Objects.equals(this.upcoming, getMainStageResponse.upcoming) &&
-        Objects.equals(this.stream, getMainStageResponse.stream);
+        Objects.equals(this.stream, getMainStageResponse.stream) &&
+        Objects.equals(this.house, getMainStageResponse.house);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -257,7 +286,7 @@ public class GetMainStageResponse {
 
   @Override
   public int hashCode() {
-    return Objects.hash(slug, name, capacity, here, live, upcoming, stream);
+    return Objects.hash(slug, name, capacity, here, live, upcoming, stream, house);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -278,6 +307,7 @@ public class GetMainStageResponse {
     sb.append("    live: ").append(toIndentedString(live)).append("\n");
     sb.append("    upcoming: ").append(toIndentedString(upcoming)).append("\n");
     sb.append("    stream: ").append(toIndentedString(stream)).append("\n");
+    sb.append("    house: ").append(toIndentedString(house)).append("\n");
     sb.append("}");
     return sb.toString();
   }

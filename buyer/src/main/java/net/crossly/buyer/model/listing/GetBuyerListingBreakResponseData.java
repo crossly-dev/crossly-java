@@ -29,19 +29,23 @@ import org.openapitools.jackson.nullable.JsonNullable;
 /**
  * GetBuyerListingBreakResponseData
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-11T23:47:29.843Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-27T19:58:46.962Z[Etc/UTC]")
 public class GetBuyerListingBreakResponseData {
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
   private String id;
 
-  public static final String SERIALIZED_NAME_STATUS = "status";
-  @SerializedName(SERIALIZED_NAME_STATUS)
-  private String status;
-
   public static final String SERIALIZED_NAME_TITLE = "title";
   @SerializedName(SERIALIZED_NAME_TITLE)
   private String title;
+
+  public static final String SERIALIZED_NAME_FORMAT = "format";
+  @SerializedName(SERIALIZED_NAME_FORMAT)
+  private String format;
+
+  public static final String SERIALIZED_NAME_STATUS = "status";
+  @SerializedName(SERIALIZED_NAME_STATUS)
+  private String status;
 
   public static final String SERIALIZED_NAME_SLUG = "slug";
   @SerializedName(SERIALIZED_NAME_SLUG)
@@ -51,21 +55,17 @@ public class GetBuyerListingBreakResponseData {
   @SerializedName(SERIALIZED_NAME_PRICE_CENTS)
   private BigDecimal priceCents;
 
-  public static final String SERIALIZED_NAME_FORMAT = "format";
-  @SerializedName(SERIALIZED_NAME_FORMAT)
-  private String format;
-
-  public static final String SERIALIZED_NAME_SEED = "seed";
-  @SerializedName(SERIALIZED_NAME_SEED)
-  private String seed;
+  public static final String SERIALIZED_NAME_SPOTS_LEFT = "spotsLeft";
+  @SerializedName(SERIALIZED_NAME_SPOTS_LEFT)
+  private BigDecimal spotsLeft;
 
   public static final String SERIALIZED_NAME_SEED_COMMIT = "seedCommit";
   @SerializedName(SERIALIZED_NAME_SEED_COMMIT)
   private String seedCommit;
 
-  public static final String SERIALIZED_NAME_SPOTS_LEFT = "spotsLeft";
-  @SerializedName(SERIALIZED_NAME_SPOTS_LEFT)
-  private BigDecimal spotsLeft;
+  public static final String SERIALIZED_NAME_SEED = "seed";
+  @SerializedName(SERIALIZED_NAME_SEED)
+  private String seed;
 
   public GetBuyerListingBreakResponseData() { 
   }
@@ -93,29 +93,6 @@ public class GetBuyerListingBreakResponseData {
   }
 
 
-  public GetBuyerListingBreakResponseData status(String status) {
-    
-    this.status = status;
-    return this;
-  }
-
-   /**
-   * Get status
-   * @return status
-  **/
-  @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "")
-
-  public String getStatus() {
-    return status;
-  }
-
-
-  public void setStatus(String status) {
-    this.status = status;
-  }
-
-
   public GetBuyerListingBreakResponseData title(String title) {
     
     this.title = title;
@@ -136,6 +113,52 @@ public class GetBuyerListingBreakResponseData {
 
   public void setTitle(String title) {
     this.title = title;
+  }
+
+
+  public GetBuyerListingBreakResponseData format(String format) {
+    
+    this.format = format;
+    return this;
+  }
+
+   /**
+   * Get format
+   * @return format
+  **/
+  @javax.annotation.Nonnull
+  @ApiModelProperty(required = true, value = "")
+
+  public String getFormat() {
+    return format;
+  }
+
+
+  public void setFormat(String format) {
+    this.format = format;
+  }
+
+
+  public GetBuyerListingBreakResponseData status(String status) {
+    
+    this.status = status;
+    return this;
+  }
+
+   /**
+   * Get status
+   * @return status
+  **/
+  @javax.annotation.Nonnull
+  @ApiModelProperty(required = true, value = "")
+
+  public String getStatus() {
+    return status;
+  }
+
+
+  public void setStatus(String status) {
+    this.status = status;
   }
 
 
@@ -185,49 +208,26 @@ public class GetBuyerListingBreakResponseData {
   }
 
 
-  public GetBuyerListingBreakResponseData format(String format) {
+  public GetBuyerListingBreakResponseData spotsLeft(BigDecimal spotsLeft) {
     
-    this.format = format;
+    this.spotsLeft = spotsLeft;
     return this;
   }
 
    /**
-   * Get format
-   * @return format
+   * Get spotsLeft
+   * @return spotsLeft
   **/
   @javax.annotation.Nonnull
   @ApiModelProperty(required = true, value = "")
 
-  public String getFormat() {
-    return format;
+  public BigDecimal getSpotsLeft() {
+    return spotsLeft;
   }
 
 
-  public void setFormat(String format) {
-    this.format = format;
-  }
-
-
-  public GetBuyerListingBreakResponseData seed(String seed) {
-    
-    this.seed = seed;
-    return this;
-  }
-
-   /**
-   * Get seed
-   * @return seed
-  **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
-
-  public String getSeed() {
-    return seed;
-  }
-
-
-  public void setSeed(String seed) {
-    this.seed = seed;
+  public void setSpotsLeft(BigDecimal spotsLeft) {
+    this.spotsLeft = spotsLeft;
   }
 
 
@@ -254,26 +254,26 @@ public class GetBuyerListingBreakResponseData {
   }
 
 
-  public GetBuyerListingBreakResponseData spotsLeft(BigDecimal spotsLeft) {
+  public GetBuyerListingBreakResponseData seed(String seed) {
     
-    this.spotsLeft = spotsLeft;
+    this.seed = seed;
     return this;
   }
 
    /**
-   * Get spotsLeft
-   * @return spotsLeft
+   * Get seed
+   * @return seed
   **/
-  @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "")
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
 
-  public BigDecimal getSpotsLeft() {
-    return spotsLeft;
+  public String getSeed() {
+    return seed;
   }
 
 
-  public void setSpotsLeft(BigDecimal spotsLeft) {
-    this.spotsLeft = spotsLeft;
+  public void setSeed(String seed) {
+    this.seed = seed;
   }
 
 
@@ -287,14 +287,14 @@ public class GetBuyerListingBreakResponseData {
     }
     GetBuyerListingBreakResponseData getBuyerListingBreakResponseData = (GetBuyerListingBreakResponseData) o;
     return Objects.equals(this.id, getBuyerListingBreakResponseData.id) &&
-        Objects.equals(this.status, getBuyerListingBreakResponseData.status) &&
         Objects.equals(this.title, getBuyerListingBreakResponseData.title) &&
+        Objects.equals(this.format, getBuyerListingBreakResponseData.format) &&
+        Objects.equals(this.status, getBuyerListingBreakResponseData.status) &&
         Objects.equals(this.slug, getBuyerListingBreakResponseData.slug) &&
         Objects.equals(this.priceCents, getBuyerListingBreakResponseData.priceCents) &&
-        Objects.equals(this.format, getBuyerListingBreakResponseData.format) &&
-        Objects.equals(this.seed, getBuyerListingBreakResponseData.seed) &&
+        Objects.equals(this.spotsLeft, getBuyerListingBreakResponseData.spotsLeft) &&
         Objects.equals(this.seedCommit, getBuyerListingBreakResponseData.seedCommit) &&
-        Objects.equals(this.spotsLeft, getBuyerListingBreakResponseData.spotsLeft);
+        Objects.equals(this.seed, getBuyerListingBreakResponseData.seed);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -303,7 +303,7 @@ public class GetBuyerListingBreakResponseData {
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, status, title, slug, priceCents, format, seed, seedCommit, spotsLeft);
+    return Objects.hash(id, title, format, status, slug, priceCents, spotsLeft, seedCommit, seed);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -318,14 +318,14 @@ public class GetBuyerListingBreakResponseData {
     StringBuilder sb = new StringBuilder();
     sb.append("class GetBuyerListingBreakResponseData {\n");
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
-    sb.append("    status: ").append(toIndentedString(status)).append("\n");
     sb.append("    title: ").append(toIndentedString(title)).append("\n");
+    sb.append("    format: ").append(toIndentedString(format)).append("\n");
+    sb.append("    status: ").append(toIndentedString(status)).append("\n");
     sb.append("    slug: ").append(toIndentedString(slug)).append("\n");
     sb.append("    priceCents: ").append(toIndentedString(priceCents)).append("\n");
-    sb.append("    format: ").append(toIndentedString(format)).append("\n");
-    sb.append("    seed: ").append(toIndentedString(seed)).append("\n");
-    sb.append("    seedCommit: ").append(toIndentedString(seedCommit)).append("\n");
     sb.append("    spotsLeft: ").append(toIndentedString(spotsLeft)).append("\n");
+    sb.append("    seedCommit: ").append(toIndentedString(seedCommit)).append("\n");
+    sb.append("    seed: ").append(toIndentedString(seed)).append("\n");
     sb.append("}");
     return sb.toString();
   }

@@ -28,10 +28,13 @@ import java.io.IOException;
 
 
 import net.crossly.model.policy.CreatePolicyReturnReceivedResponse;
+import net.crossly.model.returns.CreateReturnAcceptResponse;
+import net.crossly.model.returns.CreateReturnDeclineRequest;
 import net.crossly.model.common.Error;
+import net.crossly.model.returns.GetReturnResponse;
 import net.crossly.model.policy.ListPolicyReturnsResponse;
-import net.crossly.model.common.ListReturnsItem;
-import net.crossly.model.common.ListReturnsResponse;
+import net.crossly.model.returns.ListReturnsItem;
+import net.crossly.model.returns.ListReturnsResponse;
 import java.util.UUID;
 
 import java.lang.reflect.Type;
@@ -304,7 +307,7 @@ public class ReturnsApi {
     /**
      * Open a return record on an order (rejects if another open return exists).
      * 
-     * @return ListReturnsItem
+     * @return GetReturnResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -318,15 +321,15 @@ public class ReturnsApi {
         <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
      </table>
      */
-    public ListReturnsItem createReturn() throws ApiException {
-        ApiResponse<ListReturnsItem> localVarResp = createReturnWithHttpInfo();
+    public GetReturnResponse createReturn() throws ApiException {
+        ApiResponse<GetReturnResponse> localVarResp = createReturnWithHttpInfo();
         return localVarResp.getData();
     }
 
     /**
      * Open a return record on an order (rejects if another open return exists).
      * 
-     * @return ApiResponse&lt;ListReturnsItem&gt;
+     * @return ApiResponse&lt;GetReturnResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -340,9 +343,9 @@ public class ReturnsApi {
         <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<ListReturnsItem> createReturnWithHttpInfo() throws ApiException {
+    public ApiResponse<GetReturnResponse> createReturnWithHttpInfo() throws ApiException {
         okhttp3.Call localVarCall = createReturnValidateBeforeCall(null);
-        Type localVarReturnType = new TypeToken<ListReturnsItem>(){}.getType();
+        Type localVarReturnType = new TypeToken<GetReturnResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -364,9 +367,322 @@ public class ReturnsApi {
         <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call createReturnAsync(final ApiCallback<ListReturnsItem> _callback) throws ApiException {
+    public okhttp3.Call createReturnAsync(final ApiCallback<GetReturnResponse> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = createReturnValidateBeforeCall(_callback);
+        Type localVarReturnType = new TypeToken<GetReturnResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for createReturnAccept
+     * @param id  (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call createReturnAcceptCall(UUID id, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/v1/returns/{id}/accept"
+            .replaceAll("\\{" + "id" + "\\}", localVarApiClient.escapeString(id.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "PersonalAccessToken" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call createReturnAcceptValidateBeforeCall(UUID id, final ApiCallback _callback) throws ApiException {
+        
+        // verify the required parameter 'id' is set
+        if (id == null) {
+            throw new ApiException("Missing the required parameter 'id' when calling createReturnAccept(Async)");
+        }
+        
+
+        okhttp3.Call localVarCall = createReturnAcceptCall(id, _callback);
+        return localVarCall;
+
+    }
+
+    /**
+     * Accept a Crossly-marketplace return request: a prepaid return label to your return address (the buyer has 14 days to ship), a return record linked to it, and optionally a refund now (refund: { amount? } in dollars; needs orders:refund). Without one, the rest is refunded when the return is delivered. Safe to repeat. Crossposted orders: not_supported_on_platform.
+     * 
+     * @param id  (required)
+     * @return CreateReturnAcceptResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public CreateReturnAcceptResponse createReturnAccept(UUID id) throws ApiException {
+        ApiResponse<CreateReturnAcceptResponse> localVarResp = createReturnAcceptWithHttpInfo(id);
+        return localVarResp.getData();
+    }
+
+    /**
+     * Accept a Crossly-marketplace return request: a prepaid return label to your return address (the buyer has 14 days to ship), a return record linked to it, and optionally a refund now (refund: { amount? } in dollars; needs orders:refund). Without one, the rest is refunded when the return is delivered. Safe to repeat. Crossposted orders: not_supported_on_platform.
+     * 
+     * @param id  (required)
+     * @return ApiResponse&lt;CreateReturnAcceptResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<CreateReturnAcceptResponse> createReturnAcceptWithHttpInfo(UUID id) throws ApiException {
+        okhttp3.Call localVarCall = createReturnAcceptValidateBeforeCall(id, null);
+        Type localVarReturnType = new TypeToken<CreateReturnAcceptResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Accept a Crossly-marketplace return request: a prepaid return label to your return address (the buyer has 14 days to ship), a return record linked to it, and optionally a refund now (refund: { amount? } in dollars; needs orders:refund). Without one, the rest is refunded when the return is delivered. Safe to repeat. Crossposted orders: not_supported_on_platform. (asynchronously)
+     * 
+     * @param id  (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call createReturnAcceptAsync(UUID id, final ApiCallback<CreateReturnAcceptResponse> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = createReturnAcceptValidateBeforeCall(id, _callback);
+        Type localVarReturnType = new TypeToken<CreateReturnAcceptResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for createReturnDecline
+     * @param id  (required)
+     * @param createReturnDeclineRequest  (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call createReturnDeclineCall(UUID id, CreateReturnDeclineRequest createReturnDeclineRequest, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = createReturnDeclineRequest;
+
+        // create path and map variables
+        String localVarPath = "/v1/returns/{id}/decline"
+            .replaceAll("\\{" + "id" + "\\}", localVarApiClient.escapeString(id.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "PersonalAccessToken" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call createReturnDeclineValidateBeforeCall(UUID id, CreateReturnDeclineRequest createReturnDeclineRequest, final ApiCallback _callback) throws ApiException {
+        
+        // verify the required parameter 'id' is set
+        if (id == null) {
+            throw new ApiException("Missing the required parameter 'id' when calling createReturnDecline(Async)");
+        }
+        
+        // verify the required parameter 'createReturnDeclineRequest' is set
+        if (createReturnDeclineRequest == null) {
+            throw new ApiException("Missing the required parameter 'createReturnDeclineRequest' when calling createReturnDecline(Async)");
+        }
+        
+
+        okhttp3.Call localVarCall = createReturnDeclineCall(id, createReturnDeclineRequest, _callback);
+        return localVarCall;
+
+    }
+
+    /**
+     * Decline a Crossly-marketplace return request with a reason (required, 8-2000 chars), posted to the buyer as your response. It does not close the request: the buyer can reply or ask Crossly to decide. Not after the label is issued.
+     * 
+     * @param id  (required)
+     * @param createReturnDeclineRequest  (required)
+     * @return ListReturnsItem
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public ListReturnsItem createReturnDecline(UUID id, CreateReturnDeclineRequest createReturnDeclineRequest) throws ApiException {
+        ApiResponse<ListReturnsItem> localVarResp = createReturnDeclineWithHttpInfo(id, createReturnDeclineRequest);
+        return localVarResp.getData();
+    }
+
+    /**
+     * Decline a Crossly-marketplace return request with a reason (required, 8-2000 chars), posted to the buyer as your response. It does not close the request: the buyer can reply or ask Crossly to decide. Not after the label is issued.
+     * 
+     * @param id  (required)
+     * @param createReturnDeclineRequest  (required)
+     * @return ApiResponse&lt;ListReturnsItem&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<ListReturnsItem> createReturnDeclineWithHttpInfo(UUID id, CreateReturnDeclineRequest createReturnDeclineRequest) throws ApiException {
+        okhttp3.Call localVarCall = createReturnDeclineValidateBeforeCall(id, createReturnDeclineRequest, null);
+        Type localVarReturnType = new TypeToken<ListReturnsItem>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Decline a Crossly-marketplace return request with a reason (required, 8-2000 chars), posted to the buyer as your response. It does not close the request: the buyer can reply or ask Crossly to decide. Not after the label is issued. (asynchronously)
+     * 
+     * @param id  (required)
+     * @param createReturnDeclineRequest  (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call createReturnDeclineAsync(UUID id, CreateReturnDeclineRequest createReturnDeclineRequest, final ApiCallback<ListReturnsItem> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = createReturnDeclineValidateBeforeCall(id, createReturnDeclineRequest, _callback);
         Type localVarReturnType = new TypeToken<ListReturnsItem>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -454,7 +770,7 @@ public class ReturnsApi {
      * Get one return record.
      * 
      * @param id  (required)
-     * @return ListReturnsItem
+     * @return GetReturnResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -468,8 +784,8 @@ public class ReturnsApi {
         <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
      </table>
      */
-    public ListReturnsItem getReturn(UUID id) throws ApiException {
-        ApiResponse<ListReturnsItem> localVarResp = getReturnWithHttpInfo(id);
+    public GetReturnResponse getReturn(UUID id) throws ApiException {
+        ApiResponse<GetReturnResponse> localVarResp = getReturnWithHttpInfo(id);
         return localVarResp.getData();
     }
 
@@ -477,7 +793,7 @@ public class ReturnsApi {
      * Get one return record.
      * 
      * @param id  (required)
-     * @return ApiResponse&lt;ListReturnsItem&gt;
+     * @return ApiResponse&lt;GetReturnResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -491,9 +807,9 @@ public class ReturnsApi {
         <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<ListReturnsItem> getReturnWithHttpInfo(UUID id) throws ApiException {
+    public ApiResponse<GetReturnResponse> getReturnWithHttpInfo(UUID id) throws ApiException {
         okhttp3.Call localVarCall = getReturnValidateBeforeCall(id, null);
-        Type localVarReturnType = new TypeToken<ListReturnsItem>(){}.getType();
+        Type localVarReturnType = new TypeToken<GetReturnResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -516,10 +832,10 @@ public class ReturnsApi {
         <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getReturnAsync(UUID id, final ApiCallback<ListReturnsItem> _callback) throws ApiException {
+    public okhttp3.Call getReturnAsync(UUID id, final ApiCallback<GetReturnResponse> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getReturnValidateBeforeCall(id, _callback);
-        Type localVarReturnType = new TypeToken<ListReturnsItem>(){}.getType();
+        Type localVarReturnType = new TypeToken<GetReturnResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -738,7 +1054,7 @@ public class ReturnsApi {
     }
 
     /**
-     * List returns (physical-return workflow). status&#x3D;open|closed|&lt;exact&gt;.
+     * List returns. Default: your return records (the physical-return workflow), status&#x3D;open|closed|&lt;exact&gt;. source&#x3D;request: the OPEN return requests buyers made on the Crossly marketplace, newest first; accept or decline each with POST /v1/returns/{id}/accept | decline.
      * 
      * @return ListReturnsResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -760,7 +1076,7 @@ public class ReturnsApi {
     }
 
     /**
-     * List returns (physical-return workflow). status&#x3D;open|closed|&lt;exact&gt;.
+     * List returns. Default: your return records (the physical-return workflow), status&#x3D;open|closed|&lt;exact&gt;. source&#x3D;request: the OPEN return requests buyers made on the Crossly marketplace, newest first; accept or decline each with POST /v1/returns/{id}/accept | decline.
      * 
      * @return ApiResponse&lt;ListReturnsResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -783,7 +1099,7 @@ public class ReturnsApi {
     }
 
     /**
-     * List returns (physical-return workflow). status&#x3D;open|closed|&lt;exact&gt;. (asynchronously)
+     * List returns. Default: your return records (the physical-return workflow), status&#x3D;open|closed|&lt;exact&gt;. source&#x3D;request: the OPEN return requests buyers made on the Crossly marketplace, newest first; accept or decline each with POST /v1/returns/{id}/accept | decline. (asynchronously)
      * 
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -890,7 +1206,7 @@ public class ReturnsApi {
      * Transition return status (received/inspected/restocked) and bump inventory on restock.
      * 
      * @param id  (required)
-     * @return ListReturnsItem
+     * @return GetReturnResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -904,8 +1220,8 @@ public class ReturnsApi {
         <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
      </table>
      */
-    public ListReturnsItem updateReturn(UUID id) throws ApiException {
-        ApiResponse<ListReturnsItem> localVarResp = updateReturnWithHttpInfo(id);
+    public GetReturnResponse updateReturn(UUID id) throws ApiException {
+        ApiResponse<GetReturnResponse> localVarResp = updateReturnWithHttpInfo(id);
         return localVarResp.getData();
     }
 
@@ -913,7 +1229,7 @@ public class ReturnsApi {
      * Transition return status (received/inspected/restocked) and bump inventory on restock.
      * 
      * @param id  (required)
-     * @return ApiResponse&lt;ListReturnsItem&gt;
+     * @return ApiResponse&lt;GetReturnResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -927,9 +1243,9 @@ public class ReturnsApi {
         <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<ListReturnsItem> updateReturnWithHttpInfo(UUID id) throws ApiException {
+    public ApiResponse<GetReturnResponse> updateReturnWithHttpInfo(UUID id) throws ApiException {
         okhttp3.Call localVarCall = updateReturnValidateBeforeCall(id, null);
-        Type localVarReturnType = new TypeToken<ListReturnsItem>(){}.getType();
+        Type localVarReturnType = new TypeToken<GetReturnResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -952,10 +1268,10 @@ public class ReturnsApi {
         <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call updateReturnAsync(UUID id, final ApiCallback<ListReturnsItem> _callback) throws ApiException {
+    public okhttp3.Call updateReturnAsync(UUID id, final ApiCallback<GetReturnResponse> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = updateReturnValidateBeforeCall(id, _callback);
-        Type localVarReturnType = new TypeToken<ListReturnsItem>(){}.getType();
+        Type localVarReturnType = new TypeToken<GetReturnResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }

@@ -30,7 +30,7 @@ import org.threeten.bp.OffsetDateTime;
 /**
  * CreateTradeBlockEvolutionRecipeResponseRecipe
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-11T23:44:48.922Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-27T19:42:43.186Z[Etc/UTC]")
 public class CreateTradeBlockEvolutionRecipeResponseRecipe {
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
@@ -52,13 +52,17 @@ public class CreateTradeBlockEvolutionRecipeResponseRecipe {
   @SerializedName(SERIALIZED_NAME_UPDATED_AT)
   private OffsetDateTime updatedAt;
 
-  public static final String SERIALIZED_NAME_NOTE = "note";
-  @SerializedName(SERIALIZED_NAME_NOTE)
-  private String note;
+  public static final String SERIALIZED_NAME_VERSION = "version";
+  @SerializedName(SERIALIZED_NAME_VERSION)
+  private BigDecimal version;
 
   public static final String SERIALIZED_NAME_REVIEWED_AT = "reviewedAt";
   @SerializedName(SERIALIZED_NAME_REVIEWED_AT)
   private OffsetDateTime reviewedAt;
+
+  public static final String SERIALIZED_NAME_NOTE = "note";
+  @SerializedName(SERIALIZED_NAME_NOTE)
+  private String note;
 
   public static final String SERIALIZED_NAME_MERCHANT_ID = "merchantId";
   @SerializedName(SERIALIZED_NAME_MERCHANT_ID)
@@ -67,6 +71,10 @@ public class CreateTradeBlockEvolutionRecipeResponseRecipe {
   public static final String SERIALIZED_NAME_CREATOR_SUBJECT_ID = "creatorSubjectId";
   @SerializedName(SERIALIZED_NAME_CREATOR_SUBJECT_ID)
   private String creatorSubjectId;
+
+  public static final String SERIALIZED_NAME_OUTPUT_COSMETIC_ID = "outputCosmeticId";
+  @SerializedName(SERIALIZED_NAME_OUTPUT_COSMETIC_ID)
+  private String outputCosmeticId;
 
   public static final String SERIALIZED_NAME_INPUT_A_VARIANT_ID = "inputAVariantId";
   @SerializedName(SERIALIZED_NAME_INPUT_A_VARIANT_ID)
@@ -91,14 +99,6 @@ public class CreateTradeBlockEvolutionRecipeResponseRecipe {
   public static final String SERIALIZED_NAME_INPUT_B_GRADE_KEY = "inputBGradeKey";
   @SerializedName(SERIALIZED_NAME_INPUT_B_GRADE_KEY)
   private String inputBGradeKey;
-
-  public static final String SERIALIZED_NAME_OUTPUT_COSMETIC_ID = "outputCosmeticId";
-  @SerializedName(SERIALIZED_NAME_OUTPUT_COSMETIC_ID)
-  private String outputCosmeticId;
-
-  public static final String SERIALIZED_NAME_VERSION = "version";
-  @SerializedName(SERIALIZED_NAME_VERSION)
-  private BigDecimal version;
 
   public static final String SERIALIZED_NAME_FROZEN_AT = "frozenAt";
   @SerializedName(SERIALIZED_NAME_FROZEN_AT)
@@ -222,26 +222,26 @@ public class CreateTradeBlockEvolutionRecipeResponseRecipe {
   }
 
 
-  public CreateTradeBlockEvolutionRecipeResponseRecipe note(String note) {
+  public CreateTradeBlockEvolutionRecipeResponseRecipe version(BigDecimal version) {
     
-    this.note = note;
+    this.version = version;
     return this;
   }
 
    /**
-   * Get note
-   * @return note
+   * Get version
+   * @return version
   **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
+  @javax.annotation.Nonnull
+  @ApiModelProperty(required = true, value = "")
 
-  public String getNote() {
-    return note;
+  public BigDecimal getVersion() {
+    return version;
   }
 
 
-  public void setNote(String note) {
-    this.note = note;
+  public void setVersion(BigDecimal version) {
+    this.version = version;
   }
 
 
@@ -265,6 +265,29 @@ public class CreateTradeBlockEvolutionRecipeResponseRecipe {
 
   public void setReviewedAt(OffsetDateTime reviewedAt) {
     this.reviewedAt = reviewedAt;
+  }
+
+
+  public CreateTradeBlockEvolutionRecipeResponseRecipe note(String note) {
+    
+    this.note = note;
+    return this;
+  }
+
+   /**
+   * Get note
+   * @return note
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public String getNote() {
+    return note;
+  }
+
+
+  public void setNote(String note) {
+    this.note = note;
   }
 
 
@@ -311,6 +334,29 @@ public class CreateTradeBlockEvolutionRecipeResponseRecipe {
 
   public void setCreatorSubjectId(String creatorSubjectId) {
     this.creatorSubjectId = creatorSubjectId;
+  }
+
+
+  public CreateTradeBlockEvolutionRecipeResponseRecipe outputCosmeticId(String outputCosmeticId) {
+    
+    this.outputCosmeticId = outputCosmeticId;
+    return this;
+  }
+
+   /**
+   * Get outputCosmeticId
+   * @return outputCosmeticId
+  **/
+  @javax.annotation.Nonnull
+  @ApiModelProperty(required = true, value = "")
+
+  public String getOutputCosmeticId() {
+    return outputCosmeticId;
+  }
+
+
+  public void setOutputCosmeticId(String outputCosmeticId) {
+    this.outputCosmeticId = outputCosmeticId;
   }
 
 
@@ -452,52 +498,6 @@ public class CreateTradeBlockEvolutionRecipeResponseRecipe {
   }
 
 
-  public CreateTradeBlockEvolutionRecipeResponseRecipe outputCosmeticId(String outputCosmeticId) {
-    
-    this.outputCosmeticId = outputCosmeticId;
-    return this;
-  }
-
-   /**
-   * Get outputCosmeticId
-   * @return outputCosmeticId
-  **/
-  @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "")
-
-  public String getOutputCosmeticId() {
-    return outputCosmeticId;
-  }
-
-
-  public void setOutputCosmeticId(String outputCosmeticId) {
-    this.outputCosmeticId = outputCosmeticId;
-  }
-
-
-  public CreateTradeBlockEvolutionRecipeResponseRecipe version(BigDecimal version) {
-    
-    this.version = version;
-    return this;
-  }
-
-   /**
-   * Get version
-   * @return version
-  **/
-  @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "")
-
-  public BigDecimal getVersion() {
-    return version;
-  }
-
-
-  public void setVersion(BigDecimal version) {
-    this.version = version;
-  }
-
-
   public CreateTradeBlockEvolutionRecipeResponseRecipe frozenAt(OffsetDateTime frozenAt) {
     
     this.frozenAt = frozenAt;
@@ -535,18 +535,18 @@ public class CreateTradeBlockEvolutionRecipeResponseRecipe {
         Objects.equals(this.active, createTradeBlockEvolutionRecipeResponseRecipe.active) &&
         Objects.equals(this.createdAt, createTradeBlockEvolutionRecipeResponseRecipe.createdAt) &&
         Objects.equals(this.updatedAt, createTradeBlockEvolutionRecipeResponseRecipe.updatedAt) &&
-        Objects.equals(this.note, createTradeBlockEvolutionRecipeResponseRecipe.note) &&
+        Objects.equals(this.version, createTradeBlockEvolutionRecipeResponseRecipe.version) &&
         Objects.equals(this.reviewedAt, createTradeBlockEvolutionRecipeResponseRecipe.reviewedAt) &&
+        Objects.equals(this.note, createTradeBlockEvolutionRecipeResponseRecipe.note) &&
         Objects.equals(this.merchantId, createTradeBlockEvolutionRecipeResponseRecipe.merchantId) &&
         Objects.equals(this.creatorSubjectId, createTradeBlockEvolutionRecipeResponseRecipe.creatorSubjectId) &&
+        Objects.equals(this.outputCosmeticId, createTradeBlockEvolutionRecipeResponseRecipe.outputCosmeticId) &&
         Objects.equals(this.inputAVariantId, createTradeBlockEvolutionRecipeResponseRecipe.inputAVariantId) &&
         Objects.equals(this.inputACondition, createTradeBlockEvolutionRecipeResponseRecipe.inputACondition) &&
         Objects.equals(this.inputAGradeKey, createTradeBlockEvolutionRecipeResponseRecipe.inputAGradeKey) &&
         Objects.equals(this.inputBVariantId, createTradeBlockEvolutionRecipeResponseRecipe.inputBVariantId) &&
         Objects.equals(this.inputBCondition, createTradeBlockEvolutionRecipeResponseRecipe.inputBCondition) &&
         Objects.equals(this.inputBGradeKey, createTradeBlockEvolutionRecipeResponseRecipe.inputBGradeKey) &&
-        Objects.equals(this.outputCosmeticId, createTradeBlockEvolutionRecipeResponseRecipe.outputCosmeticId) &&
-        Objects.equals(this.version, createTradeBlockEvolutionRecipeResponseRecipe.version) &&
         Objects.equals(this.frozenAt, createTradeBlockEvolutionRecipeResponseRecipe.frozenAt);
   }
 
@@ -556,7 +556,7 @@ public class CreateTradeBlockEvolutionRecipeResponseRecipe {
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, name, active, createdAt, updatedAt, note, reviewedAt, merchantId, creatorSubjectId, inputAVariantId, inputACondition, inputAGradeKey, inputBVariantId, inputBCondition, inputBGradeKey, outputCosmeticId, version, frozenAt);
+    return Objects.hash(id, name, active, createdAt, updatedAt, version, reviewedAt, note, merchantId, creatorSubjectId, outputCosmeticId, inputAVariantId, inputACondition, inputAGradeKey, inputBVariantId, inputBCondition, inputBGradeKey, frozenAt);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -575,18 +575,18 @@ public class CreateTradeBlockEvolutionRecipeResponseRecipe {
     sb.append("    active: ").append(toIndentedString(active)).append("\n");
     sb.append("    createdAt: ").append(toIndentedString(createdAt)).append("\n");
     sb.append("    updatedAt: ").append(toIndentedString(updatedAt)).append("\n");
-    sb.append("    note: ").append(toIndentedString(note)).append("\n");
+    sb.append("    version: ").append(toIndentedString(version)).append("\n");
     sb.append("    reviewedAt: ").append(toIndentedString(reviewedAt)).append("\n");
+    sb.append("    note: ").append(toIndentedString(note)).append("\n");
     sb.append("    merchantId: ").append(toIndentedString(merchantId)).append("\n");
     sb.append("    creatorSubjectId: ").append(toIndentedString(creatorSubjectId)).append("\n");
+    sb.append("    outputCosmeticId: ").append(toIndentedString(outputCosmeticId)).append("\n");
     sb.append("    inputAVariantId: ").append(toIndentedString(inputAVariantId)).append("\n");
     sb.append("    inputACondition: ").append(toIndentedString(inputACondition)).append("\n");
     sb.append("    inputAGradeKey: ").append(toIndentedString(inputAGradeKey)).append("\n");
     sb.append("    inputBVariantId: ").append(toIndentedString(inputBVariantId)).append("\n");
     sb.append("    inputBCondition: ").append(toIndentedString(inputBCondition)).append("\n");
     sb.append("    inputBGradeKey: ").append(toIndentedString(inputBGradeKey)).append("\n");
-    sb.append("    outputCosmeticId: ").append(toIndentedString(outputCosmeticId)).append("\n");
-    sb.append("    version: ").append(toIndentedString(version)).append("\n");
     sb.append("    frozenAt: ").append(toIndentedString(frozenAt)).append("\n");
     sb.append("}");
     return sb.toString();

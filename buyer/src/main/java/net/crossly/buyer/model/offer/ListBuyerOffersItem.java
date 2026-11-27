@@ -32,27 +32,11 @@ import org.openapitools.jackson.nullable.JsonNullable;
 /**
  * ListBuyerOffersItem
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-11T23:47:29.843Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-27T19:58:46.962Z[Etc/UTC]")
 public class ListBuyerOffersItem {
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
   private String id;
-
-  public static final String SERIALIZED_NAME_CREATED_AT = "createdAt";
-  @SerializedName(SERIALIZED_NAME_CREATED_AT)
-  private String createdAt;
-
-  public static final String SERIALIZED_NAME_STATUS = "status";
-  @SerializedName(SERIALIZED_NAME_STATUS)
-  private String status;
-
-  public static final String SERIALIZED_NAME_EXPIRES_AT = "expiresAt";
-  @SerializedName(SERIALIZED_NAME_EXPIRES_AT)
-  private String expiresAt;
-
-  public static final String SERIALIZED_NAME_IS_BUNDLE = "isBundle";
-  @SerializedName(SERIALIZED_NAME_IS_BUNDLE)
-  private Boolean isBundle;
 
   public static final String SERIALIZED_NAME_PLATFORM_LISTING_ID = "platformListingId";
   @SerializedName(SERIALIZED_NAME_PLATFORM_LISTING_ID)
@@ -66,25 +50,45 @@ public class ListBuyerOffersItem {
   @SerializedName(SERIALIZED_NAME_AMOUNT_CENTS)
   private BigDecimal amountCents;
 
-  public static final String SERIALIZED_NAME_EXPIRED = "expired";
-  @SerializedName(SERIALIZED_NAME_EXPIRED)
-  private Boolean expired;
+  public static final String SERIALIZED_NAME_STATUS = "status";
+  @SerializedName(SERIALIZED_NAME_STATUS)
+  private String status;
+
+  public static final String SERIALIZED_NAME_EXPIRES_AT = "expiresAt";
+  @SerializedName(SERIALIZED_NAME_EXPIRES_AT)
+  private String expiresAt;
+
+  public static final String SERIALIZED_NAME_CREATED_AT = "createdAt";
+  @SerializedName(SERIALIZED_NAME_CREATED_AT)
+  private String createdAt;
 
   public static final String SERIALIZED_NAME_ITEMS = "items";
   @SerializedName(SERIALIZED_NAME_ITEMS)
   private List<ListBuyerOffersItemItems> items = new ArrayList<ListBuyerOffersItemItems>();
 
-  public static final String SERIALIZED_NAME_AWAITING_BUYER = "awaitingBuyer";
-  @SerializedName(SERIALIZED_NAME_AWAITING_BUYER)
-  private Boolean awaitingBuyer;
+  public static final String SERIALIZED_NAME_IS_BUNDLE = "isBundle";
+  @SerializedName(SERIALIZED_NAME_IS_BUNDLE)
+  private Boolean isBundle;
 
   public static final String SERIALIZED_NAME_REDEEMABLE = "redeemable";
   @SerializedName(SERIALIZED_NAME_REDEEMABLE)
   private Boolean redeemable;
 
-  public static final String SERIALIZED_NAME_DECIDED_AT = "decidedAt";
-  @SerializedName(SERIALIZED_NAME_DECIDED_AT)
-  private String decidedAt;
+  public static final String SERIALIZED_NAME_EXPIRED = "expired";
+  @SerializedName(SERIALIZED_NAME_EXPIRED)
+  private Boolean expired;
+
+  public static final String SERIALIZED_NAME_AWAITING_BUYER = "awaitingBuyer";
+  @SerializedName(SERIALIZED_NAME_AWAITING_BUYER)
+  private Boolean awaitingBuyer;
+
+  public static final String SERIALIZED_NAME_PLATFORM_LISTING_IDS = "platformListingIds";
+  @SerializedName(SERIALIZED_NAME_PLATFORM_LISTING_IDS)
+  private List<String> platformListingIds = null;
+
+  public static final String SERIALIZED_NAME_LISTED_TOTAL_CENTS = "listedTotalCents";
+  @SerializedName(SERIALIZED_NAME_LISTED_TOTAL_CENTS)
+  private BigDecimal listedTotalCents;
 
   public static final String SERIALIZED_NAME_MESSAGE = "message";
   @SerializedName(SERIALIZED_NAME_MESSAGE)
@@ -94,21 +98,17 @@ public class ListBuyerOffersItem {
   @SerializedName(SERIALIZED_NAME_PARENT_OFFER_ID)
   private String parentOfferId;
 
-  public static final String SERIALIZED_NAME_PLATFORM_LISTING_IDS = "platformListingIds";
-  @SerializedName(SERIALIZED_NAME_PLATFORM_LISTING_IDS)
-  private List<String> platformListingIds = null;
+  public static final String SERIALIZED_NAME_ORIGIN = "origin";
+  @SerializedName(SERIALIZED_NAME_ORIGIN)
+  private String origin;
+
+  public static final String SERIALIZED_NAME_DECIDED_AT = "decidedAt";
+  @SerializedName(SERIALIZED_NAME_DECIDED_AT)
+  private String decidedAt;
 
   public static final String SERIALIZED_NAME_CONSUMED_AT = "consumedAt";
   @SerializedName(SERIALIZED_NAME_CONSUMED_AT)
   private String consumedAt;
-
-  public static final String SERIALIZED_NAME_LISTED_TOTAL_CENTS = "listedTotalCents";
-  @SerializedName(SERIALIZED_NAME_LISTED_TOTAL_CENTS)
-  private BigDecimal listedTotalCents;
-
-  public static final String SERIALIZED_NAME_ORIGIN = "origin";
-  @SerializedName(SERIALIZED_NAME_ORIGIN)
-  private String origin;
 
   public ListBuyerOffersItem() { 
   }
@@ -133,98 +133,6 @@ public class ListBuyerOffersItem {
 
   public void setId(String id) {
     this.id = id;
-  }
-
-
-  public ListBuyerOffersItem createdAt(String createdAt) {
-    
-    this.createdAt = createdAt;
-    return this;
-  }
-
-   /**
-   * Get createdAt
-   * @return createdAt
-  **/
-  @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "")
-
-  public String getCreatedAt() {
-    return createdAt;
-  }
-
-
-  public void setCreatedAt(String createdAt) {
-    this.createdAt = createdAt;
-  }
-
-
-  public ListBuyerOffersItem status(String status) {
-    
-    this.status = status;
-    return this;
-  }
-
-   /**
-   * Get status
-   * @return status
-  **/
-  @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "")
-
-  public String getStatus() {
-    return status;
-  }
-
-
-  public void setStatus(String status) {
-    this.status = status;
-  }
-
-
-  public ListBuyerOffersItem expiresAt(String expiresAt) {
-    
-    this.expiresAt = expiresAt;
-    return this;
-  }
-
-   /**
-   * Get expiresAt
-   * @return expiresAt
-  **/
-  @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "")
-
-  public String getExpiresAt() {
-    return expiresAt;
-  }
-
-
-  public void setExpiresAt(String expiresAt) {
-    this.expiresAt = expiresAt;
-  }
-
-
-  public ListBuyerOffersItem isBundle(Boolean isBundle) {
-    
-    this.isBundle = isBundle;
-    return this;
-  }
-
-   /**
-   * Get isBundle
-   * @return isBundle
-  **/
-  @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "")
-
-  public Boolean getIsBundle() {
-    return isBundle;
-  }
-
-
-  public void setIsBundle(Boolean isBundle) {
-    this.isBundle = isBundle;
   }
 
 
@@ -297,26 +205,72 @@ public class ListBuyerOffersItem {
   }
 
 
-  public ListBuyerOffersItem expired(Boolean expired) {
+  public ListBuyerOffersItem status(String status) {
     
-    this.expired = expired;
+    this.status = status;
     return this;
   }
 
    /**
-   * Get expired
-   * @return expired
+   * Get status
+   * @return status
   **/
   @javax.annotation.Nonnull
   @ApiModelProperty(required = true, value = "")
 
-  public Boolean getExpired() {
-    return expired;
+  public String getStatus() {
+    return status;
   }
 
 
-  public void setExpired(Boolean expired) {
-    this.expired = expired;
+  public void setStatus(String status) {
+    this.status = status;
+  }
+
+
+  public ListBuyerOffersItem expiresAt(String expiresAt) {
+    
+    this.expiresAt = expiresAt;
+    return this;
+  }
+
+   /**
+   * Get expiresAt
+   * @return expiresAt
+  **/
+  @javax.annotation.Nonnull
+  @ApiModelProperty(required = true, value = "")
+
+  public String getExpiresAt() {
+    return expiresAt;
+  }
+
+
+  public void setExpiresAt(String expiresAt) {
+    this.expiresAt = expiresAt;
+  }
+
+
+  public ListBuyerOffersItem createdAt(String createdAt) {
+    
+    this.createdAt = createdAt;
+    return this;
+  }
+
+   /**
+   * Get createdAt
+   * @return createdAt
+  **/
+  @javax.annotation.Nonnull
+  @ApiModelProperty(required = true, value = "")
+
+  public String getCreatedAt() {
+    return createdAt;
+  }
+
+
+  public void setCreatedAt(String createdAt) {
+    this.createdAt = createdAt;
   }
 
 
@@ -348,26 +302,26 @@ public class ListBuyerOffersItem {
   }
 
 
-  public ListBuyerOffersItem awaitingBuyer(Boolean awaitingBuyer) {
+  public ListBuyerOffersItem isBundle(Boolean isBundle) {
     
-    this.awaitingBuyer = awaitingBuyer;
+    this.isBundle = isBundle;
     return this;
   }
 
    /**
-   * A seller counter waiting on YOU: accept, decline or counter back.
-   * @return awaitingBuyer
+   * Get isBundle
+   * @return isBundle
   **/
   @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "A seller counter waiting on YOU: accept, decline or counter back.")
+  @ApiModelProperty(required = true, value = "")
 
-  public Boolean getAwaitingBuyer() {
-    return awaitingBuyer;
+  public Boolean getIsBundle() {
+    return isBundle;
   }
 
 
-  public void setAwaitingBuyer(Boolean awaitingBuyer) {
-    this.awaitingBuyer = awaitingBuyer;
+  public void setIsBundle(Boolean isBundle) {
+    this.isBundle = isBundle;
   }
 
 
@@ -394,26 +348,103 @@ public class ListBuyerOffersItem {
   }
 
 
-  public ListBuyerOffersItem decidedAt(String decidedAt) {
+  public ListBuyerOffersItem expired(Boolean expired) {
     
-    this.decidedAt = decidedAt;
+    this.expired = expired;
     return this;
   }
 
    /**
-   * Get decidedAt
-   * @return decidedAt
+   * Get expired
+   * @return expired
+  **/
+  @javax.annotation.Nonnull
+  @ApiModelProperty(required = true, value = "")
+
+  public Boolean getExpired() {
+    return expired;
+  }
+
+
+  public void setExpired(Boolean expired) {
+    this.expired = expired;
+  }
+
+
+  public ListBuyerOffersItem awaitingBuyer(Boolean awaitingBuyer) {
+    
+    this.awaitingBuyer = awaitingBuyer;
+    return this;
+  }
+
+   /**
+   * A seller counter waiting on YOU: accept, decline or counter back.
+   * @return awaitingBuyer
+  **/
+  @javax.annotation.Nonnull
+  @ApiModelProperty(required = true, value = "A seller counter waiting on YOU: accept, decline or counter back.")
+
+  public Boolean getAwaitingBuyer() {
+    return awaitingBuyer;
+  }
+
+
+  public void setAwaitingBuyer(Boolean awaitingBuyer) {
+    this.awaitingBuyer = awaitingBuyer;
+  }
+
+
+  public ListBuyerOffersItem platformListingIds(List<String> platformListingIds) {
+    
+    this.platformListingIds = platformListingIds;
+    return this;
+  }
+
+  public ListBuyerOffersItem addPlatformListingIdsItem(String platformListingIdsItem) {
+    if (this.platformListingIds == null) {
+      this.platformListingIds = new ArrayList<String>();
+    }
+    this.platformListingIds.add(platformListingIdsItem);
+    return this;
+  }
+
+   /**
+   * Get platformListingIds
+   * @return platformListingIds
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "")
 
-  public String getDecidedAt() {
-    return decidedAt;
+  public List<String> getPlatformListingIds() {
+    return platformListingIds;
   }
 
 
-  public void setDecidedAt(String decidedAt) {
-    this.decidedAt = decidedAt;
+  public void setPlatformListingIds(List<String> platformListingIds) {
+    this.platformListingIds = platformListingIds;
+  }
+
+
+  public ListBuyerOffersItem listedTotalCents(BigDecimal listedTotalCents) {
+    
+    this.listedTotalCents = listedTotalCents;
+    return this;
+  }
+
+   /**
+   * Asking-price total when the offer was made, in cents.
+   * @return listedTotalCents
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "Asking-price total when the offer was made, in cents.")
+
+  public BigDecimal getListedTotalCents() {
+    return listedTotalCents;
+  }
+
+
+  public void setListedTotalCents(BigDecimal listedTotalCents) {
+    this.listedTotalCents = listedTotalCents;
   }
 
 
@@ -463,34 +494,49 @@ public class ListBuyerOffersItem {
   }
 
 
-  public ListBuyerOffersItem platformListingIds(List<String> platformListingIds) {
+  public ListBuyerOffersItem origin(String origin) {
     
-    this.platformListingIds = platformListingIds;
-    return this;
-  }
-
-  public ListBuyerOffersItem addPlatformListingIdsItem(String platformListingIdsItem) {
-    if (this.platformListingIds == null) {
-      this.platformListingIds = new ArrayList<String>();
-    }
-    this.platformListingIds.add(platformListingIdsItem);
+    this.origin = origin;
     return this;
   }
 
    /**
-   * Get platformListingIds
-   * @return platformListingIds
+   * null &#x3D; you made it; seller_counter / buyer_counter / second_chance / seller_offer (to watchers) / live_auction otherwise.
+   * @return origin
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "null = you made it; seller_counter / buyer_counter / second_chance / seller_offer (to watchers) / live_auction otherwise.")
+
+  public String getOrigin() {
+    return origin;
+  }
+
+
+  public void setOrigin(String origin) {
+    this.origin = origin;
+  }
+
+
+  public ListBuyerOffersItem decidedAt(String decidedAt) {
+    
+    this.decidedAt = decidedAt;
+    return this;
+  }
+
+   /**
+   * Get decidedAt
+   * @return decidedAt
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "")
 
-  public List<String> getPlatformListingIds() {
-    return platformListingIds;
+  public String getDecidedAt() {
+    return decidedAt;
   }
 
 
-  public void setPlatformListingIds(List<String> platformListingIds) {
-    this.platformListingIds = platformListingIds;
+  public void setDecidedAt(String decidedAt) {
+    this.decidedAt = decidedAt;
   }
 
 
@@ -517,52 +563,6 @@ public class ListBuyerOffersItem {
   }
 
 
-  public ListBuyerOffersItem listedTotalCents(BigDecimal listedTotalCents) {
-    
-    this.listedTotalCents = listedTotalCents;
-    return this;
-  }
-
-   /**
-   * Asking-price total when the offer was made, in cents.
-   * @return listedTotalCents
-  **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "Asking-price total when the offer was made, in cents.")
-
-  public BigDecimal getListedTotalCents() {
-    return listedTotalCents;
-  }
-
-
-  public void setListedTotalCents(BigDecimal listedTotalCents) {
-    this.listedTotalCents = listedTotalCents;
-  }
-
-
-  public ListBuyerOffersItem origin(String origin) {
-    
-    this.origin = origin;
-    return this;
-  }
-
-   /**
-   * null &#x3D; you made it; seller_counter / buyer_counter / second_chance / seller_offer (to watchers) / live_auction otherwise.
-   * @return origin
-  **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "null = you made it; seller_counter / buyer_counter / second_chance / seller_offer (to watchers) / live_auction otherwise.")
-
-  public String getOrigin() {
-    return origin;
-  }
-
-
-  public void setOrigin(String origin) {
-    this.origin = origin;
-  }
-
-
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -573,24 +573,24 @@ public class ListBuyerOffersItem {
     }
     ListBuyerOffersItem listBuyerOffersItem = (ListBuyerOffersItem) o;
     return Objects.equals(this.id, listBuyerOffersItem.id) &&
-        Objects.equals(this.createdAt, listBuyerOffersItem.createdAt) &&
-        Objects.equals(this.status, listBuyerOffersItem.status) &&
-        Objects.equals(this.expiresAt, listBuyerOffersItem.expiresAt) &&
-        Objects.equals(this.isBundle, listBuyerOffersItem.isBundle) &&
         Objects.equals(this.platformListingId, listBuyerOffersItem.platformListingId) &&
         Objects.equals(this.sellerUserId, listBuyerOffersItem.sellerUserId) &&
         Objects.equals(this.amountCents, listBuyerOffersItem.amountCents) &&
-        Objects.equals(this.expired, listBuyerOffersItem.expired) &&
+        Objects.equals(this.status, listBuyerOffersItem.status) &&
+        Objects.equals(this.expiresAt, listBuyerOffersItem.expiresAt) &&
+        Objects.equals(this.createdAt, listBuyerOffersItem.createdAt) &&
         Objects.equals(this.items, listBuyerOffersItem.items) &&
-        Objects.equals(this.awaitingBuyer, listBuyerOffersItem.awaitingBuyer) &&
+        Objects.equals(this.isBundle, listBuyerOffersItem.isBundle) &&
         Objects.equals(this.redeemable, listBuyerOffersItem.redeemable) &&
-        Objects.equals(this.decidedAt, listBuyerOffersItem.decidedAt) &&
+        Objects.equals(this.expired, listBuyerOffersItem.expired) &&
+        Objects.equals(this.awaitingBuyer, listBuyerOffersItem.awaitingBuyer) &&
+        Objects.equals(this.platformListingIds, listBuyerOffersItem.platformListingIds) &&
+        Objects.equals(this.listedTotalCents, listBuyerOffersItem.listedTotalCents) &&
         Objects.equals(this.message, listBuyerOffersItem.message) &&
         Objects.equals(this.parentOfferId, listBuyerOffersItem.parentOfferId) &&
-        Objects.equals(this.platformListingIds, listBuyerOffersItem.platformListingIds) &&
-        Objects.equals(this.consumedAt, listBuyerOffersItem.consumedAt) &&
-        Objects.equals(this.listedTotalCents, listBuyerOffersItem.listedTotalCents) &&
-        Objects.equals(this.origin, listBuyerOffersItem.origin);
+        Objects.equals(this.origin, listBuyerOffersItem.origin) &&
+        Objects.equals(this.decidedAt, listBuyerOffersItem.decidedAt) &&
+        Objects.equals(this.consumedAt, listBuyerOffersItem.consumedAt);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -599,7 +599,7 @@ public class ListBuyerOffersItem {
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, createdAt, status, expiresAt, isBundle, platformListingId, sellerUserId, amountCents, expired, items, awaitingBuyer, redeemable, decidedAt, message, parentOfferId, platformListingIds, consumedAt, listedTotalCents, origin);
+    return Objects.hash(id, platformListingId, sellerUserId, amountCents, status, expiresAt, createdAt, items, isBundle, redeemable, expired, awaitingBuyer, platformListingIds, listedTotalCents, message, parentOfferId, origin, decidedAt, consumedAt);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -614,24 +614,24 @@ public class ListBuyerOffersItem {
     StringBuilder sb = new StringBuilder();
     sb.append("class ListBuyerOffersItem {\n");
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
-    sb.append("    createdAt: ").append(toIndentedString(createdAt)).append("\n");
-    sb.append("    status: ").append(toIndentedString(status)).append("\n");
-    sb.append("    expiresAt: ").append(toIndentedString(expiresAt)).append("\n");
-    sb.append("    isBundle: ").append(toIndentedString(isBundle)).append("\n");
     sb.append("    platformListingId: ").append(toIndentedString(platformListingId)).append("\n");
     sb.append("    sellerUserId: ").append(toIndentedString(sellerUserId)).append("\n");
     sb.append("    amountCents: ").append(toIndentedString(amountCents)).append("\n");
-    sb.append("    expired: ").append(toIndentedString(expired)).append("\n");
+    sb.append("    status: ").append(toIndentedString(status)).append("\n");
+    sb.append("    expiresAt: ").append(toIndentedString(expiresAt)).append("\n");
+    sb.append("    createdAt: ").append(toIndentedString(createdAt)).append("\n");
     sb.append("    items: ").append(toIndentedString(items)).append("\n");
-    sb.append("    awaitingBuyer: ").append(toIndentedString(awaitingBuyer)).append("\n");
+    sb.append("    isBundle: ").append(toIndentedString(isBundle)).append("\n");
     sb.append("    redeemable: ").append(toIndentedString(redeemable)).append("\n");
-    sb.append("    decidedAt: ").append(toIndentedString(decidedAt)).append("\n");
+    sb.append("    expired: ").append(toIndentedString(expired)).append("\n");
+    sb.append("    awaitingBuyer: ").append(toIndentedString(awaitingBuyer)).append("\n");
+    sb.append("    platformListingIds: ").append(toIndentedString(platformListingIds)).append("\n");
+    sb.append("    listedTotalCents: ").append(toIndentedString(listedTotalCents)).append("\n");
     sb.append("    message: ").append(toIndentedString(message)).append("\n");
     sb.append("    parentOfferId: ").append(toIndentedString(parentOfferId)).append("\n");
-    sb.append("    platformListingIds: ").append(toIndentedString(platformListingIds)).append("\n");
-    sb.append("    consumedAt: ").append(toIndentedString(consumedAt)).append("\n");
-    sb.append("    listedTotalCents: ").append(toIndentedString(listedTotalCents)).append("\n");
     sb.append("    origin: ").append(toIndentedString(origin)).append("\n");
+    sb.append("    decidedAt: ").append(toIndentedString(decidedAt)).append("\n");
+    sb.append("    consumedAt: ").append(toIndentedString(consumedAt)).append("\n");
     sb.append("}");
     return sb.toString();
   }

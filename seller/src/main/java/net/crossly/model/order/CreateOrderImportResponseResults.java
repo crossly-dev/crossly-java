@@ -29,7 +29,7 @@ import org.openapitools.jackson.nullable.JsonNullable;
 /**
  * CreateOrderImportResponseResults
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-11T23:44:48.922Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-27T19:42:43.186Z[Etc/UTC]")
 public class CreateOrderImportResponseResults {
   public static final String SERIALIZED_NAME_PLATFORM = "platform";
   @SerializedName(SERIALIZED_NAME_PLATFORM)
@@ -44,11 +44,11 @@ public class CreateOrderImportResponseResults {
    */
   @JsonAdapter(ReasonEnum.Adapter.class)
   public enum ReasonEnum {
-    UNSUPPORTED_PLATFORM("unsupported_platform"),
-    
     NOT_CONNECTED("not_connected"),
     
-    UNKNOWN_PLATFORM("unknown_platform");
+    UNKNOWN_PLATFORM("unknown_platform"),
+    
+    UNSUPPORTED_PLATFORM("unsupported_platform");
 
     private String value;
 

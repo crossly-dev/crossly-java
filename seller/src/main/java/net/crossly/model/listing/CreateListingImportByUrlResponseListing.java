@@ -34,7 +34,7 @@ import org.threeten.bp.OffsetDateTime;
 /**
  * CreateListingImportByUrlResponseListing
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-11T23:44:48.922Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-27T19:42:43.186Z[Etc/UTC]")
 public class CreateListingImportByUrlResponseListing {
   public static final String SERIALIZED_NAME_PLATFORM_LISTING_ID = "platformListingId";
   @SerializedName(SERIALIZED_NAME_PLATFORM_LISTING_ID)
@@ -626,11 +626,11 @@ public class CreateListingImportByUrlResponseListing {
   }
 
    /**
-   * The platform&#39;s raw numeric category id, same space as overrides.&lt;platform&gt;.categoryId — distinct from &#x60;category&#x60;&#39;s human-readable path. Only set by platforms whose id space is directly comparable to what we publish (currently eBay&#39;s drift-check second call — see diff-fields/second-call.ts&#39;s ebayRemoteFields). eBay&#39;s own CategoryName wording/depth is a different vocabulary from Crossly&#39;s master taxonomy breadcrumb and will essentially never string-match it, so drift-detection compares ids instead of names.
+   * The platform&#39;s raw numeric category id, same space as overrides.&lt;platform&gt;.categoryId — distinct from &#x60;category&#x60;&#39;s human-readable path. Only set by platforms whose id space is directly comparable to what we publish (currently eBay&#39;s drift-check second call — see platform-parsers/ebay/listing-detail.ts). eBay&#39;s own CategoryName wording/depth is a different vocabulary from Crossly&#39;s master taxonomy breadcrumb and will essentially never string-match it, so drift-detection compares ids instead of names.
    * @return categoryId
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The platform's raw numeric category id, same space as overrides.<platform>.categoryId — distinct from `category`'s human-readable path. Only set by platforms whose id space is directly comparable to what we publish (currently eBay's drift-check second call — see diff-fields/second-call.ts's ebayRemoteFields). eBay's own CategoryName wording/depth is a different vocabulary from Crossly's master taxonomy breadcrumb and will essentially never string-match it, so drift-detection compares ids instead of names.")
+  @ApiModelProperty(value = "The platform's raw numeric category id, same space as overrides.<platform>.categoryId — distinct from `category`'s human-readable path. Only set by platforms whose id space is directly comparable to what we publish (currently eBay's drift-check second call — see platform-parsers/ebay/listing-detail.ts). eBay's own CategoryName wording/depth is a different vocabulary from Crossly's master taxonomy breadcrumb and will essentially never string-match it, so drift-detection compares ids instead of names.")
 
   public String getCategoryId() {
     return categoryId;

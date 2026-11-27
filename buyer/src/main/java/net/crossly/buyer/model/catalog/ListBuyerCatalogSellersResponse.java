@@ -34,7 +34,7 @@ import net.crossly.buyer.model.common.Pagination;
  * The canonical collection envelope. The array is ALWAYS under &#x60;data&#x60;, never under the noun — so one accessor works for every list endpoint.
  */
 @ApiModel(description = "The canonical collection envelope. The array is ALWAYS under `data`, never under the noun — so one accessor works for every list endpoint.")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-11T23:47:29.843Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-27T19:58:46.962Z[Etc/UTC]")
 public class ListBuyerCatalogSellersResponse {
   public static final String SERIALIZED_NAME_DATA = "data";
   @SerializedName(SERIALIZED_NAME_DATA)

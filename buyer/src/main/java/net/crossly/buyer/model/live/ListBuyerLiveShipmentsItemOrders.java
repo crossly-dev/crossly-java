@@ -29,19 +29,19 @@ import org.openapitools.jackson.nullable.JsonNullable;
 /**
  * ListBuyerLiveShipmentsItemOrders
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-11T23:47:29.843Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-27T19:58:46.962Z[Etc/UTC]")
 public class ListBuyerLiveShipmentsItemOrders {
   public static final String SERIALIZED_NAME_ORDER_ID = "orderId";
   @SerializedName(SERIALIZED_NAME_ORDER_ID)
   private String orderId;
 
-  public static final String SERIALIZED_NAME_TITLE = "title";
-  @SerializedName(SERIALIZED_NAME_TITLE)
-  private String title;
-
   public static final String SERIALIZED_NAME_PURCHASE_ID = "purchaseId";
   @SerializedName(SERIALIZED_NAME_PURCHASE_ID)
   private String purchaseId;
+
+  public static final String SERIALIZED_NAME_TITLE = "title";
+  @SerializedName(SERIALIZED_NAME_TITLE)
+  private String title;
 
   public static final String SERIALIZED_NAME_SHIPPING_CENTS = "shippingCents";
   @SerializedName(SERIALIZED_NAME_SHIPPING_CENTS)
@@ -77,29 +77,6 @@ public class ListBuyerLiveShipmentsItemOrders {
   }
 
 
-  public ListBuyerLiveShipmentsItemOrders title(String title) {
-    
-    this.title = title;
-    return this;
-  }
-
-   /**
-   * Get title
-   * @return title
-  **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
-
-  public String getTitle() {
-    return title;
-  }
-
-
-  public void setTitle(String title) {
-    this.title = title;
-  }
-
-
   public ListBuyerLiveShipmentsItemOrders purchaseId(String purchaseId) {
     
     this.purchaseId = purchaseId;
@@ -120,6 +97,29 @@ public class ListBuyerLiveShipmentsItemOrders {
 
   public void setPurchaseId(String purchaseId) {
     this.purchaseId = purchaseId;
+  }
+
+
+  public ListBuyerLiveShipmentsItemOrders title(String title) {
+    
+    this.title = title;
+    return this;
+  }
+
+   /**
+   * Get title
+   * @return title
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public String getTitle() {
+    return title;
+  }
+
+
+  public void setTitle(String title) {
+    this.title = title;
   }
 
 
@@ -179,8 +179,8 @@ public class ListBuyerLiveShipmentsItemOrders {
     }
     ListBuyerLiveShipmentsItemOrders listBuyerLiveShipmentsItemOrders = (ListBuyerLiveShipmentsItemOrders) o;
     return Objects.equals(this.orderId, listBuyerLiveShipmentsItemOrders.orderId) &&
-        Objects.equals(this.title, listBuyerLiveShipmentsItemOrders.title) &&
         Objects.equals(this.purchaseId, listBuyerLiveShipmentsItemOrders.purchaseId) &&
+        Objects.equals(this.title, listBuyerLiveShipmentsItemOrders.title) &&
         Objects.equals(this.shippingCents, listBuyerLiveShipmentsItemOrders.shippingCents) &&
         Objects.equals(this.orderStatus, listBuyerLiveShipmentsItemOrders.orderStatus);
   }
@@ -191,7 +191,7 @@ public class ListBuyerLiveShipmentsItemOrders {
 
   @Override
   public int hashCode() {
-    return Objects.hash(orderId, title, purchaseId, shippingCents, orderStatus);
+    return Objects.hash(orderId, purchaseId, title, shippingCents, orderStatus);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -206,8 +206,8 @@ public class ListBuyerLiveShipmentsItemOrders {
     StringBuilder sb = new StringBuilder();
     sb.append("class ListBuyerLiveShipmentsItemOrders {\n");
     sb.append("    orderId: ").append(toIndentedString(orderId)).append("\n");
-    sb.append("    title: ").append(toIndentedString(title)).append("\n");
     sb.append("    purchaseId: ").append(toIndentedString(purchaseId)).append("\n");
+    sb.append("    title: ").append(toIndentedString(title)).append("\n");
     sb.append("    shippingCents: ").append(toIndentedString(shippingCents)).append("\n");
     sb.append("    orderStatus: ").append(toIndentedString(orderStatus)).append("\n");
     sb.append("}");

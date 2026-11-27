@@ -32,7 +32,7 @@ import org.threeten.bp.OffsetDateTime;
 /**
  * CreateProductionCandidateAcceptResponseCandidate
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-11T23:44:48.922Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-27T19:42:43.186Z[Etc/UTC]")
 public class CreateProductionCandidateAcceptResponseCandidate {
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
@@ -54,17 +54,21 @@ public class CreateProductionCandidateAcceptResponseCandidate {
   @SerializedName(SERIALIZED_NAME_RETAIL_PRICE_CENTS)
   private BigDecimal retailPriceCents;
 
-  public static final String SERIALIZED_NAME_CREATOR_USER_ID = "creatorUserId";
-  @SerializedName(SERIALIZED_NAME_CREATOR_USER_ID)
-  private String creatorUserId;
+  public static final String SERIALIZED_NAME_ACCEPTED_AT = "acceptedAt";
+  @SerializedName(SERIALIZED_NAME_ACCEPTED_AT)
+  private OffsetDateTime acceptedAt;
 
   public static final String SERIALIZED_NAME_COMPLETED_AT = "completedAt";
   @SerializedName(SERIALIZED_NAME_COMPLETED_AT)
   private OffsetDateTime completedAt;
 
-  public static final String SERIALIZED_NAME_ACCEPTED_AT = "acceptedAt";
-  @SerializedName(SERIALIZED_NAME_ACCEPTED_AT)
-  private OffsetDateTime acceptedAt;
+  public static final String SERIALIZED_NAME_CREATOR_USER_ID = "creatorUserId";
+  @SerializedName(SERIALIZED_NAME_CREATOR_USER_ID)
+  private String creatorUserId;
+
+  public static final String SERIALIZED_NAME_COSMETIC_ID = "cosmeticId";
+  @SerializedName(SERIALIZED_NAME_COSMETIC_ID)
+  private String cosmeticId;
 
   public static final String SERIALIZED_NAME_MERCHANT_ID = "merchantId";
   @SerializedName(SERIALIZED_NAME_MERCHANT_ID)
@@ -73,10 +77,6 @@ public class CreateProductionCandidateAcceptResponseCandidate {
   public static final String SERIALIZED_NAME_CREATOR_SUBJECT_ID = "creatorSubjectId";
   @SerializedName(SERIALIZED_NAME_CREATOR_SUBJECT_ID)
   private String creatorSubjectId;
-
-  public static final String SERIALIZED_NAME_COSMETIC_ID = "cosmeticId";
-  @SerializedName(SERIALIZED_NAME_COSMETIC_ID)
-  private String cosmeticId;
 
   public static final String SERIALIZED_NAME_EDITION_SIZE = "editionSize";
   @SerializedName(SERIALIZED_NAME_EDITION_SIZE)
@@ -248,26 +248,26 @@ public class CreateProductionCandidateAcceptResponseCandidate {
   }
 
 
-  public CreateProductionCandidateAcceptResponseCandidate creatorUserId(String creatorUserId) {
+  public CreateProductionCandidateAcceptResponseCandidate acceptedAt(OffsetDateTime acceptedAt) {
     
-    this.creatorUserId = creatorUserId;
+    this.acceptedAt = acceptedAt;
     return this;
   }
 
    /**
-   * Get creatorUserId
-   * @return creatorUserId
+   * Get acceptedAt
+   * @return acceptedAt
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "")
 
-  public String getCreatorUserId() {
-    return creatorUserId;
+  public OffsetDateTime getAcceptedAt() {
+    return acceptedAt;
   }
 
 
-  public void setCreatorUserId(String creatorUserId) {
-    this.creatorUserId = creatorUserId;
+  public void setAcceptedAt(OffsetDateTime acceptedAt) {
+    this.acceptedAt = acceptedAt;
   }
 
 
@@ -294,26 +294,49 @@ public class CreateProductionCandidateAcceptResponseCandidate {
   }
 
 
-  public CreateProductionCandidateAcceptResponseCandidate acceptedAt(OffsetDateTime acceptedAt) {
+  public CreateProductionCandidateAcceptResponseCandidate creatorUserId(String creatorUserId) {
     
-    this.acceptedAt = acceptedAt;
+    this.creatorUserId = creatorUserId;
     return this;
   }
 
    /**
-   * Get acceptedAt
-   * @return acceptedAt
+   * Get creatorUserId
+   * @return creatorUserId
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "")
 
-  public OffsetDateTime getAcceptedAt() {
-    return acceptedAt;
+  public String getCreatorUserId() {
+    return creatorUserId;
   }
 
 
-  public void setAcceptedAt(OffsetDateTime acceptedAt) {
-    this.acceptedAt = acceptedAt;
+  public void setCreatorUserId(String creatorUserId) {
+    this.creatorUserId = creatorUserId;
+  }
+
+
+  public CreateProductionCandidateAcceptResponseCandidate cosmeticId(String cosmeticId) {
+    
+    this.cosmeticId = cosmeticId;
+    return this;
+  }
+
+   /**
+   * Get cosmeticId
+   * @return cosmeticId
+  **/
+  @javax.annotation.Nonnull
+  @ApiModelProperty(required = true, value = "")
+
+  public String getCosmeticId() {
+    return cosmeticId;
+  }
+
+
+  public void setCosmeticId(String cosmeticId) {
+    this.cosmeticId = cosmeticId;
   }
 
 
@@ -360,29 +383,6 @@ public class CreateProductionCandidateAcceptResponseCandidate {
 
   public void setCreatorSubjectId(String creatorSubjectId) {
     this.creatorSubjectId = creatorSubjectId;
-  }
-
-
-  public CreateProductionCandidateAcceptResponseCandidate cosmeticId(String cosmeticId) {
-    
-    this.cosmeticId = cosmeticId;
-    return this;
-  }
-
-   /**
-   * Get cosmeticId
-   * @return cosmeticId
-  **/
-  @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "")
-
-  public String getCosmeticId() {
-    return cosmeticId;
-  }
-
-
-  public void setCosmeticId(String cosmeticId) {
-    this.cosmeticId = cosmeticId;
   }
 
 
@@ -699,12 +699,12 @@ public class CreateProductionCandidateAcceptResponseCandidate {
         Objects.equals(this.updatedAt, createProductionCandidateAcceptResponseCandidate.updatedAt) &&
         Objects.equals(this.status, createProductionCandidateAcceptResponseCandidate.status) &&
         Objects.equals(this.retailPriceCents, createProductionCandidateAcceptResponseCandidate.retailPriceCents) &&
-        Objects.equals(this.creatorUserId, createProductionCandidateAcceptResponseCandidate.creatorUserId) &&
-        Objects.equals(this.completedAt, createProductionCandidateAcceptResponseCandidate.completedAt) &&
         Objects.equals(this.acceptedAt, createProductionCandidateAcceptResponseCandidate.acceptedAt) &&
+        Objects.equals(this.completedAt, createProductionCandidateAcceptResponseCandidate.completedAt) &&
+        Objects.equals(this.creatorUserId, createProductionCandidateAcceptResponseCandidate.creatorUserId) &&
+        Objects.equals(this.cosmeticId, createProductionCandidateAcceptResponseCandidate.cosmeticId) &&
         Objects.equals(this.merchantId, createProductionCandidateAcceptResponseCandidate.merchantId) &&
         Objects.equals(this.creatorSubjectId, createProductionCandidateAcceptResponseCandidate.creatorSubjectId) &&
-        Objects.equals(this.cosmeticId, createProductionCandidateAcceptResponseCandidate.cosmeticId) &&
         Objects.equals(this.editionSize, createProductionCandidateAcceptResponseCandidate.editionSize) &&
         Objects.equals(this.unitCostCents, createProductionCandidateAcceptResponseCandidate.unitCostCents) &&
         Objects.equals(this.runCostCents, createProductionCandidateAcceptResponseCandidate.runCostCents) &&
@@ -726,7 +726,7 @@ public class CreateProductionCandidateAcceptResponseCandidate {
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, createdAt, updatedAt, status, retailPriceCents, creatorUserId, completedAt, acceptedAt, merchantId, creatorSubjectId, cosmeticId, editionSize, unitCostCents, runCostCents, designerRoyaltyBps, fundingAtEligibleCents, distinctHoldersAtEligible, holderPriority, holderPriceCents, designBrief, spec, ipClearedAt, greenlitAt, declineReason);
+    return Objects.hash(id, createdAt, updatedAt, status, retailPriceCents, acceptedAt, completedAt, creatorUserId, cosmeticId, merchantId, creatorSubjectId, editionSize, unitCostCents, runCostCents, designerRoyaltyBps, fundingAtEligibleCents, distinctHoldersAtEligible, holderPriority, holderPriceCents, designBrief, spec, ipClearedAt, greenlitAt, declineReason);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -745,12 +745,12 @@ public class CreateProductionCandidateAcceptResponseCandidate {
     sb.append("    updatedAt: ").append(toIndentedString(updatedAt)).append("\n");
     sb.append("    status: ").append(toIndentedString(status)).append("\n");
     sb.append("    retailPriceCents: ").append(toIndentedString(retailPriceCents)).append("\n");
-    sb.append("    creatorUserId: ").append(toIndentedString(creatorUserId)).append("\n");
-    sb.append("    completedAt: ").append(toIndentedString(completedAt)).append("\n");
     sb.append("    acceptedAt: ").append(toIndentedString(acceptedAt)).append("\n");
+    sb.append("    completedAt: ").append(toIndentedString(completedAt)).append("\n");
+    sb.append("    creatorUserId: ").append(toIndentedString(creatorUserId)).append("\n");
+    sb.append("    cosmeticId: ").append(toIndentedString(cosmeticId)).append("\n");
     sb.append("    merchantId: ").append(toIndentedString(merchantId)).append("\n");
     sb.append("    creatorSubjectId: ").append(toIndentedString(creatorSubjectId)).append("\n");
-    sb.append("    cosmeticId: ").append(toIndentedString(cosmeticId)).append("\n");
     sb.append("    editionSize: ").append(toIndentedString(editionSize)).append("\n");
     sb.append("    unitCostCents: ").append(toIndentedString(unitCostCents)).append("\n");
     sb.append("    runCostCents: ").append(toIndentedString(runCostCents)).append("\n");

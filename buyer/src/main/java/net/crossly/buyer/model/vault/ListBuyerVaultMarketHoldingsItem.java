@@ -29,7 +29,7 @@ import org.openapitools.jackson.nullable.JsonNullable;
 /**
  * ListBuyerVaultMarketHoldingsItem
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-11T23:47:29.843Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-27T19:58:46.962Z[Etc/UTC]")
 public class ListBuyerVaultMarketHoldingsItem {
   public static final String SERIALIZED_NAME_BOOK_KEY = "bookKey";
   @SerializedName(SERIALIZED_NAME_BOOK_KEY)
@@ -46,11 +46,11 @@ public class ListBuyerVaultMarketHoldingsItem {
   public enum MarkQualityEnum {
     NONE("none"),
     
+    C("C"),
+    
     A("A"),
     
-    B("B"),
-    
-    C("C");
+    B("B");
 
     private String value;
 

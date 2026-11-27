@@ -23,13 +23,26 @@ import com.google.gson.stream.JsonWriter;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
+import java.math.BigDecimal;
 import org.threeten.bp.OffsetDateTime;
 
 /**
  * ListPolicyPresetsItem
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-11T23:44:48.922Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-27T19:42:43.186Z[Etc/UTC]")
 public class ListPolicyPresetsItem {
+  public static final String SERIALIZED_NAME_SUMMARY = "summary";
+  @SerializedName(SERIALIZED_NAME_SUMMARY)
+  private String summary;
+
+  public static final String SERIALIZED_NAME_INCOMPLETE = "incomplete";
+  @SerializedName(SERIALIZED_NAME_INCOMPLETE)
+  private Boolean incomplete;
+
+  public static final String SERIALIZED_NAME_LISTING_COUNT = "listingCount";
+  @SerializedName(SERIALIZED_NAME_LISTING_COUNT)
+  private BigDecimal listingCount;
+
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
   private String id;
@@ -58,8 +71,85 @@ public class ListPolicyPresetsItem {
   @SerializedName(SERIALIZED_NAME_KIND)
   private String kind;
 
+  public static final String SERIALIZED_NAME_REVISION = "revision";
+  @SerializedName(SERIALIZED_NAME_REVISION)
+  private BigDecimal revision;
+
+  public static final String SERIALIZED_NAME_HAS_DOMESTIC_RULES = "hasDomesticRules";
+  @SerializedName(SERIALIZED_NAME_HAS_DOMESTIC_RULES)
+  private Boolean hasDomesticRules;
+
   public ListPolicyPresetsItem() { 
   }
+
+  public ListPolicyPresetsItem summary(String summary) {
+    
+    this.summary = summary;
+    return this;
+  }
+
+   /**
+   * Get summary
+   * @return summary
+  **/
+  @javax.annotation.Nonnull
+  @ApiModelProperty(required = true, value = "")
+
+  public String getSummary() {
+    return summary;
+  }
+
+
+  public void setSummary(String summary) {
+    this.summary = summary;
+  }
+
+
+  public ListPolicyPresetsItem incomplete(Boolean incomplete) {
+    
+    this.incomplete = incomplete;
+    return this;
+  }
+
+   /**
+   * Get incomplete
+   * @return incomplete
+  **/
+  @javax.annotation.Nonnull
+  @ApiModelProperty(required = true, value = "")
+
+  public Boolean getIncomplete() {
+    return incomplete;
+  }
+
+
+  public void setIncomplete(Boolean incomplete) {
+    this.incomplete = incomplete;
+  }
+
+
+  public ListPolicyPresetsItem listingCount(BigDecimal listingCount) {
+    
+    this.listingCount = listingCount;
+    return this;
+  }
+
+   /**
+   * Get listingCount
+   * @return listingCount
+  **/
+  @javax.annotation.Nonnull
+  @ApiModelProperty(required = true, value = "")
+
+  public BigDecimal getListingCount() {
+    return listingCount;
+  }
+
+
+  public void setListingCount(BigDecimal listingCount) {
+    this.listingCount = listingCount;
+  }
+
 
   public ListPolicyPresetsItem id(String id) {
     
@@ -222,6 +312,52 @@ public class ListPolicyPresetsItem {
   }
 
 
+  public ListPolicyPresetsItem revision(BigDecimal revision) {
+    
+    this.revision = revision;
+    return this;
+  }
+
+   /**
+   * Get revision
+   * @return revision
+  **/
+  @javax.annotation.Nonnull
+  @ApiModelProperty(required = true, value = "")
+
+  public BigDecimal getRevision() {
+    return revision;
+  }
+
+
+  public void setRevision(BigDecimal revision) {
+    this.revision = revision;
+  }
+
+
+  public ListPolicyPresetsItem hasDomesticRules(Boolean hasDomesticRules) {
+    
+    this.hasDomesticRules = hasDomesticRules;
+    return this;
+  }
+
+   /**
+   * Get hasDomesticRules
+   * @return hasDomesticRules
+  **/
+  @javax.annotation.Nonnull
+  @ApiModelProperty(required = true, value = "")
+
+  public Boolean getHasDomesticRules() {
+    return hasDomesticRules;
+  }
+
+
+  public void setHasDomesticRules(Boolean hasDomesticRules) {
+    this.hasDomesticRules = hasDomesticRules;
+  }
+
+
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -231,24 +367,32 @@ public class ListPolicyPresetsItem {
       return false;
     }
     ListPolicyPresetsItem listPolicyPresetsItem = (ListPolicyPresetsItem) o;
-    return Objects.equals(this.id, listPolicyPresetsItem.id) &&
+    return Objects.equals(this.summary, listPolicyPresetsItem.summary) &&
+        Objects.equals(this.incomplete, listPolicyPresetsItem.incomplete) &&
+        Objects.equals(this.listingCount, listPolicyPresetsItem.listingCount) &&
+        Objects.equals(this.id, listPolicyPresetsItem.id) &&
         Objects.equals(this.name, listPolicyPresetsItem.name) &&
         Objects.equals(this.createdAt, listPolicyPresetsItem.createdAt) &&
         Objects.equals(this.updatedAt, listPolicyPresetsItem.updatedAt) &&
         Objects.equals(this.userId, listPolicyPresetsItem.userId) &&
         Objects.equals(this.isDefault, listPolicyPresetsItem.isDefault) &&
-        Objects.equals(this.kind, listPolicyPresetsItem.kind);
+        Objects.equals(this.kind, listPolicyPresetsItem.kind) &&
+        Objects.equals(this.revision, listPolicyPresetsItem.revision) &&
+        Objects.equals(this.hasDomesticRules, listPolicyPresetsItem.hasDomesticRules);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, name, createdAt, updatedAt, userId, isDefault, kind);
+    return Objects.hash(summary, incomplete, listingCount, id, name, createdAt, updatedAt, userId, isDefault, kind, revision, hasDomesticRules);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class ListPolicyPresetsItem {\n");
+    sb.append("    summary: ").append(toIndentedString(summary)).append("\n");
+    sb.append("    incomplete: ").append(toIndentedString(incomplete)).append("\n");
+    sb.append("    listingCount: ").append(toIndentedString(listingCount)).append("\n");
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    createdAt: ").append(toIndentedString(createdAt)).append("\n");
@@ -256,6 +400,8 @@ public class ListPolicyPresetsItem {
     sb.append("    userId: ").append(toIndentedString(userId)).append("\n");
     sb.append("    isDefault: ").append(toIndentedString(isDefault)).append("\n");
     sb.append("    kind: ").append(toIndentedString(kind)).append("\n");
+    sb.append("    revision: ").append(toIndentedString(revision)).append("\n");
+    sb.append("    hasDomesticRules: ").append(toIndentedString(hasDomesticRules)).append("\n");
     sb.append("}");
     return sb.toString();
   }

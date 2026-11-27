@@ -29,7 +29,7 @@ import java.math.BigDecimal;
  * Only the count. &#x60;capitalCents&#x60; is the seller&#39;s spend and never leaves.
  */
 @ApiModel(description = "Only the count. `capitalCents` is the seller's spend and never leaves.")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-11T23:44:48.922Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-27T19:42:43.186Z[Etc/UTC]")
 public class GetSpatialPublicResponseDataStats {
   public static final String SERIALIZED_NAME_ITEM_COUNT = "itemCount";
   @SerializedName(SERIALIZED_NAME_ITEM_COUNT)

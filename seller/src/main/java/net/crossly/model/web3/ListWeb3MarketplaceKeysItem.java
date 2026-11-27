@@ -29,20 +29,20 @@ import org.openapitools.jackson.nullable.JsonNullable;
 /**
  * ListWeb3MarketplaceKeysItem
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-11T23:44:48.922Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-27T19:42:43.186Z[Etc/UTC]")
 public class ListWeb3MarketplaceKeysItem {
   /**
    * Gets or Sets marketplace
    */
   @JsonAdapter(MarketplaceEnum.Adapter.class)
   public enum MarketplaceEnum {
-    OPENSEA("opensea"),
-    
-    TENSOR("tensor"),
+    RARIBLE("rarible"),
     
     MAGIC_EDEN("magic_eden"),
     
-    RARIBLE("rarible");
+    TENSOR("tensor"),
+    
+    OPENSEA("opensea");
 
     private String value;
 

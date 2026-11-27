@@ -29,15 +29,15 @@ import org.openapitools.jackson.nullable.JsonNullable;
 /**
  * ListBuyerProtectionPlansItem
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-11T23:47:29.843Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-27T19:58:46.962Z[Etc/UTC]")
 public class ListBuyerProtectionPlansItem {
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
   private String id;
 
-  public static final String SERIALIZED_NAME_CREATED_AT = "createdAt";
-  @SerializedName(SERIALIZED_NAME_CREATED_AT)
-  private String createdAt;
+  public static final String SERIALIZED_NAME_PURCHASE_ID = "purchaseId";
+  @SerializedName(SERIALIZED_NAME_PURCHASE_ID)
+  private String purchaseId;
 
   public static final String SERIALIZED_NAME_STATUS = "status";
   @SerializedName(SERIALIZED_NAME_STATUS)
@@ -47,9 +47,13 @@ public class ListBuyerProtectionPlansItem {
   @SerializedName(SERIALIZED_NAME_TITLE)
   private String title;
 
-  public static final String SERIALIZED_NAME_PURCHASE_ID = "purchaseId";
-  @SerializedName(SERIALIZED_NAME_PURCHASE_ID)
-  private String purchaseId;
+  public static final String SERIALIZED_NAME_TERM_MONTHS = "termMonths";
+  @SerializedName(SERIALIZED_NAME_TERM_MONTHS)
+  private BigDecimal termMonths;
+
+  public static final String SERIALIZED_NAME_COVERAGE = "coverage";
+  @SerializedName(SERIALIZED_NAME_COVERAGE)
+  private String coverage;
 
   public static final String SERIALIZED_NAME_TERMS_URL = "termsUrl";
   @SerializedName(SERIALIZED_NAME_TERMS_URL)
@@ -63,14 +67,6 @@ public class ListBuyerProtectionPlansItem {
   @SerializedName(SERIALIZED_NAME_REFUND_CENTS)
   private BigDecimal refundCents;
 
-  public static final String SERIALIZED_NAME_TERM_MONTHS = "termMonths";
-  @SerializedName(SERIALIZED_NAME_TERM_MONTHS)
-  private BigDecimal termMonths;
-
-  public static final String SERIALIZED_NAME_COVERAGE = "coverage";
-  @SerializedName(SERIALIZED_NAME_COVERAGE)
-  private String coverage;
-
   public static final String SERIALIZED_NAME_CONTRACT_ID = "contractId";
   @SerializedName(SERIALIZED_NAME_CONTRACT_ID)
   private String contractId;
@@ -78,6 +74,10 @@ public class ListBuyerProtectionPlansItem {
   public static final String SERIALIZED_NAME_ITEM_TITLE = "itemTitle";
   @SerializedName(SERIALIZED_NAME_ITEM_TITLE)
   private String itemTitle;
+
+  public static final String SERIALIZED_NAME_CREATED_AT = "createdAt";
+  @SerializedName(SERIALIZED_NAME_CREATED_AT)
+  private String createdAt;
 
   public ListBuyerProtectionPlansItem() { 
   }
@@ -105,26 +105,26 @@ public class ListBuyerProtectionPlansItem {
   }
 
 
-  public ListBuyerProtectionPlansItem createdAt(String createdAt) {
+  public ListBuyerProtectionPlansItem purchaseId(String purchaseId) {
     
-    this.createdAt = createdAt;
+    this.purchaseId = purchaseId;
     return this;
   }
 
    /**
-   * Get createdAt
-   * @return createdAt
+   * Get purchaseId
+   * @return purchaseId
   **/
-  @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "")
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
 
-  public String getCreatedAt() {
-    return createdAt;
+  public String getPurchaseId() {
+    return purchaseId;
   }
 
 
-  public void setCreatedAt(String createdAt) {
-    this.createdAt = createdAt;
+  public void setPurchaseId(String purchaseId) {
+    this.purchaseId = purchaseId;
   }
 
 
@@ -174,26 +174,49 @@ public class ListBuyerProtectionPlansItem {
   }
 
 
-  public ListBuyerProtectionPlansItem purchaseId(String purchaseId) {
+  public ListBuyerProtectionPlansItem termMonths(BigDecimal termMonths) {
     
-    this.purchaseId = purchaseId;
+    this.termMonths = termMonths;
     return this;
   }
 
    /**
-   * Get purchaseId
-   * @return purchaseId
+   * Get termMonths
+   * @return termMonths
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "")
 
-  public String getPurchaseId() {
-    return purchaseId;
+  public BigDecimal getTermMonths() {
+    return termMonths;
   }
 
 
-  public void setPurchaseId(String purchaseId) {
-    this.purchaseId = purchaseId;
+  public void setTermMonths(BigDecimal termMonths) {
+    this.termMonths = termMonths;
+  }
+
+
+  public ListBuyerProtectionPlansItem coverage(String coverage) {
+    
+    this.coverage = coverage;
+    return this;
+  }
+
+   /**
+   * Get coverage
+   * @return coverage
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public String getCoverage() {
+    return coverage;
+  }
+
+
+  public void setCoverage(String coverage) {
+    this.coverage = coverage;
   }
 
 
@@ -266,52 +289,6 @@ public class ListBuyerProtectionPlansItem {
   }
 
 
-  public ListBuyerProtectionPlansItem termMonths(BigDecimal termMonths) {
-    
-    this.termMonths = termMonths;
-    return this;
-  }
-
-   /**
-   * Get termMonths
-   * @return termMonths
-  **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
-
-  public BigDecimal getTermMonths() {
-    return termMonths;
-  }
-
-
-  public void setTermMonths(BigDecimal termMonths) {
-    this.termMonths = termMonths;
-  }
-
-
-  public ListBuyerProtectionPlansItem coverage(String coverage) {
-    
-    this.coverage = coverage;
-    return this;
-  }
-
-   /**
-   * Get coverage
-   * @return coverage
-  **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
-
-  public String getCoverage() {
-    return coverage;
-  }
-
-
-  public void setCoverage(String coverage) {
-    this.coverage = coverage;
-  }
-
-
   public ListBuyerProtectionPlansItem contractId(String contractId) {
     
     this.contractId = contractId;
@@ -358,6 +335,29 @@ public class ListBuyerProtectionPlansItem {
   }
 
 
+  public ListBuyerProtectionPlansItem createdAt(String createdAt) {
+    
+    this.createdAt = createdAt;
+    return this;
+  }
+
+   /**
+   * Get createdAt
+   * @return createdAt
+  **/
+  @javax.annotation.Nonnull
+  @ApiModelProperty(required = true, value = "")
+
+  public String getCreatedAt() {
+    return createdAt;
+  }
+
+
+  public void setCreatedAt(String createdAt) {
+    this.createdAt = createdAt;
+  }
+
+
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -368,17 +368,17 @@ public class ListBuyerProtectionPlansItem {
     }
     ListBuyerProtectionPlansItem listBuyerProtectionPlansItem = (ListBuyerProtectionPlansItem) o;
     return Objects.equals(this.id, listBuyerProtectionPlansItem.id) &&
-        Objects.equals(this.createdAt, listBuyerProtectionPlansItem.createdAt) &&
+        Objects.equals(this.purchaseId, listBuyerProtectionPlansItem.purchaseId) &&
         Objects.equals(this.status, listBuyerProtectionPlansItem.status) &&
         Objects.equals(this.title, listBuyerProtectionPlansItem.title) &&
-        Objects.equals(this.purchaseId, listBuyerProtectionPlansItem.purchaseId) &&
+        Objects.equals(this.termMonths, listBuyerProtectionPlansItem.termMonths) &&
+        Objects.equals(this.coverage, listBuyerProtectionPlansItem.coverage) &&
         Objects.equals(this.termsUrl, listBuyerProtectionPlansItem.termsUrl) &&
         Objects.equals(this.priceCents, listBuyerProtectionPlansItem.priceCents) &&
         Objects.equals(this.refundCents, listBuyerProtectionPlansItem.refundCents) &&
-        Objects.equals(this.termMonths, listBuyerProtectionPlansItem.termMonths) &&
-        Objects.equals(this.coverage, listBuyerProtectionPlansItem.coverage) &&
         Objects.equals(this.contractId, listBuyerProtectionPlansItem.contractId) &&
-        Objects.equals(this.itemTitle, listBuyerProtectionPlansItem.itemTitle);
+        Objects.equals(this.itemTitle, listBuyerProtectionPlansItem.itemTitle) &&
+        Objects.equals(this.createdAt, listBuyerProtectionPlansItem.createdAt);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -387,7 +387,7 @@ public class ListBuyerProtectionPlansItem {
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, createdAt, status, title, purchaseId, termsUrl, priceCents, refundCents, termMonths, coverage, contractId, itemTitle);
+    return Objects.hash(id, purchaseId, status, title, termMonths, coverage, termsUrl, priceCents, refundCents, contractId, itemTitle, createdAt);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -402,17 +402,17 @@ public class ListBuyerProtectionPlansItem {
     StringBuilder sb = new StringBuilder();
     sb.append("class ListBuyerProtectionPlansItem {\n");
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
-    sb.append("    createdAt: ").append(toIndentedString(createdAt)).append("\n");
+    sb.append("    purchaseId: ").append(toIndentedString(purchaseId)).append("\n");
     sb.append("    status: ").append(toIndentedString(status)).append("\n");
     sb.append("    title: ").append(toIndentedString(title)).append("\n");
-    sb.append("    purchaseId: ").append(toIndentedString(purchaseId)).append("\n");
+    sb.append("    termMonths: ").append(toIndentedString(termMonths)).append("\n");
+    sb.append("    coverage: ").append(toIndentedString(coverage)).append("\n");
     sb.append("    termsUrl: ").append(toIndentedString(termsUrl)).append("\n");
     sb.append("    priceCents: ").append(toIndentedString(priceCents)).append("\n");
     sb.append("    refundCents: ").append(toIndentedString(refundCents)).append("\n");
-    sb.append("    termMonths: ").append(toIndentedString(termMonths)).append("\n");
-    sb.append("    coverage: ").append(toIndentedString(coverage)).append("\n");
     sb.append("    contractId: ").append(toIndentedString(contractId)).append("\n");
     sb.append("    itemTitle: ").append(toIndentedString(itemTitle)).append("\n");
+    sb.append("    createdAt: ").append(toIndentedString(createdAt)).append("\n");
     sb.append("}");
     return sb.toString();
   }

@@ -33,39 +33,39 @@ import org.openapitools.jackson.nullable.JsonNullable;
 /**
  * ListBuyerListingSellerReviewsItem
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-11T23:47:29.843Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-27T19:58:46.962Z[Etc/UTC]")
 public class ListBuyerListingSellerReviewsItem {
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
   private String id;
 
-  public static final String SERIALIZED_NAME_CREATED_AT = "createdAt";
-  @SerializedName(SERIALIZED_NAME_CREATED_AT)
-  private String createdAt;
-
-  public static final String SERIALIZED_NAME_ITEM = "item";
-  @SerializedName(SERIALIZED_NAME_ITEM)
-  private ListBuyerListingSellerReviewsItemItem item;
+  public static final String SERIALIZED_NAME_RATING = "rating";
+  @SerializedName(SERIALIZED_NAME_RATING)
+  private BigDecimal rating;
 
   public static final String SERIALIZED_NAME_BODY = "body";
   @SerializedName(SERIALIZED_NAME_BODY)
   private String body;
 
-  public static final String SERIALIZED_NAME_RATING = "rating";
-  @SerializedName(SERIALIZED_NAME_RATING)
-  private BigDecimal rating;
+  public static final String SERIALIZED_NAME_MEDIA = "media";
+  @SerializedName(SERIALIZED_NAME_MEDIA)
+  private List<ListBuyerListingSellerReviewsItemMedia> media = new ArrayList<ListBuyerListingSellerReviewsItemMedia>();
 
   public static final String SERIALIZED_NAME_SELLER_REPLY = "sellerReply";
   @SerializedName(SERIALIZED_NAME_SELLER_REPLY)
   private String sellerReply;
 
-  public static final String SERIALIZED_NAME_MEDIA = "media";
-  @SerializedName(SERIALIZED_NAME_MEDIA)
-  private List<ListBuyerListingSellerReviewsItemMedia> media = new ArrayList<ListBuyerListingSellerReviewsItemMedia>();
-
   public static final String SERIALIZED_NAME_REVIEWER = "reviewer";
   @SerializedName(SERIALIZED_NAME_REVIEWER)
   private String reviewer;
+
+  public static final String SERIALIZED_NAME_ITEM = "item";
+  @SerializedName(SERIALIZED_NAME_ITEM)
+  private ListBuyerListingSellerReviewsItemItem item;
+
+  public static final String SERIALIZED_NAME_CREATED_AT = "createdAt";
+  @SerializedName(SERIALIZED_NAME_CREATED_AT)
+  private String createdAt;
 
   public ListBuyerListingSellerReviewsItem() { 
   }
@@ -93,75 +93,6 @@ public class ListBuyerListingSellerReviewsItem {
   }
 
 
-  public ListBuyerListingSellerReviewsItem createdAt(String createdAt) {
-    
-    this.createdAt = createdAt;
-    return this;
-  }
-
-   /**
-   * Get createdAt
-   * @return createdAt
-  **/
-  @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "")
-
-  public String getCreatedAt() {
-    return createdAt;
-  }
-
-
-  public void setCreatedAt(String createdAt) {
-    this.createdAt = createdAt;
-  }
-
-
-  public ListBuyerListingSellerReviewsItem item(ListBuyerListingSellerReviewsItemItem item) {
-    
-    this.item = item;
-    return this;
-  }
-
-   /**
-   * Get item
-   * @return item
-  **/
-  @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "")
-
-  public ListBuyerListingSellerReviewsItemItem getItem() {
-    return item;
-  }
-
-
-  public void setItem(ListBuyerListingSellerReviewsItemItem item) {
-    this.item = item;
-  }
-
-
-  public ListBuyerListingSellerReviewsItem body(String body) {
-    
-    this.body = body;
-    return this;
-  }
-
-   /**
-   * Get body
-   * @return body
-  **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
-
-  public String getBody() {
-    return body;
-  }
-
-
-  public void setBody(String body) {
-    this.body = body;
-  }
-
-
   public ListBuyerListingSellerReviewsItem rating(BigDecimal rating) {
     
     this.rating = rating;
@@ -185,26 +116,26 @@ public class ListBuyerListingSellerReviewsItem {
   }
 
 
-  public ListBuyerListingSellerReviewsItem sellerReply(String sellerReply) {
+  public ListBuyerListingSellerReviewsItem body(String body) {
     
-    this.sellerReply = sellerReply;
+    this.body = body;
     return this;
   }
 
    /**
-   * Get sellerReply
-   * @return sellerReply
+   * Get body
+   * @return body
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "")
 
-  public String getSellerReply() {
-    return sellerReply;
+  public String getBody() {
+    return body;
   }
 
 
-  public void setSellerReply(String sellerReply) {
-    this.sellerReply = sellerReply;
+  public void setBody(String body) {
+    this.body = body;
   }
 
 
@@ -236,6 +167,29 @@ public class ListBuyerListingSellerReviewsItem {
   }
 
 
+  public ListBuyerListingSellerReviewsItem sellerReply(String sellerReply) {
+    
+    this.sellerReply = sellerReply;
+    return this;
+  }
+
+   /**
+   * Get sellerReply
+   * @return sellerReply
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public String getSellerReply() {
+    return sellerReply;
+  }
+
+
+  public void setSellerReply(String sellerReply) {
+    this.sellerReply = sellerReply;
+  }
+
+
   public ListBuyerListingSellerReviewsItem reviewer(String reviewer) {
     
     this.reviewer = reviewer;
@@ -259,6 +213,52 @@ public class ListBuyerListingSellerReviewsItem {
   }
 
 
+  public ListBuyerListingSellerReviewsItem item(ListBuyerListingSellerReviewsItemItem item) {
+    
+    this.item = item;
+    return this;
+  }
+
+   /**
+   * Get item
+   * @return item
+  **/
+  @javax.annotation.Nonnull
+  @ApiModelProperty(required = true, value = "")
+
+  public ListBuyerListingSellerReviewsItemItem getItem() {
+    return item;
+  }
+
+
+  public void setItem(ListBuyerListingSellerReviewsItemItem item) {
+    this.item = item;
+  }
+
+
+  public ListBuyerListingSellerReviewsItem createdAt(String createdAt) {
+    
+    this.createdAt = createdAt;
+    return this;
+  }
+
+   /**
+   * Get createdAt
+   * @return createdAt
+  **/
+  @javax.annotation.Nonnull
+  @ApiModelProperty(required = true, value = "")
+
+  public String getCreatedAt() {
+    return createdAt;
+  }
+
+
+  public void setCreatedAt(String createdAt) {
+    this.createdAt = createdAt;
+  }
+
+
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -269,13 +269,13 @@ public class ListBuyerListingSellerReviewsItem {
     }
     ListBuyerListingSellerReviewsItem listBuyerListingSellerReviewsItem = (ListBuyerListingSellerReviewsItem) o;
     return Objects.equals(this.id, listBuyerListingSellerReviewsItem.id) &&
-        Objects.equals(this.createdAt, listBuyerListingSellerReviewsItem.createdAt) &&
-        Objects.equals(this.item, listBuyerListingSellerReviewsItem.item) &&
-        Objects.equals(this.body, listBuyerListingSellerReviewsItem.body) &&
         Objects.equals(this.rating, listBuyerListingSellerReviewsItem.rating) &&
-        Objects.equals(this.sellerReply, listBuyerListingSellerReviewsItem.sellerReply) &&
+        Objects.equals(this.body, listBuyerListingSellerReviewsItem.body) &&
         Objects.equals(this.media, listBuyerListingSellerReviewsItem.media) &&
-        Objects.equals(this.reviewer, listBuyerListingSellerReviewsItem.reviewer);
+        Objects.equals(this.sellerReply, listBuyerListingSellerReviewsItem.sellerReply) &&
+        Objects.equals(this.reviewer, listBuyerListingSellerReviewsItem.reviewer) &&
+        Objects.equals(this.item, listBuyerListingSellerReviewsItem.item) &&
+        Objects.equals(this.createdAt, listBuyerListingSellerReviewsItem.createdAt);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -284,7 +284,7 @@ public class ListBuyerListingSellerReviewsItem {
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, createdAt, item, body, rating, sellerReply, media, reviewer);
+    return Objects.hash(id, rating, body, media, sellerReply, reviewer, item, createdAt);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -299,13 +299,13 @@ public class ListBuyerListingSellerReviewsItem {
     StringBuilder sb = new StringBuilder();
     sb.append("class ListBuyerListingSellerReviewsItem {\n");
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
-    sb.append("    createdAt: ").append(toIndentedString(createdAt)).append("\n");
-    sb.append("    item: ").append(toIndentedString(item)).append("\n");
-    sb.append("    body: ").append(toIndentedString(body)).append("\n");
     sb.append("    rating: ").append(toIndentedString(rating)).append("\n");
-    sb.append("    sellerReply: ").append(toIndentedString(sellerReply)).append("\n");
+    sb.append("    body: ").append(toIndentedString(body)).append("\n");
     sb.append("    media: ").append(toIndentedString(media)).append("\n");
+    sb.append("    sellerReply: ").append(toIndentedString(sellerReply)).append("\n");
     sb.append("    reviewer: ").append(toIndentedString(reviewer)).append("\n");
+    sb.append("    item: ").append(toIndentedString(item)).append("\n");
+    sb.append("    createdAt: ").append(toIndentedString(createdAt)).append("\n");
     sb.append("}");
     return sb.toString();
   }

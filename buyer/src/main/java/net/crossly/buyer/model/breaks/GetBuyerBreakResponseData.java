@@ -34,31 +34,27 @@ import org.openapitools.jackson.nullable.JsonNullable;
 /**
  * GetBuyerBreakResponseData
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-11T23:47:29.843Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-27T19:58:46.962Z[Etc/UTC]")
 public class GetBuyerBreakResponseData {
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
   private String id;
 
-  public static final String SERIALIZED_NAME_CREATED_AT = "createdAt";
-  @SerializedName(SERIALIZED_NAME_CREATED_AT)
-  private String createdAt;
-
-  public static final String SERIALIZED_NAME_STATUS = "status";
-  @SerializedName(SERIALIZED_NAME_STATUS)
-  private String status;
-
-  public static final String SERIALIZED_NAME_ASSIGNED_AT = "assignedAt";
-  @SerializedName(SERIALIZED_NAME_ASSIGNED_AT)
-  private String assignedAt;
-
   public static final String SERIALIZED_NAME_TITLE = "title";
   @SerializedName(SERIALIZED_NAME_TITLE)
   private String title;
 
-  public static final String SERIALIZED_NAME_SELLER = "seller";
-  @SerializedName(SERIALIZED_NAME_SELLER)
-  private GetBuyerBreakResponseDataSeller seller;
+  public static final String SERIALIZED_NAME_PRODUCT = "product";
+  @SerializedName(SERIALIZED_NAME_PRODUCT)
+  private String product;
+
+  public static final String SERIALIZED_NAME_FORMAT = "format";
+  @SerializedName(SERIALIZED_NAME_FORMAT)
+  private String format;
+
+  public static final String SERIALIZED_NAME_STATUS = "status";
+  @SerializedName(SERIALIZED_NAME_STATUS)
+  private String status;
 
   public static final String SERIALIZED_NAME_SLUG = "slug";
   @SerializedName(SERIALIZED_NAME_SLUG)
@@ -68,25 +64,13 @@ public class GetBuyerBreakResponseData {
   @SerializedName(SERIALIZED_NAME_PRICE_CENTS)
   private BigDecimal priceCents;
 
-  public static final String SERIALIZED_NAME_FORMAT = "format";
-  @SerializedName(SERIALIZED_NAME_FORMAT)
-  private String format;
-
   public static final String SERIALIZED_NAME_STREAM_ID = "streamId";
   @SerializedName(SERIALIZED_NAME_STREAM_ID)
   private String streamId;
 
-  public static final String SERIALIZED_NAME_SEED = "seed";
-  @SerializedName(SERIALIZED_NAME_SEED)
-  private String seed;
-
-  public static final String SERIALIZED_NAME_PRODUCT = "product";
-  @SerializedName(SERIALIZED_NAME_PRODUCT)
-  private String product;
-
-  public static final String SERIALIZED_NAME_SEED_COMMIT = "seedCommit";
-  @SerializedName(SERIALIZED_NAME_SEED_COMMIT)
-  private String seedCommit;
+  public static final String SERIALIZED_NAME_SELLER = "seller";
+  @SerializedName(SERIALIZED_NAME_SELLER)
+  private GetBuyerBreakResponseDataSeller seller;
 
   public static final String SERIALIZED_NAME_SPOTS = "spots";
   @SerializedName(SERIALIZED_NAME_SPOTS)
@@ -96,9 +80,25 @@ public class GetBuyerBreakResponseData {
   @SerializedName(SERIALIZED_NAME_SPOTS_LEFT)
   private BigDecimal spotsLeft;
 
+  public static final String SERIALIZED_NAME_SEED_COMMIT = "seedCommit";
+  @SerializedName(SERIALIZED_NAME_SEED_COMMIT)
+  private String seedCommit;
+
+  public static final String SERIALIZED_NAME_SEED = "seed";
+  @SerializedName(SERIALIZED_NAME_SEED)
+  private String seed;
+
   public static final String SERIALIZED_NAME_DRAW = "draw";
   @SerializedName(SERIALIZED_NAME_DRAW)
   private List<GetBuyerBreakResponseDataDraw> draw = null;
+
+  public static final String SERIALIZED_NAME_CREATED_AT = "createdAt";
+  @SerializedName(SERIALIZED_NAME_CREATED_AT)
+  private String createdAt;
+
+  public static final String SERIALIZED_NAME_ASSIGNED_AT = "assignedAt";
+  @SerializedName(SERIALIZED_NAME_ASSIGNED_AT)
+  private String assignedAt;
 
   public GetBuyerBreakResponseData() { 
   }
@@ -126,75 +126,6 @@ public class GetBuyerBreakResponseData {
   }
 
 
-  public GetBuyerBreakResponseData createdAt(String createdAt) {
-    
-    this.createdAt = createdAt;
-    return this;
-  }
-
-   /**
-   * Get createdAt
-   * @return createdAt
-  **/
-  @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "")
-
-  public String getCreatedAt() {
-    return createdAt;
-  }
-
-
-  public void setCreatedAt(String createdAt) {
-    this.createdAt = createdAt;
-  }
-
-
-  public GetBuyerBreakResponseData status(String status) {
-    
-    this.status = status;
-    return this;
-  }
-
-   /**
-   * Get status
-   * @return status
-  **/
-  @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "")
-
-  public String getStatus() {
-    return status;
-  }
-
-
-  public void setStatus(String status) {
-    this.status = status;
-  }
-
-
-  public GetBuyerBreakResponseData assignedAt(String assignedAt) {
-    
-    this.assignedAt = assignedAt;
-    return this;
-  }
-
-   /**
-   * Get assignedAt
-   * @return assignedAt
-  **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
-
-  public String getAssignedAt() {
-    return assignedAt;
-  }
-
-
-  public void setAssignedAt(String assignedAt) {
-    this.assignedAt = assignedAt;
-  }
-
-
   public GetBuyerBreakResponseData title(String title) {
     
     this.title = title;
@@ -218,26 +149,72 @@ public class GetBuyerBreakResponseData {
   }
 
 
-  public GetBuyerBreakResponseData seller(GetBuyerBreakResponseDataSeller seller) {
+  public GetBuyerBreakResponseData product(String product) {
     
-    this.seller = seller;
+    this.product = product;
     return this;
   }
 
    /**
-   * Get seller
-   * @return seller
+   * Get product
+   * @return product
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public String getProduct() {
+    return product;
+  }
+
+
+  public void setProduct(String product) {
+    this.product = product;
+  }
+
+
+  public GetBuyerBreakResponseData format(String format) {
+    
+    this.format = format;
+    return this;
+  }
+
+   /**
+   * Get format
+   * @return format
   **/
   @javax.annotation.Nonnull
   @ApiModelProperty(required = true, value = "")
 
-  public GetBuyerBreakResponseDataSeller getSeller() {
-    return seller;
+  public String getFormat() {
+    return format;
   }
 
 
-  public void setSeller(GetBuyerBreakResponseDataSeller seller) {
-    this.seller = seller;
+  public void setFormat(String format) {
+    this.format = format;
+  }
+
+
+  public GetBuyerBreakResponseData status(String status) {
+    
+    this.status = status;
+    return this;
+  }
+
+   /**
+   * Get status
+   * @return status
+  **/
+  @javax.annotation.Nonnull
+  @ApiModelProperty(required = true, value = "")
+
+  public String getStatus() {
+    return status;
+  }
+
+
+  public void setStatus(String status) {
+    this.status = status;
   }
 
 
@@ -287,29 +264,6 @@ public class GetBuyerBreakResponseData {
   }
 
 
-  public GetBuyerBreakResponseData format(String format) {
-    
-    this.format = format;
-    return this;
-  }
-
-   /**
-   * Get format
-   * @return format
-  **/
-  @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "")
-
-  public String getFormat() {
-    return format;
-  }
-
-
-  public void setFormat(String format) {
-    this.format = format;
-  }
-
-
   public GetBuyerBreakResponseData streamId(String streamId) {
     
     this.streamId = streamId;
@@ -333,72 +287,26 @@ public class GetBuyerBreakResponseData {
   }
 
 
-  public GetBuyerBreakResponseData seed(String seed) {
+  public GetBuyerBreakResponseData seller(GetBuyerBreakResponseDataSeller seller) {
     
-    this.seed = seed;
+    this.seller = seller;
     return this;
   }
 
    /**
-   * Get seed
-   * @return seed
-  **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
-
-  public String getSeed() {
-    return seed;
-  }
-
-
-  public void setSeed(String seed) {
-    this.seed = seed;
-  }
-
-
-  public GetBuyerBreakResponseData product(String product) {
-    
-    this.product = product;
-    return this;
-  }
-
-   /**
-   * Get product
-   * @return product
-  **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
-
-  public String getProduct() {
-    return product;
-  }
-
-
-  public void setProduct(String product) {
-    this.product = product;
-  }
-
-
-  public GetBuyerBreakResponseData seedCommit(String seedCommit) {
-    
-    this.seedCommit = seedCommit;
-    return this;
-  }
-
-   /**
-   * Get seedCommit
-   * @return seedCommit
+   * Get seller
+   * @return seller
   **/
   @javax.annotation.Nonnull
   @ApiModelProperty(required = true, value = "")
 
-  public String getSeedCommit() {
-    return seedCommit;
+  public GetBuyerBreakResponseDataSeller getSeller() {
+    return seller;
   }
 
 
-  public void setSeedCommit(String seedCommit) {
-    this.seedCommit = seedCommit;
+  public void setSeller(GetBuyerBreakResponseDataSeller seller) {
+    this.seller = seller;
   }
 
 
@@ -453,6 +361,52 @@ public class GetBuyerBreakResponseData {
   }
 
 
+  public GetBuyerBreakResponseData seedCommit(String seedCommit) {
+    
+    this.seedCommit = seedCommit;
+    return this;
+  }
+
+   /**
+   * Get seedCommit
+   * @return seedCommit
+  **/
+  @javax.annotation.Nonnull
+  @ApiModelProperty(required = true, value = "")
+
+  public String getSeedCommit() {
+    return seedCommit;
+  }
+
+
+  public void setSeedCommit(String seedCommit) {
+    this.seedCommit = seedCommit;
+  }
+
+
+  public GetBuyerBreakResponseData seed(String seed) {
+    
+    this.seed = seed;
+    return this;
+  }
+
+   /**
+   * Get seed
+   * @return seed
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public String getSeed() {
+    return seed;
+  }
+
+
+  public void setSeed(String seed) {
+    this.seed = seed;
+  }
+
+
   public GetBuyerBreakResponseData draw(List<GetBuyerBreakResponseDataDraw> draw) {
     
     this.draw = draw;
@@ -484,6 +438,52 @@ public class GetBuyerBreakResponseData {
   }
 
 
+  public GetBuyerBreakResponseData createdAt(String createdAt) {
+    
+    this.createdAt = createdAt;
+    return this;
+  }
+
+   /**
+   * Get createdAt
+   * @return createdAt
+  **/
+  @javax.annotation.Nonnull
+  @ApiModelProperty(required = true, value = "")
+
+  public String getCreatedAt() {
+    return createdAt;
+  }
+
+
+  public void setCreatedAt(String createdAt) {
+    this.createdAt = createdAt;
+  }
+
+
+  public GetBuyerBreakResponseData assignedAt(String assignedAt) {
+    
+    this.assignedAt = assignedAt;
+    return this;
+  }
+
+   /**
+   * Get assignedAt
+   * @return assignedAt
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public String getAssignedAt() {
+    return assignedAt;
+  }
+
+
+  public void setAssignedAt(String assignedAt) {
+    this.assignedAt = assignedAt;
+  }
+
+
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -494,21 +494,21 @@ public class GetBuyerBreakResponseData {
     }
     GetBuyerBreakResponseData getBuyerBreakResponseData = (GetBuyerBreakResponseData) o;
     return Objects.equals(this.id, getBuyerBreakResponseData.id) &&
-        Objects.equals(this.createdAt, getBuyerBreakResponseData.createdAt) &&
-        Objects.equals(this.status, getBuyerBreakResponseData.status) &&
-        Objects.equals(this.assignedAt, getBuyerBreakResponseData.assignedAt) &&
         Objects.equals(this.title, getBuyerBreakResponseData.title) &&
-        Objects.equals(this.seller, getBuyerBreakResponseData.seller) &&
+        Objects.equals(this.product, getBuyerBreakResponseData.product) &&
+        Objects.equals(this.format, getBuyerBreakResponseData.format) &&
+        Objects.equals(this.status, getBuyerBreakResponseData.status) &&
         Objects.equals(this.slug, getBuyerBreakResponseData.slug) &&
         Objects.equals(this.priceCents, getBuyerBreakResponseData.priceCents) &&
-        Objects.equals(this.format, getBuyerBreakResponseData.format) &&
         Objects.equals(this.streamId, getBuyerBreakResponseData.streamId) &&
-        Objects.equals(this.seed, getBuyerBreakResponseData.seed) &&
-        Objects.equals(this.product, getBuyerBreakResponseData.product) &&
-        Objects.equals(this.seedCommit, getBuyerBreakResponseData.seedCommit) &&
+        Objects.equals(this.seller, getBuyerBreakResponseData.seller) &&
         Objects.equals(this.spots, getBuyerBreakResponseData.spots) &&
         Objects.equals(this.spotsLeft, getBuyerBreakResponseData.spotsLeft) &&
-        Objects.equals(this.draw, getBuyerBreakResponseData.draw);
+        Objects.equals(this.seedCommit, getBuyerBreakResponseData.seedCommit) &&
+        Objects.equals(this.seed, getBuyerBreakResponseData.seed) &&
+        Objects.equals(this.draw, getBuyerBreakResponseData.draw) &&
+        Objects.equals(this.createdAt, getBuyerBreakResponseData.createdAt) &&
+        Objects.equals(this.assignedAt, getBuyerBreakResponseData.assignedAt);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -517,7 +517,7 @@ public class GetBuyerBreakResponseData {
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, createdAt, status, assignedAt, title, seller, slug, priceCents, format, streamId, seed, product, seedCommit, spots, spotsLeft, draw);
+    return Objects.hash(id, title, product, format, status, slug, priceCents, streamId, seller, spots, spotsLeft, seedCommit, seed, draw, createdAt, assignedAt);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -532,21 +532,21 @@ public class GetBuyerBreakResponseData {
     StringBuilder sb = new StringBuilder();
     sb.append("class GetBuyerBreakResponseData {\n");
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
-    sb.append("    createdAt: ").append(toIndentedString(createdAt)).append("\n");
-    sb.append("    status: ").append(toIndentedString(status)).append("\n");
-    sb.append("    assignedAt: ").append(toIndentedString(assignedAt)).append("\n");
     sb.append("    title: ").append(toIndentedString(title)).append("\n");
-    sb.append("    seller: ").append(toIndentedString(seller)).append("\n");
+    sb.append("    product: ").append(toIndentedString(product)).append("\n");
+    sb.append("    format: ").append(toIndentedString(format)).append("\n");
+    sb.append("    status: ").append(toIndentedString(status)).append("\n");
     sb.append("    slug: ").append(toIndentedString(slug)).append("\n");
     sb.append("    priceCents: ").append(toIndentedString(priceCents)).append("\n");
-    sb.append("    format: ").append(toIndentedString(format)).append("\n");
     sb.append("    streamId: ").append(toIndentedString(streamId)).append("\n");
-    sb.append("    seed: ").append(toIndentedString(seed)).append("\n");
-    sb.append("    product: ").append(toIndentedString(product)).append("\n");
-    sb.append("    seedCommit: ").append(toIndentedString(seedCommit)).append("\n");
+    sb.append("    seller: ").append(toIndentedString(seller)).append("\n");
     sb.append("    spots: ").append(toIndentedString(spots)).append("\n");
     sb.append("    spotsLeft: ").append(toIndentedString(spotsLeft)).append("\n");
+    sb.append("    seedCommit: ").append(toIndentedString(seedCommit)).append("\n");
+    sb.append("    seed: ").append(toIndentedString(seed)).append("\n");
     sb.append("    draw: ").append(toIndentedString(draw)).append("\n");
+    sb.append("    createdAt: ").append(toIndentedString(createdAt)).append("\n");
+    sb.append("    assignedAt: ").append(toIndentedString(assignedAt)).append("\n");
     sb.append("}");
     return sb.toString();
   }

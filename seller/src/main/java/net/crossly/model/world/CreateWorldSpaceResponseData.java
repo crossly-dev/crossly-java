@@ -29,7 +29,7 @@ import org.threeten.bp.OffsetDateTime;
 /**
  * CreateWorldSpaceResponseData
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-11T23:44:48.922Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-27T19:42:43.186Z[Etc/UTC]")
 public class CreateWorldSpaceResponseData {
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
@@ -55,9 +55,17 @@ public class CreateWorldSpaceResponseData {
   @SerializedName(SERIALIZED_NAME_SLUG)
   private String slug;
 
+  public static final String SERIALIZED_NAME_VENUE = "venue";
+  @SerializedName(SERIALIZED_NAME_VENUE)
+  private String venue;
+
   public static final String SERIALIZED_NAME_HOST_USER_ID = "hostUserId";
   @SerializedName(SERIALIZED_NAME_HOST_USER_ID)
   private String hostUserId;
+
+  public static final String SERIALIZED_NAME_ABOUT = "about";
+  @SerializedName(SERIALIZED_NAME_ABOUT)
+  private String about;
 
   public static final String SERIALIZED_NAME_GATE_CHAIN = "gateChain";
   @SerializedName(SERIALIZED_NAME_GATE_CHAIN)
@@ -71,17 +79,9 @@ public class CreateWorldSpaceResponseData {
   @SerializedName(SERIALIZED_NAME_GATE_NAME)
   private String gateName;
 
-  public static final String SERIALIZED_NAME_VENUE = "venue";
-  @SerializedName(SERIALIZED_NAME_VENUE)
-  private String venue;
-
   public static final String SERIALIZED_NAME_MEMBERSHIP = "membership";
   @SerializedName(SERIALIZED_NAME_MEMBERSHIP)
   private String membership;
-
-  public static final String SERIALIZED_NAME_ABOUT = "about";
-  @SerializedName(SERIALIZED_NAME_ABOUT)
-  private String about;
 
   public CreateWorldSpaceResponseData() { 
   }
@@ -224,6 +224,29 @@ public class CreateWorldSpaceResponseData {
   }
 
 
+  public CreateWorldSpaceResponseData venue(String venue) {
+    
+    this.venue = venue;
+    return this;
+  }
+
+   /**
+   * Get venue
+   * @return venue
+  **/
+  @javax.annotation.Nonnull
+  @ApiModelProperty(required = true, value = "")
+
+  public String getVenue() {
+    return venue;
+  }
+
+
+  public void setVenue(String venue) {
+    this.venue = venue;
+  }
+
+
   public CreateWorldSpaceResponseData hostUserId(String hostUserId) {
     
     this.hostUserId = hostUserId;
@@ -244,6 +267,29 @@ public class CreateWorldSpaceResponseData {
 
   public void setHostUserId(String hostUserId) {
     this.hostUserId = hostUserId;
+  }
+
+
+  public CreateWorldSpaceResponseData about(String about) {
+    
+    this.about = about;
+    return this;
+  }
+
+   /**
+   * Get about
+   * @return about
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public String getAbout() {
+    return about;
+  }
+
+
+  public void setAbout(String about) {
+    this.about = about;
   }
 
 
@@ -316,29 +362,6 @@ public class CreateWorldSpaceResponseData {
   }
 
 
-  public CreateWorldSpaceResponseData venue(String venue) {
-    
-    this.venue = venue;
-    return this;
-  }
-
-   /**
-   * Get venue
-   * @return venue
-  **/
-  @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "")
-
-  public String getVenue() {
-    return venue;
-  }
-
-
-  public void setVenue(String venue) {
-    this.venue = venue;
-  }
-
-
   public CreateWorldSpaceResponseData membership(String membership) {
     
     this.membership = membership;
@@ -362,29 +385,6 @@ public class CreateWorldSpaceResponseData {
   }
 
 
-  public CreateWorldSpaceResponseData about(String about) {
-    
-    this.about = about;
-    return this;
-  }
-
-   /**
-   * Get about
-   * @return about
-  **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
-
-  public String getAbout() {
-    return about;
-  }
-
-
-  public void setAbout(String about) {
-    this.about = about;
-  }
-
-
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -400,13 +400,13 @@ public class CreateWorldSpaceResponseData {
         Objects.equals(this.updatedAt, createWorldSpaceResponseData.updatedAt) &&
         Objects.equals(this.status, createWorldSpaceResponseData.status) &&
         Objects.equals(this.slug, createWorldSpaceResponseData.slug) &&
+        Objects.equals(this.venue, createWorldSpaceResponseData.venue) &&
         Objects.equals(this.hostUserId, createWorldSpaceResponseData.hostUserId) &&
+        Objects.equals(this.about, createWorldSpaceResponseData.about) &&
         Objects.equals(this.gateChain, createWorldSpaceResponseData.gateChain) &&
         Objects.equals(this.gateContract, createWorldSpaceResponseData.gateContract) &&
         Objects.equals(this.gateName, createWorldSpaceResponseData.gateName) &&
-        Objects.equals(this.venue, createWorldSpaceResponseData.venue) &&
-        Objects.equals(this.membership, createWorldSpaceResponseData.membership) &&
-        Objects.equals(this.about, createWorldSpaceResponseData.about);
+        Objects.equals(this.membership, createWorldSpaceResponseData.membership);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -415,7 +415,7 @@ public class CreateWorldSpaceResponseData {
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, name, createdAt, updatedAt, status, slug, hostUserId, gateChain, gateContract, gateName, venue, membership, about);
+    return Objects.hash(id, name, createdAt, updatedAt, status, slug, venue, hostUserId, about, gateChain, gateContract, gateName, membership);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -435,13 +435,13 @@ public class CreateWorldSpaceResponseData {
     sb.append("    updatedAt: ").append(toIndentedString(updatedAt)).append("\n");
     sb.append("    status: ").append(toIndentedString(status)).append("\n");
     sb.append("    slug: ").append(toIndentedString(slug)).append("\n");
+    sb.append("    venue: ").append(toIndentedString(venue)).append("\n");
     sb.append("    hostUserId: ").append(toIndentedString(hostUserId)).append("\n");
+    sb.append("    about: ").append(toIndentedString(about)).append("\n");
     sb.append("    gateChain: ").append(toIndentedString(gateChain)).append("\n");
     sb.append("    gateContract: ").append(toIndentedString(gateContract)).append("\n");
     sb.append("    gateName: ").append(toIndentedString(gateName)).append("\n");
-    sb.append("    venue: ").append(toIndentedString(venue)).append("\n");
     sb.append("    membership: ").append(toIndentedString(membership)).append("\n");
-    sb.append("    about: ").append(toIndentedString(about)).append("\n");
     sb.append("}");
     return sb.toString();
   }

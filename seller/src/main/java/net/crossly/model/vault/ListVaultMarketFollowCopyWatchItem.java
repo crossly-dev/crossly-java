@@ -23,12 +23,17 @@ import com.google.gson.stream.JsonWriter;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
+import net.crossly.model.vault.ListVaultMarketFollowCopyWatchItemPerson;
 
 /**
  * ListVaultMarketFollowCopyWatchItem
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-11T23:44:48.922Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-27T19:42:43.186Z[Etc/UTC]")
 public class ListVaultMarketFollowCopyWatchItem {
+  public static final String SERIALIZED_NAME_PERSON = "person";
+  @SerializedName(SERIALIZED_NAME_PERSON)
+  private ListVaultMarketFollowCopyWatchItemPerson person;
+
   public static final String SERIALIZED_NAME_SINCE = "since";
   @SerializedName(SERIALIZED_NAME_SINCE)
   private String since;
@@ -39,6 +44,29 @@ public class ListVaultMarketFollowCopyWatchItem {
 
   public ListVaultMarketFollowCopyWatchItem() { 
   }
+
+  public ListVaultMarketFollowCopyWatchItem person(ListVaultMarketFollowCopyWatchItemPerson person) {
+    
+    this.person = person;
+    return this;
+  }
+
+   /**
+   * Get person
+   * @return person
+  **/
+  @javax.annotation.Nonnull
+  @ApiModelProperty(required = true, value = "")
+
+  public ListVaultMarketFollowCopyWatchItemPerson getPerson() {
+    return person;
+  }
+
+
+  public void setPerson(ListVaultMarketFollowCopyWatchItemPerson person) {
+    this.person = person;
+  }
+
 
   public ListVaultMarketFollowCopyWatchItem since(String since) {
     
@@ -95,19 +123,21 @@ public class ListVaultMarketFollowCopyWatchItem {
       return false;
     }
     ListVaultMarketFollowCopyWatchItem listVaultMarketFollowCopyWatchItem = (ListVaultMarketFollowCopyWatchItem) o;
-    return Objects.equals(this.since, listVaultMarketFollowCopyWatchItem.since) &&
+    return Objects.equals(this.person, listVaultMarketFollowCopyWatchItem.person) &&
+        Objects.equals(this.since, listVaultMarketFollowCopyWatchItem.since) &&
         Objects.equals(this.active, listVaultMarketFollowCopyWatchItem.active);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(since, active);
+    return Objects.hash(person, since, active);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class ListVaultMarketFollowCopyWatchItem {\n");
+    sb.append("    person: ").append(toIndentedString(person)).append("\n");
     sb.append("    since: ").append(toIndentedString(since)).append("\n");
     sb.append("    active: ").append(toIndentedString(active)).append("\n");
     sb.append("}");

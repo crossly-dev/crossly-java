@@ -31,7 +31,7 @@ import org.threeten.bp.OffsetDateTime;
 /**
  * GetProductionDesignPrefResponsePrefs
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-11T23:44:48.922Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-27T19:42:43.186Z[Etc/UTC]")
 public class GetProductionDesignPrefResponsePrefs {
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
@@ -45,6 +45,10 @@ public class GetProductionDesignPrefResponsePrefs {
   @SerializedName(SERIALIZED_NAME_UPDATED_AT)
   private OffsetDateTime updatedAt;
 
+  public static final String SERIALIZED_NAME_COSMETIC_ID = "cosmeticId";
+  @SerializedName(SERIALIZED_NAME_COSMETIC_ID)
+  private String cosmeticId;
+
   public static final String SERIALIZED_NAME_MERCHANT_ID = "merchantId";
   @SerializedName(SERIALIZED_NAME_MERCHANT_ID)
   private String merchantId;
@@ -52,10 +56,6 @@ public class GetProductionDesignPrefResponsePrefs {
   public static final String SERIALIZED_NAME_CREATOR_SUBJECT_ID = "creatorSubjectId";
   @SerializedName(SERIALIZED_NAME_CREATOR_SUBJECT_ID)
   private String creatorSubjectId;
-
-  public static final String SERIALIZED_NAME_COSMETIC_ID = "cosmeticId";
-  @SerializedName(SERIALIZED_NAME_COSMETIC_ID)
-  private String cosmeticId;
 
   public static final String SERIALIZED_NAME_SPEC = "spec";
   @SerializedName(SERIALIZED_NAME_SPEC)
@@ -145,6 +145,29 @@ public class GetProductionDesignPrefResponsePrefs {
   }
 
 
+  public GetProductionDesignPrefResponsePrefs cosmeticId(String cosmeticId) {
+    
+    this.cosmeticId = cosmeticId;
+    return this;
+  }
+
+   /**
+   * Get cosmeticId
+   * @return cosmeticId
+  **/
+  @javax.annotation.Nonnull
+  @ApiModelProperty(required = true, value = "")
+
+  public String getCosmeticId() {
+    return cosmeticId;
+  }
+
+
+  public void setCosmeticId(String cosmeticId) {
+    this.cosmeticId = cosmeticId;
+  }
+
+
   public GetProductionDesignPrefResponsePrefs merchantId(String merchantId) {
     
     this.merchantId = merchantId;
@@ -188,29 +211,6 @@ public class GetProductionDesignPrefResponsePrefs {
 
   public void setCreatorSubjectId(String creatorSubjectId) {
     this.creatorSubjectId = creatorSubjectId;
-  }
-
-
-  public GetProductionDesignPrefResponsePrefs cosmeticId(String cosmeticId) {
-    
-    this.cosmeticId = cosmeticId;
-    return this;
-  }
-
-   /**
-   * Get cosmeticId
-   * @return cosmeticId
-  **/
-  @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "")
-
-  public String getCosmeticId() {
-    return cosmeticId;
-  }
-
-
-  public void setCosmeticId(String cosmeticId) {
-    this.cosmeticId = cosmeticId;
   }
 
 
@@ -318,9 +318,9 @@ public class GetProductionDesignPrefResponsePrefs {
     return Objects.equals(this.id, getProductionDesignPrefResponsePrefs.id) &&
         Objects.equals(this.createdAt, getProductionDesignPrefResponsePrefs.createdAt) &&
         Objects.equals(this.updatedAt, getProductionDesignPrefResponsePrefs.updatedAt) &&
+        Objects.equals(this.cosmeticId, getProductionDesignPrefResponsePrefs.cosmeticId) &&
         Objects.equals(this.merchantId, getProductionDesignPrefResponsePrefs.merchantId) &&
         Objects.equals(this.creatorSubjectId, getProductionDesignPrefResponsePrefs.creatorSubjectId) &&
-        Objects.equals(this.cosmeticId, getProductionDesignPrefResponsePrefs.cosmeticId) &&
         Objects.equals(this.spec, getProductionDesignPrefResponsePrefs.spec) &&
         Objects.equals(this.physicalOptOut, getProductionDesignPrefResponsePrefs.physicalOptOut) &&
         Objects.equals(this.brief, getProductionDesignPrefResponsePrefs.brief) &&
@@ -333,7 +333,7 @@ public class GetProductionDesignPrefResponsePrefs {
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, createdAt, updatedAt, merchantId, creatorSubjectId, cosmeticId, spec, physicalOptOut, brief, physicalLineAt);
+    return Objects.hash(id, createdAt, updatedAt, cosmeticId, merchantId, creatorSubjectId, spec, physicalOptOut, brief, physicalLineAt);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -350,9 +350,9 @@ public class GetProductionDesignPrefResponsePrefs {
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    createdAt: ").append(toIndentedString(createdAt)).append("\n");
     sb.append("    updatedAt: ").append(toIndentedString(updatedAt)).append("\n");
+    sb.append("    cosmeticId: ").append(toIndentedString(cosmeticId)).append("\n");
     sb.append("    merchantId: ").append(toIndentedString(merchantId)).append("\n");
     sb.append("    creatorSubjectId: ").append(toIndentedString(creatorSubjectId)).append("\n");
-    sb.append("    cosmeticId: ").append(toIndentedString(cosmeticId)).append("\n");
     sb.append("    spec: ").append(toIndentedString(spec)).append("\n");
     sb.append("    physicalOptOut: ").append(toIndentedString(physicalOptOut)).append("\n");
     sb.append("    brief: ").append(toIndentedString(brief)).append("\n");

@@ -24,45 +24,27 @@ import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 import java.math.BigDecimal;
+import org.openapitools.jackson.nullable.JsonNullable;
 
 /**
  * GetBuyerCatalogListingPriceResponseDataPriceMatch
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-11T23:47:29.843Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-27T19:58:46.962Z[Etc/UTC]")
 public class GetBuyerCatalogListingPriceResponseDataPriceMatch {
-  public static final String SERIALIZED_NAME_PLATFORM = "platform";
-  @SerializedName(SERIALIZED_NAME_PLATFORM)
-  private String platform;
-
   public static final String SERIALIZED_NAME_LIST_PRICE_CENTS = "listPriceCents";
   @SerializedName(SERIALIZED_NAME_LIST_PRICE_CENTS)
   private BigDecimal listPriceCents;
 
+  public static final String SERIALIZED_NAME_PLATFORM = "platform";
+  @SerializedName(SERIALIZED_NAME_PLATFORM)
+  private String platform;
+
+  public static final String SERIALIZED_NAME_PLATFORM_NAME = "platformName";
+  @SerializedName(SERIALIZED_NAME_PLATFORM_NAME)
+  private String platformName;
+
   public GetBuyerCatalogListingPriceResponseDataPriceMatch() { 
   }
-
-  public GetBuyerCatalogListingPriceResponseDataPriceMatch platform(String platform) {
-    
-    this.platform = platform;
-    return this;
-  }
-
-   /**
-   * Get platform
-   * @return platform
-  **/
-  @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "")
-
-  public String getPlatform() {
-    return platform;
-  }
-
-
-  public void setPlatform(String platform) {
-    this.platform = platform;
-  }
-
 
   public GetBuyerCatalogListingPriceResponseDataPriceMatch listPriceCents(BigDecimal listPriceCents) {
     
@@ -87,6 +69,52 @@ public class GetBuyerCatalogListingPriceResponseDataPriceMatch {
   }
 
 
+  public GetBuyerCatalogListingPriceResponseDataPriceMatch platform(String platform) {
+    
+    this.platform = platform;
+    return this;
+  }
+
+   /**
+   * Get platform
+   * @return platform
+  **/
+  @javax.annotation.Nonnull
+  @ApiModelProperty(required = true, value = "")
+
+  public String getPlatform() {
+    return platform;
+  }
+
+
+  public void setPlatform(String platform) {
+    this.platform = platform;
+  }
+
+
+  public GetBuyerCatalogListingPriceResponseDataPriceMatch platformName(String platformName) {
+    
+    this.platformName = platformName;
+    return this;
+  }
+
+   /**
+   * Get platformName
+   * @return platformName
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public String getPlatformName() {
+    return platformName;
+  }
+
+
+  public void setPlatformName(String platformName) {
+    this.platformName = platformName;
+  }
+
+
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -96,21 +124,34 @@ public class GetBuyerCatalogListingPriceResponseDataPriceMatch {
       return false;
     }
     GetBuyerCatalogListingPriceResponseDataPriceMatch getBuyerCatalogListingPriceResponseDataPriceMatch = (GetBuyerCatalogListingPriceResponseDataPriceMatch) o;
-    return Objects.equals(this.platform, getBuyerCatalogListingPriceResponseDataPriceMatch.platform) &&
-        Objects.equals(this.listPriceCents, getBuyerCatalogListingPriceResponseDataPriceMatch.listPriceCents);
+    return Objects.equals(this.listPriceCents, getBuyerCatalogListingPriceResponseDataPriceMatch.listPriceCents) &&
+        Objects.equals(this.platform, getBuyerCatalogListingPriceResponseDataPriceMatch.platform) &&
+        Objects.equals(this.platformName, getBuyerCatalogListingPriceResponseDataPriceMatch.platformName);
+  }
+
+  private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+    return a == b || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(platform, listPriceCents);
+    return Objects.hash(listPriceCents, platform, platformName);
+  }
+
+  private static <T> int hashCodeNullable(JsonNullable<T> a) {
+    if (a == null) {
+      return 1;
+    }
+    return a.isPresent() ? Arrays.deepHashCode(new Object[]{a.get()}) : 31;
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class GetBuyerCatalogListingPriceResponseDataPriceMatch {\n");
-    sb.append("    platform: ").append(toIndentedString(platform)).append("\n");
     sb.append("    listPriceCents: ").append(toIndentedString(listPriceCents)).append("\n");
+    sb.append("    platform: ").append(toIndentedString(platform)).append("\n");
+    sb.append("    platformName: ").append(toIndentedString(platformName)).append("\n");
     sb.append("}");
     return sb.toString();
   }

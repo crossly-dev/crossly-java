@@ -25,17 +25,17 @@ import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-import net.crossly.model.automation.CreateAutomationRuleImportResponseCreated;
 import net.crossly.model.automation.CreateAutomationRuleImportResponseErrors;
+import net.crossly.model.common.IdName;
 
 /**
  * CreateAutomationRuleImportResponse
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-11T23:44:48.922Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-27T19:42:43.186Z[Etc/UTC]")
 public class CreateAutomationRuleImportResponse {
   public static final String SERIALIZED_NAME_CREATED = "created";
   @SerializedName(SERIALIZED_NAME_CREATED)
-  private List<CreateAutomationRuleImportResponseCreated> created = new ArrayList<CreateAutomationRuleImportResponseCreated>();
+  private List<IdName> created = new ArrayList<IdName>();
 
   public static final String SERIALIZED_NAME_ERRORS = "errors";
   @SerializedName(SERIALIZED_NAME_ERRORS)
@@ -44,13 +44,13 @@ public class CreateAutomationRuleImportResponse {
   public CreateAutomationRuleImportResponse() { 
   }
 
-  public CreateAutomationRuleImportResponse created(List<CreateAutomationRuleImportResponseCreated> created) {
+  public CreateAutomationRuleImportResponse created(List<IdName> created) {
     
     this.created = created;
     return this;
   }
 
-  public CreateAutomationRuleImportResponse addCreatedItem(CreateAutomationRuleImportResponseCreated createdItem) {
+  public CreateAutomationRuleImportResponse addCreatedItem(IdName createdItem) {
     this.created.add(createdItem);
     return this;
   }
@@ -62,12 +62,12 @@ public class CreateAutomationRuleImportResponse {
   @javax.annotation.Nonnull
   @ApiModelProperty(required = true, value = "")
 
-  public List<CreateAutomationRuleImportResponseCreated> getCreated() {
+  public List<IdName> getCreated() {
     return created;
   }
 
 
-  public void setCreated(List<CreateAutomationRuleImportResponseCreated> created) {
+  public void setCreated(List<IdName> created) {
     this.created = created;
   }
 

@@ -29,26 +29,26 @@ import org.openapitools.jackson.nullable.JsonNullable;
 /**
  * CreateCbxDisbursementRuleCheckResponseData
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-11T23:44:48.922Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-27T19:42:43.186Z[Etc/UTC]")
 public class CreateCbxDisbursementRuleCheckResponseData {
   /**
    * Gets or Sets outcome
    */
   @JsonAdapter(OutcomeEnum.Adapter.class)
   public enum OutcomeEnum {
-    FIRED("fired"),
-    
     COVERAGE("coverage"),
-    
-    NO_PRICE("no_price"),
-    
-    BELOW_THRESHOLD("below_threshold"),
     
     CADENCE("cadence"),
     
-    NO_RECIPIENTS("no_recipients"),
+    NO_PRICE("no_price"),
     
-    INACTIVE("inactive");
+    INACTIVE("inactive"),
+    
+    FIRED("fired"),
+    
+    BELOW_THRESHOLD("below_threshold"),
+    
+    NO_RECIPIENTS("no_recipients");
 
     private String value;
 

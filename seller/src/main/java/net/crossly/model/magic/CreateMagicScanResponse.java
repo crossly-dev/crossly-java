@@ -23,12 +23,14 @@ import com.google.gson.stream.JsonWriter;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import net.crossly.model.magic.CreateMagicScanResponseEbayHits;
 import net.crossly.model.magic.CreateMagicScanResponseEbayMatch;
+import net.crossly.model.magic.CreateMagicScanResponseMatchReference;
 import net.crossly.model.magic.CreateMagicScanResponsePhotoIdentifier;
 import net.crossly.model.magic.CreateMagicScanResponsePossibleDuplicates;
 import net.crossly.model.magic.CreateMagicScanResponseTopHits;
@@ -37,7 +39,7 @@ import org.openapitools.jackson.nullable.JsonNullable;
 /**
  * CreateMagicScanResponse
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-11T23:44:48.922Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-27T19:42:43.186Z[Etc/UTC]")
 public class CreateMagicScanResponse {
   public static final String SERIALIZED_NAME_RUN_ID = "runId";
   @SerializedName(SERIALIZED_NAME_RUN_ID)
@@ -46,6 +48,10 @@ public class CreateMagicScanResponse {
   public static final String SERIALIZED_NAME_PHOTO_IDENTIFIER = "photoIdentifier";
   @SerializedName(SERIALIZED_NAME_PHOTO_IDENTIFIER)
   private CreateMagicScanResponsePhotoIdentifier photoIdentifier;
+
+  public static final String SERIALIZED_NAME_MATCH_REFERENCE = "matchReference";
+  @SerializedName(SERIALIZED_NAME_MATCH_REFERENCE)
+  private CreateMagicScanResponseMatchReference matchReference;
 
   public static final String SERIALIZED_NAME_EBAY_MATCH = "ebayMatch";
   @SerializedName(SERIALIZED_NAME_EBAY_MATCH)
@@ -78,6 +84,10 @@ public class CreateMagicScanResponse {
   public static final String SERIALIZED_NAME_CACHED = "cached";
   @SerializedName(SERIALIZED_NAME_CACHED)
   private Boolean cached;
+
+  public static final String SERIALIZED_NAME_VISION_CALLS_USED = "visionCallsUsed";
+  @SerializedName(SERIALIZED_NAME_VISION_CALLS_USED)
+  private BigDecimal visionCallsUsed;
 
   public CreateMagicScanResponse() { 
   }
@@ -125,6 +135,29 @@ public class CreateMagicScanResponse {
 
   public void setPhotoIdentifier(CreateMagicScanResponsePhotoIdentifier photoIdentifier) {
     this.photoIdentifier = photoIdentifier;
+  }
+
+
+  public CreateMagicScanResponse matchReference(CreateMagicScanResponseMatchReference matchReference) {
+    
+    this.matchReference = matchReference;
+    return this;
+  }
+
+   /**
+   * Get matchReference
+   * @return matchReference
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public CreateMagicScanResponseMatchReference getMatchReference() {
+    return matchReference;
+  }
+
+
+  public void setMatchReference(CreateMagicScanResponseMatchReference matchReference) {
+    this.matchReference = matchReference;
   }
 
 
@@ -342,6 +375,29 @@ public class CreateMagicScanResponse {
   }
 
 
+  public CreateMagicScanResponse visionCallsUsed(BigDecimal visionCallsUsed) {
+    
+    this.visionCallsUsed = visionCallsUsed;
+    return this;
+  }
+
+   /**
+   * Monthly vision calls (vision-quota.ts) this scan spent: the seller&#39;s Activity Log shows them as credits used. 0 for a single-photo scan and for a re-scan of the same photos.
+   * @return visionCallsUsed
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "Monthly vision calls (vision-quota.ts) this scan spent: the seller's Activity Log shows them as credits used. 0 for a single-photo scan and for a re-scan of the same photos.")
+
+  public BigDecimal getVisionCallsUsed() {
+    return visionCallsUsed;
+  }
+
+
+  public void setVisionCallsUsed(BigDecimal visionCallsUsed) {
+    this.visionCallsUsed = visionCallsUsed;
+  }
+
+
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -353,6 +409,7 @@ public class CreateMagicScanResponse {
     CreateMagicScanResponse createMagicScanResponse = (CreateMagicScanResponse) o;
     return Objects.equals(this.runId, createMagicScanResponse.runId) &&
         Objects.equals(this.photoIdentifier, createMagicScanResponse.photoIdentifier) &&
+        Objects.equals(this.matchReference, createMagicScanResponse.matchReference) &&
         Objects.equals(this.ebayMatch, createMagicScanResponse.ebayMatch) &&
         Objects.equals(this.topHits, createMagicScanResponse.topHits) &&
         Objects.equals(this.ebayHits, createMagicScanResponse.ebayHits) &&
@@ -360,7 +417,8 @@ public class CreateMagicScanResponse {
         Objects.equals(this.imageUrls, createMagicScanResponse.imageUrls) &&
         Objects.equals(this.visionAspects, createMagicScanResponse.visionAspects) &&
         Objects.equals(this.possibleDuplicates, createMagicScanResponse.possibleDuplicates) &&
-        Objects.equals(this.cached, createMagicScanResponse.cached);
+        Objects.equals(this.cached, createMagicScanResponse.cached) &&
+        Objects.equals(this.visionCallsUsed, createMagicScanResponse.visionCallsUsed);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -369,7 +427,7 @@ public class CreateMagicScanResponse {
 
   @Override
   public int hashCode() {
-    return Objects.hash(runId, photoIdentifier, ebayMatch, topHits, ebayHits, otherMatches, imageUrls, visionAspects, possibleDuplicates, cached);
+    return Objects.hash(runId, photoIdentifier, matchReference, ebayMatch, topHits, ebayHits, otherMatches, imageUrls, visionAspects, possibleDuplicates, cached, visionCallsUsed);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -385,6 +443,7 @@ public class CreateMagicScanResponse {
     sb.append("class CreateMagicScanResponse {\n");
     sb.append("    runId: ").append(toIndentedString(runId)).append("\n");
     sb.append("    photoIdentifier: ").append(toIndentedString(photoIdentifier)).append("\n");
+    sb.append("    matchReference: ").append(toIndentedString(matchReference)).append("\n");
     sb.append("    ebayMatch: ").append(toIndentedString(ebayMatch)).append("\n");
     sb.append("    topHits: ").append(toIndentedString(topHits)).append("\n");
     sb.append("    ebayHits: ").append(toIndentedString(ebayHits)).append("\n");
@@ -393,6 +452,7 @@ public class CreateMagicScanResponse {
     sb.append("    visionAspects: ").append(toIndentedString(visionAspects)).append("\n");
     sb.append("    possibleDuplicates: ").append(toIndentedString(possibleDuplicates)).append("\n");
     sb.append("    cached: ").append(toIndentedString(cached)).append("\n");
+    sb.append("    visionCallsUsed: ").append(toIndentedString(visionCallsUsed)).append("\n");
     sb.append("}");
     return sb.toString();
   }

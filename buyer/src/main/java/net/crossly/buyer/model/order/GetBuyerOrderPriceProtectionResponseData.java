@@ -28,15 +28,15 @@ import java.math.BigDecimal;
 /**
  * GetBuyerOrderPriceProtectionResponseData
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-11T23:47:29.843Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-27T19:58:46.962Z[Etc/UTC]")
 public class GetBuyerOrderPriceProtectionResponseData {
-  public static final String SERIALIZED_NAME_ACTIVE = "active";
-  @SerializedName(SERIALIZED_NAME_ACTIVE)
-  private Boolean active;
-
   public static final String SERIALIZED_NAME_UNTIL = "until";
   @SerializedName(SERIALIZED_NAME_UNTIL)
   private String until;
+
+  public static final String SERIALIZED_NAME_ACTIVE = "active";
+  @SerializedName(SERIALIZED_NAME_ACTIVE)
+  private Boolean active;
 
   public static final String SERIALIZED_NAME_CREDITED_CENTS = "creditedCents";
   @SerializedName(SERIALIZED_NAME_CREDITED_CENTS)
@@ -44,29 +44,6 @@ public class GetBuyerOrderPriceProtectionResponseData {
 
   public GetBuyerOrderPriceProtectionResponseData() { 
   }
-
-  public GetBuyerOrderPriceProtectionResponseData active(Boolean active) {
-    
-    this.active = active;
-    return this;
-  }
-
-   /**
-   * Get active
-   * @return active
-  **/
-  @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "")
-
-  public Boolean getActive() {
-    return active;
-  }
-
-
-  public void setActive(Boolean active) {
-    this.active = active;
-  }
-
 
   public GetBuyerOrderPriceProtectionResponseData until(String until) {
     
@@ -88,6 +65,29 @@ public class GetBuyerOrderPriceProtectionResponseData {
 
   public void setUntil(String until) {
     this.until = until;
+  }
+
+
+  public GetBuyerOrderPriceProtectionResponseData active(Boolean active) {
+    
+    this.active = active;
+    return this;
+  }
+
+   /**
+   * Get active
+   * @return active
+  **/
+  @javax.annotation.Nonnull
+  @ApiModelProperty(required = true, value = "")
+
+  public Boolean getActive() {
+    return active;
+  }
+
+
+  public void setActive(Boolean active) {
+    this.active = active;
   }
 
 
@@ -123,22 +123,22 @@ public class GetBuyerOrderPriceProtectionResponseData {
       return false;
     }
     GetBuyerOrderPriceProtectionResponseData getBuyerOrderPriceProtectionResponseData = (GetBuyerOrderPriceProtectionResponseData) o;
-    return Objects.equals(this.active, getBuyerOrderPriceProtectionResponseData.active) &&
-        Objects.equals(this.until, getBuyerOrderPriceProtectionResponseData.until) &&
+    return Objects.equals(this.until, getBuyerOrderPriceProtectionResponseData.until) &&
+        Objects.equals(this.active, getBuyerOrderPriceProtectionResponseData.active) &&
         Objects.equals(this.creditedCents, getBuyerOrderPriceProtectionResponseData.creditedCents);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(active, until, creditedCents);
+    return Objects.hash(until, active, creditedCents);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class GetBuyerOrderPriceProtectionResponseData {\n");
-    sb.append("    active: ").append(toIndentedString(active)).append("\n");
     sb.append("    until: ").append(toIndentedString(until)).append("\n");
+    sb.append("    active: ").append(toIndentedString(active)).append("\n");
     sb.append("    creditedCents: ").append(toIndentedString(creditedCents)).append("\n");
     sb.append("}");
     return sb.toString();

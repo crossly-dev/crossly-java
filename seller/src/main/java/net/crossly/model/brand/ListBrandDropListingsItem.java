@@ -29,7 +29,7 @@ import org.openapitools.jackson.nullable.JsonNullable;
 /**
  * ListBrandDropListingsItem
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-11T23:44:48.922Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-27T19:42:43.186Z[Etc/UTC]")
 public class ListBrandDropListingsItem {
   public static final String SERIALIZED_NAME_PLATFORM_LISTING_ID = "platformListingId";
   @SerializedName(SERIALIZED_NAME_PLATFORM_LISTING_ID)
@@ -54,6 +54,14 @@ public class ListBrandDropListingsItem {
   public static final String SERIALIZED_NAME_STATUS = "status";
   @SerializedName(SERIALIZED_NAME_STATUS)
   private String status;
+
+  public static final String SERIALIZED_NAME_SLUG = "slug";
+  @SerializedName(SERIALIZED_NAME_SLUG)
+  private String slug;
+
+  public static final String SERIALIZED_NAME_QUANTITY = "quantity";
+  @SerializedName(SERIALIZED_NAME_QUANTITY)
+  private BigDecimal quantity;
 
   public ListBrandDropListingsItem() { 
   }
@@ -196,6 +204,52 @@ public class ListBrandDropListingsItem {
   }
 
 
+  public ListBrandDropListingsItem slug(String slug) {
+    
+    this.slug = slug;
+    return this;
+  }
+
+   /**
+   * The Crossly listing&#39;s slug (platform_listings.platform_listing_id): what the cart adds by.
+   * @return slug
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "The Crossly listing's slug (platform_listings.platform_listing_id): what the cart adds by.")
+
+  public String getSlug() {
+    return slug;
+  }
+
+
+  public void setSlug(String slug) {
+    this.slug = slug;
+  }
+
+
+  public ListBrandDropListingsItem quantity(BigDecimal quantity) {
+    
+    this.quantity = quantity;
+    return this;
+  }
+
+   /**
+   * Units the listing offers (null &#x3D; untracked): a pre-book&#39;s reservable quantity.
+   * @return quantity
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "Units the listing offers (null = untracked): a pre-book's reservable quantity.")
+
+  public BigDecimal getQuantity() {
+    return quantity;
+  }
+
+
+  public void setQuantity(BigDecimal quantity) {
+    this.quantity = quantity;
+  }
+
+
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -210,7 +264,9 @@ public class ListBrandDropListingsItem {
         Objects.equals(this.title, listBrandDropListingsItem.title) &&
         Objects.equals(this.imageUrl, listBrandDropListingsItem.imageUrl) &&
         Objects.equals(this.priceCents, listBrandDropListingsItem.priceCents) &&
-        Objects.equals(this.status, listBrandDropListingsItem.status);
+        Objects.equals(this.status, listBrandDropListingsItem.status) &&
+        Objects.equals(this.slug, listBrandDropListingsItem.slug) &&
+        Objects.equals(this.quantity, listBrandDropListingsItem.quantity);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -219,7 +275,7 @@ public class ListBrandDropListingsItem {
 
   @Override
   public int hashCode() {
-    return Objects.hash(platformListingId, listingId, title, imageUrl, priceCents, status);
+    return Objects.hash(platformListingId, listingId, title, imageUrl, priceCents, status, slug, quantity);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -239,6 +295,8 @@ public class ListBrandDropListingsItem {
     sb.append("    imageUrl: ").append(toIndentedString(imageUrl)).append("\n");
     sb.append("    priceCents: ").append(toIndentedString(priceCents)).append("\n");
     sb.append("    status: ").append(toIndentedString(status)).append("\n");
+    sb.append("    slug: ").append(toIndentedString(slug)).append("\n");
+    sb.append("    quantity: ").append(toIndentedString(quantity)).append("\n");
     sb.append("}");
     return sb.toString();
   }

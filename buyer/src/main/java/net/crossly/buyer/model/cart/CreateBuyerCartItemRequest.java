@@ -27,7 +27,7 @@ import java.io.IOException;
 /**
  * CreateBuyerCartItemRequest
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-11T23:47:29.843Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-27T19:58:46.962Z[Etc/UTC]")
 public class CreateBuyerCartItemRequest {
   public static final String SERIALIZED_NAME_LISTING_SLUG = "listingSlug";
   @SerializedName(SERIALIZED_NAME_LISTING_SLUG)
@@ -36,6 +36,10 @@ public class CreateBuyerCartItemRequest {
   public static final String SERIALIZED_NAME_QUANTITY = "quantity";
   @SerializedName(SERIALIZED_NAME_QUANTITY)
   private Integer quantity = 1;
+
+  public static final String SERIALIZED_NAME_LISTING_VARIANT_ID = "listingVariantId";
+  @SerializedName(SERIALIZED_NAME_LISTING_VARIANT_ID)
+  private String listingVariantId;
 
   public static final String SERIALIZED_NAME_VIA = "via";
   @SerializedName(SERIALIZED_NAME_VIA)
@@ -92,6 +96,29 @@ public class CreateBuyerCartItemRequest {
   }
 
 
+  public CreateBuyerCartItemRequest listingVariantId(String listingVariantId) {
+    
+    this.listingVariantId = listingVariantId;
+    return this;
+  }
+
+   /**
+   * The option (variants[].id) on a listing with options.
+   * @return listingVariantId
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "The option (variants[].id) on a listing with options.")
+
+  public String getListingVariantId() {
+    return listingVariantId;
+  }
+
+
+  public void setListingVariantId(String listingVariantId) {
+    this.listingVariantId = listingVariantId;
+  }
+
+
   public CreateBuyerCartItemRequest via(String via) {
     
     this.via = via;
@@ -126,12 +153,13 @@ public class CreateBuyerCartItemRequest {
     CreateBuyerCartItemRequest createBuyerCartItemRequest = (CreateBuyerCartItemRequest) o;
     return Objects.equals(this.listingSlug, createBuyerCartItemRequest.listingSlug) &&
         Objects.equals(this.quantity, createBuyerCartItemRequest.quantity) &&
+        Objects.equals(this.listingVariantId, createBuyerCartItemRequest.listingVariantId) &&
         Objects.equals(this.via, createBuyerCartItemRequest.via);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(listingSlug, quantity, via);
+    return Objects.hash(listingSlug, quantity, listingVariantId, via);
   }
 
   @Override
@@ -140,6 +168,7 @@ public class CreateBuyerCartItemRequest {
     sb.append("class CreateBuyerCartItemRequest {\n");
     sb.append("    listingSlug: ").append(toIndentedString(listingSlug)).append("\n");
     sb.append("    quantity: ").append(toIndentedString(quantity)).append("\n");
+    sb.append("    listingVariantId: ").append(toIndentedString(listingVariantId)).append("\n");
     sb.append("    via: ").append(toIndentedString(via)).append("\n");
     sb.append("}");
     return sb.toString();

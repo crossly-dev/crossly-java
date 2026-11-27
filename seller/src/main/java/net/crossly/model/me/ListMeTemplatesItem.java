@@ -32,7 +32,7 @@ import org.threeten.bp.OffsetDateTime;
 /**
  * ListMeTemplatesItem
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-11T23:44:48.922Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-27T19:42:43.186Z[Etc/UTC]")
 public class ListMeTemplatesItem {
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
@@ -57,6 +57,18 @@ public class ListMeTemplatesItem {
   public static final String SERIALIZED_NAME_USER_ID = "userId";
   @SerializedName(SERIALIZED_NAME_USER_ID)
   private String userId;
+
+  public static final String SERIALIZED_NAME_DESCRIPTION = "description";
+  @SerializedName(SERIALIZED_NAME_DESCRIPTION)
+  private String description;
+
+  public static final String SERIALIZED_NAME_NOTES = "notes";
+  @SerializedName(SERIALIZED_NAME_NOTES)
+  private String notes;
+
+  public static final String SERIALIZED_NAME_IS_DEFAULT = "isDefault";
+  @SerializedName(SERIALIZED_NAME_IS_DEFAULT)
+  private Boolean isDefault;
 
   public static final String SERIALIZED_NAME_CONDITION = "condition";
   @SerializedName(SERIALIZED_NAME_CONDITION)
@@ -102,37 +114,21 @@ public class ListMeTemplatesItem {
   @SerializedName(SERIALIZED_NAME_TAGS)
   private List<String> tags = null;
 
-  public static final String SERIALIZED_NAME_NOTES = "notes";
-  @SerializedName(SERIALIZED_NAME_NOTES)
-  private String notes;
-
   public static final String SERIALIZED_NAME_WEIGHT_OZ = "weightOz";
   @SerializedName(SERIALIZED_NAME_WEIGHT_OZ)
   private BigDecimal weightOz;
-
-  public static final String SERIALIZED_NAME_DESCRIPTION = "description";
-  @SerializedName(SERIALIZED_NAME_DESCRIPTION)
-  private String description;
-
-  public static final String SERIALIZED_NAME_IS_DEFAULT = "isDefault";
-  @SerializedName(SERIALIZED_NAME_IS_DEFAULT)
-  private Boolean isDefault;
 
   public static final String SERIALIZED_NAME_TITLE = "title";
   @SerializedName(SERIALIZED_NAME_TITLE)
   private String title;
 
-  public static final String SERIALIZED_NAME_SCOPE = "scope";
-  @SerializedName(SERIALIZED_NAME_SCOPE)
-  private String scope;
-
-  public static final String SERIALIZED_NAME_SHARE_TOKEN = "shareToken";
-  @SerializedName(SERIALIZED_NAME_SHARE_TOKEN)
-  private String shareToken;
-
   public static final String SERIALIZED_NAME_SORT_ORDER = "sortOrder";
   @SerializedName(SERIALIZED_NAME_SORT_ORDER)
   private BigDecimal sortOrder;
+
+  public static final String SERIALIZED_NAME_SCOPE = "scope";
+  @SerializedName(SERIALIZED_NAME_SCOPE)
+  private String scope;
 
   public static final String SERIALIZED_NAME_DESCRIPTION_VARIANTS = "descriptionVariants";
   @SerializedName(SERIALIZED_NAME_DESCRIPTION_VARIANTS)
@@ -145,6 +141,10 @@ public class ListMeTemplatesItem {
   public static final String SERIALIZED_NAME_DEFAULT_FOR_CATEGORY = "defaultForCategory";
   @SerializedName(SERIALIZED_NAME_DEFAULT_FOR_CATEGORY)
   private String defaultForCategory;
+
+  public static final String SERIALIZED_NAME_SHARE_TOKEN = "shareToken";
+  @SerializedName(SERIALIZED_NAME_SHARE_TOKEN)
+  private String shareToken;
 
   public ListMeTemplatesItem() { 
   }
@@ -284,6 +284,75 @@ public class ListMeTemplatesItem {
 
   public void setUserId(String userId) {
     this.userId = userId;
+  }
+
+
+  public ListMeTemplatesItem description(String description) {
+    
+    this.description = description;
+    return this;
+  }
+
+   /**
+   * Get description
+   * @return description
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public String getDescription() {
+    return description;
+  }
+
+
+  public void setDescription(String description) {
+    this.description = description;
+  }
+
+
+  public ListMeTemplatesItem notes(String notes) {
+    
+    this.notes = notes;
+    return this;
+  }
+
+   /**
+   * Get notes
+   * @return notes
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public String getNotes() {
+    return notes;
+  }
+
+
+  public void setNotes(String notes) {
+    this.notes = notes;
+  }
+
+
+  public ListMeTemplatesItem isDefault(Boolean isDefault) {
+    
+    this.isDefault = isDefault;
+    return this;
+  }
+
+   /**
+   * Get isDefault
+   * @return isDefault
+  **/
+  @javax.annotation.Nonnull
+  @ApiModelProperty(required = true, value = "")
+
+  public Boolean getIsDefault() {
+    return isDefault;
+  }
+
+
+  public void setIsDefault(Boolean isDefault) {
+    this.isDefault = isDefault;
   }
 
 
@@ -548,29 +617,6 @@ public class ListMeTemplatesItem {
   }
 
 
-  public ListMeTemplatesItem notes(String notes) {
-    
-    this.notes = notes;
-    return this;
-  }
-
-   /**
-   * Get notes
-   * @return notes
-  **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
-
-  public String getNotes() {
-    return notes;
-  }
-
-
-  public void setNotes(String notes) {
-    this.notes = notes;
-  }
-
-
   public ListMeTemplatesItem weightOz(BigDecimal weightOz) {
     
     this.weightOz = weightOz;
@@ -591,52 +637,6 @@ public class ListMeTemplatesItem {
 
   public void setWeightOz(BigDecimal weightOz) {
     this.weightOz = weightOz;
-  }
-
-
-  public ListMeTemplatesItem description(String description) {
-    
-    this.description = description;
-    return this;
-  }
-
-   /**
-   * Get description
-   * @return description
-  **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
-
-  public String getDescription() {
-    return description;
-  }
-
-
-  public void setDescription(String description) {
-    this.description = description;
-  }
-
-
-  public ListMeTemplatesItem isDefault(Boolean isDefault) {
-    
-    this.isDefault = isDefault;
-    return this;
-  }
-
-   /**
-   * Get isDefault
-   * @return isDefault
-  **/
-  @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "")
-
-  public Boolean getIsDefault() {
-    return isDefault;
-  }
-
-
-  public void setIsDefault(Boolean isDefault) {
-    this.isDefault = isDefault;
   }
 
 
@@ -663,52 +663,6 @@ public class ListMeTemplatesItem {
   }
 
 
-  public ListMeTemplatesItem scope(String scope) {
-    
-    this.scope = scope;
-    return this;
-  }
-
-   /**
-   * Get scope
-   * @return scope
-  **/
-  @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "")
-
-  public String getScope() {
-    return scope;
-  }
-
-
-  public void setScope(String scope) {
-    this.scope = scope;
-  }
-
-
-  public ListMeTemplatesItem shareToken(String shareToken) {
-    
-    this.shareToken = shareToken;
-    return this;
-  }
-
-   /**
-   * Get shareToken
-   * @return shareToken
-  **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
-
-  public String getShareToken() {
-    return shareToken;
-  }
-
-
-  public void setShareToken(String shareToken) {
-    this.shareToken = shareToken;
-  }
-
-
   public ListMeTemplatesItem sortOrder(BigDecimal sortOrder) {
     
     this.sortOrder = sortOrder;
@@ -729,6 +683,29 @@ public class ListMeTemplatesItem {
 
   public void setSortOrder(BigDecimal sortOrder) {
     this.sortOrder = sortOrder;
+  }
+
+
+  public ListMeTemplatesItem scope(String scope) {
+    
+    this.scope = scope;
+    return this;
+  }
+
+   /**
+   * Get scope
+   * @return scope
+  **/
+  @javax.annotation.Nonnull
+  @ApiModelProperty(required = true, value = "")
+
+  public String getScope() {
+    return scope;
+  }
+
+
+  public void setScope(String scope) {
+    this.scope = scope;
   }
 
 
@@ -817,6 +794,29 @@ public class ListMeTemplatesItem {
   }
 
 
+  public ListMeTemplatesItem shareToken(String shareToken) {
+    
+    this.shareToken = shareToken;
+    return this;
+  }
+
+   /**
+   * Get shareToken
+   * @return shareToken
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public String getShareToken() {
+    return shareToken;
+  }
+
+
+  public void setShareToken(String shareToken) {
+    this.shareToken = shareToken;
+  }
+
+
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -832,6 +832,9 @@ public class ListMeTemplatesItem {
         Objects.equals(this.createdAt, listMeTemplatesItem.createdAt) &&
         Objects.equals(this.updatedAt, listMeTemplatesItem.updatedAt) &&
         Objects.equals(this.userId, listMeTemplatesItem.userId) &&
+        Objects.equals(this.description, listMeTemplatesItem.description) &&
+        Objects.equals(this.notes, listMeTemplatesItem.notes) &&
+        Objects.equals(this.isDefault, listMeTemplatesItem.isDefault) &&
         Objects.equals(this.condition, listMeTemplatesItem.condition) &&
         Objects.equals(this.size, listMeTemplatesItem.size) &&
         Objects.equals(this.material, listMeTemplatesItem.material) &&
@@ -843,17 +846,14 @@ public class ListMeTemplatesItem {
         Objects.equals(this.sizeSystem, listMeTemplatesItem.sizeSystem) &&
         Objects.equals(this.color, listMeTemplatesItem.color) &&
         Objects.equals(this.tags, listMeTemplatesItem.tags) &&
-        Objects.equals(this.notes, listMeTemplatesItem.notes) &&
         Objects.equals(this.weightOz, listMeTemplatesItem.weightOz) &&
-        Objects.equals(this.description, listMeTemplatesItem.description) &&
-        Objects.equals(this.isDefault, listMeTemplatesItem.isDefault) &&
         Objects.equals(this.title, listMeTemplatesItem.title) &&
-        Objects.equals(this.scope, listMeTemplatesItem.scope) &&
-        Objects.equals(this.shareToken, listMeTemplatesItem.shareToken) &&
         Objects.equals(this.sortOrder, listMeTemplatesItem.sortOrder) &&
+        Objects.equals(this.scope, listMeTemplatesItem.scope) &&
         Objects.equals(this.descriptionVariants, listMeTemplatesItem.descriptionVariants) &&
         Objects.equals(this.titleVariants, listMeTemplatesItem.titleVariants) &&
-        Objects.equals(this.defaultForCategory, listMeTemplatesItem.defaultForCategory);
+        Objects.equals(this.defaultForCategory, listMeTemplatesItem.defaultForCategory) &&
+        Objects.equals(this.shareToken, listMeTemplatesItem.shareToken);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -862,7 +862,7 @@ public class ListMeTemplatesItem {
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, brand, name, createdAt, updatedAt, userId, condition, size, material, style, pattern, department, gender, itemType, sizeSystem, color, tags, notes, weightOz, description, isDefault, title, scope, shareToken, sortOrder, descriptionVariants, titleVariants, defaultForCategory);
+    return Objects.hash(id, brand, name, createdAt, updatedAt, userId, description, notes, isDefault, condition, size, material, style, pattern, department, gender, itemType, sizeSystem, color, tags, weightOz, title, sortOrder, scope, descriptionVariants, titleVariants, defaultForCategory, shareToken);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -882,6 +882,9 @@ public class ListMeTemplatesItem {
     sb.append("    createdAt: ").append(toIndentedString(createdAt)).append("\n");
     sb.append("    updatedAt: ").append(toIndentedString(updatedAt)).append("\n");
     sb.append("    userId: ").append(toIndentedString(userId)).append("\n");
+    sb.append("    description: ").append(toIndentedString(description)).append("\n");
+    sb.append("    notes: ").append(toIndentedString(notes)).append("\n");
+    sb.append("    isDefault: ").append(toIndentedString(isDefault)).append("\n");
     sb.append("    condition: ").append(toIndentedString(condition)).append("\n");
     sb.append("    size: ").append(toIndentedString(size)).append("\n");
     sb.append("    material: ").append(toIndentedString(material)).append("\n");
@@ -893,17 +896,14 @@ public class ListMeTemplatesItem {
     sb.append("    sizeSystem: ").append(toIndentedString(sizeSystem)).append("\n");
     sb.append("    color: ").append(toIndentedString(color)).append("\n");
     sb.append("    tags: ").append(toIndentedString(tags)).append("\n");
-    sb.append("    notes: ").append(toIndentedString(notes)).append("\n");
     sb.append("    weightOz: ").append(toIndentedString(weightOz)).append("\n");
-    sb.append("    description: ").append(toIndentedString(description)).append("\n");
-    sb.append("    isDefault: ").append(toIndentedString(isDefault)).append("\n");
     sb.append("    title: ").append(toIndentedString(title)).append("\n");
-    sb.append("    scope: ").append(toIndentedString(scope)).append("\n");
-    sb.append("    shareToken: ").append(toIndentedString(shareToken)).append("\n");
     sb.append("    sortOrder: ").append(toIndentedString(sortOrder)).append("\n");
+    sb.append("    scope: ").append(toIndentedString(scope)).append("\n");
     sb.append("    descriptionVariants: ").append(toIndentedString(descriptionVariants)).append("\n");
     sb.append("    titleVariants: ").append(toIndentedString(titleVariants)).append("\n");
     sb.append("    defaultForCategory: ").append(toIndentedString(defaultForCategory)).append("\n");
+    sb.append("    shareToken: ").append(toIndentedString(shareToken)).append("\n");
     sb.append("}");
     return sb.toString();
   }

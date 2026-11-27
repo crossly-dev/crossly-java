@@ -27,13 +27,13 @@ import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 import net.crossly.model.vault.GetVaultMarketWidgetMarkResponsePoints;
-import net.crossly.model.vault.ListVaultMarketFeedItemMark;
+import net.crossly.model.vault.ListVaultMarketOpeningItemMark;
 import org.openapitools.jackson.nullable.JsonNullable;
 
 /**
  * GetVaultMarketWidgetMarkResponse
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-11T23:44:48.922Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-27T19:42:43.186Z[Etc/UTC]")
 public class GetVaultMarketWidgetMarkResponse {
   public static final String SERIALIZED_NAME_BOOK_KEY = "bookKey";
   @SerializedName(SERIALIZED_NAME_BOOK_KEY)
@@ -61,7 +61,7 @@ public class GetVaultMarketWidgetMarkResponse {
 
   public static final String SERIALIZED_NAME_MARK = "mark";
   @SerializedName(SERIALIZED_NAME_MARK)
-  private ListVaultMarketFeedItemMark mark;
+  private ListVaultMarketOpeningItemMark mark;
 
   public static final String SERIALIZED_NAME_TRADES30D = "trades30d";
   @SerializedName(SERIALIZED_NAME_TRADES30D)
@@ -220,7 +220,7 @@ public class GetVaultMarketWidgetMarkResponse {
   }
 
 
-  public GetVaultMarketWidgetMarkResponse mark(ListVaultMarketFeedItemMark mark) {
+  public GetVaultMarketWidgetMarkResponse mark(ListVaultMarketOpeningItemMark mark) {
     
     this.mark = mark;
     return this;
@@ -233,12 +233,12 @@ public class GetVaultMarketWidgetMarkResponse {
   @javax.annotation.Nonnull
   @ApiModelProperty(required = true, value = "")
 
-  public ListVaultMarketFeedItemMark getMark() {
+  public ListVaultMarketOpeningItemMark getMark() {
     return mark;
   }
 
 
-  public void setMark(ListVaultMarketFeedItemMark mark) {
+  public void setMark(ListVaultMarketOpeningItemMark mark) {
     this.mark = mark;
   }
 

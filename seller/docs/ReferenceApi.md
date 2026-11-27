@@ -9,10 +9,12 @@ Method | HTTP request | Description
 [**getDepartment**](ReferenceApi.md#getDepartment) | **GET** /v1/departments | Search the eBay-sourced \&quot;Department\&quot; item-specific values.
 [**getGender**](ReferenceApi.md#getGender) | **GET** /v1/genders | Search the eBay-sourced \&quot;Gender\&quot; item-specific values.
 [**getPattern**](ReferenceApi.md#getPattern) | **GET** /v1/patterns | Search the eBay-sourced \&quot;Pattern\&quot; item-specific values.
+[**getReferencePostal**](ReferenceApi.md#getReferencePostal) | **GET** /v1/reference/postal/{country}/{code} | Look up a postal code: canonical shape, state and US metro areas.
 [**getSizeSystem**](ReferenceApi.md#getSizeSystem) | **GET** /v1/size-systems | Search the Poshmark + Vestiaire size-system union (US/UK/EU/AU/FR/KR).
 [**getStyle**](ReferenceApi.md#getStyle) | **GET** /v1/styles | Search the eBay-sourced \&quot;Style\&quot; item-specific values.
 [**getType**](ReferenceApi.md#getType) | **GET** /v1/types | Search the eBay-sourced \&quot;Type\&quot; item-specific values.
 [**listReferenceCountries**](ReferenceApi.md#listReferenceCountries) | **GET** /v1/reference/countries | Every country with its delivery-address rules.
+[**listReferenceMetros**](ReferenceApi.md#listReferenceMetros) | **GET** /v1/reference/metros | Search US metro areas (CSA / CBSA) for location rules.
 
 
 <a name="getBrand"></a>
@@ -350,6 +352,81 @@ This endpoint does not need any parameter.
 **429** | Error |  -  |
 **500** | Error |  -  |
 
+<a name="getReferencePostal"></a>
+# **getReferencePostal**
+> GetReferencePostalResponse getReferencePostal(country, code)
+
+Look up a postal code: canonical shape, state and US metro areas.
+
+Every country gets its canonical shape and &#x60;valid&#x60;. A US ZIP (territories normalize to country US with &#x60;territory&#x60;) also gets state, county FIPS and CBSA/CSA. &#x60;metroStatus&#x60; is known (the ZIP is mapped), unmapped (a ZIP with no metro mapping: it matches no metro rule) or no_zip.
+
+### Example
+```java
+// Import classes:
+import net.crossly.ApiClient;
+import net.crossly.ApiException;
+import net.crossly.Configuration;
+import net.crossly.auth.*;
+import net.crossly.models.*;
+import net.crossly.api.ReferenceApi;
+
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("https://crossly.net/api");
+    
+    // Configure HTTP bearer authorization: PersonalAccessToken
+    HttpBearerAuth PersonalAccessToken = (HttpBearerAuth) defaultClient.getAuthentication("PersonalAccessToken");
+    PersonalAccessToken.setBearerToken("BEARER TOKEN");
+
+    ReferenceApi apiInstance = new ReferenceApi(defaultClient);
+    String country = "country_example"; // String | 
+    String code = "code_example"; // String | 
+    try {
+      GetReferencePostalResponse result = apiInstance.getReferencePostal(country, code);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling ReferenceApi#getReferencePostal");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **country** | **String**|  |
+ **code** | **String**|  |
+
+### Return type
+
+**GetReferencePostalResponse**
+
+### Authorization
+
+[PersonalAccessToken](../README.md#PersonalAccessToken)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**400** | Error |  -  |
+**401** | Error |  -  |
+**403** | Error |  -  |
+**404** | Error |  -  |
+**429** | Error |  -  |
+**500** | Error |  -  |
+
 <a name="getSizeSystem"></a>
 # **getSizeSystem**
 > GetSizeSystemResponse getSizeSystem()
@@ -599,6 +676,81 @@ This endpoint does not need any parameter.
 ### Return type
 
 **ListReferenceCountriesResponse**
+
+### Authorization
+
+[PersonalAccessToken](../README.md#PersonalAccessToken)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**400** | Error |  -  |
+**401** | Error |  -  |
+**403** | Error |  -  |
+**404** | Error |  -  |
+**429** | Error |  -  |
+**500** | Error |  -  |
+
+<a name="listReferenceMetros"></a>
+# **listReferenceMetros**
+> ListReferenceMetrosResponse listReferenceMetros(q, limit)
+
+Search US metro areas (CSA / CBSA) for location rules.
+
+Combined Statistical Areas first, then Core-Based Statistical Areas, matched on title (or an exact code); at most 20. &#x60;q&#x60; needs 2+ characters. &#x60;meta.datasetAvailable&#x60; is false when the census dataset is not loaded, in which case no metro rule can match.
+
+### Example
+```java
+// Import classes:
+import net.crossly.ApiClient;
+import net.crossly.ApiException;
+import net.crossly.Configuration;
+import net.crossly.auth.*;
+import net.crossly.models.*;
+import net.crossly.api.ReferenceApi;
+
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("https://crossly.net/api");
+    
+    // Configure HTTP bearer authorization: PersonalAccessToken
+    HttpBearerAuth PersonalAccessToken = (HttpBearerAuth) defaultClient.getAuthentication("PersonalAccessToken");
+    PersonalAccessToken.setBearerToken("BEARER TOKEN");
+
+    ReferenceApi apiInstance = new ReferenceApi(defaultClient);
+    String q = "q_example"; // String | 
+    Integer limit = 20; // Integer | 
+    try {
+      ListReferenceMetrosResponse result = apiInstance.listReferenceMetros(q, limit);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling ReferenceApi#listReferenceMetros");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **q** | **String**|  |
+ **limit** | **Integer**|  | [optional] [default to 20]
+
+### Return type
+
+**ListReferenceMetrosResponse**
 
 ### Authorization
 

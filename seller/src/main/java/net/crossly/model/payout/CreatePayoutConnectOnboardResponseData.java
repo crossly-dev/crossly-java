@@ -27,7 +27,7 @@ import java.io.IOException;
 /**
  * CreatePayoutConnectOnboardResponseData
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-11T23:44:48.922Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-27T19:42:43.186Z[Etc/UTC]")
 public class CreatePayoutConnectOnboardResponseData {
   public static final String SERIALIZED_NAME_URL = "url";
   @SerializedName(SERIALIZED_NAME_URL)
@@ -91,6 +91,10 @@ public class CreatePayoutConnectOnboardResponseData {
   public static final String SERIALIZED_NAME_PAYOUTS_SUPPORTED = "payoutsSupported";
   @SerializedName(SERIALIZED_NAME_PAYOUTS_SUPPORTED)
   private Boolean payoutsSupported;
+
+  public static final String SERIALIZED_NAME_ACCOUNT_SOURCE = "accountSource";
+  @SerializedName(SERIALIZED_NAME_ACCOUNT_SOURCE)
+  private String accountSource;
 
   public CreatePayoutConnectOnboardResponseData() { 
   }
@@ -171,11 +175,11 @@ public class CreatePayoutConnectOnboardResponseData {
   }
 
    /**
-   * False when Stripe offers no way for Crossly to pay this account (see connect.ts).
+   * Get payoutsSupported
    * @return payoutsSupported
   **/
   @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "False when Stripe offers no way for Crossly to pay this account (see connect.ts).")
+  @ApiModelProperty(required = true, value = "")
 
   public Boolean getPayoutsSupported() {
     return payoutsSupported;
@@ -184,6 +188,29 @@ public class CreatePayoutConnectOnboardResponseData {
 
   public void setPayoutsSupported(Boolean payoutsSupported) {
     this.payoutsSupported = payoutsSupported;
+  }
+
+
+  public CreatePayoutConnectOnboardResponseData accountSource(String accountSource) {
+    
+    this.accountSource = accountSource;
+    return this;
+  }
+
+   /**
+   * Get accountSource
+   * @return accountSource
+  **/
+  @javax.annotation.Nonnull
+  @ApiModelProperty(required = true, value = "")
+
+  public String getAccountSource() {
+    return accountSource;
+  }
+
+
+  public void setAccountSource(String accountSource) {
+    this.accountSource = accountSource;
   }
 
 
@@ -199,12 +226,13 @@ public class CreatePayoutConnectOnboardResponseData {
     return Objects.equals(this.url, createPayoutConnectOnboardResponseData.url) &&
         Objects.equals(this.country, createPayoutConnectOnboardResponseData.country) &&
         Objects.equals(this.agreement, createPayoutConnectOnboardResponseData.agreement) &&
-        Objects.equals(this.payoutsSupported, createPayoutConnectOnboardResponseData.payoutsSupported);
+        Objects.equals(this.payoutsSupported, createPayoutConnectOnboardResponseData.payoutsSupported) &&
+        Objects.equals(this.accountSource, createPayoutConnectOnboardResponseData.accountSource);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(url, country, agreement, payoutsSupported);
+    return Objects.hash(url, country, agreement, payoutsSupported, accountSource);
   }
 
   @Override
@@ -215,6 +243,7 @@ public class CreatePayoutConnectOnboardResponseData {
     sb.append("    country: ").append(toIndentedString(country)).append("\n");
     sb.append("    agreement: ").append(toIndentedString(agreement)).append("\n");
     sb.append("    payoutsSupported: ").append(toIndentedString(payoutsSupported)).append("\n");
+    sb.append("    accountSource: ").append(toIndentedString(accountSource)).append("\n");
     sb.append("}");
     return sb.toString();
   }

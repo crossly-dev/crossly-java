@@ -32,7 +32,7 @@ import org.openapitools.jackson.nullable.JsonNullable;
 /**
  * ListWorldDecorCatalogueItem
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-11T23:44:48.922Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-27T19:42:43.186Z[Etc/UTC]")
 public class ListWorldDecorCatalogueItem {
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
@@ -55,15 +55,15 @@ public class ListWorldDecorCatalogueItem {
    */
   @JsonAdapter(SurfaceEnum.Adapter.class)
   public enum SurfaceEnum {
-    SHOP("shop"),
-    
     HOME("home"),
     
     STREET("street"),
     
-    STALL("stall"),
+    SHOP("shop"),
     
-    AVATAR("avatar");
+    AVATAR("avatar"),
+    
+    STALL("stall");
 
     private String value;
 

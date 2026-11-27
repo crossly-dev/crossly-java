@@ -33,7 +33,7 @@ import org.threeten.bp.OffsetDateTime;
 /**
  * ListVaultMarketProEventsItem
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-11T23:44:48.922Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-27T19:42:43.186Z[Etc/UTC]")
 public class ListVaultMarketProEventsItem {
   public static final String SERIALIZED_NAME_CREATED_AT = "createdAt";
   @SerializedName(SERIALIZED_NAME_CREATED_AT)
@@ -55,14 +55,6 @@ public class ListVaultMarketProEventsItem {
   @SerializedName(SERIALIZED_NAME_KIND)
   private String kind;
 
-  public static final String SERIALIZED_NAME_SEQ = "seq";
-  @SerializedName(SERIALIZED_NAME_SEQ)
-  private BigDecimal seq;
-
-  public static final String SERIALIZED_NAME_DETAIL = "detail";
-  @SerializedName(SERIALIZED_NAME_DETAIL)
-  private Map<String, Object> detail = null;
-
   public static final String SERIALIZED_NAME_PRICE_CENTS = "priceCents";
   @SerializedName(SERIALIZED_NAME_PRICE_CENTS)
   private BigDecimal priceCents;
@@ -70,6 +62,14 @@ public class ListVaultMarketProEventsItem {
   public static final String SERIALIZED_NAME_TRADE_ID = "tradeId";
   @SerializedName(SERIALIZED_NAME_TRADE_ID)
   private String tradeId;
+
+  public static final String SERIALIZED_NAME_DETAIL = "detail";
+  @SerializedName(SERIALIZED_NAME_DETAIL)
+  private Map<String, Object> detail = null;
+
+  public static final String SERIALIZED_NAME_SEQ = "seq";
+  @SerializedName(SERIALIZED_NAME_SEQ)
+  private BigDecimal seq;
 
   public ListVaultMarketProEventsItem() { 
   }
@@ -189,60 +189,6 @@ public class ListVaultMarketProEventsItem {
   }
 
 
-  public ListVaultMarketProEventsItem seq(BigDecimal seq) {
-    
-    this.seq = seq;
-    return this;
-  }
-
-   /**
-   * Get seq
-   * @return seq
-  **/
-  @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "")
-
-  public BigDecimal getSeq() {
-    return seq;
-  }
-
-
-  public void setSeq(BigDecimal seq) {
-    this.seq = seq;
-  }
-
-
-  public ListVaultMarketProEventsItem detail(Map<String, Object> detail) {
-    
-    this.detail = detail;
-    return this;
-  }
-
-  public ListVaultMarketProEventsItem putDetailItem(String key, Object detailItem) {
-    if (this.detail == null) {
-      this.detail = new HashMap<String, Object>();
-    }
-    this.detail.put(key, detailItem);
-    return this;
-  }
-
-   /**
-   * Get detail
-   * @return detail
-  **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
-
-  public Map<String, Object> getDetail() {
-    return detail;
-  }
-
-
-  public void setDetail(Map<String, Object> detail) {
-    this.detail = detail;
-  }
-
-
   public ListVaultMarketProEventsItem priceCents(BigDecimal priceCents) {
     
     this.priceCents = priceCents;
@@ -289,6 +235,60 @@ public class ListVaultMarketProEventsItem {
   }
 
 
+  public ListVaultMarketProEventsItem detail(Map<String, Object> detail) {
+    
+    this.detail = detail;
+    return this;
+  }
+
+  public ListVaultMarketProEventsItem putDetailItem(String key, Object detailItem) {
+    if (this.detail == null) {
+      this.detail = new HashMap<String, Object>();
+    }
+    this.detail.put(key, detailItem);
+    return this;
+  }
+
+   /**
+   * Get detail
+   * @return detail
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public Map<String, Object> getDetail() {
+    return detail;
+  }
+
+
+  public void setDetail(Map<String, Object> detail) {
+    this.detail = detail;
+  }
+
+
+  public ListVaultMarketProEventsItem seq(BigDecimal seq) {
+    
+    this.seq = seq;
+    return this;
+  }
+
+   /**
+   * Get seq
+   * @return seq
+  **/
+  @javax.annotation.Nonnull
+  @ApiModelProperty(required = true, value = "")
+
+  public BigDecimal getSeq() {
+    return seq;
+  }
+
+
+  public void setSeq(BigDecimal seq) {
+    this.seq = seq;
+  }
+
+
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -303,10 +303,10 @@ public class ListVaultMarketProEventsItem {
         Objects.equals(this.quantity, listVaultMarketProEventsItem.quantity) &&
         Objects.equals(this.orderId, listVaultMarketProEventsItem.orderId) &&
         Objects.equals(this.kind, listVaultMarketProEventsItem.kind) &&
-        Objects.equals(this.seq, listVaultMarketProEventsItem.seq) &&
-        Objects.equals(this.detail, listVaultMarketProEventsItem.detail) &&
         Objects.equals(this.priceCents, listVaultMarketProEventsItem.priceCents) &&
-        Objects.equals(this.tradeId, listVaultMarketProEventsItem.tradeId);
+        Objects.equals(this.tradeId, listVaultMarketProEventsItem.tradeId) &&
+        Objects.equals(this.detail, listVaultMarketProEventsItem.detail) &&
+        Objects.equals(this.seq, listVaultMarketProEventsItem.seq);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -315,7 +315,7 @@ public class ListVaultMarketProEventsItem {
 
   @Override
   public int hashCode() {
-    return Objects.hash(createdAt, userId, quantity, orderId, kind, seq, detail, priceCents, tradeId);
+    return Objects.hash(createdAt, userId, quantity, orderId, kind, priceCents, tradeId, detail, seq);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -334,10 +334,10 @@ public class ListVaultMarketProEventsItem {
     sb.append("    quantity: ").append(toIndentedString(quantity)).append("\n");
     sb.append("    orderId: ").append(toIndentedString(orderId)).append("\n");
     sb.append("    kind: ").append(toIndentedString(kind)).append("\n");
-    sb.append("    seq: ").append(toIndentedString(seq)).append("\n");
-    sb.append("    detail: ").append(toIndentedString(detail)).append("\n");
     sb.append("    priceCents: ").append(toIndentedString(priceCents)).append("\n");
     sb.append("    tradeId: ").append(toIndentedString(tradeId)).append("\n");
+    sb.append("    detail: ").append(toIndentedString(detail)).append("\n");
+    sb.append("    seq: ").append(toIndentedString(seq)).append("\n");
     sb.append("}");
     return sb.toString();
   }

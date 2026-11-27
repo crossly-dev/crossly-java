@@ -28,7 +28,7 @@ import java.io.IOException;
  * A QR code at the end (a verify link). The link itself should also be printed in a line, for anyone without a camera.
  */
 @ApiModel(description = "A QR code at the end (a verify link). The link itself should also be printed in a line, for anyone without a camera.")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-11T23:44:48.922Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-27T19:42:43.186Z[Etc/UTC]")
 public class GetVaultMarketReportResponsePrintableQr {
   public static final String SERIALIZED_NAME_URL = "url";
   @SerializedName(SERIALIZED_NAME_URL)

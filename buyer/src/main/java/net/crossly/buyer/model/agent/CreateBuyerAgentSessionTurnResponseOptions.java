@@ -32,7 +32,7 @@ import org.openapitools.jackson.nullable.JsonNullable;
 /**
  * CreateBuyerAgentSessionTurnResponseOptions
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-11T23:47:29.843Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-27T19:58:46.962Z[Etc/UTC]")
 public class CreateBuyerAgentSessionTurnResponseOptions {
   public static final String SERIALIZED_NAME_N = "n";
   @SerializedName(SERIALIZED_NAME_N)
@@ -89,6 +89,14 @@ public class CreateBuyerAgentSessionTurnResponseOptions {
   public static final String SERIALIZED_NAME_PRICE_CHECK = "priceCheck";
   @SerializedName(SERIALIZED_NAME_PRICE_CHECK)
   private CreateBuyerAgentSessionActResponseQuotePriceCheck priceCheck;
+
+  public static final String SERIALIZED_NAME_MODEL = "model";
+  @SerializedName(SERIALIZED_NAME_MODEL)
+  private String model;
+
+  public static final String SERIALIZED_NAME_SHOP_SLUG = "shopSlug";
+  @SerializedName(SERIALIZED_NAME_SHOP_SLUG)
+  private String shopSlug;
 
   public CreateBuyerAgentSessionTurnResponseOptions() { 
   }
@@ -420,6 +428,52 @@ public class CreateBuyerAgentSessionTurnResponseOptions {
   }
 
 
+  public CreateBuyerAgentSessionTurnResponseOptions model(String model) {
+    
+    this.model = model;
+    return this;
+  }
+
+   /**
+   * The world object it stands as, and the seller&#39;s public shop room (world-picks.ts).
+   * @return model
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "The world object it stands as, and the seller's public shop room (world-picks.ts).")
+
+  public String getModel() {
+    return model;
+  }
+
+
+  public void setModel(String model) {
+    this.model = model;
+  }
+
+
+  public CreateBuyerAgentSessionTurnResponseOptions shopSlug(String shopSlug) {
+    
+    this.shopSlug = shopSlug;
+    return this;
+  }
+
+   /**
+   * Get shopSlug
+   * @return shopSlug
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public String getShopSlug() {
+    return shopSlug;
+  }
+
+
+  public void setShopSlug(String shopSlug) {
+    this.shopSlug = shopSlug;
+  }
+
+
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -442,7 +496,9 @@ public class CreateBuyerAgentSessionTurnResponseOptions {
         Objects.equals(this.sellerDisplayName, createBuyerAgentSessionTurnResponseOptions.sellerDisplayName) &&
         Objects.equals(this.facts, createBuyerAgentSessionTurnResponseOptions.facts) &&
         Objects.equals(this.reason, createBuyerAgentSessionTurnResponseOptions.reason) &&
-        Objects.equals(this.priceCheck, createBuyerAgentSessionTurnResponseOptions.priceCheck);
+        Objects.equals(this.priceCheck, createBuyerAgentSessionTurnResponseOptions.priceCheck) &&
+        Objects.equals(this.model, createBuyerAgentSessionTurnResponseOptions.model) &&
+        Objects.equals(this.shopSlug, createBuyerAgentSessionTurnResponseOptions.shopSlug);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -451,7 +507,7 @@ public class CreateBuyerAgentSessionTurnResponseOptions {
 
   @Override
   public int hashCode() {
-    return Objects.hash(n, slug, title, priceCents, salePriceCents, compareAtCents, thumbnail, brand, condition, size, sellerDisplayName, facts, reason, priceCheck);
+    return Objects.hash(n, slug, title, priceCents, salePriceCents, compareAtCents, thumbnail, brand, condition, size, sellerDisplayName, facts, reason, priceCheck, model, shopSlug);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -479,6 +535,8 @@ public class CreateBuyerAgentSessionTurnResponseOptions {
     sb.append("    facts: ").append(toIndentedString(facts)).append("\n");
     sb.append("    reason: ").append(toIndentedString(reason)).append("\n");
     sb.append("    priceCheck: ").append(toIndentedString(priceCheck)).append("\n");
+    sb.append("    model: ").append(toIndentedString(model)).append("\n");
+    sb.append("    shopSlug: ").append(toIndentedString(shopSlug)).append("\n");
     sb.append("}");
     return sb.toString();
   }

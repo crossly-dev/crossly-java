@@ -29,15 +29,19 @@ import java.util.List;
 import net.crossly.model.vault.GetVaultMarketTaxResponseFiles;
 import net.crossly.model.vault.GetVaultMarketTaxResponseGiftsOut;
 import net.crossly.model.vault.GetVaultMarketTaxResponseIncome;
+import net.crossly.model.vault.GetVaultMarketTaxResponseOptions;
 import net.crossly.model.vault.GetVaultMarketTaxResponsePositions;
+import net.crossly.model.vault.GetVaultMarketTaxResponsePredictions;
 import net.crossly.model.vault.GetVaultMarketTaxResponsePurchases;
 import net.crossly.model.vault.GetVaultMarketTaxResponseSales;
+import net.crossly.model.vault.GetVaultMarketTaxResponseShares;
 import net.crossly.model.vault.GetVaultMarketTaxResponseTotals;
+import org.openapitools.jackson.nullable.JsonNullable;
 
 /**
  * GetVaultMarketTaxResponse
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-11T23:44:48.922Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-27T19:42:43.186Z[Etc/UTC]")
 public class GetVaultMarketTaxResponse {
   public static final String SERIALIZED_NAME_FILES = "files";
   @SerializedName(SERIALIZED_NAME_FILES)
@@ -71,9 +75,21 @@ public class GetVaultMarketTaxResponse {
   @SerializedName(SERIALIZED_NAME_POSITIONS)
   private List<GetVaultMarketTaxResponsePositions> positions = new ArrayList<GetVaultMarketTaxResponsePositions>();
 
+  public static final String SERIALIZED_NAME_OPTIONS = "options";
+  @SerializedName(SERIALIZED_NAME_OPTIONS)
+  private GetVaultMarketTaxResponseOptions options;
+
   public static final String SERIALIZED_NAME_NOTES = "notes";
   @SerializedName(SERIALIZED_NAME_NOTES)
   private List<String> notes = new ArrayList<String>();
+
+  public static final String SERIALIZED_NAME_SHARES = "shares";
+  @SerializedName(SERIALIZED_NAME_SHARES)
+  private GetVaultMarketTaxResponseShares shares;
+
+  public static final String SERIALIZED_NAME_PREDICTIONS = "predictions";
+  @SerializedName(SERIALIZED_NAME_PREDICTIONS)
+  private GetVaultMarketTaxResponsePredictions predictions;
 
   public GetVaultMarketTaxResponse() { 
   }
@@ -282,6 +298,29 @@ public class GetVaultMarketTaxResponse {
   }
 
 
+  public GetVaultMarketTaxResponse options(GetVaultMarketTaxResponseOptions options) {
+    
+    this.options = options;
+    return this;
+  }
+
+   /**
+   * Get options
+   * @return options
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public GetVaultMarketTaxResponseOptions getOptions() {
+    return options;
+  }
+
+
+  public void setOptions(GetVaultMarketTaxResponseOptions options) {
+    this.options = options;
+  }
+
+
   public GetVaultMarketTaxResponse notes(List<String> notes) {
     
     this.notes = notes;
@@ -310,6 +349,52 @@ public class GetVaultMarketTaxResponse {
   }
 
 
+  public GetVaultMarketTaxResponse shares(GetVaultMarketTaxResponseShares shares) {
+    
+    this.shares = shares;
+    return this;
+  }
+
+   /**
+   * Get shares
+   * @return shares
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public GetVaultMarketTaxResponseShares getShares() {
+    return shares;
+  }
+
+
+  public void setShares(GetVaultMarketTaxResponseShares shares) {
+    this.shares = shares;
+  }
+
+
+  public GetVaultMarketTaxResponse predictions(GetVaultMarketTaxResponsePredictions predictions) {
+    
+    this.predictions = predictions;
+    return this;
+  }
+
+   /**
+   * Get predictions
+   * @return predictions
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public GetVaultMarketTaxResponsePredictions getPredictions() {
+    return predictions;
+  }
+
+
+  public void setPredictions(GetVaultMarketTaxResponsePredictions predictions) {
+    this.predictions = predictions;
+  }
+
+
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -327,12 +412,26 @@ public class GetVaultMarketTaxResponse {
         Objects.equals(this.giftsOut, getVaultMarketTaxResponse.giftsOut) &&
         Objects.equals(this.income, getVaultMarketTaxResponse.income) &&
         Objects.equals(this.positions, getVaultMarketTaxResponse.positions) &&
-        Objects.equals(this.notes, getVaultMarketTaxResponse.notes);
+        Objects.equals(this.options, getVaultMarketTaxResponse.options) &&
+        Objects.equals(this.notes, getVaultMarketTaxResponse.notes) &&
+        Objects.equals(this.shares, getVaultMarketTaxResponse.shares) &&
+        Objects.equals(this.predictions, getVaultMarketTaxResponse.predictions);
+  }
+
+  private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+    return a == b || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(files, year, totals, sales, purchases, giftsOut, income, positions, notes);
+    return Objects.hash(files, year, totals, sales, purchases, giftsOut, income, positions, options, notes, shares, predictions);
+  }
+
+  private static <T> int hashCodeNullable(JsonNullable<T> a) {
+    if (a == null) {
+      return 1;
+    }
+    return a.isPresent() ? Arrays.deepHashCode(new Object[]{a.get()}) : 31;
   }
 
   @Override
@@ -347,7 +446,10 @@ public class GetVaultMarketTaxResponse {
     sb.append("    giftsOut: ").append(toIndentedString(giftsOut)).append("\n");
     sb.append("    income: ").append(toIndentedString(income)).append("\n");
     sb.append("    positions: ").append(toIndentedString(positions)).append("\n");
+    sb.append("    options: ").append(toIndentedString(options)).append("\n");
     sb.append("    notes: ").append(toIndentedString(notes)).append("\n");
+    sb.append("    shares: ").append(toIndentedString(shares)).append("\n");
+    sb.append("    predictions: ").append(toIndentedString(predictions)).append("\n");
     sb.append("}");
     return sb.toString();
   }

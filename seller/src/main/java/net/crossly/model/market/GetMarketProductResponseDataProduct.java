@@ -36,7 +36,7 @@ import org.threeten.bp.OffsetDateTime;
 /**
  * GetMarketProductResponseDataProduct
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-11T23:44:48.922Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-27T19:42:43.186Z[Etc/UTC]")
 public class GetMarketProductResponseDataProduct {
   public static final String SERIALIZED_NAME_IMAGES = "images";
   @SerializedName(SERIALIZED_NAME_IMAGES)
@@ -66,17 +66,25 @@ public class GetMarketProductResponseDataProduct {
   @SerializedName(SERIALIZED_NAME_RETAIL_CENTS)
   private BigDecimal retailCents;
 
+  public static final String SERIALIZED_NAME_IMAGE_URL = "imageUrl";
+  @SerializedName(SERIALIZED_NAME_IMAGE_URL)
+  private String imageUrl;
+
   public static final String SERIALIZED_NAME_CATEGORY_SLUG = "categorySlug";
   @SerializedName(SERIALIZED_NAME_CATEGORY_SLUG)
   private String categorySlug;
 
+  public static final String SERIALIZED_NAME_APPROVED_BY_USER_ID = "approvedByUserId";
+  @SerializedName(SERIALIZED_NAME_APPROVED_BY_USER_ID)
+  private String approvedByUserId;
+
+  public static final String SERIALIZED_NAME_APPROVED_AT = "approvedAt";
+  @SerializedName(SERIALIZED_NAME_APPROVED_AT)
+  private OffsetDateTime approvedAt;
+
   public static final String SERIALIZED_NAME_EXTERNAL_ID = "externalId";
   @SerializedName(SERIALIZED_NAME_EXTERNAL_ID)
   private String externalId;
-
-  public static final String SERIALIZED_NAME_IMAGE_URL = "imageUrl";
-  @SerializedName(SERIALIZED_NAME_IMAGE_URL)
-  private String imageUrl;
 
   public static final String SERIALIZED_NAME_MODEL = "model";
   @SerializedName(SERIALIZED_NAME_MODEL)
@@ -97,14 +105,6 @@ public class GetMarketProductResponseDataProduct {
   public static final String SERIALIZED_NAME_SUBMITTED_BY_USER_ID = "submittedByUserId";
   @SerializedName(SERIALIZED_NAME_SUBMITTED_BY_USER_ID)
   private String submittedByUserId;
-
-  public static final String SERIALIZED_NAME_APPROVED_BY_USER_ID = "approvedByUserId";
-  @SerializedName(SERIALIZED_NAME_APPROVED_BY_USER_ID)
-  private String approvedByUserId;
-
-  public static final String SERIALIZED_NAME_APPROVED_AT = "approvedAt";
-  @SerializedName(SERIALIZED_NAME_APPROVED_AT)
-  private OffsetDateTime approvedAt;
 
   public static final String SERIALIZED_NAME_REJECTION_REASON = "rejectionReason";
   @SerializedName(SERIALIZED_NAME_REJECTION_REASON)
@@ -362,6 +362,29 @@ public class GetMarketProductResponseDataProduct {
   }
 
 
+  public GetMarketProductResponseDataProduct imageUrl(String imageUrl) {
+    
+    this.imageUrl = imageUrl;
+    return this;
+  }
+
+   /**
+   * Get imageUrl
+   * @return imageUrl
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public String getImageUrl() {
+    return imageUrl;
+  }
+
+
+  public void setImageUrl(String imageUrl) {
+    this.imageUrl = imageUrl;
+  }
+
+
   public GetMarketProductResponseDataProduct categorySlug(String categorySlug) {
     
     this.categorySlug = categorySlug;
@@ -385,6 +408,52 @@ public class GetMarketProductResponseDataProduct {
   }
 
 
+  public GetMarketProductResponseDataProduct approvedByUserId(String approvedByUserId) {
+    
+    this.approvedByUserId = approvedByUserId;
+    return this;
+  }
+
+   /**
+   * Get approvedByUserId
+   * @return approvedByUserId
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public String getApprovedByUserId() {
+    return approvedByUserId;
+  }
+
+
+  public void setApprovedByUserId(String approvedByUserId) {
+    this.approvedByUserId = approvedByUserId;
+  }
+
+
+  public GetMarketProductResponseDataProduct approvedAt(OffsetDateTime approvedAt) {
+    
+    this.approvedAt = approvedAt;
+    return this;
+  }
+
+   /**
+   * Get approvedAt
+   * @return approvedAt
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public OffsetDateTime getApprovedAt() {
+    return approvedAt;
+  }
+
+
+  public void setApprovedAt(OffsetDateTime approvedAt) {
+    this.approvedAt = approvedAt;
+  }
+
+
   public GetMarketProductResponseDataProduct externalId(String externalId) {
     
     this.externalId = externalId;
@@ -405,29 +474,6 @@ public class GetMarketProductResponseDataProduct {
 
   public void setExternalId(String externalId) {
     this.externalId = externalId;
-  }
-
-
-  public GetMarketProductResponseDataProduct imageUrl(String imageUrl) {
-    
-    this.imageUrl = imageUrl;
-    return this;
-  }
-
-   /**
-   * Get imageUrl
-   * @return imageUrl
-  **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
-
-  public String getImageUrl() {
-    return imageUrl;
-  }
-
-
-  public void setImageUrl(String imageUrl) {
-    this.imageUrl = imageUrl;
   }
 
 
@@ -543,52 +589,6 @@ public class GetMarketProductResponseDataProduct {
 
   public void setSubmittedByUserId(String submittedByUserId) {
     this.submittedByUserId = submittedByUserId;
-  }
-
-
-  public GetMarketProductResponseDataProduct approvedByUserId(String approvedByUserId) {
-    
-    this.approvedByUserId = approvedByUserId;
-    return this;
-  }
-
-   /**
-   * Get approvedByUserId
-   * @return approvedByUserId
-  **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
-
-  public String getApprovedByUserId() {
-    return approvedByUserId;
-  }
-
-
-  public void setApprovedByUserId(String approvedByUserId) {
-    this.approvedByUserId = approvedByUserId;
-  }
-
-
-  public GetMarketProductResponseDataProduct approvedAt(OffsetDateTime approvedAt) {
-    
-    this.approvedAt = approvedAt;
-    return this;
-  }
-
-   /**
-   * Get approvedAt
-   * @return approvedAt
-  **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
-
-  public OffsetDateTime getApprovedAt() {
-    return approvedAt;
-  }
-
-
-  public void setApprovedAt(OffsetDateTime approvedAt) {
-    this.approvedAt = approvedAt;
   }
 
 
@@ -1165,16 +1165,16 @@ public class GetMarketProductResponseDataProduct {
         Objects.equals(this.createdAt, getMarketProductResponseDataProduct.createdAt) &&
         Objects.equals(this.status, getMarketProductResponseDataProduct.status) &&
         Objects.equals(this.retailCents, getMarketProductResponseDataProduct.retailCents) &&
-        Objects.equals(this.categorySlug, getMarketProductResponseDataProduct.categorySlug) &&
-        Objects.equals(this.externalId, getMarketProductResponseDataProduct.externalId) &&
         Objects.equals(this.imageUrl, getMarketProductResponseDataProduct.imageUrl) &&
+        Objects.equals(this.categorySlug, getMarketProductResponseDataProduct.categorySlug) &&
+        Objects.equals(this.approvedByUserId, getMarketProductResponseDataProduct.approvedByUserId) &&
+        Objects.equals(this.approvedAt, getMarketProductResponseDataProduct.approvedAt) &&
+        Objects.equals(this.externalId, getMarketProductResponseDataProduct.externalId) &&
         Objects.equals(this.model, getMarketProductResponseDataProduct.model) &&
         Objects.equals(this.colorway, getMarketProductResponseDataProduct.colorway) &&
         Objects.equals(this.styleCode, getMarketProductResponseDataProduct.styleCode) &&
         Objects.equals(this.releaseDate, getMarketProductResponseDataProduct.releaseDate) &&
         Objects.equals(this.submittedByUserId, getMarketProductResponseDataProduct.submittedByUserId) &&
-        Objects.equals(this.approvedByUserId, getMarketProductResponseDataProduct.approvedByUserId) &&
-        Objects.equals(this.approvedAt, getMarketProductResponseDataProduct.approvedAt) &&
         Objects.equals(this.rejectionReason, getMarketProductResponseDataProduct.rejectionReason) &&
         Objects.equals(this.proposedVariants, getMarketProductResponseDataProduct.proposedVariants) &&
         Objects.equals(this.verification, getMarketProductResponseDataProduct.verification) &&
@@ -1206,7 +1206,7 @@ public class GetMarketProductResponseDataProduct {
 
   @Override
   public int hashCode() {
-    return Objects.hash(images, id, brand, name, createdAt, status, retailCents, categorySlug, externalId, imageUrl, model, colorway, styleCode, releaseDate, submittedByUserId, approvedByUserId, approvedAt, rejectionReason, proposedVariants, verification, aiVerdict, submissionSource, duplicateOfSkuId, preferredProviderSlug, allowPreBid, preBidOpensAt, featured, externalSource, externalSyncedAt, gradedGradeKeys, lowestAskCents, highestBidCents, lastSaleCents, tradesCount, popularity, colorFamily, metal, grossWeightMg, finenessPpm, metalForm);
+    return Objects.hash(images, id, brand, name, createdAt, status, retailCents, imageUrl, categorySlug, approvedByUserId, approvedAt, externalId, model, colorway, styleCode, releaseDate, submittedByUserId, rejectionReason, proposedVariants, verification, aiVerdict, submissionSource, duplicateOfSkuId, preferredProviderSlug, allowPreBid, preBidOpensAt, featured, externalSource, externalSyncedAt, gradedGradeKeys, lowestAskCents, highestBidCents, lastSaleCents, tradesCount, popularity, colorFamily, metal, grossWeightMg, finenessPpm, metalForm);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -1227,16 +1227,16 @@ public class GetMarketProductResponseDataProduct {
     sb.append("    createdAt: ").append(toIndentedString(createdAt)).append("\n");
     sb.append("    status: ").append(toIndentedString(status)).append("\n");
     sb.append("    retailCents: ").append(toIndentedString(retailCents)).append("\n");
-    sb.append("    categorySlug: ").append(toIndentedString(categorySlug)).append("\n");
-    sb.append("    externalId: ").append(toIndentedString(externalId)).append("\n");
     sb.append("    imageUrl: ").append(toIndentedString(imageUrl)).append("\n");
+    sb.append("    categorySlug: ").append(toIndentedString(categorySlug)).append("\n");
+    sb.append("    approvedByUserId: ").append(toIndentedString(approvedByUserId)).append("\n");
+    sb.append("    approvedAt: ").append(toIndentedString(approvedAt)).append("\n");
+    sb.append("    externalId: ").append(toIndentedString(externalId)).append("\n");
     sb.append("    model: ").append(toIndentedString(model)).append("\n");
     sb.append("    colorway: ").append(toIndentedString(colorway)).append("\n");
     sb.append("    styleCode: ").append(toIndentedString(styleCode)).append("\n");
     sb.append("    releaseDate: ").append(toIndentedString(releaseDate)).append("\n");
     sb.append("    submittedByUserId: ").append(toIndentedString(submittedByUserId)).append("\n");
-    sb.append("    approvedByUserId: ").append(toIndentedString(approvedByUserId)).append("\n");
-    sb.append("    approvedAt: ").append(toIndentedString(approvedAt)).append("\n");
     sb.append("    rejectionReason: ").append(toIndentedString(rejectionReason)).append("\n");
     sb.append("    proposedVariants: ").append(toIndentedString(proposedVariants)).append("\n");
     sb.append("    verification: ").append(toIndentedString(verification)).append("\n");

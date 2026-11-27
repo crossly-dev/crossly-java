@@ -33,7 +33,7 @@ import net.crossly.model.web3.GetWeb3CollectionInsightResponseHoldersTop;
  * EVM: top wallets and how holdings spread (migration 0466); null on Solana or before a refresh.
  */
 @ApiModel(description = "EVM: top wallets and how holdings spread (migration 0466); null on Solana or before a refresh.")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-11T23:44:48.922Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-27T19:42:43.186Z[Etc/UTC]")
 public class GetWeb3CollectionInsightResponseHolders {
   public static final String SERIALIZED_NAME_OWNERS = "owners";
   @SerializedName(SERIALIZED_NAME_OWNERS)

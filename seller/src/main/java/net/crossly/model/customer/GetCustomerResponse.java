@@ -30,11 +30,12 @@ import net.crossly.model.customer.GetCustomerResponseContact;
 import net.crossly.model.customer.GetCustomerResponseOrders;
 import net.crossly.model.customer.GetCustomerResponseProfiles;
 import net.crossly.model.customer.GetCustomerResponseStats;
+import org.openapitools.jackson.nullable.JsonNullable;
 
 /**
  * GetCustomerResponse
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-11T23:44:48.922Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-27T19:42:43.186Z[Etc/UTC]")
 public class GetCustomerResponse {
   public static final String SERIALIZED_NAME_NORMALIZED_HANDLE = "normalizedHandle";
   @SerializedName(SERIALIZED_NAME_NORMALIZED_HANDLE)
@@ -67,6 +68,14 @@ public class GetCustomerResponse {
   public static final String SERIALIZED_NAME_STATS = "stats";
   @SerializedName(SERIALIZED_NAME_STATS)
   private GetCustomerResponseStats stats;
+
+  public static final String SERIALIZED_NAME_NOTES = "notes";
+  @SerializedName(SERIALIZED_NAME_NOTES)
+  private String notes;
+
+  public static final String SERIALIZED_NAME_NOTES_UPDATED_AT = "notesUpdatedAt";
+  @SerializedName(SERIALIZED_NAME_NOTES_UPDATED_AT)
+  private String notesUpdatedAt;
 
   public GetCustomerResponse() { 
   }
@@ -270,6 +279,52 @@ public class GetCustomerResponse {
   }
 
 
+  public GetCustomerResponse notes(String notes) {
+    
+    this.notes = notes;
+    return this;
+  }
+
+   /**
+   * Get notes
+   * @return notes
+  **/
+  @javax.annotation.Nonnull
+  @ApiModelProperty(required = true, value = "")
+
+  public String getNotes() {
+    return notes;
+  }
+
+
+  public void setNotes(String notes) {
+    this.notes = notes;
+  }
+
+
+  public GetCustomerResponse notesUpdatedAt(String notesUpdatedAt) {
+    
+    this.notesUpdatedAt = notesUpdatedAt;
+    return this;
+  }
+
+   /**
+   * Get notesUpdatedAt
+   * @return notesUpdatedAt
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public String getNotesUpdatedAt() {
+    return notesUpdatedAt;
+  }
+
+
+  public void setNotesUpdatedAt(String notesUpdatedAt) {
+    this.notesUpdatedAt = notesUpdatedAt;
+  }
+
+
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -286,12 +341,25 @@ public class GetCustomerResponse {
         Objects.equals(this.orders, getCustomerResponse.orders) &&
         Objects.equals(this.contact, getCustomerResponse.contact) &&
         Objects.equals(this.profiles, getCustomerResponse.profiles) &&
-        Objects.equals(this.stats, getCustomerResponse.stats);
+        Objects.equals(this.stats, getCustomerResponse.stats) &&
+        Objects.equals(this.notes, getCustomerResponse.notes) &&
+        Objects.equals(this.notesUpdatedAt, getCustomerResponse.notesUpdatedAt);
+  }
+
+  private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+    return a == b || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(normalizedHandle, platforms, totalOrders, totalSpent, orders, contact, profiles, stats);
+    return Objects.hash(normalizedHandle, platforms, totalOrders, totalSpent, orders, contact, profiles, stats, notes, notesUpdatedAt);
+  }
+
+  private static <T> int hashCodeNullable(JsonNullable<T> a) {
+    if (a == null) {
+      return 1;
+    }
+    return a.isPresent() ? Arrays.deepHashCode(new Object[]{a.get()}) : 31;
   }
 
   @Override
@@ -306,6 +374,8 @@ public class GetCustomerResponse {
     sb.append("    contact: ").append(toIndentedString(contact)).append("\n");
     sb.append("    profiles: ").append(toIndentedString(profiles)).append("\n");
     sb.append("    stats: ").append(toIndentedString(stats)).append("\n");
+    sb.append("    notes: ").append(toIndentedString(notes)).append("\n");
+    sb.append("    notesUpdatedAt: ").append(toIndentedString(notesUpdatedAt)).append("\n");
     sb.append("}");
     return sb.toString();
   }

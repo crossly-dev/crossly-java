@@ -25,11 +25,12 @@ import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 import java.math.BigDecimal;
 import net.crossly.model.vault.GetVaultMarketProofOfReserveByDayResponseUnits;
+import net.crossly.model.vault.GetVaultMarketProofOfReserveResponseLatestAnchor;
 
 /**
  * GetVaultMarketProofOfReserveResponseLatest
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-11T23:44:48.922Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-27T19:42:43.186Z[Etc/UTC]")
 public class GetVaultMarketProofOfReserveResponseLatest {
   public static final String SERIALIZED_NAME_DAY = "day";
   @SerializedName(SERIALIZED_NAME_DAY)
@@ -66,6 +67,10 @@ public class GetVaultMarketProofOfReserveResponseLatest {
   public static final String SERIALIZED_NAME_MEMO = "memo";
   @SerializedName(SERIALIZED_NAME_MEMO)
   private String memo;
+
+  public static final String SERIALIZED_NAME_ANCHOR = "anchor";
+  @SerializedName(SERIALIZED_NAME_ANCHOR)
+  private GetVaultMarketProofOfReserveResponseLatestAnchor anchor;
 
   public GetVaultMarketProofOfReserveResponseLatest() { 
   }
@@ -277,6 +282,29 @@ public class GetVaultMarketProofOfReserveResponseLatest {
   }
 
 
+  public GetVaultMarketProofOfReserveResponseLatest anchor(GetVaultMarketProofOfReserveResponseLatestAnchor anchor) {
+    
+    this.anchor = anchor;
+    return this;
+  }
+
+   /**
+   * Get anchor
+   * @return anchor
+  **/
+  @javax.annotation.Nonnull
+  @ApiModelProperty(required = true, value = "")
+
+  public GetVaultMarketProofOfReserveResponseLatestAnchor getAnchor() {
+    return anchor;
+  }
+
+
+  public void setAnchor(GetVaultMarketProofOfReserveResponseLatestAnchor anchor) {
+    this.anchor = anchor;
+  }
+
+
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -294,12 +322,13 @@ public class GetVaultMarketProofOfReserveResponseLatest {
         Objects.equals(this.units, getVaultMarketProofOfReserveResponseLatest.units) &&
         Objects.equals(this.loansOpen, getVaultMarketProofOfReserveResponseLatest.loansOpen) &&
         Objects.equals(this.totalInsuredCents, getVaultMarketProofOfReserveResponseLatest.totalInsuredCents) &&
-        Objects.equals(this.memo, getVaultMarketProofOfReserveResponseLatest.memo);
+        Objects.equals(this.memo, getVaultMarketProofOfReserveResponseLatest.memo) &&
+        Objects.equals(this.anchor, getVaultMarketProofOfReserveResponseLatest.anchor);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(day, root, leafCount, methodVersion, builtAt, units, loansOpen, totalInsuredCents, memo);
+    return Objects.hash(day, root, leafCount, methodVersion, builtAt, units, loansOpen, totalInsuredCents, memo, anchor);
   }
 
   @Override
@@ -315,6 +344,7 @@ public class GetVaultMarketProofOfReserveResponseLatest {
     sb.append("    loansOpen: ").append(toIndentedString(loansOpen)).append("\n");
     sb.append("    totalInsuredCents: ").append(toIndentedString(totalInsuredCents)).append("\n");
     sb.append("    memo: ").append(toIndentedString(memo)).append("\n");
+    sb.append("    anchor: ").append(toIndentedString(anchor)).append("\n");
     sb.append("}");
     return sb.toString();
   }

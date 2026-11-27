@@ -29,7 +29,7 @@ import org.openapitools.jackson.nullable.JsonNullable;
 /**
  * GetSpatialPartyResponsePartyMembers
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-11T23:44:48.922Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-27T19:42:43.186Z[Etc/UTC]")
 public class GetSpatialPartyResponsePartyMembers {
   public static final String SERIALIZED_NAME_USER_ID = "userId";
   @SerializedName(SERIALIZED_NAME_USER_ID)
@@ -44,9 +44,9 @@ public class GetSpatialPartyResponsePartyMembers {
    */
   @JsonAdapter(RoleEnum.Adapter.class)
   public enum RoleEnum {
-    MEMBER("member"),
+    LEADER("leader"),
     
-    LEADER("leader");
+    MEMBER("member");
 
     private String value;
 

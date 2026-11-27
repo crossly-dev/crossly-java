@@ -28,11 +28,15 @@ import net.crossly.model.common.UnitsCents;
 /**
  * CreateVaultMarketValuationStatementResponseTotalsByQuality
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-11T23:44:48.922Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-27T19:42:43.186Z[Etc/UTC]")
 public class CreateVaultMarketValuationStatementResponseTotalsByQuality {
   public static final String SERIALIZED_NAME_NONE = "none";
   @SerializedName(SERIALIZED_NAME_NONE)
   private UnitsCents none;
+
+  public static final String SERIALIZED_NAME_C = "C";
+  @SerializedName(SERIALIZED_NAME_C)
+  private UnitsCents C;
 
   public static final String SERIALIZED_NAME_A = "A";
   @SerializedName(SERIALIZED_NAME_A)
@@ -41,10 +45,6 @@ public class CreateVaultMarketValuationStatementResponseTotalsByQuality {
   public static final String SERIALIZED_NAME_B = "B";
   @SerializedName(SERIALIZED_NAME_B)
   private UnitsCents B;
-
-  public static final String SERIALIZED_NAME_C = "C";
-  @SerializedName(SERIALIZED_NAME_C)
-  private UnitsCents C;
 
   public CreateVaultMarketValuationStatementResponseTotalsByQuality() { 
   }
@@ -69,6 +69,29 @@ public class CreateVaultMarketValuationStatementResponseTotalsByQuality {
 
   public void setNone(UnitsCents none) {
     this.none = none;
+  }
+
+
+  public CreateVaultMarketValuationStatementResponseTotalsByQuality C(UnitsCents C) {
+    
+    this.C = C;
+    return this;
+  }
+
+   /**
+   * Get C
+   * @return C
+  **/
+  @javax.annotation.Nonnull
+  @ApiModelProperty(required = true, value = "")
+
+  public UnitsCents getC() {
+    return C;
+  }
+
+
+  public void setC(UnitsCents C) {
+    this.C = C;
   }
 
 
@@ -118,29 +141,6 @@ public class CreateVaultMarketValuationStatementResponseTotalsByQuality {
   }
 
 
-  public CreateVaultMarketValuationStatementResponseTotalsByQuality C(UnitsCents C) {
-    
-    this.C = C;
-    return this;
-  }
-
-   /**
-   * Get C
-   * @return C
-  **/
-  @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "")
-
-  public UnitsCents getC() {
-    return C;
-  }
-
-
-  public void setC(UnitsCents C) {
-    this.C = C;
-  }
-
-
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -151,14 +151,14 @@ public class CreateVaultMarketValuationStatementResponseTotalsByQuality {
     }
     CreateVaultMarketValuationStatementResponseTotalsByQuality createVaultMarketValuationStatementResponseTotalsByQuality = (CreateVaultMarketValuationStatementResponseTotalsByQuality) o;
     return Objects.equals(this.none, createVaultMarketValuationStatementResponseTotalsByQuality.none) &&
+        Objects.equals(this.C, createVaultMarketValuationStatementResponseTotalsByQuality.C) &&
         Objects.equals(this.A, createVaultMarketValuationStatementResponseTotalsByQuality.A) &&
-        Objects.equals(this.B, createVaultMarketValuationStatementResponseTotalsByQuality.B) &&
-        Objects.equals(this.C, createVaultMarketValuationStatementResponseTotalsByQuality.C);
+        Objects.equals(this.B, createVaultMarketValuationStatementResponseTotalsByQuality.B);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(none, A, B, C);
+    return Objects.hash(none, C, A, B);
   }
 
   @Override
@@ -166,9 +166,9 @@ public class CreateVaultMarketValuationStatementResponseTotalsByQuality {
     StringBuilder sb = new StringBuilder();
     sb.append("class CreateVaultMarketValuationStatementResponseTotalsByQuality {\n");
     sb.append("    none: ").append(toIndentedString(none)).append("\n");
+    sb.append("    C: ").append(toIndentedString(C)).append("\n");
     sb.append("    A: ").append(toIndentedString(A)).append("\n");
     sb.append("    B: ").append(toIndentedString(B)).append("\n");
-    sb.append("    C: ").append(toIndentedString(C)).append("\n");
     sb.append("}");
     return sb.toString();
   }

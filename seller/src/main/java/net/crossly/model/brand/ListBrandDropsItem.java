@@ -25,14 +25,16 @@ import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 import java.math.BigDecimal;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import org.openapitools.jackson.nullable.JsonNullable;
 import org.threeten.bp.OffsetDateTime;
 
 /**
  * ListBrandDropsItem
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-11T23:44:48.922Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-27T19:42:43.186Z[Etc/UTC]")
 public class ListBrandDropsItem {
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
@@ -46,17 +48,45 @@ public class ListBrandDropsItem {
   @SerializedName(SERIALIZED_NAME_CREATED_AT)
   private OffsetDateTime createdAt;
 
-  public static final String SERIALIZED_NAME_STATUS = "status";
-  @SerializedName(SERIALIZED_NAME_STATUS)
-  private String status;
+  public static final String SERIALIZED_NAME_UPDATED_AT = "updatedAt";
+  @SerializedName(SERIALIZED_NAME_UPDATED_AT)
+  private OffsetDateTime updatedAt;
 
   public static final String SERIALIZED_NAME_DESCRIPTION = "description";
   @SerializedName(SERIALIZED_NAME_DESCRIPTION)
   private String description;
 
+  public static final String SERIALIZED_NAME_STATUS = "status";
+  @SerializedName(SERIALIZED_NAME_STATUS)
+  private String status;
+
+  public static final String SERIALIZED_NAME_RELEASED_AT = "releasedAt";
+  @SerializedName(SERIALIZED_NAME_RELEASED_AT)
+  private OffsetDateTime releasedAt;
+
+  public static final String SERIALIZED_NAME_PUBLISHED = "published";
+  @SerializedName(SERIALIZED_NAME_PUBLISHED)
+  private Boolean published;
+
+  public static final String SERIALIZED_NAME_STOREFRONT_ID = "storefrontId";
+  @SerializedName(SERIALIZED_NAME_STOREFRONT_ID)
+  private String storefrontId;
+
   public static final String SERIALIZED_NAME_ENDS_AT = "endsAt";
   @SerializedName(SERIALIZED_NAME_ENDS_AT)
   private OffsetDateTime endsAt;
+
+  public static final String SERIALIZED_NAME_EVENT_ID = "eventId";
+  @SerializedName(SERIALIZED_NAME_EVENT_ID)
+  private String eventId;
+
+  public static final String SERIALIZED_NAME_FORMAT = "format";
+  @SerializedName(SERIALIZED_NAME_FORMAT)
+  private String format;
+
+  public static final String SERIALIZED_NAME_CONFIG = "config";
+  @SerializedName(SERIALIZED_NAME_CONFIG)
+  private Map<String, Object> config = new HashMap<String, Object>();
 
   public static final String SERIALIZED_NAME_SELLER_USER_ID = "sellerUserId";
   @SerializedName(SERIALIZED_NAME_SELLER_USER_ID)
@@ -66,30 +96,6 @@ public class ListBrandDropsItem {
   @SerializedName(SERIALIZED_NAME_COVER_IMAGE_URL)
   private String coverImageUrl;
 
-  public static final String SERIALIZED_NAME_PUBLISHED_AT = "publishedAt";
-  @SerializedName(SERIALIZED_NAME_PUBLISHED_AT)
-  private OffsetDateTime publishedAt;
-
-  public static final String SERIALIZED_NAME_REVIEWED_AT = "reviewedAt";
-  @SerializedName(SERIALIZED_NAME_REVIEWED_AT)
-  private OffsetDateTime reviewedAt;
-
-  public static final String SERIALIZED_NAME_REVIEW_NOTE = "reviewNote";
-  @SerializedName(SERIALIZED_NAME_REVIEW_NOTE)
-  private String reviewNote;
-
-  public static final String SERIALIZED_NAME_SUPPLIER_NAME = "supplierName";
-  @SerializedName(SERIALIZED_NAME_SUPPLIER_NAME)
-  private String supplierName;
-
-  public static final String SERIALIZED_NAME_PARTNER_ID = "partnerId";
-  @SerializedName(SERIALIZED_NAME_PARTNER_ID)
-  private String partnerId;
-
-  public static final String SERIALIZED_NAME_PUBLISHED = "published";
-  @SerializedName(SERIALIZED_NAME_PUBLISHED)
-  private Boolean published;
-
   public static final String SERIALIZED_NAME_PLATFORM_LISTING_IDS = "platformListingIds";
   @SerializedName(SERIALIZED_NAME_PLATFORM_LISTING_IDS)
   private List<String> platformListingIds = null;
@@ -98,6 +104,10 @@ public class ListBrandDropsItem {
   @SerializedName(SERIALIZED_NAME_DROP_AT)
   private OffsetDateTime dropAt;
 
+  public static final String SERIALIZED_NAME_PARTNER_ID = "partnerId";
+  @SerializedName(SERIALIZED_NAME_PARTNER_ID)
+  private String partnerId;
+
   public static final String SERIALIZED_NAME_WHOLESALE_UNIT_COST_CENTS = "wholesaleUnitCostCents";
   @SerializedName(SERIALIZED_NAME_WHOLESALE_UNIT_COST_CENTS)
   private BigDecimal wholesaleUnitCostCents;
@@ -105,6 +115,10 @@ public class ListBrandDropsItem {
   public static final String SERIALIZED_NAME_UNITS_PURCHASED = "unitsPurchased";
   @SerializedName(SERIALIZED_NAME_UNITS_PURCHASED)
   private BigDecimal unitsPurchased;
+
+  public static final String SERIALIZED_NAME_SUPPLIER_NAME = "supplierName";
+  @SerializedName(SERIALIZED_NAME_SUPPLIER_NAME)
+  private String supplierName;
 
   public static final String SERIALIZED_NAME_PO_REFERENCE = "poReference";
   @SerializedName(SERIALIZED_NAME_PO_REFERENCE)
@@ -125,6 +139,74 @@ public class ListBrandDropsItem {
   public static final String SERIALIZED_NAME_PREVIEW_FROM = "previewFrom";
   @SerializedName(SERIALIZED_NAME_PREVIEW_FROM)
   private OffsetDateTime previewFrom;
+
+  public static final String SERIALIZED_NAME_PUBLISHED_AT = "publishedAt";
+  @SerializedName(SERIALIZED_NAME_PUBLISHED_AT)
+  private OffsetDateTime publishedAt;
+
+  public static final String SERIALIZED_NAME_REVIEW_NOTE = "reviewNote";
+  @SerializedName(SERIALIZED_NAME_REVIEW_NOTE)
+  private String reviewNote;
+
+  public static final String SERIALIZED_NAME_REVIEWED_AT = "reviewedAt";
+  @SerializedName(SERIALIZED_NAME_REVIEWED_AT)
+  private OffsetDateTime reviewedAt;
+
+  public static final String SERIALIZED_NAME_PLACEMENTS = "placements";
+  @SerializedName(SERIALIZED_NAME_PLACEMENTS)
+  private List<String> placements = new ArrayList<String>();
+
+  public static final String SERIALIZED_NAME_ANNOUNCE_AT = "announceAt";
+  @SerializedName(SERIALIZED_NAME_ANNOUNCE_AT)
+  private OffsetDateTime announceAt;
+
+  public static final String SERIALIZED_NAME_COUNTDOWN_AT = "countdownAt";
+  @SerializedName(SERIALIZED_NAME_COUNTDOWN_AT)
+  private OffsetDateTime countdownAt;
+
+  public static final String SERIALIZED_NAME_PAUSED_AT = "pausedAt";
+  @SerializedName(SERIALIZED_NAME_PAUSED_AT)
+  private OffsetDateTime pausedAt;
+
+  public static final String SERIALIZED_NAME_LIVE_STREAM_ID = "liveStreamId";
+  @SerializedName(SERIALIZED_NAME_LIVE_STREAM_ID)
+  private String liveStreamId;
+
+  public static final String SERIALIZED_NAME_SPATIAL_DROP_ID = "spatialDropId";
+  @SerializedName(SERIALIZED_NAME_SPATIAL_DROP_ID)
+  private String spatialDropId;
+
+  public static final String SERIALIZED_NAME_TIMEZONE = "timezone";
+  @SerializedName(SERIALIZED_NAME_TIMEZONE)
+  private String timezone;
+
+  public static final String SERIALIZED_NAME_FEATURED_STATUS = "featuredStatus";
+  @SerializedName(SERIALIZED_NAME_FEATURED_STATUS)
+  private String featuredStatus;
+
+  public static final String SERIALIZED_NAME_AUDIENCE = "audience";
+  @SerializedName(SERIALIZED_NAME_AUDIENCE)
+  private String audience;
+
+  public static final String SERIALIZED_NAME_AUDIENCE_CATALOG_ID = "audienceCatalogId";
+  @SerializedName(SERIALIZED_NAME_AUDIENCE_CATALOG_ID)
+  private String audienceCatalogId;
+
+  public static final String SERIALIZED_NAME_DROP_KIND = "dropKind";
+  @SerializedName(SERIALIZED_NAME_DROP_KIND)
+  private String dropKind;
+
+  public static final String SERIALIZED_NAME_DEPOSIT_BPS = "depositBps";
+  @SerializedName(SERIALIZED_NAME_DEPOSIT_BPS)
+  private BigDecimal depositBps;
+
+  public static final String SERIALIZED_NAME_SHIP_BY = "shipBy";
+  @SerializedName(SERIALIZED_NAME_SHIP_BY)
+  private String shipBy;
+
+  public static final String SERIALIZED_NAME_BALANCE_NET_DAYS = "balanceNetDays";
+  @SerializedName(SERIALIZED_NAME_BALANCE_NET_DAYS)
+  private BigDecimal balanceNetDays;
 
   public static final String SERIALIZED_NAME_LISTING_COUNT = "listingCount";
   @SerializedName(SERIALIZED_NAME_LISTING_COUNT)
@@ -202,26 +284,26 @@ public class ListBrandDropsItem {
   }
 
 
-  public ListBrandDropsItem status(String status) {
+  public ListBrandDropsItem updatedAt(OffsetDateTime updatedAt) {
     
-    this.status = status;
+    this.updatedAt = updatedAt;
     return this;
   }
 
    /**
-   * Get status
-   * @return status
+   * Get updatedAt
+   * @return updatedAt
   **/
   @javax.annotation.Nonnull
   @ApiModelProperty(required = true, value = "")
 
-  public String getStatus() {
-    return status;
+  public OffsetDateTime getUpdatedAt() {
+    return updatedAt;
   }
 
 
-  public void setStatus(String status) {
-    this.status = status;
+  public void setUpdatedAt(OffsetDateTime updatedAt) {
+    this.updatedAt = updatedAt;
   }
 
 
@@ -248,6 +330,98 @@ public class ListBrandDropsItem {
   }
 
 
+  public ListBrandDropsItem status(String status) {
+    
+    this.status = status;
+    return this;
+  }
+
+   /**
+   * Get status
+   * @return status
+  **/
+  @javax.annotation.Nonnull
+  @ApiModelProperty(required = true, value = "")
+
+  public String getStatus() {
+    return status;
+  }
+
+
+  public void setStatus(String status) {
+    this.status = status;
+  }
+
+
+  public ListBrandDropsItem releasedAt(OffsetDateTime releasedAt) {
+    
+    this.releasedAt = releasedAt;
+    return this;
+  }
+
+   /**
+   * Get releasedAt
+   * @return releasedAt
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public OffsetDateTime getReleasedAt() {
+    return releasedAt;
+  }
+
+
+  public void setReleasedAt(OffsetDateTime releasedAt) {
+    this.releasedAt = releasedAt;
+  }
+
+
+  public ListBrandDropsItem published(Boolean published) {
+    
+    this.published = published;
+    return this;
+  }
+
+   /**
+   * Get published
+   * @return published
+  **/
+  @javax.annotation.Nonnull
+  @ApiModelProperty(required = true, value = "")
+
+  public Boolean getPublished() {
+    return published;
+  }
+
+
+  public void setPublished(Boolean published) {
+    this.published = published;
+  }
+
+
+  public ListBrandDropsItem storefrontId(String storefrontId) {
+    
+    this.storefrontId = storefrontId;
+    return this;
+  }
+
+   /**
+   * Get storefrontId
+   * @return storefrontId
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public String getStorefrontId() {
+    return storefrontId;
+  }
+
+
+  public void setStorefrontId(String storefrontId) {
+    this.storefrontId = storefrontId;
+  }
+
+
   public ListBrandDropsItem endsAt(OffsetDateTime endsAt) {
     
     this.endsAt = endsAt;
@@ -268,6 +442,80 @@ public class ListBrandDropsItem {
 
   public void setEndsAt(OffsetDateTime endsAt) {
     this.endsAt = endsAt;
+  }
+
+
+  public ListBrandDropsItem eventId(String eventId) {
+    
+    this.eventId = eventId;
+    return this;
+  }
+
+   /**
+   * Get eventId
+   * @return eventId
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public String getEventId() {
+    return eventId;
+  }
+
+
+  public void setEventId(String eventId) {
+    this.eventId = eventId;
+  }
+
+
+  public ListBrandDropsItem format(String format) {
+    
+    this.format = format;
+    return this;
+  }
+
+   /**
+   * Get format
+   * @return format
+  **/
+  @javax.annotation.Nonnull
+  @ApiModelProperty(required = true, value = "")
+
+  public String getFormat() {
+    return format;
+  }
+
+
+  public void setFormat(String format) {
+    this.format = format;
+  }
+
+
+  public ListBrandDropsItem config(Map<String, Object> config) {
+    
+    this.config = config;
+    return this;
+  }
+
+  public ListBrandDropsItem putConfigItem(String key, Object configItem) {
+    this.config.put(key, configItem);
+    return this;
+  }
+
+   /**
+   * Get config
+   * @return config
+  **/
+  @javax.annotation.Nonnull
+  @ApiModelProperty(required = true, value = "")
+
+  public Map<String, Object> getConfig() {
+    return config;
+  }
+
+
+  public void setConfig(Map<String, Object> config) {
+    this.config = config;
   }
 
 
@@ -314,144 +562,6 @@ public class ListBrandDropsItem {
 
   public void setCoverImageUrl(String coverImageUrl) {
     this.coverImageUrl = coverImageUrl;
-  }
-
-
-  public ListBrandDropsItem publishedAt(OffsetDateTime publishedAt) {
-    
-    this.publishedAt = publishedAt;
-    return this;
-  }
-
-   /**
-   * Get publishedAt
-   * @return publishedAt
-  **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
-
-  public OffsetDateTime getPublishedAt() {
-    return publishedAt;
-  }
-
-
-  public void setPublishedAt(OffsetDateTime publishedAt) {
-    this.publishedAt = publishedAt;
-  }
-
-
-  public ListBrandDropsItem reviewedAt(OffsetDateTime reviewedAt) {
-    
-    this.reviewedAt = reviewedAt;
-    return this;
-  }
-
-   /**
-   * Get reviewedAt
-   * @return reviewedAt
-  **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
-
-  public OffsetDateTime getReviewedAt() {
-    return reviewedAt;
-  }
-
-
-  public void setReviewedAt(OffsetDateTime reviewedAt) {
-    this.reviewedAt = reviewedAt;
-  }
-
-
-  public ListBrandDropsItem reviewNote(String reviewNote) {
-    
-    this.reviewNote = reviewNote;
-    return this;
-  }
-
-   /**
-   * Get reviewNote
-   * @return reviewNote
-  **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
-
-  public String getReviewNote() {
-    return reviewNote;
-  }
-
-
-  public void setReviewNote(String reviewNote) {
-    this.reviewNote = reviewNote;
-  }
-
-
-  public ListBrandDropsItem supplierName(String supplierName) {
-    
-    this.supplierName = supplierName;
-    return this;
-  }
-
-   /**
-   * Get supplierName
-   * @return supplierName
-  **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
-
-  public String getSupplierName() {
-    return supplierName;
-  }
-
-
-  public void setSupplierName(String supplierName) {
-    this.supplierName = supplierName;
-  }
-
-
-  public ListBrandDropsItem partnerId(String partnerId) {
-    
-    this.partnerId = partnerId;
-    return this;
-  }
-
-   /**
-   * Get partnerId
-   * @return partnerId
-  **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
-
-  public String getPartnerId() {
-    return partnerId;
-  }
-
-
-  public void setPartnerId(String partnerId) {
-    this.partnerId = partnerId;
-  }
-
-
-  public ListBrandDropsItem published(Boolean published) {
-    
-    this.published = published;
-    return this;
-  }
-
-   /**
-   * Get published
-   * @return published
-  **/
-  @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "")
-
-  public Boolean getPublished() {
-    return published;
-  }
-
-
-  public void setPublished(Boolean published) {
-    this.published = published;
   }
 
 
@@ -509,6 +619,29 @@ public class ListBrandDropsItem {
   }
 
 
+  public ListBrandDropsItem partnerId(String partnerId) {
+    
+    this.partnerId = partnerId;
+    return this;
+  }
+
+   /**
+   * Get partnerId
+   * @return partnerId
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public String getPartnerId() {
+    return partnerId;
+  }
+
+
+  public void setPartnerId(String partnerId) {
+    this.partnerId = partnerId;
+  }
+
+
   public ListBrandDropsItem wholesaleUnitCostCents(BigDecimal wholesaleUnitCostCents) {
     
     this.wholesaleUnitCostCents = wholesaleUnitCostCents;
@@ -552,6 +685,29 @@ public class ListBrandDropsItem {
 
   public void setUnitsPurchased(BigDecimal unitsPurchased) {
     this.unitsPurchased = unitsPurchased;
+  }
+
+
+  public ListBrandDropsItem supplierName(String supplierName) {
+    
+    this.supplierName = supplierName;
+    return this;
+  }
+
+   /**
+   * Get supplierName
+   * @return supplierName
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public String getSupplierName() {
+    return supplierName;
+  }
+
+
+  public void setSupplierName(String supplierName) {
+    this.supplierName = supplierName;
   }
 
 
@@ -670,6 +826,402 @@ public class ListBrandDropsItem {
   }
 
 
+  public ListBrandDropsItem publishedAt(OffsetDateTime publishedAt) {
+    
+    this.publishedAt = publishedAt;
+    return this;
+  }
+
+   /**
+   * Get publishedAt
+   * @return publishedAt
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public OffsetDateTime getPublishedAt() {
+    return publishedAt;
+  }
+
+
+  public void setPublishedAt(OffsetDateTime publishedAt) {
+    this.publishedAt = publishedAt;
+  }
+
+
+  public ListBrandDropsItem reviewNote(String reviewNote) {
+    
+    this.reviewNote = reviewNote;
+    return this;
+  }
+
+   /**
+   * Get reviewNote
+   * @return reviewNote
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public String getReviewNote() {
+    return reviewNote;
+  }
+
+
+  public void setReviewNote(String reviewNote) {
+    this.reviewNote = reviewNote;
+  }
+
+
+  public ListBrandDropsItem reviewedAt(OffsetDateTime reviewedAt) {
+    
+    this.reviewedAt = reviewedAt;
+    return this;
+  }
+
+   /**
+   * Get reviewedAt
+   * @return reviewedAt
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public OffsetDateTime getReviewedAt() {
+    return reviewedAt;
+  }
+
+
+  public void setReviewedAt(OffsetDateTime reviewedAt) {
+    this.reviewedAt = reviewedAt;
+  }
+
+
+  public ListBrandDropsItem placements(List<String> placements) {
+    
+    this.placements = placements;
+    return this;
+  }
+
+  public ListBrandDropsItem addPlacementsItem(String placementsItem) {
+    this.placements.add(placementsItem);
+    return this;
+  }
+
+   /**
+   * Get placements
+   * @return placements
+  **/
+  @javax.annotation.Nonnull
+  @ApiModelProperty(required = true, value = "")
+
+  public List<String> getPlacements() {
+    return placements;
+  }
+
+
+  public void setPlacements(List<String> placements) {
+    this.placements = placements;
+  }
+
+
+  public ListBrandDropsItem announceAt(OffsetDateTime announceAt) {
+    
+    this.announceAt = announceAt;
+    return this;
+  }
+
+   /**
+   * Get announceAt
+   * @return announceAt
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public OffsetDateTime getAnnounceAt() {
+    return announceAt;
+  }
+
+
+  public void setAnnounceAt(OffsetDateTime announceAt) {
+    this.announceAt = announceAt;
+  }
+
+
+  public ListBrandDropsItem countdownAt(OffsetDateTime countdownAt) {
+    
+    this.countdownAt = countdownAt;
+    return this;
+  }
+
+   /**
+   * Get countdownAt
+   * @return countdownAt
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public OffsetDateTime getCountdownAt() {
+    return countdownAt;
+  }
+
+
+  public void setCountdownAt(OffsetDateTime countdownAt) {
+    this.countdownAt = countdownAt;
+  }
+
+
+  public ListBrandDropsItem pausedAt(OffsetDateTime pausedAt) {
+    
+    this.pausedAt = pausedAt;
+    return this;
+  }
+
+   /**
+   * Get pausedAt
+   * @return pausedAt
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public OffsetDateTime getPausedAt() {
+    return pausedAt;
+  }
+
+
+  public void setPausedAt(OffsetDateTime pausedAt) {
+    this.pausedAt = pausedAt;
+  }
+
+
+  public ListBrandDropsItem liveStreamId(String liveStreamId) {
+    
+    this.liveStreamId = liveStreamId;
+    return this;
+  }
+
+   /**
+   * Get liveStreamId
+   * @return liveStreamId
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public String getLiveStreamId() {
+    return liveStreamId;
+  }
+
+
+  public void setLiveStreamId(String liveStreamId) {
+    this.liveStreamId = liveStreamId;
+  }
+
+
+  public ListBrandDropsItem spatialDropId(String spatialDropId) {
+    
+    this.spatialDropId = spatialDropId;
+    return this;
+  }
+
+   /**
+   * Get spatialDropId
+   * @return spatialDropId
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public String getSpatialDropId() {
+    return spatialDropId;
+  }
+
+
+  public void setSpatialDropId(String spatialDropId) {
+    this.spatialDropId = spatialDropId;
+  }
+
+
+  public ListBrandDropsItem timezone(String timezone) {
+    
+    this.timezone = timezone;
+    return this;
+  }
+
+   /**
+   * Get timezone
+   * @return timezone
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public String getTimezone() {
+    return timezone;
+  }
+
+
+  public void setTimezone(String timezone) {
+    this.timezone = timezone;
+  }
+
+
+  public ListBrandDropsItem featuredStatus(String featuredStatus) {
+    
+    this.featuredStatus = featuredStatus;
+    return this;
+  }
+
+   /**
+   * Get featuredStatus
+   * @return featuredStatus
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public String getFeaturedStatus() {
+    return featuredStatus;
+  }
+
+
+  public void setFeaturedStatus(String featuredStatus) {
+    this.featuredStatus = featuredStatus;
+  }
+
+
+  public ListBrandDropsItem audience(String audience) {
+    
+    this.audience = audience;
+    return this;
+  }
+
+   /**
+   * Get audience
+   * @return audience
+  **/
+  @javax.annotation.Nonnull
+  @ApiModelProperty(required = true, value = "")
+
+  public String getAudience() {
+    return audience;
+  }
+
+
+  public void setAudience(String audience) {
+    this.audience = audience;
+  }
+
+
+  public ListBrandDropsItem audienceCatalogId(String audienceCatalogId) {
+    
+    this.audienceCatalogId = audienceCatalogId;
+    return this;
+  }
+
+   /**
+   * Get audienceCatalogId
+   * @return audienceCatalogId
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public String getAudienceCatalogId() {
+    return audienceCatalogId;
+  }
+
+
+  public void setAudienceCatalogId(String audienceCatalogId) {
+    this.audienceCatalogId = audienceCatalogId;
+  }
+
+
+  public ListBrandDropsItem dropKind(String dropKind) {
+    
+    this.dropKind = dropKind;
+    return this;
+  }
+
+   /**
+   * Get dropKind
+   * @return dropKind
+  **/
+  @javax.annotation.Nonnull
+  @ApiModelProperty(required = true, value = "")
+
+  public String getDropKind() {
+    return dropKind;
+  }
+
+
+  public void setDropKind(String dropKind) {
+    this.dropKind = dropKind;
+  }
+
+
+  public ListBrandDropsItem depositBps(BigDecimal depositBps) {
+    
+    this.depositBps = depositBps;
+    return this;
+  }
+
+   /**
+   * Get depositBps
+   * @return depositBps
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public BigDecimal getDepositBps() {
+    return depositBps;
+  }
+
+
+  public void setDepositBps(BigDecimal depositBps) {
+    this.depositBps = depositBps;
+  }
+
+
+  public ListBrandDropsItem shipBy(String shipBy) {
+    
+    this.shipBy = shipBy;
+    return this;
+  }
+
+   /**
+   * Get shipBy
+   * @return shipBy
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public String getShipBy() {
+    return shipBy;
+  }
+
+
+  public void setShipBy(String shipBy) {
+    this.shipBy = shipBy;
+  }
+
+
+  public ListBrandDropsItem balanceNetDays(BigDecimal balanceNetDays) {
+    
+    this.balanceNetDays = balanceNetDays;
+    return this;
+  }
+
+   /**
+   * Get balanceNetDays
+   * @return balanceNetDays
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public BigDecimal getBalanceNetDays() {
+    return balanceNetDays;
+  }
+
+
+  public void setBalanceNetDays(BigDecimal balanceNetDays) {
+    this.balanceNetDays = balanceNetDays;
+  }
+
+
   public ListBrandDropsItem listingCount(BigDecimal listingCount) {
     
     this.listingCount = listingCount;
@@ -705,26 +1257,46 @@ public class ListBrandDropsItem {
     return Objects.equals(this.id, listBrandDropsItem.id) &&
         Objects.equals(this.name, listBrandDropsItem.name) &&
         Objects.equals(this.createdAt, listBrandDropsItem.createdAt) &&
-        Objects.equals(this.status, listBrandDropsItem.status) &&
+        Objects.equals(this.updatedAt, listBrandDropsItem.updatedAt) &&
         Objects.equals(this.description, listBrandDropsItem.description) &&
+        Objects.equals(this.status, listBrandDropsItem.status) &&
+        Objects.equals(this.releasedAt, listBrandDropsItem.releasedAt) &&
+        Objects.equals(this.published, listBrandDropsItem.published) &&
+        Objects.equals(this.storefrontId, listBrandDropsItem.storefrontId) &&
         Objects.equals(this.endsAt, listBrandDropsItem.endsAt) &&
+        Objects.equals(this.eventId, listBrandDropsItem.eventId) &&
+        Objects.equals(this.format, listBrandDropsItem.format) &&
+        Objects.equals(this.config, listBrandDropsItem.config) &&
         Objects.equals(this.sellerUserId, listBrandDropsItem.sellerUserId) &&
         Objects.equals(this.coverImageUrl, listBrandDropsItem.coverImageUrl) &&
-        Objects.equals(this.publishedAt, listBrandDropsItem.publishedAt) &&
-        Objects.equals(this.reviewedAt, listBrandDropsItem.reviewedAt) &&
-        Objects.equals(this.reviewNote, listBrandDropsItem.reviewNote) &&
-        Objects.equals(this.supplierName, listBrandDropsItem.supplierName) &&
-        Objects.equals(this.partnerId, listBrandDropsItem.partnerId) &&
-        Objects.equals(this.published, listBrandDropsItem.published) &&
         Objects.equals(this.platformListingIds, listBrandDropsItem.platformListingIds) &&
         Objects.equals(this.dropAt, listBrandDropsItem.dropAt) &&
+        Objects.equals(this.partnerId, listBrandDropsItem.partnerId) &&
         Objects.equals(this.wholesaleUnitCostCents, listBrandDropsItem.wholesaleUnitCostCents) &&
         Objects.equals(this.unitsPurchased, listBrandDropsItem.unitsPurchased) &&
+        Objects.equals(this.supplierName, listBrandDropsItem.supplierName) &&
         Objects.equals(this.poReference, listBrandDropsItem.poReference) &&
         Objects.equals(this.retailUnitPriceCents, listBrandDropsItem.retailUnitPriceCents) &&
         Objects.equals(this.buyerApiEnabled, listBrandDropsItem.buyerApiEnabled) &&
         Objects.equals(this.perCustomerLimit, listBrandDropsItem.perCustomerLimit) &&
         Objects.equals(this.previewFrom, listBrandDropsItem.previewFrom) &&
+        Objects.equals(this.publishedAt, listBrandDropsItem.publishedAt) &&
+        Objects.equals(this.reviewNote, listBrandDropsItem.reviewNote) &&
+        Objects.equals(this.reviewedAt, listBrandDropsItem.reviewedAt) &&
+        Objects.equals(this.placements, listBrandDropsItem.placements) &&
+        Objects.equals(this.announceAt, listBrandDropsItem.announceAt) &&
+        Objects.equals(this.countdownAt, listBrandDropsItem.countdownAt) &&
+        Objects.equals(this.pausedAt, listBrandDropsItem.pausedAt) &&
+        Objects.equals(this.liveStreamId, listBrandDropsItem.liveStreamId) &&
+        Objects.equals(this.spatialDropId, listBrandDropsItem.spatialDropId) &&
+        Objects.equals(this.timezone, listBrandDropsItem.timezone) &&
+        Objects.equals(this.featuredStatus, listBrandDropsItem.featuredStatus) &&
+        Objects.equals(this.audience, listBrandDropsItem.audience) &&
+        Objects.equals(this.audienceCatalogId, listBrandDropsItem.audienceCatalogId) &&
+        Objects.equals(this.dropKind, listBrandDropsItem.dropKind) &&
+        Objects.equals(this.depositBps, listBrandDropsItem.depositBps) &&
+        Objects.equals(this.shipBy, listBrandDropsItem.shipBy) &&
+        Objects.equals(this.balanceNetDays, listBrandDropsItem.balanceNetDays) &&
         Objects.equals(this.listingCount, listBrandDropsItem.listingCount);
   }
 
@@ -734,7 +1306,7 @@ public class ListBrandDropsItem {
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, name, createdAt, status, description, endsAt, sellerUserId, coverImageUrl, publishedAt, reviewedAt, reviewNote, supplierName, partnerId, published, platformListingIds, dropAt, wholesaleUnitCostCents, unitsPurchased, poReference, retailUnitPriceCents, buyerApiEnabled, perCustomerLimit, previewFrom, listingCount);
+    return Objects.hash(id, name, createdAt, updatedAt, description, status, releasedAt, published, storefrontId, endsAt, eventId, format, config, sellerUserId, coverImageUrl, platformListingIds, dropAt, partnerId, wholesaleUnitCostCents, unitsPurchased, supplierName, poReference, retailUnitPriceCents, buyerApiEnabled, perCustomerLimit, previewFrom, publishedAt, reviewNote, reviewedAt, placements, announceAt, countdownAt, pausedAt, liveStreamId, spatialDropId, timezone, featuredStatus, audience, audienceCatalogId, dropKind, depositBps, shipBy, balanceNetDays, listingCount);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -751,26 +1323,46 @@ public class ListBrandDropsItem {
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    createdAt: ").append(toIndentedString(createdAt)).append("\n");
-    sb.append("    status: ").append(toIndentedString(status)).append("\n");
+    sb.append("    updatedAt: ").append(toIndentedString(updatedAt)).append("\n");
     sb.append("    description: ").append(toIndentedString(description)).append("\n");
+    sb.append("    status: ").append(toIndentedString(status)).append("\n");
+    sb.append("    releasedAt: ").append(toIndentedString(releasedAt)).append("\n");
+    sb.append("    published: ").append(toIndentedString(published)).append("\n");
+    sb.append("    storefrontId: ").append(toIndentedString(storefrontId)).append("\n");
     sb.append("    endsAt: ").append(toIndentedString(endsAt)).append("\n");
+    sb.append("    eventId: ").append(toIndentedString(eventId)).append("\n");
+    sb.append("    format: ").append(toIndentedString(format)).append("\n");
+    sb.append("    config: ").append(toIndentedString(config)).append("\n");
     sb.append("    sellerUserId: ").append(toIndentedString(sellerUserId)).append("\n");
     sb.append("    coverImageUrl: ").append(toIndentedString(coverImageUrl)).append("\n");
-    sb.append("    publishedAt: ").append(toIndentedString(publishedAt)).append("\n");
-    sb.append("    reviewedAt: ").append(toIndentedString(reviewedAt)).append("\n");
-    sb.append("    reviewNote: ").append(toIndentedString(reviewNote)).append("\n");
-    sb.append("    supplierName: ").append(toIndentedString(supplierName)).append("\n");
-    sb.append("    partnerId: ").append(toIndentedString(partnerId)).append("\n");
-    sb.append("    published: ").append(toIndentedString(published)).append("\n");
     sb.append("    platformListingIds: ").append(toIndentedString(platformListingIds)).append("\n");
     sb.append("    dropAt: ").append(toIndentedString(dropAt)).append("\n");
+    sb.append("    partnerId: ").append(toIndentedString(partnerId)).append("\n");
     sb.append("    wholesaleUnitCostCents: ").append(toIndentedString(wholesaleUnitCostCents)).append("\n");
     sb.append("    unitsPurchased: ").append(toIndentedString(unitsPurchased)).append("\n");
+    sb.append("    supplierName: ").append(toIndentedString(supplierName)).append("\n");
     sb.append("    poReference: ").append(toIndentedString(poReference)).append("\n");
     sb.append("    retailUnitPriceCents: ").append(toIndentedString(retailUnitPriceCents)).append("\n");
     sb.append("    buyerApiEnabled: ").append(toIndentedString(buyerApiEnabled)).append("\n");
     sb.append("    perCustomerLimit: ").append(toIndentedString(perCustomerLimit)).append("\n");
     sb.append("    previewFrom: ").append(toIndentedString(previewFrom)).append("\n");
+    sb.append("    publishedAt: ").append(toIndentedString(publishedAt)).append("\n");
+    sb.append("    reviewNote: ").append(toIndentedString(reviewNote)).append("\n");
+    sb.append("    reviewedAt: ").append(toIndentedString(reviewedAt)).append("\n");
+    sb.append("    placements: ").append(toIndentedString(placements)).append("\n");
+    sb.append("    announceAt: ").append(toIndentedString(announceAt)).append("\n");
+    sb.append("    countdownAt: ").append(toIndentedString(countdownAt)).append("\n");
+    sb.append("    pausedAt: ").append(toIndentedString(pausedAt)).append("\n");
+    sb.append("    liveStreamId: ").append(toIndentedString(liveStreamId)).append("\n");
+    sb.append("    spatialDropId: ").append(toIndentedString(spatialDropId)).append("\n");
+    sb.append("    timezone: ").append(toIndentedString(timezone)).append("\n");
+    sb.append("    featuredStatus: ").append(toIndentedString(featuredStatus)).append("\n");
+    sb.append("    audience: ").append(toIndentedString(audience)).append("\n");
+    sb.append("    audienceCatalogId: ").append(toIndentedString(audienceCatalogId)).append("\n");
+    sb.append("    dropKind: ").append(toIndentedString(dropKind)).append("\n");
+    sb.append("    depositBps: ").append(toIndentedString(depositBps)).append("\n");
+    sb.append("    shipBy: ").append(toIndentedString(shipBy)).append("\n");
+    sb.append("    balanceNetDays: ").append(toIndentedString(balanceNetDays)).append("\n");
     sb.append("    listingCount: ").append(toIndentedString(listingCount)).append("\n");
     sb.append("}");
     return sb.toString();

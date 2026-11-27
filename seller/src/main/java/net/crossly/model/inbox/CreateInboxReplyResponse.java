@@ -28,7 +28,7 @@ import org.openapitools.jackson.nullable.JsonNullable;
 /**
  * CreateInboxReplyResponse
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-11T23:44:48.922Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-27T19:42:43.186Z[Etc/UTC]")
 public class CreateInboxReplyResponse {
   public static final String SERIALIZED_NAME_JOB_ID = "jobId";
   @SerializedName(SERIALIZED_NAME_JOB_ID)
@@ -43,11 +43,11 @@ public class CreateInboxReplyResponse {
    */
   @JsonAdapter(DeliveryStatusEnum.Adapter.class)
   public enum DeliveryStatusEnum {
-    FAILED("failed"),
+    SENDING("sending"),
     
     SENT("sent"),
     
-    SENDING("sending");
+    FAILED("failed");
 
     private String value;
 

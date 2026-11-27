@@ -29,19 +29,15 @@ import org.openapitools.jackson.nullable.JsonNullable;
 /**
  * ListBuyerCatalogSellersItem
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-11T23:47:29.843Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-27T19:58:46.962Z[Etc/UTC]")
 public class ListBuyerCatalogSellersItem {
-  public static final String SERIALIZED_NAME_DISPLAY_NAME = "displayName";
-  @SerializedName(SERIALIZED_NAME_DISPLAY_NAME)
-  private String displayName;
-
   public static final String SERIALIZED_NAME_USERNAME = "username";
   @SerializedName(SERIALIZED_NAME_USERNAME)
   private String username;
 
-  public static final String SERIALIZED_NAME_TOTAL_ITEMS_SOLD = "totalItemsSold";
-  @SerializedName(SERIALIZED_NAME_TOTAL_ITEMS_SOLD)
-  private BigDecimal totalItemsSold;
+  public static final String SERIALIZED_NAME_DISPLAY_NAME = "displayName";
+  @SerializedName(SERIALIZED_NAME_DISPLAY_NAME)
+  private String displayName;
 
   public static final String SERIALIZED_NAME_IS_VERIFIED = "isVerified";
   @SerializedName(SERIALIZED_NAME_IS_VERIFIED)
@@ -51,35 +47,16 @@ public class ListBuyerCatalogSellersItem {
   @SerializedName(SERIALIZED_NAME_ACTIVE_LISTINGS)
   private BigDecimal activeListings;
 
+  public static final String SERIALIZED_NAME_TOTAL_ITEMS_SOLD = "totalItemsSold";
+  @SerializedName(SERIALIZED_NAME_TOTAL_ITEMS_SOLD)
+  private BigDecimal totalItemsSold;
+
   public static final String SERIALIZED_NAME_AVATAR_URL = "avatarUrl";
   @SerializedName(SERIALIZED_NAME_AVATAR_URL)
   private String avatarUrl;
 
   public ListBuyerCatalogSellersItem() { 
   }
-
-  public ListBuyerCatalogSellersItem displayName(String displayName) {
-    
-    this.displayName = displayName;
-    return this;
-  }
-
-   /**
-   * Get displayName
-   * @return displayName
-  **/
-  @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "")
-
-  public String getDisplayName() {
-    return displayName;
-  }
-
-
-  public void setDisplayName(String displayName) {
-    this.displayName = displayName;
-  }
-
 
   public ListBuyerCatalogSellersItem username(String username) {
     
@@ -104,26 +81,26 @@ public class ListBuyerCatalogSellersItem {
   }
 
 
-  public ListBuyerCatalogSellersItem totalItemsSold(BigDecimal totalItemsSold) {
+  public ListBuyerCatalogSellersItem displayName(String displayName) {
     
-    this.totalItemsSold = totalItemsSold;
+    this.displayName = displayName;
     return this;
   }
 
    /**
-   * Get totalItemsSold
-   * @return totalItemsSold
+   * Get displayName
+   * @return displayName
   **/
   @javax.annotation.Nonnull
   @ApiModelProperty(required = true, value = "")
 
-  public BigDecimal getTotalItemsSold() {
-    return totalItemsSold;
+  public String getDisplayName() {
+    return displayName;
   }
 
 
-  public void setTotalItemsSold(BigDecimal totalItemsSold) {
-    this.totalItemsSold = totalItemsSold;
+  public void setDisplayName(String displayName) {
+    this.displayName = displayName;
   }
 
 
@@ -173,6 +150,29 @@ public class ListBuyerCatalogSellersItem {
   }
 
 
+  public ListBuyerCatalogSellersItem totalItemsSold(BigDecimal totalItemsSold) {
+    
+    this.totalItemsSold = totalItemsSold;
+    return this;
+  }
+
+   /**
+   * Get totalItemsSold
+   * @return totalItemsSold
+  **/
+  @javax.annotation.Nonnull
+  @ApiModelProperty(required = true, value = "")
+
+  public BigDecimal getTotalItemsSold() {
+    return totalItemsSold;
+  }
+
+
+  public void setTotalItemsSold(BigDecimal totalItemsSold) {
+    this.totalItemsSold = totalItemsSold;
+  }
+
+
   public ListBuyerCatalogSellersItem avatarUrl(String avatarUrl) {
     
     this.avatarUrl = avatarUrl;
@@ -205,11 +205,11 @@ public class ListBuyerCatalogSellersItem {
       return false;
     }
     ListBuyerCatalogSellersItem listBuyerCatalogSellersItem = (ListBuyerCatalogSellersItem) o;
-    return Objects.equals(this.displayName, listBuyerCatalogSellersItem.displayName) &&
-        Objects.equals(this.username, listBuyerCatalogSellersItem.username) &&
-        Objects.equals(this.totalItemsSold, listBuyerCatalogSellersItem.totalItemsSold) &&
+    return Objects.equals(this.username, listBuyerCatalogSellersItem.username) &&
+        Objects.equals(this.displayName, listBuyerCatalogSellersItem.displayName) &&
         Objects.equals(this.isVerified, listBuyerCatalogSellersItem.isVerified) &&
         Objects.equals(this.activeListings, listBuyerCatalogSellersItem.activeListings) &&
+        Objects.equals(this.totalItemsSold, listBuyerCatalogSellersItem.totalItemsSold) &&
         Objects.equals(this.avatarUrl, listBuyerCatalogSellersItem.avatarUrl);
   }
 
@@ -219,7 +219,7 @@ public class ListBuyerCatalogSellersItem {
 
   @Override
   public int hashCode() {
-    return Objects.hash(displayName, username, totalItemsSold, isVerified, activeListings, avatarUrl);
+    return Objects.hash(username, displayName, isVerified, activeListings, totalItemsSold, avatarUrl);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -233,11 +233,11 @@ public class ListBuyerCatalogSellersItem {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class ListBuyerCatalogSellersItem {\n");
-    sb.append("    displayName: ").append(toIndentedString(displayName)).append("\n");
     sb.append("    username: ").append(toIndentedString(username)).append("\n");
-    sb.append("    totalItemsSold: ").append(toIndentedString(totalItemsSold)).append("\n");
+    sb.append("    displayName: ").append(toIndentedString(displayName)).append("\n");
     sb.append("    isVerified: ").append(toIndentedString(isVerified)).append("\n");
     sb.append("    activeListings: ").append(toIndentedString(activeListings)).append("\n");
+    sb.append("    totalItemsSold: ").append(toIndentedString(totalItemsSold)).append("\n");
     sb.append("    avatarUrl: ").append(toIndentedString(avatarUrl)).append("\n");
     sb.append("}");
     return sb.toString();

@@ -36,7 +36,7 @@ import org.openapitools.jackson.nullable.JsonNullable;
 /**
  * GetWorldSpaceResponseData
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-11T23:44:48.922Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-27T19:42:43.186Z[Etc/UTC]")
 public class GetWorldSpaceResponseData {
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
@@ -55,6 +55,8 @@ public class GetWorldSpaceResponseData {
    */
   @JsonAdapter(VenueEnum.Adapter.class)
   public enum VenueEnum {
+    STAGE("stage"),
+    
     GALLERY("gallery"),
     
     CARD_CLUB("card_club"),
@@ -62,8 +64,6 @@ public class GetWorldSpaceResponseData {
     SNEAKER_MEET("sneaker_meet"),
     
     VINTAGE_MARKET("vintage_market"),
-    
-    STAGE("stage"),
     
     CLUBHOUSE("clubhouse");
 

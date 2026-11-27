@@ -23,14 +23,15 @@ import com.google.gson.stream.JsonWriter;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
-import net.crossly.model.vault.ListVaultMarketFeedItemMark;
+import net.crossly.model.vault.ListVaultMarketFollowFeedItemBy;
 import net.crossly.model.vault.ListVaultMarketFollowFeedItemExhibition;
+import net.crossly.model.vault.ListVaultMarketOpeningItemMark;
 import org.openapitools.jackson.nullable.JsonNullable;
 
 /**
  * ListVaultMarketFollowFeedItem
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-11T23:44:48.922Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-27T19:42:43.186Z[Etc/UTC]")
 public class ListVaultMarketFollowFeedItem {
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
@@ -41,9 +42,9 @@ public class ListVaultMarketFollowFeedItem {
    */
   @JsonAdapter(KindEnum.Adapter.class)
   public enum KindEnum {
-    DEPOSIT("deposit"),
-    
     SALE("sale"),
+    
+    DEPOSIT("deposit"),
     
     BUY("buy"),
     
@@ -99,6 +100,10 @@ public class ListVaultMarketFollowFeedItem {
   @SerializedName(SERIALIZED_NAME_AT)
   private String at;
 
+  public static final String SERIALIZED_NAME_BY = "by";
+  @SerializedName(SERIALIZED_NAME_BY)
+  private ListVaultMarketFollowFeedItemBy by;
+
   public static final String SERIALIZED_NAME_BOOK_KEY = "bookKey";
   @SerializedName(SERIALIZED_NAME_BOOK_KEY)
   private String bookKey;
@@ -117,7 +122,7 @@ public class ListVaultMarketFollowFeedItem {
 
   public static final String SERIALIZED_NAME_MARK = "mark";
   @SerializedName(SERIALIZED_NAME_MARK)
-  private ListVaultMarketFeedItemMark mark;
+  private ListVaultMarketOpeningItemMark mark;
 
   public static final String SERIALIZED_NAME_EXHIBITION = "exhibition";
   @SerializedName(SERIALIZED_NAME_EXHIBITION)
@@ -222,6 +227,29 @@ public class ListVaultMarketFollowFeedItem {
   }
 
 
+  public ListVaultMarketFollowFeedItem by(ListVaultMarketFollowFeedItemBy by) {
+    
+    this.by = by;
+    return this;
+  }
+
+   /**
+   * Get by
+   * @return by
+  **/
+  @javax.annotation.Nonnull
+  @ApiModelProperty(required = true, value = "")
+
+  public ListVaultMarketFollowFeedItemBy getBy() {
+    return by;
+  }
+
+
+  public void setBy(ListVaultMarketFollowFeedItemBy by) {
+    this.by = by;
+  }
+
+
   public ListVaultMarketFollowFeedItem bookKey(String bookKey) {
     
     this.bookKey = bookKey;
@@ -314,7 +342,7 @@ public class ListVaultMarketFollowFeedItem {
   }
 
 
-  public ListVaultMarketFollowFeedItem mark(ListVaultMarketFeedItemMark mark) {
+  public ListVaultMarketFollowFeedItem mark(ListVaultMarketOpeningItemMark mark) {
     
     this.mark = mark;
     return this;
@@ -327,12 +355,12 @@ public class ListVaultMarketFollowFeedItem {
   @javax.annotation.Nonnull
   @ApiModelProperty(required = true, value = "")
 
-  public ListVaultMarketFeedItemMark getMark() {
+  public ListVaultMarketOpeningItemMark getMark() {
     return mark;
   }
 
 
-  public void setMark(ListVaultMarketFeedItemMark mark) {
+  public void setMark(ListVaultMarketOpeningItemMark mark) {
     this.mark = mark;
   }
 
@@ -396,6 +424,7 @@ public class ListVaultMarketFollowFeedItem {
         Objects.equals(this.kind, listVaultMarketFollowFeedItem.kind) &&
         Objects.equals(this.verb, listVaultMarketFollowFeedItem.verb) &&
         Objects.equals(this.at, listVaultMarketFollowFeedItem.at) &&
+        Objects.equals(this.by, listVaultMarketFollowFeedItem.by) &&
         Objects.equals(this.bookKey, listVaultMarketFollowFeedItem.bookKey) &&
         Objects.equals(this.name, listVaultMarketFollowFeedItem.name) &&
         Objects.equals(this.label, listVaultMarketFollowFeedItem.label) &&
@@ -411,7 +440,7 @@ public class ListVaultMarketFollowFeedItem {
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, kind, verb, at, bookKey, name, label, imageUrl, mark, exhibition, buyHref);
+    return Objects.hash(id, kind, verb, at, by, bookKey, name, label, imageUrl, mark, exhibition, buyHref);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -429,6 +458,7 @@ public class ListVaultMarketFollowFeedItem {
     sb.append("    kind: ").append(toIndentedString(kind)).append("\n");
     sb.append("    verb: ").append(toIndentedString(verb)).append("\n");
     sb.append("    at: ").append(toIndentedString(at)).append("\n");
+    sb.append("    by: ").append(toIndentedString(by)).append("\n");
     sb.append("    bookKey: ").append(toIndentedString(bookKey)).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    label: ").append(toIndentedString(label)).append("\n");

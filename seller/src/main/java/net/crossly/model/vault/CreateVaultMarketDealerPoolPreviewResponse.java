@@ -32,7 +32,7 @@ import org.openapitools.jackson.nullable.JsonNullable;
 /**
  * CreateVaultMarketDealerPoolPreviewResponse
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-11T23:44:48.922Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-27T19:42:43.186Z[Etc/UTC]")
 public class CreateVaultMarketDealerPoolPreviewResponse {
   public static final String SERIALIZED_NAME_BUYER_FEE_BPS = "buyerFeeBps";
   @SerializedName(SERIALIZED_NAME_BUYER_FEE_BPS)
@@ -57,11 +57,11 @@ public class CreateVaultMarketDealerPoolPreviewResponse {
   public enum BidLimitEnum {
     FLOOR("floor"),
     
+    CEILING("ceiling"),
+    
     NO_UNITS("no_units"),
     
     NO_CASH("no_cash"),
-    
-    CEILING("ceiling"),
     
     CURVE_END("curve_end");
 
@@ -114,11 +114,11 @@ public class CreateVaultMarketDealerPoolPreviewResponse {
   public enum AskLimitEnum {
     FLOOR("floor"),
     
+    CEILING("ceiling"),
+    
     NO_UNITS("no_units"),
     
     NO_CASH("no_cash"),
-    
-    CEILING("ceiling"),
     
     CURVE_END("curve_end");
 

@@ -24,24 +24,27 @@ import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 import java.math.BigDecimal;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 import org.openapitools.jackson.nullable.JsonNullable;
 
 /**
  * GetWorkflowChainResponseSteps
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-11T23:44:48.922Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-27T19:42:43.186Z[Etc/UTC]")
 public class GetWorkflowChainResponseSteps {
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
   private String id;
 
-  public static final String SERIALIZED_NAME_POSITION = "position";
-  @SerializedName(SERIALIZED_NAME_POSITION)
-  private BigDecimal position;
-
   public static final String SERIALIZED_NAME_CHAIN_ID = "chainId";
   @SerializedName(SERIALIZED_NAME_CHAIN_ID)
   private String chainId;
+
+  public static final String SERIALIZED_NAME_POSITION = "position";
+  @SerializedName(SERIALIZED_NAME_POSITION)
+  private BigDecimal position;
 
   public static final String SERIALIZED_NAME_STEP_TYPE = "stepType";
   @SerializedName(SERIALIZED_NAME_STEP_TYPE)
@@ -50,6 +53,10 @@ public class GetWorkflowChainResponseSteps {
   public static final String SERIALIZED_NAME_ACTION_ID = "actionId";
   @SerializedName(SERIALIZED_NAME_ACTION_ID)
   private String actionId;
+
+  public static final String SERIALIZED_NAME_ACTION_CONFIG = "actionConfig";
+  @SerializedName(SERIALIZED_NAME_ACTION_CONFIG)
+  private Map<String, Object> actionConfig = new HashMap<String, Object>();
 
   public static final String SERIALIZED_NAME_WAIT_MS = "waitMs";
   @SerializedName(SERIALIZED_NAME_WAIT_MS)
@@ -81,29 +88,6 @@ public class GetWorkflowChainResponseSteps {
   }
 
 
-  public GetWorkflowChainResponseSteps position(BigDecimal position) {
-    
-    this.position = position;
-    return this;
-  }
-
-   /**
-   * Get position
-   * @return position
-  **/
-  @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "")
-
-  public BigDecimal getPosition() {
-    return position;
-  }
-
-
-  public void setPosition(BigDecimal position) {
-    this.position = position;
-  }
-
-
   public GetWorkflowChainResponseSteps chainId(String chainId) {
     
     this.chainId = chainId;
@@ -124,6 +108,29 @@ public class GetWorkflowChainResponseSteps {
 
   public void setChainId(String chainId) {
     this.chainId = chainId;
+  }
+
+
+  public GetWorkflowChainResponseSteps position(BigDecimal position) {
+    
+    this.position = position;
+    return this;
+  }
+
+   /**
+   * Get position
+   * @return position
+  **/
+  @javax.annotation.Nonnull
+  @ApiModelProperty(required = true, value = "")
+
+  public BigDecimal getPosition() {
+    return position;
+  }
+
+
+  public void setPosition(BigDecimal position) {
+    this.position = position;
   }
 
 
@@ -173,6 +180,34 @@ public class GetWorkflowChainResponseSteps {
   }
 
 
+  public GetWorkflowChainResponseSteps actionConfig(Map<String, Object> actionConfig) {
+    
+    this.actionConfig = actionConfig;
+    return this;
+  }
+
+  public GetWorkflowChainResponseSteps putActionConfigItem(String key, Object actionConfigItem) {
+    this.actionConfig.put(key, actionConfigItem);
+    return this;
+  }
+
+   /**
+   * Get actionConfig
+   * @return actionConfig
+  **/
+  @javax.annotation.Nonnull
+  @ApiModelProperty(required = true, value = "")
+
+  public Map<String, Object> getActionConfig() {
+    return actionConfig;
+  }
+
+
+  public void setActionConfig(Map<String, Object> actionConfig) {
+    this.actionConfig = actionConfig;
+  }
+
+
   public GetWorkflowChainResponseSteps waitMs(BigDecimal waitMs) {
     
     this.waitMs = waitMs;
@@ -206,10 +241,11 @@ public class GetWorkflowChainResponseSteps {
     }
     GetWorkflowChainResponseSteps getWorkflowChainResponseSteps = (GetWorkflowChainResponseSteps) o;
     return Objects.equals(this.id, getWorkflowChainResponseSteps.id) &&
-        Objects.equals(this.position, getWorkflowChainResponseSteps.position) &&
         Objects.equals(this.chainId, getWorkflowChainResponseSteps.chainId) &&
+        Objects.equals(this.position, getWorkflowChainResponseSteps.position) &&
         Objects.equals(this.stepType, getWorkflowChainResponseSteps.stepType) &&
         Objects.equals(this.actionId, getWorkflowChainResponseSteps.actionId) &&
+        Objects.equals(this.actionConfig, getWorkflowChainResponseSteps.actionConfig) &&
         Objects.equals(this.waitMs, getWorkflowChainResponseSteps.waitMs);
   }
 
@@ -219,7 +255,7 @@ public class GetWorkflowChainResponseSteps {
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, position, chainId, stepType, actionId, waitMs);
+    return Objects.hash(id, chainId, position, stepType, actionId, actionConfig, waitMs);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -234,10 +270,11 @@ public class GetWorkflowChainResponseSteps {
     StringBuilder sb = new StringBuilder();
     sb.append("class GetWorkflowChainResponseSteps {\n");
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
-    sb.append("    position: ").append(toIndentedString(position)).append("\n");
     sb.append("    chainId: ").append(toIndentedString(chainId)).append("\n");
+    sb.append("    position: ").append(toIndentedString(position)).append("\n");
     sb.append("    stepType: ").append(toIndentedString(stepType)).append("\n");
     sb.append("    actionId: ").append(toIndentedString(actionId)).append("\n");
+    sb.append("    actionConfig: ").append(toIndentedString(actionConfig)).append("\n");
     sb.append("    waitMs: ").append(toIndentedString(waitMs)).append("\n");
     sb.append("}");
     return sb.toString();

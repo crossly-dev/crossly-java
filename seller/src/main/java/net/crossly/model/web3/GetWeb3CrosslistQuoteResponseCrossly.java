@@ -30,7 +30,7 @@ import org.openapitools.jackson.nullable.JsonNullable;
  * EVM: the Seaport book (needs the fee recipient). Solana: Crossly&#39;s Auction House (needs the house); &#x60;pnft&#x60; &#x3D; it can settle programmable NFTs.
  */
 @ApiModel(description = "EVM: the Seaport book (needs the fee recipient). Solana: Crossly's Auction House (needs the house); `pnft` = it can settle programmable NFTs.")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-11T23:44:48.922Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-27T19:42:43.186Z[Etc/UTC]")
 public class GetWeb3CrosslistQuoteResponseCrossly {
   public static final String SERIALIZED_NAME_AVAILABLE = "available";
   @SerializedName(SERIALIZED_NAME_AVAILABLE)

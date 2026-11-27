@@ -25,13 +25,13 @@ import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-import net.crossly.model.spatial.CreateSpatialPropertyDeedLeaseResponseData;
 import net.crossly.model.spatial.GetSpatialPropertyResponseDataDeeds;
+import net.crossly.model.spatial.GetSpatialPropertyResponseDataTenancies;
 
 /**
  * GetSpatialPropertyResponseData
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-11T23:44:48.922Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-27T19:42:43.186Z[Etc/UTC]")
 public class GetSpatialPropertyResponseData {
   public static final String SERIALIZED_NAME_ENABLED = "enabled";
   @SerializedName(SERIALIZED_NAME_ENABLED)
@@ -43,7 +43,7 @@ public class GetSpatialPropertyResponseData {
 
   public static final String SERIALIZED_NAME_TENANCIES = "tenancies";
   @SerializedName(SERIALIZED_NAME_TENANCIES)
-  private List<CreateSpatialPropertyDeedLeaseResponseData> tenancies = new ArrayList<CreateSpatialPropertyDeedLeaseResponseData>();
+  private List<GetSpatialPropertyResponseDataTenancies> tenancies = new ArrayList<GetSpatialPropertyResponseDataTenancies>();
 
   public GetSpatialPropertyResponseData() { 
   }
@@ -99,13 +99,13 @@ public class GetSpatialPropertyResponseData {
   }
 
 
-  public GetSpatialPropertyResponseData tenancies(List<CreateSpatialPropertyDeedLeaseResponseData> tenancies) {
+  public GetSpatialPropertyResponseData tenancies(List<GetSpatialPropertyResponseDataTenancies> tenancies) {
     
     this.tenancies = tenancies;
     return this;
   }
 
-  public GetSpatialPropertyResponseData addTenanciesItem(CreateSpatialPropertyDeedLeaseResponseData tenanciesItem) {
+  public GetSpatialPropertyResponseData addTenanciesItem(GetSpatialPropertyResponseDataTenancies tenanciesItem) {
     this.tenancies.add(tenanciesItem);
     return this;
   }
@@ -117,12 +117,12 @@ public class GetSpatialPropertyResponseData {
   @javax.annotation.Nonnull
   @ApiModelProperty(required = true, value = "")
 
-  public List<CreateSpatialPropertyDeedLeaseResponseData> getTenancies() {
+  public List<GetSpatialPropertyResponseDataTenancies> getTenancies() {
     return tenancies;
   }
 
 
-  public void setTenancies(List<CreateSpatialPropertyDeedLeaseResponseData> tenancies) {
+  public void setTenancies(List<GetSpatialPropertyResponseDataTenancies> tenancies) {
     this.tenancies = tenancies;
   }
 

@@ -28,7 +28,7 @@ import org.openapitools.jackson.nullable.JsonNullable;
 /**
  * CreateBuyerOrderReceivedResponseData
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-11T23:47:29.843Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-27T19:58:46.962Z[Etc/UTC]")
 public class CreateBuyerOrderReceivedResponseData {
   public static final String SERIALIZED_NAME_OK = "ok";
   @SerializedName(SERIALIZED_NAME_OK)
@@ -38,13 +38,13 @@ public class CreateBuyerOrderReceivedResponseData {
   @SerializedName(SERIALIZED_NAME_CAN_REVIEW)
   private Boolean canReview;
 
-  public static final String SERIALIZED_NAME_BUYER_RECEIVED_AT = "buyerReceivedAt";
-  @SerializedName(SERIALIZED_NAME_BUYER_RECEIVED_AT)
-  private String buyerReceivedAt;
-
   public static final String SERIALIZED_NAME_ALREADY_CONFIRMED = "alreadyConfirmed";
   @SerializedName(SERIALIZED_NAME_ALREADY_CONFIRMED)
   private Boolean alreadyConfirmed;
+
+  public static final String SERIALIZED_NAME_BUYER_RECEIVED_AT = "buyerReceivedAt";
+  @SerializedName(SERIALIZED_NAME_BUYER_RECEIVED_AT)
+  private String buyerReceivedAt;
 
   public CreateBuyerOrderReceivedResponseData() { 
   }
@@ -95,29 +95,6 @@ public class CreateBuyerOrderReceivedResponseData {
   }
 
 
-  public CreateBuyerOrderReceivedResponseData buyerReceivedAt(String buyerReceivedAt) {
-    
-    this.buyerReceivedAt = buyerReceivedAt;
-    return this;
-  }
-
-   /**
-   * Get buyerReceivedAt
-   * @return buyerReceivedAt
-  **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
-
-  public String getBuyerReceivedAt() {
-    return buyerReceivedAt;
-  }
-
-
-  public void setBuyerReceivedAt(String buyerReceivedAt) {
-    this.buyerReceivedAt = buyerReceivedAt;
-  }
-
-
   public CreateBuyerOrderReceivedResponseData alreadyConfirmed(Boolean alreadyConfirmed) {
     
     this.alreadyConfirmed = alreadyConfirmed;
@@ -141,6 +118,29 @@ public class CreateBuyerOrderReceivedResponseData {
   }
 
 
+  public CreateBuyerOrderReceivedResponseData buyerReceivedAt(String buyerReceivedAt) {
+    
+    this.buyerReceivedAt = buyerReceivedAt;
+    return this;
+  }
+
+   /**
+   * Get buyerReceivedAt
+   * @return buyerReceivedAt
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public String getBuyerReceivedAt() {
+    return buyerReceivedAt;
+  }
+
+
+  public void setBuyerReceivedAt(String buyerReceivedAt) {
+    this.buyerReceivedAt = buyerReceivedAt;
+  }
+
+
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -152,8 +152,8 @@ public class CreateBuyerOrderReceivedResponseData {
     CreateBuyerOrderReceivedResponseData createBuyerOrderReceivedResponseData = (CreateBuyerOrderReceivedResponseData) o;
     return Objects.equals(this.ok, createBuyerOrderReceivedResponseData.ok) &&
         Objects.equals(this.canReview, createBuyerOrderReceivedResponseData.canReview) &&
-        Objects.equals(this.buyerReceivedAt, createBuyerOrderReceivedResponseData.buyerReceivedAt) &&
-        Objects.equals(this.alreadyConfirmed, createBuyerOrderReceivedResponseData.alreadyConfirmed);
+        Objects.equals(this.alreadyConfirmed, createBuyerOrderReceivedResponseData.alreadyConfirmed) &&
+        Objects.equals(this.buyerReceivedAt, createBuyerOrderReceivedResponseData.buyerReceivedAt);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -162,7 +162,7 @@ public class CreateBuyerOrderReceivedResponseData {
 
   @Override
   public int hashCode() {
-    return Objects.hash(ok, canReview, buyerReceivedAt, alreadyConfirmed);
+    return Objects.hash(ok, canReview, alreadyConfirmed, buyerReceivedAt);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -178,8 +178,8 @@ public class CreateBuyerOrderReceivedResponseData {
     sb.append("class CreateBuyerOrderReceivedResponseData {\n");
     sb.append("    ok: ").append(toIndentedString(ok)).append("\n");
     sb.append("    canReview: ").append(toIndentedString(canReview)).append("\n");
-    sb.append("    buyerReceivedAt: ").append(toIndentedString(buyerReceivedAt)).append("\n");
     sb.append("    alreadyConfirmed: ").append(toIndentedString(alreadyConfirmed)).append("\n");
+    sb.append("    buyerReceivedAt: ").append(toIndentedString(buyerReceivedAt)).append("\n");
     sb.append("}");
     return sb.toString();
   }

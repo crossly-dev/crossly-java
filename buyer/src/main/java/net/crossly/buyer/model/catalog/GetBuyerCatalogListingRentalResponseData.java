@@ -25,14 +25,17 @@ import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 import java.math.BigDecimal;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import net.crossly.buyer.model.catalog.GetBuyerCatalogListingRentalResponseDataBooked;
+import net.crossly.buyer.model.catalog.GetBuyerCatalogListingRentalResponseDataOptions;
 import org.openapitools.jackson.nullable.JsonNullable;
 
 /**
  * GetBuyerCatalogListingRentalResponseData
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-11T23:47:29.843Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-27T19:58:46.962Z[Etc/UTC]")
 public class GetBuyerCatalogListingRentalResponseData {
   public static final String SERIALIZED_NAME_DAILY_CENTS = "dailyCents";
   @SerializedName(SERIALIZED_NAME_DAILY_CENTS)
@@ -70,9 +73,21 @@ public class GetBuyerCatalogListingRentalResponseData {
   @SerializedName(SERIALIZED_NAME_AVAILABLE)
   private Boolean available;
 
+  public static final String SERIALIZED_NAME_RETURN_POLICY = "returnPolicy";
+  @SerializedName(SERIALIZED_NAME_RETURN_POLICY)
+  private String returnPolicy;
+
   public static final String SERIALIZED_NAME_BOOKED = "booked";
   @SerializedName(SERIALIZED_NAME_BOOKED)
   private List<GetBuyerCatalogListingRentalResponseDataBooked> booked = new ArrayList<GetBuyerCatalogListingRentalResponseDataBooked>();
+
+  public static final String SERIALIZED_NAME_OPTIONS = "options";
+  @SerializedName(SERIALIZED_NAME_OPTIONS)
+  private GetBuyerCatalogListingRentalResponseDataOptions options;
+
+  public static final String SERIALIZED_NAME_UNITS_FREE = "unitsFree";
+  @SerializedName(SERIALIZED_NAME_UNITS_FREE)
+  private Map<String, Object> unitsFree = new HashMap<String, Object>();
 
   public GetBuyerCatalogListingRentalResponseData() { 
   }
@@ -133,8 +148,8 @@ public class GetBuyerCatalogListingRentalResponseData {
    * Get depositCents
    * @return depositCents
   **/
-  @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "")
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
 
   public BigDecimal getDepositCents() {
     return depositCents;
@@ -284,6 +299,29 @@ public class GetBuyerCatalogListingRentalResponseData {
   }
 
 
+  public GetBuyerCatalogListingRentalResponseData returnPolicy(String returnPolicy) {
+    
+    this.returnPolicy = returnPolicy;
+    return this;
+  }
+
+   /**
+   * Get returnPolicy
+   * @return returnPolicy
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public String getReturnPolicy() {
+    return returnPolicy;
+  }
+
+
+  public void setReturnPolicy(String returnPolicy) {
+    this.returnPolicy = returnPolicy;
+  }
+
+
   public GetBuyerCatalogListingRentalResponseData booked(List<GetBuyerCatalogListingRentalResponseDataBooked> booked) {
     
     this.booked = booked;
@@ -312,6 +350,57 @@ public class GetBuyerCatalogListingRentalResponseData {
   }
 
 
+  public GetBuyerCatalogListingRentalResponseData options(GetBuyerCatalogListingRentalResponseDataOptions options) {
+    
+    this.options = options;
+    return this;
+  }
+
+   /**
+   * Get options
+   * @return options
+  **/
+  @javax.annotation.Nonnull
+  @ApiModelProperty(required = true, value = "")
+
+  public GetBuyerCatalogListingRentalResponseDataOptions getOptions() {
+    return options;
+  }
+
+
+  public void setOptions(GetBuyerCatalogListingRentalResponseDataOptions options) {
+    this.options = options;
+  }
+
+
+  public GetBuyerCatalogListingRentalResponseData unitsFree(Map<String, Object> unitsFree) {
+    
+    this.unitsFree = unitsFree;
+    return this;
+  }
+
+  public GetBuyerCatalogListingRentalResponseData putUnitsFreeItem(String key, Object unitsFreeItem) {
+    this.unitsFree.put(key, unitsFreeItem);
+    return this;
+  }
+
+   /**
+   * Get unitsFree
+   * @return unitsFree
+  **/
+  @javax.annotation.Nonnull
+  @ApiModelProperty(required = true, value = "")
+
+  public Map<String, Object> getUnitsFree() {
+    return unitsFree;
+  }
+
+
+  public void setUnitsFree(Map<String, Object> unitsFree) {
+    this.unitsFree = unitsFree;
+  }
+
+
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -330,7 +419,10 @@ public class GetBuyerCatalogListingRentalResponseData {
         Objects.equals(this.rentOnly, getBuyerCatalogListingRentalResponseData.rentOnly) &&
         Objects.equals(this.requireApproval, getBuyerCatalogListingRentalResponseData.requireApproval) &&
         Objects.equals(this.available, getBuyerCatalogListingRentalResponseData.available) &&
-        Objects.equals(this.booked, getBuyerCatalogListingRentalResponseData.booked);
+        Objects.equals(this.returnPolicy, getBuyerCatalogListingRentalResponseData.returnPolicy) &&
+        Objects.equals(this.booked, getBuyerCatalogListingRentalResponseData.booked) &&
+        Objects.equals(this.options, getBuyerCatalogListingRentalResponseData.options) &&
+        Objects.equals(this.unitsFree, getBuyerCatalogListingRentalResponseData.unitsFree);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -339,7 +431,7 @@ public class GetBuyerCatalogListingRentalResponseData {
 
   @Override
   public int hashCode() {
-    return Objects.hash(dailyCents, weeklyCents, depositCents, minDays, maxDays, bufferDays, rentOnly, requireApproval, available, booked);
+    return Objects.hash(dailyCents, weeklyCents, depositCents, minDays, maxDays, bufferDays, rentOnly, requireApproval, available, returnPolicy, booked, options, unitsFree);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -362,7 +454,10 @@ public class GetBuyerCatalogListingRentalResponseData {
     sb.append("    rentOnly: ").append(toIndentedString(rentOnly)).append("\n");
     sb.append("    requireApproval: ").append(toIndentedString(requireApproval)).append("\n");
     sb.append("    available: ").append(toIndentedString(available)).append("\n");
+    sb.append("    returnPolicy: ").append(toIndentedString(returnPolicy)).append("\n");
     sb.append("    booked: ").append(toIndentedString(booked)).append("\n");
+    sb.append("    options: ").append(toIndentedString(options)).append("\n");
+    sb.append("    unitsFree: ").append(toIndentedString(unitsFree)).append("\n");
     sb.append("}");
     return sb.toString();
   }

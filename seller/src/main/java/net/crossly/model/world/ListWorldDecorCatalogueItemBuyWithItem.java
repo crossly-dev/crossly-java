@@ -29,9 +29,9 @@ import com.google.gson.stream.JsonWriter;
 @JsonAdapter(ListWorldDecorCatalogueItemBuyWithItem.Adapter.class)
 public enum ListWorldDecorCatalogueItemBuyWithItem {
   
-  CBX("cbx"),
+  COSM("cosm"),
   
-  COSM("cosm");
+  CBX("cbx");
 
   private String value;
 

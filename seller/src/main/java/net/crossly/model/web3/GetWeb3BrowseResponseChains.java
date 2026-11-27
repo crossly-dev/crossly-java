@@ -28,15 +28,13 @@ import java.math.BigDecimal;
 /**
  * GetWeb3BrowseResponseChains
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-11T23:44:48.922Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-27T19:42:43.186Z[Etc/UTC]")
 public class GetWeb3BrowseResponseChains {
   /**
    * Gets or Sets key
    */
   @JsonAdapter(KeyEnum.Adapter.class)
   public enum KeyEnum {
-    SOLANA("solana"),
-    
     ETHEREUM("ethereum"),
     
     BASE("base"),
@@ -45,7 +43,9 @@ public class GetWeb3BrowseResponseChains {
     
     ARBITRUM("arbitrum"),
     
-    OPTIMISM("optimism");
+    OPTIMISM("optimism"),
+    
+    SOLANA("solana");
 
     private String value;
 

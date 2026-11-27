@@ -24,26 +24,27 @@ import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 import java.math.BigDecimal;
+import org.openapitools.jackson.nullable.JsonNullable;
 
 /**
  * GetInventoryAgingResponseDataBuckets
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-11T23:44:48.922Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-27T19:42:43.186Z[Etc/UTC]")
 public class GetInventoryAgingResponseDataBuckets {
   /**
    * Gets or Sets bucket
    */
   @JsonAdapter(BucketEnum.Adapter.class)
   public enum BucketEnum {
+    UNLISTED("unlisted"),
+    
+    _90_("90+"),
+    
     _0_7("0-7"),
     
     _7_30("7-30"),
     
-    _30_90("30-90"),
-    
-    _90_("90+"),
-    
-    UNLISTED("unlisted");
+    _30_90("30-90");
 
     private String value;
 
@@ -95,10 +96,6 @@ public class GetInventoryAgingResponseDataBuckets {
   @SerializedName(SERIALIZED_NAME_UNIT_COUNT)
   private BigDecimal unitCount;
 
-  public static final String SERIALIZED_NAME_COST_CENTS = "costCents";
-  @SerializedName(SERIALIZED_NAME_COST_CENTS)
-  private BigDecimal costCents;
-
   public static final String SERIALIZED_NAME_RETAIL_CENTS = "retailCents";
   @SerializedName(SERIALIZED_NAME_RETAIL_CENTS)
   private BigDecimal retailCents;
@@ -106,6 +103,91 @@ public class GetInventoryAgingResponseDataBuckets {
   public static final String SERIALIZED_NAME_RECOMMENDATION = "recommendation";
   @SerializedName(SERIALIZED_NAME_RECOMMENDATION)
   private String recommendation;
+
+  /**
+   * Gets or Sets key
+   */
+  @JsonAdapter(KeyEnum.Adapter.class)
+  public enum KeyEnum {
+    UNLISTED("unlisted"),
+    
+    LT7("lt7"),
+    
+    D7_30("d7_30"),
+    
+    D30_90("d30_90"),
+    
+    GT90("gt90");
+
+    private String value;
+
+    KeyEnum(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    @Override
+    public String toString() {
+      return String.valueOf(value);
+    }
+
+    public static KeyEnum fromValue(String value) {
+      for (KeyEnum b : KeyEnum.values()) {
+        if (b.value.equals(value)) {
+          return b;
+        }
+      }
+      throw new IllegalArgumentException("Unexpected value '" + value + "'");
+    }
+
+    public static class Adapter extends TypeAdapter<KeyEnum> {
+      @Override
+      public void write(final JsonWriter jsonWriter, final KeyEnum enumeration) throws IOException {
+        jsonWriter.value(enumeration.getValue());
+      }
+
+      @Override
+      public KeyEnum read(final JsonReader jsonReader) throws IOException {
+        String value =  jsonReader.nextString();
+        return KeyEnum.fromValue(value);
+      }
+    }
+  }
+
+  public static final String SERIALIZED_NAME_KEY = "key";
+  @SerializedName(SERIALIZED_NAME_KEY)
+  private KeyEnum key;
+
+  public static final String SERIALIZED_NAME_ITEMS = "items";
+  @SerializedName(SERIALIZED_NAME_ITEMS)
+  private BigDecimal items;
+
+  public static final String SERIALIZED_NAME_UNITS = "units";
+  @SerializedName(SERIALIZED_NAME_UNITS)
+  private BigDecimal units;
+
+  public static final String SERIALIZED_NAME_COST_CENTS = "costCents";
+  @SerializedName(SERIALIZED_NAME_COST_CENTS)
+  private BigDecimal costCents;
+
+  public static final String SERIALIZED_NAME_COST_KNOWN_ITEMS = "costKnownItems";
+  @SerializedName(SERIALIZED_NAME_COST_KNOWN_ITEMS)
+  private BigDecimal costKnownItems;
+
+  public static final String SERIALIZED_NAME_COST_UNKNOWN_ITEMS = "costUnknownItems";
+  @SerializedName(SERIALIZED_NAME_COST_UNKNOWN_ITEMS)
+  private BigDecimal costUnknownItems;
+
+  public static final String SERIALIZED_NAME_LISTED_VALUE_CENTS = "listedValueCents";
+  @SerializedName(SERIALIZED_NAME_LISTED_VALUE_CENTS)
+  private BigDecimal listedValueCents;
+
+  public static final String SERIALIZED_NAME_MARKET_VALUE_CENTS = "marketValueCents";
+  @SerializedName(SERIALIZED_NAME_MARKET_VALUE_CENTS)
+  private BigDecimal marketValueCents;
 
   public GetInventoryAgingResponseDataBuckets() { 
   }
@@ -179,29 +261,6 @@ public class GetInventoryAgingResponseDataBuckets {
   }
 
 
-  public GetInventoryAgingResponseDataBuckets costCents(BigDecimal costCents) {
-    
-    this.costCents = costCents;
-    return this;
-  }
-
-   /**
-   * What the seller PAID for the stock in this bucket — the number that makes 90+ feel urgent. Retail value flatters it; cost is the money actually stuck on the shelf.
-   * @return costCents
-  **/
-  @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "What the seller PAID for the stock in this bucket — the number that makes 90+ feel urgent. Retail value flatters it; cost is the money actually stuck on the shelf.")
-
-  public BigDecimal getCostCents() {
-    return costCents;
-  }
-
-
-  public void setCostCents(BigDecimal costCents) {
-    this.costCents = costCents;
-  }
-
-
   public GetInventoryAgingResponseDataBuckets retailCents(BigDecimal retailCents) {
     
     this.retailCents = retailCents;
@@ -209,11 +268,11 @@ public class GetInventoryAgingResponseDataBuckets {
   }
 
    /**
-   * What it would bring in at current prices, for the opportunity figure.
+   * Old name for listedValueCents.
    * @return retailCents
   **/
   @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "What it would bring in at current prices, for the opportunity figure.")
+  @ApiModelProperty(required = true, value = "Old name for listedValueCents.")
 
   public BigDecimal getRetailCents() {
     return retailCents;
@@ -232,11 +291,11 @@ public class GetInventoryAgingResponseDataBuckets {
   }
 
    /**
-   * One line the seller can act on.
+   * Get recommendation
    * @return recommendation
   **/
   @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "One line the seller can act on.")
+  @ApiModelProperty(required = true, value = "")
 
   public String getRecommendation() {
     return recommendation;
@@ -245,6 +304,190 @@ public class GetInventoryAgingResponseDataBuckets {
 
   public void setRecommendation(String recommendation) {
     this.recommendation = recommendation;
+  }
+
+
+  public GetInventoryAgingResponseDataBuckets key(KeyEnum key) {
+    
+    this.key = key;
+    return this;
+  }
+
+   /**
+   * Get key
+   * @return key
+  **/
+  @javax.annotation.Nonnull
+  @ApiModelProperty(required = true, value = "")
+
+  public KeyEnum getKey() {
+    return key;
+  }
+
+
+  public void setKey(KeyEnum key) {
+    this.key = key;
+  }
+
+
+  public GetInventoryAgingResponseDataBuckets items(BigDecimal items) {
+    
+    this.items = items;
+    return this;
+  }
+
+   /**
+   * Get items
+   * @return items
+  **/
+  @javax.annotation.Nonnull
+  @ApiModelProperty(required = true, value = "")
+
+  public BigDecimal getItems() {
+    return items;
+  }
+
+
+  public void setItems(BigDecimal items) {
+    this.items = items;
+  }
+
+
+  public GetInventoryAgingResponseDataBuckets units(BigDecimal units) {
+    
+    this.units = units;
+    return this;
+  }
+
+   /**
+   * Get units
+   * @return units
+  **/
+  @javax.annotation.Nonnull
+  @ApiModelProperty(required = true, value = "")
+
+  public BigDecimal getUnits() {
+    return units;
+  }
+
+
+  public void setUnits(BigDecimal units) {
+    this.units = units;
+  }
+
+
+  public GetInventoryAgingResponseDataBuckets costCents(BigDecimal costCents) {
+    
+    this.costCents = costCents;
+    return this;
+  }
+
+   /**
+   * Σ unit cost × units over the items whose cost is known.
+   * @return costCents
+  **/
+  @javax.annotation.Nonnull
+  @ApiModelProperty(required = true, value = "Σ unit cost × units over the items whose cost is known.")
+
+  public BigDecimal getCostCents() {
+    return costCents;
+  }
+
+
+  public void setCostCents(BigDecimal costCents) {
+    this.costCents = costCents;
+  }
+
+
+  public GetInventoryAgingResponseDataBuckets costKnownItems(BigDecimal costKnownItems) {
+    
+    this.costKnownItems = costKnownItems;
+    return this;
+  }
+
+   /**
+   * Get costKnownItems
+   * @return costKnownItems
+  **/
+  @javax.annotation.Nonnull
+  @ApiModelProperty(required = true, value = "")
+
+  public BigDecimal getCostKnownItems() {
+    return costKnownItems;
+  }
+
+
+  public void setCostKnownItems(BigDecimal costKnownItems) {
+    this.costKnownItems = costKnownItems;
+  }
+
+
+  public GetInventoryAgingResponseDataBuckets costUnknownItems(BigDecimal costUnknownItems) {
+    
+    this.costUnknownItems = costUnknownItems;
+    return this;
+  }
+
+   /**
+   * Get costUnknownItems
+   * @return costUnknownItems
+  **/
+  @javax.annotation.Nonnull
+  @ApiModelProperty(required = true, value = "")
+
+  public BigDecimal getCostUnknownItems() {
+    return costUnknownItems;
+  }
+
+
+  public void setCostUnknownItems(BigDecimal costUnknownItems) {
+    this.costUnknownItems = costUnknownItems;
+  }
+
+
+  public GetInventoryAgingResponseDataBuckets listedValueCents(BigDecimal listedValueCents) {
+    
+    this.listedValueCents = listedValueCents;
+    return this;
+  }
+
+   /**
+   * Σ ask × units; items with no ask add nothing.
+   * @return listedValueCents
+  **/
+  @javax.annotation.Nonnull
+  @ApiModelProperty(required = true, value = "Σ ask × units; items with no ask add nothing.")
+
+  public BigDecimal getListedValueCents() {
+    return listedValueCents;
+  }
+
+
+  public void setListedValueCents(BigDecimal listedValueCents) {
+    this.listedValueCents = listedValueCents;
+  }
+
+
+  public GetInventoryAgingResponseDataBuckets marketValueCents(BigDecimal marketValueCents) {
+    
+    this.marketValueCents = marketValueCents;
+    return this;
+  }
+
+   /**
+   * Σ market × units over the marked items; null when none in the bucket are marked.
+   * @return marketValueCents
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "Σ market × units over the marked items; null when none in the bucket are marked.")
+
+  public BigDecimal getMarketValueCents() {
+    return marketValueCents;
+  }
+
+
+  public void setMarketValueCents(BigDecimal marketValueCents) {
+    this.marketValueCents = marketValueCents;
   }
 
 
@@ -260,14 +503,32 @@ public class GetInventoryAgingResponseDataBuckets {
     return Objects.equals(this.bucket, getInventoryAgingResponseDataBuckets.bucket) &&
         Objects.equals(this.itemCount, getInventoryAgingResponseDataBuckets.itemCount) &&
         Objects.equals(this.unitCount, getInventoryAgingResponseDataBuckets.unitCount) &&
-        Objects.equals(this.costCents, getInventoryAgingResponseDataBuckets.costCents) &&
         Objects.equals(this.retailCents, getInventoryAgingResponseDataBuckets.retailCents) &&
-        Objects.equals(this.recommendation, getInventoryAgingResponseDataBuckets.recommendation);
+        Objects.equals(this.recommendation, getInventoryAgingResponseDataBuckets.recommendation) &&
+        Objects.equals(this.key, getInventoryAgingResponseDataBuckets.key) &&
+        Objects.equals(this.items, getInventoryAgingResponseDataBuckets.items) &&
+        Objects.equals(this.units, getInventoryAgingResponseDataBuckets.units) &&
+        Objects.equals(this.costCents, getInventoryAgingResponseDataBuckets.costCents) &&
+        Objects.equals(this.costKnownItems, getInventoryAgingResponseDataBuckets.costKnownItems) &&
+        Objects.equals(this.costUnknownItems, getInventoryAgingResponseDataBuckets.costUnknownItems) &&
+        Objects.equals(this.listedValueCents, getInventoryAgingResponseDataBuckets.listedValueCents) &&
+        Objects.equals(this.marketValueCents, getInventoryAgingResponseDataBuckets.marketValueCents);
+  }
+
+  private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+    return a == b || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(bucket, itemCount, unitCount, costCents, retailCents, recommendation);
+    return Objects.hash(bucket, itemCount, unitCount, retailCents, recommendation, key, items, units, costCents, costKnownItems, costUnknownItems, listedValueCents, marketValueCents);
+  }
+
+  private static <T> int hashCodeNullable(JsonNullable<T> a) {
+    if (a == null) {
+      return 1;
+    }
+    return a.isPresent() ? Arrays.deepHashCode(new Object[]{a.get()}) : 31;
   }
 
   @Override
@@ -277,9 +538,16 @@ public class GetInventoryAgingResponseDataBuckets {
     sb.append("    bucket: ").append(toIndentedString(bucket)).append("\n");
     sb.append("    itemCount: ").append(toIndentedString(itemCount)).append("\n");
     sb.append("    unitCount: ").append(toIndentedString(unitCount)).append("\n");
-    sb.append("    costCents: ").append(toIndentedString(costCents)).append("\n");
     sb.append("    retailCents: ").append(toIndentedString(retailCents)).append("\n");
     sb.append("    recommendation: ").append(toIndentedString(recommendation)).append("\n");
+    sb.append("    key: ").append(toIndentedString(key)).append("\n");
+    sb.append("    items: ").append(toIndentedString(items)).append("\n");
+    sb.append("    units: ").append(toIndentedString(units)).append("\n");
+    sb.append("    costCents: ").append(toIndentedString(costCents)).append("\n");
+    sb.append("    costKnownItems: ").append(toIndentedString(costKnownItems)).append("\n");
+    sb.append("    costUnknownItems: ").append(toIndentedString(costUnknownItems)).append("\n");
+    sb.append("    listedValueCents: ").append(toIndentedString(listedValueCents)).append("\n");
+    sb.append("    marketValueCents: ").append(toIndentedString(marketValueCents)).append("\n");
     sb.append("}");
     return sb.toString();
   }

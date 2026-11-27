@@ -24,16 +24,16 @@ import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 import java.math.BigDecimal;
-import net.crossly.model.vault.ListVaultMarketFeedItemMark;
 import net.crossly.model.vault.ListVaultMarketOpeningItemEarlyAccess;
 import net.crossly.model.vault.ListVaultMarketOpeningItemKey;
+import net.crossly.model.vault.ListVaultMarketOpeningItemMark;
 import net.crossly.model.vault.ListVaultMarketOpeningItemMe;
 import org.openapitools.jackson.nullable.JsonNullable;
 
 /**
  * ListVaultMarketOpeningItem
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-11T23:44:48.922Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-27T19:42:43.186Z[Etc/UTC]")
 public class ListVaultMarketOpeningItem {
   public static final String SERIALIZED_NAME_SLUG = "slug";
   @SerializedName(SERIALIZED_NAME_SLUG)
@@ -142,7 +142,7 @@ public class ListVaultMarketOpeningItem {
 
   public static final String SERIALIZED_NAME_MARK = "mark";
   @SerializedName(SERIALIZED_NAME_MARK)
-  private ListVaultMarketFeedItemMark mark;
+  private ListVaultMarketOpeningItemMark mark;
 
   public static final String SERIALIZED_NAME_MARKET_HREF = "marketHref";
   @SerializedName(SERIALIZED_NAME_MARKET_HREF)
@@ -458,7 +458,7 @@ public class ListVaultMarketOpeningItem {
   }
 
 
-  public ListVaultMarketOpeningItem mark(ListVaultMarketFeedItemMark mark) {
+  public ListVaultMarketOpeningItem mark(ListVaultMarketOpeningItemMark mark) {
     
     this.mark = mark;
     return this;
@@ -471,12 +471,12 @@ public class ListVaultMarketOpeningItem {
   @javax.annotation.Nonnull
   @ApiModelProperty(required = true, value = "")
 
-  public ListVaultMarketFeedItemMark getMark() {
+  public ListVaultMarketOpeningItemMark getMark() {
     return mark;
   }
 
 
-  public void setMark(ListVaultMarketFeedItemMark mark) {
+  public void setMark(ListVaultMarketOpeningItemMark mark) {
     this.mark = mark;
   }
 

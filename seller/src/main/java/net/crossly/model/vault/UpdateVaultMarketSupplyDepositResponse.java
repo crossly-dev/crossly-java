@@ -29,7 +29,7 @@ import org.openapitools.jackson.nullable.JsonNullable;
 /**
  * UpdateVaultMarketSupplyDepositResponse
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-11T23:44:48.922Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-27T19:42:43.186Z[Etc/UTC]")
 public class UpdateVaultMarketSupplyDepositResponse {
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
@@ -50,17 +50,17 @@ public class UpdateVaultMarketSupplyDepositResponse {
   public enum StatusEnum {
     STORED("stored"),
     
+    CANCELLED("cancelled"),
+    
     LISTED("listed"),
+    
+    SHIPPED("shipped"),
     
     INBOUND("inbound"),
     
-    CANCELLED("cancelled"),
-    
     SOLD_ON_BOOK("sold_on_book"),
     
-    CHANNEL_SOLD("channel_sold"),
-    
-    SHIPPED("shipped");
+    CHANNEL_SOLD("channel_sold");
 
     private String value;
 

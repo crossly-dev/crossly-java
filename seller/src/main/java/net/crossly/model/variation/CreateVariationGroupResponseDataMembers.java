@@ -25,13 +25,15 @@ import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 import java.math.BigDecimal;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import org.openapitools.jackson.nullable.JsonNullable;
 
 /**
  * CreateVariationGroupResponseDataMembers
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-11T23:44:48.922Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-27T19:42:43.186Z[Etc/UTC]")
 public class CreateVariationGroupResponseDataMembers {
   public static final String SERIALIZED_NAME_LISTING_ID = "listingId";
   @SerializedName(SERIALIZED_NAME_LISTING_ID)
@@ -40,6 +42,10 @@ public class CreateVariationGroupResponseDataMembers {
   public static final String SERIALIZED_NAME_AXIS_VALUE = "axisValue";
   @SerializedName(SERIALIZED_NAME_AXIS_VALUE)
   private String axisValue;
+
+  public static final String SERIALIZED_NAME_OPTIONS = "options";
+  @SerializedName(SERIALIZED_NAME_OPTIONS)
+  private Map<String, Object> options = null;
 
   public static final String SERIALIZED_NAME_SORT_KEY = "sortKey";
   @SerializedName(SERIALIZED_NAME_SORT_KEY)
@@ -115,6 +121,37 @@ public class CreateVariationGroupResponseDataMembers {
 
   public void setAxisValue(String axisValue) {
     this.axisValue = axisValue;
+  }
+
+
+  public CreateVariationGroupResponseDataMembers options(Map<String, Object> options) {
+    
+    this.options = options;
+    return this;
+  }
+
+  public CreateVariationGroupResponseDataMembers putOptionsItem(String key, Object optionsItem) {
+    if (this.options == null) {
+      this.options = new HashMap<String, Object>();
+    }
+    this.options.put(key, optionsItem);
+    return this;
+  }
+
+   /**
+   * The member&#39;s value on every axis of a multi-axis group; null on a single-axis member.
+   * @return options
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "The member's value on every axis of a multi-axis group; null on a single-axis member.")
+
+  public Map<String, Object> getOptions() {
+    return options;
+  }
+
+
+  public void setOptions(Map<String, Object> options) {
+    this.options = options;
   }
 
 
@@ -298,6 +335,7 @@ public class CreateVariationGroupResponseDataMembers {
     CreateVariationGroupResponseDataMembers createVariationGroupResponseDataMembers = (CreateVariationGroupResponseDataMembers) o;
     return Objects.equals(this.listingId, createVariationGroupResponseDataMembers.listingId) &&
         Objects.equals(this.axisValue, createVariationGroupResponseDataMembers.axisValue) &&
+        Objects.equals(this.options, createVariationGroupResponseDataMembers.options) &&
         Objects.equals(this.sortKey, createVariationGroupResponseDataMembers.sortKey) &&
         Objects.equals(this.title, createVariationGroupResponseDataMembers.title) &&
         Objects.equals(this.price, createVariationGroupResponseDataMembers.price) &&
@@ -313,7 +351,7 @@ public class CreateVariationGroupResponseDataMembers {
 
   @Override
   public int hashCode() {
-    return Objects.hash(listingId, axisValue, sortKey, title, price, images, status, sku, quantityAvailable);
+    return Objects.hash(listingId, axisValue, options, sortKey, title, price, images, status, sku, quantityAvailable);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -329,6 +367,7 @@ public class CreateVariationGroupResponseDataMembers {
     sb.append("class CreateVariationGroupResponseDataMembers {\n");
     sb.append("    listingId: ").append(toIndentedString(listingId)).append("\n");
     sb.append("    axisValue: ").append(toIndentedString(axisValue)).append("\n");
+    sb.append("    options: ").append(toIndentedString(options)).append("\n");
     sb.append("    sortKey: ").append(toIndentedString(sortKey)).append("\n");
     sb.append("    title: ").append(toIndentedString(title)).append("\n");
     sb.append("    price: ").append(toIndentedString(price)).append("\n");

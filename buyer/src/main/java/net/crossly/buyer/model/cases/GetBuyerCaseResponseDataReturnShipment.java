@@ -28,39 +28,39 @@ import org.openapitools.jackson.nullable.JsonNullable;
 /**
  * GetBuyerCaseResponseDataReturnShipment
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-11T23:47:29.843Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-27T19:58:46.962Z[Etc/UTC]")
 public class GetBuyerCaseResponseDataReturnShipment {
   public static final String SERIALIZED_NAME_TRACKING_CODE = "trackingCode";
   @SerializedName(SERIALIZED_NAME_TRACKING_CODE)
   private String trackingCode;
 
-  public static final String SERIALIZED_NAME_UPDATED_AT = "updatedAt";
-  @SerializedName(SERIALIZED_NAME_UPDATED_AT)
-  private String updatedAt;
-
-  public static final String SERIALIZED_NAME_STATUS = "status";
-  @SerializedName(SERIALIZED_NAME_STATUS)
-  private String status;
-
   public static final String SERIALIZED_NAME_CARRIER = "carrier";
   @SerializedName(SERIALIZED_NAME_CARRIER)
   private String carrier;
-
-  public static final String SERIALIZED_NAME_DELIVERED_AT = "deliveredAt";
-  @SerializedName(SERIALIZED_NAME_DELIVERED_AT)
-  private String deliveredAt;
-
-  public static final String SERIALIZED_NAME_LABEL_URL = "labelUrl";
-  @SerializedName(SERIALIZED_NAME_LABEL_URL)
-  private String labelUrl;
 
   public static final String SERIALIZED_NAME_TRACKING_URL = "trackingUrl";
   @SerializedName(SERIALIZED_NAME_TRACKING_URL)
   private String trackingUrl;
 
+  public static final String SERIALIZED_NAME_LABEL_URL = "labelUrl";
+  @SerializedName(SERIALIZED_NAME_LABEL_URL)
+  private String labelUrl;
+
+  public static final String SERIALIZED_NAME_STATUS = "status";
+  @SerializedName(SERIALIZED_NAME_STATUS)
+  private String status;
+
   public static final String SERIALIZED_NAME_STATUS_DETAIL = "statusDetail";
   @SerializedName(SERIALIZED_NAME_STATUS_DETAIL)
   private String statusDetail;
+
+  public static final String SERIALIZED_NAME_UPDATED_AT = "updatedAt";
+  @SerializedName(SERIALIZED_NAME_UPDATED_AT)
+  private String updatedAt;
+
+  public static final String SERIALIZED_NAME_DELIVERED_AT = "deliveredAt";
+  @SerializedName(SERIALIZED_NAME_DELIVERED_AT)
+  private String deliveredAt;
 
   public GetBuyerCaseResponseDataReturnShipment() { 
   }
@@ -88,52 +88,6 @@ public class GetBuyerCaseResponseDataReturnShipment {
   }
 
 
-  public GetBuyerCaseResponseDataReturnShipment updatedAt(String updatedAt) {
-    
-    this.updatedAt = updatedAt;
-    return this;
-  }
-
-   /**
-   * Get updatedAt
-   * @return updatedAt
-  **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
-
-  public String getUpdatedAt() {
-    return updatedAt;
-  }
-
-
-  public void setUpdatedAt(String updatedAt) {
-    this.updatedAt = updatedAt;
-  }
-
-
-  public GetBuyerCaseResponseDataReturnShipment status(String status) {
-    
-    this.status = status;
-    return this;
-  }
-
-   /**
-   * Get status
-   * @return status
-  **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
-
-  public String getStatus() {
-    return status;
-  }
-
-
-  public void setStatus(String status) {
-    this.status = status;
-  }
-
-
   public GetBuyerCaseResponseDataReturnShipment carrier(String carrier) {
     
     this.carrier = carrier;
@@ -154,52 +108,6 @@ public class GetBuyerCaseResponseDataReturnShipment {
 
   public void setCarrier(String carrier) {
     this.carrier = carrier;
-  }
-
-
-  public GetBuyerCaseResponseDataReturnShipment deliveredAt(String deliveredAt) {
-    
-    this.deliveredAt = deliveredAt;
-    return this;
-  }
-
-   /**
-   * Get deliveredAt
-   * @return deliveredAt
-  **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
-
-  public String getDeliveredAt() {
-    return deliveredAt;
-  }
-
-
-  public void setDeliveredAt(String deliveredAt) {
-    this.deliveredAt = deliveredAt;
-  }
-
-
-  public GetBuyerCaseResponseDataReturnShipment labelUrl(String labelUrl) {
-    
-    this.labelUrl = labelUrl;
-    return this;
-  }
-
-   /**
-   * Get labelUrl
-   * @return labelUrl
-  **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
-
-  public String getLabelUrl() {
-    return labelUrl;
-  }
-
-
-  public void setLabelUrl(String labelUrl) {
-    this.labelUrl = labelUrl;
   }
 
 
@@ -226,6 +134,52 @@ public class GetBuyerCaseResponseDataReturnShipment {
   }
 
 
+  public GetBuyerCaseResponseDataReturnShipment labelUrl(String labelUrl) {
+    
+    this.labelUrl = labelUrl;
+    return this;
+  }
+
+   /**
+   * Get labelUrl
+   * @return labelUrl
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public String getLabelUrl() {
+    return labelUrl;
+  }
+
+
+  public void setLabelUrl(String labelUrl) {
+    this.labelUrl = labelUrl;
+  }
+
+
+  public GetBuyerCaseResponseDataReturnShipment status(String status) {
+    
+    this.status = status;
+    return this;
+  }
+
+   /**
+   * Get status
+   * @return status
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public String getStatus() {
+    return status;
+  }
+
+
+  public void setStatus(String status) {
+    this.status = status;
+  }
+
+
   public GetBuyerCaseResponseDataReturnShipment statusDetail(String statusDetail) {
     
     this.statusDetail = statusDetail;
@@ -249,6 +203,52 @@ public class GetBuyerCaseResponseDataReturnShipment {
   }
 
 
+  public GetBuyerCaseResponseDataReturnShipment updatedAt(String updatedAt) {
+    
+    this.updatedAt = updatedAt;
+    return this;
+  }
+
+   /**
+   * Get updatedAt
+   * @return updatedAt
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public String getUpdatedAt() {
+    return updatedAt;
+  }
+
+
+  public void setUpdatedAt(String updatedAt) {
+    this.updatedAt = updatedAt;
+  }
+
+
+  public GetBuyerCaseResponseDataReturnShipment deliveredAt(String deliveredAt) {
+    
+    this.deliveredAt = deliveredAt;
+    return this;
+  }
+
+   /**
+   * Get deliveredAt
+   * @return deliveredAt
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public String getDeliveredAt() {
+    return deliveredAt;
+  }
+
+
+  public void setDeliveredAt(String deliveredAt) {
+    this.deliveredAt = deliveredAt;
+  }
+
+
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -259,13 +259,13 @@ public class GetBuyerCaseResponseDataReturnShipment {
     }
     GetBuyerCaseResponseDataReturnShipment getBuyerCaseResponseDataReturnShipment = (GetBuyerCaseResponseDataReturnShipment) o;
     return Objects.equals(this.trackingCode, getBuyerCaseResponseDataReturnShipment.trackingCode) &&
-        Objects.equals(this.updatedAt, getBuyerCaseResponseDataReturnShipment.updatedAt) &&
-        Objects.equals(this.status, getBuyerCaseResponseDataReturnShipment.status) &&
         Objects.equals(this.carrier, getBuyerCaseResponseDataReturnShipment.carrier) &&
-        Objects.equals(this.deliveredAt, getBuyerCaseResponseDataReturnShipment.deliveredAt) &&
-        Objects.equals(this.labelUrl, getBuyerCaseResponseDataReturnShipment.labelUrl) &&
         Objects.equals(this.trackingUrl, getBuyerCaseResponseDataReturnShipment.trackingUrl) &&
-        Objects.equals(this.statusDetail, getBuyerCaseResponseDataReturnShipment.statusDetail);
+        Objects.equals(this.labelUrl, getBuyerCaseResponseDataReturnShipment.labelUrl) &&
+        Objects.equals(this.status, getBuyerCaseResponseDataReturnShipment.status) &&
+        Objects.equals(this.statusDetail, getBuyerCaseResponseDataReturnShipment.statusDetail) &&
+        Objects.equals(this.updatedAt, getBuyerCaseResponseDataReturnShipment.updatedAt) &&
+        Objects.equals(this.deliveredAt, getBuyerCaseResponseDataReturnShipment.deliveredAt);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -274,7 +274,7 @@ public class GetBuyerCaseResponseDataReturnShipment {
 
   @Override
   public int hashCode() {
-    return Objects.hash(trackingCode, updatedAt, status, carrier, deliveredAt, labelUrl, trackingUrl, statusDetail);
+    return Objects.hash(trackingCode, carrier, trackingUrl, labelUrl, status, statusDetail, updatedAt, deliveredAt);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -289,13 +289,13 @@ public class GetBuyerCaseResponseDataReturnShipment {
     StringBuilder sb = new StringBuilder();
     sb.append("class GetBuyerCaseResponseDataReturnShipment {\n");
     sb.append("    trackingCode: ").append(toIndentedString(trackingCode)).append("\n");
-    sb.append("    updatedAt: ").append(toIndentedString(updatedAt)).append("\n");
-    sb.append("    status: ").append(toIndentedString(status)).append("\n");
     sb.append("    carrier: ").append(toIndentedString(carrier)).append("\n");
-    sb.append("    deliveredAt: ").append(toIndentedString(deliveredAt)).append("\n");
-    sb.append("    labelUrl: ").append(toIndentedString(labelUrl)).append("\n");
     sb.append("    trackingUrl: ").append(toIndentedString(trackingUrl)).append("\n");
+    sb.append("    labelUrl: ").append(toIndentedString(labelUrl)).append("\n");
+    sb.append("    status: ").append(toIndentedString(status)).append("\n");
     sb.append("    statusDetail: ").append(toIndentedString(statusDetail)).append("\n");
+    sb.append("    updatedAt: ").append(toIndentedString(updatedAt)).append("\n");
+    sb.append("    deliveredAt: ").append(toIndentedString(deliveredAt)).append("\n");
     sb.append("}");
     return sb.toString();
   }

@@ -31,9 +31,9 @@ public enum GetStallQuoteResponseQuoteRailsItem {
   
   CARD("card"),
   
-  BUCKS("bucks"),
+  CBX("cbx"),
   
-  CBX("cbx");
+  BUCKS("bucks");
 
   private String value;
 

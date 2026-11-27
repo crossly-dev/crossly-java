@@ -34,7 +34,7 @@ import org.openapitools.jackson.nullable.JsonNullable;
 /**
  * GetConnectionHealthResponseAccounts
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-11T23:44:48.922Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-27T19:42:43.186Z[Etc/UTC]")
 public class GetConnectionHealthResponseAccounts {
   public static final String SERIALIZED_NAME_PLATFORM_NAME = "platformName";
   @SerializedName(SERIALIZED_NAME_PLATFORM_NAME)
@@ -81,15 +81,15 @@ public class GetConnectionHealthResponseAccounts {
    */
   @JsonAdapter(StateEnum.Adapter.class)
   public enum StateEnum {
-    STALE("stale"),
-    
     UNKNOWN("unknown"),
-    
-    HEALTHY("healthy"),
     
     UNMONITORED("unmonitored"),
     
     DISCONNECTED("disconnected"),
+    
+    HEALTHY("healthy"),
+    
+    STALE("stale"),
     
     PARTIAL_BLANK("partial_blank"),
     
@@ -148,15 +148,15 @@ public class GetConnectionHealthResponseAccounts {
    */
   @JsonAdapter(SeverityEnum.Adapter.class)
   public enum SeverityEnum {
-    ERROR("error"),
+    INFO("info"),
     
     UNKNOWN("unknown"),
     
-    OK("ok"),
+    ERROR("error"),
     
     WARN("warn"),
     
-    INFO("info");
+    OK("ok");
 
     private String value;
 

@@ -29,7 +29,7 @@ import org.openapitools.jackson.nullable.JsonNullable;
 /**
  * ListBuyerAuctionsItem
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-11T23:47:29.843Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-27T19:58:46.962Z[Etc/UTC]")
 public class ListBuyerAuctionsItem {
   public static final String SERIALIZED_NAME_TITLE = "title";
   @SerializedName(SERIALIZED_NAME_TITLE)
@@ -39,33 +39,33 @@ public class ListBuyerAuctionsItem {
   @SerializedName(SERIALIZED_NAME_BID_COUNT)
   private BigDecimal bidCount;
 
-  public static final String SERIALIZED_NAME_PAID = "paid";
-  @SerializedName(SERIALIZED_NAME_PAID)
-  private Boolean paid;
-
   public static final String SERIALIZED_NAME_LEADING = "leading";
   @SerializedName(SERIALIZED_NAME_LEADING)
   private Boolean leading;
 
-  public static final String SERIALIZED_NAME_STATUS = "status";
-  @SerializedName(SERIALIZED_NAME_STATUS)
-  private String status;
-
-  public static final String SERIALIZED_NAME_ENDS_AT = "endsAt";
-  @SerializedName(SERIALIZED_NAME_ENDS_AT)
-  private String endsAt;
+  public static final String SERIALIZED_NAME_PAID = "paid";
+  @SerializedName(SERIALIZED_NAME_PAID)
+  private Boolean paid;
 
   public static final String SERIALIZED_NAME_SLUG = "slug";
   @SerializedName(SERIALIZED_NAME_SLUG)
   private String slug;
 
-  public static final String SERIALIZED_NAME_CURRENT_CENTS = "currentCents";
-  @SerializedName(SERIALIZED_NAME_CURRENT_CENTS)
-  private BigDecimal currentCents;
-
   public static final String SERIALIZED_NAME_THUMBNAIL = "thumbnail";
   @SerializedName(SERIALIZED_NAME_THUMBNAIL)
   private String thumbnail;
+
+  public static final String SERIALIZED_NAME_ENDS_AT = "endsAt";
+  @SerializedName(SERIALIZED_NAME_ENDS_AT)
+  private String endsAt;
+
+  public static final String SERIALIZED_NAME_STATUS = "status";
+  @SerializedName(SERIALIZED_NAME_STATUS)
+  private String status;
+
+  public static final String SERIALIZED_NAME_CURRENT_CENTS = "currentCents";
+  @SerializedName(SERIALIZED_NAME_CURRENT_CENTS)
+  private BigDecimal currentCents;
 
   public static final String SERIALIZED_NAME_MY_MAX_CENTS = "myMaxCents";
   @SerializedName(SERIALIZED_NAME_MY_MAX_CENTS)
@@ -124,29 +124,6 @@ public class ListBuyerAuctionsItem {
   }
 
 
-  public ListBuyerAuctionsItem paid(Boolean paid) {
-    
-    this.paid = paid;
-    return this;
-  }
-
-   /**
-   * Get paid
-   * @return paid
-  **/
-  @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "")
-
-  public Boolean getPaid() {
-    return paid;
-  }
-
-
-  public void setPaid(Boolean paid) {
-    this.paid = paid;
-  }
-
-
   public ListBuyerAuctionsItem leading(Boolean leading) {
     
     this.leading = leading;
@@ -170,49 +147,26 @@ public class ListBuyerAuctionsItem {
   }
 
 
-  public ListBuyerAuctionsItem status(String status) {
+  public ListBuyerAuctionsItem paid(Boolean paid) {
     
-    this.status = status;
+    this.paid = paid;
     return this;
   }
 
    /**
-   * Get status
-   * @return status
+   * Get paid
+   * @return paid
   **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
+  @javax.annotation.Nonnull
+  @ApiModelProperty(required = true, value = "")
 
-  public String getStatus() {
-    return status;
+  public Boolean getPaid() {
+    return paid;
   }
 
 
-  public void setStatus(String status) {
-    this.status = status;
-  }
-
-
-  public ListBuyerAuctionsItem endsAt(String endsAt) {
-    
-    this.endsAt = endsAt;
-    return this;
-  }
-
-   /**
-   * Get endsAt
-   * @return endsAt
-  **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
-
-  public String getEndsAt() {
-    return endsAt;
-  }
-
-
-  public void setEndsAt(String endsAt) {
-    this.endsAt = endsAt;
+  public void setPaid(Boolean paid) {
+    this.paid = paid;
   }
 
 
@@ -239,29 +193,6 @@ public class ListBuyerAuctionsItem {
   }
 
 
-  public ListBuyerAuctionsItem currentCents(BigDecimal currentCents) {
-    
-    this.currentCents = currentCents;
-    return this;
-  }
-
-   /**
-   * Current high bid, in cents.
-   * @return currentCents
-  **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "Current high bid, in cents.")
-
-  public BigDecimal getCurrentCents() {
-    return currentCents;
-  }
-
-
-  public void setCurrentCents(BigDecimal currentCents) {
-    this.currentCents = currentCents;
-  }
-
-
   public ListBuyerAuctionsItem thumbnail(String thumbnail) {
     
     this.thumbnail = thumbnail;
@@ -282,6 +213,75 @@ public class ListBuyerAuctionsItem {
 
   public void setThumbnail(String thumbnail) {
     this.thumbnail = thumbnail;
+  }
+
+
+  public ListBuyerAuctionsItem endsAt(String endsAt) {
+    
+    this.endsAt = endsAt;
+    return this;
+  }
+
+   /**
+   * Get endsAt
+   * @return endsAt
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public String getEndsAt() {
+    return endsAt;
+  }
+
+
+  public void setEndsAt(String endsAt) {
+    this.endsAt = endsAt;
+  }
+
+
+  public ListBuyerAuctionsItem status(String status) {
+    
+    this.status = status;
+    return this;
+  }
+
+   /**
+   * Get status
+   * @return status
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public String getStatus() {
+    return status;
+  }
+
+
+  public void setStatus(String status) {
+    this.status = status;
+  }
+
+
+  public ListBuyerAuctionsItem currentCents(BigDecimal currentCents) {
+    
+    this.currentCents = currentCents;
+    return this;
+  }
+
+   /**
+   * Current high bid, in cents.
+   * @return currentCents
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "Current high bid, in cents.")
+
+  public BigDecimal getCurrentCents() {
+    return currentCents;
+  }
+
+
+  public void setCurrentCents(BigDecimal currentCents) {
+    this.currentCents = currentCents;
   }
 
 
@@ -342,13 +342,13 @@ public class ListBuyerAuctionsItem {
     ListBuyerAuctionsItem listBuyerAuctionsItem = (ListBuyerAuctionsItem) o;
     return Objects.equals(this.title, listBuyerAuctionsItem.title) &&
         Objects.equals(this.bidCount, listBuyerAuctionsItem.bidCount) &&
-        Objects.equals(this.paid, listBuyerAuctionsItem.paid) &&
         Objects.equals(this.leading, listBuyerAuctionsItem.leading) &&
-        Objects.equals(this.status, listBuyerAuctionsItem.status) &&
-        Objects.equals(this.endsAt, listBuyerAuctionsItem.endsAt) &&
+        Objects.equals(this.paid, listBuyerAuctionsItem.paid) &&
         Objects.equals(this.slug, listBuyerAuctionsItem.slug) &&
-        Objects.equals(this.currentCents, listBuyerAuctionsItem.currentCents) &&
         Objects.equals(this.thumbnail, listBuyerAuctionsItem.thumbnail) &&
+        Objects.equals(this.endsAt, listBuyerAuctionsItem.endsAt) &&
+        Objects.equals(this.status, listBuyerAuctionsItem.status) &&
+        Objects.equals(this.currentCents, listBuyerAuctionsItem.currentCents) &&
         Objects.equals(this.myMaxCents, listBuyerAuctionsItem.myMaxCents) &&
         Objects.equals(this.winningCents, listBuyerAuctionsItem.winningCents);
   }
@@ -359,7 +359,7 @@ public class ListBuyerAuctionsItem {
 
   @Override
   public int hashCode() {
-    return Objects.hash(title, bidCount, paid, leading, status, endsAt, slug, currentCents, thumbnail, myMaxCents, winningCents);
+    return Objects.hash(title, bidCount, leading, paid, slug, thumbnail, endsAt, status, currentCents, myMaxCents, winningCents);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -375,13 +375,13 @@ public class ListBuyerAuctionsItem {
     sb.append("class ListBuyerAuctionsItem {\n");
     sb.append("    title: ").append(toIndentedString(title)).append("\n");
     sb.append("    bidCount: ").append(toIndentedString(bidCount)).append("\n");
-    sb.append("    paid: ").append(toIndentedString(paid)).append("\n");
     sb.append("    leading: ").append(toIndentedString(leading)).append("\n");
-    sb.append("    status: ").append(toIndentedString(status)).append("\n");
-    sb.append("    endsAt: ").append(toIndentedString(endsAt)).append("\n");
+    sb.append("    paid: ").append(toIndentedString(paid)).append("\n");
     sb.append("    slug: ").append(toIndentedString(slug)).append("\n");
-    sb.append("    currentCents: ").append(toIndentedString(currentCents)).append("\n");
     sb.append("    thumbnail: ").append(toIndentedString(thumbnail)).append("\n");
+    sb.append("    endsAt: ").append(toIndentedString(endsAt)).append("\n");
+    sb.append("    status: ").append(toIndentedString(status)).append("\n");
+    sb.append("    currentCents: ").append(toIndentedString(currentCents)).append("\n");
     sb.append("    myMaxCents: ").append(toIndentedString(myMaxCents)).append("\n");
     sb.append("    winningCents: ").append(toIndentedString(winningCents)).append("\n");
     sb.append("}");

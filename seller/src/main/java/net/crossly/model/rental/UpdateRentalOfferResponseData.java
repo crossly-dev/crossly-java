@@ -24,13 +24,18 @@ import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 import java.math.BigDecimal;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import net.crossly.model.common.StartEnd;
 import org.openapitools.jackson.nullable.JsonNullable;
 import org.threeten.bp.OffsetDateTime;
 
 /**
  * UpdateRentalOfferResponseData
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-11T23:44:48.922Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-27T19:42:43.186Z[Etc/UTC]")
 public class UpdateRentalOfferResponseData {
   public static final String SERIALIZED_NAME_ACTIVE = "active";
   @SerializedName(SERIALIZED_NAME_ACTIVE)
@@ -44,9 +49,21 @@ public class UpdateRentalOfferResponseData {
   @SerializedName(SERIALIZED_NAME_UPDATED_AT)
   private OffsetDateTime updatedAt;
 
+  public static final String SERIALIZED_NAME_QUANTITY = "quantity";
+  @SerializedName(SERIALIZED_NAME_QUANTITY)
+  private BigDecimal quantity;
+
   public static final String SERIALIZED_NAME_PLATFORM_LISTING_ID = "platformListingId";
   @SerializedName(SERIALIZED_NAME_PLATFORM_LISTING_ID)
   private String platformListingId;
+
+  public static final String SERIALIZED_NAME_STOREFRONT_ID = "storefrontId";
+  @SerializedName(SERIALIZED_NAME_STOREFRONT_ID)
+  private String storefrontId;
+
+  public static final String SERIALIZED_NAME_OPTIONS = "options";
+  @SerializedName(SERIALIZED_NAME_OPTIONS)
+  private Map<String, Object> options = new HashMap<String, Object>();
 
   public static final String SERIALIZED_NAME_SELLER_USER_ID = "sellerUserId";
   @SerializedName(SERIALIZED_NAME_SELLER_USER_ID)
@@ -56,14 +73,6 @@ public class UpdateRentalOfferResponseData {
   @SerializedName(SERIALIZED_NAME_DEPOSIT_CENTS)
   private BigDecimal depositCents;
 
-  public static final String SERIALIZED_NAME_DAILY_CENTS = "dailyCents";
-  @SerializedName(SERIALIZED_NAME_DAILY_CENTS)
-  private BigDecimal dailyCents;
-
-  public static final String SERIALIZED_NAME_WEEKLY_CENTS = "weeklyCents";
-  @SerializedName(SERIALIZED_NAME_WEEKLY_CENTS)
-  private BigDecimal weeklyCents;
-
   public static final String SERIALIZED_NAME_MIN_DAYS = "minDays";
   @SerializedName(SERIALIZED_NAME_MIN_DAYS)
   private BigDecimal minDays;
@@ -71,6 +80,14 @@ public class UpdateRentalOfferResponseData {
   public static final String SERIALIZED_NAME_MAX_DAYS = "maxDays";
   @SerializedName(SERIALIZED_NAME_MAX_DAYS)
   private BigDecimal maxDays;
+
+  public static final String SERIALIZED_NAME_DAILY_CENTS = "dailyCents";
+  @SerializedName(SERIALIZED_NAME_DAILY_CENTS)
+  private BigDecimal dailyCents;
+
+  public static final String SERIALIZED_NAME_WEEKLY_CENTS = "weeklyCents";
+  @SerializedName(SERIALIZED_NAME_WEEKLY_CENTS)
+  private BigDecimal weeklyCents;
 
   public static final String SERIALIZED_NAME_BUFFER_DAYS = "bufferDays";
   @SerializedName(SERIALIZED_NAME_BUFFER_DAYS)
@@ -83,6 +100,14 @@ public class UpdateRentalOfferResponseData {
   public static final String SERIALIZED_NAME_REQUIRE_APPROVAL = "requireApproval";
   @SerializedName(SERIALIZED_NAME_REQUIRE_APPROVAL)
   private Boolean requireApproval;
+
+  public static final String SERIALIZED_NAME_BLACKOUT_RANGES = "blackoutRanges";
+  @SerializedName(SERIALIZED_NAME_BLACKOUT_RANGES)
+  private List<StartEnd> blackoutRanges = new ArrayList<StartEnd>();
+
+  public static final String SERIALIZED_NAME_RETURN_POLICY = "returnPolicy";
+  @SerializedName(SERIALIZED_NAME_RETURN_POLICY)
+  private String returnPolicy;
 
   public UpdateRentalOfferResponseData() { 
   }
@@ -156,6 +181,29 @@ public class UpdateRentalOfferResponseData {
   }
 
 
+  public UpdateRentalOfferResponseData quantity(BigDecimal quantity) {
+    
+    this.quantity = quantity;
+    return this;
+  }
+
+   /**
+   * Get quantity
+   * @return quantity
+  **/
+  @javax.annotation.Nonnull
+  @ApiModelProperty(required = true, value = "")
+
+  public BigDecimal getQuantity() {
+    return quantity;
+  }
+
+
+  public void setQuantity(BigDecimal quantity) {
+    this.quantity = quantity;
+  }
+
+
   public UpdateRentalOfferResponseData platformListingId(String platformListingId) {
     
     this.platformListingId = platformListingId;
@@ -176,6 +224,57 @@ public class UpdateRentalOfferResponseData {
 
   public void setPlatformListingId(String platformListingId) {
     this.platformListingId = platformListingId;
+  }
+
+
+  public UpdateRentalOfferResponseData storefrontId(String storefrontId) {
+    
+    this.storefrontId = storefrontId;
+    return this;
+  }
+
+   /**
+   * Get storefrontId
+   * @return storefrontId
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public String getStorefrontId() {
+    return storefrontId;
+  }
+
+
+  public void setStorefrontId(String storefrontId) {
+    this.storefrontId = storefrontId;
+  }
+
+
+  public UpdateRentalOfferResponseData options(Map<String, Object> options) {
+    
+    this.options = options;
+    return this;
+  }
+
+  public UpdateRentalOfferResponseData putOptionsItem(String key, Object optionsItem) {
+    this.options.put(key, optionsItem);
+    return this;
+  }
+
+   /**
+   * Get options
+   * @return options
+  **/
+  @javax.annotation.Nonnull
+  @ApiModelProperty(required = true, value = "")
+
+  public Map<String, Object> getOptions() {
+    return options;
+  }
+
+
+  public void setOptions(Map<String, Object> options) {
+    this.options = options;
   }
 
 
@@ -225,52 +324,6 @@ public class UpdateRentalOfferResponseData {
   }
 
 
-  public UpdateRentalOfferResponseData dailyCents(BigDecimal dailyCents) {
-    
-    this.dailyCents = dailyCents;
-    return this;
-  }
-
-   /**
-   * Get dailyCents
-   * @return dailyCents
-  **/
-  @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "")
-
-  public BigDecimal getDailyCents() {
-    return dailyCents;
-  }
-
-
-  public void setDailyCents(BigDecimal dailyCents) {
-    this.dailyCents = dailyCents;
-  }
-
-
-  public UpdateRentalOfferResponseData weeklyCents(BigDecimal weeklyCents) {
-    
-    this.weeklyCents = weeklyCents;
-    return this;
-  }
-
-   /**
-   * Get weeklyCents
-   * @return weeklyCents
-  **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
-
-  public BigDecimal getWeeklyCents() {
-    return weeklyCents;
-  }
-
-
-  public void setWeeklyCents(BigDecimal weeklyCents) {
-    this.weeklyCents = weeklyCents;
-  }
-
-
   public UpdateRentalOfferResponseData minDays(BigDecimal minDays) {
     
     this.minDays = minDays;
@@ -314,6 +367,52 @@ public class UpdateRentalOfferResponseData {
 
   public void setMaxDays(BigDecimal maxDays) {
     this.maxDays = maxDays;
+  }
+
+
+  public UpdateRentalOfferResponseData dailyCents(BigDecimal dailyCents) {
+    
+    this.dailyCents = dailyCents;
+    return this;
+  }
+
+   /**
+   * Get dailyCents
+   * @return dailyCents
+  **/
+  @javax.annotation.Nonnull
+  @ApiModelProperty(required = true, value = "")
+
+  public BigDecimal getDailyCents() {
+    return dailyCents;
+  }
+
+
+  public void setDailyCents(BigDecimal dailyCents) {
+    this.dailyCents = dailyCents;
+  }
+
+
+  public UpdateRentalOfferResponseData weeklyCents(BigDecimal weeklyCents) {
+    
+    this.weeklyCents = weeklyCents;
+    return this;
+  }
+
+   /**
+   * Get weeklyCents
+   * @return weeklyCents
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public BigDecimal getWeeklyCents() {
+    return weeklyCents;
+  }
+
+
+  public void setWeeklyCents(BigDecimal weeklyCents) {
+    this.weeklyCents = weeklyCents;
   }
 
 
@@ -386,6 +485,57 @@ public class UpdateRentalOfferResponseData {
   }
 
 
+  public UpdateRentalOfferResponseData blackoutRanges(List<StartEnd> blackoutRanges) {
+    
+    this.blackoutRanges = blackoutRanges;
+    return this;
+  }
+
+  public UpdateRentalOfferResponseData addBlackoutRangesItem(StartEnd blackoutRangesItem) {
+    this.blackoutRanges.add(blackoutRangesItem);
+    return this;
+  }
+
+   /**
+   * Get blackoutRanges
+   * @return blackoutRanges
+  **/
+  @javax.annotation.Nonnull
+  @ApiModelProperty(required = true, value = "")
+
+  public List<StartEnd> getBlackoutRanges() {
+    return blackoutRanges;
+  }
+
+
+  public void setBlackoutRanges(List<StartEnd> blackoutRanges) {
+    this.blackoutRanges = blackoutRanges;
+  }
+
+
+  public UpdateRentalOfferResponseData returnPolicy(String returnPolicy) {
+    
+    this.returnPolicy = returnPolicy;
+    return this;
+  }
+
+   /**
+   * Get returnPolicy
+   * @return returnPolicy
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public String getReturnPolicy() {
+    return returnPolicy;
+  }
+
+
+  public void setReturnPolicy(String returnPolicy) {
+    this.returnPolicy = returnPolicy;
+  }
+
+
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -398,16 +548,21 @@ public class UpdateRentalOfferResponseData {
     return Objects.equals(this.active, updateRentalOfferResponseData.active) &&
         Objects.equals(this.createdAt, updateRentalOfferResponseData.createdAt) &&
         Objects.equals(this.updatedAt, updateRentalOfferResponseData.updatedAt) &&
+        Objects.equals(this.quantity, updateRentalOfferResponseData.quantity) &&
         Objects.equals(this.platformListingId, updateRentalOfferResponseData.platformListingId) &&
+        Objects.equals(this.storefrontId, updateRentalOfferResponseData.storefrontId) &&
+        Objects.equals(this.options, updateRentalOfferResponseData.options) &&
         Objects.equals(this.sellerUserId, updateRentalOfferResponseData.sellerUserId) &&
         Objects.equals(this.depositCents, updateRentalOfferResponseData.depositCents) &&
-        Objects.equals(this.dailyCents, updateRentalOfferResponseData.dailyCents) &&
-        Objects.equals(this.weeklyCents, updateRentalOfferResponseData.weeklyCents) &&
         Objects.equals(this.minDays, updateRentalOfferResponseData.minDays) &&
         Objects.equals(this.maxDays, updateRentalOfferResponseData.maxDays) &&
+        Objects.equals(this.dailyCents, updateRentalOfferResponseData.dailyCents) &&
+        Objects.equals(this.weeklyCents, updateRentalOfferResponseData.weeklyCents) &&
         Objects.equals(this.bufferDays, updateRentalOfferResponseData.bufferDays) &&
         Objects.equals(this.rentOnly, updateRentalOfferResponseData.rentOnly) &&
-        Objects.equals(this.requireApproval, updateRentalOfferResponseData.requireApproval);
+        Objects.equals(this.requireApproval, updateRentalOfferResponseData.requireApproval) &&
+        Objects.equals(this.blackoutRanges, updateRentalOfferResponseData.blackoutRanges) &&
+        Objects.equals(this.returnPolicy, updateRentalOfferResponseData.returnPolicy);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -416,7 +571,7 @@ public class UpdateRentalOfferResponseData {
 
   @Override
   public int hashCode() {
-    return Objects.hash(active, createdAt, updatedAt, platformListingId, sellerUserId, depositCents, dailyCents, weeklyCents, minDays, maxDays, bufferDays, rentOnly, requireApproval);
+    return Objects.hash(active, createdAt, updatedAt, quantity, platformListingId, storefrontId, options, sellerUserId, depositCents, minDays, maxDays, dailyCents, weeklyCents, bufferDays, rentOnly, requireApproval, blackoutRanges, returnPolicy);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -433,16 +588,21 @@ public class UpdateRentalOfferResponseData {
     sb.append("    active: ").append(toIndentedString(active)).append("\n");
     sb.append("    createdAt: ").append(toIndentedString(createdAt)).append("\n");
     sb.append("    updatedAt: ").append(toIndentedString(updatedAt)).append("\n");
+    sb.append("    quantity: ").append(toIndentedString(quantity)).append("\n");
     sb.append("    platformListingId: ").append(toIndentedString(platformListingId)).append("\n");
+    sb.append("    storefrontId: ").append(toIndentedString(storefrontId)).append("\n");
+    sb.append("    options: ").append(toIndentedString(options)).append("\n");
     sb.append("    sellerUserId: ").append(toIndentedString(sellerUserId)).append("\n");
     sb.append("    depositCents: ").append(toIndentedString(depositCents)).append("\n");
-    sb.append("    dailyCents: ").append(toIndentedString(dailyCents)).append("\n");
-    sb.append("    weeklyCents: ").append(toIndentedString(weeklyCents)).append("\n");
     sb.append("    minDays: ").append(toIndentedString(minDays)).append("\n");
     sb.append("    maxDays: ").append(toIndentedString(maxDays)).append("\n");
+    sb.append("    dailyCents: ").append(toIndentedString(dailyCents)).append("\n");
+    sb.append("    weeklyCents: ").append(toIndentedString(weeklyCents)).append("\n");
     sb.append("    bufferDays: ").append(toIndentedString(bufferDays)).append("\n");
     sb.append("    rentOnly: ").append(toIndentedString(rentOnly)).append("\n");
     sb.append("    requireApproval: ").append(toIndentedString(requireApproval)).append("\n");
+    sb.append("    blackoutRanges: ").append(toIndentedString(blackoutRanges)).append("\n");
+    sb.append("    returnPolicy: ").append(toIndentedString(returnPolicy)).append("\n");
     sb.append("}");
     return sb.toString();
   }

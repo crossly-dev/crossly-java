@@ -29,15 +29,11 @@ import org.openapitools.jackson.nullable.JsonNullable;
 /**
  * CreateBuyerOfferResponseDataOffer
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-11T23:47:29.843Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-27T19:58:46.962Z[Etc/UTC]")
 public class CreateBuyerOfferResponseDataOffer {
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
   private String id;
-
-  public static final String SERIALIZED_NAME_STATUS = "status";
-  @SerializedName(SERIALIZED_NAME_STATUS)
-  private String status;
 
   public static final String SERIALIZED_NAME_PLATFORM_LISTING_ID = "platformListingId";
   @SerializedName(SERIALIZED_NAME_PLATFORM_LISTING_ID)
@@ -50,6 +46,10 @@ public class CreateBuyerOfferResponseDataOffer {
   public static final String SERIALIZED_NAME_AMOUNT_CENTS = "amountCents";
   @SerializedName(SERIALIZED_NAME_AMOUNT_CENTS)
   private BigDecimal amountCents;
+
+  public static final String SERIALIZED_NAME_STATUS = "status";
+  @SerializedName(SERIALIZED_NAME_STATUS)
+  private String status;
 
   public static final String SERIALIZED_NAME_MESSAGE = "message";
   @SerializedName(SERIALIZED_NAME_MESSAGE)
@@ -78,29 +78,6 @@ public class CreateBuyerOfferResponseDataOffer {
 
   public void setId(String id) {
     this.id = id;
-  }
-
-
-  public CreateBuyerOfferResponseDataOffer status(String status) {
-    
-    this.status = status;
-    return this;
-  }
-
-   /**
-   * Get status
-   * @return status
-  **/
-  @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "")
-
-  public String getStatus() {
-    return status;
-  }
-
-
-  public void setStatus(String status) {
-    this.status = status;
   }
 
 
@@ -173,6 +150,29 @@ public class CreateBuyerOfferResponseDataOffer {
   }
 
 
+  public CreateBuyerOfferResponseDataOffer status(String status) {
+    
+    this.status = status;
+    return this;
+  }
+
+   /**
+   * Get status
+   * @return status
+  **/
+  @javax.annotation.Nonnull
+  @ApiModelProperty(required = true, value = "")
+
+  public String getStatus() {
+    return status;
+  }
+
+
+  public void setStatus(String status) {
+    this.status = status;
+  }
+
+
   public CreateBuyerOfferResponseDataOffer message(String message) {
     
     this.message = message;
@@ -206,10 +206,10 @@ public class CreateBuyerOfferResponseDataOffer {
     }
     CreateBuyerOfferResponseDataOffer createBuyerOfferResponseDataOffer = (CreateBuyerOfferResponseDataOffer) o;
     return Objects.equals(this.id, createBuyerOfferResponseDataOffer.id) &&
-        Objects.equals(this.status, createBuyerOfferResponseDataOffer.status) &&
         Objects.equals(this.platformListingId, createBuyerOfferResponseDataOffer.platformListingId) &&
         Objects.equals(this.buyerUserId, createBuyerOfferResponseDataOffer.buyerUserId) &&
         Objects.equals(this.amountCents, createBuyerOfferResponseDataOffer.amountCents) &&
+        Objects.equals(this.status, createBuyerOfferResponseDataOffer.status) &&
         Objects.equals(this.message, createBuyerOfferResponseDataOffer.message);
   }
 
@@ -219,7 +219,7 @@ public class CreateBuyerOfferResponseDataOffer {
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, status, platformListingId, buyerUserId, amountCents, message);
+    return Objects.hash(id, platformListingId, buyerUserId, amountCents, status, message);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -234,10 +234,10 @@ public class CreateBuyerOfferResponseDataOffer {
     StringBuilder sb = new StringBuilder();
     sb.append("class CreateBuyerOfferResponseDataOffer {\n");
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
-    sb.append("    status: ").append(toIndentedString(status)).append("\n");
     sb.append("    platformListingId: ").append(toIndentedString(platformListingId)).append("\n");
     sb.append("    buyerUserId: ").append(toIndentedString(buyerUserId)).append("\n");
     sb.append("    amountCents: ").append(toIndentedString(amountCents)).append("\n");
+    sb.append("    status: ").append(toIndentedString(status)).append("\n");
     sb.append("    message: ").append(toIndentedString(message)).append("\n");
     sb.append("}");
     return sb.toString();

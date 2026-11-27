@@ -29,7 +29,7 @@ import org.openapitools.jackson.nullable.JsonNullable;
 /**
  * ListVaultMarketAdlPositionsItem
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-11T23:44:48.922Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-27T19:42:43.186Z[Etc/UTC]")
 public class ListVaultMarketAdlPositionsItem {
   public static final String SERIALIZED_NAME_POSITION_ID = "positionId";
   @SerializedName(SERIALIZED_NAME_POSITION_ID)
@@ -44,9 +44,9 @@ public class ListVaultMarketAdlPositionsItem {
    */
   @JsonAdapter(KindEnum.Adapter.class)
   public enum KindEnum {
-    LONG("long"),
+    SHORT("short"),
     
-    SHORT("short");
+    LONG("long");
 
     private String value;
 

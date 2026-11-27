@@ -28,8 +28,12 @@ import java.math.BigDecimal;
 /**
  * GetVaultMarketMmResponseRulesSpreadCapBps
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-11T23:44:48.922Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-27T19:42:43.186Z[Etc/UTC]")
 public class GetVaultMarketMmResponseRulesSpreadCapBps {
+  public static final String SERIALIZED_NAME_C = "C";
+  @SerializedName(SERIALIZED_NAME_C)
+  private BigDecimal C;
+
   public static final String SERIALIZED_NAME_A = "A";
   @SerializedName(SERIALIZED_NAME_A)
   private BigDecimal A;
@@ -38,16 +42,35 @@ public class GetVaultMarketMmResponseRulesSpreadCapBps {
   @SerializedName(SERIALIZED_NAME_B)
   private BigDecimal B;
 
-  public static final String SERIALIZED_NAME_C = "C";
-  @SerializedName(SERIALIZED_NAME_C)
-  private BigDecimal C;
-
   public static final String SERIALIZED_NAME_D = "D";
   @SerializedName(SERIALIZED_NAME_D)
   private BigDecimal D;
 
   public GetVaultMarketMmResponseRulesSpreadCapBps() { 
   }
+
+  public GetVaultMarketMmResponseRulesSpreadCapBps C(BigDecimal C) {
+    
+    this.C = C;
+    return this;
+  }
+
+   /**
+   * Get C
+   * @return C
+  **/
+  @javax.annotation.Nonnull
+  @ApiModelProperty(required = true, value = "")
+
+  public BigDecimal getC() {
+    return C;
+  }
+
+
+  public void setC(BigDecimal C) {
+    this.C = C;
+  }
+
 
   public GetVaultMarketMmResponseRulesSpreadCapBps A(BigDecimal A) {
     
@@ -95,29 +118,6 @@ public class GetVaultMarketMmResponseRulesSpreadCapBps {
   }
 
 
-  public GetVaultMarketMmResponseRulesSpreadCapBps C(BigDecimal C) {
-    
-    this.C = C;
-    return this;
-  }
-
-   /**
-   * Get C
-   * @return C
-  **/
-  @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "")
-
-  public BigDecimal getC() {
-    return C;
-  }
-
-
-  public void setC(BigDecimal C) {
-    this.C = C;
-  }
-
-
   public GetVaultMarketMmResponseRulesSpreadCapBps D(BigDecimal D) {
     
     this.D = D;
@@ -150,24 +150,24 @@ public class GetVaultMarketMmResponseRulesSpreadCapBps {
       return false;
     }
     GetVaultMarketMmResponseRulesSpreadCapBps getVaultMarketMmResponseRulesSpreadCapBps = (GetVaultMarketMmResponseRulesSpreadCapBps) o;
-    return Objects.equals(this.A, getVaultMarketMmResponseRulesSpreadCapBps.A) &&
+    return Objects.equals(this.C, getVaultMarketMmResponseRulesSpreadCapBps.C) &&
+        Objects.equals(this.A, getVaultMarketMmResponseRulesSpreadCapBps.A) &&
         Objects.equals(this.B, getVaultMarketMmResponseRulesSpreadCapBps.B) &&
-        Objects.equals(this.C, getVaultMarketMmResponseRulesSpreadCapBps.C) &&
         Objects.equals(this.D, getVaultMarketMmResponseRulesSpreadCapBps.D);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(A, B, C, D);
+    return Objects.hash(C, A, B, D);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class GetVaultMarketMmResponseRulesSpreadCapBps {\n");
+    sb.append("    C: ").append(toIndentedString(C)).append("\n");
     sb.append("    A: ").append(toIndentedString(A)).append("\n");
     sb.append("    B: ").append(toIndentedString(B)).append("\n");
-    sb.append("    C: ").append(toIndentedString(C)).append("\n");
     sb.append("    D: ").append(toIndentedString(D)).append("\n");
     sb.append("}");
     return sb.toString();

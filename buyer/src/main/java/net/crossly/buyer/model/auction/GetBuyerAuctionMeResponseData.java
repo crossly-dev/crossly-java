@@ -29,15 +29,11 @@ import org.openapitools.jackson.nullable.JsonNullable;
 /**
  * GetBuyerAuctionMeResponseData
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-11T23:47:29.843Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-27T19:58:46.962Z[Etc/UTC]")
 public class GetBuyerAuctionMeResponseData {
   public static final String SERIALIZED_NAME_BIDDING = "bidding";
   @SerializedName(SERIALIZED_NAME_BIDDING)
   private Boolean bidding;
-
-  public static final String SERIALIZED_NAME_WON = "won";
-  @SerializedName(SERIALIZED_NAME_WON)
-  private Boolean won;
 
   public static final String SERIALIZED_NAME_MY_MAX_CENTS = "myMaxCents";
   @SerializedName(SERIALIZED_NAME_MY_MAX_CENTS)
@@ -46,6 +42,10 @@ public class GetBuyerAuctionMeResponseData {
   public static final String SERIALIZED_NAME_LEADING = "leading";
   @SerializedName(SERIALIZED_NAME_LEADING)
   private Boolean leading;
+
+  public static final String SERIALIZED_NAME_WON = "won";
+  @SerializedName(SERIALIZED_NAME_WON)
+  private Boolean won;
 
   public static final String SERIALIZED_NAME_NEEDS_PAYMENT = "needsPayment";
   @SerializedName(SERIALIZED_NAME_NEEDS_PAYMENT)
@@ -74,29 +74,6 @@ public class GetBuyerAuctionMeResponseData {
 
   public void setBidding(Boolean bidding) {
     this.bidding = bidding;
-  }
-
-
-  public GetBuyerAuctionMeResponseData won(Boolean won) {
-    
-    this.won = won;
-    return this;
-  }
-
-   /**
-   * Get won
-   * @return won
-  **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
-
-  public Boolean getWon() {
-    return won;
-  }
-
-
-  public void setWon(Boolean won) {
-    this.won = won;
   }
 
 
@@ -146,6 +123,29 @@ public class GetBuyerAuctionMeResponseData {
   }
 
 
+  public GetBuyerAuctionMeResponseData won(Boolean won) {
+    
+    this.won = won;
+    return this;
+  }
+
+   /**
+   * Get won
+   * @return won
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public Boolean getWon() {
+    return won;
+  }
+
+
+  public void setWon(Boolean won) {
+    this.won = won;
+  }
+
+
   public GetBuyerAuctionMeResponseData needsPayment(Boolean needsPayment) {
     
     this.needsPayment = needsPayment;
@@ -179,9 +179,9 @@ public class GetBuyerAuctionMeResponseData {
     }
     GetBuyerAuctionMeResponseData getBuyerAuctionMeResponseData = (GetBuyerAuctionMeResponseData) o;
     return Objects.equals(this.bidding, getBuyerAuctionMeResponseData.bidding) &&
-        Objects.equals(this.won, getBuyerAuctionMeResponseData.won) &&
         Objects.equals(this.myMaxCents, getBuyerAuctionMeResponseData.myMaxCents) &&
         Objects.equals(this.leading, getBuyerAuctionMeResponseData.leading) &&
+        Objects.equals(this.won, getBuyerAuctionMeResponseData.won) &&
         Objects.equals(this.needsPayment, getBuyerAuctionMeResponseData.needsPayment);
   }
 
@@ -191,7 +191,7 @@ public class GetBuyerAuctionMeResponseData {
 
   @Override
   public int hashCode() {
-    return Objects.hash(bidding, won, myMaxCents, leading, needsPayment);
+    return Objects.hash(bidding, myMaxCents, leading, won, needsPayment);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -206,9 +206,9 @@ public class GetBuyerAuctionMeResponseData {
     StringBuilder sb = new StringBuilder();
     sb.append("class GetBuyerAuctionMeResponseData {\n");
     sb.append("    bidding: ").append(toIndentedString(bidding)).append("\n");
-    sb.append("    won: ").append(toIndentedString(won)).append("\n");
     sb.append("    myMaxCents: ").append(toIndentedString(myMaxCents)).append("\n");
     sb.append("    leading: ").append(toIndentedString(leading)).append("\n");
+    sb.append("    won: ").append(toIndentedString(won)).append("\n");
     sb.append("    needsPayment: ").append(toIndentedString(needsPayment)).append("\n");
     sb.append("}");
     return sb.toString();

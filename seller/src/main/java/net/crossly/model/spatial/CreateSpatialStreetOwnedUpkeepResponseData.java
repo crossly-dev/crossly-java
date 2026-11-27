@@ -29,7 +29,7 @@ import org.openapitools.jackson.nullable.JsonNullable;
 /**
  * CreateSpatialStreetOwnedUpkeepResponseData
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-11T23:44:48.922Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-27T19:42:43.186Z[Etc/UTC]")
 public class CreateSpatialStreetOwnedUpkeepResponseData {
   public static final String SERIALIZED_NAME_PAID_THROUGH = "paidThrough";
   @SerializedName(SERIALIZED_NAME_PAID_THROUGH)
@@ -42,11 +42,11 @@ public class CreateSpatialStreetOwnedUpkeepResponseData {
   public enum UpkeepEnum {
     ACTIVE("active"),
     
-    FORECLOSED("foreclosed"),
-    
     GRACE("grace"),
     
-    DELINQUENT("delinquent");
+    DELINQUENT("delinquent"),
+    
+    FORECLOSED("foreclosed");
 
     private String value;
 

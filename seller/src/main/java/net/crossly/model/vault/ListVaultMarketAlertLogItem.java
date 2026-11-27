@@ -30,7 +30,7 @@ import org.openapitools.jackson.nullable.JsonNullable;
 /**
  * ListVaultMarketAlertLogItem
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-11T23:44:48.922Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-27T19:42:43.186Z[Etc/UTC]")
 public class ListVaultMarketAlertLogItem {
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
@@ -41,13 +41,17 @@ public class ListVaultMarketAlertLogItem {
    */
   @JsonAdapter(KindEnum.Adapter.class)
   public enum KindEnum {
-    PRICE("price"),
+    ACCOUNT("account"),
     
-    AUCTION("auction"),
+    PRICE("price"),
     
     FILL("fill"),
     
-    ACCOUNT("account"),
+    AUCTION("auction"),
+    
+    PREDICTION("prediction"),
+    
+    OPTION_EXPIRY("option_expiry"),
     
     MARGIN_CALL("margin_call"),
     
@@ -61,7 +65,15 @@ public class ListVaultMarketAlertLogItem {
     
     SET_GOAL("set_goal"),
     
-    FOLLOW("follow");
+    FOLLOW("follow"),
+    
+    SHARE_OFFERING("share_offering"),
+    
+    SHARE_VOTE("share_vote"),
+    
+    OPTION_SETTLEMENT("option_settlement"),
+    
+    PREDICTION_ODDS("prediction_odds");
 
     private String value;
 

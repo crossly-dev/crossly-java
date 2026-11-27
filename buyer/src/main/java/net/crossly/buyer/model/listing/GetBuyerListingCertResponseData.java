@@ -29,7 +29,7 @@ import org.openapitools.jackson.nullable.JsonNullable;
 /**
  * GetBuyerListingCertResponseData
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-11T23:47:29.843Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-27T19:58:46.962Z[Etc/UTC]")
 public class GetBuyerListingCertResponseData {
   public static final String SERIALIZED_NAME_GRADER_SLUG = "graderSlug";
   @SerializedName(SERIALIZED_NAME_GRADER_SLUG)
@@ -62,9 +62,9 @@ public class GetBuyerListingCertResponseData {
   public enum StatusEnum {
     VERIFIED("verified"),
     
-    NOT_FOUND("not_found"),
-    
     MISMATCH("mismatch"),
+    
+    NOT_FOUND("not_found"),
     
     UNCHECKED("unchecked");
 

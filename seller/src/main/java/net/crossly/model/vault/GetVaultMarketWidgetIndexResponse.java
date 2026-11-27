@@ -26,13 +26,13 @@ import java.io.IOException;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
-import net.crossly.model.vault.GetVaultMarketWidgetIndexResponsePoints;
+import net.crossly.model.vault.GetVaultMarketOptionAnalyticResponseHistoricalVolSeries;
 import org.openapitools.jackson.nullable.JsonNullable;
 
 /**
  * GetVaultMarketWidgetIndexResponse
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-11T23:44:48.922Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-27T19:42:43.186Z[Etc/UTC]")
 public class GetVaultMarketWidgetIndexResponse {
   public static final String SERIALIZED_NAME_SLUG = "slug";
   @SerializedName(SERIALIZED_NAME_SLUG)
@@ -57,11 +57,11 @@ public class GetVaultMarketWidgetIndexResponse {
     
     CATEGORY("category"),
     
+    SEGMENT("segment"),
+    
     CURATED("curated"),
     
-    COMPOSITE("composite"),
-    
-    SEGMENT("segment");
+    COMPOSITE("composite");
 
     private String value;
 
@@ -182,7 +182,7 @@ public class GetVaultMarketWidgetIndexResponse {
 
   public static final String SERIALIZED_NAME_POINTS = "points";
   @SerializedName(SERIALIZED_NAME_POINTS)
-  private List<GetVaultMarketWidgetIndexResponsePoints> points = new ArrayList<GetVaultMarketWidgetIndexResponsePoints>();
+  private List<GetVaultMarketOptionAnalyticResponseHistoricalVolSeries> points = new ArrayList<GetVaultMarketOptionAnalyticResponseHistoricalVolSeries>();
 
   /**
    * Gets or Sets quality
@@ -191,11 +191,11 @@ public class GetVaultMarketWidgetIndexResponse {
   public enum QualityEnum {
     NONE("none"),
     
+    C("C"),
+    
     A("A"),
     
-    B("B"),
-    
-    C("C");
+    B("B");
 
     private String value;
 
@@ -492,13 +492,13 @@ public class GetVaultMarketWidgetIndexResponse {
   }
 
 
-  public GetVaultMarketWidgetIndexResponse points(List<GetVaultMarketWidgetIndexResponsePoints> points) {
+  public GetVaultMarketWidgetIndexResponse points(List<GetVaultMarketOptionAnalyticResponseHistoricalVolSeries> points) {
     
     this.points = points;
     return this;
   }
 
-  public GetVaultMarketWidgetIndexResponse addPointsItem(GetVaultMarketWidgetIndexResponsePoints pointsItem) {
+  public GetVaultMarketWidgetIndexResponse addPointsItem(GetVaultMarketOptionAnalyticResponseHistoricalVolSeries pointsItem) {
     this.points.add(pointsItem);
     return this;
   }
@@ -510,12 +510,12 @@ public class GetVaultMarketWidgetIndexResponse {
   @javax.annotation.Nonnull
   @ApiModelProperty(required = true, value = "")
 
-  public List<GetVaultMarketWidgetIndexResponsePoints> getPoints() {
+  public List<GetVaultMarketOptionAnalyticResponseHistoricalVolSeries> getPoints() {
     return points;
   }
 
 
-  public void setPoints(List<GetVaultMarketWidgetIndexResponsePoints> points) {
+  public void setPoints(List<GetVaultMarketOptionAnalyticResponseHistoricalVolSeries> points) {
     this.points = points;
   }
 

@@ -24,12 +24,15 @@ import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 import java.math.BigDecimal;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 import org.openapitools.jackson.nullable.JsonNullable;
 
 /**
  * ListDaoProposalsItem
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-11T23:44:48.922Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-27T19:42:43.186Z[Etc/UTC]")
 public class ListDaoProposalsItem {
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
@@ -102,6 +105,14 @@ public class ListDaoProposalsItem {
   public static final String SERIALIZED_NAME_CHARITY_GOAL_ID = "charityGoalId";
   @SerializedName(SERIALIZED_NAME_CHARITY_GOAL_ID)
   private String charityGoalId;
+
+  public static final String SERIALIZED_NAME_PROPOSAL_KIND = "proposalKind";
+  @SerializedName(SERIALIZED_NAME_PROPOSAL_KIND)
+  private String proposalKind;
+
+  public static final String SERIALIZED_NAME_PARAMS = "params";
+  @SerializedName(SERIALIZED_NAME_PARAMS)
+  private Map<String, Object> params = null;
 
   public static final String SERIALIZED_NAME_CREATED_AT = "createdAt";
   @SerializedName(SERIALIZED_NAME_CREATED_AT)
@@ -524,6 +535,60 @@ public class ListDaoProposalsItem {
   }
 
 
+  public ListDaoProposalsItem proposalKind(String proposalKind) {
+    
+    this.proposalKind = proposalKind;
+    return this;
+  }
+
+   /**
+   * Get proposalKind
+   * @return proposalKind
+  **/
+  @javax.annotation.Nonnull
+  @ApiModelProperty(required = true, value = "")
+
+  public String getProposalKind() {
+    return proposalKind;
+  }
+
+
+  public void setProposalKind(String proposalKind) {
+    this.proposalKind = proposalKind;
+  }
+
+
+  public ListDaoProposalsItem params(Map<String, Object> params) {
+    
+    this.params = params;
+    return this;
+  }
+
+  public ListDaoProposalsItem putParamsItem(String key, Object paramsItem) {
+    if (this.params == null) {
+      this.params = new HashMap<String, Object>();
+    }
+    this.params.put(key, paramsItem);
+    return this;
+  }
+
+   /**
+   * Get params
+   * @return params
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public Map<String, Object> getParams() {
+    return params;
+  }
+
+
+  public void setParams(Map<String, Object> params) {
+    this.params = params;
+  }
+
+
   public ListDaoProposalsItem createdAt(String createdAt) {
     
     this.createdAt = createdAt;
@@ -574,6 +639,8 @@ public class ListDaoProposalsItem {
         Objects.equals(this.talliedAt, listDaoProposalsItem.talliedAt) &&
         Objects.equals(this.vetoedReason, listDaoProposalsItem.vetoedReason) &&
         Objects.equals(this.charityGoalId, listDaoProposalsItem.charityGoalId) &&
+        Objects.equals(this.proposalKind, listDaoProposalsItem.proposalKind) &&
+        Objects.equals(this.params, listDaoProposalsItem.params) &&
         Objects.equals(this.createdAt, listDaoProposalsItem.createdAt);
   }
 
@@ -583,7 +650,7 @@ public class ListDaoProposalsItem {
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, title, body, beneficiaryKind, beneficiaryNote, requestedBaseUnits, status, totalVotingPower, powerFor, powerAgainst, powerAbstain, quorumBps, passThresholdBps, opensAt, closesAt, talliedAt, vetoedReason, charityGoalId, createdAt);
+    return Objects.hash(id, title, body, beneficiaryKind, beneficiaryNote, requestedBaseUnits, status, totalVotingPower, powerFor, powerAgainst, powerAbstain, quorumBps, passThresholdBps, opensAt, closesAt, talliedAt, vetoedReason, charityGoalId, proposalKind, params, createdAt);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -615,6 +682,8 @@ public class ListDaoProposalsItem {
     sb.append("    talliedAt: ").append(toIndentedString(talliedAt)).append("\n");
     sb.append("    vetoedReason: ").append(toIndentedString(vetoedReason)).append("\n");
     sb.append("    charityGoalId: ").append(toIndentedString(charityGoalId)).append("\n");
+    sb.append("    proposalKind: ").append(toIndentedString(proposalKind)).append("\n");
+    sb.append("    params: ").append(toIndentedString(params)).append("\n");
     sb.append("    createdAt: ").append(toIndentedString(createdAt)).append("\n");
     sb.append("}");
     return sb.toString();

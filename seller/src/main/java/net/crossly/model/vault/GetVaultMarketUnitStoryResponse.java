@@ -31,13 +31,13 @@ import net.crossly.model.vault.GetVaultMarketUnitStoryResponseEvents;
 import net.crossly.model.vault.GetVaultMarketUnitStoryResponseHolder;
 import net.crossly.model.vault.GetVaultMarketUnitStoryResponseStats;
 import net.crossly.model.vault.GetVaultMarketUnitStoryResponseUnit;
-import net.crossly.model.vault.ListVaultMarketFeedItemMark;
+import net.crossly.model.vault.ListVaultMarketOpeningItemMark;
 import org.openapitools.jackson.nullable.JsonNullable;
 
 /**
  * GetVaultMarketUnitStoryResponse
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-11T23:44:48.922Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-27T19:42:43.186Z[Etc/UTC]")
 public class GetVaultMarketUnitStoryResponse {
   public static final String SERIALIZED_NAME_UNIT = "unit";
   @SerializedName(SERIALIZED_NAME_UNIT)
@@ -49,16 +49,16 @@ public class GetVaultMarketUnitStoryResponse {
 
   public static final String SERIALIZED_NAME_MARK = "mark";
   @SerializedName(SERIALIZED_NAME_MARK)
-  private ListVaultMarketFeedItemMark mark;
+  private ListVaultMarketOpeningItemMark mark;
 
   /**
    * &#39;holder&#39; sees everything about their unit; &#39;public&#39; is the share page.
    */
   @JsonAdapter(ViewerEnum.Adapter.class)
   public enum ViewerEnum {
-    HOLDER("holder"),
+    PUBLIC("public"),
     
-    PUBLIC("public");
+    HOLDER("holder");
 
     private String value;
 
@@ -179,7 +179,7 @@ public class GetVaultMarketUnitStoryResponse {
   }
 
 
-  public GetVaultMarketUnitStoryResponse mark(ListVaultMarketFeedItemMark mark) {
+  public GetVaultMarketUnitStoryResponse mark(ListVaultMarketOpeningItemMark mark) {
     
     this.mark = mark;
     return this;
@@ -192,12 +192,12 @@ public class GetVaultMarketUnitStoryResponse {
   @javax.annotation.Nonnull
   @ApiModelProperty(required = true, value = "")
 
-  public ListVaultMarketFeedItemMark getMark() {
+  public ListVaultMarketOpeningItemMark getMark() {
     return mark;
   }
 
 
-  public void setMark(ListVaultMarketFeedItemMark mark) {
+  public void setMark(ListVaultMarketOpeningItemMark mark) {
     this.mark = mark;
   }
 

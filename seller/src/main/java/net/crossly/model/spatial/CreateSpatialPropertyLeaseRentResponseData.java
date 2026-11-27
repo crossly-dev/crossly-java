@@ -24,12 +24,25 @@ import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 import java.math.BigDecimal;
+import org.openapitools.jackson.nullable.JsonNullable;
 
 /**
  * CreateSpatialPropertyLeaseRentResponseData
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-11T23:44:48.922Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-27T19:42:43.186Z[Etc/UTC]")
 public class CreateSpatialPropertyLeaseRentResponseData {
+  public static final String SERIALIZED_NAME_REQUIRES_ACTION = "requiresAction";
+  @SerializedName(SERIALIZED_NAME_REQUIRES_ACTION)
+  private Boolean requiresAction;
+
+  public static final String SERIALIZED_NAME_PAYMENT_ID = "paymentId";
+  @SerializedName(SERIALIZED_NAME_PAYMENT_ID)
+  private String paymentId;
+
+  public static final String SERIALIZED_NAME_CLIENT_SECRET = "clientSecret";
+  @SerializedName(SERIALIZED_NAME_CLIENT_SECRET)
+  private String clientSecret;
+
   public static final String SERIALIZED_NAME_PAID_THROUGH = "paidThrough";
   @SerializedName(SERIALIZED_NAME_PAID_THROUGH)
   private String paidThrough;
@@ -45,6 +58,75 @@ public class CreateSpatialPropertyLeaseRentResponseData {
   public CreateSpatialPropertyLeaseRentResponseData() { 
   }
 
+  public CreateSpatialPropertyLeaseRentResponseData requiresAction(Boolean requiresAction) {
+    
+    this.requiresAction = requiresAction;
+    return this;
+  }
+
+   /**
+   * Get requiresAction
+   * @return requiresAction
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public Boolean getRequiresAction() {
+    return requiresAction;
+  }
+
+
+  public void setRequiresAction(Boolean requiresAction) {
+    this.requiresAction = requiresAction;
+  }
+
+
+  public CreateSpatialPropertyLeaseRentResponseData paymentId(String paymentId) {
+    
+    this.paymentId = paymentId;
+    return this;
+  }
+
+   /**
+   * Get paymentId
+   * @return paymentId
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public String getPaymentId() {
+    return paymentId;
+  }
+
+
+  public void setPaymentId(String paymentId) {
+    this.paymentId = paymentId;
+  }
+
+
+  public CreateSpatialPropertyLeaseRentResponseData clientSecret(String clientSecret) {
+    
+    this.clientSecret = clientSecret;
+    return this;
+  }
+
+   /**
+   * Get clientSecret
+   * @return clientSecret
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public String getClientSecret() {
+    return clientSecret;
+  }
+
+
+  public void setClientSecret(String clientSecret) {
+    this.clientSecret = clientSecret;
+  }
+
+
   public CreateSpatialPropertyLeaseRentResponseData paidThrough(String paidThrough) {
     
     this.paidThrough = paidThrough;
@@ -55,8 +137,8 @@ public class CreateSpatialPropertyLeaseRentResponseData {
    * Get paidThrough
    * @return paidThrough
   **/
-  @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "")
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
 
   public String getPaidThrough() {
     return paidThrough;
@@ -78,8 +160,8 @@ public class CreateSpatialPropertyLeaseRentResponseData {
    * Get waived
    * @return waived
   **/
-  @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "")
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
 
   public Boolean getWaived() {
     return waived;
@@ -101,8 +183,8 @@ public class CreateSpatialPropertyLeaseRentResponseData {
    * Get paidCents
    * @return paidCents
   **/
-  @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "")
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
 
   public BigDecimal getPaidCents() {
     return paidCents;
@@ -123,20 +205,37 @@ public class CreateSpatialPropertyLeaseRentResponseData {
       return false;
     }
     CreateSpatialPropertyLeaseRentResponseData createSpatialPropertyLeaseRentResponseData = (CreateSpatialPropertyLeaseRentResponseData) o;
-    return Objects.equals(this.paidThrough, createSpatialPropertyLeaseRentResponseData.paidThrough) &&
+    return Objects.equals(this.requiresAction, createSpatialPropertyLeaseRentResponseData.requiresAction) &&
+        Objects.equals(this.paymentId, createSpatialPropertyLeaseRentResponseData.paymentId) &&
+        Objects.equals(this.clientSecret, createSpatialPropertyLeaseRentResponseData.clientSecret) &&
+        Objects.equals(this.paidThrough, createSpatialPropertyLeaseRentResponseData.paidThrough) &&
         Objects.equals(this.waived, createSpatialPropertyLeaseRentResponseData.waived) &&
         Objects.equals(this.paidCents, createSpatialPropertyLeaseRentResponseData.paidCents);
   }
 
+  private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+    return a == b || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
+  }
+
   @Override
   public int hashCode() {
-    return Objects.hash(paidThrough, waived, paidCents);
+    return Objects.hash(requiresAction, paymentId, clientSecret, paidThrough, waived, paidCents);
+  }
+
+  private static <T> int hashCodeNullable(JsonNullable<T> a) {
+    if (a == null) {
+      return 1;
+    }
+    return a.isPresent() ? Arrays.deepHashCode(new Object[]{a.get()}) : 31;
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class CreateSpatialPropertyLeaseRentResponseData {\n");
+    sb.append("    requiresAction: ").append(toIndentedString(requiresAction)).append("\n");
+    sb.append("    paymentId: ").append(toIndentedString(paymentId)).append("\n");
+    sb.append("    clientSecret: ").append(toIndentedString(clientSecret)).append("\n");
     sb.append("    paidThrough: ").append(toIndentedString(paidThrough)).append("\n");
     sb.append("    waived: ").append(toIndentedString(waived)).append("\n");
     sb.append("    paidCents: ").append(toIndentedString(paidCents)).append("\n");

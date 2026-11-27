@@ -24,11 +24,12 @@ import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 import java.math.BigDecimal;
+import org.openapitools.jackson.nullable.JsonNullable;
 
 /**
  * CreateOrderRefundResponse
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-11T23:44:48.922Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-27T19:42:43.186Z[Etc/UTC]")
 public class CreateOrderRefundResponse {
   public static final String SERIALIZED_NAME_REFUND_ID = "refundId";
   @SerializedName(SERIALIZED_NAME_REFUND_ID)
@@ -37,6 +38,22 @@ public class CreateOrderRefundResponse {
   public static final String SERIALIZED_NAME_AMOUNT = "amount";
   @SerializedName(SERIALIZED_NAME_AMOUNT)
   private BigDecimal amount;
+
+  public static final String SERIALIZED_NAME_ID = "id";
+  @SerializedName(SERIALIZED_NAME_ID)
+  private String id;
+
+  public static final String SERIALIZED_NAME_TOTAL_REFUNDED = "totalRefunded";
+  @SerializedName(SERIALIZED_NAME_TOTAL_REFUNDED)
+  private BigDecimal totalRefunded;
+
+  public static final String SERIALIZED_NAME_REMAINING = "remaining";
+  @SerializedName(SERIALIZED_NAME_REMAINING)
+  private BigDecimal remaining;
+
+  public static final String SERIALIZED_NAME_REPLAYED = "replayed";
+  @SerializedName(SERIALIZED_NAME_REPLAYED)
+  private Boolean replayed;
 
   public CreateOrderRefundResponse() { 
   }
@@ -87,6 +104,98 @@ public class CreateOrderRefundResponse {
   }
 
 
+  public CreateOrderRefundResponse id(String id) {
+    
+    this.id = id;
+    return this;
+  }
+
+   /**
+   * Get id
+   * @return id
+  **/
+  @javax.annotation.Nonnull
+  @ApiModelProperty(required = true, value = "")
+
+  public String getId() {
+    return id;
+  }
+
+
+  public void setId(String id) {
+    this.id = id;
+  }
+
+
+  public CreateOrderRefundResponse totalRefunded(BigDecimal totalRefunded) {
+    
+    this.totalRefunded = totalRefunded;
+    return this;
+  }
+
+   /**
+   * Get totalRefunded
+   * @return totalRefunded
+  **/
+  @javax.annotation.Nonnull
+  @ApiModelProperty(required = true, value = "")
+
+  public BigDecimal getTotalRefunded() {
+    return totalRefunded;
+  }
+
+
+  public void setTotalRefunded(BigDecimal totalRefunded) {
+    this.totalRefunded = totalRefunded;
+  }
+
+
+  public CreateOrderRefundResponse remaining(BigDecimal remaining) {
+    
+    this.remaining = remaining;
+    return this;
+  }
+
+   /**
+   * Get remaining
+   * @return remaining
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public BigDecimal getRemaining() {
+    return remaining;
+  }
+
+
+  public void setRemaining(BigDecimal remaining) {
+    this.remaining = remaining;
+  }
+
+
+  public CreateOrderRefundResponse replayed(Boolean replayed) {
+    
+    this.replayed = replayed;
+    return this;
+  }
+
+   /**
+   * Get replayed
+   * @return replayed
+  **/
+  @javax.annotation.Nonnull
+  @ApiModelProperty(required = true, value = "")
+
+  public Boolean getReplayed() {
+    return replayed;
+  }
+
+
+  public void setReplayed(Boolean replayed) {
+    this.replayed = replayed;
+  }
+
+
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -97,12 +206,27 @@ public class CreateOrderRefundResponse {
     }
     CreateOrderRefundResponse createOrderRefundResponse = (CreateOrderRefundResponse) o;
     return Objects.equals(this.refundId, createOrderRefundResponse.refundId) &&
-        Objects.equals(this.amount, createOrderRefundResponse.amount);
+        Objects.equals(this.amount, createOrderRefundResponse.amount) &&
+        Objects.equals(this.id, createOrderRefundResponse.id) &&
+        Objects.equals(this.totalRefunded, createOrderRefundResponse.totalRefunded) &&
+        Objects.equals(this.remaining, createOrderRefundResponse.remaining) &&
+        Objects.equals(this.replayed, createOrderRefundResponse.replayed);
+  }
+
+  private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+    return a == b || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(refundId, amount);
+    return Objects.hash(refundId, amount, id, totalRefunded, remaining, replayed);
+  }
+
+  private static <T> int hashCodeNullable(JsonNullable<T> a) {
+    if (a == null) {
+      return 1;
+    }
+    return a.isPresent() ? Arrays.deepHashCode(new Object[]{a.get()}) : 31;
   }
 
   @Override
@@ -111,6 +235,10 @@ public class CreateOrderRefundResponse {
     sb.append("class CreateOrderRefundResponse {\n");
     sb.append("    refundId: ").append(toIndentedString(refundId)).append("\n");
     sb.append("    amount: ").append(toIndentedString(amount)).append("\n");
+    sb.append("    id: ").append(toIndentedString(id)).append("\n");
+    sb.append("    totalRefunded: ").append(toIndentedString(totalRefunded)).append("\n");
+    sb.append("    remaining: ").append(toIndentedString(remaining)).append("\n");
+    sb.append("    replayed: ").append(toIndentedString(replayed)).append("\n");
     sb.append("}");
     return sb.toString();
   }

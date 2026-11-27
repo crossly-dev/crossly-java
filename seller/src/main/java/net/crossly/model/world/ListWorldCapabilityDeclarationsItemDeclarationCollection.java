@@ -28,17 +28,13 @@ import java.io.IOException;
  * An NFT collection (a chain + address), or a COSM design: &#x60;{ chain: &#39;cosm&#39;, address: &lt;cosmetic id&gt; }&#x60;.
  */
 @ApiModel(description = "An NFT collection (a chain + address), or a COSM design: `{ chain: 'cosm', address: <cosmetic id> }`.")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-11T23:44:48.922Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-27T19:42:43.186Z[Etc/UTC]")
 public class ListWorldCapabilityDeclarationsItemDeclarationCollection {
   /**
    * Gets or Sets chain
    */
   @JsonAdapter(ChainEnum.Adapter.class)
   public enum ChainEnum {
-    SOLANA("solana"),
-    
-    COSM("cosm"),
-    
     ETHEREUM("ethereum"),
     
     BASE("base"),
@@ -47,7 +43,11 @@ public class ListWorldCapabilityDeclarationsItemDeclarationCollection {
     
     ARBITRUM("arbitrum"),
     
-    OPTIMISM("optimism");
+    OPTIMISM("optimism"),
+    
+    SOLANA("solana"),
+    
+    COSM("cosm");
 
     private String value;
 

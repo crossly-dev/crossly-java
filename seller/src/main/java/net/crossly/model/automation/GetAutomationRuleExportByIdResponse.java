@@ -26,100 +26,54 @@ import java.io.IOException;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
-import net.crossly.model.automation.GetAutomationRuleExportByIdResponseAction;
 import net.crossly.model.automation.GetAutomationRuleExportByIdResponseCondition;
 import net.crossly.model.automation.GetAutomationRuleExportByIdResponseMetadata;
+import net.crossly.model.automation.GetAutomationRuleExportByIdResponseTrigger;
 import org.openapitools.jackson.nullable.JsonNullable;
 
 /**
  * GetAutomationRuleExportByIdResponse
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-11T23:44:48.922Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-27T19:42:43.186Z[Etc/UTC]")
 public class GetAutomationRuleExportByIdResponse {
-  public static final String SERIALIZED_NAME_NAME = "name";
-  @SerializedName(SERIALIZED_NAME_NAME)
-  private String name;
-
-  public static final String SERIALIZED_NAME_ACTION = "action";
-  @SerializedName(SERIALIZED_NAME_ACTION)
-  private GetAutomationRuleExportByIdResponseAction action;
-
   public static final String SERIALIZED_NAME_SCHEMA_VERSION = "schemaVersion";
   @SerializedName(SERIALIZED_NAME_SCHEMA_VERSION)
   private BigDecimal schemaVersion;
 
+  public static final String SERIALIZED_NAME_NAME = "name";
+  @SerializedName(SERIALIZED_NAME_NAME)
+  private String name;
+
   public static final String SERIALIZED_NAME_TRIGGER = "trigger";
   @SerializedName(SERIALIZED_NAME_TRIGGER)
-  private GetAutomationRuleExportByIdResponseAction trigger;
+  private GetAutomationRuleExportByIdResponseTrigger trigger;
 
-  public static final String SERIALIZED_NAME_CONDITION = "condition";
-  @SerializedName(SERIALIZED_NAME_CONDITION)
-  private GetAutomationRuleExportByIdResponseCondition condition;
-
-  public static final String SERIALIZED_NAME_METADATA = "metadata";
-  @SerializedName(SERIALIZED_NAME_METADATA)
-  private GetAutomationRuleExportByIdResponseMetadata metadata;
-
-  public static final String SERIALIZED_NAME_DESCRIPTION = "description";
-  @SerializedName(SERIALIZED_NAME_DESCRIPTION)
-  private String description;
-
-  public static final String SERIALIZED_NAME_PLATFORMS = "platforms";
-  @SerializedName(SERIALIZED_NAME_PLATFORMS)
-  private List<String> platforms = null;
+  public static final String SERIALIZED_NAME_ACTION = "action";
+  @SerializedName(SERIALIZED_NAME_ACTION)
+  private GetAutomationRuleExportByIdResponseTrigger action;
 
   public static final String SERIALIZED_NAME_$_SCHEMA = "$schema";
   @SerializedName(SERIALIZED_NAME_$_SCHEMA)
   private String $schema;
 
+  public static final String SERIALIZED_NAME_DESCRIPTION = "description";
+  @SerializedName(SERIALIZED_NAME_DESCRIPTION)
+  private String description;
+
+  public static final String SERIALIZED_NAME_CONDITION = "condition";
+  @SerializedName(SERIALIZED_NAME_CONDITION)
+  private GetAutomationRuleExportByIdResponseCondition condition;
+
+  public static final String SERIALIZED_NAME_PLATFORMS = "platforms";
+  @SerializedName(SERIALIZED_NAME_PLATFORMS)
+  private List<String> platforms = null;
+
+  public static final String SERIALIZED_NAME_METADATA = "metadata";
+  @SerializedName(SERIALIZED_NAME_METADATA)
+  private GetAutomationRuleExportByIdResponseMetadata metadata;
+
   public GetAutomationRuleExportByIdResponse() { 
   }
-
-  public GetAutomationRuleExportByIdResponse name(String name) {
-    
-    this.name = name;
-    return this;
-  }
-
-   /**
-   * Get name
-   * @return name
-  **/
-  @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "")
-
-  public String getName() {
-    return name;
-  }
-
-
-  public void setName(String name) {
-    this.name = name;
-  }
-
-
-  public GetAutomationRuleExportByIdResponse action(GetAutomationRuleExportByIdResponseAction action) {
-    
-    this.action = action;
-    return this;
-  }
-
-   /**
-   * Get action
-   * @return action
-  **/
-  @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "")
-
-  public GetAutomationRuleExportByIdResponseAction getAction() {
-    return action;
-  }
-
-
-  public void setAction(GetAutomationRuleExportByIdResponseAction action) {
-    this.action = action;
-  }
-
 
   public GetAutomationRuleExportByIdResponse schemaVersion(BigDecimal schemaVersion) {
     
@@ -144,7 +98,30 @@ public class GetAutomationRuleExportByIdResponse {
   }
 
 
-  public GetAutomationRuleExportByIdResponse trigger(GetAutomationRuleExportByIdResponseAction trigger) {
+  public GetAutomationRuleExportByIdResponse name(String name) {
+    
+    this.name = name;
+    return this;
+  }
+
+   /**
+   * Get name
+   * @return name
+  **/
+  @javax.annotation.Nonnull
+  @ApiModelProperty(required = true, value = "")
+
+  public String getName() {
+    return name;
+  }
+
+
+  public void setName(String name) {
+    this.name = name;
+  }
+
+
+  public GetAutomationRuleExportByIdResponse trigger(GetAutomationRuleExportByIdResponseTrigger trigger) {
     
     this.trigger = trigger;
     return this;
@@ -157,59 +134,59 @@ public class GetAutomationRuleExportByIdResponse {
   @javax.annotation.Nonnull
   @ApiModelProperty(required = true, value = "")
 
-  public GetAutomationRuleExportByIdResponseAction getTrigger() {
+  public GetAutomationRuleExportByIdResponseTrigger getTrigger() {
     return trigger;
   }
 
 
-  public void setTrigger(GetAutomationRuleExportByIdResponseAction trigger) {
+  public void setTrigger(GetAutomationRuleExportByIdResponseTrigger trigger) {
     this.trigger = trigger;
   }
 
 
-  public GetAutomationRuleExportByIdResponse condition(GetAutomationRuleExportByIdResponseCondition condition) {
+  public GetAutomationRuleExportByIdResponse action(GetAutomationRuleExportByIdResponseTrigger action) {
     
-    this.condition = condition;
+    this.action = action;
     return this;
   }
 
    /**
-   * Get condition
-   * @return condition
+   * Get action
+   * @return action
   **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
+  @javax.annotation.Nonnull
+  @ApiModelProperty(required = true, value = "")
 
-  public GetAutomationRuleExportByIdResponseCondition getCondition() {
-    return condition;
+  public GetAutomationRuleExportByIdResponseTrigger getAction() {
+    return action;
   }
 
 
-  public void setCondition(GetAutomationRuleExportByIdResponseCondition condition) {
-    this.condition = condition;
+  public void setAction(GetAutomationRuleExportByIdResponseTrigger action) {
+    this.action = action;
   }
 
 
-  public GetAutomationRuleExportByIdResponse metadata(GetAutomationRuleExportByIdResponseMetadata metadata) {
+  public GetAutomationRuleExportByIdResponse $schema(String $schema) {
     
-    this.metadata = metadata;
+    this.$schema = $schema;
     return this;
   }
 
    /**
-   * Get metadata
-   * @return metadata
+   * Optional reference to the public schema URL — purely cosmetic.
+   * @return $schema
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "Optional reference to the public schema URL — purely cosmetic.")
 
-  public GetAutomationRuleExportByIdResponseMetadata getMetadata() {
-    return metadata;
+  public String get$Schema() {
+    return $schema;
   }
 
 
-  public void setMetadata(GetAutomationRuleExportByIdResponseMetadata metadata) {
-    this.metadata = metadata;
+  public void set$Schema(String $schema) {
+    this.$schema = $schema;
   }
 
 
@@ -233,6 +210,29 @@ public class GetAutomationRuleExportByIdResponse {
 
   public void setDescription(String description) {
     this.description = description;
+  }
+
+
+  public GetAutomationRuleExportByIdResponse condition(GetAutomationRuleExportByIdResponseCondition condition) {
+    
+    this.condition = condition;
+    return this;
+  }
+
+   /**
+   * Get condition
+   * @return condition
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public GetAutomationRuleExportByIdResponseCondition getCondition() {
+    return condition;
+  }
+
+
+  public void setCondition(GetAutomationRuleExportByIdResponseCondition condition) {
+    this.condition = condition;
   }
 
 
@@ -267,26 +267,26 @@ public class GetAutomationRuleExportByIdResponse {
   }
 
 
-  public GetAutomationRuleExportByIdResponse $schema(String $schema) {
+  public GetAutomationRuleExportByIdResponse metadata(GetAutomationRuleExportByIdResponseMetadata metadata) {
     
-    this.$schema = $schema;
+    this.metadata = metadata;
     return this;
   }
 
    /**
-   * Optional reference to the public schema URL — purely cosmetic.
-   * @return $schema
+   * Get metadata
+   * @return metadata
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "Optional reference to the public schema URL — purely cosmetic.")
+  @ApiModelProperty(value = "")
 
-  public String get$Schema() {
-    return $schema;
+  public GetAutomationRuleExportByIdResponseMetadata getMetadata() {
+    return metadata;
   }
 
 
-  public void set$Schema(String $schema) {
-    this.$schema = $schema;
+  public void setMetadata(GetAutomationRuleExportByIdResponseMetadata metadata) {
+    this.metadata = metadata;
   }
 
 
@@ -299,15 +299,15 @@ public class GetAutomationRuleExportByIdResponse {
       return false;
     }
     GetAutomationRuleExportByIdResponse getAutomationRuleExportByIdResponse = (GetAutomationRuleExportByIdResponse) o;
-    return Objects.equals(this.name, getAutomationRuleExportByIdResponse.name) &&
-        Objects.equals(this.action, getAutomationRuleExportByIdResponse.action) &&
-        Objects.equals(this.schemaVersion, getAutomationRuleExportByIdResponse.schemaVersion) &&
+    return Objects.equals(this.schemaVersion, getAutomationRuleExportByIdResponse.schemaVersion) &&
+        Objects.equals(this.name, getAutomationRuleExportByIdResponse.name) &&
         Objects.equals(this.trigger, getAutomationRuleExportByIdResponse.trigger) &&
-        Objects.equals(this.condition, getAutomationRuleExportByIdResponse.condition) &&
-        Objects.equals(this.metadata, getAutomationRuleExportByIdResponse.metadata) &&
+        Objects.equals(this.action, getAutomationRuleExportByIdResponse.action) &&
+        Objects.equals(this.$schema, getAutomationRuleExportByIdResponse.$schema) &&
         Objects.equals(this.description, getAutomationRuleExportByIdResponse.description) &&
+        Objects.equals(this.condition, getAutomationRuleExportByIdResponse.condition) &&
         Objects.equals(this.platforms, getAutomationRuleExportByIdResponse.platforms) &&
-        Objects.equals(this.$schema, getAutomationRuleExportByIdResponse.$schema);
+        Objects.equals(this.metadata, getAutomationRuleExportByIdResponse.metadata);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -316,7 +316,7 @@ public class GetAutomationRuleExportByIdResponse {
 
   @Override
   public int hashCode() {
-    return Objects.hash(name, action, schemaVersion, trigger, condition, metadata, description, platforms, $schema);
+    return Objects.hash(schemaVersion, name, trigger, action, $schema, description, condition, platforms, metadata);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -330,15 +330,15 @@ public class GetAutomationRuleExportByIdResponse {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class GetAutomationRuleExportByIdResponse {\n");
-    sb.append("    name: ").append(toIndentedString(name)).append("\n");
-    sb.append("    action: ").append(toIndentedString(action)).append("\n");
     sb.append("    schemaVersion: ").append(toIndentedString(schemaVersion)).append("\n");
+    sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    trigger: ").append(toIndentedString(trigger)).append("\n");
-    sb.append("    condition: ").append(toIndentedString(condition)).append("\n");
-    sb.append("    metadata: ").append(toIndentedString(metadata)).append("\n");
-    sb.append("    description: ").append(toIndentedString(description)).append("\n");
-    sb.append("    platforms: ").append(toIndentedString(platforms)).append("\n");
+    sb.append("    action: ").append(toIndentedString(action)).append("\n");
     sb.append("    $schema: ").append(toIndentedString($schema)).append("\n");
+    sb.append("    description: ").append(toIndentedString(description)).append("\n");
+    sb.append("    condition: ").append(toIndentedString(condition)).append("\n");
+    sb.append("    platforms: ").append(toIndentedString(platforms)).append("\n");
+    sb.append("    metadata: ").append(toIndentedString(metadata)).append("\n");
     sb.append("}");
     return sb.toString();
   }

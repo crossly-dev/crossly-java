@@ -31,9 +31,9 @@ public enum GetWorldGameResponseDataContestsEntryItem {
   
   FREE("free"),
   
-  SPONSORED("sponsored"),
+  PAID("paid"),
   
-  PAID("paid");
+  SPONSORED("sponsored");
 
   private String value;
 

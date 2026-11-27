@@ -24,11 +24,14 @@ import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 import java.math.BigDecimal;
+import java.util.ArrayList;
+import java.util.List;
+import net.crossly.model.common.GetMileageSummaryResponseRates;
 
 /**
  * GetMileageSummaryResponse
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-11T23:44:48.922Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-27T19:42:43.186Z[Etc/UTC]")
 public class GetMileageSummaryResponse {
   public static final String SERIALIZED_NAME_YEAR = "year";
   @SerializedName(SERIALIZED_NAME_YEAR)
@@ -38,6 +41,10 @@ public class GetMileageSummaryResponse {
   @SerializedName(SERIALIZED_NAME_RATE_PER_MILE)
   private BigDecimal ratePerMile;
 
+  public static final String SERIALIZED_NAME_RATES = "rates";
+  @SerializedName(SERIALIZED_NAME_RATES)
+  private List<GetMileageSummaryResponseRates> rates = new ArrayList<GetMileageSummaryResponseRates>();
+
   public static final String SERIALIZED_NAME_TOTAL_MILES = "totalMiles";
   @SerializedName(SERIALIZED_NAME_TOTAL_MILES)
   private BigDecimal totalMiles;
@@ -45,6 +52,10 @@ public class GetMileageSummaryResponse {
   public static final String SERIALIZED_NAME_DEDUCTION = "deduction";
   @SerializedName(SERIALIZED_NAME_DEDUCTION)
   private BigDecimal deduction;
+
+  public static final String SERIALIZED_NAME_DEDUCTION_CENTS = "deductionCents";
+  @SerializedName(SERIALIZED_NAME_DEDUCTION_CENTS)
+  private BigDecimal deductionCents;
 
   public static final String SERIALIZED_NAME_ENTRY_COUNT = "entryCount";
   @SerializedName(SERIALIZED_NAME_ENTRY_COUNT)
@@ -99,6 +110,34 @@ public class GetMileageSummaryResponse {
   }
 
 
+  public GetMileageSummaryResponse rates(List<GetMileageSummaryResponseRates> rates) {
+    
+    this.rates = rates;
+    return this;
+  }
+
+  public GetMileageSummaryResponse addRatesItem(GetMileageSummaryResponseRates ratesItem) {
+    this.rates.add(ratesItem);
+    return this;
+  }
+
+   /**
+   * Get rates
+   * @return rates
+  **/
+  @javax.annotation.Nonnull
+  @ApiModelProperty(required = true, value = "")
+
+  public List<GetMileageSummaryResponseRates> getRates() {
+    return rates;
+  }
+
+
+  public void setRates(List<GetMileageSummaryResponseRates> rates) {
+    this.rates = rates;
+  }
+
+
   public GetMileageSummaryResponse totalMiles(BigDecimal totalMiles) {
     
     this.totalMiles = totalMiles;
@@ -145,6 +184,29 @@ public class GetMileageSummaryResponse {
   }
 
 
+  public GetMileageSummaryResponse deductionCents(BigDecimal deductionCents) {
+    
+    this.deductionCents = deductionCents;
+    return this;
+  }
+
+   /**
+   * Get deductionCents
+   * @return deductionCents
+  **/
+  @javax.annotation.Nonnull
+  @ApiModelProperty(required = true, value = "")
+
+  public BigDecimal getDeductionCents() {
+    return deductionCents;
+  }
+
+
+  public void setDeductionCents(BigDecimal deductionCents) {
+    this.deductionCents = deductionCents;
+  }
+
+
   public GetMileageSummaryResponse entryCount(BigDecimal entryCount) {
     
     this.entryCount = entryCount;
@@ -179,14 +241,16 @@ public class GetMileageSummaryResponse {
     GetMileageSummaryResponse getMileageSummaryResponse = (GetMileageSummaryResponse) o;
     return Objects.equals(this.year, getMileageSummaryResponse.year) &&
         Objects.equals(this.ratePerMile, getMileageSummaryResponse.ratePerMile) &&
+        Objects.equals(this.rates, getMileageSummaryResponse.rates) &&
         Objects.equals(this.totalMiles, getMileageSummaryResponse.totalMiles) &&
         Objects.equals(this.deduction, getMileageSummaryResponse.deduction) &&
+        Objects.equals(this.deductionCents, getMileageSummaryResponse.deductionCents) &&
         Objects.equals(this.entryCount, getMileageSummaryResponse.entryCount);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(year, ratePerMile, totalMiles, deduction, entryCount);
+    return Objects.hash(year, ratePerMile, rates, totalMiles, deduction, deductionCents, entryCount);
   }
 
   @Override
@@ -195,8 +259,10 @@ public class GetMileageSummaryResponse {
     sb.append("class GetMileageSummaryResponse {\n");
     sb.append("    year: ").append(toIndentedString(year)).append("\n");
     sb.append("    ratePerMile: ").append(toIndentedString(ratePerMile)).append("\n");
+    sb.append("    rates: ").append(toIndentedString(rates)).append("\n");
     sb.append("    totalMiles: ").append(toIndentedString(totalMiles)).append("\n");
     sb.append("    deduction: ").append(toIndentedString(deduction)).append("\n");
+    sb.append("    deductionCents: ").append(toIndentedString(deductionCents)).append("\n");
     sb.append("    entryCount: ").append(toIndentedString(entryCount)).append("\n");
     sb.append("}");
     return sb.toString();

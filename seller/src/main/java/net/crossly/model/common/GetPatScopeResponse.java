@@ -25,27 +25,27 @@ import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-import net.crossly.model.common.GetPatScopeResponseScopes;
+import net.crossly.model.app.ListAppsItemCapabilities;
 
 /**
  * GetPatScopeResponse
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-11T23:44:48.922Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-27T19:42:43.186Z[Etc/UTC]")
 public class GetPatScopeResponse {
   public static final String SERIALIZED_NAME_SCOPES = "scopes";
   @SerializedName(SERIALIZED_NAME_SCOPES)
-  private List<GetPatScopeResponseScopes> scopes = new ArrayList<GetPatScopeResponseScopes>();
+  private List<ListAppsItemCapabilities> scopes = new ArrayList<ListAppsItemCapabilities>();
 
   public GetPatScopeResponse() { 
   }
 
-  public GetPatScopeResponse scopes(List<GetPatScopeResponseScopes> scopes) {
+  public GetPatScopeResponse scopes(List<ListAppsItemCapabilities> scopes) {
     
     this.scopes = scopes;
     return this;
   }
 
-  public GetPatScopeResponse addScopesItem(GetPatScopeResponseScopes scopesItem) {
+  public GetPatScopeResponse addScopesItem(ListAppsItemCapabilities scopesItem) {
     this.scopes.add(scopesItem);
     return this;
   }
@@ -57,12 +57,12 @@ public class GetPatScopeResponse {
   @javax.annotation.Nonnull
   @ApiModelProperty(required = true, value = "")
 
-  public List<GetPatScopeResponseScopes> getScopes() {
+  public List<ListAppsItemCapabilities> getScopes() {
     return scopes;
   }
 
 
-  public void setScopes(List<GetPatScopeResponseScopes> scopes) {
+  public void setScopes(List<ListAppsItemCapabilities> scopes) {
     this.scopes = scopes;
   }
 

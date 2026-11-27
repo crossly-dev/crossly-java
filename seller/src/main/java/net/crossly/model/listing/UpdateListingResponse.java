@@ -25,19 +25,56 @@ import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import net.crossly.model.listing.CreateListingResponseWarnings;
 import net.crossly.model.listing.UpdateListingResponseJobs;
+import org.openapitools.jackson.nullable.JsonNullable;
 
 /**
  * UpdateListingResponse
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-11T23:44:48.922Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-27T19:42:43.186Z[Etc/UTC]")
 public class UpdateListingResponse {
+  public static final String SERIALIZED_NAME_WARNINGS = "warnings";
+  @SerializedName(SERIALIZED_NAME_WARNINGS)
+  private List<CreateListingResponseWarnings> warnings = null;
+
   public static final String SERIALIZED_NAME_JOBS = "jobs";
   @SerializedName(SERIALIZED_NAME_JOBS)
   private List<UpdateListingResponseJobs> jobs = new ArrayList<UpdateListingResponseJobs>();
 
   public UpdateListingResponse() { 
   }
+
+  public UpdateListingResponse warnings(List<CreateListingResponseWarnings> warnings) {
+    
+    this.warnings = warnings;
+    return this;
+  }
+
+  public UpdateListingResponse addWarningsItem(CreateListingResponseWarnings warningsItem) {
+    if (this.warnings == null) {
+      this.warnings = new ArrayList<CreateListingResponseWarnings>();
+    }
+    this.warnings.add(warningsItem);
+    return this;
+  }
+
+   /**
+   * Get warnings
+   * @return warnings
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public List<CreateListingResponseWarnings> getWarnings() {
+    return warnings;
+  }
+
+
+  public void setWarnings(List<CreateListingResponseWarnings> warnings) {
+    this.warnings = warnings;
+  }
+
 
   public UpdateListingResponse jobs(List<UpdateListingResponseJobs> jobs) {
     
@@ -76,18 +113,31 @@ public class UpdateListingResponse {
       return false;
     }
     UpdateListingResponse updateListingResponse = (UpdateListingResponse) o;
-    return Objects.equals(this.jobs, updateListingResponse.jobs);
+    return Objects.equals(this.warnings, updateListingResponse.warnings) &&
+        Objects.equals(this.jobs, updateListingResponse.jobs);
+  }
+
+  private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+    return a == b || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(jobs);
+    return Objects.hash(warnings, jobs);
+  }
+
+  private static <T> int hashCodeNullable(JsonNullable<T> a) {
+    if (a == null) {
+      return 1;
+    }
+    return a.isPresent() ? Arrays.deepHashCode(new Object[]{a.get()}) : 31;
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class UpdateListingResponse {\n");
+    sb.append("    warnings: ").append(toIndentedString(warnings)).append("\n");
     sb.append("    jobs: ").append(toIndentedString(jobs)).append("\n");
     sb.append("}");
     return sb.toString();

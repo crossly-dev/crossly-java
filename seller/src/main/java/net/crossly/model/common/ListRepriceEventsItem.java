@@ -30,7 +30,7 @@ import org.threeten.bp.OffsetDateTime;
 /**
  * ListRepriceEventsItem
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-11T23:44:48.922Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-27T19:42:43.186Z[Etc/UTC]")
 public class ListRepriceEventsItem {
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
@@ -44,10 +44,6 @@ public class ListRepriceEventsItem {
   @SerializedName(SERIALIZED_NAME_USER_ID)
   private String userId;
 
-  public static final String SERIALIZED_NAME_REASON = "reason";
-  @SerializedName(SERIALIZED_NAME_REASON)
-  private String reason;
-
   public static final String SERIALIZED_NAME_PLATFORM = "platform";
   @SerializedName(SERIALIZED_NAME_PLATFORM)
   private String platform;
@@ -60,17 +56,13 @@ public class ListRepriceEventsItem {
   @SerializedName(SERIALIZED_NAME_PLATFORM_LISTING_ID)
   private String platformListingId;
 
-  public static final String SERIALIZED_NAME_DECIDED_AT = "decidedAt";
-  @SerializedName(SERIALIZED_NAME_DECIDED_AT)
-  private OffsetDateTime decidedAt;
+  public static final String SERIALIZED_NAME_REASON = "reason";
+  @SerializedName(SERIALIZED_NAME_REASON)
+  private String reason;
 
   public static final String SERIALIZED_NAME_RULE_ID = "ruleId";
   @SerializedName(SERIALIZED_NAME_RULE_ID)
   private String ruleId;
-
-  public static final String SERIALIZED_NAME_FLOOR_CENTS = "floorCents";
-  @SerializedName(SERIALIZED_NAME_FLOOR_CENTS)
-  private BigDecimal floorCents;
 
   public static final String SERIALIZED_NAME_STRATEGY = "strategy";
   @SerializedName(SERIALIZED_NAME_STRATEGY)
@@ -88,6 +80,10 @@ public class ListRepriceEventsItem {
   @SerializedName(SERIALIZED_NAME_CHANGED)
   private Boolean changed;
 
+  public static final String SERIALIZED_NAME_FLOOR_CENTS = "floorCents";
+  @SerializedName(SERIALIZED_NAME_FLOOR_CENTS)
+  private BigDecimal floorCents;
+
   public static final String SERIALIZED_NAME_FLOOR_WAS_NET = "floorWasNet";
   @SerializedName(SERIALIZED_NAME_FLOOR_WAS_NET)
   private Boolean floorWasNet;
@@ -95,6 +91,10 @@ public class ListRepriceEventsItem {
   public static final String SERIALIZED_NAME_APPROVAL = "approval";
   @SerializedName(SERIALIZED_NAME_APPROVAL)
   private String approval;
+
+  public static final String SERIALIZED_NAME_DECIDED_AT = "decidedAt";
+  @SerializedName(SERIALIZED_NAME_DECIDED_AT)
+  private OffsetDateTime decidedAt;
 
   public ListRepriceEventsItem() { 
   }
@@ -168,29 +168,6 @@ public class ListRepriceEventsItem {
   }
 
 
-  public ListRepriceEventsItem reason(String reason) {
-    
-    this.reason = reason;
-    return this;
-  }
-
-   /**
-   * Get reason
-   * @return reason
-  **/
-  @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "")
-
-  public String getReason() {
-    return reason;
-  }
-
-
-  public void setReason(String reason) {
-    this.reason = reason;
-  }
-
-
   public ListRepriceEventsItem platform(String platform) {
     
     this.platform = platform;
@@ -260,26 +237,26 @@ public class ListRepriceEventsItem {
   }
 
 
-  public ListRepriceEventsItem decidedAt(OffsetDateTime decidedAt) {
+  public ListRepriceEventsItem reason(String reason) {
     
-    this.decidedAt = decidedAt;
+    this.reason = reason;
     return this;
   }
 
    /**
-   * Get decidedAt
-   * @return decidedAt
+   * Get reason
+   * @return reason
   **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
+  @javax.annotation.Nonnull
+  @ApiModelProperty(required = true, value = "")
 
-  public OffsetDateTime getDecidedAt() {
-    return decidedAt;
+  public String getReason() {
+    return reason;
   }
 
 
-  public void setDecidedAt(OffsetDateTime decidedAt) {
-    this.decidedAt = decidedAt;
+  public void setReason(String reason) {
+    this.reason = reason;
   }
 
 
@@ -303,29 +280,6 @@ public class ListRepriceEventsItem {
 
   public void setRuleId(String ruleId) {
     this.ruleId = ruleId;
-  }
-
-
-  public ListRepriceEventsItem floorCents(BigDecimal floorCents) {
-    
-    this.floorCents = floorCents;
-    return this;
-  }
-
-   /**
-   * Get floorCents
-   * @return floorCents
-  **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
-
-  public BigDecimal getFloorCents() {
-    return floorCents;
-  }
-
-
-  public void setFloorCents(BigDecimal floorCents) {
-    this.floorCents = floorCents;
   }
 
 
@@ -421,6 +375,29 @@ public class ListRepriceEventsItem {
   }
 
 
+  public ListRepriceEventsItem floorCents(BigDecimal floorCents) {
+    
+    this.floorCents = floorCents;
+    return this;
+  }
+
+   /**
+   * Get floorCents
+   * @return floorCents
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public BigDecimal getFloorCents() {
+    return floorCents;
+  }
+
+
+  public void setFloorCents(BigDecimal floorCents) {
+    this.floorCents = floorCents;
+  }
+
+
   public ListRepriceEventsItem floorWasNet(Boolean floorWasNet) {
     
     this.floorWasNet = floorWasNet;
@@ -467,6 +444,29 @@ public class ListRepriceEventsItem {
   }
 
 
+  public ListRepriceEventsItem decidedAt(OffsetDateTime decidedAt) {
+    
+    this.decidedAt = decidedAt;
+    return this;
+  }
+
+   /**
+   * Get decidedAt
+   * @return decidedAt
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public OffsetDateTime getDecidedAt() {
+    return decidedAt;
+  }
+
+
+  public void setDecidedAt(OffsetDateTime decidedAt) {
+    this.decidedAt = decidedAt;
+  }
+
+
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -479,19 +479,19 @@ public class ListRepriceEventsItem {
     return Objects.equals(this.id, listRepriceEventsItem.id) &&
         Objects.equals(this.createdAt, listRepriceEventsItem.createdAt) &&
         Objects.equals(this.userId, listRepriceEventsItem.userId) &&
-        Objects.equals(this.reason, listRepriceEventsItem.reason) &&
         Objects.equals(this.platform, listRepriceEventsItem.platform) &&
         Objects.equals(this.listingId, listRepriceEventsItem.listingId) &&
         Objects.equals(this.platformListingId, listRepriceEventsItem.platformListingId) &&
-        Objects.equals(this.decidedAt, listRepriceEventsItem.decidedAt) &&
+        Objects.equals(this.reason, listRepriceEventsItem.reason) &&
         Objects.equals(this.ruleId, listRepriceEventsItem.ruleId) &&
-        Objects.equals(this.floorCents, listRepriceEventsItem.floorCents) &&
         Objects.equals(this.strategy, listRepriceEventsItem.strategy) &&
         Objects.equals(this.oldPriceCents, listRepriceEventsItem.oldPriceCents) &&
         Objects.equals(this.newPriceCents, listRepriceEventsItem.newPriceCents) &&
         Objects.equals(this.changed, listRepriceEventsItem.changed) &&
+        Objects.equals(this.floorCents, listRepriceEventsItem.floorCents) &&
         Objects.equals(this.floorWasNet, listRepriceEventsItem.floorWasNet) &&
-        Objects.equals(this.approval, listRepriceEventsItem.approval);
+        Objects.equals(this.approval, listRepriceEventsItem.approval) &&
+        Objects.equals(this.decidedAt, listRepriceEventsItem.decidedAt);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -500,7 +500,7 @@ public class ListRepriceEventsItem {
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, createdAt, userId, reason, platform, listingId, platformListingId, decidedAt, ruleId, floorCents, strategy, oldPriceCents, newPriceCents, changed, floorWasNet, approval);
+    return Objects.hash(id, createdAt, userId, platform, listingId, platformListingId, reason, ruleId, strategy, oldPriceCents, newPriceCents, changed, floorCents, floorWasNet, approval, decidedAt);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -517,19 +517,19 @@ public class ListRepriceEventsItem {
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    createdAt: ").append(toIndentedString(createdAt)).append("\n");
     sb.append("    userId: ").append(toIndentedString(userId)).append("\n");
-    sb.append("    reason: ").append(toIndentedString(reason)).append("\n");
     sb.append("    platform: ").append(toIndentedString(platform)).append("\n");
     sb.append("    listingId: ").append(toIndentedString(listingId)).append("\n");
     sb.append("    platformListingId: ").append(toIndentedString(platformListingId)).append("\n");
-    sb.append("    decidedAt: ").append(toIndentedString(decidedAt)).append("\n");
+    sb.append("    reason: ").append(toIndentedString(reason)).append("\n");
     sb.append("    ruleId: ").append(toIndentedString(ruleId)).append("\n");
-    sb.append("    floorCents: ").append(toIndentedString(floorCents)).append("\n");
     sb.append("    strategy: ").append(toIndentedString(strategy)).append("\n");
     sb.append("    oldPriceCents: ").append(toIndentedString(oldPriceCents)).append("\n");
     sb.append("    newPriceCents: ").append(toIndentedString(newPriceCents)).append("\n");
     sb.append("    changed: ").append(toIndentedString(changed)).append("\n");
+    sb.append("    floorCents: ").append(toIndentedString(floorCents)).append("\n");
     sb.append("    floorWasNet: ").append(toIndentedString(floorWasNet)).append("\n");
     sb.append("    approval: ").append(toIndentedString(approval)).append("\n");
+    sb.append("    decidedAt: ").append(toIndentedString(decidedAt)).append("\n");
     sb.append("}");
     return sb.toString();
   }

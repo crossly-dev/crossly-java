@@ -28,7 +28,7 @@ import java.math.BigDecimal;
 /**
  * GetAnalyticDashboardResponseAvgSalePriceByPlatform
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-11T23:44:48.922Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-27T19:42:43.186Z[Etc/UTC]")
 public class GetAnalyticDashboardResponseAvgSalePriceByPlatform {
   public static final String SERIALIZED_NAME_PLATFORM = "platform";
   @SerializedName(SERIALIZED_NAME_PLATFORM)
@@ -40,7 +40,7 @@ public class GetAnalyticDashboardResponseAvgSalePriceByPlatform {
 
   public static final String SERIALIZED_NAME_COUNT = "count";
   @SerializedName(SERIALIZED_NAME_COUNT)
-  private String count;
+  private BigDecimal count;
 
   public GetAnalyticDashboardResponseAvgSalePriceByPlatform() { 
   }
@@ -91,7 +91,7 @@ public class GetAnalyticDashboardResponseAvgSalePriceByPlatform {
   }
 
 
-  public GetAnalyticDashboardResponseAvgSalePriceByPlatform count(String count) {
+  public GetAnalyticDashboardResponseAvgSalePriceByPlatform count(BigDecimal count) {
     
     this.count = count;
     return this;
@@ -104,12 +104,12 @@ public class GetAnalyticDashboardResponseAvgSalePriceByPlatform {
   @javax.annotation.Nonnull
   @ApiModelProperty(required = true, value = "")
 
-  public String getCount() {
+  public BigDecimal getCount() {
     return count;
   }
 
 
-  public void setCount(String count) {
+  public void setCount(BigDecimal count) {
     this.count = count;
   }
 

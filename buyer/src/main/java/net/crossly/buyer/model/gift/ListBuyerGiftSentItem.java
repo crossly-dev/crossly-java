@@ -28,47 +28,47 @@ import org.openapitools.jackson.nullable.JsonNullable;
 /**
  * ListBuyerGiftSentItem
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-11T23:47:29.843Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-27T19:58:46.962Z[Etc/UTC]")
 public class ListBuyerGiftSentItem {
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
   private String id;
 
-  public static final String SERIALIZED_NAME_CREATED_AT = "createdAt";
-  @SerializedName(SERIALIZED_NAME_CREATED_AT)
-  private String createdAt;
-
-  public static final String SERIALIZED_NAME_STATUS = "status";
-  @SerializedName(SERIALIZED_NAME_STATUS)
-  private String status;
-
-  public static final String SERIALIZED_NAME_URL = "url";
-  @SerializedName(SERIALIZED_NAME_URL)
-  private String url;
-
-  public static final String SERIALIZED_NAME_OPENED_AT = "openedAt";
-  @SerializedName(SERIALIZED_NAME_OPENED_AT)
-  private String openedAt;
-
-  public static final String SERIALIZED_NAME_REVEALED_AT = "revealedAt";
-  @SerializedName(SERIALIZED_NAME_REVEALED_AT)
-  private String revealedAt;
+  public static final String SERIALIZED_NAME_RECIPIENT_NAME = "recipientName";
+  @SerializedName(SERIALIZED_NAME_RECIPIENT_NAME)
+  private String recipientName;
 
   public static final String SERIALIZED_NAME_RECIPIENT_EMAIL = "recipientEmail";
   @SerializedName(SERIALIZED_NAME_RECIPIENT_EMAIL)
   private String recipientEmail;
 
-  public static final String SERIALIZED_NAME_RECIPIENT_NAME = "recipientName";
-  @SerializedName(SERIALIZED_NAME_RECIPIENT_NAME)
-  private String recipientName;
+  public static final String SERIALIZED_NAME_STATUS = "status";
+  @SerializedName(SERIALIZED_NAME_STATUS)
+  private String status;
 
   public static final String SERIALIZED_NAME_TEASER_SENT_AT = "teaserSentAt";
   @SerializedName(SERIALIZED_NAME_TEASER_SENT_AT)
   private String teaserSentAt;
 
+  public static final String SERIALIZED_NAME_REVEALED_AT = "revealedAt";
+  @SerializedName(SERIALIZED_NAME_REVEALED_AT)
+  private String revealedAt;
+
+  public static final String SERIALIZED_NAME_OPENED_AT = "openedAt";
+  @SerializedName(SERIALIZED_NAME_OPENED_AT)
+  private String openedAt;
+
   public static final String SERIALIZED_NAME_THANKS_MESSAGE = "thanksMessage";
   @SerializedName(SERIALIZED_NAME_THANKS_MESSAGE)
   private String thanksMessage;
+
+  public static final String SERIALIZED_NAME_CREATED_AT = "createdAt";
+  @SerializedName(SERIALIZED_NAME_CREATED_AT)
+  private String createdAt;
+
+  public static final String SERIALIZED_NAME_URL = "url";
+  @SerializedName(SERIALIZED_NAME_URL)
+  private String url;
 
   public ListBuyerGiftSentItem() { 
   }
@@ -96,118 +96,26 @@ public class ListBuyerGiftSentItem {
   }
 
 
-  public ListBuyerGiftSentItem createdAt(String createdAt) {
+  public ListBuyerGiftSentItem recipientName(String recipientName) {
     
-    this.createdAt = createdAt;
+    this.recipientName = recipientName;
     return this;
   }
 
    /**
-   * Get createdAt
-   * @return createdAt
+   * Get recipientName
+   * @return recipientName
   **/
   @javax.annotation.Nonnull
   @ApiModelProperty(required = true, value = "")
 
-  public String getCreatedAt() {
-    return createdAt;
+  public String getRecipientName() {
+    return recipientName;
   }
 
 
-  public void setCreatedAt(String createdAt) {
-    this.createdAt = createdAt;
-  }
-
-
-  public ListBuyerGiftSentItem status(String status) {
-    
-    this.status = status;
-    return this;
-  }
-
-   /**
-   * Get status
-   * @return status
-  **/
-  @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "")
-
-  public String getStatus() {
-    return status;
-  }
-
-
-  public void setStatus(String status) {
-    this.status = status;
-  }
-
-
-  public ListBuyerGiftSentItem url(String url) {
-    
-    this.url = url;
-    return this;
-  }
-
-   /**
-   * Get url
-   * @return url
-  **/
-  @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "")
-
-  public String getUrl() {
-    return url;
-  }
-
-
-  public void setUrl(String url) {
-    this.url = url;
-  }
-
-
-  public ListBuyerGiftSentItem openedAt(String openedAt) {
-    
-    this.openedAt = openedAt;
-    return this;
-  }
-
-   /**
-   * Get openedAt
-   * @return openedAt
-  **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
-
-  public String getOpenedAt() {
-    return openedAt;
-  }
-
-
-  public void setOpenedAt(String openedAt) {
-    this.openedAt = openedAt;
-  }
-
-
-  public ListBuyerGiftSentItem revealedAt(String revealedAt) {
-    
-    this.revealedAt = revealedAt;
-    return this;
-  }
-
-   /**
-   * Get revealedAt
-   * @return revealedAt
-  **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
-
-  public String getRevealedAt() {
-    return revealedAt;
-  }
-
-
-  public void setRevealedAt(String revealedAt) {
-    this.revealedAt = revealedAt;
+  public void setRecipientName(String recipientName) {
+    this.recipientName = recipientName;
   }
 
 
@@ -234,26 +142,26 @@ public class ListBuyerGiftSentItem {
   }
 
 
-  public ListBuyerGiftSentItem recipientName(String recipientName) {
+  public ListBuyerGiftSentItem status(String status) {
     
-    this.recipientName = recipientName;
+    this.status = status;
     return this;
   }
 
    /**
-   * Get recipientName
-   * @return recipientName
+   * Get status
+   * @return status
   **/
   @javax.annotation.Nonnull
   @ApiModelProperty(required = true, value = "")
 
-  public String getRecipientName() {
-    return recipientName;
+  public String getStatus() {
+    return status;
   }
 
 
-  public void setRecipientName(String recipientName) {
-    this.recipientName = recipientName;
+  public void setStatus(String status) {
+    this.status = status;
   }
 
 
@@ -280,6 +188,52 @@ public class ListBuyerGiftSentItem {
   }
 
 
+  public ListBuyerGiftSentItem revealedAt(String revealedAt) {
+    
+    this.revealedAt = revealedAt;
+    return this;
+  }
+
+   /**
+   * Get revealedAt
+   * @return revealedAt
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public String getRevealedAt() {
+    return revealedAt;
+  }
+
+
+  public void setRevealedAt(String revealedAt) {
+    this.revealedAt = revealedAt;
+  }
+
+
+  public ListBuyerGiftSentItem openedAt(String openedAt) {
+    
+    this.openedAt = openedAt;
+    return this;
+  }
+
+   /**
+   * Get openedAt
+   * @return openedAt
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public String getOpenedAt() {
+    return openedAt;
+  }
+
+
+  public void setOpenedAt(String openedAt) {
+    this.openedAt = openedAt;
+  }
+
+
   public ListBuyerGiftSentItem thanksMessage(String thanksMessage) {
     
     this.thanksMessage = thanksMessage;
@@ -303,6 +257,52 @@ public class ListBuyerGiftSentItem {
   }
 
 
+  public ListBuyerGiftSentItem createdAt(String createdAt) {
+    
+    this.createdAt = createdAt;
+    return this;
+  }
+
+   /**
+   * Get createdAt
+   * @return createdAt
+  **/
+  @javax.annotation.Nonnull
+  @ApiModelProperty(required = true, value = "")
+
+  public String getCreatedAt() {
+    return createdAt;
+  }
+
+
+  public void setCreatedAt(String createdAt) {
+    this.createdAt = createdAt;
+  }
+
+
+  public ListBuyerGiftSentItem url(String url) {
+    
+    this.url = url;
+    return this;
+  }
+
+   /**
+   * Get url
+   * @return url
+  **/
+  @javax.annotation.Nonnull
+  @ApiModelProperty(required = true, value = "")
+
+  public String getUrl() {
+    return url;
+  }
+
+
+  public void setUrl(String url) {
+    this.url = url;
+  }
+
+
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -313,15 +313,15 @@ public class ListBuyerGiftSentItem {
     }
     ListBuyerGiftSentItem listBuyerGiftSentItem = (ListBuyerGiftSentItem) o;
     return Objects.equals(this.id, listBuyerGiftSentItem.id) &&
-        Objects.equals(this.createdAt, listBuyerGiftSentItem.createdAt) &&
-        Objects.equals(this.status, listBuyerGiftSentItem.status) &&
-        Objects.equals(this.url, listBuyerGiftSentItem.url) &&
-        Objects.equals(this.openedAt, listBuyerGiftSentItem.openedAt) &&
-        Objects.equals(this.revealedAt, listBuyerGiftSentItem.revealedAt) &&
-        Objects.equals(this.recipientEmail, listBuyerGiftSentItem.recipientEmail) &&
         Objects.equals(this.recipientName, listBuyerGiftSentItem.recipientName) &&
+        Objects.equals(this.recipientEmail, listBuyerGiftSentItem.recipientEmail) &&
+        Objects.equals(this.status, listBuyerGiftSentItem.status) &&
         Objects.equals(this.teaserSentAt, listBuyerGiftSentItem.teaserSentAt) &&
-        Objects.equals(this.thanksMessage, listBuyerGiftSentItem.thanksMessage);
+        Objects.equals(this.revealedAt, listBuyerGiftSentItem.revealedAt) &&
+        Objects.equals(this.openedAt, listBuyerGiftSentItem.openedAt) &&
+        Objects.equals(this.thanksMessage, listBuyerGiftSentItem.thanksMessage) &&
+        Objects.equals(this.createdAt, listBuyerGiftSentItem.createdAt) &&
+        Objects.equals(this.url, listBuyerGiftSentItem.url);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -330,7 +330,7 @@ public class ListBuyerGiftSentItem {
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, createdAt, status, url, openedAt, revealedAt, recipientEmail, recipientName, teaserSentAt, thanksMessage);
+    return Objects.hash(id, recipientName, recipientEmail, status, teaserSentAt, revealedAt, openedAt, thanksMessage, createdAt, url);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -345,15 +345,15 @@ public class ListBuyerGiftSentItem {
     StringBuilder sb = new StringBuilder();
     sb.append("class ListBuyerGiftSentItem {\n");
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
-    sb.append("    createdAt: ").append(toIndentedString(createdAt)).append("\n");
-    sb.append("    status: ").append(toIndentedString(status)).append("\n");
-    sb.append("    url: ").append(toIndentedString(url)).append("\n");
-    sb.append("    openedAt: ").append(toIndentedString(openedAt)).append("\n");
-    sb.append("    revealedAt: ").append(toIndentedString(revealedAt)).append("\n");
-    sb.append("    recipientEmail: ").append(toIndentedString(recipientEmail)).append("\n");
     sb.append("    recipientName: ").append(toIndentedString(recipientName)).append("\n");
+    sb.append("    recipientEmail: ").append(toIndentedString(recipientEmail)).append("\n");
+    sb.append("    status: ").append(toIndentedString(status)).append("\n");
     sb.append("    teaserSentAt: ").append(toIndentedString(teaserSentAt)).append("\n");
+    sb.append("    revealedAt: ").append(toIndentedString(revealedAt)).append("\n");
+    sb.append("    openedAt: ").append(toIndentedString(openedAt)).append("\n");
     sb.append("    thanksMessage: ").append(toIndentedString(thanksMessage)).append("\n");
+    sb.append("    createdAt: ").append(toIndentedString(createdAt)).append("\n");
+    sb.append("    url: ").append(toIndentedString(url)).append("\n");
     sb.append("}");
     return sb.toString();
   }

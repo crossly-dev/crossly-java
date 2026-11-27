@@ -27,15 +27,11 @@ import java.io.IOException;
 /**
  * GetOauthInitResponse
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-11T23:44:48.922Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-27T19:42:43.186Z[Etc/UTC]")
 public class GetOauthInitResponse {
   public static final String SERIALIZED_NAME_URL = "url";
   @SerializedName(SERIALIZED_NAME_URL)
   private String url;
-
-  public static final String SERIALIZED_NAME_CORRELATION_ID = "correlationId";
-  @SerializedName(SERIALIZED_NAME_CORRELATION_ID)
-  private String correlationId;
 
   public static final String SERIALIZED_NAME_ONE_SHOT = "oneShot";
   @SerializedName(SERIALIZED_NAME_ONE_SHOT)
@@ -76,29 +72,6 @@ public class GetOauthInitResponse {
 
   public void setUrl(String url) {
     this.url = url;
-  }
-
-
-  public GetOauthInitResponse correlationId(String correlationId) {
-    
-    this.correlationId = correlationId;
-    return this;
-  }
-
-   /**
-   * Get correlationId
-   * @return correlationId
-  **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
-
-  public String getCorrelationId() {
-    return correlationId;
-  }
-
-
-  public void setCorrelationId(String correlationId) {
-    this.correlationId = correlationId;
   }
 
 
@@ -204,7 +177,6 @@ public class GetOauthInitResponse {
     }
     GetOauthInitResponse getOauthInitResponse = (GetOauthInitResponse) o;
     return Objects.equals(this.url, getOauthInitResponse.url) &&
-        Objects.equals(this.correlationId, getOauthInitResponse.correlationId) &&
         Objects.equals(this.oneShot, getOauthInitResponse.oneShot) &&
         Objects.equals(this.status, getOauthInitResponse.status) &&
         Objects.equals(this.requestUrl, getOauthInitResponse.requestUrl) &&
@@ -213,7 +185,7 @@ public class GetOauthInitResponse {
 
   @Override
   public int hashCode() {
-    return Objects.hash(url, correlationId, oneShot, status, requestUrl, message);
+    return Objects.hash(url, oneShot, status, requestUrl, message);
   }
 
   @Override
@@ -221,7 +193,6 @@ public class GetOauthInitResponse {
     StringBuilder sb = new StringBuilder();
     sb.append("class GetOauthInitResponse {\n");
     sb.append("    url: ").append(toIndentedString(url)).append("\n");
-    sb.append("    correlationId: ").append(toIndentedString(correlationId)).append("\n");
     sb.append("    oneShot: ").append(toIndentedString(oneShot)).append("\n");
     sb.append("    status: ").append(toIndentedString(status)).append("\n");
     sb.append("    requestUrl: ").append(toIndentedString(requestUrl)).append("\n");

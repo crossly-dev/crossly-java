@@ -26,12 +26,15 @@ import java.io.IOException;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
+import net.crossly.buyer.model.catalog.GetBuyerCatalogListingResponseDescriptionBlocksItem;
+import net.crossly.buyer.model.catalog.GetBuyerCatalogListingResponseTokenGate;
+import net.crossly.buyer.model.catalog.GetBuyerCatalogListingResponseVariants;
 import org.openapitools.jackson.nullable.JsonNullable;
 
 /**
  * GetBuyerCatalogListingResponse
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-11T23:47:29.843Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-27T19:58:46.962Z[Etc/UTC]")
 public class GetBuyerCatalogListingResponse {
   public static final String SERIALIZED_NAME_SLUG = "slug";
   @SerializedName(SERIALIZED_NAME_SLUG)
@@ -44,6 +47,10 @@ public class GetBuyerCatalogListingResponse {
   public static final String SERIALIZED_NAME_DESCRIPTION = "description";
   @SerializedName(SERIALIZED_NAME_DESCRIPTION)
   private String description;
+
+  public static final String SERIALIZED_NAME_DESCRIPTION_BLOCKS = "descriptionBlocks";
+  @SerializedName(SERIALIZED_NAME_DESCRIPTION_BLOCKS)
+  private List<GetBuyerCatalogListingResponseDescriptionBlocksItem> descriptionBlocks = new ArrayList<GetBuyerCatalogListingResponseDescriptionBlocksItem>();
 
   public static final String SERIALIZED_NAME_PRICE_CENTS = "priceCents";
   @SerializedName(SERIALIZED_NAME_PRICE_CENTS)
@@ -68,6 +75,10 @@ public class GetBuyerCatalogListingResponse {
   public static final String SERIALIZED_NAME_QUANTITY_AVAILABLE = "quantityAvailable";
   @SerializedName(SERIALIZED_NAME_QUANTITY_AVAILABLE)
   private BigDecimal quantityAvailable;
+
+  public static final String SERIALIZED_NAME_VARIANTS = "variants";
+  @SerializedName(SERIALIZED_NAME_VARIANTS)
+  private List<GetBuyerCatalogListingResponseVariants> variants = null;
 
   public static final String SERIALIZED_NAME_CONDITION = "condition";
   @SerializedName(SERIALIZED_NAME_CONDITION)
@@ -108,6 +119,10 @@ public class GetBuyerCatalogListingResponse {
   public static final String SERIALIZED_NAME_LISTED_AT = "listedAt";
   @SerializedName(SERIALIZED_NAME_LISTED_AT)
   private String listedAt;
+
+  public static final String SERIALIZED_NAME_TOKEN_GATE = "tokenGate";
+  @SerializedName(SERIALIZED_NAME_TOKEN_GATE)
+  private GetBuyerCatalogListingResponseTokenGate tokenGate;
 
   public GetBuyerCatalogListingResponse() { 
   }
@@ -178,6 +193,34 @@ public class GetBuyerCatalogListingResponse {
 
   public void setDescription(String description) {
     this.description = description;
+  }
+
+
+  public GetBuyerCatalogListingResponse descriptionBlocks(List<GetBuyerCatalogListingResponseDescriptionBlocksItem> descriptionBlocks) {
+    
+    this.descriptionBlocks = descriptionBlocks;
+    return this;
+  }
+
+  public GetBuyerCatalogListingResponse addDescriptionBlocksItem(GetBuyerCatalogListingResponseDescriptionBlocksItem descriptionBlocksItem) {
+    this.descriptionBlocks.add(descriptionBlocksItem);
+    return this;
+  }
+
+   /**
+   * Get descriptionBlocks
+   * @return descriptionBlocks
+  **/
+  @javax.annotation.Nonnull
+  @ApiModelProperty(required = true, value = "")
+
+  public List<GetBuyerCatalogListingResponseDescriptionBlocksItem> getDescriptionBlocks() {
+    return descriptionBlocks;
+  }
+
+
+  public void setDescriptionBlocks(List<GetBuyerCatalogListingResponseDescriptionBlocksItem> descriptionBlocks) {
+    this.descriptionBlocks = descriptionBlocks;
   }
 
 
@@ -316,6 +359,37 @@ public class GetBuyerCatalogListingResponse {
 
   public void setQuantityAvailable(BigDecimal quantityAvailable) {
     this.quantityAvailable = quantityAvailable;
+  }
+
+
+  public GetBuyerCatalogListingResponse variants(List<GetBuyerCatalogListingResponseVariants> variants) {
+    
+    this.variants = variants;
+    return this;
+  }
+
+  public GetBuyerCatalogListingResponse addVariantsItem(GetBuyerCatalogListingResponseVariants variantsItem) {
+    if (this.variants == null) {
+      this.variants = new ArrayList<GetBuyerCatalogListingResponseVariants>();
+    }
+    this.variants.add(variantsItem);
+    return this;
+  }
+
+   /**
+   * Get variants
+   * @return variants
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public List<GetBuyerCatalogListingResponseVariants> getVariants() {
+    return variants;
+  }
+
+
+  public void setVariants(List<GetBuyerCatalogListingResponseVariants> variants) {
+    this.variants = variants;
   }
 
 
@@ -562,6 +636,29 @@ public class GetBuyerCatalogListingResponse {
   }
 
 
+  public GetBuyerCatalogListingResponse tokenGate(GetBuyerCatalogListingResponseTokenGate tokenGate) {
+    
+    this.tokenGate = tokenGate;
+    return this;
+  }
+
+   /**
+   * Get tokenGate
+   * @return tokenGate
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public GetBuyerCatalogListingResponseTokenGate getTokenGate() {
+    return tokenGate;
+  }
+
+
+  public void setTokenGate(GetBuyerCatalogListingResponseTokenGate tokenGate) {
+    this.tokenGate = tokenGate;
+  }
+
+
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -574,12 +671,14 @@ public class GetBuyerCatalogListingResponse {
     return Objects.equals(this.slug, getBuyerCatalogListingResponse.slug) &&
         Objects.equals(this.title, getBuyerCatalogListingResponse.title) &&
         Objects.equals(this.description, getBuyerCatalogListingResponse.description) &&
+        Objects.equals(this.descriptionBlocks, getBuyerCatalogListingResponse.descriptionBlocks) &&
         Objects.equals(this.priceCents, getBuyerCatalogListingResponse.priceCents) &&
         Objects.equals(this.compareAtCents, getBuyerCatalogListingResponse.compareAtCents) &&
         Objects.equals(this.currency, getBuyerCatalogListingResponse.currency) &&
         Objects.equals(this.status, getBuyerCatalogListingResponse.status) &&
         Objects.equals(this.available, getBuyerCatalogListingResponse.available) &&
         Objects.equals(this.quantityAvailable, getBuyerCatalogListingResponse.quantityAvailable) &&
+        Objects.equals(this.variants, getBuyerCatalogListingResponse.variants) &&
         Objects.equals(this.condition, getBuyerCatalogListingResponse.condition) &&
         Objects.equals(this.brand, getBuyerCatalogListingResponse.brand) &&
         Objects.equals(this.size, getBuyerCatalogListingResponse.size) &&
@@ -589,7 +688,8 @@ public class GetBuyerCatalogListingResponse {
         Objects.equals(this.images, getBuyerCatalogListingResponse.images) &&
         Objects.equals(this.sellerUsername, getBuyerCatalogListingResponse.sellerUsername) &&
         Objects.equals(this.sellerDisplayName, getBuyerCatalogListingResponse.sellerDisplayName) &&
-        Objects.equals(this.listedAt, getBuyerCatalogListingResponse.listedAt);
+        Objects.equals(this.listedAt, getBuyerCatalogListingResponse.listedAt) &&
+        Objects.equals(this.tokenGate, getBuyerCatalogListingResponse.tokenGate);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -598,7 +698,7 @@ public class GetBuyerCatalogListingResponse {
 
   @Override
   public int hashCode() {
-    return Objects.hash(slug, title, description, priceCents, compareAtCents, currency, status, available, quantityAvailable, condition, brand, size, color, categoryMain, categorySub, images, sellerUsername, sellerDisplayName, listedAt);
+    return Objects.hash(slug, title, description, descriptionBlocks, priceCents, compareAtCents, currency, status, available, quantityAvailable, variants, condition, brand, size, color, categoryMain, categorySub, images, sellerUsername, sellerDisplayName, listedAt, tokenGate);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -615,12 +715,14 @@ public class GetBuyerCatalogListingResponse {
     sb.append("    slug: ").append(toIndentedString(slug)).append("\n");
     sb.append("    title: ").append(toIndentedString(title)).append("\n");
     sb.append("    description: ").append(toIndentedString(description)).append("\n");
+    sb.append("    descriptionBlocks: ").append(toIndentedString(descriptionBlocks)).append("\n");
     sb.append("    priceCents: ").append(toIndentedString(priceCents)).append("\n");
     sb.append("    compareAtCents: ").append(toIndentedString(compareAtCents)).append("\n");
     sb.append("    currency: ").append(toIndentedString(currency)).append("\n");
     sb.append("    status: ").append(toIndentedString(status)).append("\n");
     sb.append("    available: ").append(toIndentedString(available)).append("\n");
     sb.append("    quantityAvailable: ").append(toIndentedString(quantityAvailable)).append("\n");
+    sb.append("    variants: ").append(toIndentedString(variants)).append("\n");
     sb.append("    condition: ").append(toIndentedString(condition)).append("\n");
     sb.append("    brand: ").append(toIndentedString(brand)).append("\n");
     sb.append("    size: ").append(toIndentedString(size)).append("\n");
@@ -631,6 +733,7 @@ public class GetBuyerCatalogListingResponse {
     sb.append("    sellerUsername: ").append(toIndentedString(sellerUsername)).append("\n");
     sb.append("    sellerDisplayName: ").append(toIndentedString(sellerDisplayName)).append("\n");
     sb.append("    listedAt: ").append(toIndentedString(listedAt)).append("\n");
+    sb.append("    tokenGate: ").append(toIndentedString(tokenGate)).append("\n");
     sb.append("}");
     return sb.toString();
   }

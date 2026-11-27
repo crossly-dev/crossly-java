@@ -33,15 +33,15 @@ import org.openapitools.jackson.nullable.JsonNullable;
 /**
  * GetBuyerPurchaseReturnResponseData
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-11T23:47:29.843Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-27T19:58:46.962Z[Etc/UTC]")
 public class GetBuyerPurchaseReturnResponseData {
-  public static final String SERIALIZED_NAME_REASONS = "reasons";
-  @SerializedName(SERIALIZED_NAME_REASONS)
-  private List<GetBuyerPurchaseReturnResponseDataReasons> reasons = new ArrayList<GetBuyerPurchaseReturnResponseDataReasons>();
-
   public static final String SERIALIZED_NAME_TERMS = "terms";
   @SerializedName(SERIALIZED_NAME_TERMS)
   private Map<String, Object> terms = new HashMap<String, Object>();
+
+  public static final String SERIALIZED_NAME_REASONS = "reasons";
+  @SerializedName(SERIALIZED_NAME_REASONS)
+  private List<GetBuyerPurchaseReturnResponseDataReasons> reasons = new ArrayList<GetBuyerPurchaseReturnResponseDataReasons>();
 
   public static final String SERIALIZED_NAME_EXISTING = "existing";
   @SerializedName(SERIALIZED_NAME_EXISTING)
@@ -49,34 +49,6 @@ public class GetBuyerPurchaseReturnResponseData {
 
   public GetBuyerPurchaseReturnResponseData() { 
   }
-
-  public GetBuyerPurchaseReturnResponseData reasons(List<GetBuyerPurchaseReturnResponseDataReasons> reasons) {
-    
-    this.reasons = reasons;
-    return this;
-  }
-
-  public GetBuyerPurchaseReturnResponseData addReasonsItem(GetBuyerPurchaseReturnResponseDataReasons reasonsItem) {
-    this.reasons.add(reasonsItem);
-    return this;
-  }
-
-   /**
-   * Get reasons
-   * @return reasons
-  **/
-  @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "")
-
-  public List<GetBuyerPurchaseReturnResponseDataReasons> getReasons() {
-    return reasons;
-  }
-
-
-  public void setReasons(List<GetBuyerPurchaseReturnResponseDataReasons> reasons) {
-    this.reasons = reasons;
-  }
-
 
   public GetBuyerPurchaseReturnResponseData terms(Map<String, Object> terms) {
     
@@ -103,6 +75,34 @@ public class GetBuyerPurchaseReturnResponseData {
 
   public void setTerms(Map<String, Object> terms) {
     this.terms = terms;
+  }
+
+
+  public GetBuyerPurchaseReturnResponseData reasons(List<GetBuyerPurchaseReturnResponseDataReasons> reasons) {
+    
+    this.reasons = reasons;
+    return this;
+  }
+
+  public GetBuyerPurchaseReturnResponseData addReasonsItem(GetBuyerPurchaseReturnResponseDataReasons reasonsItem) {
+    this.reasons.add(reasonsItem);
+    return this;
+  }
+
+   /**
+   * Get reasons
+   * @return reasons
+  **/
+  @javax.annotation.Nonnull
+  @ApiModelProperty(required = true, value = "")
+
+  public List<GetBuyerPurchaseReturnResponseDataReasons> getReasons() {
+    return reasons;
+  }
+
+
+  public void setReasons(List<GetBuyerPurchaseReturnResponseDataReasons> reasons) {
+    this.reasons = reasons;
   }
 
 
@@ -146,8 +146,8 @@ public class GetBuyerPurchaseReturnResponseData {
       return false;
     }
     GetBuyerPurchaseReturnResponseData getBuyerPurchaseReturnResponseData = (GetBuyerPurchaseReturnResponseData) o;
-    return Objects.equals(this.reasons, getBuyerPurchaseReturnResponseData.reasons) &&
-        Objects.equals(this.terms, getBuyerPurchaseReturnResponseData.terms) &&
+    return Objects.equals(this.terms, getBuyerPurchaseReturnResponseData.terms) &&
+        Objects.equals(this.reasons, getBuyerPurchaseReturnResponseData.reasons) &&
         Objects.equals(this.existing, getBuyerPurchaseReturnResponseData.existing);
   }
 
@@ -157,7 +157,7 @@ public class GetBuyerPurchaseReturnResponseData {
 
   @Override
   public int hashCode() {
-    return Objects.hash(reasons, terms, existing);
+    return Objects.hash(terms, reasons, existing);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -171,8 +171,8 @@ public class GetBuyerPurchaseReturnResponseData {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class GetBuyerPurchaseReturnResponseData {\n");
-    sb.append("    reasons: ").append(toIndentedString(reasons)).append("\n");
     sb.append("    terms: ").append(toIndentedString(terms)).append("\n");
+    sb.append("    reasons: ").append(toIndentedString(reasons)).append("\n");
     sb.append("    existing: ").append(toIndentedString(existing)).append("\n");
     sb.append("}");
     return sb.toString();

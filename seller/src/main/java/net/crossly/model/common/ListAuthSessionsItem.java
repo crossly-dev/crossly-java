@@ -24,12 +24,11 @@ import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 import org.openapitools.jackson.nullable.JsonNullable;
-import org.threeten.bp.OffsetDateTime;
 
 /**
  * ListAuthSessionsItem
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-11T23:44:48.922Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-27T19:42:43.186Z[Etc/UTC]")
 public class ListAuthSessionsItem {
   public static final String SERIALIZED_NAME_IS_CURRENT = "isCurrent";
   @SerializedName(SERIALIZED_NAME_IS_CURRENT)
@@ -53,15 +52,15 @@ public class ListAuthSessionsItem {
 
   public static final String SERIALIZED_NAME_CREATED_AT = "createdAt";
   @SerializedName(SERIALIZED_NAME_CREATED_AT)
-  private OffsetDateTime createdAt;
+  private String createdAt;
 
   public static final String SERIALIZED_NAME_LAST_USED_AT = "lastUsedAt";
   @SerializedName(SERIALIZED_NAME_LAST_USED_AT)
-  private OffsetDateTime lastUsedAt;
+  private String lastUsedAt;
 
   public static final String SERIALIZED_NAME_EXPIRES_AT = "expiresAt";
   @SerializedName(SERIALIZED_NAME_EXPIRES_AT)
-  private OffsetDateTime expiresAt;
+  private String expiresAt;
 
   public ListAuthSessionsItem() { 
   }
@@ -181,7 +180,7 @@ public class ListAuthSessionsItem {
   }
 
 
-  public ListAuthSessionsItem createdAt(OffsetDateTime createdAt) {
+  public ListAuthSessionsItem createdAt(String createdAt) {
     
     this.createdAt = createdAt;
     return this;
@@ -191,20 +190,20 @@ public class ListAuthSessionsItem {
    * Get createdAt
    * @return createdAt
   **/
-  @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "")
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
 
-  public OffsetDateTime getCreatedAt() {
+  public String getCreatedAt() {
     return createdAt;
   }
 
 
-  public void setCreatedAt(OffsetDateTime createdAt) {
+  public void setCreatedAt(String createdAt) {
     this.createdAt = createdAt;
   }
 
 
-  public ListAuthSessionsItem lastUsedAt(OffsetDateTime lastUsedAt) {
+  public ListAuthSessionsItem lastUsedAt(String lastUsedAt) {
     
     this.lastUsedAt = lastUsedAt;
     return this;
@@ -214,20 +213,20 @@ public class ListAuthSessionsItem {
    * Get lastUsedAt
    * @return lastUsedAt
   **/
-  @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "")
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
 
-  public OffsetDateTime getLastUsedAt() {
+  public String getLastUsedAt() {
     return lastUsedAt;
   }
 
 
-  public void setLastUsedAt(OffsetDateTime lastUsedAt) {
+  public void setLastUsedAt(String lastUsedAt) {
     this.lastUsedAt = lastUsedAt;
   }
 
 
-  public ListAuthSessionsItem expiresAt(OffsetDateTime expiresAt) {
+  public ListAuthSessionsItem expiresAt(String expiresAt) {
     
     this.expiresAt = expiresAt;
     return this;
@@ -237,15 +236,15 @@ public class ListAuthSessionsItem {
    * Get expiresAt
    * @return expiresAt
   **/
-  @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "")
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
 
-  public OffsetDateTime getExpiresAt() {
+  public String getExpiresAt() {
     return expiresAt;
   }
 
 
-  public void setExpiresAt(OffsetDateTime expiresAt) {
+  public void setExpiresAt(String expiresAt) {
     this.expiresAt = expiresAt;
   }
 

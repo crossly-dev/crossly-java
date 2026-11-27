@@ -26,7 +26,8 @@ import java.io.IOException;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
-import net.crossly.model.grading.ListGradingSubmissionsItemGrading;
+import net.crossly.model.bulk.CreateBulkBatchItemResponseGrading;
+import net.crossly.model.inventory.ListInventoryItemSupplier;
 import net.crossly.model.common.MainSub;
 import org.openapitools.jackson.nullable.JsonNullable;
 import org.threeten.bp.OffsetDateTime;
@@ -34,7 +35,7 @@ import org.threeten.bp.OffsetDateTime;
 /**
  * ListInventoryItem
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-11T23:44:48.922Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-27T19:42:43.186Z[Etc/UTC]")
 public class ListInventoryItem {
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
@@ -56,6 +57,18 @@ public class ListInventoryItem {
   @SerializedName(SERIALIZED_NAME_USER_ID)
   private String userId;
 
+  public static final String SERIALIZED_NAME_STATUS = "status";
+  @SerializedName(SERIALIZED_NAME_STATUS)
+  private String status;
+
+  public static final String SERIALIZED_NAME_NOTES = "notes";
+  @SerializedName(SERIALIZED_NAME_NOTES)
+  private String notes;
+
+  public static final String SERIALIZED_NAME_SOURCE = "source";
+  @SerializedName(SERIALIZED_NAME_SOURCE)
+  private String source;
+
   public static final String SERIALIZED_NAME_SKU = "sku";
   @SerializedName(SERIALIZED_NAME_SKU)
   private String sku;
@@ -71,6 +84,10 @@ public class ListInventoryItem {
   public static final String SERIALIZED_NAME_QUANTITY_RESERVED = "quantityReserved";
   @SerializedName(SERIALIZED_NAME_QUANTITY_RESERVED)
   private BigDecimal quantityReserved;
+
+  public static final String SERIALIZED_NAME_WHOLESALE_RESERVE = "wholesaleReserve";
+  @SerializedName(SERIALIZED_NAME_WHOLESALE_RESERVE)
+  private BigDecimal wholesaleReserve;
 
   public static final String SERIALIZED_NAME_QUANTITY_SOLD = "quantitySold";
   @SerializedName(SERIALIZED_NAME_QUANTITY_SOLD)
@@ -144,10 +161,6 @@ public class ListInventoryItem {
   @SerializedName(SERIALIZED_NAME_LABELS)
   private List<String> labels = new ArrayList<String>();
 
-  public static final String SERIALIZED_NAME_NOTES = "notes";
-  @SerializedName(SERIALIZED_NAME_NOTES)
-  private String notes;
-
   public static final String SERIALIZED_NAME_CUSTOM_LABEL = "customLabel";
   @SerializedName(SERIALIZED_NAME_CUSTOM_LABEL)
   private String customLabel;
@@ -176,9 +189,62 @@ public class ListInventoryItem {
   @SerializedName(SERIALIZED_NAME_GRADE_KEY)
   private String gradeKey;
 
+  /**
+   * Gets or Sets vaultSellFrom
+   */
+  @JsonAdapter(VaultSellFromEnum.Adapter.class)
+  public enum VaultSellFromEnum {
+    VAULT_FIRST("vault_first"),
+    
+    WAREHOUSE_FIRST("warehouse_first"),
+    
+    CHEAPEST("cheapest");
+
+    private String value;
+
+    VaultSellFromEnum(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    @Override
+    public String toString() {
+      return String.valueOf(value);
+    }
+
+    public static VaultSellFromEnum fromValue(String value) {
+      for (VaultSellFromEnum b : VaultSellFromEnum.values()) {
+        if (b.value.equals(value)) {
+          return b;
+        }
+      }
+      return null;
+    }
+
+    public static class Adapter extends TypeAdapter<VaultSellFromEnum> {
+      @Override
+      public void write(final JsonWriter jsonWriter, final VaultSellFromEnum enumeration) throws IOException {
+        jsonWriter.value(enumeration.getValue());
+      }
+
+      @Override
+      public VaultSellFromEnum read(final JsonReader jsonReader) throws IOException {
+        String value =  jsonReader.nextString();
+        return VaultSellFromEnum.fromValue(value);
+      }
+    }
+  }
+
+  public static final String SERIALIZED_NAME_VAULT_SELL_FROM = "vaultSellFrom";
+  @SerializedName(SERIALIZED_NAME_VAULT_SELL_FROM)
+  private VaultSellFromEnum vaultSellFrom;
+
   public static final String SERIALIZED_NAME_GRADING = "grading";
   @SerializedName(SERIALIZED_NAME_GRADING)
-  private ListGradingSubmissionsItemGrading grading;
+  private CreateBulkBatchItemResponseGrading grading;
 
   public static final String SERIALIZED_NAME_FIRST_LISTED_AT = "firstListedAt";
   @SerializedName(SERIALIZED_NAME_FIRST_LISTED_AT)
@@ -191,6 +257,10 @@ public class ListInventoryItem {
   public static final String SERIALIZED_NAME_COST_BASIS_CENTS = "costBasisCents";
   @SerializedName(SERIALIZED_NAME_COST_BASIS_CENTS)
   private BigDecimal costBasisCents;
+
+  public static final String SERIALIZED_NAME_SUPPLIER = "supplier";
+  @SerializedName(SERIALIZED_NAME_SUPPLIER)
+  private ListInventoryItemSupplier supplier;
 
   public static final String SERIALIZED_NAME_PRICE_FLOOR_CENTS = "priceFloorCents";
   @SerializedName(SERIALIZED_NAME_PRICE_FLOOR_CENTS)
@@ -228,13 +298,9 @@ public class ListInventoryItem {
   @SerializedName(SERIALIZED_NAME_DIMENSION_H_IN)
   private String dimensionHIn;
 
-  public static final String SERIALIZED_NAME_STATUS = "status";
-  @SerializedName(SERIALIZED_NAME_STATUS)
-  private String status;
-
-  public static final String SERIALIZED_NAME_SOURCE = "source";
-  @SerializedName(SERIALIZED_NAME_SOURCE)
-  private String source;
+  public static final String SERIALIZED_NAME_ALLOWANCE_APP_ID = "allowanceAppId";
+  @SerializedName(SERIALIZED_NAME_ALLOWANCE_APP_ID)
+  private String allowanceAppId;
 
   public static final String SERIALIZED_NAME_CATEGORY = "category";
   @SerializedName(SERIALIZED_NAME_CATEGORY)
@@ -358,6 +424,75 @@ public class ListInventoryItem {
   }
 
 
+  public ListInventoryItem status(String status) {
+    
+    this.status = status;
+    return this;
+  }
+
+   /**
+   * Get status
+   * @return status
+  **/
+  @javax.annotation.Nonnull
+  @ApiModelProperty(required = true, value = "")
+
+  public String getStatus() {
+    return status;
+  }
+
+
+  public void setStatus(String status) {
+    this.status = status;
+  }
+
+
+  public ListInventoryItem notes(String notes) {
+    
+    this.notes = notes;
+    return this;
+  }
+
+   /**
+   * Get notes
+   * @return notes
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public String getNotes() {
+    return notes;
+  }
+
+
+  public void setNotes(String notes) {
+    this.notes = notes;
+  }
+
+
+  public ListInventoryItem source(String source) {
+    
+    this.source = source;
+    return this;
+  }
+
+   /**
+   * Get source
+   * @return source
+  **/
+  @javax.annotation.Nonnull
+  @ApiModelProperty(required = true, value = "")
+
+  public String getSource() {
+    return source;
+  }
+
+
+  public void setSource(String source) {
+    this.source = source;
+  }
+
+
   public ListInventoryItem sku(String sku) {
     
     this.sku = sku;
@@ -447,6 +582,29 @@ public class ListInventoryItem {
 
   public void setQuantityReserved(BigDecimal quantityReserved) {
     this.quantityReserved = quantityReserved;
+  }
+
+
+  public ListInventoryItem wholesaleReserve(BigDecimal wholesaleReserve) {
+    
+    this.wholesaleReserve = wholesaleReserve;
+    return this;
+  }
+
+   /**
+   * Get wholesaleReserve
+   * @return wholesaleReserve
+  **/
+  @javax.annotation.Nonnull
+  @ApiModelProperty(required = true, value = "")
+
+  public BigDecimal getWholesaleReserve() {
+    return wholesaleReserve;
+  }
+
+
+  public void setWholesaleReserve(BigDecimal wholesaleReserve) {
+    this.wholesaleReserve = wholesaleReserve;
   }
 
 
@@ -884,29 +1042,6 @@ public class ListInventoryItem {
   }
 
 
-  public ListInventoryItem notes(String notes) {
-    
-    this.notes = notes;
-    return this;
-  }
-
-   /**
-   * Get notes
-   * @return notes
-  **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
-
-  public String getNotes() {
-    return notes;
-  }
-
-
-  public void setNotes(String notes) {
-    this.notes = notes;
-  }
-
-
   public ListInventoryItem customLabel(String customLabel) {
     
     this.customLabel = customLabel;
@@ -1068,7 +1203,30 @@ public class ListInventoryItem {
   }
 
 
-  public ListInventoryItem grading(ListGradingSubmissionsItemGrading grading) {
+  public ListInventoryItem vaultSellFrom(VaultSellFromEnum vaultSellFrom) {
+    
+    this.vaultSellFrom = vaultSellFrom;
+    return this;
+  }
+
+   /**
+   * Get vaultSellFrom
+   * @return vaultSellFrom
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public VaultSellFromEnum getVaultSellFrom() {
+    return vaultSellFrom;
+  }
+
+
+  public void setVaultSellFrom(VaultSellFromEnum vaultSellFrom) {
+    this.vaultSellFrom = vaultSellFrom;
+  }
+
+
+  public ListInventoryItem grading(CreateBulkBatchItemResponseGrading grading) {
     
     this.grading = grading;
     return this;
@@ -1081,12 +1239,12 @@ public class ListInventoryItem {
   @javax.annotation.Nullable
   @ApiModelProperty(value = "")
 
-  public ListGradingSubmissionsItemGrading getGrading() {
+  public CreateBulkBatchItemResponseGrading getGrading() {
     return grading;
   }
 
 
-  public void setGrading(ListGradingSubmissionsItemGrading grading) {
+  public void setGrading(CreateBulkBatchItemResponseGrading grading) {
     this.grading = grading;
   }
 
@@ -1157,6 +1315,29 @@ public class ListInventoryItem {
 
   public void setCostBasisCents(BigDecimal costBasisCents) {
     this.costBasisCents = costBasisCents;
+  }
+
+
+  public ListInventoryItem supplier(ListInventoryItemSupplier supplier) {
+    
+    this.supplier = supplier;
+    return this;
+  }
+
+   /**
+   * Get supplier
+   * @return supplier
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public ListInventoryItemSupplier getSupplier() {
+    return supplier;
+  }
+
+
+  public void setSupplier(ListInventoryItemSupplier supplier) {
+    this.supplier = supplier;
   }
 
 
@@ -1367,49 +1548,26 @@ public class ListInventoryItem {
   }
 
 
-  public ListInventoryItem status(String status) {
+  public ListInventoryItem allowanceAppId(String allowanceAppId) {
     
-    this.status = status;
+    this.allowanceAppId = allowanceAppId;
     return this;
   }
 
    /**
-   * Get status
-   * @return status
+   * Get allowanceAppId
+   * @return allowanceAppId
   **/
-  @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "")
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
 
-  public String getStatus() {
-    return status;
+  public String getAllowanceAppId() {
+    return allowanceAppId;
   }
 
 
-  public void setStatus(String status) {
-    this.status = status;
-  }
-
-
-  public ListInventoryItem source(String source) {
-    
-    this.source = source;
-    return this;
-  }
-
-   /**
-   * Get source
-   * @return source
-  **/
-  @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "")
-
-  public String getSource() {
-    return source;
-  }
-
-
-  public void setSource(String source) {
-    this.source = source;
+  public void setAllowanceAppId(String allowanceAppId) {
+    this.allowanceAppId = allowanceAppId;
   }
 
 
@@ -1450,10 +1608,14 @@ public class ListInventoryItem {
         Objects.equals(this.createdAt, listInventoryItem.createdAt) &&
         Objects.equals(this.updatedAt, listInventoryItem.updatedAt) &&
         Objects.equals(this.userId, listInventoryItem.userId) &&
+        Objects.equals(this.status, listInventoryItem.status) &&
+        Objects.equals(this.notes, listInventoryItem.notes) &&
+        Objects.equals(this.source, listInventoryItem.source) &&
         Objects.equals(this.sku, listInventoryItem.sku) &&
         Objects.equals(this.quantity, listInventoryItem.quantity) &&
         Objects.equals(this.quantityAvailable, listInventoryItem.quantityAvailable) &&
         Objects.equals(this.quantityReserved, listInventoryItem.quantityReserved) &&
+        Objects.equals(this.wholesaleReserve, listInventoryItem.wholesaleReserve) &&
         Objects.equals(this.quantitySold, listInventoryItem.quantitySold) &&
         Objects.equals(this.originalPrice, listInventoryItem.originalPrice) &&
         Objects.equals(this.condition, listInventoryItem.condition) &&
@@ -1472,7 +1634,6 @@ public class ListInventoryItem {
         Objects.equals(this.provenanceReceiptId, listInventoryItem.provenanceReceiptId) &&
         Objects.equals(this.tags, listInventoryItem.tags) &&
         Objects.equals(this.labels, listInventoryItem.labels) &&
-        Objects.equals(this.notes, listInventoryItem.notes) &&
         Objects.equals(this.customLabel, listInventoryItem.customLabel) &&
         Objects.equals(this.warehouseLocation, listInventoryItem.warehouseLocation) &&
         Objects.equals(this.storageBin, listInventoryItem.storageBin) &&
@@ -1480,10 +1641,12 @@ public class ListInventoryItem {
         Objects.equals(this.marketSkuId, listInventoryItem.marketSkuId) &&
         Objects.equals(this.marketVariantId, listInventoryItem.marketVariantId) &&
         Objects.equals(this.gradeKey, listInventoryItem.gradeKey) &&
+        Objects.equals(this.vaultSellFrom, listInventoryItem.vaultSellFrom) &&
         Objects.equals(this.grading, listInventoryItem.grading) &&
         Objects.equals(this.firstListedAt, listInventoryItem.firstListedAt) &&
         Objects.equals(this.includeTaxInLanded, listInventoryItem.includeTaxInLanded) &&
         Objects.equals(this.costBasisCents, listInventoryItem.costBasisCents) &&
+        Objects.equals(this.supplier, listInventoryItem.supplier) &&
         Objects.equals(this.priceFloorCents, listInventoryItem.priceFloorCents) &&
         Objects.equals(this.floorIsNet, listInventoryItem.floorIsNet) &&
         Objects.equals(this.acquiredAt, listInventoryItem.acquiredAt) &&
@@ -1493,8 +1656,7 @@ public class ListInventoryItem {
         Objects.equals(this.dimensionLIn, listInventoryItem.dimensionLIn) &&
         Objects.equals(this.dimensionWIn, listInventoryItem.dimensionWIn) &&
         Objects.equals(this.dimensionHIn, listInventoryItem.dimensionHIn) &&
-        Objects.equals(this.status, listInventoryItem.status) &&
-        Objects.equals(this.source, listInventoryItem.source) &&
+        Objects.equals(this.allowanceAppId, listInventoryItem.allowanceAppId) &&
         Objects.equals(this.category, listInventoryItem.category);
   }
 
@@ -1504,7 +1666,7 @@ public class ListInventoryItem {
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, brand, createdAt, updatedAt, userId, sku, quantity, quantityAvailable, quantityReserved, quantitySold, originalPrice, condition, size, material, style, pattern, department, gender, itemType, sizeSystem, color, defaultTitle, images, videoUrl, provenanceReceiptId, tags, labels, notes, customLabel, warehouseLocation, storageBin, storageNote, marketSkuId, marketVariantId, gradeKey, grading, firstListedAt, includeTaxInLanded, costBasisCents, priceFloorCents, floorIsNet, acquiredAt, acquiredSource, weightLb, weightOz, dimensionLIn, dimensionWIn, dimensionHIn, status, source, category);
+    return Objects.hash(id, brand, createdAt, updatedAt, userId, status, notes, source, sku, quantity, quantityAvailable, quantityReserved, wholesaleReserve, quantitySold, originalPrice, condition, size, material, style, pattern, department, gender, itemType, sizeSystem, color, defaultTitle, images, videoUrl, provenanceReceiptId, tags, labels, customLabel, warehouseLocation, storageBin, storageNote, marketSkuId, marketVariantId, gradeKey, vaultSellFrom, grading, firstListedAt, includeTaxInLanded, costBasisCents, supplier, priceFloorCents, floorIsNet, acquiredAt, acquiredSource, weightLb, weightOz, dimensionLIn, dimensionWIn, dimensionHIn, allowanceAppId, category);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -1523,10 +1685,14 @@ public class ListInventoryItem {
     sb.append("    createdAt: ").append(toIndentedString(createdAt)).append("\n");
     sb.append("    updatedAt: ").append(toIndentedString(updatedAt)).append("\n");
     sb.append("    userId: ").append(toIndentedString(userId)).append("\n");
+    sb.append("    status: ").append(toIndentedString(status)).append("\n");
+    sb.append("    notes: ").append(toIndentedString(notes)).append("\n");
+    sb.append("    source: ").append(toIndentedString(source)).append("\n");
     sb.append("    sku: ").append(toIndentedString(sku)).append("\n");
     sb.append("    quantity: ").append(toIndentedString(quantity)).append("\n");
     sb.append("    quantityAvailable: ").append(toIndentedString(quantityAvailable)).append("\n");
     sb.append("    quantityReserved: ").append(toIndentedString(quantityReserved)).append("\n");
+    sb.append("    wholesaleReserve: ").append(toIndentedString(wholesaleReserve)).append("\n");
     sb.append("    quantitySold: ").append(toIndentedString(quantitySold)).append("\n");
     sb.append("    originalPrice: ").append(toIndentedString(originalPrice)).append("\n");
     sb.append("    condition: ").append(toIndentedString(condition)).append("\n");
@@ -1545,7 +1711,6 @@ public class ListInventoryItem {
     sb.append("    provenanceReceiptId: ").append(toIndentedString(provenanceReceiptId)).append("\n");
     sb.append("    tags: ").append(toIndentedString(tags)).append("\n");
     sb.append("    labels: ").append(toIndentedString(labels)).append("\n");
-    sb.append("    notes: ").append(toIndentedString(notes)).append("\n");
     sb.append("    customLabel: ").append(toIndentedString(customLabel)).append("\n");
     sb.append("    warehouseLocation: ").append(toIndentedString(warehouseLocation)).append("\n");
     sb.append("    storageBin: ").append(toIndentedString(storageBin)).append("\n");
@@ -1553,10 +1718,12 @@ public class ListInventoryItem {
     sb.append("    marketSkuId: ").append(toIndentedString(marketSkuId)).append("\n");
     sb.append("    marketVariantId: ").append(toIndentedString(marketVariantId)).append("\n");
     sb.append("    gradeKey: ").append(toIndentedString(gradeKey)).append("\n");
+    sb.append("    vaultSellFrom: ").append(toIndentedString(vaultSellFrom)).append("\n");
     sb.append("    grading: ").append(toIndentedString(grading)).append("\n");
     sb.append("    firstListedAt: ").append(toIndentedString(firstListedAt)).append("\n");
     sb.append("    includeTaxInLanded: ").append(toIndentedString(includeTaxInLanded)).append("\n");
     sb.append("    costBasisCents: ").append(toIndentedString(costBasisCents)).append("\n");
+    sb.append("    supplier: ").append(toIndentedString(supplier)).append("\n");
     sb.append("    priceFloorCents: ").append(toIndentedString(priceFloorCents)).append("\n");
     sb.append("    floorIsNet: ").append(toIndentedString(floorIsNet)).append("\n");
     sb.append("    acquiredAt: ").append(toIndentedString(acquiredAt)).append("\n");
@@ -1566,8 +1733,7 @@ public class ListInventoryItem {
     sb.append("    dimensionLIn: ").append(toIndentedString(dimensionLIn)).append("\n");
     sb.append("    dimensionWIn: ").append(toIndentedString(dimensionWIn)).append("\n");
     sb.append("    dimensionHIn: ").append(toIndentedString(dimensionHIn)).append("\n");
-    sb.append("    status: ").append(toIndentedString(status)).append("\n");
-    sb.append("    source: ").append(toIndentedString(source)).append("\n");
+    sb.append("    allowanceAppId: ").append(toIndentedString(allowanceAppId)).append("\n");
     sb.append("    category: ").append(toIndentedString(category)).append("\n");
     sb.append("}");
     return sb.toString();

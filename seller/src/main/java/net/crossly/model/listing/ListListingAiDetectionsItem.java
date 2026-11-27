@@ -31,7 +31,7 @@ import org.openapitools.jackson.nullable.JsonNullable;
 /**
  * ListListingAiDetectionsItem
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-11T23:44:48.922Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-27T19:42:43.186Z[Etc/UTC]")
 public class ListListingAiDetectionsItem {
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
@@ -103,11 +103,11 @@ public class ListListingAiDetectionsItem {
    */
   @JsonAdapter(StatusEnum.Adapter.class)
   public enum StatusEnum {
-    FLAGGED("flagged"),
-    
     REVIEW("review"),
     
     CLEAR("clear"),
+    
+    FLAGGED("flagged"),
     
     DISPUTED("disputed"),
     

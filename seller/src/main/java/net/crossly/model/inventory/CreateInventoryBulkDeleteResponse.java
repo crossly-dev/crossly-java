@@ -24,49 +24,41 @@ import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 import java.math.BigDecimal;
+import java.util.ArrayList;
+import java.util.List;
+import net.crossly.model.inventory.CreateInventoryBulkDeleteResponseRefused;
 
 /**
  * CreateInventoryBulkDeleteResponse
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-11T23:44:48.922Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-27T19:42:43.186Z[Etc/UTC]")
 public class CreateInventoryBulkDeleteResponse {
-  public static final String SERIALIZED_NAME_SUCCESS = "success";
-  @SerializedName(SERIALIZED_NAME_SUCCESS)
-  private Boolean success;
-
   public static final String SERIALIZED_NAME_DELETED = "deleted";
   @SerializedName(SERIALIZED_NAME_DELETED)
   private BigDecimal deleted;
+
+  public static final String SERIALIZED_NAME_DELETED_IDS = "deletedIds";
+  @SerializedName(SERIALIZED_NAME_DELETED_IDS)
+  private List<String> deletedIds = new ArrayList<String>();
+
+  public static final String SERIALIZED_NAME_REFUSED = "refused";
+  @SerializedName(SERIALIZED_NAME_REFUSED)
+  private List<CreateInventoryBulkDeleteResponseRefused> refused = new ArrayList<CreateInventoryBulkDeleteResponseRefused>();
+
+  public static final String SERIALIZED_NAME_RELAYED = "relayed";
+  @SerializedName(SERIALIZED_NAME_RELAYED)
+  private BigDecimal relayed;
 
   public static final String SERIALIZED_NAME_BULK_JOB_ID = "bulkJobId";
   @SerializedName(SERIALIZED_NAME_BULK_JOB_ID)
   private String bulkJobId;
 
+  public static final String SERIALIZED_NAME_SUCCESS = "success";
+  @SerializedName(SERIALIZED_NAME_SUCCESS)
+  private Boolean success;
+
   public CreateInventoryBulkDeleteResponse() { 
   }
-
-  public CreateInventoryBulkDeleteResponse success(Boolean success) {
-    
-    this.success = success;
-    return this;
-  }
-
-   /**
-   * Get success
-   * @return success
-  **/
-  @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "")
-
-  public Boolean getSuccess() {
-    return success;
-  }
-
-
-  public void setSuccess(Boolean success) {
-    this.success = success;
-  }
-
 
   public CreateInventoryBulkDeleteResponse deleted(BigDecimal deleted) {
     
@@ -88,6 +80,85 @@ public class CreateInventoryBulkDeleteResponse {
 
   public void setDeleted(BigDecimal deleted) {
     this.deleted = deleted;
+  }
+
+
+  public CreateInventoryBulkDeleteResponse deletedIds(List<String> deletedIds) {
+    
+    this.deletedIds = deletedIds;
+    return this;
+  }
+
+  public CreateInventoryBulkDeleteResponse addDeletedIdsItem(String deletedIdsItem) {
+    this.deletedIds.add(deletedIdsItem);
+    return this;
+  }
+
+   /**
+   * Get deletedIds
+   * @return deletedIds
+  **/
+  @javax.annotation.Nonnull
+  @ApiModelProperty(required = true, value = "")
+
+  public List<String> getDeletedIds() {
+    return deletedIds;
+  }
+
+
+  public void setDeletedIds(List<String> deletedIds) {
+    this.deletedIds = deletedIds;
+  }
+
+
+  public CreateInventoryBulkDeleteResponse refused(List<CreateInventoryBulkDeleteResponseRefused> refused) {
+    
+    this.refused = refused;
+    return this;
+  }
+
+  public CreateInventoryBulkDeleteResponse addRefusedItem(CreateInventoryBulkDeleteResponseRefused refusedItem) {
+    this.refused.add(refusedItem);
+    return this;
+  }
+
+   /**
+   * Items NOT deleted: a live listing Crossly may not end (action authority).
+   * @return refused
+  **/
+  @javax.annotation.Nonnull
+  @ApiModelProperty(required = true, value = "Items NOT deleted: a live listing Crossly may not end (action authority).")
+
+  public List<CreateInventoryBulkDeleteResponseRefused> getRefused() {
+    return refused;
+  }
+
+
+  public void setRefused(List<CreateInventoryBulkDeleteResponseRefused> refused) {
+    this.refused = refused;
+  }
+
+
+  public CreateInventoryBulkDeleteResponse relayed(BigDecimal relayed) {
+    
+    this.relayed = relayed;
+    return this;
+  }
+
+   /**
+   * Live rows handed to their managing app as delist commands.
+   * @return relayed
+  **/
+  @javax.annotation.Nonnull
+  @ApiModelProperty(required = true, value = "Live rows handed to their managing app as delist commands.")
+
+  public BigDecimal getRelayed() {
+    return relayed;
+  }
+
+
+  public void setRelayed(BigDecimal relayed) {
+    this.relayed = relayed;
   }
 
 
@@ -114,6 +185,29 @@ public class CreateInventoryBulkDeleteResponse {
   }
 
 
+  public CreateInventoryBulkDeleteResponse success(Boolean success) {
+    
+    this.success = success;
+    return this;
+  }
+
+   /**
+   * Get success
+   * @return success
+  **/
+  @javax.annotation.Nonnull
+  @ApiModelProperty(required = true, value = "")
+
+  public Boolean getSuccess() {
+    return success;
+  }
+
+
+  public void setSuccess(Boolean success) {
+    this.success = success;
+  }
+
+
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -123,23 +217,29 @@ public class CreateInventoryBulkDeleteResponse {
       return false;
     }
     CreateInventoryBulkDeleteResponse createInventoryBulkDeleteResponse = (CreateInventoryBulkDeleteResponse) o;
-    return Objects.equals(this.success, createInventoryBulkDeleteResponse.success) &&
-        Objects.equals(this.deleted, createInventoryBulkDeleteResponse.deleted) &&
-        Objects.equals(this.bulkJobId, createInventoryBulkDeleteResponse.bulkJobId);
+    return Objects.equals(this.deleted, createInventoryBulkDeleteResponse.deleted) &&
+        Objects.equals(this.deletedIds, createInventoryBulkDeleteResponse.deletedIds) &&
+        Objects.equals(this.refused, createInventoryBulkDeleteResponse.refused) &&
+        Objects.equals(this.relayed, createInventoryBulkDeleteResponse.relayed) &&
+        Objects.equals(this.bulkJobId, createInventoryBulkDeleteResponse.bulkJobId) &&
+        Objects.equals(this.success, createInventoryBulkDeleteResponse.success);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(success, deleted, bulkJobId);
+    return Objects.hash(deleted, deletedIds, refused, relayed, bulkJobId, success);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class CreateInventoryBulkDeleteResponse {\n");
-    sb.append("    success: ").append(toIndentedString(success)).append("\n");
     sb.append("    deleted: ").append(toIndentedString(deleted)).append("\n");
+    sb.append("    deletedIds: ").append(toIndentedString(deletedIds)).append("\n");
+    sb.append("    refused: ").append(toIndentedString(refused)).append("\n");
+    sb.append("    relayed: ").append(toIndentedString(relayed)).append("\n");
     sb.append("    bulkJobId: ").append(toIndentedString(bulkJobId)).append("\n");
+    sb.append("    success: ").append(toIndentedString(success)).append("\n");
     sb.append("}");
     return sb.toString();
   }

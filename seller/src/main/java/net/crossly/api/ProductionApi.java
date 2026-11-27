@@ -43,7 +43,7 @@ import net.crossly.model.production.GetProductionLineResponse;
 import net.crossly.model.production.GetProductionPoReconcileResponse;
 import net.crossly.model.production.GetProductionPoResponse;
 import net.crossly.model.production.GetProductionRunResponse;
-import net.crossly.model.common.GetShopListingProvenanceResponse;
+import net.crossly.model.shop.GetShopListingProvenanceResponse;
 import net.crossly.model.production.UpdateProductionPoResponse;
 
 import java.lang.reflect.Type;

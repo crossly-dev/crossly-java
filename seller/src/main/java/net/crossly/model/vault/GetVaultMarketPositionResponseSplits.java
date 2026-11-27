@@ -29,7 +29,7 @@ import org.openapitools.jackson.nullable.JsonNullable;
 /**
  * GetVaultMarketPositionResponseSplits
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-11T23:44:48.922Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-27T19:42:43.186Z[Etc/UTC]")
 public class GetVaultMarketPositionResponseSplits {
   public static final String SERIALIZED_NAME_SLICE_POSITION_ID = "slicePositionId";
   @SerializedName(SERIALIZED_NAME_SLICE_POSITION_ID)
@@ -48,9 +48,9 @@ public class GetVaultMarketPositionResponseSplits {
    */
   @JsonAdapter(ReasonEnum.Adapter.class)
   public enum ReasonEnum {
-    AUCTION("auction"),
-    
     CLOSE("close"),
+    
+    AUCTION("auction"),
     
     RECALL("recall");
 
@@ -156,9 +156,9 @@ public class GetVaultMarketPositionResponseSplits {
    */
   @JsonAdapter(ActionEnum.Adapter.class)
   public enum ActionEnum {
-    AUCTION("auction"),
+    CLOSE("close"),
     
-    CLOSE("close");
+    AUCTION("auction");
 
     private String value;
 

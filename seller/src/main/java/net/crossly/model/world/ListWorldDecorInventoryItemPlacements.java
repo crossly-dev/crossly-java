@@ -29,7 +29,7 @@ import net.crossly.model.world.CreateWorldDecorRetractResponseDataInventorySpace
 /**
  * ListWorldDecorInventoryItemPlacements
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-11T23:44:48.922Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-27T19:42:43.186Z[Etc/UTC]")
 public class ListWorldDecorInventoryItemPlacements {
   public static final String SERIALIZED_NAME_SPACE = "space";
   @SerializedName(SERIALIZED_NAME_SPACE)

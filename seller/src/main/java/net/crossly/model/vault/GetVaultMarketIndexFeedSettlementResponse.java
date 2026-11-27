@@ -26,16 +26,16 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import net.crossly.model.vault.GetVaultMarketIndexFeedSettlementResponseSeries;
-import net.crossly.model.common.SlugName;
+import net.crossly.model.common.NameSlug;
 
 /**
  * GetVaultMarketIndexFeedSettlementResponse
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-11T23:44:48.922Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-27T19:42:43.186Z[Etc/UTC]")
 public class GetVaultMarketIndexFeedSettlementResponse {
   public static final String SERIALIZED_NAME_INDEX = "index";
   @SerializedName(SERIALIZED_NAME_INDEX)
-  private SlugName index;
+  private NameSlug index;
 
   public static final String SERIALIZED_NAME_METHOD = "method";
   @SerializedName(SERIALIZED_NAME_METHOD)
@@ -48,7 +48,7 @@ public class GetVaultMarketIndexFeedSettlementResponse {
   public GetVaultMarketIndexFeedSettlementResponse() { 
   }
 
-  public GetVaultMarketIndexFeedSettlementResponse index(SlugName index) {
+  public GetVaultMarketIndexFeedSettlementResponse index(NameSlug index) {
     
     this.index = index;
     return this;
@@ -61,12 +61,12 @@ public class GetVaultMarketIndexFeedSettlementResponse {
   @javax.annotation.Nonnull
   @ApiModelProperty(required = true, value = "")
 
-  public SlugName getIndex() {
+  public NameSlug getIndex() {
     return index;
   }
 
 
-  public void setIndex(SlugName index) {
+  public void setIndex(NameSlug index) {
     this.index = index;
   }
 

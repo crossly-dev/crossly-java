@@ -29,11 +29,11 @@ import com.google.gson.stream.JsonWriter;
 @JsonAdapter(GetCbxMeResponseDataScopesItem.Adapter.class)
 public enum GetCbxMeResponseDataScopesItem {
   
+  READ("read"),
+  
   SPEND("spend"),
   
   CAMPAIGN("campaign"),
-  
-  READ("read"),
   
   ACCRUE("accrue"),
   

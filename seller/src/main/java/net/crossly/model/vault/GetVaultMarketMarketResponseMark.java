@@ -29,7 +29,7 @@ import org.openapitools.jackson.nullable.JsonNullable;
 /**
  * GetVaultMarketMarketResponseMark
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-11T23:44:48.922Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-27T19:42:43.186Z[Etc/UTC]")
 public class GetVaultMarketMarketResponseMark {
   public static final String SERIALIZED_NAME_BOOK_KEY = "bookKey";
   @SerializedName(SERIALIZED_NAME_BOOK_KEY)
@@ -46,15 +46,15 @@ public class GetVaultMarketMarketResponseMark {
   public enum SourceEnum {
     NONE("none"),
     
-    TWAP("twap"),
+    ASK("ask"),
     
     MID("mid"),
     
-    ASK("ask"),
+    LAST("last"),
     
     BID("bid"),
     
-    LAST("last"),
+    TWAP("twap"),
     
     IMPLIED("implied");
 
@@ -119,11 +119,11 @@ public class GetVaultMarketMarketResponseMark {
   public enum QualityEnum {
     NONE("none"),
     
+    C("C"),
+    
     A("A"),
     
-    B("B"),
-    
-    C("C");
+    B("B");
 
     private String value;
 

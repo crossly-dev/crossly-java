@@ -26,11 +26,12 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import net.crossly.model.inventory.GetInventoryValueHistoryResponseDataPoints;
+import org.openapitools.jackson.nullable.JsonNullable;
 
 /**
  * GetInventoryValueHistoryResponseData
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-11T23:44:48.922Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-27T19:42:43.186Z[Etc/UTC]")
 public class GetInventoryValueHistoryResponseData {
   public static final String SERIALIZED_NAME_POINTS = "points";
   @SerializedName(SERIALIZED_NAME_POINTS)
@@ -81,8 +82,8 @@ public class GetInventoryValueHistoryResponseData {
    * Get collectingSince
    * @return collectingSince
   **/
-  @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "")
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
 
   public String getCollectingSince() {
     return collectingSince;
@@ -107,9 +108,20 @@ public class GetInventoryValueHistoryResponseData {
         Objects.equals(this.collectingSince, getInventoryValueHistoryResponseData.collectingSince);
   }
 
+  private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+    return a == b || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
+  }
+
   @Override
   public int hashCode() {
     return Objects.hash(points, collectingSince);
+  }
+
+  private static <T> int hashCodeNullable(JsonNullable<T> a) {
+    if (a == null) {
+      return 1;
+    }
+    return a.isPresent() ? Arrays.deepHashCode(new Object[]{a.get()}) : 31;
   }
 
   @Override

@@ -28,10 +28,14 @@ import java.io.IOException;
 
 
 import net.crossly.model.common.Error;
+import net.crossly.model.category.GetCategoryByIdResponse;
 import net.crossly.model.taxonomy.GetTaxonomyCategoryAspectResponse;
 import net.crossly.model.taxonomy.GetTaxonomyCategoryChildrenResponse;
 import net.crossly.model.taxonomy.GetTaxonomyCategoryResponse;
 import net.crossly.model.taxonomy.GetTaxonomyRequiredFieldResponse;
+import net.crossly.model.category.ListCategoryAspectsResponse;
+import net.crossly.model.category.ListCategorySearchResponse;
+import net.crossly.model.taxonomy.ListTaxonomyEbayCharitiesResponse;
 import net.crossly.model.taxonomy.ListTaxonomySuggestResponse;
 
 import java.lang.reflect.Type;
@@ -77,6 +81,158 @@ public class TaxonomyApi {
         this.localCustomBaseUrl = customBaseUrl;
     }
 
+    /**
+     * Build call for getCategoryById
+     * @param id  (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getCategoryByIdCall(String id, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/v1/categories/{id}"
+            .replaceAll("\\{" + "id" + "\\}", localVarApiClient.escapeString(id.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "PersonalAccessToken" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call getCategoryByIdValidateBeforeCall(String id, final ApiCallback _callback) throws ApiException {
+        
+        // verify the required parameter 'id' is set
+        if (id == null) {
+            throw new ApiException("Missing the required parameter 'id' when calling getCategoryById(Async)");
+        }
+        
+
+        okhttp3.Call localVarCall = getCategoryByIdCall(id, _callback);
+        return localVarCall;
+
+    }
+
+    /**
+     * One canonical category and the category it maps to on each marketplace.
+     * 
+     * @param id  (required)
+     * @return GetCategoryByIdResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public GetCategoryByIdResponse getCategoryById(String id) throws ApiException {
+        ApiResponse<GetCategoryByIdResponse> localVarResp = getCategoryByIdWithHttpInfo(id);
+        return localVarResp.getData();
+    }
+
+    /**
+     * One canonical category and the category it maps to on each marketplace.
+     * 
+     * @param id  (required)
+     * @return ApiResponse&lt;GetCategoryByIdResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<GetCategoryByIdResponse> getCategoryByIdWithHttpInfo(String id) throws ApiException {
+        okhttp3.Call localVarCall = getCategoryByIdValidateBeforeCall(id, null);
+        Type localVarReturnType = new TypeToken<GetCategoryByIdResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * One canonical category and the category it maps to on each marketplace. (asynchronously)
+     * 
+     * @param id  (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getCategoryByIdAsync(String id, final ApiCallback<GetCategoryByIdResponse> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = getCategoryByIdValidateBeforeCall(id, _callback);
+        Type localVarReturnType = new TypeToken<GetCategoryByIdResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
     /**
      * Build call for getTaxonomyCategory
      * @param platform  (required)
@@ -718,6 +874,498 @@ public class TaxonomyApi {
 
         okhttp3.Call localVarCall = getTaxonomyRequiredFieldValidateBeforeCall(platform, categoryId, _callback);
         Type localVarReturnType = new TypeToken<GetTaxonomyRequiredFieldResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for listCategoryAspects
+     * @param id  (required)
+     * @param valuesLimit  (optional, default to 50)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call listCategoryAspectsCall(String id, Integer valuesLimit, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/v1/categories/{id}/aspects"
+            .replaceAll("\\{" + "id" + "\\}", localVarApiClient.escapeString(id.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        if (valuesLimit != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("valuesLimit", valuesLimit));
+        }
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "PersonalAccessToken" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call listCategoryAspectsValidateBeforeCall(String id, Integer valuesLimit, final ApiCallback _callback) throws ApiException {
+        
+        // verify the required parameter 'id' is set
+        if (id == null) {
+            throw new ApiException("Missing the required parameter 'id' when calling listCategoryAspects(Async)");
+        }
+        
+
+        okhttp3.Call localVarCall = listCategoryAspectsCall(id, valuesLimit, _callback);
+        return localVarCall;
+
+    }
+
+    /**
+     * Item specifics for a canonical category: required/optional, known values, per-marketplace names.
+     * Required-ness and cardinality come from the eBay category the concept maps to. &#x60;freeText&#x60; &#x3D; any text is accepted; otherwise &#x60;values&#x60; are the known values (up to &#x60;valuesLimit&#x60;). &#x60;marketplaces&#x60; gives the attribute name each marketplace uses for the aspect. Send them as &#x60;itemSpecifics&#x60; on POST /v1/listings.
+     * @param id  (required)
+     * @param valuesLimit  (optional, default to 50)
+     * @return ListCategoryAspectsResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public ListCategoryAspectsResponse listCategoryAspects(String id, Integer valuesLimit) throws ApiException {
+        ApiResponse<ListCategoryAspectsResponse> localVarResp = listCategoryAspectsWithHttpInfo(id, valuesLimit);
+        return localVarResp.getData();
+    }
+
+    /**
+     * Item specifics for a canonical category: required/optional, known values, per-marketplace names.
+     * Required-ness and cardinality come from the eBay category the concept maps to. &#x60;freeText&#x60; &#x3D; any text is accepted; otherwise &#x60;values&#x60; are the known values (up to &#x60;valuesLimit&#x60;). &#x60;marketplaces&#x60; gives the attribute name each marketplace uses for the aspect. Send them as &#x60;itemSpecifics&#x60; on POST /v1/listings.
+     * @param id  (required)
+     * @param valuesLimit  (optional, default to 50)
+     * @return ApiResponse&lt;ListCategoryAspectsResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<ListCategoryAspectsResponse> listCategoryAspectsWithHttpInfo(String id, Integer valuesLimit) throws ApiException {
+        okhttp3.Call localVarCall = listCategoryAspectsValidateBeforeCall(id, valuesLimit, null);
+        Type localVarReturnType = new TypeToken<ListCategoryAspectsResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Item specifics for a canonical category: required/optional, known values, per-marketplace names. (asynchronously)
+     * Required-ness and cardinality come from the eBay category the concept maps to. &#x60;freeText&#x60; &#x3D; any text is accepted; otherwise &#x60;values&#x60; are the known values (up to &#x60;valuesLimit&#x60;). &#x60;marketplaces&#x60; gives the attribute name each marketplace uses for the aspect. Send them as &#x60;itemSpecifics&#x60; on POST /v1/listings.
+     * @param id  (required)
+     * @param valuesLimit  (optional, default to 50)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call listCategoryAspectsAsync(String id, Integer valuesLimit, final ApiCallback<ListCategoryAspectsResponse> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = listCategoryAspectsValidateBeforeCall(id, valuesLimit, _callback);
+        Type localVarReturnType = new TypeToken<ListCategoryAspectsResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for listCategorySearch
+     * @param q  (optional)
+     * @param path  (optional)
+     * @param limit  (optional, default to 25)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call listCategorySearchCall(String q, String path, Integer limit, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/v1/categories/search";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        if (q != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("q", q));
+        }
+
+        if (path != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("path", path));
+        }
+
+        if (limit != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("limit", limit));
+        }
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "PersonalAccessToken" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call listCategorySearchValidateBeforeCall(String q, String path, Integer limit, final ApiCallback _callback) throws ApiException {
+        
+
+        okhttp3.Call localVarCall = listCategorySearchCall(q, path, limit, _callback);
+        return localVarCall;
+
+    }
+
+    /**
+     * Search or browse Crossly&#39;s canonical categories (the ids listings take as categoryId).
+     * &#x60;q&#x60; matches the category name and path. &#x60;path&#x60; (e.g. \&quot;Clothing &amp; Shoes &gt; Men\&quot;) limits to one branch. Without &#x60;q&#x60;, &#x60;meta.branches&#x60; lists the next level under &#x60;path&#x60; (the root when omitted) so a client can walk the tree down to a leaf.
+     * @param q  (optional)
+     * @param path  (optional)
+     * @param limit  (optional, default to 25)
+     * @return ListCategorySearchResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public ListCategorySearchResponse listCategorySearch(String q, String path, Integer limit) throws ApiException {
+        ApiResponse<ListCategorySearchResponse> localVarResp = listCategorySearchWithHttpInfo(q, path, limit);
+        return localVarResp.getData();
+    }
+
+    /**
+     * Search or browse Crossly&#39;s canonical categories (the ids listings take as categoryId).
+     * &#x60;q&#x60; matches the category name and path. &#x60;path&#x60; (e.g. \&quot;Clothing &amp; Shoes &gt; Men\&quot;) limits to one branch. Without &#x60;q&#x60;, &#x60;meta.branches&#x60; lists the next level under &#x60;path&#x60; (the root when omitted) so a client can walk the tree down to a leaf.
+     * @param q  (optional)
+     * @param path  (optional)
+     * @param limit  (optional, default to 25)
+     * @return ApiResponse&lt;ListCategorySearchResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<ListCategorySearchResponse> listCategorySearchWithHttpInfo(String q, String path, Integer limit) throws ApiException {
+        okhttp3.Call localVarCall = listCategorySearchValidateBeforeCall(q, path, limit, null);
+        Type localVarReturnType = new TypeToken<ListCategorySearchResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Search or browse Crossly&#39;s canonical categories (the ids listings take as categoryId). (asynchronously)
+     * &#x60;q&#x60; matches the category name and path. &#x60;path&#x60; (e.g. \&quot;Clothing &amp; Shoes &gt; Men\&quot;) limits to one branch. Without &#x60;q&#x60;, &#x60;meta.branches&#x60; lists the next level under &#x60;path&#x60; (the root when omitted) so a client can walk the tree down to a leaf.
+     * @param q  (optional)
+     * @param path  (optional)
+     * @param limit  (optional, default to 25)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call listCategorySearchAsync(String q, String path, Integer limit, final ApiCallback<ListCategorySearchResponse> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = listCategorySearchValidateBeforeCall(q, path, limit, _callback);
+        Type localVarReturnType = new TypeToken<ListCategorySearchResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for listTaxonomyEbayCharities
+     * @param q  (optional)
+     * @param limit  (optional, default to 20)
+     * @param marketplace  (optional, default to EBAY_US)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call listTaxonomyEbayCharitiesCall(String q, Integer limit, String marketplace, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/v1/taxonomy/ebay/charities";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        if (q != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("q", q));
+        }
+
+        if (limit != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("limit", limit));
+        }
+
+        if (marketplace != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("marketplace", marketplace));
+        }
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "PersonalAccessToken" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call listTaxonomyEbayCharitiesValidateBeforeCall(String q, Integer limit, String marketplace, final ApiCallback _callback) throws ApiException {
+        
+
+        okhttp3.Call localVarCall = listTaxonomyEbayCharitiesCall(q, limit, marketplace, _callback);
+        return localVarCall;
+
+    }
+
+    /**
+     * Search eBay for Charity organisations (the charityId an eBay listing donates to).
+     * Send the chosen &#x60;charityOrgId&#x60; as &#x60;overrides.ebay.charityId&#x60; with &#x60;overrides.ebay.donationPercentage&#x60; (10-100 in steps of 5) on a listing to donate that share of the eBay sale. &#x60;q&#x60; needs at least 2 characters.
+     * @param q  (optional)
+     * @param limit  (optional, default to 20)
+     * @param marketplace  (optional, default to EBAY_US)
+     * @return ListTaxonomyEbayCharitiesResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public ListTaxonomyEbayCharitiesResponse listTaxonomyEbayCharities(String q, Integer limit, String marketplace) throws ApiException {
+        ApiResponse<ListTaxonomyEbayCharitiesResponse> localVarResp = listTaxonomyEbayCharitiesWithHttpInfo(q, limit, marketplace);
+        return localVarResp.getData();
+    }
+
+    /**
+     * Search eBay for Charity organisations (the charityId an eBay listing donates to).
+     * Send the chosen &#x60;charityOrgId&#x60; as &#x60;overrides.ebay.charityId&#x60; with &#x60;overrides.ebay.donationPercentage&#x60; (10-100 in steps of 5) on a listing to donate that share of the eBay sale. &#x60;q&#x60; needs at least 2 characters.
+     * @param q  (optional)
+     * @param limit  (optional, default to 20)
+     * @param marketplace  (optional, default to EBAY_US)
+     * @return ApiResponse&lt;ListTaxonomyEbayCharitiesResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<ListTaxonomyEbayCharitiesResponse> listTaxonomyEbayCharitiesWithHttpInfo(String q, Integer limit, String marketplace) throws ApiException {
+        okhttp3.Call localVarCall = listTaxonomyEbayCharitiesValidateBeforeCall(q, limit, marketplace, null);
+        Type localVarReturnType = new TypeToken<ListTaxonomyEbayCharitiesResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Search eBay for Charity organisations (the charityId an eBay listing donates to). (asynchronously)
+     * Send the chosen &#x60;charityOrgId&#x60; as &#x60;overrides.ebay.charityId&#x60; with &#x60;overrides.ebay.donationPercentage&#x60; (10-100 in steps of 5) on a listing to donate that share of the eBay sale. &#x60;q&#x60; needs at least 2 characters.
+     * @param q  (optional)
+     * @param limit  (optional, default to 20)
+     * @param marketplace  (optional, default to EBAY_US)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call listTaxonomyEbayCharitiesAsync(String q, Integer limit, String marketplace, final ApiCallback<ListTaxonomyEbayCharitiesResponse> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = listTaxonomyEbayCharitiesValidateBeforeCall(q, limit, marketplace, _callback);
+        Type localVarReturnType = new TypeToken<ListTaxonomyEbayCharitiesResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }

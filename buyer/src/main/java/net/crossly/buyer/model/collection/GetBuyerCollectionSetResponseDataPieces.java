@@ -29,11 +29,11 @@ import org.openapitools.jackson.nullable.JsonNullable;
 /**
  * GetBuyerCollectionSetResponseDataPieces
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-11T23:47:29.843Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-27T19:58:46.962Z[Etc/UTC]")
 public class GetBuyerCollectionSetResponseDataPieces {
-  public static final String SERIALIZED_NAME_NUMBER = "number";
-  @SerializedName(SERIALIZED_NAME_NUMBER)
-  private BigDecimal number;
+  public static final String SERIALIZED_NAME_SKU_ID = "skuId";
+  @SerializedName(SERIALIZED_NAME_SKU_ID)
+  private String skuId;
 
   public static final String SERIALIZED_NAME_TITLE = "title";
   @SerializedName(SERIALIZED_NAME_TITLE)
@@ -43,41 +43,41 @@ public class GetBuyerCollectionSetResponseDataPieces {
   @SerializedName(SERIALIZED_NAME_IMAGE_URL)
   private String imageUrl;
 
-  public static final String SERIALIZED_NAME_SKU_ID = "skuId";
-  @SerializedName(SERIALIZED_NAME_SKU_ID)
-  private String skuId;
-
-  public static final String SERIALIZED_NAME_BEST_ASK_CENTS = "bestAskCents";
-  @SerializedName(SERIALIZED_NAME_BEST_ASK_CENTS)
-  private BigDecimal bestAskCents;
+  public static final String SERIALIZED_NAME_NUMBER = "number";
+  @SerializedName(SERIALIZED_NAME_NUMBER)
+  private BigDecimal number;
 
   public static final String SERIALIZED_NAME_OWNED = "owned";
   @SerializedName(SERIALIZED_NAME_OWNED)
   private Boolean owned;
 
+  public static final String SERIALIZED_NAME_BEST_ASK_CENTS = "bestAskCents";
+  @SerializedName(SERIALIZED_NAME_BEST_ASK_CENTS)
+  private BigDecimal bestAskCents;
+
   public GetBuyerCollectionSetResponseDataPieces() { 
   }
 
-  public GetBuyerCollectionSetResponseDataPieces number(BigDecimal number) {
+  public GetBuyerCollectionSetResponseDataPieces skuId(String skuId) {
     
-    this.number = number;
+    this.skuId = skuId;
     return this;
   }
 
    /**
-   * Get number
-   * @return number
+   * Get skuId
+   * @return skuId
   **/
   @javax.annotation.Nonnull
   @ApiModelProperty(required = true, value = "")
 
-  public BigDecimal getNumber() {
-    return number;
+  public String getSkuId() {
+    return skuId;
   }
 
 
-  public void setNumber(BigDecimal number) {
-    this.number = number;
+  public void setSkuId(String skuId) {
+    this.skuId = skuId;
   }
 
 
@@ -127,49 +127,26 @@ public class GetBuyerCollectionSetResponseDataPieces {
   }
 
 
-  public GetBuyerCollectionSetResponseDataPieces skuId(String skuId) {
+  public GetBuyerCollectionSetResponseDataPieces number(BigDecimal number) {
     
-    this.skuId = skuId;
+    this.number = number;
     return this;
   }
 
    /**
-   * Get skuId
-   * @return skuId
+   * Get number
+   * @return number
   **/
   @javax.annotation.Nonnull
   @ApiModelProperty(required = true, value = "")
 
-  public String getSkuId() {
-    return skuId;
+  public BigDecimal getNumber() {
+    return number;
   }
 
 
-  public void setSkuId(String skuId) {
-    this.skuId = skuId;
-  }
-
-
-  public GetBuyerCollectionSetResponseDataPieces bestAskCents(BigDecimal bestAskCents) {
-    
-    this.bestAskCents = bestAskCents;
-    return this;
-  }
-
-   /**
-   * Get bestAskCents
-   * @return bestAskCents
-  **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
-
-  public BigDecimal getBestAskCents() {
-    return bestAskCents;
-  }
-
-
-  public void setBestAskCents(BigDecimal bestAskCents) {
-    this.bestAskCents = bestAskCents;
+  public void setNumber(BigDecimal number) {
+    this.number = number;
   }
 
 
@@ -196,6 +173,29 @@ public class GetBuyerCollectionSetResponseDataPieces {
   }
 
 
+  public GetBuyerCollectionSetResponseDataPieces bestAskCents(BigDecimal bestAskCents) {
+    
+    this.bestAskCents = bestAskCents;
+    return this;
+  }
+
+   /**
+   * Get bestAskCents
+   * @return bestAskCents
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public BigDecimal getBestAskCents() {
+    return bestAskCents;
+  }
+
+
+  public void setBestAskCents(BigDecimal bestAskCents) {
+    this.bestAskCents = bestAskCents;
+  }
+
+
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -205,12 +205,12 @@ public class GetBuyerCollectionSetResponseDataPieces {
       return false;
     }
     GetBuyerCollectionSetResponseDataPieces getBuyerCollectionSetResponseDataPieces = (GetBuyerCollectionSetResponseDataPieces) o;
-    return Objects.equals(this.number, getBuyerCollectionSetResponseDataPieces.number) &&
+    return Objects.equals(this.skuId, getBuyerCollectionSetResponseDataPieces.skuId) &&
         Objects.equals(this.title, getBuyerCollectionSetResponseDataPieces.title) &&
         Objects.equals(this.imageUrl, getBuyerCollectionSetResponseDataPieces.imageUrl) &&
-        Objects.equals(this.skuId, getBuyerCollectionSetResponseDataPieces.skuId) &&
-        Objects.equals(this.bestAskCents, getBuyerCollectionSetResponseDataPieces.bestAskCents) &&
-        Objects.equals(this.owned, getBuyerCollectionSetResponseDataPieces.owned);
+        Objects.equals(this.number, getBuyerCollectionSetResponseDataPieces.number) &&
+        Objects.equals(this.owned, getBuyerCollectionSetResponseDataPieces.owned) &&
+        Objects.equals(this.bestAskCents, getBuyerCollectionSetResponseDataPieces.bestAskCents);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -219,7 +219,7 @@ public class GetBuyerCollectionSetResponseDataPieces {
 
   @Override
   public int hashCode() {
-    return Objects.hash(number, title, imageUrl, skuId, bestAskCents, owned);
+    return Objects.hash(skuId, title, imageUrl, number, owned, bestAskCents);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -233,12 +233,12 @@ public class GetBuyerCollectionSetResponseDataPieces {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class GetBuyerCollectionSetResponseDataPieces {\n");
-    sb.append("    number: ").append(toIndentedString(number)).append("\n");
+    sb.append("    skuId: ").append(toIndentedString(skuId)).append("\n");
     sb.append("    title: ").append(toIndentedString(title)).append("\n");
     sb.append("    imageUrl: ").append(toIndentedString(imageUrl)).append("\n");
-    sb.append("    skuId: ").append(toIndentedString(skuId)).append("\n");
-    sb.append("    bestAskCents: ").append(toIndentedString(bestAskCents)).append("\n");
+    sb.append("    number: ").append(toIndentedString(number)).append("\n");
     sb.append("    owned: ").append(toIndentedString(owned)).append("\n");
+    sb.append("    bestAskCents: ").append(toIndentedString(bestAskCents)).append("\n");
     sb.append("}");
     return sb.toString();
   }

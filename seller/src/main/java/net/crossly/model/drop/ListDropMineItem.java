@@ -35,7 +35,7 @@ import org.openapitools.jackson.nullable.JsonNullable;
 /**
  * ListDropMineItem
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-11T23:44:48.922Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-27T19:42:43.186Z[Etc/UTC]")
 public class ListDropMineItem {
   public static final String SERIALIZED_NAME_LISTING_IDS = "listingIds";
   @SerializedName(SERIALIZED_NAME_LISTING_IDS)
@@ -62,15 +62,15 @@ public class ListDropMineItem {
    */
   @JsonAdapter(StatusEnum.Adapter.class)
   public enum StatusEnum {
-    SCHEDULED("scheduled"),
-    
     CANCELLED("cancelled"),
+    
+    SCHEDULED("scheduled"),
     
     CLOSED("closed"),
     
-    RELEASED("released"),
+    LINE_OPEN("line_open"),
     
-    LINE_OPEN("line_open");
+    RELEASED("released");
 
     private String value;
 

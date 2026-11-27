@@ -29,7 +29,7 @@ import org.openapitools.jackson.nullable.JsonNullable;
 /**
  * ListBuyerCartItem
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-11T23:47:29.843Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-27T19:58:46.962Z[Etc/UTC]")
 public class ListBuyerCartItem {
   public static final String SERIALIZED_NAME_AVAILABLE = "available";
   @SerializedName(SERIALIZED_NAME_AVAILABLE)
@@ -50,6 +50,10 @@ public class ListBuyerCartItem {
   public static final String SERIALIZED_NAME_UNIT_PRICE_CENTS = "unitPriceCents";
   @SerializedName(SERIALIZED_NAME_UNIT_PRICE_CENTS)
   private BigDecimal unitPriceCents;
+
+  public static final String SERIALIZED_NAME_LISTING_VARIANT_ID = "listingVariantId";
+  @SerializedName(SERIALIZED_NAME_LISTING_VARIANT_ID)
+  private String listingVariantId;
 
   public static final String SERIALIZED_NAME_SLUG = "slug";
   @SerializedName(SERIALIZED_NAME_SLUG)
@@ -181,6 +185,29 @@ public class ListBuyerCartItem {
   }
 
 
+  public ListBuyerCartItem listingVariantId(String listingVariantId) {
+    
+    this.listingVariantId = listingVariantId;
+    return this;
+  }
+
+   /**
+   * Get listingVariantId
+   * @return listingVariantId
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public String getListingVariantId() {
+    return listingVariantId;
+  }
+
+
+  public void setListingVariantId(String listingVariantId) {
+    this.listingVariantId = listingVariantId;
+  }
+
+
   public ListBuyerCartItem slug(String slug) {
     
     this.slug = slug;
@@ -264,6 +291,7 @@ public class ListBuyerCartItem {
         Objects.equals(this.platformListingId, listBuyerCartItem.platformListingId) &&
         Objects.equals(this.quantity, listBuyerCartItem.quantity) &&
         Objects.equals(this.unitPriceCents, listBuyerCartItem.unitPriceCents) &&
+        Objects.equals(this.listingVariantId, listBuyerCartItem.listingVariantId) &&
         Objects.equals(this.slug, listBuyerCartItem.slug) &&
         Objects.equals(this.title, listBuyerCartItem.title) &&
         Objects.equals(this.listingStatus, listBuyerCartItem.listingStatus);
@@ -275,7 +303,7 @@ public class ListBuyerCartItem {
 
   @Override
   public int hashCode() {
-    return Objects.hash(available, id, platformListingId, quantity, unitPriceCents, slug, title, listingStatus);
+    return Objects.hash(available, id, platformListingId, quantity, unitPriceCents, listingVariantId, slug, title, listingStatus);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -294,6 +322,7 @@ public class ListBuyerCartItem {
     sb.append("    platformListingId: ").append(toIndentedString(platformListingId)).append("\n");
     sb.append("    quantity: ").append(toIndentedString(quantity)).append("\n");
     sb.append("    unitPriceCents: ").append(toIndentedString(unitPriceCents)).append("\n");
+    sb.append("    listingVariantId: ").append(toIndentedString(listingVariantId)).append("\n");
     sb.append("    slug: ").append(toIndentedString(slug)).append("\n");
     sb.append("    title: ").append(toIndentedString(title)).append("\n");
     sb.append("    listingStatus: ").append(toIndentedString(listingStatus)).append("\n");

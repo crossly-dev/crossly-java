@@ -30,19 +30,19 @@ import net.crossly.buyer.model.listing.GetBuyerListingFitResponseDataChartRows;
 /**
  * GetBuyerListingFitResponseDataChart
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-11T23:47:29.843Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-27T19:58:46.962Z[Etc/UTC]")
 public class GetBuyerListingFitResponseDataChart {
   public static final String SERIALIZED_NAME_KIND = "kind";
   @SerializedName(SERIALIZED_NAME_KIND)
   private String kind;
 
-  public static final String SERIALIZED_NAME_ROWS = "rows";
-  @SerializedName(SERIALIZED_NAME_ROWS)
-  private List<GetBuyerListingFitResponseDataChartRows> rows = new ArrayList<GetBuyerListingFitResponseDataChartRows>();
-
   public static final String SERIALIZED_NAME_KIND_LABEL = "kindLabel";
   @SerializedName(SERIALIZED_NAME_KIND_LABEL)
   private String kindLabel;
+
+  public static final String SERIALIZED_NAME_ROWS = "rows";
+  @SerializedName(SERIALIZED_NAME_ROWS)
+  private List<GetBuyerListingFitResponseDataChartRows> rows = new ArrayList<GetBuyerListingFitResponseDataChartRows>();
 
   public GetBuyerListingFitResponseDataChart() { 
   }
@@ -67,6 +67,29 @@ public class GetBuyerListingFitResponseDataChart {
 
   public void setKind(String kind) {
     this.kind = kind;
+  }
+
+
+  public GetBuyerListingFitResponseDataChart kindLabel(String kindLabel) {
+    
+    this.kindLabel = kindLabel;
+    return this;
+  }
+
+   /**
+   * Get kindLabel
+   * @return kindLabel
+  **/
+  @javax.annotation.Nonnull
+  @ApiModelProperty(required = true, value = "")
+
+  public String getKindLabel() {
+    return kindLabel;
+  }
+
+
+  public void setKindLabel(String kindLabel) {
+    this.kindLabel = kindLabel;
   }
 
 
@@ -98,29 +121,6 @@ public class GetBuyerListingFitResponseDataChart {
   }
 
 
-  public GetBuyerListingFitResponseDataChart kindLabel(String kindLabel) {
-    
-    this.kindLabel = kindLabel;
-    return this;
-  }
-
-   /**
-   * Get kindLabel
-   * @return kindLabel
-  **/
-  @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "")
-
-  public String getKindLabel() {
-    return kindLabel;
-  }
-
-
-  public void setKindLabel(String kindLabel) {
-    this.kindLabel = kindLabel;
-  }
-
-
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -131,13 +131,13 @@ public class GetBuyerListingFitResponseDataChart {
     }
     GetBuyerListingFitResponseDataChart getBuyerListingFitResponseDataChart = (GetBuyerListingFitResponseDataChart) o;
     return Objects.equals(this.kind, getBuyerListingFitResponseDataChart.kind) &&
-        Objects.equals(this.rows, getBuyerListingFitResponseDataChart.rows) &&
-        Objects.equals(this.kindLabel, getBuyerListingFitResponseDataChart.kindLabel);
+        Objects.equals(this.kindLabel, getBuyerListingFitResponseDataChart.kindLabel) &&
+        Objects.equals(this.rows, getBuyerListingFitResponseDataChart.rows);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(kind, rows, kindLabel);
+    return Objects.hash(kind, kindLabel, rows);
   }
 
   @Override
@@ -145,8 +145,8 @@ public class GetBuyerListingFitResponseDataChart {
     StringBuilder sb = new StringBuilder();
     sb.append("class GetBuyerListingFitResponseDataChart {\n");
     sb.append("    kind: ").append(toIndentedString(kind)).append("\n");
-    sb.append("    rows: ").append(toIndentedString(rows)).append("\n");
     sb.append("    kindLabel: ").append(toIndentedString(kindLabel)).append("\n");
+    sb.append("    rows: ").append(toIndentedString(rows)).append("\n");
     sb.append("}");
     return sb.toString();
   }

@@ -31,7 +31,7 @@ import net.crossly.model.spatial.GetSpatialStreetResponseDataLifeBuskers;
  * Billboards and buskers (street-life/read.ts); absent until attached.
  */
 @ApiModel(description = "Billboards and buskers (street-life/read.ts); absent until attached.")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-11T23:44:48.922Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-27T19:42:43.186Z[Etc/UTC]")
 public class GetSpatialStreetResponseDataLife {
   public static final String SERIALIZED_NAME_BILLBOARDS = "billboards";
   @SerializedName(SERIALIZED_NAME_BILLBOARDS)

@@ -31,11 +31,15 @@ import org.openapitools.jackson.nullable.JsonNullable;
 /**
  * GetSpatialPropertyResponseDataDeeds
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-11T23:44:48.922Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-27T19:42:43.186Z[Etc/UTC]")
 public class GetSpatialPropertyResponseDataDeeds {
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
   private String id;
+
+  public static final String SERIALIZED_NAME_PLOT_ID = "plotId";
+  @SerializedName(SERIALIZED_NAME_PLOT_ID)
+  private String plotId;
 
   public static final String SERIALIZED_NAME_ADDRESS = "address";
   @SerializedName(SERIALIZED_NAME_ADDRESS)
@@ -64,11 +68,11 @@ public class GetSpatialPropertyResponseDataDeeds {
   public enum StatusEnum {
     ACTIVE("active"),
     
-    FORECLOSED("foreclosed"),
-    
     GRACE("grace"),
     
-    DELINQUENT("delinquent");
+    DELINQUENT("delinquent"),
+    
+    FORECLOSED("foreclosed");
 
     private String value;
 
@@ -147,6 +151,29 @@ public class GetSpatialPropertyResponseDataDeeds {
 
   public void setId(String id) {
     this.id = id;
+  }
+
+
+  public GetSpatialPropertyResponseDataDeeds plotId(String plotId) {
+    
+    this.plotId = plotId;
+    return this;
+  }
+
+   /**
+   * Get plotId
+   * @return plotId
+  **/
+  @javax.annotation.Nonnull
+  @ApiModelProperty(required = true, value = "")
+
+  public String getPlotId() {
+    return plotId;
+  }
+
+
+  public void setPlotId(String plotId) {
+    this.plotId = plotId;
   }
 
 
@@ -367,6 +394,7 @@ public class GetSpatialPropertyResponseDataDeeds {
     }
     GetSpatialPropertyResponseDataDeeds getSpatialPropertyResponseDataDeeds = (GetSpatialPropertyResponseDataDeeds) o;
     return Objects.equals(this.id, getSpatialPropertyResponseDataDeeds.id) &&
+        Objects.equals(this.plotId, getSpatialPropertyResponseDataDeeds.plotId) &&
         Objects.equals(this.address, getSpatialPropertyResponseDataDeeds.address) &&
         Objects.equals(this.label, getSpatialPropertyResponseDataDeeds.label) &&
         Objects.equals(this.priceCents, getSpatialPropertyResponseDataDeeds.priceCents) &&
@@ -384,7 +412,7 @@ public class GetSpatialPropertyResponseDataDeeds {
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, address, label, priceCents, maintenanceWeeklyCents, paidThrough, status, occupied, lease, listing);
+    return Objects.hash(id, plotId, address, label, priceCents, maintenanceWeeklyCents, paidThrough, status, occupied, lease, listing);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -399,6 +427,7 @@ public class GetSpatialPropertyResponseDataDeeds {
     StringBuilder sb = new StringBuilder();
     sb.append("class GetSpatialPropertyResponseDataDeeds {\n");
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
+    sb.append("    plotId: ").append(toIndentedString(plotId)).append("\n");
     sb.append("    address: ").append(toIndentedString(address)).append("\n");
     sb.append("    label: ").append(toIndentedString(label)).append("\n");
     sb.append("    priceCents: ").append(toIndentedString(priceCents)).append("\n");

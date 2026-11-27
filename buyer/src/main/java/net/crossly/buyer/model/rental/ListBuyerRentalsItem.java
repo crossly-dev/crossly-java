@@ -33,7 +33,7 @@ import org.openapitools.jackson.nullable.JsonNullable;
 /**
  * ListBuyerRentalsItem
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-11T23:47:29.843Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-27T19:58:46.962Z[Etc/UTC]")
 public class ListBuyerRentalsItem {
   public static final String SERIALIZED_NAME_SHIPPED_AT = "shippedAt";
   @SerializedName(SERIALIZED_NAME_SHIPPED_AT)
@@ -54,6 +54,26 @@ public class ListBuyerRentalsItem {
   public static final String SERIALIZED_NAME_SHIP_TO = "shipTo";
   @SerializedName(SERIALIZED_NAME_SHIP_TO)
   private Map<String, Object> shipTo = null;
+
+  public static final String SERIALIZED_NAME_PLATFORM_LISTING_ID = "platformListingId";
+  @SerializedName(SERIALIZED_NAME_PLATFORM_LISTING_ID)
+  private String platformListingId;
+
+  public static final String SERIALIZED_NAME_PAYOUT_TIMING = "payoutTiming";
+  @SerializedName(SERIALIZED_NAME_PAYOUT_TIMING)
+  private String payoutTiming;
+
+  public static final String SERIALIZED_NAME_PAYOUT_RELEASED_AT = "payoutReleasedAt";
+  @SerializedName(SERIALIZED_NAME_PAYOUT_RELEASED_AT)
+  private String payoutReleasedAt;
+
+  public static final String SERIALIZED_NAME_ORDER_ID = "orderId";
+  @SerializedName(SERIALIZED_NAME_ORDER_ID)
+  private String orderId;
+
+  public static final String SERIALIZED_NAME_CROSSLY_FEE_CENTS = "crosslyFeeCents";
+  @SerializedName(SERIALIZED_NAME_CROSSLY_FEE_CENTS)
+  private BigDecimal crosslyFeeCents;
 
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
@@ -142,6 +162,66 @@ public class ListBuyerRentalsItem {
   public static final String SERIALIZED_NAME_DEPOSIT_REFUNDED_CENTS = "depositRefundedCents";
   @SerializedName(SERIALIZED_NAME_DEPOSIT_REFUNDED_CENTS)
   private BigDecimal depositRefundedCents;
+
+  public static final String SERIALIZED_NAME_UNIT = "unit";
+  @SerializedName(SERIALIZED_NAME_UNIT)
+  private BigDecimal unit;
+
+  public static final String SERIALIZED_NAME_FULFILMENT = "fulfilment";
+  @SerializedName(SERIALIZED_NAME_FULFILMENT)
+  private String fulfilment;
+
+  public static final String SERIALIZED_NAME_CLEANING_FEE_CENTS = "cleaningFeeCents";
+  @SerializedName(SERIALIZED_NAME_CLEANING_FEE_CENTS)
+  private BigDecimal cleaningFeeCents;
+
+  public static final String SERIALIZED_NAME_DAMAGE_WAIVER = "damageWaiver";
+  @SerializedName(SERIALIZED_NAME_DAMAGE_WAIVER)
+  private Boolean damageWaiver;
+
+  public static final String SERIALIZED_NAME_DAMAGE_WAIVER_CENTS = "damageWaiverCents";
+  @SerializedName(SERIALIZED_NAME_DAMAGE_WAIVER_CENTS)
+  private BigDecimal damageWaiverCents;
+
+  public static final String SERIALIZED_NAME_LATE_FEE_CENTS = "lateFeeCents";
+  @SerializedName(SERIALIZED_NAME_LATE_FEE_CENTS)
+  private BigDecimal lateFeeCents;
+
+  public static final String SERIALIZED_NAME_RENT_REFUNDED_CENTS = "rentRefundedCents";
+  @SerializedName(SERIALIZED_NAME_RENT_REFUNDED_CENTS)
+  private BigDecimal rentRefundedCents;
+
+  public static final String SERIALIZED_NAME_BUYOUT_CENTS = "buyoutCents";
+  @SerializedName(SERIALIZED_NAME_BUYOUT_CENTS)
+  private BigDecimal buyoutCents;
+
+  public static final String SERIALIZED_NAME_CHARGES = "charges";
+  @SerializedName(SERIALIZED_NAME_CHARGES)
+  private Map<String, Object> charges = new HashMap<String, Object>();
+
+  public static final String SERIALIZED_NAME_CONDITION_PHOTOS_RETURN = "conditionPhotosReturn";
+  @SerializedName(SERIALIZED_NAME_CONDITION_PHOTOS_RETURN)
+  private List<String> conditionPhotosReturn = new ArrayList<String>();
+
+  public static final String SERIALIZED_NAME_APPROVED_AT = "approvedAt";
+  @SerializedName(SERIALIZED_NAME_APPROVED_AT)
+  private String approvedAt;
+
+  public static final String SERIALIZED_NAME_DELIVERED_AT = "deliveredAt";
+  @SerializedName(SERIALIZED_NAME_DELIVERED_AT)
+  private String deliveredAt;
+
+  public static final String SERIALIZED_NAME_RETURN_SHIPPED_AT = "returnShippedAt";
+  @SerializedName(SERIALIZED_NAME_RETURN_SHIPPED_AT)
+  private String returnShippedAt;
+
+  public static final String SERIALIZED_NAME_INSPECTED_AT = "inspectedAt";
+  @SerializedName(SERIALIZED_NAME_INSPECTED_AT)
+  private String inspectedAt;
+
+  public static final String SERIALIZED_NAME_BOUGHT_OUT_AT = "boughtOutAt";
+  @SerializedName(SERIALIZED_NAME_BOUGHT_OUT_AT)
+  private String boughtOutAt;
 
   public ListBuyerRentalsItem() { 
   }
@@ -266,6 +346,121 @@ public class ListBuyerRentalsItem {
 
   public void setShipTo(Map<String, Object> shipTo) {
     this.shipTo = shipTo;
+  }
+
+
+  public ListBuyerRentalsItem platformListingId(String platformListingId) {
+    
+    this.platformListingId = platformListingId;
+    return this;
+  }
+
+   /**
+   * Get platformListingId
+   * @return platformListingId
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public String getPlatformListingId() {
+    return platformListingId;
+  }
+
+
+  public void setPlatformListingId(String platformListingId) {
+    this.platformListingId = platformListingId;
+  }
+
+
+  public ListBuyerRentalsItem payoutTiming(String payoutTiming) {
+    
+    this.payoutTiming = payoutTiming;
+    return this;
+  }
+
+   /**
+   * Get payoutTiming
+   * @return payoutTiming
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public String getPayoutTiming() {
+    return payoutTiming;
+  }
+
+
+  public void setPayoutTiming(String payoutTiming) {
+    this.payoutTiming = payoutTiming;
+  }
+
+
+  public ListBuyerRentalsItem payoutReleasedAt(String payoutReleasedAt) {
+    
+    this.payoutReleasedAt = payoutReleasedAt;
+    return this;
+  }
+
+   /**
+   * Get payoutReleasedAt
+   * @return payoutReleasedAt
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public String getPayoutReleasedAt() {
+    return payoutReleasedAt;
+  }
+
+
+  public void setPayoutReleasedAt(String payoutReleasedAt) {
+    this.payoutReleasedAt = payoutReleasedAt;
+  }
+
+
+  public ListBuyerRentalsItem orderId(String orderId) {
+    
+    this.orderId = orderId;
+    return this;
+  }
+
+   /**
+   * Get orderId
+   * @return orderId
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public String getOrderId() {
+    return orderId;
+  }
+
+
+  public void setOrderId(String orderId) {
+    this.orderId = orderId;
+  }
+
+
+  public ListBuyerRentalsItem crosslyFeeCents(BigDecimal crosslyFeeCents) {
+    
+    this.crosslyFeeCents = crosslyFeeCents;
+    return this;
+  }
+
+   /**
+   * Get crosslyFeeCents
+   * @return crosslyFeeCents
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public BigDecimal getCrosslyFeeCents() {
+    return crosslyFeeCents;
+  }
+
+
+  public void setCrosslyFeeCents(BigDecimal crosslyFeeCents) {
+    this.crosslyFeeCents = crosslyFeeCents;
   }
 
 
@@ -790,6 +985,361 @@ public class ListBuyerRentalsItem {
   }
 
 
+  public ListBuyerRentalsItem unit(BigDecimal unit) {
+    
+    this.unit = unit;
+    return this;
+  }
+
+   /**
+   * Get unit
+   * @return unit
+  **/
+  @javax.annotation.Nonnull
+  @ApiModelProperty(required = true, value = "")
+
+  public BigDecimal getUnit() {
+    return unit;
+  }
+
+
+  public void setUnit(BigDecimal unit) {
+    this.unit = unit;
+  }
+
+
+  public ListBuyerRentalsItem fulfilment(String fulfilment) {
+    
+    this.fulfilment = fulfilment;
+    return this;
+  }
+
+   /**
+   * Get fulfilment
+   * @return fulfilment
+  **/
+  @javax.annotation.Nonnull
+  @ApiModelProperty(required = true, value = "")
+
+  public String getFulfilment() {
+    return fulfilment;
+  }
+
+
+  public void setFulfilment(String fulfilment) {
+    this.fulfilment = fulfilment;
+  }
+
+
+  public ListBuyerRentalsItem cleaningFeeCents(BigDecimal cleaningFeeCents) {
+    
+    this.cleaningFeeCents = cleaningFeeCents;
+    return this;
+  }
+
+   /**
+   * Get cleaningFeeCents
+   * @return cleaningFeeCents
+  **/
+  @javax.annotation.Nonnull
+  @ApiModelProperty(required = true, value = "")
+
+  public BigDecimal getCleaningFeeCents() {
+    return cleaningFeeCents;
+  }
+
+
+  public void setCleaningFeeCents(BigDecimal cleaningFeeCents) {
+    this.cleaningFeeCents = cleaningFeeCents;
+  }
+
+
+  public ListBuyerRentalsItem damageWaiver(Boolean damageWaiver) {
+    
+    this.damageWaiver = damageWaiver;
+    return this;
+  }
+
+   /**
+   * Get damageWaiver
+   * @return damageWaiver
+  **/
+  @javax.annotation.Nonnull
+  @ApiModelProperty(required = true, value = "")
+
+  public Boolean getDamageWaiver() {
+    return damageWaiver;
+  }
+
+
+  public void setDamageWaiver(Boolean damageWaiver) {
+    this.damageWaiver = damageWaiver;
+  }
+
+
+  public ListBuyerRentalsItem damageWaiverCents(BigDecimal damageWaiverCents) {
+    
+    this.damageWaiverCents = damageWaiverCents;
+    return this;
+  }
+
+   /**
+   * Get damageWaiverCents
+   * @return damageWaiverCents
+  **/
+  @javax.annotation.Nonnull
+  @ApiModelProperty(required = true, value = "")
+
+  public BigDecimal getDamageWaiverCents() {
+    return damageWaiverCents;
+  }
+
+
+  public void setDamageWaiverCents(BigDecimal damageWaiverCents) {
+    this.damageWaiverCents = damageWaiverCents;
+  }
+
+
+  public ListBuyerRentalsItem lateFeeCents(BigDecimal lateFeeCents) {
+    
+    this.lateFeeCents = lateFeeCents;
+    return this;
+  }
+
+   /**
+   * Get lateFeeCents
+   * @return lateFeeCents
+  **/
+  @javax.annotation.Nonnull
+  @ApiModelProperty(required = true, value = "")
+
+  public BigDecimal getLateFeeCents() {
+    return lateFeeCents;
+  }
+
+
+  public void setLateFeeCents(BigDecimal lateFeeCents) {
+    this.lateFeeCents = lateFeeCents;
+  }
+
+
+  public ListBuyerRentalsItem rentRefundedCents(BigDecimal rentRefundedCents) {
+    
+    this.rentRefundedCents = rentRefundedCents;
+    return this;
+  }
+
+   /**
+   * Get rentRefundedCents
+   * @return rentRefundedCents
+  **/
+  @javax.annotation.Nonnull
+  @ApiModelProperty(required = true, value = "")
+
+  public BigDecimal getRentRefundedCents() {
+    return rentRefundedCents;
+  }
+
+
+  public void setRentRefundedCents(BigDecimal rentRefundedCents) {
+    this.rentRefundedCents = rentRefundedCents;
+  }
+
+
+  public ListBuyerRentalsItem buyoutCents(BigDecimal buyoutCents) {
+    
+    this.buyoutCents = buyoutCents;
+    return this;
+  }
+
+   /**
+   * Get buyoutCents
+   * @return buyoutCents
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public BigDecimal getBuyoutCents() {
+    return buyoutCents;
+  }
+
+
+  public void setBuyoutCents(BigDecimal buyoutCents) {
+    this.buyoutCents = buyoutCents;
+  }
+
+
+  public ListBuyerRentalsItem charges(Map<String, Object> charges) {
+    
+    this.charges = charges;
+    return this;
+  }
+
+  public ListBuyerRentalsItem putChargesItem(String key, Object chargesItem) {
+    this.charges.put(key, chargesItem);
+    return this;
+  }
+
+   /**
+   * Get charges
+   * @return charges
+  **/
+  @javax.annotation.Nonnull
+  @ApiModelProperty(required = true, value = "")
+
+  public Map<String, Object> getCharges() {
+    return charges;
+  }
+
+
+  public void setCharges(Map<String, Object> charges) {
+    this.charges = charges;
+  }
+
+
+  public ListBuyerRentalsItem conditionPhotosReturn(List<String> conditionPhotosReturn) {
+    
+    this.conditionPhotosReturn = conditionPhotosReturn;
+    return this;
+  }
+
+  public ListBuyerRentalsItem addConditionPhotosReturnItem(String conditionPhotosReturnItem) {
+    this.conditionPhotosReturn.add(conditionPhotosReturnItem);
+    return this;
+  }
+
+   /**
+   * Get conditionPhotosReturn
+   * @return conditionPhotosReturn
+  **/
+  @javax.annotation.Nonnull
+  @ApiModelProperty(required = true, value = "")
+
+  public List<String> getConditionPhotosReturn() {
+    return conditionPhotosReturn;
+  }
+
+
+  public void setConditionPhotosReturn(List<String> conditionPhotosReturn) {
+    this.conditionPhotosReturn = conditionPhotosReturn;
+  }
+
+
+  public ListBuyerRentalsItem approvedAt(String approvedAt) {
+    
+    this.approvedAt = approvedAt;
+    return this;
+  }
+
+   /**
+   * Get approvedAt
+   * @return approvedAt
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public String getApprovedAt() {
+    return approvedAt;
+  }
+
+
+  public void setApprovedAt(String approvedAt) {
+    this.approvedAt = approvedAt;
+  }
+
+
+  public ListBuyerRentalsItem deliveredAt(String deliveredAt) {
+    
+    this.deliveredAt = deliveredAt;
+    return this;
+  }
+
+   /**
+   * Get deliveredAt
+   * @return deliveredAt
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public String getDeliveredAt() {
+    return deliveredAt;
+  }
+
+
+  public void setDeliveredAt(String deliveredAt) {
+    this.deliveredAt = deliveredAt;
+  }
+
+
+  public ListBuyerRentalsItem returnShippedAt(String returnShippedAt) {
+    
+    this.returnShippedAt = returnShippedAt;
+    return this;
+  }
+
+   /**
+   * Get returnShippedAt
+   * @return returnShippedAt
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public String getReturnShippedAt() {
+    return returnShippedAt;
+  }
+
+
+  public void setReturnShippedAt(String returnShippedAt) {
+    this.returnShippedAt = returnShippedAt;
+  }
+
+
+  public ListBuyerRentalsItem inspectedAt(String inspectedAt) {
+    
+    this.inspectedAt = inspectedAt;
+    return this;
+  }
+
+   /**
+   * Get inspectedAt
+   * @return inspectedAt
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public String getInspectedAt() {
+    return inspectedAt;
+  }
+
+
+  public void setInspectedAt(String inspectedAt) {
+    this.inspectedAt = inspectedAt;
+  }
+
+
+  public ListBuyerRentalsItem boughtOutAt(String boughtOutAt) {
+    
+    this.boughtOutAt = boughtOutAt;
+    return this;
+  }
+
+   /**
+   * Get boughtOutAt
+   * @return boughtOutAt
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public String getBoughtOutAt() {
+    return boughtOutAt;
+  }
+
+
+  public void setBoughtOutAt(String boughtOutAt) {
+    this.boughtOutAt = boughtOutAt;
+  }
+
+
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -804,6 +1354,11 @@ public class ListBuyerRentalsItem {
         Objects.equals(this.closedAt, listBuyerRentalsItem.closedAt) &&
         Objects.equals(this.createdAt, listBuyerRentalsItem.createdAt) &&
         Objects.equals(this.shipTo, listBuyerRentalsItem.shipTo) &&
+        Objects.equals(this.platformListingId, listBuyerRentalsItem.platformListingId) &&
+        Objects.equals(this.payoutTiming, listBuyerRentalsItem.payoutTiming) &&
+        Objects.equals(this.payoutReleasedAt, listBuyerRentalsItem.payoutReleasedAt) &&
+        Objects.equals(this.orderId, listBuyerRentalsItem.orderId) &&
+        Objects.equals(this.crosslyFeeCents, listBuyerRentalsItem.crosslyFeeCents) &&
         Objects.equals(this.id, listBuyerRentalsItem.id) &&
         Objects.equals(this.status, listBuyerRentalsItem.status) &&
         Objects.equals(this.slug, listBuyerRentalsItem.slug) &&
@@ -825,7 +1380,22 @@ public class ListBuyerRentalsItem {
         Objects.equals(this.conditionPhotosOut, listBuyerRentalsItem.conditionPhotosOut) &&
         Objects.equals(this.conditionPhotosIn, listBuyerRentalsItem.conditionPhotosIn) &&
         Objects.equals(this.approvalDueAt, listBuyerRentalsItem.approvalDueAt) &&
-        Objects.equals(this.depositRefundedCents, listBuyerRentalsItem.depositRefundedCents);
+        Objects.equals(this.depositRefundedCents, listBuyerRentalsItem.depositRefundedCents) &&
+        Objects.equals(this.unit, listBuyerRentalsItem.unit) &&
+        Objects.equals(this.fulfilment, listBuyerRentalsItem.fulfilment) &&
+        Objects.equals(this.cleaningFeeCents, listBuyerRentalsItem.cleaningFeeCents) &&
+        Objects.equals(this.damageWaiver, listBuyerRentalsItem.damageWaiver) &&
+        Objects.equals(this.damageWaiverCents, listBuyerRentalsItem.damageWaiverCents) &&
+        Objects.equals(this.lateFeeCents, listBuyerRentalsItem.lateFeeCents) &&
+        Objects.equals(this.rentRefundedCents, listBuyerRentalsItem.rentRefundedCents) &&
+        Objects.equals(this.buyoutCents, listBuyerRentalsItem.buyoutCents) &&
+        Objects.equals(this.charges, listBuyerRentalsItem.charges) &&
+        Objects.equals(this.conditionPhotosReturn, listBuyerRentalsItem.conditionPhotosReturn) &&
+        Objects.equals(this.approvedAt, listBuyerRentalsItem.approvedAt) &&
+        Objects.equals(this.deliveredAt, listBuyerRentalsItem.deliveredAt) &&
+        Objects.equals(this.returnShippedAt, listBuyerRentalsItem.returnShippedAt) &&
+        Objects.equals(this.inspectedAt, listBuyerRentalsItem.inspectedAt) &&
+        Objects.equals(this.boughtOutAt, listBuyerRentalsItem.boughtOutAt);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -834,7 +1404,7 @@ public class ListBuyerRentalsItem {
 
   @Override
   public int hashCode() {
-    return Objects.hash(shippedAt, returnedAt, closedAt, createdAt, shipTo, id, status, slug, title, imageUrl, startDate, endDate, days, rentCents, shippingCents, depositCents, outboundTracking, returnTracking, labelUrl, claimCents, claimNote, claimPhotos, claimDisputed, conditionPhotosOut, conditionPhotosIn, approvalDueAt, depositRefundedCents);
+    return Objects.hash(shippedAt, returnedAt, closedAt, createdAt, shipTo, platformListingId, payoutTiming, payoutReleasedAt, orderId, crosslyFeeCents, id, status, slug, title, imageUrl, startDate, endDate, days, rentCents, shippingCents, depositCents, outboundTracking, returnTracking, labelUrl, claimCents, claimNote, claimPhotos, claimDisputed, conditionPhotosOut, conditionPhotosIn, approvalDueAt, depositRefundedCents, unit, fulfilment, cleaningFeeCents, damageWaiver, damageWaiverCents, lateFeeCents, rentRefundedCents, buyoutCents, charges, conditionPhotosReturn, approvedAt, deliveredAt, returnShippedAt, inspectedAt, boughtOutAt);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -853,6 +1423,11 @@ public class ListBuyerRentalsItem {
     sb.append("    closedAt: ").append(toIndentedString(closedAt)).append("\n");
     sb.append("    createdAt: ").append(toIndentedString(createdAt)).append("\n");
     sb.append("    shipTo: ").append(toIndentedString(shipTo)).append("\n");
+    sb.append("    platformListingId: ").append(toIndentedString(platformListingId)).append("\n");
+    sb.append("    payoutTiming: ").append(toIndentedString(payoutTiming)).append("\n");
+    sb.append("    payoutReleasedAt: ").append(toIndentedString(payoutReleasedAt)).append("\n");
+    sb.append("    orderId: ").append(toIndentedString(orderId)).append("\n");
+    sb.append("    crosslyFeeCents: ").append(toIndentedString(crosslyFeeCents)).append("\n");
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    status: ").append(toIndentedString(status)).append("\n");
     sb.append("    slug: ").append(toIndentedString(slug)).append("\n");
@@ -875,6 +1450,21 @@ public class ListBuyerRentalsItem {
     sb.append("    conditionPhotosIn: ").append(toIndentedString(conditionPhotosIn)).append("\n");
     sb.append("    approvalDueAt: ").append(toIndentedString(approvalDueAt)).append("\n");
     sb.append("    depositRefundedCents: ").append(toIndentedString(depositRefundedCents)).append("\n");
+    sb.append("    unit: ").append(toIndentedString(unit)).append("\n");
+    sb.append("    fulfilment: ").append(toIndentedString(fulfilment)).append("\n");
+    sb.append("    cleaningFeeCents: ").append(toIndentedString(cleaningFeeCents)).append("\n");
+    sb.append("    damageWaiver: ").append(toIndentedString(damageWaiver)).append("\n");
+    sb.append("    damageWaiverCents: ").append(toIndentedString(damageWaiverCents)).append("\n");
+    sb.append("    lateFeeCents: ").append(toIndentedString(lateFeeCents)).append("\n");
+    sb.append("    rentRefundedCents: ").append(toIndentedString(rentRefundedCents)).append("\n");
+    sb.append("    buyoutCents: ").append(toIndentedString(buyoutCents)).append("\n");
+    sb.append("    charges: ").append(toIndentedString(charges)).append("\n");
+    sb.append("    conditionPhotosReturn: ").append(toIndentedString(conditionPhotosReturn)).append("\n");
+    sb.append("    approvedAt: ").append(toIndentedString(approvedAt)).append("\n");
+    sb.append("    deliveredAt: ").append(toIndentedString(deliveredAt)).append("\n");
+    sb.append("    returnShippedAt: ").append(toIndentedString(returnShippedAt)).append("\n");
+    sb.append("    inspectedAt: ").append(toIndentedString(inspectedAt)).append("\n");
+    sb.append("    boughtOutAt: ").append(toIndentedString(boughtOutAt)).append("\n");
     sb.append("}");
     return sb.toString();
   }

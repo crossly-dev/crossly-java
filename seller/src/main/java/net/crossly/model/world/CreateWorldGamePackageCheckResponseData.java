@@ -27,14 +27,14 @@ import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 import net.crossly.model.world.CreateWorldGamePackageCheckResponseDataFits;
-import net.crossly.model.world.CreateWorldGamePackageCheckResponseDataIssues;
 import net.crossly.model.world.CreateWorldGamePackageCheckResponseDataManifest;
+import net.crossly.model.common.PathMessage;
 import org.openapitools.jackson.nullable.JsonNullable;
 
 /**
  * CreateWorldGamePackageCheckResponseData
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-11T23:44:48.922Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-27T19:42:43.186Z[Etc/UTC]")
 public class CreateWorldGamePackageCheckResponseData {
   public static final String SERIALIZED_NAME_OK = "ok";
   @SerializedName(SERIALIZED_NAME_OK)
@@ -42,7 +42,7 @@ public class CreateWorldGamePackageCheckResponseData {
 
   public static final String SERIALIZED_NAME_ISSUES = "issues";
   @SerializedName(SERIALIZED_NAME_ISSUES)
-  private List<CreateWorldGamePackageCheckResponseDataIssues> issues = new ArrayList<CreateWorldGamePackageCheckResponseDataIssues>();
+  private List<PathMessage> issues = new ArrayList<PathMessage>();
 
   public static final String SERIALIZED_NAME_FITS = "fits";
   @SerializedName(SERIALIZED_NAME_FITS)
@@ -82,13 +82,13 @@ public class CreateWorldGamePackageCheckResponseData {
   }
 
 
-  public CreateWorldGamePackageCheckResponseData issues(List<CreateWorldGamePackageCheckResponseDataIssues> issues) {
+  public CreateWorldGamePackageCheckResponseData issues(List<PathMessage> issues) {
     
     this.issues = issues;
     return this;
   }
 
-  public CreateWorldGamePackageCheckResponseData addIssuesItem(CreateWorldGamePackageCheckResponseDataIssues issuesItem) {
+  public CreateWorldGamePackageCheckResponseData addIssuesItem(PathMessage issuesItem) {
     this.issues.add(issuesItem);
     return this;
   }
@@ -100,12 +100,12 @@ public class CreateWorldGamePackageCheckResponseData {
   @javax.annotation.Nonnull
   @ApiModelProperty(required = true, value = "")
 
-  public List<CreateWorldGamePackageCheckResponseDataIssues> getIssues() {
+  public List<PathMessage> getIssues() {
     return issues;
   }
 
 
-  public void setIssues(List<CreateWorldGamePackageCheckResponseDataIssues> issues) {
+  public void setIssues(List<PathMessage> issues) {
     this.issues = issues;
   }
 

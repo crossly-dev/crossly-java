@@ -23,6 +23,7 @@ import com.google.gson.stream.JsonWriter;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 import org.openapitools.jackson.nullable.JsonNullable;
@@ -31,7 +32,7 @@ import org.threeten.bp.OffsetDateTime;
 /**
  * ListConnectedAppsItem
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-11T23:44:48.922Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-27T19:42:43.186Z[Etc/UTC]")
 public class ListConnectedAppsItem {
   public static final String SERIALIZED_NAME_GRANT_ID = "grantId";
   @SerializedName(SERIALIZED_NAME_GRANT_ID)
@@ -72,6 +73,10 @@ public class ListConnectedAppsItem {
   public static final String SERIALIZED_NAME_DEVELOPER_EMAIL = "developerEmail";
   @SerializedName(SERIALIZED_NAME_DEVELOPER_EMAIL)
   private String developerEmail;
+
+  public static final String SERIALIZED_NAME_REV_SHARE_BPS = "revShareBps";
+  @SerializedName(SERIALIZED_NAME_REV_SHARE_BPS)
+  private BigDecimal revShareBps;
 
   public ListConnectedAppsItem() { 
   }
@@ -311,6 +316,29 @@ public class ListConnectedAppsItem {
   }
 
 
+  public ListConnectedAppsItem revShareBps(BigDecimal revShareBps) {
+    
+    this.revShareBps = revShareBps;
+    return this;
+  }
+
+   /**
+   * The share of take-home THIS install agreed to (frozen at consent), not the app&#39;s current terms. Null &#x3D; free.
+   * @return revShareBps
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "The share of take-home THIS install agreed to (frozen at consent), not the app's current terms. Null = free.")
+
+  public BigDecimal getRevShareBps() {
+    return revShareBps;
+  }
+
+
+  public void setRevShareBps(BigDecimal revShareBps) {
+    this.revShareBps = revShareBps;
+  }
+
+
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -329,7 +357,8 @@ public class ListConnectedAppsItem {
         Objects.equals(this.appDescription, listConnectedAppsItem.appDescription) &&
         Objects.equals(this.homepageUrl, listConnectedAppsItem.homepageUrl) &&
         Objects.equals(this.developerName, listConnectedAppsItem.developerName) &&
-        Objects.equals(this.developerEmail, listConnectedAppsItem.developerEmail);
+        Objects.equals(this.developerEmail, listConnectedAppsItem.developerEmail) &&
+        Objects.equals(this.revShareBps, listConnectedAppsItem.revShareBps);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -338,7 +367,7 @@ public class ListConnectedAppsItem {
 
   @Override
   public int hashCode() {
-    return Objects.hash(grantId, scopes, connectedAt, lastUsedAt, appId, appName, appDescription, homepageUrl, developerName, developerEmail);
+    return Objects.hash(grantId, scopes, connectedAt, lastUsedAt, appId, appName, appDescription, homepageUrl, developerName, developerEmail, revShareBps);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -362,6 +391,7 @@ public class ListConnectedAppsItem {
     sb.append("    homepageUrl: ").append(toIndentedString(homepageUrl)).append("\n");
     sb.append("    developerName: ").append(toIndentedString(developerName)).append("\n");
     sb.append("    developerEmail: ").append(toIndentedString(developerEmail)).append("\n");
+    sb.append("    revShareBps: ").append(toIndentedString(revShareBps)).append("\n");
     sb.append("}");
     return sb.toString();
   }

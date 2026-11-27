@@ -28,7 +28,7 @@ import java.math.BigDecimal;
 /**
  * GetAnalyticByPlatformResponseBreakdown
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-11T23:44:48.922Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-27T19:42:43.186Z[Etc/UTC]")
 public class GetAnalyticByPlatformResponseBreakdown {
   public static final String SERIALIZED_NAME_PLATFORM = "platform";
   @SerializedName(SERIALIZED_NAME_PLATFORM)
@@ -49,6 +49,26 @@ public class GetAnalyticByPlatformResponseBreakdown {
   public static final String SERIALIZED_NAME_NET_PROFIT = "netProfit";
   @SerializedName(SERIALIZED_NAME_NET_PROFIT)
   private BigDecimal netProfit;
+
+  public static final String SERIALIZED_NAME_PENDING_DETAILS_COUNT = "pendingDetailsCount";
+  @SerializedName(SERIALIZED_NAME_PENDING_DETAILS_COUNT)
+  private BigDecimal pendingDetailsCount;
+
+  public static final String SERIALIZED_NAME_NET_SALES_CENTS = "netSalesCents";
+  @SerializedName(SERIALIZED_NAME_NET_SALES_CENTS)
+  private BigDecimal netSalesCents;
+
+  public static final String SERIALIZED_NAME_FEES_CENTS = "feesCents";
+  @SerializedName(SERIALIZED_NAME_FEES_CENTS)
+  private BigDecimal feesCents;
+
+  public static final String SERIALIZED_NAME_NET_PROFIT_CENTS = "netProfitCents";
+  @SerializedName(SERIALIZED_NAME_NET_PROFIT_CENTS)
+  private BigDecimal netProfitCents;
+
+  public static final String SERIALIZED_NAME_SHARE = "share";
+  @SerializedName(SERIALIZED_NAME_SHARE)
+  private BigDecimal share;
 
   public GetAnalyticByPlatformResponseBreakdown() { 
   }
@@ -168,6 +188,121 @@ public class GetAnalyticByPlatformResponseBreakdown {
   }
 
 
+  public GetAnalyticByPlatformResponseBreakdown pendingDetailsCount(BigDecimal pendingDetailsCount) {
+    
+    this.pendingDetailsCount = pendingDetailsCount;
+    return this;
+  }
+
+   /**
+   * Get pendingDetailsCount
+   * @return pendingDetailsCount
+  **/
+  @javax.annotation.Nonnull
+  @ApiModelProperty(required = true, value = "")
+
+  public BigDecimal getPendingDetailsCount() {
+    return pendingDetailsCount;
+  }
+
+
+  public void setPendingDetailsCount(BigDecimal pendingDetailsCount) {
+    this.pendingDetailsCount = pendingDetailsCount;
+  }
+
+
+  public GetAnalyticByPlatformResponseBreakdown netSalesCents(BigDecimal netSalesCents) {
+    
+    this.netSalesCents = netSalesCents;
+    return this;
+  }
+
+   /**
+   * Get netSalesCents
+   * @return netSalesCents
+  **/
+  @javax.annotation.Nonnull
+  @ApiModelProperty(required = true, value = "")
+
+  public BigDecimal getNetSalesCents() {
+    return netSalesCents;
+  }
+
+
+  public void setNetSalesCents(BigDecimal netSalesCents) {
+    this.netSalesCents = netSalesCents;
+  }
+
+
+  public GetAnalyticByPlatformResponseBreakdown feesCents(BigDecimal feesCents) {
+    
+    this.feesCents = feesCents;
+    return this;
+  }
+
+   /**
+   * Get feesCents
+   * @return feesCents
+  **/
+  @javax.annotation.Nonnull
+  @ApiModelProperty(required = true, value = "")
+
+  public BigDecimal getFeesCents() {
+    return feesCents;
+  }
+
+
+  public void setFeesCents(BigDecimal feesCents) {
+    this.feesCents = feesCents;
+  }
+
+
+  public GetAnalyticByPlatformResponseBreakdown netProfitCents(BigDecimal netProfitCents) {
+    
+    this.netProfitCents = netProfitCents;
+    return this;
+  }
+
+   /**
+   * Get netProfitCents
+   * @return netProfitCents
+  **/
+  @javax.annotation.Nonnull
+  @ApiModelProperty(required = true, value = "")
+
+  public BigDecimal getNetProfitCents() {
+    return netProfitCents;
+  }
+
+
+  public void setNetProfitCents(BigDecimal netProfitCents) {
+    this.netProfitCents = netProfitCents;
+  }
+
+
+  public GetAnalyticByPlatformResponseBreakdown share(BigDecimal share) {
+    
+    this.share = share;
+    return this;
+  }
+
+   /**
+   * Get share
+   * @return share
+  **/
+  @javax.annotation.Nonnull
+  @ApiModelProperty(required = true, value = "")
+
+  public BigDecimal getShare() {
+    return share;
+  }
+
+
+  public void setShare(BigDecimal share) {
+    this.share = share;
+  }
+
+
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -181,12 +316,17 @@ public class GetAnalyticByPlatformResponseBreakdown {
         Objects.equals(this.sales, getAnalyticByPlatformResponseBreakdown.sales) &&
         Objects.equals(this.revenue, getAnalyticByPlatformResponseBreakdown.revenue) &&
         Objects.equals(this.fees, getAnalyticByPlatformResponseBreakdown.fees) &&
-        Objects.equals(this.netProfit, getAnalyticByPlatformResponseBreakdown.netProfit);
+        Objects.equals(this.netProfit, getAnalyticByPlatformResponseBreakdown.netProfit) &&
+        Objects.equals(this.pendingDetailsCount, getAnalyticByPlatformResponseBreakdown.pendingDetailsCount) &&
+        Objects.equals(this.netSalesCents, getAnalyticByPlatformResponseBreakdown.netSalesCents) &&
+        Objects.equals(this.feesCents, getAnalyticByPlatformResponseBreakdown.feesCents) &&
+        Objects.equals(this.netProfitCents, getAnalyticByPlatformResponseBreakdown.netProfitCents) &&
+        Objects.equals(this.share, getAnalyticByPlatformResponseBreakdown.share);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(platform, sales, revenue, fees, netProfit);
+    return Objects.hash(platform, sales, revenue, fees, netProfit, pendingDetailsCount, netSalesCents, feesCents, netProfitCents, share);
   }
 
   @Override
@@ -198,6 +338,11 @@ public class GetAnalyticByPlatformResponseBreakdown {
     sb.append("    revenue: ").append(toIndentedString(revenue)).append("\n");
     sb.append("    fees: ").append(toIndentedString(fees)).append("\n");
     sb.append("    netProfit: ").append(toIndentedString(netProfit)).append("\n");
+    sb.append("    pendingDetailsCount: ").append(toIndentedString(pendingDetailsCount)).append("\n");
+    sb.append("    netSalesCents: ").append(toIndentedString(netSalesCents)).append("\n");
+    sb.append("    feesCents: ").append(toIndentedString(feesCents)).append("\n");
+    sb.append("    netProfitCents: ").append(toIndentedString(netProfitCents)).append("\n");
+    sb.append("    share: ").append(toIndentedString(share)).append("\n");
     sb.append("}");
     return sb.toString();
   }

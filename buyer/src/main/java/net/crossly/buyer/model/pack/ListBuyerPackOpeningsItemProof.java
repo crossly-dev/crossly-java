@@ -32,31 +32,23 @@ import org.openapitools.jackson.nullable.JsonNullable;
 /**
  * ListBuyerPackOpeningsItemProof
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-11T23:47:29.843Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-27T19:58:46.962Z[Etc/UTC]")
 public class ListBuyerPackOpeningsItemProof {
-  public static final String SERIALIZED_NAME_NONCE = "nonce";
-  @SerializedName(SERIALIZED_NAME_NONCE)
-  private BigDecimal nonce;
-
-  public static final String SERIALIZED_NAME_TIER_ID = "tierId";
-  @SerializedName(SERIALIZED_NAME_TIER_ID)
-  private String tierId;
+  public static final String SERIALIZED_NAME_SERVER_SEED_HASH = "serverSeedHash";
+  @SerializedName(SERIALIZED_NAME_SERVER_SEED_HASH)
+  private String serverSeedHash;
 
   public static final String SERIALIZED_NAME_SERVER_SEED = "serverSeed";
   @SerializedName(SERIALIZED_NAME_SERVER_SEED)
   private String serverSeed;
 
-  public static final String SERIALIZED_NAME_SERVER_SEED_HASH = "serverSeedHash";
-  @SerializedName(SERIALIZED_NAME_SERVER_SEED_HASH)
-  private String serverSeedHash;
-
   public static final String SERIALIZED_NAME_CLIENT_SEED = "clientSeed";
   @SerializedName(SERIALIZED_NAME_CLIENT_SEED)
   private String clientSeed;
 
-  public static final String SERIALIZED_NAME_POOL_ITEM_ID = "poolItemId";
-  @SerializedName(SERIALIZED_NAME_POOL_ITEM_ID)
-  private String poolItemId;
+  public static final String SERIALIZED_NAME_NONCE = "nonce";
+  @SerializedName(SERIALIZED_NAME_NONCE)
+  private BigDecimal nonce;
 
   public static final String SERIALIZED_NAME_TIER_ITEM_IDS = "tierItemIds";
   @SerializedName(SERIALIZED_NAME_TIER_ITEM_IDS)
@@ -66,52 +58,37 @@ public class ListBuyerPackOpeningsItemProof {
   @SerializedName(SERIALIZED_NAME_TIER_WEIGHTS)
   private List<ListBuyerPackOpeningsItemProofTierWeights> tierWeights = null;
 
+  public static final String SERIALIZED_NAME_TIER_ID = "tierId";
+  @SerializedName(SERIALIZED_NAME_TIER_ID)
+  private String tierId;
+
+  public static final String SERIALIZED_NAME_POOL_ITEM_ID = "poolItemId";
+  @SerializedName(SERIALIZED_NAME_POOL_ITEM_ID)
+  private String poolItemId;
+
   public ListBuyerPackOpeningsItemProof() { 
   }
 
-  public ListBuyerPackOpeningsItemProof nonce(BigDecimal nonce) {
+  public ListBuyerPackOpeningsItemProof serverSeedHash(String serverSeedHash) {
     
-    this.nonce = nonce;
+    this.serverSeedHash = serverSeedHash;
     return this;
   }
 
    /**
-   * Get nonce
-   * @return nonce
+   * Get serverSeedHash
+   * @return serverSeedHash
   **/
   @javax.annotation.Nonnull
   @ApiModelProperty(required = true, value = "")
 
-  public BigDecimal getNonce() {
-    return nonce;
+  public String getServerSeedHash() {
+    return serverSeedHash;
   }
 
 
-  public void setNonce(BigDecimal nonce) {
-    this.nonce = nonce;
-  }
-
-
-  public ListBuyerPackOpeningsItemProof tierId(String tierId) {
-    
-    this.tierId = tierId;
-    return this;
-  }
-
-   /**
-   * Get tierId
-   * @return tierId
-  **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
-
-  public String getTierId() {
-    return tierId;
-  }
-
-
-  public void setTierId(String tierId) {
-    this.tierId = tierId;
+  public void setServerSeedHash(String serverSeedHash) {
+    this.serverSeedHash = serverSeedHash;
   }
 
 
@@ -138,29 +115,6 @@ public class ListBuyerPackOpeningsItemProof {
   }
 
 
-  public ListBuyerPackOpeningsItemProof serverSeedHash(String serverSeedHash) {
-    
-    this.serverSeedHash = serverSeedHash;
-    return this;
-  }
-
-   /**
-   * Get serverSeedHash
-   * @return serverSeedHash
-  **/
-  @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "")
-
-  public String getServerSeedHash() {
-    return serverSeedHash;
-  }
-
-
-  public void setServerSeedHash(String serverSeedHash) {
-    this.serverSeedHash = serverSeedHash;
-  }
-
-
   public ListBuyerPackOpeningsItemProof clientSeed(String clientSeed) {
     
     this.clientSeed = clientSeed;
@@ -184,26 +138,26 @@ public class ListBuyerPackOpeningsItemProof {
   }
 
 
-  public ListBuyerPackOpeningsItemProof poolItemId(String poolItemId) {
+  public ListBuyerPackOpeningsItemProof nonce(BigDecimal nonce) {
     
-    this.poolItemId = poolItemId;
+    this.nonce = nonce;
     return this;
   }
 
    /**
-   * Get poolItemId
-   * @return poolItemId
+   * Get nonce
+   * @return nonce
   **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
+  @javax.annotation.Nonnull
+  @ApiModelProperty(required = true, value = "")
 
-  public String getPoolItemId() {
-    return poolItemId;
+  public BigDecimal getNonce() {
+    return nonce;
   }
 
 
-  public void setPoolItemId(String poolItemId) {
-    this.poolItemId = poolItemId;
+  public void setNonce(BigDecimal nonce) {
+    this.nonce = nonce;
   }
 
 
@@ -269,6 +223,52 @@ public class ListBuyerPackOpeningsItemProof {
   }
 
 
+  public ListBuyerPackOpeningsItemProof tierId(String tierId) {
+    
+    this.tierId = tierId;
+    return this;
+  }
+
+   /**
+   * Get tierId
+   * @return tierId
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public String getTierId() {
+    return tierId;
+  }
+
+
+  public void setTierId(String tierId) {
+    this.tierId = tierId;
+  }
+
+
+  public ListBuyerPackOpeningsItemProof poolItemId(String poolItemId) {
+    
+    this.poolItemId = poolItemId;
+    return this;
+  }
+
+   /**
+   * Get poolItemId
+   * @return poolItemId
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public String getPoolItemId() {
+    return poolItemId;
+  }
+
+
+  public void setPoolItemId(String poolItemId) {
+    this.poolItemId = poolItemId;
+  }
+
+
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -278,14 +278,14 @@ public class ListBuyerPackOpeningsItemProof {
       return false;
     }
     ListBuyerPackOpeningsItemProof listBuyerPackOpeningsItemProof = (ListBuyerPackOpeningsItemProof) o;
-    return Objects.equals(this.nonce, listBuyerPackOpeningsItemProof.nonce) &&
-        Objects.equals(this.tierId, listBuyerPackOpeningsItemProof.tierId) &&
+    return Objects.equals(this.serverSeedHash, listBuyerPackOpeningsItemProof.serverSeedHash) &&
         Objects.equals(this.serverSeed, listBuyerPackOpeningsItemProof.serverSeed) &&
-        Objects.equals(this.serverSeedHash, listBuyerPackOpeningsItemProof.serverSeedHash) &&
         Objects.equals(this.clientSeed, listBuyerPackOpeningsItemProof.clientSeed) &&
-        Objects.equals(this.poolItemId, listBuyerPackOpeningsItemProof.poolItemId) &&
+        Objects.equals(this.nonce, listBuyerPackOpeningsItemProof.nonce) &&
         Objects.equals(this.tierItemIds, listBuyerPackOpeningsItemProof.tierItemIds) &&
-        Objects.equals(this.tierWeights, listBuyerPackOpeningsItemProof.tierWeights);
+        Objects.equals(this.tierWeights, listBuyerPackOpeningsItemProof.tierWeights) &&
+        Objects.equals(this.tierId, listBuyerPackOpeningsItemProof.tierId) &&
+        Objects.equals(this.poolItemId, listBuyerPackOpeningsItemProof.poolItemId);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -294,7 +294,7 @@ public class ListBuyerPackOpeningsItemProof {
 
   @Override
   public int hashCode() {
-    return Objects.hash(nonce, tierId, serverSeed, serverSeedHash, clientSeed, poolItemId, tierItemIds, tierWeights);
+    return Objects.hash(serverSeedHash, serverSeed, clientSeed, nonce, tierItemIds, tierWeights, tierId, poolItemId);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -308,14 +308,14 @@ public class ListBuyerPackOpeningsItemProof {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class ListBuyerPackOpeningsItemProof {\n");
-    sb.append("    nonce: ").append(toIndentedString(nonce)).append("\n");
-    sb.append("    tierId: ").append(toIndentedString(tierId)).append("\n");
-    sb.append("    serverSeed: ").append(toIndentedString(serverSeed)).append("\n");
     sb.append("    serverSeedHash: ").append(toIndentedString(serverSeedHash)).append("\n");
+    sb.append("    serverSeed: ").append(toIndentedString(serverSeed)).append("\n");
     sb.append("    clientSeed: ").append(toIndentedString(clientSeed)).append("\n");
-    sb.append("    poolItemId: ").append(toIndentedString(poolItemId)).append("\n");
+    sb.append("    nonce: ").append(toIndentedString(nonce)).append("\n");
     sb.append("    tierItemIds: ").append(toIndentedString(tierItemIds)).append("\n");
     sb.append("    tierWeights: ").append(toIndentedString(tierWeights)).append("\n");
+    sb.append("    tierId: ").append(toIndentedString(tierId)).append("\n");
+    sb.append("    poolItemId: ").append(toIndentedString(poolItemId)).append("\n");
     sb.append("}");
     return sb.toString();
   }

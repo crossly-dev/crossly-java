@@ -24,6 +24,7 @@ import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 import java.math.BigDecimal;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -32,7 +33,7 @@ import org.openapitools.jackson.nullable.JsonNullable;
 /**
  * CreateVaultMarketPartnerApplyResponsePartner
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-11T23:44:48.922Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-27T19:42:43.186Z[Etc/UTC]")
 public class CreateVaultMarketPartnerApplyResponsePartner {
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
@@ -49,9 +50,9 @@ public class CreateVaultMarketPartnerApplyResponsePartner {
   public enum StatusEnum {
     APPLIED("applied"),
     
-    APPROVED("approved"),
-    
     REJECTED("rejected"),
+    
+    APPROVED("approved"),
     
     SUSPENDED("suspended");
 
@@ -136,6 +137,22 @@ public class CreateVaultMarketPartnerApplyResponsePartner {
   public static final String SERIALIZED_NAME_DECISION_NOTE = "decisionNote";
   @SerializedName(SERIALIZED_NAME_DECISION_NOTE)
   private String decisionNote;
+
+  public static final String SERIALIZED_NAME_POSTAL_CODE = "postalCode";
+  @SerializedName(SERIALIZED_NAME_POSTAL_CODE)
+  private String postalCode;
+
+  public static final String SERIALIZED_NAME_HOURS = "hours";
+  @SerializedName(SERIALIZED_NAME_HOURS)
+  private Map<String, Object> hours = null;
+
+  public static final String SERIALIZED_NAME_SERVICES = "services";
+  @SerializedName(SERIALIZED_NAME_SERVICES)
+  private List<String> services = new ArrayList<String>();
+
+  public static final String SERIALIZED_NAME_LISTED = "listed";
+  @SerializedName(SERIALIZED_NAME_LISTED)
+  private Boolean listed;
 
   public CreateVaultMarketPartnerApplyResponsePartner() { 
   }
@@ -447,6 +464,111 @@ public class CreateVaultMarketPartnerApplyResponsePartner {
   }
 
 
+  public CreateVaultMarketPartnerApplyResponsePartner postalCode(String postalCode) {
+    
+    this.postalCode = postalCode;
+    return this;
+  }
+
+   /**
+   * Get postalCode
+   * @return postalCode
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public String getPostalCode() {
+    return postalCode;
+  }
+
+
+  public void setPostalCode(String postalCode) {
+    this.postalCode = postalCode;
+  }
+
+
+  public CreateVaultMarketPartnerApplyResponsePartner hours(Map<String, Object> hours) {
+    
+    this.hours = hours;
+    return this;
+  }
+
+  public CreateVaultMarketPartnerApplyResponsePartner putHoursItem(String key, Object hoursItem) {
+    if (this.hours == null) {
+      this.hours = new HashMap<String, Object>();
+    }
+    this.hours.put(key, hoursItem);
+    return this;
+  }
+
+   /**
+   * Get hours
+   * @return hours
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public Map<String, Object> getHours() {
+    return hours;
+  }
+
+
+  public void setHours(Map<String, Object> hours) {
+    this.hours = hours;
+  }
+
+
+  public CreateVaultMarketPartnerApplyResponsePartner services(List<String> services) {
+    
+    this.services = services;
+    return this;
+  }
+
+  public CreateVaultMarketPartnerApplyResponsePartner addServicesItem(String servicesItem) {
+    this.services.add(servicesItem);
+    return this;
+  }
+
+   /**
+   * Get services
+   * @return services
+  **/
+  @javax.annotation.Nonnull
+  @ApiModelProperty(required = true, value = "")
+
+  public List<String> getServices() {
+    return services;
+  }
+
+
+  public void setServices(List<String> services) {
+    this.services = services;
+  }
+
+
+  public CreateVaultMarketPartnerApplyResponsePartner listed(Boolean listed) {
+    
+    this.listed = listed;
+    return this;
+  }
+
+   /**
+   * Get listed
+   * @return listed
+  **/
+  @javax.annotation.Nonnull
+  @ApiModelProperty(required = true, value = "")
+
+  public Boolean getListed() {
+    return listed;
+  }
+
+
+  public void setListed(Boolean listed) {
+    this.listed = listed;
+  }
+
+
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -468,7 +590,11 @@ public class CreateVaultMarketPartnerApplyResponsePartner {
         Objects.equals(this.capCents, createVaultMarketPartnerApplyResponsePartner.capCents) &&
         Objects.equals(this.appliedAt, createVaultMarketPartnerApplyResponsePartner.appliedAt) &&
         Objects.equals(this.decidedAt, createVaultMarketPartnerApplyResponsePartner.decidedAt) &&
-        Objects.equals(this.decisionNote, createVaultMarketPartnerApplyResponsePartner.decisionNote);
+        Objects.equals(this.decisionNote, createVaultMarketPartnerApplyResponsePartner.decisionNote) &&
+        Objects.equals(this.postalCode, createVaultMarketPartnerApplyResponsePartner.postalCode) &&
+        Objects.equals(this.hours, createVaultMarketPartnerApplyResponsePartner.hours) &&
+        Objects.equals(this.services, createVaultMarketPartnerApplyResponsePartner.services) &&
+        Objects.equals(this.listed, createVaultMarketPartnerApplyResponsePartner.listed);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -477,7 +603,7 @@ public class CreateVaultMarketPartnerApplyResponsePartner {
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, userId, status, shopName, address, website, note, code, shareBps, capCents, appliedAt, decidedAt, decisionNote);
+    return Objects.hash(id, userId, status, shopName, address, website, note, code, shareBps, capCents, appliedAt, decidedAt, decisionNote, postalCode, hours, services, listed);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -504,6 +630,10 @@ public class CreateVaultMarketPartnerApplyResponsePartner {
     sb.append("    appliedAt: ").append(toIndentedString(appliedAt)).append("\n");
     sb.append("    decidedAt: ").append(toIndentedString(decidedAt)).append("\n");
     sb.append("    decisionNote: ").append(toIndentedString(decisionNote)).append("\n");
+    sb.append("    postalCode: ").append(toIndentedString(postalCode)).append("\n");
+    sb.append("    hours: ").append(toIndentedString(hours)).append("\n");
+    sb.append("    services: ").append(toIndentedString(services)).append("\n");
+    sb.append("    listed: ").append(toIndentedString(listed)).append("\n");
     sb.append("}");
     return sb.toString();
   }

@@ -35,7 +35,7 @@ import org.openapitools.jackson.nullable.JsonNullable;
 /**
  * CreateBuyerAgentSessionActResponseQuote
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-11T23:47:29.843Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-27T19:58:46.962Z[Etc/UTC]")
 public class CreateBuyerAgentSessionActResponseQuote {
   /**
    * Gets or Sets kind

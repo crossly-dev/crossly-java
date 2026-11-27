@@ -25,13 +25,13 @@ import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-import net.crossly.model.taxonomy.GetTaxonomyCategoryAspectResponseAspects;
+import net.crossly.model.taxonomy.GetTaxonomyRequiredFieldResponseInlineAspects;
 import net.crossly.model.taxonomy.GetTaxonomyRequiredFieldResponseRequiredFields;
 
 /**
  * GetTaxonomyRequiredFieldResponse
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-11T23:44:48.922Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-27T19:42:43.186Z[Etc/UTC]")
 public class GetTaxonomyRequiredFieldResponse {
   /**
    * Gets or Sets platform
@@ -110,7 +110,7 @@ public class GetTaxonomyRequiredFieldResponse {
 
   public static final String SERIALIZED_NAME_INLINE_ASPECTS = "inlineAspects";
   @SerializedName(SERIALIZED_NAME_INLINE_ASPECTS)
-  private List<GetTaxonomyCategoryAspectResponseAspects> inlineAspects = new ArrayList<GetTaxonomyCategoryAspectResponseAspects>();
+  private List<GetTaxonomyRequiredFieldResponseInlineAspects> inlineAspects = new ArrayList<GetTaxonomyRequiredFieldResponseInlineAspects>();
 
   public GetTaxonomyRequiredFieldResponse() { 
   }
@@ -166,13 +166,13 @@ public class GetTaxonomyRequiredFieldResponse {
   }
 
 
-  public GetTaxonomyRequiredFieldResponse inlineAspects(List<GetTaxonomyCategoryAspectResponseAspects> inlineAspects) {
+  public GetTaxonomyRequiredFieldResponse inlineAspects(List<GetTaxonomyRequiredFieldResponseInlineAspects> inlineAspects) {
     
     this.inlineAspects = inlineAspects;
     return this;
   }
 
-  public GetTaxonomyRequiredFieldResponse addInlineAspectsItem(GetTaxonomyCategoryAspectResponseAspects inlineAspectsItem) {
+  public GetTaxonomyRequiredFieldResponse addInlineAspectsItem(GetTaxonomyRequiredFieldResponseInlineAspects inlineAspectsItem) {
     this.inlineAspects.add(inlineAspectsItem);
     return this;
   }
@@ -184,12 +184,12 @@ public class GetTaxonomyRequiredFieldResponse {
   @javax.annotation.Nonnull
   @ApiModelProperty(required = true, value = "")
 
-  public List<GetTaxonomyCategoryAspectResponseAspects> getInlineAspects() {
+  public List<GetTaxonomyRequiredFieldResponseInlineAspects> getInlineAspects() {
     return inlineAspects;
   }
 
 
-  public void setInlineAspects(List<GetTaxonomyCategoryAspectResponseAspects> inlineAspects) {
+  public void setInlineAspects(List<GetTaxonomyRequiredFieldResponseInlineAspects> inlineAspects) {
     this.inlineAspects = inlineAspects;
   }
 

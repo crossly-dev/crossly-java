@@ -29,19 +29,15 @@ import org.openapitools.jackson.nullable.JsonNullable;
 /**
  * ListBuyerCasesItem
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-11T23:47:29.843Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-27T19:58:46.962Z[Etc/UTC]")
 public class ListBuyerCasesItem {
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
   private String id;
 
-  public static final String SERIALIZED_NAME_CREATED_AT = "createdAt";
-  @SerializedName(SERIALIZED_NAME_CREATED_AT)
-  private String createdAt;
-
-  public static final String SERIALIZED_NAME_UPDATED_AT = "updatedAt";
-  @SerializedName(SERIALIZED_NAME_UPDATED_AT)
-  private String updatedAt;
+  public static final String SERIALIZED_NAME_PURCHASE_ID = "purchaseId";
+  @SerializedName(SERIALIZED_NAME_PURCHASE_ID)
+  private String purchaseId;
 
   public static final String SERIALIZED_NAME_REASON = "reason";
   @SerializedName(SERIALIZED_NAME_REASON)
@@ -51,13 +47,17 @@ public class ListBuyerCasesItem {
   @SerializedName(SERIALIZED_NAME_STATE)
   private String state;
 
+  public static final String SERIALIZED_NAME_CREATED_AT = "createdAt";
+  @SerializedName(SERIALIZED_NAME_CREATED_AT)
+  private String createdAt;
+
+  public static final String SERIALIZED_NAME_UPDATED_AT = "updatedAt";
+  @SerializedName(SERIALIZED_NAME_UPDATED_AT)
+  private String updatedAt;
+
   public static final String SERIALIZED_NAME_KIND = "kind";
   @SerializedName(SERIALIZED_NAME_KIND)
   private String kind;
-
-  public static final String SERIALIZED_NAME_PURCHASE_ID = "purchaseId";
-  @SerializedName(SERIALIZED_NAME_PURCHASE_ID)
-  private String purchaseId;
 
   public static final String SERIALIZED_NAME_CLOSED = "closed";
   @SerializedName(SERIALIZED_NAME_CLOSED)
@@ -66,14 +66,6 @@ public class ListBuyerCasesItem {
   public static final String SERIALIZED_NAME_YOUR_TURN = "yourTurn";
   @SerializedName(SERIALIZED_NAME_YOUR_TURN)
   private Boolean yourTurn;
-
-  public static final String SERIALIZED_NAME_RESOLVED_AT = "resolvedAt";
-  @SerializedName(SERIALIZED_NAME_RESOLVED_AT)
-  private String resolvedAt;
-
-  public static final String SERIALIZED_NAME_BUYER_PAID_CENTS = "buyerPaidCents";
-  @SerializedName(SERIALIZED_NAME_BUYER_PAID_CENTS)
-  private BigDecimal buyerPaidCents;
 
   public static final String SERIALIZED_NAME_AWAITING_PARTY = "awaitingParty";
   @SerializedName(SERIALIZED_NAME_AWAITING_PARTY)
@@ -90,6 +82,10 @@ public class ListBuyerCasesItem {
   public static final String SERIALIZED_NAME_RESOLVED_REFUND_CENTS = "resolvedRefundCents";
   @SerializedName(SERIALIZED_NAME_RESOLVED_REFUND_CENTS)
   private BigDecimal resolvedRefundCents;
+
+  public static final String SERIALIZED_NAME_RESOLVED_AT = "resolvedAt";
+  @SerializedName(SERIALIZED_NAME_RESOLVED_AT)
+  private String resolvedAt;
 
   public static final String SERIALIZED_NAME_RETURN_LABEL_URL = "returnLabelUrl";
   @SerializedName(SERIALIZED_NAME_RETURN_LABEL_URL)
@@ -110,6 +106,10 @@ public class ListBuyerCasesItem {
   public static final String SERIALIZED_NAME_RETURN_DELIVERED_AT = "returnDeliveredAt";
   @SerializedName(SERIALIZED_NAME_RETURN_DELIVERED_AT)
   private String returnDeliveredAt;
+
+  public static final String SERIALIZED_NAME_BUYER_PAID_CENTS = "buyerPaidCents";
+  @SerializedName(SERIALIZED_NAME_BUYER_PAID_CENTS)
+  private BigDecimal buyerPaidCents;
 
   public static final String SERIALIZED_NAME_ITEM_TITLE = "itemTitle";
   @SerializedName(SERIALIZED_NAME_ITEM_TITLE)
@@ -149,49 +149,26 @@ public class ListBuyerCasesItem {
   }
 
 
-  public ListBuyerCasesItem createdAt(String createdAt) {
+  public ListBuyerCasesItem purchaseId(String purchaseId) {
     
-    this.createdAt = createdAt;
+    this.purchaseId = purchaseId;
     return this;
   }
 
    /**
-   * Get createdAt
-   * @return createdAt
+   * Get purchaseId
+   * @return purchaseId
   **/
   @javax.annotation.Nonnull
   @ApiModelProperty(required = true, value = "")
 
-  public String getCreatedAt() {
-    return createdAt;
+  public String getPurchaseId() {
+    return purchaseId;
   }
 
 
-  public void setCreatedAt(String createdAt) {
-    this.createdAt = createdAt;
-  }
-
-
-  public ListBuyerCasesItem updatedAt(String updatedAt) {
-    
-    this.updatedAt = updatedAt;
-    return this;
-  }
-
-   /**
-   * Get updatedAt
-   * @return updatedAt
-  **/
-  @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "")
-
-  public String getUpdatedAt() {
-    return updatedAt;
-  }
-
-
-  public void setUpdatedAt(String updatedAt) {
-    this.updatedAt = updatedAt;
+  public void setPurchaseId(String purchaseId) {
+    this.purchaseId = purchaseId;
   }
 
 
@@ -241,6 +218,52 @@ public class ListBuyerCasesItem {
   }
 
 
+  public ListBuyerCasesItem createdAt(String createdAt) {
+    
+    this.createdAt = createdAt;
+    return this;
+  }
+
+   /**
+   * Get createdAt
+   * @return createdAt
+  **/
+  @javax.annotation.Nonnull
+  @ApiModelProperty(required = true, value = "")
+
+  public String getCreatedAt() {
+    return createdAt;
+  }
+
+
+  public void setCreatedAt(String createdAt) {
+    this.createdAt = createdAt;
+  }
+
+
+  public ListBuyerCasesItem updatedAt(String updatedAt) {
+    
+    this.updatedAt = updatedAt;
+    return this;
+  }
+
+   /**
+   * Get updatedAt
+   * @return updatedAt
+  **/
+  @javax.annotation.Nonnull
+  @ApiModelProperty(required = true, value = "")
+
+  public String getUpdatedAt() {
+    return updatedAt;
+  }
+
+
+  public void setUpdatedAt(String updatedAt) {
+    this.updatedAt = updatedAt;
+  }
+
+
   public ListBuyerCasesItem kind(String kind) {
     
     this.kind = kind;
@@ -261,29 +284,6 @@ public class ListBuyerCasesItem {
 
   public void setKind(String kind) {
     this.kind = kind;
-  }
-
-
-  public ListBuyerCasesItem purchaseId(String purchaseId) {
-    
-    this.purchaseId = purchaseId;
-    return this;
-  }
-
-   /**
-   * Get purchaseId
-   * @return purchaseId
-  **/
-  @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "")
-
-  public String getPurchaseId() {
-    return purchaseId;
-  }
-
-
-  public void setPurchaseId(String purchaseId) {
-    this.purchaseId = purchaseId;
   }
 
 
@@ -330,52 +330,6 @@ public class ListBuyerCasesItem {
 
   public void setYourTurn(Boolean yourTurn) {
     this.yourTurn = yourTurn;
-  }
-
-
-  public ListBuyerCasesItem resolvedAt(String resolvedAt) {
-    
-    this.resolvedAt = resolvedAt;
-    return this;
-  }
-
-   /**
-   * Get resolvedAt
-   * @return resolvedAt
-  **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
-
-  public String getResolvedAt() {
-    return resolvedAt;
-  }
-
-
-  public void setResolvedAt(String resolvedAt) {
-    this.resolvedAt = resolvedAt;
-  }
-
-
-  public ListBuyerCasesItem buyerPaidCents(BigDecimal buyerPaidCents) {
-    
-    this.buyerPaidCents = buyerPaidCents;
-    return this;
-  }
-
-   /**
-   * What you paid for the order, in cents.
-   * @return buyerPaidCents
-  **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "What you paid for the order, in cents.")
-
-  public BigDecimal getBuyerPaidCents() {
-    return buyerPaidCents;
-  }
-
-
-  public void setBuyerPaidCents(BigDecimal buyerPaidCents) {
-    this.buyerPaidCents = buyerPaidCents;
   }
 
 
@@ -468,6 +422,29 @@ public class ListBuyerCasesItem {
 
   public void setResolvedRefundCents(BigDecimal resolvedRefundCents) {
     this.resolvedRefundCents = resolvedRefundCents;
+  }
+
+
+  public ListBuyerCasesItem resolvedAt(String resolvedAt) {
+    
+    this.resolvedAt = resolvedAt;
+    return this;
+  }
+
+   /**
+   * Get resolvedAt
+   * @return resolvedAt
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public String getResolvedAt() {
+    return resolvedAt;
+  }
+
+
+  public void setResolvedAt(String resolvedAt) {
+    this.resolvedAt = resolvedAt;
   }
 
 
@@ -586,6 +563,29 @@ public class ListBuyerCasesItem {
   }
 
 
+  public ListBuyerCasesItem buyerPaidCents(BigDecimal buyerPaidCents) {
+    
+    this.buyerPaidCents = buyerPaidCents;
+    return this;
+  }
+
+   /**
+   * What you paid for the order, in cents.
+   * @return buyerPaidCents
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "What you paid for the order, in cents.")
+
+  public BigDecimal getBuyerPaidCents() {
+    return buyerPaidCents;
+  }
+
+
+  public void setBuyerPaidCents(BigDecimal buyerPaidCents) {
+    this.buyerPaidCents = buyerPaidCents;
+  }
+
+
   public ListBuyerCasesItem itemTitle(String itemTitle) {
     
     this.itemTitle = itemTitle;
@@ -665,25 +665,25 @@ public class ListBuyerCasesItem {
     }
     ListBuyerCasesItem listBuyerCasesItem = (ListBuyerCasesItem) o;
     return Objects.equals(this.id, listBuyerCasesItem.id) &&
-        Objects.equals(this.createdAt, listBuyerCasesItem.createdAt) &&
-        Objects.equals(this.updatedAt, listBuyerCasesItem.updatedAt) &&
+        Objects.equals(this.purchaseId, listBuyerCasesItem.purchaseId) &&
         Objects.equals(this.reason, listBuyerCasesItem.reason) &&
         Objects.equals(this.state, listBuyerCasesItem.state) &&
+        Objects.equals(this.createdAt, listBuyerCasesItem.createdAt) &&
+        Objects.equals(this.updatedAt, listBuyerCasesItem.updatedAt) &&
         Objects.equals(this.kind, listBuyerCasesItem.kind) &&
-        Objects.equals(this.purchaseId, listBuyerCasesItem.purchaseId) &&
         Objects.equals(this.closed, listBuyerCasesItem.closed) &&
         Objects.equals(this.yourTurn, listBuyerCasesItem.yourTurn) &&
-        Objects.equals(this.resolvedAt, listBuyerCasesItem.resolvedAt) &&
-        Objects.equals(this.buyerPaidCents, listBuyerCasesItem.buyerPaidCents) &&
         Objects.equals(this.awaitingParty, listBuyerCasesItem.awaitingParty) &&
         Objects.equals(this.escalateAfter, listBuyerCasesItem.escalateAfter) &&
         Objects.equals(this.offeredRefundCents, listBuyerCasesItem.offeredRefundCents) &&
         Objects.equals(this.resolvedRefundCents, listBuyerCasesItem.resolvedRefundCents) &&
+        Objects.equals(this.resolvedAt, listBuyerCasesItem.resolvedAt) &&
         Objects.equals(this.returnLabelUrl, listBuyerCasesItem.returnLabelUrl) &&
         Objects.equals(this.returnTrackingCode, listBuyerCasesItem.returnTrackingCode) &&
         Objects.equals(this.returnTrackingCarrier, listBuyerCasesItem.returnTrackingCarrier) &&
         Objects.equals(this.returnTrackingStatus, listBuyerCasesItem.returnTrackingStatus) &&
         Objects.equals(this.returnDeliveredAt, listBuyerCasesItem.returnDeliveredAt) &&
+        Objects.equals(this.buyerPaidCents, listBuyerCasesItem.buyerPaidCents) &&
         Objects.equals(this.itemTitle, listBuyerCasesItem.itemTitle) &&
         Objects.equals(this.itemThumbnail, listBuyerCasesItem.itemThumbnail) &&
         Objects.equals(this.sellerName, listBuyerCasesItem.sellerName);
@@ -695,7 +695,7 @@ public class ListBuyerCasesItem {
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, createdAt, updatedAt, reason, state, kind, purchaseId, closed, yourTurn, resolvedAt, buyerPaidCents, awaitingParty, escalateAfter, offeredRefundCents, resolvedRefundCents, returnLabelUrl, returnTrackingCode, returnTrackingCarrier, returnTrackingStatus, returnDeliveredAt, itemTitle, itemThumbnail, sellerName);
+    return Objects.hash(id, purchaseId, reason, state, createdAt, updatedAt, kind, closed, yourTurn, awaitingParty, escalateAfter, offeredRefundCents, resolvedRefundCents, resolvedAt, returnLabelUrl, returnTrackingCode, returnTrackingCarrier, returnTrackingStatus, returnDeliveredAt, buyerPaidCents, itemTitle, itemThumbnail, sellerName);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -710,25 +710,25 @@ public class ListBuyerCasesItem {
     StringBuilder sb = new StringBuilder();
     sb.append("class ListBuyerCasesItem {\n");
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
-    sb.append("    createdAt: ").append(toIndentedString(createdAt)).append("\n");
-    sb.append("    updatedAt: ").append(toIndentedString(updatedAt)).append("\n");
+    sb.append("    purchaseId: ").append(toIndentedString(purchaseId)).append("\n");
     sb.append("    reason: ").append(toIndentedString(reason)).append("\n");
     sb.append("    state: ").append(toIndentedString(state)).append("\n");
+    sb.append("    createdAt: ").append(toIndentedString(createdAt)).append("\n");
+    sb.append("    updatedAt: ").append(toIndentedString(updatedAt)).append("\n");
     sb.append("    kind: ").append(toIndentedString(kind)).append("\n");
-    sb.append("    purchaseId: ").append(toIndentedString(purchaseId)).append("\n");
     sb.append("    closed: ").append(toIndentedString(closed)).append("\n");
     sb.append("    yourTurn: ").append(toIndentedString(yourTurn)).append("\n");
-    sb.append("    resolvedAt: ").append(toIndentedString(resolvedAt)).append("\n");
-    sb.append("    buyerPaidCents: ").append(toIndentedString(buyerPaidCents)).append("\n");
     sb.append("    awaitingParty: ").append(toIndentedString(awaitingParty)).append("\n");
     sb.append("    escalateAfter: ").append(toIndentedString(escalateAfter)).append("\n");
     sb.append("    offeredRefundCents: ").append(toIndentedString(offeredRefundCents)).append("\n");
     sb.append("    resolvedRefundCents: ").append(toIndentedString(resolvedRefundCents)).append("\n");
+    sb.append("    resolvedAt: ").append(toIndentedString(resolvedAt)).append("\n");
     sb.append("    returnLabelUrl: ").append(toIndentedString(returnLabelUrl)).append("\n");
     sb.append("    returnTrackingCode: ").append(toIndentedString(returnTrackingCode)).append("\n");
     sb.append("    returnTrackingCarrier: ").append(toIndentedString(returnTrackingCarrier)).append("\n");
     sb.append("    returnTrackingStatus: ").append(toIndentedString(returnTrackingStatus)).append("\n");
     sb.append("    returnDeliveredAt: ").append(toIndentedString(returnDeliveredAt)).append("\n");
+    sb.append("    buyerPaidCents: ").append(toIndentedString(buyerPaidCents)).append("\n");
     sb.append("    itemTitle: ").append(toIndentedString(itemTitle)).append("\n");
     sb.append("    itemThumbnail: ").append(toIndentedString(itemThumbnail)).append("\n");
     sb.append("    sellerName: ").append(toIndentedString(sellerName)).append("\n");

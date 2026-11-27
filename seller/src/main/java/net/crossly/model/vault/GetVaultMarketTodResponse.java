@@ -29,12 +29,13 @@ import net.crossly.model.vault.GetVaultMarketTodMyClaimResponseGate;
 import net.crossly.model.vault.GetVaultMarketTodResponseBeneficiaries;
 import net.crossly.model.vault.GetVaultMarketTodResponseClaims;
 import net.crossly.model.vault.GetVaultMarketTodResponseUnits;
+import net.crossly.model.vault.GetVaultMarketTodResponseVaultShares;
 import org.openapitools.jackson.nullable.JsonNullable;
 
 /**
  * GetVaultMarketTodResponse
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-11T23:44:48.922Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-27T19:42:43.186Z[Etc/UTC]")
 public class GetVaultMarketTodResponse {
   public static final String SERIALIZED_NAME_GATE = "gate";
   @SerializedName(SERIALIZED_NAME_GATE)
@@ -71,6 +72,10 @@ public class GetVaultMarketTodResponse {
   public static final String SERIALIZED_NAME_CLAIMS = "claims";
   @SerializedName(SERIALIZED_NAME_CLAIMS)
   private List<GetVaultMarketTodResponseClaims> claims = new ArrayList<GetVaultMarketTodResponseClaims>();
+
+  public static final String SERIALIZED_NAME_VAULT_SHARES = "vaultShares";
+  @SerializedName(SERIALIZED_NAME_VAULT_SHARES)
+  private GetVaultMarketTodResponseVaultShares vaultShares;
 
   public GetVaultMarketTodResponse() { 
   }
@@ -297,6 +302,29 @@ public class GetVaultMarketTodResponse {
   }
 
 
+  public GetVaultMarketTodResponse vaultShares(GetVaultMarketTodResponseVaultShares vaultShares) {
+    
+    this.vaultShares = vaultShares;
+    return this;
+  }
+
+   /**
+   * Get vaultShares
+   * @return vaultShares
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public GetVaultMarketTodResponseVaultShares getVaultShares() {
+    return vaultShares;
+  }
+
+
+  public void setVaultShares(GetVaultMarketTodResponseVaultShares vaultShares) {
+    this.vaultShares = vaultShares;
+  }
+
+
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -314,7 +342,8 @@ public class GetVaultMarketTodResponse {
         Objects.equals(this.beneficiaries, getVaultMarketTodResponse.beneficiaries) &&
         Objects.equals(this.sharesProblem, getVaultMarketTodResponse.sharesProblem) &&
         Objects.equals(this.units, getVaultMarketTodResponse.units) &&
-        Objects.equals(this.claims, getVaultMarketTodResponse.claims);
+        Objects.equals(this.claims, getVaultMarketTodResponse.claims) &&
+        Objects.equals(this.vaultShares, getVaultMarketTodResponse.vaultShares);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -323,7 +352,7 @@ public class GetVaultMarketTodResponse {
 
   @Override
   public int hashCode() {
-    return Objects.hash(gate, accepted, acceptedVersion, acceptedAt, locked, beneficiaries, sharesProblem, units, claims);
+    return Objects.hash(gate, accepted, acceptedVersion, acceptedAt, locked, beneficiaries, sharesProblem, units, claims, vaultShares);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -346,6 +375,7 @@ public class GetVaultMarketTodResponse {
     sb.append("    sharesProblem: ").append(toIndentedString(sharesProblem)).append("\n");
     sb.append("    units: ").append(toIndentedString(units)).append("\n");
     sb.append("    claims: ").append(toIndentedString(claims)).append("\n");
+    sb.append("    vaultShares: ").append(toIndentedString(vaultShares)).append("\n");
     sb.append("}");
     return sb.toString();
   }

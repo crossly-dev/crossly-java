@@ -28,41 +28,18 @@ import org.openapitools.jackson.nullable.JsonNullable;
 /**
  * GetBuyerBreakResponseDataSeller
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-11T23:47:29.843Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-27T19:58:46.962Z[Etc/UTC]")
 public class GetBuyerBreakResponseDataSeller {
-  public static final String SERIALIZED_NAME_DISPLAY_NAME = "displayName";
-  @SerializedName(SERIALIZED_NAME_DISPLAY_NAME)
-  private String displayName;
-
   public static final String SERIALIZED_NAME_USERNAME = "username";
   @SerializedName(SERIALIZED_NAME_USERNAME)
   private String username;
 
+  public static final String SERIALIZED_NAME_DISPLAY_NAME = "displayName";
+  @SerializedName(SERIALIZED_NAME_DISPLAY_NAME)
+  private String displayName;
+
   public GetBuyerBreakResponseDataSeller() { 
   }
-
-  public GetBuyerBreakResponseDataSeller displayName(String displayName) {
-    
-    this.displayName = displayName;
-    return this;
-  }
-
-   /**
-   * Get displayName
-   * @return displayName
-  **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
-
-  public String getDisplayName() {
-    return displayName;
-  }
-
-
-  public void setDisplayName(String displayName) {
-    this.displayName = displayName;
-  }
-
 
   public GetBuyerBreakResponseDataSeller username(String username) {
     
@@ -87,6 +64,29 @@ public class GetBuyerBreakResponseDataSeller {
   }
 
 
+  public GetBuyerBreakResponseDataSeller displayName(String displayName) {
+    
+    this.displayName = displayName;
+    return this;
+  }
+
+   /**
+   * Get displayName
+   * @return displayName
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public String getDisplayName() {
+    return displayName;
+  }
+
+
+  public void setDisplayName(String displayName) {
+    this.displayName = displayName;
+  }
+
+
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -96,8 +96,8 @@ public class GetBuyerBreakResponseDataSeller {
       return false;
     }
     GetBuyerBreakResponseDataSeller getBuyerBreakResponseDataSeller = (GetBuyerBreakResponseDataSeller) o;
-    return Objects.equals(this.displayName, getBuyerBreakResponseDataSeller.displayName) &&
-        Objects.equals(this.username, getBuyerBreakResponseDataSeller.username);
+    return Objects.equals(this.username, getBuyerBreakResponseDataSeller.username) &&
+        Objects.equals(this.displayName, getBuyerBreakResponseDataSeller.displayName);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -106,7 +106,7 @@ public class GetBuyerBreakResponseDataSeller {
 
   @Override
   public int hashCode() {
-    return Objects.hash(displayName, username);
+    return Objects.hash(username, displayName);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -120,8 +120,8 @@ public class GetBuyerBreakResponseDataSeller {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class GetBuyerBreakResponseDataSeller {\n");
-    sb.append("    displayName: ").append(toIndentedString(displayName)).append("\n");
     sb.append("    username: ").append(toIndentedString(username)).append("\n");
+    sb.append("    displayName: ").append(toIndentedString(displayName)).append("\n");
     sb.append("}");
     return sb.toString();
   }

@@ -32,8 +32,12 @@ import org.openapitools.jackson.nullable.JsonNullable;
 /**
  * GetBuyerPriceGuideResponseData
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-11T23:47:29.843Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-27T19:58:46.962Z[Etc/UTC]")
 public class GetBuyerPriceGuideResponseData {
+  public static final String SERIALIZED_NAME_COUNT = "count";
+  @SerializedName(SERIALIZED_NAME_COUNT)
+  private BigDecimal count;
+
   public static final String SERIALIZED_NAME_MEDIAN_CENTS = "medianCents";
   @SerializedName(SERIALIZED_NAME_MEDIAN_CENTS)
   private BigDecimal medianCents;
@@ -46,10 +50,6 @@ public class GetBuyerPriceGuideResponseData {
   @SerializedName(SERIALIZED_NAME_P75_CENTS)
   private BigDecimal p75Cents;
 
-  public static final String SERIALIZED_NAME_COUNT = "count";
-  @SerializedName(SERIALIZED_NAME_COUNT)
-  private BigDecimal count;
-
   public static final String SERIALIZED_NAME_BY_MONTH = "byMonth";
   @SerializedName(SERIALIZED_NAME_BY_MONTH)
   private List<Map<String, Object>> byMonth = new ArrayList<Map<String, Object>>();
@@ -60,6 +60,29 @@ public class GetBuyerPriceGuideResponseData {
 
   public GetBuyerPriceGuideResponseData() { 
   }
+
+  public GetBuyerPriceGuideResponseData count(BigDecimal count) {
+    
+    this.count = count;
+    return this;
+  }
+
+   /**
+   * Get count
+   * @return count
+  **/
+  @javax.annotation.Nonnull
+  @ApiModelProperty(required = true, value = "")
+
+  public BigDecimal getCount() {
+    return count;
+  }
+
+
+  public void setCount(BigDecimal count) {
+    this.count = count;
+  }
+
 
   public GetBuyerPriceGuideResponseData medianCents(BigDecimal medianCents) {
     
@@ -130,29 +153,6 @@ public class GetBuyerPriceGuideResponseData {
   }
 
 
-  public GetBuyerPriceGuideResponseData count(BigDecimal count) {
-    
-    this.count = count;
-    return this;
-  }
-
-   /**
-   * Get count
-   * @return count
-  **/
-  @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "")
-
-  public BigDecimal getCount() {
-    return count;
-  }
-
-
-  public void setCount(BigDecimal count) {
-    this.count = count;
-  }
-
-
   public GetBuyerPriceGuideResponseData byMonth(List<Map<String, Object>> byMonth) {
     
     this.byMonth = byMonth;
@@ -218,10 +218,10 @@ public class GetBuyerPriceGuideResponseData {
       return false;
     }
     GetBuyerPriceGuideResponseData getBuyerPriceGuideResponseData = (GetBuyerPriceGuideResponseData) o;
-    return Objects.equals(this.medianCents, getBuyerPriceGuideResponseData.medianCents) &&
+    return Objects.equals(this.count, getBuyerPriceGuideResponseData.count) &&
+        Objects.equals(this.medianCents, getBuyerPriceGuideResponseData.medianCents) &&
         Objects.equals(this.p25Cents, getBuyerPriceGuideResponseData.p25Cents) &&
         Objects.equals(this.p75Cents, getBuyerPriceGuideResponseData.p75Cents) &&
-        Objects.equals(this.count, getBuyerPriceGuideResponseData.count) &&
         Objects.equals(this.byMonth, getBuyerPriceGuideResponseData.byMonth) &&
         Objects.equals(this.recent, getBuyerPriceGuideResponseData.recent);
   }
@@ -232,7 +232,7 @@ public class GetBuyerPriceGuideResponseData {
 
   @Override
   public int hashCode() {
-    return Objects.hash(medianCents, p25Cents, p75Cents, count, byMonth, recent);
+    return Objects.hash(count, medianCents, p25Cents, p75Cents, byMonth, recent);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -246,10 +246,10 @@ public class GetBuyerPriceGuideResponseData {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class GetBuyerPriceGuideResponseData {\n");
+    sb.append("    count: ").append(toIndentedString(count)).append("\n");
     sb.append("    medianCents: ").append(toIndentedString(medianCents)).append("\n");
     sb.append("    p25Cents: ").append(toIndentedString(p25Cents)).append("\n");
     sb.append("    p75Cents: ").append(toIndentedString(p75Cents)).append("\n");
-    sb.append("    count: ").append(toIndentedString(count)).append("\n");
     sb.append("    byMonth: ").append(toIndentedString(byMonth)).append("\n");
     sb.append("    recent: ").append(toIndentedString(recent)).append("\n");
     sb.append("}");

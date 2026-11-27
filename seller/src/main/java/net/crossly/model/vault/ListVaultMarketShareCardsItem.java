@@ -28,13 +28,14 @@ import net.crossly.model.vault.ListVaultMarketShareCardsItemChange;
 import net.crossly.model.vault.ListVaultMarketShareCardsItemLevel;
 import net.crossly.model.vault.ListVaultMarketShareCardsItemLinks;
 import net.crossly.model.vault.ListVaultMarketShareCardsItemMark;
+import net.crossly.model.vault.ListVaultMarketShareCardsItemOwner;
 import net.crossly.model.vault.ListVaultMarketShareCardsItemPortfolio;
 import org.openapitools.jackson.nullable.JsonNullable;
 
 /**
  * ListVaultMarketShareCardsItem
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-11T23:44:48.922Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-27T19:42:43.186Z[Etc/UTC]")
 public class ListVaultMarketShareCardsItem {
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
@@ -49,9 +50,9 @@ public class ListVaultMarketShareCardsItem {
     
     UNIT("unit"),
     
-    INDEX("index"),
+    PORTFOLIO("portfolio"),
     
-    PORTFOLIO("portfolio");
+    INDEX("index");
 
     private String value;
 
@@ -106,6 +107,10 @@ public class ListVaultMarketShareCardsItem {
   public static final String SERIALIZED_NAME_SHOW_AMOUNTS = "showAmounts";
   @SerializedName(SERIALIZED_NAME_SHOW_AMOUNTS)
   private Boolean showAmounts;
+
+  public static final String SERIALIZED_NAME_OWNER = "owner";
+  @SerializedName(SERIALIZED_NAME_OWNER)
+  private ListVaultMarketShareCardsItemOwner owner;
 
   public static final String SERIALIZED_NAME_TITLE = "title";
   @SerializedName(SERIALIZED_NAME_TITLE)
@@ -266,6 +271,29 @@ public class ListVaultMarketShareCardsItem {
 
   public void setShowAmounts(Boolean showAmounts) {
     this.showAmounts = showAmounts;
+  }
+
+
+  public ListVaultMarketShareCardsItem owner(ListVaultMarketShareCardsItemOwner owner) {
+    
+    this.owner = owner;
+    return this;
+  }
+
+   /**
+   * Get owner
+   * @return owner
+  **/
+  @javax.annotation.Nonnull
+  @ApiModelProperty(required = true, value = "")
+
+  public ListVaultMarketShareCardsItemOwner getOwner() {
+    return owner;
+  }
+
+
+  public void setOwner(ListVaultMarketShareCardsItemOwner owner) {
+    this.owner = owner;
   }
 
 
@@ -536,6 +564,7 @@ public class ListVaultMarketShareCardsItem {
         Objects.equals(this.verified, listVaultMarketShareCardsItem.verified) &&
         Objects.equals(this.createdAt, listVaultMarketShareCardsItem.createdAt) &&
         Objects.equals(this.showAmounts, listVaultMarketShareCardsItem.showAmounts) &&
+        Objects.equals(this.owner, listVaultMarketShareCardsItem.owner) &&
         Objects.equals(this.title, listVaultMarketShareCardsItem.title) &&
         Objects.equals(this.subtitle, listVaultMarketShareCardsItem.subtitle) &&
         Objects.equals(this.imageUrl, listVaultMarketShareCardsItem.imageUrl) &&
@@ -555,7 +584,7 @@ public class ListVaultMarketShareCardsItem {
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, kind, verified, createdAt, showAmounts, title, subtitle, imageUrl, bookKey, indexSlug, mark, level, change, amounts, portfolio, links);
+    return Objects.hash(id, kind, verified, createdAt, showAmounts, owner, title, subtitle, imageUrl, bookKey, indexSlug, mark, level, change, amounts, portfolio, links);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -574,6 +603,7 @@ public class ListVaultMarketShareCardsItem {
     sb.append("    verified: ").append(toIndentedString(verified)).append("\n");
     sb.append("    createdAt: ").append(toIndentedString(createdAt)).append("\n");
     sb.append("    showAmounts: ").append(toIndentedString(showAmounts)).append("\n");
+    sb.append("    owner: ").append(toIndentedString(owner)).append("\n");
     sb.append("    title: ").append(toIndentedString(title)).append("\n");
     sb.append("    subtitle: ").append(toIndentedString(subtitle)).append("\n");
     sb.append("    imageUrl: ").append(toIndentedString(imageUrl)).append("\n");

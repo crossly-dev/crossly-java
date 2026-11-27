@@ -28,6 +28,8 @@ Method | HTTP request | Description
 
 Create an automation rule.
 
+Deprecated: automation rules are workflows now. Use /v1/workflows.
+
 ### Example
 ```java
 // Import classes:
@@ -94,6 +96,8 @@ This endpoint does not need any parameter.
 > CreateAutomationRuleImportResponse createAutomationRuleImport(activate)
 
 Import one or more rules from recipe JSON (single or bundle).
+
+Deprecated: automation rules are workflows now. Use /v1/workflows.
 
 ### Example
 ```java
@@ -166,6 +170,8 @@ Name | Type | Description  | Notes
 
 Fire an automation rule immediately.
 
+Deprecated: automation rules are workflows now. Use /v1/workflows.
+
 ### Example
 ```java
 // Import classes:
@@ -233,9 +239,11 @@ Name | Type | Description  | Notes
 
 <a name="createAutomationRuleToggle"></a>
 # **createAutomationRuleToggle**
-> UpdateAutomationRuleResponse createAutomationRuleToggle(id)
+> GetAutomationRuleResponse createAutomationRuleToggle(id)
 
 Flip an automation rule between active and inactive.
+
+Deprecated: automation rules are workflows now. Use /v1/workflows.
 
 ### Example
 ```java
@@ -259,7 +267,7 @@ public class Example {
     AutomationApi apiInstance = new AutomationApi(defaultClient);
     UUID id = UUID.randomUUID(); // UUID | 
     try {
-      UpdateAutomationRuleResponse result = apiInstance.createAutomationRuleToggle(id);
+      GetAutomationRuleResponse result = apiInstance.createAutomationRuleToggle(id);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling AutomationApi#createAutomationRuleToggle");
@@ -280,7 +288,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**UpdateAutomationRuleResponse**
+**GetAutomationRuleResponse**
 
 ### Authorization
 
@@ -307,6 +315,8 @@ Name | Type | Description  | Notes
 > CreateAutomationRuleValidateRecipeResponse createAutomationRuleValidateRecipe()
 
 Dry-run validate one or more recipes against the live catalog.
+
+Deprecated: automation rules are workflows now. Use /v1/workflows.
 
 ### Example
 ```java
@@ -517,6 +527,8 @@ Name | Type | Description  | Notes
 
 Delete an automation rule.
 
+Deprecated: automation rules are workflows now. Use /v1/workflows.
+
 ### Example
 ```java
 // Import classes:
@@ -655,6 +667,8 @@ This endpoint does not need any parameter.
 
 Get a single automation rule.
 
+Deprecated: automation rules are workflows now. Use /v1/workflows.
+
 ### Example
 ```java
 // Import classes:
@@ -726,6 +740,8 @@ Name | Type | Description  | Notes
 
 Export the user&#39;s full rule library as a portable recipe bundle.
 
+Deprecated: automation rules are workflows now. Use /v1/workflows.
+
 ### Example
 ```java
 // Import classes:
@@ -792,6 +808,8 @@ This endpoint does not need any parameter.
 > GetAutomationRuleExportByIdResponse getAutomationRuleExportById(id)
 
 Export a single automation rule as a portable recipe.
+
+Deprecated: automation rules are workflows now. Use /v1/workflows.
 
 ### Example
 ```java
@@ -864,6 +882,8 @@ Name | Type | Description  | Notes
 
 List automation rules.
 
+Deprecated: automation rules are workflows now. Use /v1/workflows.
+
 ### Example
 ```java
 // Import classes:
@@ -930,6 +950,8 @@ This endpoint does not need any parameter.
 > ListAutomationRunsResponse listAutomationRuns(ruleId, chainId, limit)
 
 Per-fire history for automation rules and workflow chain runs.
+
+Deprecated: use /v1/workflow-runs.
 
 ### Example
 ```java
@@ -1069,9 +1091,11 @@ This endpoint does not need any parameter.
 
 <a name="updateAutomationRule"></a>
 # **updateAutomationRule**
-> UpdateAutomationRuleResponse updateAutomationRule(id)
+> GetAutomationRuleResponse updateAutomationRule(id)
 
 Update an automation rule (full replace).
+
+Deprecated: automation rules are workflows now. Use /v1/workflows.
 
 ### Example
 ```java
@@ -1095,7 +1119,7 @@ public class Example {
     AutomationApi apiInstance = new AutomationApi(defaultClient);
     UUID id = UUID.randomUUID(); // UUID | 
     try {
-      UpdateAutomationRuleResponse result = apiInstance.updateAutomationRule(id);
+      GetAutomationRuleResponse result = apiInstance.updateAutomationRule(id);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling AutomationApi#updateAutomationRule");
@@ -1116,7 +1140,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**UpdateAutomationRuleResponse**
+**GetAutomationRuleResponse**
 
 ### Authorization
 

@@ -28,41 +28,18 @@ import java.math.BigDecimal;
 /**
  * CreateBuyerCartOptimizerResponseDataLinesLine
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-11T23:47:29.843Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-27T19:58:46.962Z[Etc/UTC]")
 public class CreateBuyerCartOptimizerResponseDataLinesLine {
-  public static final String SERIALIZED_NAME_QUANTITY = "quantity";
-  @SerializedName(SERIALIZED_NAME_QUANTITY)
-  private BigDecimal quantity;
-
   public static final String SERIALIZED_NAME_QUERY = "query";
   @SerializedName(SERIALIZED_NAME_QUERY)
   private String query;
 
+  public static final String SERIALIZED_NAME_QUANTITY = "quantity";
+  @SerializedName(SERIALIZED_NAME_QUANTITY)
+  private BigDecimal quantity;
+
   public CreateBuyerCartOptimizerResponseDataLinesLine() { 
   }
-
-  public CreateBuyerCartOptimizerResponseDataLinesLine quantity(BigDecimal quantity) {
-    
-    this.quantity = quantity;
-    return this;
-  }
-
-   /**
-   * Get quantity
-   * @return quantity
-  **/
-  @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "")
-
-  public BigDecimal getQuantity() {
-    return quantity;
-  }
-
-
-  public void setQuantity(BigDecimal quantity) {
-    this.quantity = quantity;
-  }
-
 
   public CreateBuyerCartOptimizerResponseDataLinesLine query(String query) {
     
@@ -87,6 +64,29 @@ public class CreateBuyerCartOptimizerResponseDataLinesLine {
   }
 
 
+  public CreateBuyerCartOptimizerResponseDataLinesLine quantity(BigDecimal quantity) {
+    
+    this.quantity = quantity;
+    return this;
+  }
+
+   /**
+   * Get quantity
+   * @return quantity
+  **/
+  @javax.annotation.Nonnull
+  @ApiModelProperty(required = true, value = "")
+
+  public BigDecimal getQuantity() {
+    return quantity;
+  }
+
+
+  public void setQuantity(BigDecimal quantity) {
+    this.quantity = quantity;
+  }
+
+
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -96,21 +96,21 @@ public class CreateBuyerCartOptimizerResponseDataLinesLine {
       return false;
     }
     CreateBuyerCartOptimizerResponseDataLinesLine createBuyerCartOptimizerResponseDataLinesLine = (CreateBuyerCartOptimizerResponseDataLinesLine) o;
-    return Objects.equals(this.quantity, createBuyerCartOptimizerResponseDataLinesLine.quantity) &&
-        Objects.equals(this.query, createBuyerCartOptimizerResponseDataLinesLine.query);
+    return Objects.equals(this.query, createBuyerCartOptimizerResponseDataLinesLine.query) &&
+        Objects.equals(this.quantity, createBuyerCartOptimizerResponseDataLinesLine.quantity);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(quantity, query);
+    return Objects.hash(query, quantity);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class CreateBuyerCartOptimizerResponseDataLinesLine {\n");
-    sb.append("    quantity: ").append(toIndentedString(quantity)).append("\n");
     sb.append("    query: ").append(toIndentedString(query)).append("\n");
+    sb.append("    quantity: ").append(toIndentedString(quantity)).append("\n");
     sb.append("}");
     return sb.toString();
   }

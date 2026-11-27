@@ -29,7 +29,7 @@ import org.openapitools.jackson.nullable.JsonNullable;
 /**
  * GetBuyerListingResaleValueResponseData
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-11T23:47:29.843Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-27T19:58:46.962Z[Etc/UTC]")
 public class GetBuyerListingResaleValueResponseData {
   public static final String SERIALIZED_NAME_BRAND = "brand";
   @SerializedName(SERIALIZED_NAME_BRAND)
@@ -43,14 +43,6 @@ public class GetBuyerListingResaleValueResponseData {
   @SerializedName(SERIALIZED_NAME_MEDIAN_CENTS)
   private BigDecimal medianCents;
 
-  public static final String SERIALIZED_NAME_BUYBACK_DAYS = "buybackDays";
-  @SerializedName(SERIALIZED_NAME_BUYBACK_DAYS)
-  private BigDecimal buybackDays;
-
-  public static final String SERIALIZED_NAME_BUYBACK_CENTS = "buybackCents";
-  @SerializedName(SERIALIZED_NAME_BUYBACK_CENTS)
-  private BigDecimal buybackCents;
-
   public static final String SERIALIZED_NAME_COMPS = "comps";
   @SerializedName(SERIALIZED_NAME_COMPS)
   private BigDecimal comps;
@@ -58,6 +50,14 @@ public class GetBuyerListingResaleValueResponseData {
   public static final String SERIALIZED_NAME_KEEPS_PCT = "keepsPct";
   @SerializedName(SERIALIZED_NAME_KEEPS_PCT)
   private BigDecimal keepsPct;
+
+  public static final String SERIALIZED_NAME_BUYBACK_CENTS = "buybackCents";
+  @SerializedName(SERIALIZED_NAME_BUYBACK_CENTS)
+  private BigDecimal buybackCents;
+
+  public static final String SERIALIZED_NAME_BUYBACK_DAYS = "buybackDays";
+  @SerializedName(SERIALIZED_NAME_BUYBACK_DAYS)
+  private BigDecimal buybackDays;
 
   public GetBuyerListingResaleValueResponseData() { 
   }
@@ -131,52 +131,6 @@ public class GetBuyerListingResaleValueResponseData {
   }
 
 
-  public GetBuyerListingResaleValueResponseData buybackDays(BigDecimal buybackDays) {
-    
-    this.buybackDays = buybackDays;
-    return this;
-  }
-
-   /**
-   * Get buybackDays
-   * @return buybackDays
-  **/
-  @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "")
-
-  public BigDecimal getBuybackDays() {
-    return buybackDays;
-  }
-
-
-  public void setBuybackDays(BigDecimal buybackDays) {
-    this.buybackDays = buybackDays;
-  }
-
-
-  public GetBuyerListingResaleValueResponseData buybackCents(BigDecimal buybackCents) {
-    
-    this.buybackCents = buybackCents;
-    return this;
-  }
-
-   /**
-   * Get buybackCents
-   * @return buybackCents
-  **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
-
-  public BigDecimal getBuybackCents() {
-    return buybackCents;
-  }
-
-
-  public void setBuybackCents(BigDecimal buybackCents) {
-    this.buybackCents = buybackCents;
-  }
-
-
   public GetBuyerListingResaleValueResponseData comps(BigDecimal comps) {
     
     this.comps = comps;
@@ -223,6 +177,52 @@ public class GetBuyerListingResaleValueResponseData {
   }
 
 
+  public GetBuyerListingResaleValueResponseData buybackCents(BigDecimal buybackCents) {
+    
+    this.buybackCents = buybackCents;
+    return this;
+  }
+
+   /**
+   * Get buybackCents
+   * @return buybackCents
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public BigDecimal getBuybackCents() {
+    return buybackCents;
+  }
+
+
+  public void setBuybackCents(BigDecimal buybackCents) {
+    this.buybackCents = buybackCents;
+  }
+
+
+  public GetBuyerListingResaleValueResponseData buybackDays(BigDecimal buybackDays) {
+    
+    this.buybackDays = buybackDays;
+    return this;
+  }
+
+   /**
+   * Get buybackDays
+   * @return buybackDays
+  **/
+  @javax.annotation.Nonnull
+  @ApiModelProperty(required = true, value = "")
+
+  public BigDecimal getBuybackDays() {
+    return buybackDays;
+  }
+
+
+  public void setBuybackDays(BigDecimal buybackDays) {
+    this.buybackDays = buybackDays;
+  }
+
+
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -235,10 +235,10 @@ public class GetBuyerListingResaleValueResponseData {
     return Objects.equals(this.brand, getBuyerListingResaleValueResponseData.brand) &&
         Objects.equals(this.category, getBuyerListingResaleValueResponseData.category) &&
         Objects.equals(this.medianCents, getBuyerListingResaleValueResponseData.medianCents) &&
-        Objects.equals(this.buybackDays, getBuyerListingResaleValueResponseData.buybackDays) &&
-        Objects.equals(this.buybackCents, getBuyerListingResaleValueResponseData.buybackCents) &&
         Objects.equals(this.comps, getBuyerListingResaleValueResponseData.comps) &&
-        Objects.equals(this.keepsPct, getBuyerListingResaleValueResponseData.keepsPct);
+        Objects.equals(this.keepsPct, getBuyerListingResaleValueResponseData.keepsPct) &&
+        Objects.equals(this.buybackCents, getBuyerListingResaleValueResponseData.buybackCents) &&
+        Objects.equals(this.buybackDays, getBuyerListingResaleValueResponseData.buybackDays);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -247,7 +247,7 @@ public class GetBuyerListingResaleValueResponseData {
 
   @Override
   public int hashCode() {
-    return Objects.hash(brand, category, medianCents, buybackDays, buybackCents, comps, keepsPct);
+    return Objects.hash(brand, category, medianCents, comps, keepsPct, buybackCents, buybackDays);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -264,10 +264,10 @@ public class GetBuyerListingResaleValueResponseData {
     sb.append("    brand: ").append(toIndentedString(brand)).append("\n");
     sb.append("    category: ").append(toIndentedString(category)).append("\n");
     sb.append("    medianCents: ").append(toIndentedString(medianCents)).append("\n");
-    sb.append("    buybackDays: ").append(toIndentedString(buybackDays)).append("\n");
-    sb.append("    buybackCents: ").append(toIndentedString(buybackCents)).append("\n");
     sb.append("    comps: ").append(toIndentedString(comps)).append("\n");
     sb.append("    keepsPct: ").append(toIndentedString(keepsPct)).append("\n");
+    sb.append("    buybackCents: ").append(toIndentedString(buybackCents)).append("\n");
+    sb.append("    buybackDays: ").append(toIndentedString(buybackDays)).append("\n");
     sb.append("}");
     return sb.toString();
   }

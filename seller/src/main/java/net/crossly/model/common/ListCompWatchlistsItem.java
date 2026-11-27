@@ -29,7 +29,7 @@ import org.threeten.bp.OffsetDateTime;
 /**
  * ListCompWatchlistsItem
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-11T23:44:48.922Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-27T19:42:43.186Z[Etc/UTC]")
 public class ListCompWatchlistsItem {
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
@@ -51,6 +51,10 @@ public class ListCompWatchlistsItem {
   @SerializedName(SERIALIZED_NAME_USER_ID)
   private String userId;
 
+  public static final String SERIALIZED_NAME_PLATFORM = "platform";
+  @SerializedName(SERIALIZED_NAME_PLATFORM)
+  private String platform;
+
   public static final String SERIALIZED_NAME_CONDITION = "condition";
   @SerializedName(SERIALIZED_NAME_CONDITION)
   private String condition;
@@ -58,10 +62,6 @@ public class ListCompWatchlistsItem {
   public static final String SERIALIZED_NAME_CATEGORY_MAIN = "categoryMain";
   @SerializedName(SERIALIZED_NAME_CATEGORY_MAIN)
   private String categoryMain;
-
-  public static final String SERIALIZED_NAME_PLATFORM = "platform";
-  @SerializedName(SERIALIZED_NAME_PLATFORM)
-  private String platform;
 
   public static final String SERIALIZED_NAME_MIN_PRICE = "minPrice";
   @SerializedName(SERIALIZED_NAME_MIN_PRICE)
@@ -197,6 +197,29 @@ public class ListCompWatchlistsItem {
   }
 
 
+  public ListCompWatchlistsItem platform(String platform) {
+    
+    this.platform = platform;
+    return this;
+  }
+
+   /**
+   * Get platform
+   * @return platform
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public String getPlatform() {
+    return platform;
+  }
+
+
+  public void setPlatform(String platform) {
+    this.platform = platform;
+  }
+
+
   public ListCompWatchlistsItem condition(String condition) {
     
     this.condition = condition;
@@ -240,29 +263,6 @@ public class ListCompWatchlistsItem {
 
   public void setCategoryMain(String categoryMain) {
     this.categoryMain = categoryMain;
-  }
-
-
-  public ListCompWatchlistsItem platform(String platform) {
-    
-    this.platform = platform;
-    return this;
-  }
-
-   /**
-   * Get platform
-   * @return platform
-  **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
-
-  public String getPlatform() {
-    return platform;
-  }
-
-
-  public void setPlatform(String platform) {
-    this.platform = platform;
   }
 
 
@@ -372,9 +372,9 @@ public class ListCompWatchlistsItem {
         Objects.equals(this.name, listCompWatchlistsItem.name) &&
         Objects.equals(this.createdAt, listCompWatchlistsItem.createdAt) &&
         Objects.equals(this.userId, listCompWatchlistsItem.userId) &&
+        Objects.equals(this.platform, listCompWatchlistsItem.platform) &&
         Objects.equals(this.condition, listCompWatchlistsItem.condition) &&
         Objects.equals(this.categoryMain, listCompWatchlistsItem.categoryMain) &&
-        Objects.equals(this.platform, listCompWatchlistsItem.platform) &&
         Objects.equals(this.minPrice, listCompWatchlistsItem.minPrice) &&
         Objects.equals(this.maxPrice, listCompWatchlistsItem.maxPrice) &&
         Objects.equals(this.lastMatchedAt, listCompWatchlistsItem.lastMatchedAt) &&
@@ -387,7 +387,7 @@ public class ListCompWatchlistsItem {
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, brand, name, createdAt, userId, condition, categoryMain, platform, minPrice, maxPrice, lastMatchedAt, lastScrapedAt);
+    return Objects.hash(id, brand, name, createdAt, userId, platform, condition, categoryMain, minPrice, maxPrice, lastMatchedAt, lastScrapedAt);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -406,9 +406,9 @@ public class ListCompWatchlistsItem {
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    createdAt: ").append(toIndentedString(createdAt)).append("\n");
     sb.append("    userId: ").append(toIndentedString(userId)).append("\n");
+    sb.append("    platform: ").append(toIndentedString(platform)).append("\n");
     sb.append("    condition: ").append(toIndentedString(condition)).append("\n");
     sb.append("    categoryMain: ").append(toIndentedString(categoryMain)).append("\n");
-    sb.append("    platform: ").append(toIndentedString(platform)).append("\n");
     sb.append("    minPrice: ").append(toIndentedString(minPrice)).append("\n");
     sb.append("    maxPrice: ").append(toIndentedString(maxPrice)).append("\n");
     sb.append("    lastMatchedAt: ").append(toIndentedString(lastMatchedAt)).append("\n");

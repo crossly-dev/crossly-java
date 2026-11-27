@@ -38,7 +38,7 @@ import org.openapitools.jackson.nullable.JsonNullable;
 /**
  * CreateBuyerLockonConfirmResponse
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-11T23:47:29.843Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-27T19:58:46.962Z[Etc/UTC]")
 public class CreateBuyerLockonConfirmResponse {
   public static final String SERIALIZED_NAME_LOCKON_ID = "lockonId";
   @SerializedName(SERIALIZED_NAME_LOCKON_ID)
@@ -59,11 +59,11 @@ public class CreateBuyerLockonConfirmResponse {
   public enum IdentitySourceEnum {
     CONFIRMED("confirmed"),
     
+    BARCODE("barcode"),
+    
     VISUAL("visual"),
     
-    OCR("ocr"),
-    
-    BARCODE("barcode");
+    OCR("ocr");
 
     private String value;
 

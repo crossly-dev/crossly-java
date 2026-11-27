@@ -24,14 +24,20 @@ import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 import java.math.BigDecimal;
+import java.util.ArrayList;
+import java.util.List;
 import org.openapitools.jackson.nullable.JsonNullable;
 import org.threeten.bp.OffsetDateTime;
 
 /**
  * ListInboxItem
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-11T23:44:48.922Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-27T19:42:43.186Z[Etc/UTC]")
 public class ListInboxItem {
+  public static final String SERIALIZED_NAME_CAN_SEND_OFFER = "canSendOffer";
+  @SerializedName(SERIALIZED_NAME_CAN_SEND_OFFER)
+  private Boolean canSendOffer;
+
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
   private String id;
@@ -44,25 +50,33 @@ public class ListInboxItem {
   @SerializedName(SERIALIZED_NAME_USER_ID)
   private String userId;
 
-  public static final String SERIALIZED_NAME_STATUS = "status";
-  @SerializedName(SERIALIZED_NAME_STATUS)
-  private String status;
-
   public static final String SERIALIZED_NAME_PLATFORM = "platform";
   @SerializedName(SERIALIZED_NAME_PLATFORM)
   private String platform;
-
-  public static final String SERIALIZED_NAME_LISTING_ID = "listingId";
-  @SerializedName(SERIALIZED_NAME_LISTING_ID)
-  private String listingId;
 
   public static final String SERIALIZED_NAME_ACCOUNT_SLOT = "accountSlot";
   @SerializedName(SERIALIZED_NAME_ACCOUNT_SLOT)
   private BigDecimal accountSlot;
 
+  public static final String SERIALIZED_NAME_STATUS = "status";
+  @SerializedName(SERIALIZED_NAME_STATUS)
+  private String status;
+
+  public static final String SERIALIZED_NAME_SOURCE = "source";
+  @SerializedName(SERIALIZED_NAME_SOURCE)
+  private String source;
+
+  public static final String SERIALIZED_NAME_LABELS = "labels";
+  @SerializedName(SERIALIZED_NAME_LABELS)
+  private List<String> labels = new ArrayList<String>();
+
   public static final String SERIALIZED_NAME_INVENTORY_ITEM_ID = "inventoryItemId";
   @SerializedName(SERIALIZED_NAME_INVENTORY_ITEM_ID)
   private String inventoryItemId;
+
+  public static final String SERIALIZED_NAME_LISTING_ID = "listingId";
+  @SerializedName(SERIALIZED_NAME_LISTING_ID)
+  private String listingId;
 
   public static final String SERIALIZED_NAME_PLATFORM_LISTING_ID = "platformListingId";
   @SerializedName(SERIALIZED_NAME_PLATFORM_LISTING_ID)
@@ -72,10 +86,6 @@ public class ListInboxItem {
   @SerializedName(SERIALIZED_NAME_BUYER_USERNAME)
   private String buyerUsername;
 
-  public static final String SERIALIZED_NAME_SUBJECT = "subject";
-  @SerializedName(SERIALIZED_NAME_SUBJECT)
-  private String subject;
-
   public static final String SERIALIZED_NAME_PLATFORM_CONVERSATION_ID = "platformConversationId";
   @SerializedName(SERIALIZED_NAME_PLATFORM_CONVERSATION_ID)
   private String platformConversationId;
@@ -83,6 +93,14 @@ public class ListInboxItem {
   public static final String SERIALIZED_NAME_BUYER_PLATFORM_ID = "buyerPlatformId";
   @SerializedName(SERIALIZED_NAME_BUYER_PLATFORM_ID)
   private String buyerPlatformId;
+
+  public static final String SERIALIZED_NAME_BUYER_AVATAR_URL = "buyerAvatarUrl";
+  @SerializedName(SERIALIZED_NAME_BUYER_AVATAR_URL)
+  private String buyerAvatarUrl;
+
+  public static final String SERIALIZED_NAME_SUBJECT = "subject";
+  @SerializedName(SERIALIZED_NAME_SUBJECT)
+  private String subject;
 
   public static final String SERIALIZED_NAME_IS_READ = "isRead";
   @SerializedName(SERIALIZED_NAME_IS_READ)
@@ -112,8 +130,39 @@ public class ListInboxItem {
   @SerializedName(SERIALIZED_NAME_LAST_MESSAGE_AT)
   private OffsetDateTime lastMessageAt;
 
+  public static final String SERIALIZED_NAME_SUPERSEDED_AT = "supersededAt";
+  @SerializedName(SERIALIZED_NAME_SUPERSEDED_AT)
+  private OffsetDateTime supersededAt;
+
+  public static final String SERIALIZED_NAME_IS_STARRED = "isStarred";
+  @SerializedName(SERIALIZED_NAME_IS_STARRED)
+  private Boolean isStarred;
+
   public ListInboxItem() { 
   }
+
+  public ListInboxItem canSendOffer(Boolean canSendOffer) {
+    
+    this.canSendOffer = canSendOffer;
+    return this;
+  }
+
+   /**
+   * Get canSendOffer
+   * @return canSendOffer
+  **/
+  @javax.annotation.Nonnull
+  @ApiModelProperty(required = true, value = "")
+
+  public Boolean getCanSendOffer() {
+    return canSendOffer;
+  }
+
+
+  public void setCanSendOffer(Boolean canSendOffer) {
+    this.canSendOffer = canSendOffer;
+  }
+
 
   public ListInboxItem id(String id) {
     
@@ -184,29 +233,6 @@ public class ListInboxItem {
   }
 
 
-  public ListInboxItem status(String status) {
-    
-    this.status = status;
-    return this;
-  }
-
-   /**
-   * Get status
-   * @return status
-  **/
-  @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "")
-
-  public String getStatus() {
-    return status;
-  }
-
-
-  public void setStatus(String status) {
-    this.status = status;
-  }
-
-
   public ListInboxItem platform(String platform) {
     
     this.platform = platform;
@@ -227,29 +253,6 @@ public class ListInboxItem {
 
   public void setPlatform(String platform) {
     this.platform = platform;
-  }
-
-
-  public ListInboxItem listingId(String listingId) {
-    
-    this.listingId = listingId;
-    return this;
-  }
-
-   /**
-   * Get listingId
-   * @return listingId
-  **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
-
-  public String getListingId() {
-    return listingId;
-  }
-
-
-  public void setListingId(String listingId) {
-    this.listingId = listingId;
   }
 
 
@@ -276,6 +279,80 @@ public class ListInboxItem {
   }
 
 
+  public ListInboxItem status(String status) {
+    
+    this.status = status;
+    return this;
+  }
+
+   /**
+   * Get status
+   * @return status
+  **/
+  @javax.annotation.Nonnull
+  @ApiModelProperty(required = true, value = "")
+
+  public String getStatus() {
+    return status;
+  }
+
+
+  public void setStatus(String status) {
+    this.status = status;
+  }
+
+
+  public ListInboxItem source(String source) {
+    
+    this.source = source;
+    return this;
+  }
+
+   /**
+   * Get source
+   * @return source
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public String getSource() {
+    return source;
+  }
+
+
+  public void setSource(String source) {
+    this.source = source;
+  }
+
+
+  public ListInboxItem labels(List<String> labels) {
+    
+    this.labels = labels;
+    return this;
+  }
+
+  public ListInboxItem addLabelsItem(String labelsItem) {
+    this.labels.add(labelsItem);
+    return this;
+  }
+
+   /**
+   * Get labels
+   * @return labels
+  **/
+  @javax.annotation.Nonnull
+  @ApiModelProperty(required = true, value = "")
+
+  public List<String> getLabels() {
+    return labels;
+  }
+
+
+  public void setLabels(List<String> labels) {
+    this.labels = labels;
+  }
+
+
   public ListInboxItem inventoryItemId(String inventoryItemId) {
     
     this.inventoryItemId = inventoryItemId;
@@ -296,6 +373,29 @@ public class ListInboxItem {
 
   public void setInventoryItemId(String inventoryItemId) {
     this.inventoryItemId = inventoryItemId;
+  }
+
+
+  public ListInboxItem listingId(String listingId) {
+    
+    this.listingId = listingId;
+    return this;
+  }
+
+   /**
+   * Get listingId
+   * @return listingId
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public String getListingId() {
+    return listingId;
+  }
+
+
+  public void setListingId(String listingId) {
+    this.listingId = listingId;
   }
 
 
@@ -345,29 +445,6 @@ public class ListInboxItem {
   }
 
 
-  public ListInboxItem subject(String subject) {
-    
-    this.subject = subject;
-    return this;
-  }
-
-   /**
-   * Get subject
-   * @return subject
-  **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
-
-  public String getSubject() {
-    return subject;
-  }
-
-
-  public void setSubject(String subject) {
-    this.subject = subject;
-  }
-
-
   public ListInboxItem platformConversationId(String platformConversationId) {
     
     this.platformConversationId = platformConversationId;
@@ -411,6 +488,52 @@ public class ListInboxItem {
 
   public void setBuyerPlatformId(String buyerPlatformId) {
     this.buyerPlatformId = buyerPlatformId;
+  }
+
+
+  public ListInboxItem buyerAvatarUrl(String buyerAvatarUrl) {
+    
+    this.buyerAvatarUrl = buyerAvatarUrl;
+    return this;
+  }
+
+   /**
+   * Get buyerAvatarUrl
+   * @return buyerAvatarUrl
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public String getBuyerAvatarUrl() {
+    return buyerAvatarUrl;
+  }
+
+
+  public void setBuyerAvatarUrl(String buyerAvatarUrl) {
+    this.buyerAvatarUrl = buyerAvatarUrl;
+  }
+
+
+  public ListInboxItem subject(String subject) {
+    
+    this.subject = subject;
+    return this;
+  }
+
+   /**
+   * Get subject
+   * @return subject
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public String getSubject() {
+    return subject;
+  }
+
+
+  public void setSubject(String subject) {
+    this.subject = subject;
   }
 
 
@@ -575,6 +698,52 @@ public class ListInboxItem {
   }
 
 
+  public ListInboxItem supersededAt(OffsetDateTime supersededAt) {
+    
+    this.supersededAt = supersededAt;
+    return this;
+  }
+
+   /**
+   * Get supersededAt
+   * @return supersededAt
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public OffsetDateTime getSupersededAt() {
+    return supersededAt;
+  }
+
+
+  public void setSupersededAt(OffsetDateTime supersededAt) {
+    this.supersededAt = supersededAt;
+  }
+
+
+  public ListInboxItem isStarred(Boolean isStarred) {
+    
+    this.isStarred = isStarred;
+    return this;
+  }
+
+   /**
+   * Get isStarred
+   * @return isStarred
+  **/
+  @javax.annotation.Nonnull
+  @ApiModelProperty(required = true, value = "")
+
+  public Boolean getIsStarred() {
+    return isStarred;
+  }
+
+
+  public void setIsStarred(Boolean isStarred) {
+    this.isStarred = isStarred;
+  }
+
+
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -584,26 +753,32 @@ public class ListInboxItem {
       return false;
     }
     ListInboxItem listInboxItem = (ListInboxItem) o;
-    return Objects.equals(this.id, listInboxItem.id) &&
+    return Objects.equals(this.canSendOffer, listInboxItem.canSendOffer) &&
+        Objects.equals(this.id, listInboxItem.id) &&
         Objects.equals(this.createdAt, listInboxItem.createdAt) &&
         Objects.equals(this.userId, listInboxItem.userId) &&
-        Objects.equals(this.status, listInboxItem.status) &&
         Objects.equals(this.platform, listInboxItem.platform) &&
-        Objects.equals(this.listingId, listInboxItem.listingId) &&
         Objects.equals(this.accountSlot, listInboxItem.accountSlot) &&
+        Objects.equals(this.status, listInboxItem.status) &&
+        Objects.equals(this.source, listInboxItem.source) &&
+        Objects.equals(this.labels, listInboxItem.labels) &&
         Objects.equals(this.inventoryItemId, listInboxItem.inventoryItemId) &&
+        Objects.equals(this.listingId, listInboxItem.listingId) &&
         Objects.equals(this.platformListingId, listInboxItem.platformListingId) &&
         Objects.equals(this.buyerUsername, listInboxItem.buyerUsername) &&
-        Objects.equals(this.subject, listInboxItem.subject) &&
         Objects.equals(this.platformConversationId, listInboxItem.platformConversationId) &&
         Objects.equals(this.buyerPlatformId, listInboxItem.buyerPlatformId) &&
+        Objects.equals(this.buyerAvatarUrl, listInboxItem.buyerAvatarUrl) &&
+        Objects.equals(this.subject, listInboxItem.subject) &&
         Objects.equals(this.isRead, listInboxItem.isRead) &&
         Objects.equals(this.isHidden, listInboxItem.isHidden) &&
         Objects.equals(this.hasOffer, listInboxItem.hasOffer) &&
         Objects.equals(this.offerAmount, listInboxItem.offerAmount) &&
         Objects.equals(this.offerStatus, listInboxItem.offerStatus) &&
         Objects.equals(this.platformConversationUrl, listInboxItem.platformConversationUrl) &&
-        Objects.equals(this.lastMessageAt, listInboxItem.lastMessageAt);
+        Objects.equals(this.lastMessageAt, listInboxItem.lastMessageAt) &&
+        Objects.equals(this.supersededAt, listInboxItem.supersededAt) &&
+        Objects.equals(this.isStarred, listInboxItem.isStarred);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -612,7 +787,7 @@ public class ListInboxItem {
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, createdAt, userId, status, platform, listingId, accountSlot, inventoryItemId, platformListingId, buyerUsername, subject, platformConversationId, buyerPlatformId, isRead, isHidden, hasOffer, offerAmount, offerStatus, platformConversationUrl, lastMessageAt);
+    return Objects.hash(canSendOffer, id, createdAt, userId, platform, accountSlot, status, source, labels, inventoryItemId, listingId, platformListingId, buyerUsername, platformConversationId, buyerPlatformId, buyerAvatarUrl, subject, isRead, isHidden, hasOffer, offerAmount, offerStatus, platformConversationUrl, lastMessageAt, supersededAt, isStarred);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -626,19 +801,23 @@ public class ListInboxItem {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class ListInboxItem {\n");
+    sb.append("    canSendOffer: ").append(toIndentedString(canSendOffer)).append("\n");
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    createdAt: ").append(toIndentedString(createdAt)).append("\n");
     sb.append("    userId: ").append(toIndentedString(userId)).append("\n");
-    sb.append("    status: ").append(toIndentedString(status)).append("\n");
     sb.append("    platform: ").append(toIndentedString(platform)).append("\n");
-    sb.append("    listingId: ").append(toIndentedString(listingId)).append("\n");
     sb.append("    accountSlot: ").append(toIndentedString(accountSlot)).append("\n");
+    sb.append("    status: ").append(toIndentedString(status)).append("\n");
+    sb.append("    source: ").append(toIndentedString(source)).append("\n");
+    sb.append("    labels: ").append(toIndentedString(labels)).append("\n");
     sb.append("    inventoryItemId: ").append(toIndentedString(inventoryItemId)).append("\n");
+    sb.append("    listingId: ").append(toIndentedString(listingId)).append("\n");
     sb.append("    platformListingId: ").append(toIndentedString(platformListingId)).append("\n");
     sb.append("    buyerUsername: ").append(toIndentedString(buyerUsername)).append("\n");
-    sb.append("    subject: ").append(toIndentedString(subject)).append("\n");
     sb.append("    platformConversationId: ").append(toIndentedString(platformConversationId)).append("\n");
     sb.append("    buyerPlatformId: ").append(toIndentedString(buyerPlatformId)).append("\n");
+    sb.append("    buyerAvatarUrl: ").append(toIndentedString(buyerAvatarUrl)).append("\n");
+    sb.append("    subject: ").append(toIndentedString(subject)).append("\n");
     sb.append("    isRead: ").append(toIndentedString(isRead)).append("\n");
     sb.append("    isHidden: ").append(toIndentedString(isHidden)).append("\n");
     sb.append("    hasOffer: ").append(toIndentedString(hasOffer)).append("\n");
@@ -646,6 +825,8 @@ public class ListInboxItem {
     sb.append("    offerStatus: ").append(toIndentedString(offerStatus)).append("\n");
     sb.append("    platformConversationUrl: ").append(toIndentedString(platformConversationUrl)).append("\n");
     sb.append("    lastMessageAt: ").append(toIndentedString(lastMessageAt)).append("\n");
+    sb.append("    supersededAt: ").append(toIndentedString(supersededAt)).append("\n");
+    sb.append("    isStarred: ").append(toIndentedString(isStarred)).append("\n");
     sb.append("}");
     return sb.toString();
   }

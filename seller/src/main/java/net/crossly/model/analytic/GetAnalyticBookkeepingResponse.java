@@ -33,7 +33,7 @@ import net.crossly.model.analytic.GetAnalyticBookkeepingResponsePlatformBreakdow
 /**
  * GetAnalyticBookkeepingResponse
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-11T23:44:48.922Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-27T19:42:43.186Z[Etc/UTC]")
 public class GetAnalyticBookkeepingResponse {
   public static final String SERIALIZED_NAME_YEAR = "year";
   @SerializedName(SERIALIZED_NAME_YEAR)
@@ -50,6 +50,14 @@ public class GetAnalyticBookkeepingResponse {
   public static final String SERIALIZED_NAME_PLATFORM_BREAKDOWN = "platformBreakdown";
   @SerializedName(SERIALIZED_NAME_PLATFORM_BREAKDOWN)
   private List<GetAnalyticBookkeepingResponsePlatformBreakdown> platformBreakdown = new ArrayList<GetAnalyticBookkeepingResponsePlatformBreakdown>();
+
+  public static final String SERIALIZED_NAME_PENDING_DETAILS_COUNT = "pendingDetailsCount";
+  @SerializedName(SERIALIZED_NAME_PENDING_DETAILS_COUNT)
+  private BigDecimal pendingDetailsCount;
+
+  public static final String SERIALIZED_NAME_TZ = "tz";
+  @SerializedName(SERIALIZED_NAME_TZ)
+  private String tz;
 
   public GetAnalyticBookkeepingResponse() { 
   }
@@ -156,6 +164,52 @@ public class GetAnalyticBookkeepingResponse {
   }
 
 
+  public GetAnalyticBookkeepingResponse pendingDetailsCount(BigDecimal pendingDetailsCount) {
+    
+    this.pendingDetailsCount = pendingDetailsCount;
+    return this;
+  }
+
+   /**
+   * Sales of the year whose price and buyer are not known yet: in no line above. \&quot;N sales pending details\&quot;.
+   * @return pendingDetailsCount
+  **/
+  @javax.annotation.Nonnull
+  @ApiModelProperty(required = true, value = "Sales of the year whose price and buyer are not known yet: in no line above. \"N sales pending details\".")
+
+  public BigDecimal getPendingDetailsCount() {
+    return pendingDetailsCount;
+  }
+
+
+  public void setPendingDetailsCount(BigDecimal pendingDetailsCount) {
+    this.pendingDetailsCount = pendingDetailsCount;
+  }
+
+
+  public GetAnalyticBookkeepingResponse tz(String tz) {
+    
+    this.tz = tz;
+    return this;
+  }
+
+   /**
+   * The books timezone the year was cut in.
+   * @return tz
+  **/
+  @javax.annotation.Nonnull
+  @ApiModelProperty(required = true, value = "The books timezone the year was cut in.")
+
+  public String getTz() {
+    return tz;
+  }
+
+
+  public void setTz(String tz) {
+    this.tz = tz;
+  }
+
+
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -168,12 +222,14 @@ public class GetAnalyticBookkeepingResponse {
     return Objects.equals(this.year, getAnalyticBookkeepingResponse.year) &&
         Objects.equals(this.monthlyPL, getAnalyticBookkeepingResponse.monthlyPL) &&
         Objects.equals(this.annualTotals, getAnalyticBookkeepingResponse.annualTotals) &&
-        Objects.equals(this.platformBreakdown, getAnalyticBookkeepingResponse.platformBreakdown);
+        Objects.equals(this.platformBreakdown, getAnalyticBookkeepingResponse.platformBreakdown) &&
+        Objects.equals(this.pendingDetailsCount, getAnalyticBookkeepingResponse.pendingDetailsCount) &&
+        Objects.equals(this.tz, getAnalyticBookkeepingResponse.tz);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(year, monthlyPL, annualTotals, platformBreakdown);
+    return Objects.hash(year, monthlyPL, annualTotals, platformBreakdown, pendingDetailsCount, tz);
   }
 
   @Override
@@ -184,6 +240,8 @@ public class GetAnalyticBookkeepingResponse {
     sb.append("    monthlyPL: ").append(toIndentedString(monthlyPL)).append("\n");
     sb.append("    annualTotals: ").append(toIndentedString(annualTotals)).append("\n");
     sb.append("    platformBreakdown: ").append(toIndentedString(platformBreakdown)).append("\n");
+    sb.append("    pendingDetailsCount: ").append(toIndentedString(pendingDetailsCount)).append("\n");
+    sb.append("    tz: ").append(toIndentedString(tz)).append("\n");
     sb.append("}");
     return sb.toString();
   }

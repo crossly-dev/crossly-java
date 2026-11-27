@@ -28,19 +28,19 @@ import java.math.BigDecimal;
 /**
  * CreateBuyerListingSplitResponseDataShares
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-11T23:47:29.843Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-27T19:58:46.962Z[Etc/UTC]")
 public class CreateBuyerListingSplitResponseDataShares {
   public static final String SERIALIZED_NAME_TOKEN = "token";
   @SerializedName(SERIALIZED_NAME_TOKEN)
   private String token;
 
-  public static final String SERIALIZED_NAME_POSITION = "position";
-  @SerializedName(SERIALIZED_NAME_POSITION)
-  private BigDecimal position;
-
   public static final String SERIALIZED_NAME_SHARE_CENTS = "shareCents";
   @SerializedName(SERIALIZED_NAME_SHARE_CENTS)
   private BigDecimal shareCents;
+
+  public static final String SERIALIZED_NAME_POSITION = "position";
+  @SerializedName(SERIALIZED_NAME_POSITION)
+  private BigDecimal position;
 
   public CreateBuyerListingSplitResponseDataShares() { 
   }
@@ -68,29 +68,6 @@ public class CreateBuyerListingSplitResponseDataShares {
   }
 
 
-  public CreateBuyerListingSplitResponseDataShares position(BigDecimal position) {
-    
-    this.position = position;
-    return this;
-  }
-
-   /**
-   * Get position
-   * @return position
-  **/
-  @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "")
-
-  public BigDecimal getPosition() {
-    return position;
-  }
-
-
-  public void setPosition(BigDecimal position) {
-    this.position = position;
-  }
-
-
   public CreateBuyerListingSplitResponseDataShares shareCents(BigDecimal shareCents) {
     
     this.shareCents = shareCents;
@@ -114,6 +91,29 @@ public class CreateBuyerListingSplitResponseDataShares {
   }
 
 
+  public CreateBuyerListingSplitResponseDataShares position(BigDecimal position) {
+    
+    this.position = position;
+    return this;
+  }
+
+   /**
+   * Get position
+   * @return position
+  **/
+  @javax.annotation.Nonnull
+  @ApiModelProperty(required = true, value = "")
+
+  public BigDecimal getPosition() {
+    return position;
+  }
+
+
+  public void setPosition(BigDecimal position) {
+    this.position = position;
+  }
+
+
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -124,13 +124,13 @@ public class CreateBuyerListingSplitResponseDataShares {
     }
     CreateBuyerListingSplitResponseDataShares createBuyerListingSplitResponseDataShares = (CreateBuyerListingSplitResponseDataShares) o;
     return Objects.equals(this.token, createBuyerListingSplitResponseDataShares.token) &&
-        Objects.equals(this.position, createBuyerListingSplitResponseDataShares.position) &&
-        Objects.equals(this.shareCents, createBuyerListingSplitResponseDataShares.shareCents);
+        Objects.equals(this.shareCents, createBuyerListingSplitResponseDataShares.shareCents) &&
+        Objects.equals(this.position, createBuyerListingSplitResponseDataShares.position);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(token, position, shareCents);
+    return Objects.hash(token, shareCents, position);
   }
 
   @Override
@@ -138,8 +138,8 @@ public class CreateBuyerListingSplitResponseDataShares {
     StringBuilder sb = new StringBuilder();
     sb.append("class CreateBuyerListingSplitResponseDataShares {\n");
     sb.append("    token: ").append(toIndentedString(token)).append("\n");
-    sb.append("    position: ").append(toIndentedString(position)).append("\n");
     sb.append("    shareCents: ").append(toIndentedString(shareCents)).append("\n");
+    sb.append("    position: ").append(toIndentedString(position)).append("\n");
     sb.append("}");
     return sb.toString();
   }

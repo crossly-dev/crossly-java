@@ -23,12 +23,14 @@ import com.google.gson.stream.JsonWriter;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
+import java.math.BigDecimal;
+import org.openapitools.jackson.nullable.JsonNullable;
 import org.threeten.bp.OffsetDateTime;
 
 /**
  * GetAccountDeletionStatusResponsePending
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-11T23:44:48.922Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-27T19:42:43.186Z[Etc/UTC]")
 public class GetAccountDeletionStatusResponsePending {
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
@@ -41,6 +43,22 @@ public class GetAccountDeletionStatusResponsePending {
   public static final String SERIALIZED_NAME_SCHEDULED_FOR = "scheduledFor";
   @SerializedName(SERIALIZED_NAME_SCHEDULED_FOR)
   private OffsetDateTime scheduledFor;
+
+  public static final String SERIALIZED_NAME_PAUSED_AT = "pausedAt";
+  @SerializedName(SERIALIZED_NAME_PAUSED_AT)
+  private OffsetDateTime pausedAt;
+
+  public static final String SERIALIZED_NAME_PAUSE_REASON = "pauseReason";
+  @SerializedName(SERIALIZED_NAME_PAUSE_REASON)
+  private String pauseReason;
+
+  public static final String SERIALIZED_NAME_LISTING_COUNT = "listingCount";
+  @SerializedName(SERIALIZED_NAME_LISTING_COUNT)
+  private BigDecimal listingCount;
+
+  public static final String SERIALIZED_NAME_INVENTORY_COUNT = "inventoryCount";
+  @SerializedName(SERIALIZED_NAME_INVENTORY_COUNT)
+  private BigDecimal inventoryCount;
 
   public GetAccountDeletionStatusResponsePending() { 
   }
@@ -114,6 +132,98 @@ public class GetAccountDeletionStatusResponsePending {
   }
 
 
+  public GetAccountDeletionStatusResponsePending pausedAt(OffsetDateTime pausedAt) {
+    
+    this.pausedAt = pausedAt;
+    return this;
+  }
+
+   /**
+   * Set when the account was found in use: it waits for a re-confirmation.
+   * @return pausedAt
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "Set when the account was found in use: it waits for a re-confirmation.")
+
+  public OffsetDateTime getPausedAt() {
+    return pausedAt;
+  }
+
+
+  public void setPausedAt(OffsetDateTime pausedAt) {
+    this.pausedAt = pausedAt;
+  }
+
+
+  public GetAccountDeletionStatusResponsePending pauseReason(String pauseReason) {
+    
+    this.pauseReason = pauseReason;
+    return this;
+  }
+
+   /**
+   * Get pauseReason
+   * @return pauseReason
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public String getPauseReason() {
+    return pauseReason;
+  }
+
+
+  public void setPauseReason(String pauseReason) {
+    this.pauseReason = pauseReason;
+  }
+
+
+  public GetAccountDeletionStatusResponsePending listingCount(BigDecimal listingCount) {
+    
+    this.listingCount = listingCount;
+    return this;
+  }
+
+   /**
+   * What the cascade will take.
+   * @return listingCount
+  **/
+  @javax.annotation.Nonnull
+  @ApiModelProperty(required = true, value = "What the cascade will take.")
+
+  public BigDecimal getListingCount() {
+    return listingCount;
+  }
+
+
+  public void setListingCount(BigDecimal listingCount) {
+    this.listingCount = listingCount;
+  }
+
+
+  public GetAccountDeletionStatusResponsePending inventoryCount(BigDecimal inventoryCount) {
+    
+    this.inventoryCount = inventoryCount;
+    return this;
+  }
+
+   /**
+   * Get inventoryCount
+   * @return inventoryCount
+  **/
+  @javax.annotation.Nonnull
+  @ApiModelProperty(required = true, value = "")
+
+  public BigDecimal getInventoryCount() {
+    return inventoryCount;
+  }
+
+
+  public void setInventoryCount(BigDecimal inventoryCount) {
+    this.inventoryCount = inventoryCount;
+  }
+
+
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -125,12 +235,27 @@ public class GetAccountDeletionStatusResponsePending {
     GetAccountDeletionStatusResponsePending getAccountDeletionStatusResponsePending = (GetAccountDeletionStatusResponsePending) o;
     return Objects.equals(this.id, getAccountDeletionStatusResponsePending.id) &&
         Objects.equals(this.requestedAt, getAccountDeletionStatusResponsePending.requestedAt) &&
-        Objects.equals(this.scheduledFor, getAccountDeletionStatusResponsePending.scheduledFor);
+        Objects.equals(this.scheduledFor, getAccountDeletionStatusResponsePending.scheduledFor) &&
+        Objects.equals(this.pausedAt, getAccountDeletionStatusResponsePending.pausedAt) &&
+        Objects.equals(this.pauseReason, getAccountDeletionStatusResponsePending.pauseReason) &&
+        Objects.equals(this.listingCount, getAccountDeletionStatusResponsePending.listingCount) &&
+        Objects.equals(this.inventoryCount, getAccountDeletionStatusResponsePending.inventoryCount);
+  }
+
+  private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+    return a == b || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, requestedAt, scheduledFor);
+    return Objects.hash(id, requestedAt, scheduledFor, pausedAt, pauseReason, listingCount, inventoryCount);
+  }
+
+  private static <T> int hashCodeNullable(JsonNullable<T> a) {
+    if (a == null) {
+      return 1;
+    }
+    return a.isPresent() ? Arrays.deepHashCode(new Object[]{a.get()}) : 31;
   }
 
   @Override
@@ -140,6 +265,10 @@ public class GetAccountDeletionStatusResponsePending {
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    requestedAt: ").append(toIndentedString(requestedAt)).append("\n");
     sb.append("    scheduledFor: ").append(toIndentedString(scheduledFor)).append("\n");
+    sb.append("    pausedAt: ").append(toIndentedString(pausedAt)).append("\n");
+    sb.append("    pauseReason: ").append(toIndentedString(pauseReason)).append("\n");
+    sb.append("    listingCount: ").append(toIndentedString(listingCount)).append("\n");
+    sb.append("    inventoryCount: ").append(toIndentedString(inventoryCount)).append("\n");
     sb.append("}");
     return sb.toString();
   }

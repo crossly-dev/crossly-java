@@ -28,15 +28,15 @@ import java.math.BigDecimal;
 /**
  * GetBuyerCollectionSetResponseDataGroup
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-11T23:47:29.843Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-27T19:58:46.962Z[Etc/UTC]")
 public class GetBuyerCollectionSetResponseDataGroup {
-  public static final String SERIALIZED_NAME_BRAND = "brand";
-  @SerializedName(SERIALIZED_NAME_BRAND)
-  private String brand;
-
   public static final String SERIALIZED_NAME_CATEGORY = "category";
   @SerializedName(SERIALIZED_NAME_CATEGORY)
   private String category;
+
+  public static final String SERIALIZED_NAME_BRAND = "brand";
+  @SerializedName(SERIALIZED_NAME_BRAND)
+  private String brand;
 
   public static final String SERIALIZED_NAME_MODEL = "model";
   @SerializedName(SERIALIZED_NAME_MODEL)
@@ -61,29 +61,6 @@ public class GetBuyerCollectionSetResponseDataGroup {
   public GetBuyerCollectionSetResponseDataGroup() { 
   }
 
-  public GetBuyerCollectionSetResponseDataGroup brand(String brand) {
-    
-    this.brand = brand;
-    return this;
-  }
-
-   /**
-   * Get brand
-   * @return brand
-  **/
-  @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "")
-
-  public String getBrand() {
-    return brand;
-  }
-
-
-  public void setBrand(String brand) {
-    this.brand = brand;
-  }
-
-
   public GetBuyerCollectionSetResponseDataGroup category(String category) {
     
     this.category = category;
@@ -104,6 +81,29 @@ public class GetBuyerCollectionSetResponseDataGroup {
 
   public void setCategory(String category) {
     this.category = category;
+  }
+
+
+  public GetBuyerCollectionSetResponseDataGroup brand(String brand) {
+    
+    this.brand = brand;
+    return this;
+  }
+
+   /**
+   * Get brand
+   * @return brand
+  **/
+  @javax.annotation.Nonnull
+  @ApiModelProperty(required = true, value = "")
+
+  public String getBrand() {
+    return brand;
+  }
+
+
+  public void setBrand(String brand) {
+    this.brand = brand;
   }
 
 
@@ -231,8 +231,8 @@ public class GetBuyerCollectionSetResponseDataGroup {
       return false;
     }
     GetBuyerCollectionSetResponseDataGroup getBuyerCollectionSetResponseDataGroup = (GetBuyerCollectionSetResponseDataGroup) o;
-    return Objects.equals(this.brand, getBuyerCollectionSetResponseDataGroup.brand) &&
-        Objects.equals(this.category, getBuyerCollectionSetResponseDataGroup.category) &&
+    return Objects.equals(this.category, getBuyerCollectionSetResponseDataGroup.category) &&
+        Objects.equals(this.brand, getBuyerCollectionSetResponseDataGroup.brand) &&
         Objects.equals(this.model, getBuyerCollectionSetResponseDataGroup.model) &&
         Objects.equals(this.brandSlug, getBuyerCollectionSetResponseDataGroup.brandSlug) &&
         Objects.equals(this.modelSlug, getBuyerCollectionSetResponseDataGroup.modelSlug) &&
@@ -242,15 +242,15 @@ public class GetBuyerCollectionSetResponseDataGroup {
 
   @Override
   public int hashCode() {
-    return Objects.hash(brand, category, model, brandSlug, modelSlug, total, owned);
+    return Objects.hash(category, brand, model, brandSlug, modelSlug, total, owned);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class GetBuyerCollectionSetResponseDataGroup {\n");
-    sb.append("    brand: ").append(toIndentedString(brand)).append("\n");
     sb.append("    category: ").append(toIndentedString(category)).append("\n");
+    sb.append("    brand: ").append(toIndentedString(brand)).append("\n");
     sb.append("    model: ").append(toIndentedString(model)).append("\n");
     sb.append("    brandSlug: ").append(toIndentedString(brandSlug)).append("\n");
     sb.append("    modelSlug: ").append(toIndentedString(modelSlug)).append("\n");

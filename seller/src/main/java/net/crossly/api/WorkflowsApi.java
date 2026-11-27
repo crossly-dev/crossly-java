@@ -27,14 +27,52 @@ import com.google.gson.reflect.TypeToken;
 import java.io.IOException;
 
 
+import net.crossly.model.workflow.CreateWorkflowApprovalDecideRequest;
+import net.crossly.model.workflow.CreateWorkflowApprovalDecideResponse;
 import net.crossly.model.workflow.CreateWorkflowChainRunNowResponse;
 import net.crossly.model.workflow.CreateWorkflowChainToggleResponse;
+import net.crossly.model.workflow.CreateWorkflowDuplicateRequest;
+import net.crossly.model.workflow.CreateWorkflowDuplicateResponse;
+import net.crossly.model.workflow.CreateWorkflowExpressionPreviewRequest;
+import net.crossly.model.workflow.CreateWorkflowExpressionPreviewResponse;
+import net.crossly.model.workflow.CreateWorkflowImportResponse;
+import net.crossly.model.workflow.CreateWorkflowRequest;
+import net.crossly.model.workflow.CreateWorkflowResponse;
+import net.crossly.model.workflow.CreateWorkflowRunCancelResponse;
+import net.crossly.model.workflow.CreateWorkflowRunOnRequest;
+import net.crossly.model.workflow.CreateWorkflowRunOnResponse;
+import net.crossly.model.workflow.CreateWorkflowRunRequest;
+import net.crossly.model.workflow.CreateWorkflowRunResponse;
+import net.crossly.model.workflow.CreateWorkflowRunRetryResponse;
+import net.crossly.model.workflow.CreateWorkflowSaleEndResponse;
+import net.crossly.model.workflow.CreateWorkflowTemplateUseRequest;
+import net.crossly.model.workflow.CreateWorkflowTestRequest;
+import net.crossly.model.workflow.CreateWorkflowTestResponse;
+import net.crossly.model.workflow.CreateWorkflowValidateRequest;
+import net.crossly.model.workflow.CreateWorkflowValidateResponse;
+import net.crossly.model.workflow.CreateWorkflowWebhookRotateRequest;
+import net.crossly.model.workflow.CreateWorkflowWebhookRotateResponse;
+import net.crossly.model.workflow.DeleteWorkflowResponse;
 import net.crossly.model.common.Error;
+import net.crossly.model.workflow.GetWorkflowCatalogResponse;
 import net.crossly.model.workflow.GetWorkflowChainResponse;
+import net.crossly.model.workflow.GetWorkflowExportResponse;
+import net.crossly.model.workflow.GetWorkflowResponse;
+import net.crossly.model.workflow.GetWorkflowRunNodeResponse;
+import net.crossly.model.workflow.GetWorkflowRunResponse;
 import net.crossly.model.common.IdResponse;
+import net.crossly.model.workflow.ListWorkflowApprovalsResponse;
 import net.crossly.model.workflow.ListWorkflowChainsResponse;
+import net.crossly.model.workflow.ListWorkflowRunsResponse;
+import net.crossly.model.workflow.ListWorkflowSaleActiveResponse;
+import net.crossly.model.workflow.ListWorkflowTemplatesResponse;
+import net.crossly.model.workflow.ListWorkflowVersionsResponse;
+import net.crossly.model.workflow.ListWorkflowsResponse;
+import org.threeten.bp.OffsetDateTime;
 import net.crossly.model.common.OkResponse;
 import java.util.UUID;
+import net.crossly.model.workflow.UpdateWorkflowRequest;
+import net.crossly.model.common.WorkflowResponse;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
@@ -80,7 +118,8 @@ public class WorkflowsApi {
     }
 
     /**
-     * Build call for createWorkflowChain
+     * Build call for createWorkflow
+     * @param createWorkflowRequest  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -96,6 +135,471 @@ public class WorkflowsApi {
         <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
      </table>
      */
+    public okhttp3.Call createWorkflowCall(CreateWorkflowRequest createWorkflowRequest, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = createWorkflowRequest;
+
+        // create path and map variables
+        String localVarPath = "/v1/workflows";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "PersonalAccessToken" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call createWorkflowValidateBeforeCall(CreateWorkflowRequest createWorkflowRequest, final ApiCallback _callback) throws ApiException {
+        
+        // verify the required parameter 'createWorkflowRequest' is set
+        if (createWorkflowRequest == null) {
+            throw new ApiException("Missing the required parameter 'createWorkflowRequest' when calling createWorkflow(Async)");
+        }
+        
+
+        okhttp3.Call localVarCall = createWorkflowCall(createWorkflowRequest, _callback);
+        return localVarCall;
+
+    }
+
+    /**
+     * Create a workflow: from blank ({ name, graph? }), from a template ({ from: \&quot;template\&quot;, templateId, setup?, activate? }) or from an export document ({ from: \&quot;import\&quot;, document }). New workflows start paused; activate one with POST /v1/workflows/{id}/activate. Returns the workflow and its validation issues.
+     * 
+     * @param createWorkflowRequest  (required)
+     * @return CreateWorkflowResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public CreateWorkflowResponse createWorkflow(CreateWorkflowRequest createWorkflowRequest) throws ApiException {
+        ApiResponse<CreateWorkflowResponse> localVarResp = createWorkflowWithHttpInfo(createWorkflowRequest);
+        return localVarResp.getData();
+    }
+
+    /**
+     * Create a workflow: from blank ({ name, graph? }), from a template ({ from: \&quot;template\&quot;, templateId, setup?, activate? }) or from an export document ({ from: \&quot;import\&quot;, document }). New workflows start paused; activate one with POST /v1/workflows/{id}/activate. Returns the workflow and its validation issues.
+     * 
+     * @param createWorkflowRequest  (required)
+     * @return ApiResponse&lt;CreateWorkflowResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<CreateWorkflowResponse> createWorkflowWithHttpInfo(CreateWorkflowRequest createWorkflowRequest) throws ApiException {
+        okhttp3.Call localVarCall = createWorkflowValidateBeforeCall(createWorkflowRequest, null);
+        Type localVarReturnType = new TypeToken<CreateWorkflowResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Create a workflow: from blank ({ name, graph? }), from a template ({ from: \&quot;template\&quot;, templateId, setup?, activate? }) or from an export document ({ from: \&quot;import\&quot;, document }). New workflows start paused; activate one with POST /v1/workflows/{id}/activate. Returns the workflow and its validation issues. (asynchronously)
+     * 
+     * @param createWorkflowRequest  (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call createWorkflowAsync(CreateWorkflowRequest createWorkflowRequest, final ApiCallback<CreateWorkflowResponse> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = createWorkflowValidateBeforeCall(createWorkflowRequest, _callback);
+        Type localVarReturnType = new TypeToken<CreateWorkflowResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for createWorkflowActivate
+     * @param id Workflow id. (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call createWorkflowActivateCall(UUID id, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/v1/workflows/{id}/activate"
+            .replaceAll("\\{" + "id" + "\\}", localVarApiClient.escapeString(id.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "PersonalAccessToken" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call createWorkflowActivateValidateBeforeCall(UUID id, final ApiCallback _callback) throws ApiException {
+        
+        // verify the required parameter 'id' is set
+        if (id == null) {
+            throw new ApiException("Missing the required parameter 'id' when calling createWorkflowActivate(Async)");
+        }
+        
+
+        okhttp3.Call localVarCall = createWorkflowActivateCall(id, _callback);
+        return localVarCall;
+
+    }
+
+    /**
+     * Activate a workflow: its triggers start firing. A graph with blocking issues is refused (422, details.issues).
+     * 
+     * @param id Workflow id. (required)
+     * @return WorkflowResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public WorkflowResponse createWorkflowActivate(UUID id) throws ApiException {
+        ApiResponse<WorkflowResponse> localVarResp = createWorkflowActivateWithHttpInfo(id);
+        return localVarResp.getData();
+    }
+
+    /**
+     * Activate a workflow: its triggers start firing. A graph with blocking issues is refused (422, details.issues).
+     * 
+     * @param id Workflow id. (required)
+     * @return ApiResponse&lt;WorkflowResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<WorkflowResponse> createWorkflowActivateWithHttpInfo(UUID id) throws ApiException {
+        okhttp3.Call localVarCall = createWorkflowActivateValidateBeforeCall(id, null);
+        Type localVarReturnType = new TypeToken<WorkflowResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Activate a workflow: its triggers start firing. A graph with blocking issues is refused (422, details.issues). (asynchronously)
+     * 
+     * @param id Workflow id. (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call createWorkflowActivateAsync(UUID id, final ApiCallback<WorkflowResponse> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = createWorkflowActivateValidateBeforeCall(id, _callback);
+        Type localVarReturnType = new TypeToken<WorkflowResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for createWorkflowApprovalDecide
+     * @param id Approval id from GET /v1/workflow-approvals. (required)
+     * @param createWorkflowApprovalDecideRequest  (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call createWorkflowApprovalDecideCall(UUID id, CreateWorkflowApprovalDecideRequest createWorkflowApprovalDecideRequest, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = createWorkflowApprovalDecideRequest;
+
+        // create path and map variables
+        String localVarPath = "/v1/workflow-approvals/{id}/decide"
+            .replaceAll("\\{" + "id" + "\\}", localVarApiClient.escapeString(id.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "PersonalAccessToken" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call createWorkflowApprovalDecideValidateBeforeCall(UUID id, CreateWorkflowApprovalDecideRequest createWorkflowApprovalDecideRequest, final ApiCallback _callback) throws ApiException {
+        
+        // verify the required parameter 'id' is set
+        if (id == null) {
+            throw new ApiException("Missing the required parameter 'id' when calling createWorkflowApprovalDecide(Async)");
+        }
+        
+        // verify the required parameter 'createWorkflowApprovalDecideRequest' is set
+        if (createWorkflowApprovalDecideRequest == null) {
+            throw new ApiException("Missing the required parameter 'createWorkflowApprovalDecideRequest' when calling createWorkflowApprovalDecide(Async)");
+        }
+        
+
+        okhttp3.Call localVarCall = createWorkflowApprovalDecideCall(id, createWorkflowApprovalDecideRequest, _callback);
+        return localVarCall;
+
+    }
+
+    /**
+     * Approve or reject a pending flow.approval request: the waiting run resumes down the approved or rejected port. 409 when it was already decided (another device, Telegram, or the timeout).
+     * 
+     * @param id Approval id from GET /v1/workflow-approvals. (required)
+     * @param createWorkflowApprovalDecideRequest  (required)
+     * @return CreateWorkflowApprovalDecideResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public CreateWorkflowApprovalDecideResponse createWorkflowApprovalDecide(UUID id, CreateWorkflowApprovalDecideRequest createWorkflowApprovalDecideRequest) throws ApiException {
+        ApiResponse<CreateWorkflowApprovalDecideResponse> localVarResp = createWorkflowApprovalDecideWithHttpInfo(id, createWorkflowApprovalDecideRequest);
+        return localVarResp.getData();
+    }
+
+    /**
+     * Approve or reject a pending flow.approval request: the waiting run resumes down the approved or rejected port. 409 when it was already decided (another device, Telegram, or the timeout).
+     * 
+     * @param id Approval id from GET /v1/workflow-approvals. (required)
+     * @param createWorkflowApprovalDecideRequest  (required)
+     * @return ApiResponse&lt;CreateWorkflowApprovalDecideResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<CreateWorkflowApprovalDecideResponse> createWorkflowApprovalDecideWithHttpInfo(UUID id, CreateWorkflowApprovalDecideRequest createWorkflowApprovalDecideRequest) throws ApiException {
+        okhttp3.Call localVarCall = createWorkflowApprovalDecideValidateBeforeCall(id, createWorkflowApprovalDecideRequest, null);
+        Type localVarReturnType = new TypeToken<CreateWorkflowApprovalDecideResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Approve or reject a pending flow.approval request: the waiting run resumes down the approved or rejected port. 409 when it was already decided (another device, Telegram, or the timeout). (asynchronously)
+     * 
+     * @param id Approval id from GET /v1/workflow-approvals. (required)
+     * @param createWorkflowApprovalDecideRequest  (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call createWorkflowApprovalDecideAsync(UUID id, CreateWorkflowApprovalDecideRequest createWorkflowApprovalDecideRequest, final ApiCallback<CreateWorkflowApprovalDecideResponse> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = createWorkflowApprovalDecideValidateBeforeCall(id, createWorkflowApprovalDecideRequest, _callback);
+        Type localVarReturnType = new TypeToken<CreateWorkflowApprovalDecideResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for createWorkflowChain
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     * @deprecated
+     */
+    @Deprecated
     public okhttp3.Call createWorkflowChainCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
 
@@ -142,6 +646,7 @@ public class WorkflowsApi {
         return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
+    @Deprecated
     @SuppressWarnings("rawtypes")
     private okhttp3.Call createWorkflowChainValidateBeforeCall(final ApiCallback _callback) throws ApiException {
         
@@ -153,7 +658,7 @@ public class WorkflowsApi {
 
     /**
      * Create a multi-step workflow chain.
-     * 
+     * Deprecated: workflow chains are workflows now. Use /v1/workflows.
      * @return IdResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -167,7 +672,9 @@ public class WorkflowsApi {
         <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
         <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
      </table>
+     * @deprecated
      */
+    @Deprecated
     public IdResponse createWorkflowChain() throws ApiException {
         ApiResponse<IdResponse> localVarResp = createWorkflowChainWithHttpInfo();
         return localVarResp.getData();
@@ -175,7 +682,7 @@ public class WorkflowsApi {
 
     /**
      * Create a multi-step workflow chain.
-     * 
+     * Deprecated: workflow chains are workflows now. Use /v1/workflows.
      * @return ApiResponse&lt;IdResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -189,7 +696,9 @@ public class WorkflowsApi {
         <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
         <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
      </table>
+     * @deprecated
      */
+    @Deprecated
     public ApiResponse<IdResponse> createWorkflowChainWithHttpInfo() throws ApiException {
         okhttp3.Call localVarCall = createWorkflowChainValidateBeforeCall(null);
         Type localVarReturnType = new TypeToken<IdResponse>(){}.getType();
@@ -198,7 +707,7 @@ public class WorkflowsApi {
 
     /**
      * Create a multi-step workflow chain. (asynchronously)
-     * 
+     * Deprecated: workflow chains are workflows now. Use /v1/workflows.
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -213,7 +722,9 @@ public class WorkflowsApi {
         <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
         <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
      </table>
+     * @deprecated
      */
+    @Deprecated
     public okhttp3.Call createWorkflowChainAsync(final ApiCallback<IdResponse> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = createWorkflowChainValidateBeforeCall(_callback);
@@ -238,7 +749,9 @@ public class WorkflowsApi {
         <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
         <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
      </table>
+     * @deprecated
      */
+    @Deprecated
     public okhttp3.Call createWorkflowChainRunNowCall(UUID id, final ApiCallback _callback) throws ApiException {
         String basePath = null;
 
@@ -286,6 +799,7 @@ public class WorkflowsApi {
         return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
+    @Deprecated
     @SuppressWarnings("rawtypes")
     private okhttp3.Call createWorkflowChainRunNowValidateBeforeCall(UUID id, final ApiCallback _callback) throws ApiException {
         
@@ -302,7 +816,7 @@ public class WorkflowsApi {
 
     /**
      * Enqueue an ad-hoc run of a workflow chain.
-     * 
+     * Deprecated: workflow chains are workflows now. Use /v1/workflows.
      * @param id  (required)
      * @return CreateWorkflowChainRunNowResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -317,7 +831,9 @@ public class WorkflowsApi {
         <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
         <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
      </table>
+     * @deprecated
      */
+    @Deprecated
     public CreateWorkflowChainRunNowResponse createWorkflowChainRunNow(UUID id) throws ApiException {
         ApiResponse<CreateWorkflowChainRunNowResponse> localVarResp = createWorkflowChainRunNowWithHttpInfo(id);
         return localVarResp.getData();
@@ -325,7 +841,7 @@ public class WorkflowsApi {
 
     /**
      * Enqueue an ad-hoc run of a workflow chain.
-     * 
+     * Deprecated: workflow chains are workflows now. Use /v1/workflows.
      * @param id  (required)
      * @return ApiResponse&lt;CreateWorkflowChainRunNowResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -340,7 +856,9 @@ public class WorkflowsApi {
         <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
         <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
      </table>
+     * @deprecated
      */
+    @Deprecated
     public ApiResponse<CreateWorkflowChainRunNowResponse> createWorkflowChainRunNowWithHttpInfo(UUID id) throws ApiException {
         okhttp3.Call localVarCall = createWorkflowChainRunNowValidateBeforeCall(id, null);
         Type localVarReturnType = new TypeToken<CreateWorkflowChainRunNowResponse>(){}.getType();
@@ -349,7 +867,7 @@ public class WorkflowsApi {
 
     /**
      * Enqueue an ad-hoc run of a workflow chain. (asynchronously)
-     * 
+     * Deprecated: workflow chains are workflows now. Use /v1/workflows.
      * @param id  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -365,7 +883,9 @@ public class WorkflowsApi {
         <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
         <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
      </table>
+     * @deprecated
      */
+    @Deprecated
     public okhttp3.Call createWorkflowChainRunNowAsync(UUID id, final ApiCallback<CreateWorkflowChainRunNowResponse> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = createWorkflowChainRunNowValidateBeforeCall(id, _callback);
@@ -390,7 +910,9 @@ public class WorkflowsApi {
         <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
         <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
      </table>
+     * @deprecated
      */
+    @Deprecated
     public okhttp3.Call createWorkflowChainToggleCall(UUID id, final ApiCallback _callback) throws ApiException {
         String basePath = null;
 
@@ -438,6 +960,7 @@ public class WorkflowsApi {
         return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
+    @Deprecated
     @SuppressWarnings("rawtypes")
     private okhttp3.Call createWorkflowChainToggleValidateBeforeCall(UUID id, final ApiCallback _callback) throws ApiException {
         
@@ -454,7 +977,7 @@ public class WorkflowsApi {
 
     /**
      * Flip a workflow chain between active and inactive.
-     * 
+     * Deprecated: workflow chains are workflows now. Use /v1/workflows.
      * @param id  (required)
      * @return CreateWorkflowChainToggleResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -469,7 +992,9 @@ public class WorkflowsApi {
         <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
         <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
      </table>
+     * @deprecated
      */
+    @Deprecated
     public CreateWorkflowChainToggleResponse createWorkflowChainToggle(UUID id) throws ApiException {
         ApiResponse<CreateWorkflowChainToggleResponse> localVarResp = createWorkflowChainToggleWithHttpInfo(id);
         return localVarResp.getData();
@@ -477,7 +1002,7 @@ public class WorkflowsApi {
 
     /**
      * Flip a workflow chain between active and inactive.
-     * 
+     * Deprecated: workflow chains are workflows now. Use /v1/workflows.
      * @param id  (required)
      * @return ApiResponse&lt;CreateWorkflowChainToggleResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -492,7 +1017,9 @@ public class WorkflowsApi {
         <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
         <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
      </table>
+     * @deprecated
      */
+    @Deprecated
     public ApiResponse<CreateWorkflowChainToggleResponse> createWorkflowChainToggleWithHttpInfo(UUID id) throws ApiException {
         okhttp3.Call localVarCall = createWorkflowChainToggleValidateBeforeCall(id, null);
         Type localVarReturnType = new TypeToken<CreateWorkflowChainToggleResponse>(){}.getType();
@@ -501,7 +1028,7 @@ public class WorkflowsApi {
 
     /**
      * Flip a workflow chain between active and inactive. (asynchronously)
-     * 
+     * Deprecated: workflow chains are workflows now. Use /v1/workflows.
      * @param id  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -517,11 +1044,2354 @@ public class WorkflowsApi {
         <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
         <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
      </table>
+     * @deprecated
      */
+    @Deprecated
     public okhttp3.Call createWorkflowChainToggleAsync(UUID id, final ApiCallback<CreateWorkflowChainToggleResponse> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = createWorkflowChainToggleValidateBeforeCall(id, _callback);
         Type localVarReturnType = new TypeToken<CreateWorkflowChainToggleResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for createWorkflowDeactivate
+     * @param id Workflow id. (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call createWorkflowDeactivateCall(UUID id, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/v1/workflows/{id}/deactivate"
+            .replaceAll("\\{" + "id" + "\\}", localVarApiClient.escapeString(id.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "PersonalAccessToken" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call createWorkflowDeactivateValidateBeforeCall(UUID id, final ApiCallback _callback) throws ApiException {
+        
+        // verify the required parameter 'id' is set
+        if (id == null) {
+            throw new ApiException("Missing the required parameter 'id' when calling createWorkflowDeactivate(Async)");
+        }
+        
+
+        okhttp3.Call localVarCall = createWorkflowDeactivateCall(id, _callback);
+        return localVarCall;
+
+    }
+
+    /**
+     * Pause a workflow: its triggers stop firing. Runs already started finish.
+     * 
+     * @param id Workflow id. (required)
+     * @return WorkflowResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public WorkflowResponse createWorkflowDeactivate(UUID id) throws ApiException {
+        ApiResponse<WorkflowResponse> localVarResp = createWorkflowDeactivateWithHttpInfo(id);
+        return localVarResp.getData();
+    }
+
+    /**
+     * Pause a workflow: its triggers stop firing. Runs already started finish.
+     * 
+     * @param id Workflow id. (required)
+     * @return ApiResponse&lt;WorkflowResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<WorkflowResponse> createWorkflowDeactivateWithHttpInfo(UUID id) throws ApiException {
+        okhttp3.Call localVarCall = createWorkflowDeactivateValidateBeforeCall(id, null);
+        Type localVarReturnType = new TypeToken<WorkflowResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Pause a workflow: its triggers stop firing. Runs already started finish. (asynchronously)
+     * 
+     * @param id Workflow id. (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call createWorkflowDeactivateAsync(UUID id, final ApiCallback<WorkflowResponse> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = createWorkflowDeactivateValidateBeforeCall(id, _callback);
+        Type localVarReturnType = new TypeToken<WorkflowResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for createWorkflowDuplicate
+     * @param id Workflow id. (required)
+     * @param createWorkflowDuplicateRequest  (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call createWorkflowDuplicateCall(UUID id, CreateWorkflowDuplicateRequest createWorkflowDuplicateRequest, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = createWorkflowDuplicateRequest;
+
+        // create path and map variables
+        String localVarPath = "/v1/workflows/{id}/duplicate"
+            .replaceAll("\\{" + "id" + "\\}", localVarApiClient.escapeString(id.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "PersonalAccessToken" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call createWorkflowDuplicateValidateBeforeCall(UUID id, CreateWorkflowDuplicateRequest createWorkflowDuplicateRequest, final ApiCallback _callback) throws ApiException {
+        
+        // verify the required parameter 'id' is set
+        if (id == null) {
+            throw new ApiException("Missing the required parameter 'id' when calling createWorkflowDuplicate(Async)");
+        }
+        
+        // verify the required parameter 'createWorkflowDuplicateRequest' is set
+        if (createWorkflowDuplicateRequest == null) {
+            throw new ApiException("Missing the required parameter 'createWorkflowDuplicateRequest' when calling createWorkflowDuplicate(Async)");
+        }
+        
+
+        okhttp3.Call localVarCall = createWorkflowDuplicateCall(id, createWorkflowDuplicateRequest, _callback);
+        return localVarCall;
+
+    }
+
+    /**
+     * Copy a workflow (graph, description, tags) into a new paused workflow.
+     * 
+     * @param id Workflow id. (required)
+     * @param createWorkflowDuplicateRequest  (required)
+     * @return CreateWorkflowDuplicateResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public CreateWorkflowDuplicateResponse createWorkflowDuplicate(UUID id, CreateWorkflowDuplicateRequest createWorkflowDuplicateRequest) throws ApiException {
+        ApiResponse<CreateWorkflowDuplicateResponse> localVarResp = createWorkflowDuplicateWithHttpInfo(id, createWorkflowDuplicateRequest);
+        return localVarResp.getData();
+    }
+
+    /**
+     * Copy a workflow (graph, description, tags) into a new paused workflow.
+     * 
+     * @param id Workflow id. (required)
+     * @param createWorkflowDuplicateRequest  (required)
+     * @return ApiResponse&lt;CreateWorkflowDuplicateResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<CreateWorkflowDuplicateResponse> createWorkflowDuplicateWithHttpInfo(UUID id, CreateWorkflowDuplicateRequest createWorkflowDuplicateRequest) throws ApiException {
+        okhttp3.Call localVarCall = createWorkflowDuplicateValidateBeforeCall(id, createWorkflowDuplicateRequest, null);
+        Type localVarReturnType = new TypeToken<CreateWorkflowDuplicateResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Copy a workflow (graph, description, tags) into a new paused workflow. (asynchronously)
+     * 
+     * @param id Workflow id. (required)
+     * @param createWorkflowDuplicateRequest  (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call createWorkflowDuplicateAsync(UUID id, CreateWorkflowDuplicateRequest createWorkflowDuplicateRequest, final ApiCallback<CreateWorkflowDuplicateResponse> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = createWorkflowDuplicateValidateBeforeCall(id, createWorkflowDuplicateRequest, _callback);
+        Type localVarReturnType = new TypeToken<CreateWorkflowDuplicateResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for createWorkflowExpressionPreview
+     * @param createWorkflowExpressionPreviewRequest  (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call createWorkflowExpressionPreviewCall(CreateWorkflowExpressionPreviewRequest createWorkflowExpressionPreviewRequest, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = createWorkflowExpressionPreviewRequest;
+
+        // create path and map variables
+        String localVarPath = "/v1/workflows/expressions/preview";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "PersonalAccessToken" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call createWorkflowExpressionPreviewValidateBeforeCall(CreateWorkflowExpressionPreviewRequest createWorkflowExpressionPreviewRequest, final ApiCallback _callback) throws ApiException {
+        
+        // verify the required parameter 'createWorkflowExpressionPreviewRequest' is set
+        if (createWorkflowExpressionPreviewRequest == null) {
+            throw new ApiException("Missing the required parameter 'createWorkflowExpressionPreviewRequest' when calling createWorkflowExpressionPreview(Async)");
+        }
+        
+
+        okhttp3.Call localVarCall = createWorkflowExpressionPreviewCall(createWorkflowExpressionPreviewRequest, _callback);
+        return localVarCall;
+
+    }
+
+    /**
+     * Resolve one param value (\&quot;{{ $json.priceCents * 0.9 }}\&quot;) with the engine&#39;s evaluator against an item, the trigger item, earlier nodes&#39; items or a stored run. A bad expression is an answer (ok&#x3D;false with the message), not an HTTP error. Changes nothing.
+     * 
+     * @param createWorkflowExpressionPreviewRequest  (required)
+     * @return CreateWorkflowExpressionPreviewResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public CreateWorkflowExpressionPreviewResponse createWorkflowExpressionPreview(CreateWorkflowExpressionPreviewRequest createWorkflowExpressionPreviewRequest) throws ApiException {
+        ApiResponse<CreateWorkflowExpressionPreviewResponse> localVarResp = createWorkflowExpressionPreviewWithHttpInfo(createWorkflowExpressionPreviewRequest);
+        return localVarResp.getData();
+    }
+
+    /**
+     * Resolve one param value (\&quot;{{ $json.priceCents * 0.9 }}\&quot;) with the engine&#39;s evaluator against an item, the trigger item, earlier nodes&#39; items or a stored run. A bad expression is an answer (ok&#x3D;false with the message), not an HTTP error. Changes nothing.
+     * 
+     * @param createWorkflowExpressionPreviewRequest  (required)
+     * @return ApiResponse&lt;CreateWorkflowExpressionPreviewResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<CreateWorkflowExpressionPreviewResponse> createWorkflowExpressionPreviewWithHttpInfo(CreateWorkflowExpressionPreviewRequest createWorkflowExpressionPreviewRequest) throws ApiException {
+        okhttp3.Call localVarCall = createWorkflowExpressionPreviewValidateBeforeCall(createWorkflowExpressionPreviewRequest, null);
+        Type localVarReturnType = new TypeToken<CreateWorkflowExpressionPreviewResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Resolve one param value (\&quot;{{ $json.priceCents * 0.9 }}\&quot;) with the engine&#39;s evaluator against an item, the trigger item, earlier nodes&#39; items or a stored run. A bad expression is an answer (ok&#x3D;false with the message), not an HTTP error. Changes nothing. (asynchronously)
+     * 
+     * @param createWorkflowExpressionPreviewRequest  (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call createWorkflowExpressionPreviewAsync(CreateWorkflowExpressionPreviewRequest createWorkflowExpressionPreviewRequest, final ApiCallback<CreateWorkflowExpressionPreviewResponse> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = createWorkflowExpressionPreviewValidateBeforeCall(createWorkflowExpressionPreviewRequest, _callback);
+        Type localVarReturnType = new TypeToken<CreateWorkflowExpressionPreviewResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for createWorkflowImport
+     * @param requestBody  (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call createWorkflowImportCall(Map<String, Object> requestBody, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = requestBody;
+
+        // create path and map variables
+        String localVarPath = "/v1/workflows/import";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "PersonalAccessToken" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call createWorkflowImportValidateBeforeCall(Map<String, Object> requestBody, final ApiCallback _callback) throws ApiException {
+        
+        // verify the required parameter 'requestBody' is set
+        if (requestBody == null) {
+            throw new ApiException("Missing the required parameter 'requestBody' when calling createWorkflowImport(Async)");
+        }
+        
+
+        okhttp3.Call localVarCall = createWorkflowImportCall(requestBody, _callback);
+        return localVarCall;
+
+    }
+
+    /**
+     * Import a crossly.workflow export document (or { document, name }) as a new, paused workflow. Integration and workflow references are cleared (they belong to the exporting account) and listed in stripped.
+     * 
+     * @param requestBody  (required)
+     * @return CreateWorkflowImportResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public CreateWorkflowImportResponse createWorkflowImport(Map<String, Object> requestBody) throws ApiException {
+        ApiResponse<CreateWorkflowImportResponse> localVarResp = createWorkflowImportWithHttpInfo(requestBody);
+        return localVarResp.getData();
+    }
+
+    /**
+     * Import a crossly.workflow export document (or { document, name }) as a new, paused workflow. Integration and workflow references are cleared (they belong to the exporting account) and listed in stripped.
+     * 
+     * @param requestBody  (required)
+     * @return ApiResponse&lt;CreateWorkflowImportResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<CreateWorkflowImportResponse> createWorkflowImportWithHttpInfo(Map<String, Object> requestBody) throws ApiException {
+        okhttp3.Call localVarCall = createWorkflowImportValidateBeforeCall(requestBody, null);
+        Type localVarReturnType = new TypeToken<CreateWorkflowImportResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Import a crossly.workflow export document (or { document, name }) as a new, paused workflow. Integration and workflow references are cleared (they belong to the exporting account) and listed in stripped. (asynchronously)
+     * 
+     * @param requestBody  (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call createWorkflowImportAsync(Map<String, Object> requestBody, final ApiCallback<CreateWorkflowImportResponse> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = createWorkflowImportValidateBeforeCall(requestBody, _callback);
+        Type localVarReturnType = new TypeToken<CreateWorkflowImportResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for createWorkflowRun
+     * @param id Workflow id. (required)
+     * @param createWorkflowRunRequest  (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call createWorkflowRunCall(UUID id, CreateWorkflowRunRequest createWorkflowRunRequest, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = createWorkflowRunRequest;
+
+        // create path and map variables
+        String localVarPath = "/v1/workflows/{id}/run"
+            .replaceAll("\\{" + "id" + "\\}", localVarApiClient.escapeString(id.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "PersonalAccessToken" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call createWorkflowRunValidateBeforeCall(UUID id, CreateWorkflowRunRequest createWorkflowRunRequest, final ApiCallback _callback) throws ApiException {
+        
+        // verify the required parameter 'id' is set
+        if (id == null) {
+            throw new ApiException("Missing the required parameter 'id' when calling createWorkflowRun(Async)");
+        }
+        
+        // verify the required parameter 'createWorkflowRunRequest' is set
+        if (createWorkflowRunRequest == null) {
+            throw new ApiException("Missing the required parameter 'createWorkflowRunRequest' when calling createWorkflowRun(Async)");
+        }
+        
+
+        okhttp3.Call localVarCall = createWorkflowRunCall(id, createWorkflowRunRequest, _callback);
+        return localVarCall;
+
+    }
+
+    /**
+     * Run a workflow (active or paused) live now, on items you pass or on selected listings / orders / inventory items (one kind per call, up to 1,000). The graph must validate (422 with issues otherwise).
+     * 
+     * @param id Workflow id. (required)
+     * @param createWorkflowRunRequest  (required)
+     * @return CreateWorkflowRunResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public CreateWorkflowRunResponse createWorkflowRun(UUID id, CreateWorkflowRunRequest createWorkflowRunRequest) throws ApiException {
+        ApiResponse<CreateWorkflowRunResponse> localVarResp = createWorkflowRunWithHttpInfo(id, createWorkflowRunRequest);
+        return localVarResp.getData();
+    }
+
+    /**
+     * Run a workflow (active or paused) live now, on items you pass or on selected listings / orders / inventory items (one kind per call, up to 1,000). The graph must validate (422 with issues otherwise).
+     * 
+     * @param id Workflow id. (required)
+     * @param createWorkflowRunRequest  (required)
+     * @return ApiResponse&lt;CreateWorkflowRunResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<CreateWorkflowRunResponse> createWorkflowRunWithHttpInfo(UUID id, CreateWorkflowRunRequest createWorkflowRunRequest) throws ApiException {
+        okhttp3.Call localVarCall = createWorkflowRunValidateBeforeCall(id, createWorkflowRunRequest, null);
+        Type localVarReturnType = new TypeToken<CreateWorkflowRunResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Run a workflow (active or paused) live now, on items you pass or on selected listings / orders / inventory items (one kind per call, up to 1,000). The graph must validate (422 with issues otherwise). (asynchronously)
+     * 
+     * @param id Workflow id. (required)
+     * @param createWorkflowRunRequest  (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call createWorkflowRunAsync(UUID id, CreateWorkflowRunRequest createWorkflowRunRequest, final ApiCallback<CreateWorkflowRunResponse> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = createWorkflowRunValidateBeforeCall(id, createWorkflowRunRequest, _callback);
+        Type localVarReturnType = new TypeToken<CreateWorkflowRunResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for createWorkflowRunCancel
+     * @param runId Workflow run id. (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call createWorkflowRunCancelCall(UUID runId, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/v1/workflow-runs/{runId}/cancel"
+            .replaceAll("\\{" + "runId" + "\\}", localVarApiClient.escapeString(runId.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "PersonalAccessToken" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call createWorkflowRunCancelValidateBeforeCall(UUID runId, final ApiCallback _callback) throws ApiException {
+        
+        // verify the required parameter 'runId' is set
+        if (runId == null) {
+            throw new ApiException("Missing the required parameter 'runId' when calling createWorkflowRunCancel(Async)");
+        }
+        
+
+        okhttp3.Call localVarCall = createWorkflowRunCancelCall(runId, _callback);
+        return localVarCall;
+
+    }
+
+    /**
+     * Cancel a queued, running or waiting run. 409 when it already finished.
+     * 
+     * @param runId Workflow run id. (required)
+     * @return CreateWorkflowRunCancelResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public CreateWorkflowRunCancelResponse createWorkflowRunCancel(UUID runId) throws ApiException {
+        ApiResponse<CreateWorkflowRunCancelResponse> localVarResp = createWorkflowRunCancelWithHttpInfo(runId);
+        return localVarResp.getData();
+    }
+
+    /**
+     * Cancel a queued, running or waiting run. 409 when it already finished.
+     * 
+     * @param runId Workflow run id. (required)
+     * @return ApiResponse&lt;CreateWorkflowRunCancelResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<CreateWorkflowRunCancelResponse> createWorkflowRunCancelWithHttpInfo(UUID runId) throws ApiException {
+        okhttp3.Call localVarCall = createWorkflowRunCancelValidateBeforeCall(runId, null);
+        Type localVarReturnType = new TypeToken<CreateWorkflowRunCancelResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Cancel a queued, running or waiting run. 409 when it already finished. (asynchronously)
+     * 
+     * @param runId Workflow run id. (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call createWorkflowRunCancelAsync(UUID runId, final ApiCallback<CreateWorkflowRunCancelResponse> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = createWorkflowRunCancelValidateBeforeCall(runId, _callback);
+        Type localVarReturnType = new TypeToken<CreateWorkflowRunCancelResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for createWorkflowRunOn
+     * @param createWorkflowRunOnRequest  (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call createWorkflowRunOnCall(CreateWorkflowRunOnRequest createWorkflowRunOnRequest, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = createWorkflowRunOnRequest;
+
+        // create path and map variables
+        String localVarPath = "/v1/workflows/run-on";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "PersonalAccessToken" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call createWorkflowRunOnValidateBeforeCall(CreateWorkflowRunOnRequest createWorkflowRunOnRequest, final ApiCallback _callback) throws ApiException {
+        
+        // verify the required parameter 'createWorkflowRunOnRequest' is set
+        if (createWorkflowRunOnRequest == null) {
+            throw new ApiException("Missing the required parameter 'createWorkflowRunOnRequest' when calling createWorkflowRunOn(Async)");
+        }
+        
+
+        okhttp3.Call localVarCall = createWorkflowRunOnCall(createWorkflowRunOnRequest, _callback);
+        return localVarCall;
+
+    }
+
+    /**
+     * \&quot;Run workflow on…\&quot;: the same as POST /v1/workflows/{id}/run with the workflow named in the body.
+     * 
+     * @param createWorkflowRunOnRequest  (required)
+     * @return CreateWorkflowRunOnResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public CreateWorkflowRunOnResponse createWorkflowRunOn(CreateWorkflowRunOnRequest createWorkflowRunOnRequest) throws ApiException {
+        ApiResponse<CreateWorkflowRunOnResponse> localVarResp = createWorkflowRunOnWithHttpInfo(createWorkflowRunOnRequest);
+        return localVarResp.getData();
+    }
+
+    /**
+     * \&quot;Run workflow on…\&quot;: the same as POST /v1/workflows/{id}/run with the workflow named in the body.
+     * 
+     * @param createWorkflowRunOnRequest  (required)
+     * @return ApiResponse&lt;CreateWorkflowRunOnResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<CreateWorkflowRunOnResponse> createWorkflowRunOnWithHttpInfo(CreateWorkflowRunOnRequest createWorkflowRunOnRequest) throws ApiException {
+        okhttp3.Call localVarCall = createWorkflowRunOnValidateBeforeCall(createWorkflowRunOnRequest, null);
+        Type localVarReturnType = new TypeToken<CreateWorkflowRunOnResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * \&quot;Run workflow on…\&quot;: the same as POST /v1/workflows/{id}/run with the workflow named in the body. (asynchronously)
+     * 
+     * @param createWorkflowRunOnRequest  (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call createWorkflowRunOnAsync(CreateWorkflowRunOnRequest createWorkflowRunOnRequest, final ApiCallback<CreateWorkflowRunOnResponse> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = createWorkflowRunOnValidateBeforeCall(createWorkflowRunOnRequest, _callback);
+        Type localVarReturnType = new TypeToken<CreateWorkflowRunOnResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for createWorkflowRunRetry
+     * @param runId Workflow run id. (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call createWorkflowRunRetryCall(UUID runId, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/v1/workflow-runs/{runId}/retry"
+            .replaceAll("\\{" + "runId" + "\\}", localVarApiClient.escapeString(runId.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "PersonalAccessToken" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call createWorkflowRunRetryValidateBeforeCall(UUID runId, final ApiCallback _callback) throws ApiException {
+        
+        // verify the required parameter 'runId' is set
+        if (runId == null) {
+            throw new ApiException("Missing the required parameter 'runId' when calling createWorkflowRunRetry(Async)");
+        }
+        
+
+        okhttp3.Call localVarCall = createWorkflowRunRetryCall(runId, _callback);
+        return localVarCall;
+
+    }
+
+    /**
+     * Retry a failed run from the node that failed: a new run (retryOfRunId) seeded from the failed run&#39;s checkpoint, so nodes that succeeded are not repeated. 409 unless the run failed.
+     * 
+     * @param runId Workflow run id. (required)
+     * @return CreateWorkflowRunRetryResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public CreateWorkflowRunRetryResponse createWorkflowRunRetry(UUID runId) throws ApiException {
+        ApiResponse<CreateWorkflowRunRetryResponse> localVarResp = createWorkflowRunRetryWithHttpInfo(runId);
+        return localVarResp.getData();
+    }
+
+    /**
+     * Retry a failed run from the node that failed: a new run (retryOfRunId) seeded from the failed run&#39;s checkpoint, so nodes that succeeded are not repeated. 409 unless the run failed.
+     * 
+     * @param runId Workflow run id. (required)
+     * @return ApiResponse&lt;CreateWorkflowRunRetryResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<CreateWorkflowRunRetryResponse> createWorkflowRunRetryWithHttpInfo(UUID runId) throws ApiException {
+        okhttp3.Call localVarCall = createWorkflowRunRetryValidateBeforeCall(runId, null);
+        Type localVarReturnType = new TypeToken<CreateWorkflowRunRetryResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Retry a failed run from the node that failed: a new run (retryOfRunId) seeded from the failed run&#39;s checkpoint, so nodes that succeeded are not repeated. 409 unless the run failed. (asynchronously)
+     * 
+     * @param runId Workflow run id. (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call createWorkflowRunRetryAsync(UUID runId, final ApiCallback<CreateWorkflowRunRetryResponse> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = createWorkflowRunRetryValidateBeforeCall(runId, _callback);
+        Type localVarReturnType = new TypeToken<CreateWorkflowRunRetryResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for createWorkflowSaleEnd
+     * @param saleEventId Sale id from GET /v1/workflows/sales/active. (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call createWorkflowSaleEndCall(UUID saleEventId, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/v1/workflows/sales/{saleEventId}/end"
+            .replaceAll("\\{" + "saleEventId" + "\\}", localVarApiClient.escapeString(saleEventId.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "PersonalAccessToken" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call createWorkflowSaleEndValidateBeforeCall(UUID saleEventId, final ApiCallback _callback) throws ApiException {
+        
+        // verify the required parameter 'saleEventId' is set
+        if (saleEventId == null) {
+            throw new ApiException("Missing the required parameter 'saleEventId' when calling createWorkflowSaleEnd(Async)");
+        }
+        
+
+        okhttp3.Call localVarCall = createWorkflowSaleEndCall(saleEventId, _callback);
+        return localVarCall;
+
+    }
+
+    /**
+     * End a sale now. A sale that has not started is cancelled; a live one closes and every discounted price is put back now (reverted &#x3D; how many listings were restored). 404 for a sale that is not yours.
+     * 
+     * @param saleEventId Sale id from GET /v1/workflows/sales/active. (required)
+     * @return CreateWorkflowSaleEndResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public CreateWorkflowSaleEndResponse createWorkflowSaleEnd(UUID saleEventId) throws ApiException {
+        ApiResponse<CreateWorkflowSaleEndResponse> localVarResp = createWorkflowSaleEndWithHttpInfo(saleEventId);
+        return localVarResp.getData();
+    }
+
+    /**
+     * End a sale now. A sale that has not started is cancelled; a live one closes and every discounted price is put back now (reverted &#x3D; how many listings were restored). 404 for a sale that is not yours.
+     * 
+     * @param saleEventId Sale id from GET /v1/workflows/sales/active. (required)
+     * @return ApiResponse&lt;CreateWorkflowSaleEndResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<CreateWorkflowSaleEndResponse> createWorkflowSaleEndWithHttpInfo(UUID saleEventId) throws ApiException {
+        okhttp3.Call localVarCall = createWorkflowSaleEndValidateBeforeCall(saleEventId, null);
+        Type localVarReturnType = new TypeToken<CreateWorkflowSaleEndResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * End a sale now. A sale that has not started is cancelled; a live one closes and every discounted price is put back now (reverted &#x3D; how many listings were restored). 404 for a sale that is not yours. (asynchronously)
+     * 
+     * @param saleEventId Sale id from GET /v1/workflows/sales/active. (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call createWorkflowSaleEndAsync(UUID saleEventId, final ApiCallback<CreateWorkflowSaleEndResponse> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = createWorkflowSaleEndValidateBeforeCall(saleEventId, _callback);
+        Type localVarReturnType = new TypeToken<CreateWorkflowSaleEndResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for createWorkflowTemplateUse
+     * @param id Template id from GET /v1/workflows/templates. (required)
+     * @param createWorkflowTemplateUseRequest  (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call createWorkflowTemplateUseCall(String id, CreateWorkflowTemplateUseRequest createWorkflowTemplateUseRequest, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = createWorkflowTemplateUseRequest;
+
+        // create path and map variables
+        String localVarPath = "/v1/workflows/templates/{id}/use"
+            .replaceAll("\\{" + "id" + "\\}", localVarApiClient.escapeString(id.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "PersonalAccessToken" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call createWorkflowTemplateUseValidateBeforeCall(String id, CreateWorkflowTemplateUseRequest createWorkflowTemplateUseRequest, final ApiCallback _callback) throws ApiException {
+        
+        // verify the required parameter 'id' is set
+        if (id == null) {
+            throw new ApiException("Missing the required parameter 'id' when calling createWorkflowTemplateUse(Async)");
+        }
+        
+        // verify the required parameter 'createWorkflowTemplateUseRequest' is set
+        if (createWorkflowTemplateUseRequest == null) {
+            throw new ApiException("Missing the required parameter 'createWorkflowTemplateUseRequest' when calling createWorkflowTemplateUse(Async)");
+        }
+        
+
+        okhttp3.Call localVarCall = createWorkflowTemplateUseCall(id, createWorkflowTemplateUseRequest, _callback);
+        return localVarCall;
+
+    }
+
+    /**
+     * Create a workflow from a template, filling its setup fields; activate&#x3D;true activates it when it validates.
+     * 
+     * @param id Template id from GET /v1/workflows/templates. (required)
+     * @param createWorkflowTemplateUseRequest  (required)
+     * @return CreateWorkflowResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public CreateWorkflowResponse createWorkflowTemplateUse(String id, CreateWorkflowTemplateUseRequest createWorkflowTemplateUseRequest) throws ApiException {
+        ApiResponse<CreateWorkflowResponse> localVarResp = createWorkflowTemplateUseWithHttpInfo(id, createWorkflowTemplateUseRequest);
+        return localVarResp.getData();
+    }
+
+    /**
+     * Create a workflow from a template, filling its setup fields; activate&#x3D;true activates it when it validates.
+     * 
+     * @param id Template id from GET /v1/workflows/templates. (required)
+     * @param createWorkflowTemplateUseRequest  (required)
+     * @return ApiResponse&lt;CreateWorkflowResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<CreateWorkflowResponse> createWorkflowTemplateUseWithHttpInfo(String id, CreateWorkflowTemplateUseRequest createWorkflowTemplateUseRequest) throws ApiException {
+        okhttp3.Call localVarCall = createWorkflowTemplateUseValidateBeforeCall(id, createWorkflowTemplateUseRequest, null);
+        Type localVarReturnType = new TypeToken<CreateWorkflowResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Create a workflow from a template, filling its setup fields; activate&#x3D;true activates it when it validates. (asynchronously)
+     * 
+     * @param id Template id from GET /v1/workflows/templates. (required)
+     * @param createWorkflowTemplateUseRequest  (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call createWorkflowTemplateUseAsync(String id, CreateWorkflowTemplateUseRequest createWorkflowTemplateUseRequest, final ApiCallback<CreateWorkflowResponse> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = createWorkflowTemplateUseValidateBeforeCall(id, createWorkflowTemplateUseRequest, _callback);
+        Type localVarReturnType = new TypeToken<CreateWorkflowResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for createWorkflowTest
+     * @param id Workflow id. (required)
+     * @param createWorkflowTestRequest  (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call createWorkflowTestCall(UUID id, CreateWorkflowTestRequest createWorkflowTestRequest, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = createWorkflowTestRequest;
+
+        // create path and map variables
+        String localVarPath = "/v1/workflows/{id}/test"
+            .replaceAll("\\{" + "id" + "\\}", localVarApiClient.escapeString(id.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "PersonalAccessToken" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call createWorkflowTestValidateBeforeCall(UUID id, CreateWorkflowTestRequest createWorkflowTestRequest, final ApiCallback _callback) throws ApiException {
+        
+        // verify the required parameter 'id' is set
+        if (id == null) {
+            throw new ApiException("Missing the required parameter 'id' when calling createWorkflowTest(Async)");
+        }
+        
+        // verify the required parameter 'createWorkflowTestRequest' is set
+        if (createWorkflowTestRequest == null) {
+            throw new ApiException("Missing the required parameter 'createWorkflowTestRequest' when calling createWorkflowTest(Async)");
+        }
+        
+
+        okhttp3.Call localVarCall = createWorkflowTestCall(id, createWorkflowTestRequest, _callback);
+        return localVarCall;
+
+    }
+
+    /**
+     * Test a workflow (the saved graph, or a draft graph you pass). mode&#x3D;test runs it for real, using pinned data where a node has it; mode&#x3D;dry is a safe test: write, destructive and money nodes report what they would do and change nothing. Trigger items: the ones you pass, else pinned, else the last real ones, else the trigger sample.
+     * 
+     * @param id Workflow id. (required)
+     * @param createWorkflowTestRequest  (required)
+     * @return CreateWorkflowTestResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public CreateWorkflowTestResponse createWorkflowTest(UUID id, CreateWorkflowTestRequest createWorkflowTestRequest) throws ApiException {
+        ApiResponse<CreateWorkflowTestResponse> localVarResp = createWorkflowTestWithHttpInfo(id, createWorkflowTestRequest);
+        return localVarResp.getData();
+    }
+
+    /**
+     * Test a workflow (the saved graph, or a draft graph you pass). mode&#x3D;test runs it for real, using pinned data where a node has it; mode&#x3D;dry is a safe test: write, destructive and money nodes report what they would do and change nothing. Trigger items: the ones you pass, else pinned, else the last real ones, else the trigger sample.
+     * 
+     * @param id Workflow id. (required)
+     * @param createWorkflowTestRequest  (required)
+     * @return ApiResponse&lt;CreateWorkflowTestResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<CreateWorkflowTestResponse> createWorkflowTestWithHttpInfo(UUID id, CreateWorkflowTestRequest createWorkflowTestRequest) throws ApiException {
+        okhttp3.Call localVarCall = createWorkflowTestValidateBeforeCall(id, createWorkflowTestRequest, null);
+        Type localVarReturnType = new TypeToken<CreateWorkflowTestResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Test a workflow (the saved graph, or a draft graph you pass). mode&#x3D;test runs it for real, using pinned data where a node has it; mode&#x3D;dry is a safe test: write, destructive and money nodes report what they would do and change nothing. Trigger items: the ones you pass, else pinned, else the last real ones, else the trigger sample. (asynchronously)
+     * 
+     * @param id Workflow id. (required)
+     * @param createWorkflowTestRequest  (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call createWorkflowTestAsync(UUID id, CreateWorkflowTestRequest createWorkflowTestRequest, final ApiCallback<CreateWorkflowTestResponse> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = createWorkflowTestValidateBeforeCall(id, createWorkflowTestRequest, _callback);
+        Type localVarReturnType = new TypeToken<CreateWorkflowTestResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for createWorkflowValidate
+     * @param createWorkflowValidateRequest  (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call createWorkflowValidateCall(CreateWorkflowValidateRequest createWorkflowValidateRequest, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = createWorkflowValidateRequest;
+
+        // create path and map variables
+        String localVarPath = "/v1/workflows/validate";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "PersonalAccessToken" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call createWorkflowValidateValidateBeforeCall(CreateWorkflowValidateRequest createWorkflowValidateRequest, final ApiCallback _callback) throws ApiException {
+        
+        // verify the required parameter 'createWorkflowValidateRequest' is set
+        if (createWorkflowValidateRequest == null) {
+            throw new ApiException("Missing the required parameter 'createWorkflowValidateRequest' when calling createWorkflowValidate(Async)");
+        }
+        
+
+        okhttp3.Call localVarCall = createWorkflowValidateCall(createWorkflowValidateRequest, _callback);
+        return localVarCall;
+
+    }
+
+    /**
+     * Validate a graph without saving it: unknown node types, missing required params, bad ports, cycles, expression errors. blocking&#x3D;true means activation would be refused.
+     * 
+     * @param createWorkflowValidateRequest  (required)
+     * @return CreateWorkflowValidateResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public CreateWorkflowValidateResponse createWorkflowValidate(CreateWorkflowValidateRequest createWorkflowValidateRequest) throws ApiException {
+        ApiResponse<CreateWorkflowValidateResponse> localVarResp = createWorkflowValidateWithHttpInfo(createWorkflowValidateRequest);
+        return localVarResp.getData();
+    }
+
+    /**
+     * Validate a graph without saving it: unknown node types, missing required params, bad ports, cycles, expression errors. blocking&#x3D;true means activation would be refused.
+     * 
+     * @param createWorkflowValidateRequest  (required)
+     * @return ApiResponse&lt;CreateWorkflowValidateResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<CreateWorkflowValidateResponse> createWorkflowValidateWithHttpInfo(CreateWorkflowValidateRequest createWorkflowValidateRequest) throws ApiException {
+        okhttp3.Call localVarCall = createWorkflowValidateValidateBeforeCall(createWorkflowValidateRequest, null);
+        Type localVarReturnType = new TypeToken<CreateWorkflowValidateResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Validate a graph without saving it: unknown node types, missing required params, bad ports, cycles, expression errors. blocking&#x3D;true means activation would be refused. (asynchronously)
+     * 
+     * @param createWorkflowValidateRequest  (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call createWorkflowValidateAsync(CreateWorkflowValidateRequest createWorkflowValidateRequest, final ApiCallback<CreateWorkflowValidateResponse> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = createWorkflowValidateValidateBeforeCall(createWorkflowValidateRequest, _callback);
+        Type localVarReturnType = new TypeToken<CreateWorkflowValidateResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for createWorkflowVersionRestore
+     * @param id Workflow id. (required)
+     * @param v The version number to restore. (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call createWorkflowVersionRestoreCall(UUID id, Integer v, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/v1/workflows/{id}/versions/{v}/restore"
+            .replaceAll("\\{" + "id" + "\\}", localVarApiClient.escapeString(id.toString()))
+            .replaceAll("\\{" + "v" + "\\}", localVarApiClient.escapeString(v.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "PersonalAccessToken" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call createWorkflowVersionRestoreValidateBeforeCall(UUID id, Integer v, final ApiCallback _callback) throws ApiException {
+        
+        // verify the required parameter 'id' is set
+        if (id == null) {
+            throw new ApiException("Missing the required parameter 'id' when calling createWorkflowVersionRestore(Async)");
+        }
+        
+        // verify the required parameter 'v' is set
+        if (v == null) {
+            throw new ApiException("Missing the required parameter 'v' when calling createWorkflowVersionRestore(Async)");
+        }
+        
+
+        okhttp3.Call localVarCall = createWorkflowVersionRestoreCall(id, v, _callback);
+        return localVarCall;
+
+    }
+
+    /**
+     * Restore an earlier version&#39;s graph as a new version. Pass version (the current one you read) to refuse the restore when someone saved meanwhile (409). Body optional: { version?: integer }.
+     * 
+     * @param id Workflow id. (required)
+     * @param v The version number to restore. (required)
+     * @return WorkflowResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public WorkflowResponse createWorkflowVersionRestore(UUID id, Integer v) throws ApiException {
+        ApiResponse<WorkflowResponse> localVarResp = createWorkflowVersionRestoreWithHttpInfo(id, v);
+        return localVarResp.getData();
+    }
+
+    /**
+     * Restore an earlier version&#39;s graph as a new version. Pass version (the current one you read) to refuse the restore when someone saved meanwhile (409). Body optional: { version?: integer }.
+     * 
+     * @param id Workflow id. (required)
+     * @param v The version number to restore. (required)
+     * @return ApiResponse&lt;WorkflowResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<WorkflowResponse> createWorkflowVersionRestoreWithHttpInfo(UUID id, Integer v) throws ApiException {
+        okhttp3.Call localVarCall = createWorkflowVersionRestoreValidateBeforeCall(id, v, null);
+        Type localVarReturnType = new TypeToken<WorkflowResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Restore an earlier version&#39;s graph as a new version. Pass version (the current one you read) to refuse the restore when someone saved meanwhile (409). Body optional: { version?: integer }. (asynchronously)
+     * 
+     * @param id Workflow id. (required)
+     * @param v The version number to restore. (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call createWorkflowVersionRestoreAsync(UUID id, Integer v, final ApiCallback<WorkflowResponse> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = createWorkflowVersionRestoreValidateBeforeCall(id, v, _callback);
+        Type localVarReturnType = new TypeToken<WorkflowResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for createWorkflowWebhookRotate
+     * @param id Workflow id. (required)
+     * @param nodeId The on.webhook trigger node id. (required)
+     * @param createWorkflowWebhookRotateRequest  (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call createWorkflowWebhookRotateCall(UUID id, String nodeId, CreateWorkflowWebhookRotateRequest createWorkflowWebhookRotateRequest, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = createWorkflowWebhookRotateRequest;
+
+        // create path and map variables
+        String localVarPath = "/v1/workflows/{id}/webhooks/{nodeId}/rotate"
+            .replaceAll("\\{" + "id" + "\\}", localVarApiClient.escapeString(id.toString()))
+            .replaceAll("\\{" + "nodeId" + "\\}", localVarApiClient.escapeString(nodeId.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "PersonalAccessToken" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call createWorkflowWebhookRotateValidateBeforeCall(UUID id, String nodeId, CreateWorkflowWebhookRotateRequest createWorkflowWebhookRotateRequest, final ApiCallback _callback) throws ApiException {
+        
+        // verify the required parameter 'id' is set
+        if (id == null) {
+            throw new ApiException("Missing the required parameter 'id' when calling createWorkflowWebhookRotate(Async)");
+        }
+        
+        // verify the required parameter 'nodeId' is set
+        if (nodeId == null) {
+            throw new ApiException("Missing the required parameter 'nodeId' when calling createWorkflowWebhookRotate(Async)");
+        }
+        
+        // verify the required parameter 'createWorkflowWebhookRotateRequest' is set
+        if (createWorkflowWebhookRotateRequest == null) {
+            throw new ApiException("Missing the required parameter 'createWorkflowWebhookRotateRequest' when calling createWorkflowWebhookRotate(Async)");
+        }
+        
+
+        okhttp3.Call localVarCall = createWorkflowWebhookRotateCall(id, nodeId, createWorkflowWebhookRotateRequest, _callback);
+        return localVarCall;
+
+    }
+
+    /**
+     * Issue a new inbound URL for an on.webhook trigger node (the old one stops working). The URL, and the signing secret when withSecret&#x3D;true, are returned ONCE: store them now.
+     * 
+     * @param id Workflow id. (required)
+     * @param nodeId The on.webhook trigger node id. (required)
+     * @param createWorkflowWebhookRotateRequest  (required)
+     * @return CreateWorkflowWebhookRotateResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public CreateWorkflowWebhookRotateResponse createWorkflowWebhookRotate(UUID id, String nodeId, CreateWorkflowWebhookRotateRequest createWorkflowWebhookRotateRequest) throws ApiException {
+        ApiResponse<CreateWorkflowWebhookRotateResponse> localVarResp = createWorkflowWebhookRotateWithHttpInfo(id, nodeId, createWorkflowWebhookRotateRequest);
+        return localVarResp.getData();
+    }
+
+    /**
+     * Issue a new inbound URL for an on.webhook trigger node (the old one stops working). The URL, and the signing secret when withSecret&#x3D;true, are returned ONCE: store them now.
+     * 
+     * @param id Workflow id. (required)
+     * @param nodeId The on.webhook trigger node id. (required)
+     * @param createWorkflowWebhookRotateRequest  (required)
+     * @return ApiResponse&lt;CreateWorkflowWebhookRotateResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<CreateWorkflowWebhookRotateResponse> createWorkflowWebhookRotateWithHttpInfo(UUID id, String nodeId, CreateWorkflowWebhookRotateRequest createWorkflowWebhookRotateRequest) throws ApiException {
+        okhttp3.Call localVarCall = createWorkflowWebhookRotateValidateBeforeCall(id, nodeId, createWorkflowWebhookRotateRequest, null);
+        Type localVarReturnType = new TypeToken<CreateWorkflowWebhookRotateResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Issue a new inbound URL for an on.webhook trigger node (the old one stops working). The URL, and the signing secret when withSecret&#x3D;true, are returned ONCE: store them now. (asynchronously)
+     * 
+     * @param id Workflow id. (required)
+     * @param nodeId The on.webhook trigger node id. (required)
+     * @param createWorkflowWebhookRotateRequest  (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call createWorkflowWebhookRotateAsync(UUID id, String nodeId, CreateWorkflowWebhookRotateRequest createWorkflowWebhookRotateRequest, final ApiCallback<CreateWorkflowWebhookRotateResponse> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = createWorkflowWebhookRotateValidateBeforeCall(id, nodeId, createWorkflowWebhookRotateRequest, _callback);
+        Type localVarReturnType = new TypeToken<CreateWorkflowWebhookRotateResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for deleteWorkflow
+     * @param id Workflow id. (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call deleteWorkflowCall(UUID id, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/v1/workflows/{id}"
+            .replaceAll("\\{" + "id" + "\\}", localVarApiClient.escapeString(id.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "PersonalAccessToken" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "DELETE", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call deleteWorkflowValidateBeforeCall(UUID id, final ApiCallback _callback) throws ApiException {
+        
+        // verify the required parameter 'id' is set
+        if (id == null) {
+            throw new ApiException("Missing the required parameter 'id' when calling deleteWorkflow(Async)");
+        }
+        
+
+        okhttp3.Call localVarCall = deleteWorkflowCall(id, _callback);
+        return localVarCall;
+
+    }
+
+    /**
+     * Delete (archive) a workflow: its triggers stop, open runs are cancelled, run history stays readable.
+     * 
+     * @param id Workflow id. (required)
+     * @return DeleteWorkflowResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public DeleteWorkflowResponse deleteWorkflow(UUID id) throws ApiException {
+        ApiResponse<DeleteWorkflowResponse> localVarResp = deleteWorkflowWithHttpInfo(id);
+        return localVarResp.getData();
+    }
+
+    /**
+     * Delete (archive) a workflow: its triggers stop, open runs are cancelled, run history stays readable.
+     * 
+     * @param id Workflow id. (required)
+     * @return ApiResponse&lt;DeleteWorkflowResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<DeleteWorkflowResponse> deleteWorkflowWithHttpInfo(UUID id) throws ApiException {
+        okhttp3.Call localVarCall = deleteWorkflowValidateBeforeCall(id, null);
+        Type localVarReturnType = new TypeToken<DeleteWorkflowResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Delete (archive) a workflow: its triggers stop, open runs are cancelled, run history stays readable. (asynchronously)
+     * 
+     * @param id Workflow id. (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call deleteWorkflowAsync(UUID id, final ApiCallback<DeleteWorkflowResponse> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = deleteWorkflowValidateBeforeCall(id, _callback);
+        Type localVarReturnType = new TypeToken<DeleteWorkflowResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -542,7 +3412,9 @@ public class WorkflowsApi {
         <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
         <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
      </table>
+     * @deprecated
      */
+    @Deprecated
     public okhttp3.Call deleteWorkflowChainCall(UUID id, final ApiCallback _callback) throws ApiException {
         String basePath = null;
 
@@ -590,6 +3462,7 @@ public class WorkflowsApi {
         return localVarApiClient.buildCall(basePath, localVarPath, "DELETE", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
+    @Deprecated
     @SuppressWarnings("rawtypes")
     private okhttp3.Call deleteWorkflowChainValidateBeforeCall(UUID id, final ApiCallback _callback) throws ApiException {
         
@@ -606,7 +3479,7 @@ public class WorkflowsApi {
 
     /**
      * Delete a workflow chain (cascades steps + runs).
-     * 
+     * Deprecated: workflow chains are workflows now. Use /v1/workflows.
      * @param id  (required)
      * @return OkResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -621,7 +3494,9 @@ public class WorkflowsApi {
         <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
         <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
      </table>
+     * @deprecated
      */
+    @Deprecated
     public OkResponse deleteWorkflowChain(UUID id) throws ApiException {
         ApiResponse<OkResponse> localVarResp = deleteWorkflowChainWithHttpInfo(id);
         return localVarResp.getData();
@@ -629,7 +3504,7 @@ public class WorkflowsApi {
 
     /**
      * Delete a workflow chain (cascades steps + runs).
-     * 
+     * Deprecated: workflow chains are workflows now. Use /v1/workflows.
      * @param id  (required)
      * @return ApiResponse&lt;OkResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -644,7 +3519,9 @@ public class WorkflowsApi {
         <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
         <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
      </table>
+     * @deprecated
      */
+    @Deprecated
     public ApiResponse<OkResponse> deleteWorkflowChainWithHttpInfo(UUID id) throws ApiException {
         okhttp3.Call localVarCall = deleteWorkflowChainValidateBeforeCall(id, null);
         Type localVarReturnType = new TypeToken<OkResponse>(){}.getType();
@@ -653,7 +3530,7 @@ public class WorkflowsApi {
 
     /**
      * Delete a workflow chain (cascades steps + runs). (asynchronously)
-     * 
+     * Deprecated: workflow chains are workflows now. Use /v1/workflows.
      * @param id  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -669,11 +3546,307 @@ public class WorkflowsApi {
         <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
         <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
      </table>
+     * @deprecated
      */
+    @Deprecated
     public okhttp3.Call deleteWorkflowChainAsync(UUID id, final ApiCallback<OkResponse> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = deleteWorkflowChainValidateBeforeCall(id, _callback);
         Type localVarReturnType = new TypeToken<OkResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for getWorkflow
+     * @param id Workflow id. (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getWorkflowCall(UUID id, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/v1/workflows/{id}"
+            .replaceAll("\\{" + "id" + "\\}", localVarApiClient.escapeString(id.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "PersonalAccessToken" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call getWorkflowValidateBeforeCall(UUID id, final ApiCallback _callback) throws ApiException {
+        
+        // verify the required parameter 'id' is set
+        if (id == null) {
+            throw new ApiException("Missing the required parameter 'id' when calling getWorkflow(Async)");
+        }
+        
+
+        okhttp3.Call localVarCall = getWorkflowCall(id, _callback);
+        return localVarCall;
+
+    }
+
+    /**
+     * Get one workflow with its full graph and current version.
+     * 
+     * @param id Workflow id. (required)
+     * @return GetWorkflowResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public GetWorkflowResponse getWorkflow(UUID id) throws ApiException {
+        ApiResponse<GetWorkflowResponse> localVarResp = getWorkflowWithHttpInfo(id);
+        return localVarResp.getData();
+    }
+
+    /**
+     * Get one workflow with its full graph and current version.
+     * 
+     * @param id Workflow id. (required)
+     * @return ApiResponse&lt;GetWorkflowResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<GetWorkflowResponse> getWorkflowWithHttpInfo(UUID id) throws ApiException {
+        okhttp3.Call localVarCall = getWorkflowValidateBeforeCall(id, null);
+        Type localVarReturnType = new TypeToken<GetWorkflowResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Get one workflow with its full graph and current version. (asynchronously)
+     * 
+     * @param id Workflow id. (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getWorkflowAsync(UUID id, final ApiCallback<GetWorkflowResponse> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = getWorkflowValidateBeforeCall(id, _callback);
+        Type localVarReturnType = new TypeToken<GetWorkflowResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for getWorkflowCatalog
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getWorkflowCatalogCall(final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/v1/workflows/catalog";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "PersonalAccessToken" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call getWorkflowCatalogValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        
+
+        okhttp3.Call localVarCall = getWorkflowCatalogCall(_callback);
+        return localVarCall;
+
+    }
+
+    /**
+     * Everything needed to build a workflow: every node type (params, ports, output fields, risk, platforms capability), which platforms each capability covers and which of those you have connected, the expression helpers and bindings ({{ $json.listingId }}…) and the condition operators. Read this before composing a graph rather than guessing node types or param keys.
+     * 
+     * @return GetWorkflowCatalogResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public GetWorkflowCatalogResponse getWorkflowCatalog() throws ApiException {
+        ApiResponse<GetWorkflowCatalogResponse> localVarResp = getWorkflowCatalogWithHttpInfo();
+        return localVarResp.getData();
+    }
+
+    /**
+     * Everything needed to build a workflow: every node type (params, ports, output fields, risk, platforms capability), which platforms each capability covers and which of those you have connected, the expression helpers and bindings ({{ $json.listingId }}…) and the condition operators. Read this before composing a graph rather than guessing node types or param keys.
+     * 
+     * @return ApiResponse&lt;GetWorkflowCatalogResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<GetWorkflowCatalogResponse> getWorkflowCatalogWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = getWorkflowCatalogValidateBeforeCall(null);
+        Type localVarReturnType = new TypeToken<GetWorkflowCatalogResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Everything needed to build a workflow: every node type (params, ports, output fields, risk, platforms capability), which platforms each capability covers and which of those you have connected, the expression helpers and bindings ({{ $json.listingId }}…) and the condition operators. Read this before composing a graph rather than guessing node types or param keys. (asynchronously)
+     * 
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getWorkflowCatalogAsync(final ApiCallback<GetWorkflowCatalogResponse> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = getWorkflowCatalogValidateBeforeCall(_callback);
+        Type localVarReturnType = new TypeToken<GetWorkflowCatalogResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -694,7 +3867,9 @@ public class WorkflowsApi {
         <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
         <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
      </table>
+     * @deprecated
      */
+    @Deprecated
     public okhttp3.Call getWorkflowChainCall(UUID id, final ApiCallback _callback) throws ApiException {
         String basePath = null;
 
@@ -742,6 +3917,7 @@ public class WorkflowsApi {
         return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
+    @Deprecated
     @SuppressWarnings("rawtypes")
     private okhttp3.Call getWorkflowChainValidateBeforeCall(UUID id, final ApiCallback _callback) throws ApiException {
         
@@ -758,7 +3934,7 @@ public class WorkflowsApi {
 
     /**
      * Get one workflow chain with its steps.
-     * 
+     * Deprecated: workflow chains are workflows now. Use /v1/workflows.
      * @param id  (required)
      * @return GetWorkflowChainResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -773,7 +3949,9 @@ public class WorkflowsApi {
         <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
         <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
      </table>
+     * @deprecated
      */
+    @Deprecated
     public GetWorkflowChainResponse getWorkflowChain(UUID id) throws ApiException {
         ApiResponse<GetWorkflowChainResponse> localVarResp = getWorkflowChainWithHttpInfo(id);
         return localVarResp.getData();
@@ -781,7 +3959,7 @@ public class WorkflowsApi {
 
     /**
      * Get one workflow chain with its steps.
-     * 
+     * Deprecated: workflow chains are workflows now. Use /v1/workflows.
      * @param id  (required)
      * @return ApiResponse&lt;GetWorkflowChainResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -796,7 +3974,9 @@ public class WorkflowsApi {
         <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
         <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
      </table>
+     * @deprecated
      */
+    @Deprecated
     public ApiResponse<GetWorkflowChainResponse> getWorkflowChainWithHttpInfo(UUID id) throws ApiException {
         okhttp3.Call localVarCall = getWorkflowChainValidateBeforeCall(id, null);
         Type localVarReturnType = new TypeToken<GetWorkflowChainResponse>(){}.getType();
@@ -805,7 +3985,7 @@ public class WorkflowsApi {
 
     /**
      * Get one workflow chain with its steps. (asynchronously)
-     * 
+     * Deprecated: workflow chains are workflows now. Use /v1/workflows.
      * @param id  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -821,11 +4001,661 @@ public class WorkflowsApi {
         <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
         <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
      </table>
+     * @deprecated
      */
+    @Deprecated
     public okhttp3.Call getWorkflowChainAsync(UUID id, final ApiCallback<GetWorkflowChainResponse> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getWorkflowChainValidateBeforeCall(id, _callback);
         Type localVarReturnType = new TypeToken<GetWorkflowChainResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for getWorkflowExport
+     * @param id Workflow id. (required)
+     * @param pinnedData Keep the nodes&#39; pinned test data. (optional)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getWorkflowExportCall(UUID id, String pinnedData, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/v1/workflows/{id}/export"
+            .replaceAll("\\{" + "id" + "\\}", localVarApiClient.escapeString(id.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        if (pinnedData != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("pinnedData", pinnedData));
+        }
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "PersonalAccessToken" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call getWorkflowExportValidateBeforeCall(UUID id, String pinnedData, final ApiCallback _callback) throws ApiException {
+        
+        // verify the required parameter 'id' is set
+        if (id == null) {
+            throw new ApiException("Missing the required parameter 'id' when calling getWorkflowExport(Async)");
+        }
+        
+
+        okhttp3.Call localVarCall = getWorkflowExportCall(id, pinnedData, _callback);
+        return localVarCall;
+
+    }
+
+    /**
+     * Export a workflow as a portable document (format crossly.workflow) that POST /v1/workflows/import accepts. Credentials and account handles are stripped; pinned test data only with pinnedData&#x3D;true.
+     * 
+     * @param id Workflow id. (required)
+     * @param pinnedData Keep the nodes&#39; pinned test data. (optional)
+     * @return GetWorkflowExportResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public GetWorkflowExportResponse getWorkflowExport(UUID id, String pinnedData) throws ApiException {
+        ApiResponse<GetWorkflowExportResponse> localVarResp = getWorkflowExportWithHttpInfo(id, pinnedData);
+        return localVarResp.getData();
+    }
+
+    /**
+     * Export a workflow as a portable document (format crossly.workflow) that POST /v1/workflows/import accepts. Credentials and account handles are stripped; pinned test data only with pinnedData&#x3D;true.
+     * 
+     * @param id Workflow id. (required)
+     * @param pinnedData Keep the nodes&#39; pinned test data. (optional)
+     * @return ApiResponse&lt;GetWorkflowExportResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<GetWorkflowExportResponse> getWorkflowExportWithHttpInfo(UUID id, String pinnedData) throws ApiException {
+        okhttp3.Call localVarCall = getWorkflowExportValidateBeforeCall(id, pinnedData, null);
+        Type localVarReturnType = new TypeToken<GetWorkflowExportResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Export a workflow as a portable document (format crossly.workflow) that POST /v1/workflows/import accepts. Credentials and account handles are stripped; pinned test data only with pinnedData&#x3D;true. (asynchronously)
+     * 
+     * @param id Workflow id. (required)
+     * @param pinnedData Keep the nodes&#39; pinned test data. (optional)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getWorkflowExportAsync(UUID id, String pinnedData, final ApiCallback<GetWorkflowExportResponse> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = getWorkflowExportValidateBeforeCall(id, pinnedData, _callback);
+        Type localVarReturnType = new TypeToken<GetWorkflowExportResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for getWorkflowRun
+     * @param runId Workflow run id. (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getWorkflowRunCall(UUID runId, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/v1/workflow-runs/{runId}"
+            .replaceAll("\\{" + "runId" + "\\}", localVarApiClient.escapeString(runId.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "PersonalAccessToken" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call getWorkflowRunValidateBeforeCall(UUID runId, final ApiCallback _callback) throws ApiException {
+        
+        // verify the required parameter 'runId' is set
+        if (runId == null) {
+            throw new ApiException("Missing the required parameter 'runId' when calling getWorkflowRun(Async)");
+        }
+        
+
+        okhttp3.Call localVarCall = getWorkflowRunCall(runId, _callback);
+        return localVarCall;
+
+    }
+
+    /**
+     * One run: its summary, the graph version it ran, and every node execution (status, item counts per port, timing, errors). Item data per node: GET …/nodes/{nodeId}.
+     * 
+     * @param runId Workflow run id. (required)
+     * @return GetWorkflowRunResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public GetWorkflowRunResponse getWorkflowRun(UUID runId) throws ApiException {
+        ApiResponse<GetWorkflowRunResponse> localVarResp = getWorkflowRunWithHttpInfo(runId);
+        return localVarResp.getData();
+    }
+
+    /**
+     * One run: its summary, the graph version it ran, and every node execution (status, item counts per port, timing, errors). Item data per node: GET …/nodes/{nodeId}.
+     * 
+     * @param runId Workflow run id. (required)
+     * @return ApiResponse&lt;GetWorkflowRunResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<GetWorkflowRunResponse> getWorkflowRunWithHttpInfo(UUID runId) throws ApiException {
+        okhttp3.Call localVarCall = getWorkflowRunValidateBeforeCall(runId, null);
+        Type localVarReturnType = new TypeToken<GetWorkflowRunResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * One run: its summary, the graph version it ran, and every node execution (status, item counts per port, timing, errors). Item data per node: GET …/nodes/{nodeId}. (asynchronously)
+     * 
+     * @param runId Workflow run id. (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getWorkflowRunAsync(UUID runId, final ApiCallback<GetWorkflowRunResponse> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = getWorkflowRunValidateBeforeCall(runId, _callback);
+        Type localVarReturnType = new TypeToken<GetWorkflowRunResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for getWorkflowRunNode
+     * @param runId Workflow run id. (required)
+     * @param nodeId Node id within the run&#39;s graph. (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getWorkflowRunNodeCall(UUID runId, String nodeId, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/v1/workflow-runs/{runId}/nodes/{nodeId}"
+            .replaceAll("\\{" + "runId" + "\\}", localVarApiClient.escapeString(runId.toString()))
+            .replaceAll("\\{" + "nodeId" + "\\}", localVarApiClient.escapeString(nodeId.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "PersonalAccessToken" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call getWorkflowRunNodeValidateBeforeCall(UUID runId, String nodeId, final ApiCallback _callback) throws ApiException {
+        
+        // verify the required parameter 'runId' is set
+        if (runId == null) {
+            throw new ApiException("Missing the required parameter 'runId' when calling getWorkflowRunNode(Async)");
+        }
+        
+        // verify the required parameter 'nodeId' is set
+        if (nodeId == null) {
+            throw new ApiException("Missing the required parameter 'nodeId' when calling getWorkflowRunNode(Async)");
+        }
+        
+
+        okhttp3.Call localVarCall = getWorkflowRunNodeCall(runId, nodeId, _callback);
+        return localVarCall;
+
+    }
+
+    /**
+     * Every execution of one node in a run with its input and output items (each port keeps the first 50 items, 16 KB per item; truncated&#x3D;true when cut). Data older than the retention window, or not kept by settings.saveSuccessData&#x3D;false, is pruned: that execution has input/output null and pruned&#x3D;true, and when every execution is pruned the response is { data: null, meta: { pruned: true } } (never an empty list).
+     * 
+     * @param runId Workflow run id. (required)
+     * @param nodeId Node id within the run&#39;s graph. (required)
+     * @return GetWorkflowRunNodeResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public GetWorkflowRunNodeResponse getWorkflowRunNode(UUID runId, String nodeId) throws ApiException {
+        ApiResponse<GetWorkflowRunNodeResponse> localVarResp = getWorkflowRunNodeWithHttpInfo(runId, nodeId);
+        return localVarResp.getData();
+    }
+
+    /**
+     * Every execution of one node in a run with its input and output items (each port keeps the first 50 items, 16 KB per item; truncated&#x3D;true when cut). Data older than the retention window, or not kept by settings.saveSuccessData&#x3D;false, is pruned: that execution has input/output null and pruned&#x3D;true, and when every execution is pruned the response is { data: null, meta: { pruned: true } } (never an empty list).
+     * 
+     * @param runId Workflow run id. (required)
+     * @param nodeId Node id within the run&#39;s graph. (required)
+     * @return ApiResponse&lt;GetWorkflowRunNodeResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<GetWorkflowRunNodeResponse> getWorkflowRunNodeWithHttpInfo(UUID runId, String nodeId) throws ApiException {
+        okhttp3.Call localVarCall = getWorkflowRunNodeValidateBeforeCall(runId, nodeId, null);
+        Type localVarReturnType = new TypeToken<GetWorkflowRunNodeResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Every execution of one node in a run with its input and output items (each port keeps the first 50 items, 16 KB per item; truncated&#x3D;true when cut). Data older than the retention window, or not kept by settings.saveSuccessData&#x3D;false, is pruned: that execution has input/output null and pruned&#x3D;true, and when every execution is pruned the response is { data: null, meta: { pruned: true } } (never an empty list). (asynchronously)
+     * 
+     * @param runId Workflow run id. (required)
+     * @param nodeId Node id within the run&#39;s graph. (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getWorkflowRunNodeAsync(UUID runId, String nodeId, final ApiCallback<GetWorkflowRunNodeResponse> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = getWorkflowRunNodeValidateBeforeCall(runId, nodeId, _callback);
+        Type localVarReturnType = new TypeToken<GetWorkflowRunNodeResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for listWorkflowApprovals
+     * @param status Comma-separated: pending, approved, rejected, expired. Default pending. (optional)
+     * @param workflowId Only approvals of this workflow. (optional)
+     * @param page 1-indexed page. (optional, default to 1)
+     * @param limit Rows per page (1-100). (optional, default to 25)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call listWorkflowApprovalsCall(String status, UUID workflowId, Integer page, Integer limit, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/v1/workflow-approvals";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        if (status != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("status", status));
+        }
+
+        if (workflowId != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("workflowId", workflowId));
+        }
+
+        if (page != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("page", page));
+        }
+
+        if (limit != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("limit", limit));
+        }
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "PersonalAccessToken" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call listWorkflowApprovalsValidateBeforeCall(String status, UUID workflowId, Integer page, Integer limit, final ApiCallback _callback) throws ApiException {
+        
+
+        okhttp3.Call localVarCall = listWorkflowApprovalsCall(status, workflowId, page, limit, _callback);
+        return localVarCall;
+
+    }
+
+    /**
+     * Approval requests from flow.approval nodes, newest first (pending only unless status says otherwise). Decide one with POST /v1/workflow-approvals/{id}/decide.
+     * 
+     * @param status Comma-separated: pending, approved, rejected, expired. Default pending. (optional)
+     * @param workflowId Only approvals of this workflow. (optional)
+     * @param page 1-indexed page. (optional, default to 1)
+     * @param limit Rows per page (1-100). (optional, default to 25)
+     * @return ListWorkflowApprovalsResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public ListWorkflowApprovalsResponse listWorkflowApprovals(String status, UUID workflowId, Integer page, Integer limit) throws ApiException {
+        ApiResponse<ListWorkflowApprovalsResponse> localVarResp = listWorkflowApprovalsWithHttpInfo(status, workflowId, page, limit);
+        return localVarResp.getData();
+    }
+
+    /**
+     * Approval requests from flow.approval nodes, newest first (pending only unless status says otherwise). Decide one with POST /v1/workflow-approvals/{id}/decide.
+     * 
+     * @param status Comma-separated: pending, approved, rejected, expired. Default pending. (optional)
+     * @param workflowId Only approvals of this workflow. (optional)
+     * @param page 1-indexed page. (optional, default to 1)
+     * @param limit Rows per page (1-100). (optional, default to 25)
+     * @return ApiResponse&lt;ListWorkflowApprovalsResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<ListWorkflowApprovalsResponse> listWorkflowApprovalsWithHttpInfo(String status, UUID workflowId, Integer page, Integer limit) throws ApiException {
+        okhttp3.Call localVarCall = listWorkflowApprovalsValidateBeforeCall(status, workflowId, page, limit, null);
+        Type localVarReturnType = new TypeToken<ListWorkflowApprovalsResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Approval requests from flow.approval nodes, newest first (pending only unless status says otherwise). Decide one with POST /v1/workflow-approvals/{id}/decide. (asynchronously)
+     * 
+     * @param status Comma-separated: pending, approved, rejected, expired. Default pending. (optional)
+     * @param workflowId Only approvals of this workflow. (optional)
+     * @param page 1-indexed page. (optional, default to 1)
+     * @param limit Rows per page (1-100). (optional, default to 25)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call listWorkflowApprovalsAsync(String status, UUID workflowId, Integer page, Integer limit, final ApiCallback<ListWorkflowApprovalsResponse> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = listWorkflowApprovalsValidateBeforeCall(status, workflowId, page, limit, _callback);
+        Type localVarReturnType = new TypeToken<ListWorkflowApprovalsResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -845,7 +4675,9 @@ public class WorkflowsApi {
         <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
         <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
      </table>
+     * @deprecated
      */
+    @Deprecated
     public okhttp3.Call listWorkflowChainsCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
 
@@ -892,6 +4724,7 @@ public class WorkflowsApi {
         return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
+    @Deprecated
     @SuppressWarnings("rawtypes")
     private okhttp3.Call listWorkflowChainsValidateBeforeCall(final ApiCallback _callback) throws ApiException {
         
@@ -903,7 +4736,7 @@ public class WorkflowsApi {
 
     /**
      * List workflow chains with their step graph.
-     * 
+     * Deprecated: workflow chains are workflows now. Use /v1/workflows.
      * @return ListWorkflowChainsResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -917,7 +4750,9 @@ public class WorkflowsApi {
         <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
         <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
      </table>
+     * @deprecated
      */
+    @Deprecated
     public ListWorkflowChainsResponse listWorkflowChains() throws ApiException {
         ApiResponse<ListWorkflowChainsResponse> localVarResp = listWorkflowChainsWithHttpInfo();
         return localVarResp.getData();
@@ -925,7 +4760,7 @@ public class WorkflowsApi {
 
     /**
      * List workflow chains with their step graph.
-     * 
+     * Deprecated: workflow chains are workflows now. Use /v1/workflows.
      * @return ApiResponse&lt;ListWorkflowChainsResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -939,7 +4774,9 @@ public class WorkflowsApi {
         <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
         <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
      </table>
+     * @deprecated
      */
+    @Deprecated
     public ApiResponse<ListWorkflowChainsResponse> listWorkflowChainsWithHttpInfo() throws ApiException {
         okhttp3.Call localVarCall = listWorkflowChainsValidateBeforeCall(null);
         Type localVarReturnType = new TypeToken<ListWorkflowChainsResponse>(){}.getType();
@@ -948,6 +4785,548 @@ public class WorkflowsApi {
 
     /**
      * List workflow chains with their step graph. (asynchronously)
+     * Deprecated: workflow chains are workflows now. Use /v1/workflows.
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     * @deprecated
+     */
+    @Deprecated
+    public okhttp3.Call listWorkflowChainsAsync(final ApiCallback<ListWorkflowChainsResponse> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = listWorkflowChainsValidateBeforeCall(_callback);
+        Type localVarReturnType = new TypeToken<ListWorkflowChainsResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for listWorkflowRuns
+     * @param id Workflow id. (required)
+     * @param status Comma-separated run statuses: queued, running, waiting, succeeded, failed, cancelled. (optional)
+     * @param mode live (triggers), test (editor test run) or dry (safe test: no writes). (optional)
+     * @param since Runs queued at or after this time (ISO 8601). (optional)
+     * @param until Runs queued at or before this time (ISO 8601). (optional)
+     * @param page 1-indexed page. (optional, default to 1)
+     * @param limit Rows per page (1-100). (optional, default to 25)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call listWorkflowRunsCall(UUID id, String status, String mode, OffsetDateTime since, OffsetDateTime until, Integer page, Integer limit, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/v1/workflows/{id}/runs"
+            .replaceAll("\\{" + "id" + "\\}", localVarApiClient.escapeString(id.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        if (status != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("status", status));
+        }
+
+        if (mode != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("mode", mode));
+        }
+
+        if (since != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("since", since));
+        }
+
+        if (until != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("until", until));
+        }
+
+        if (page != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("page", page));
+        }
+
+        if (limit != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("limit", limit));
+        }
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "PersonalAccessToken" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call listWorkflowRunsValidateBeforeCall(UUID id, String status, String mode, OffsetDateTime since, OffsetDateTime until, Integer page, Integer limit, final ApiCallback _callback) throws ApiException {
+        
+        // verify the required parameter 'id' is set
+        if (id == null) {
+            throw new ApiException("Missing the required parameter 'id' when calling listWorkflowRuns(Async)");
+        }
+        
+
+        okhttp3.Call localVarCall = listWorkflowRunsCall(id, status, mode, since, until, page, limit, _callback);
+        return localVarCall;
+
+    }
+
+    /**
+     * Run history of one workflow, newest first, with per-node status and item counts.
+     * 
+     * @param id Workflow id. (required)
+     * @param status Comma-separated run statuses: queued, running, waiting, succeeded, failed, cancelled. (optional)
+     * @param mode live (triggers), test (editor test run) or dry (safe test: no writes). (optional)
+     * @param since Runs queued at or after this time (ISO 8601). (optional)
+     * @param until Runs queued at or before this time (ISO 8601). (optional)
+     * @param page 1-indexed page. (optional, default to 1)
+     * @param limit Rows per page (1-100). (optional, default to 25)
+     * @return ListWorkflowRunsResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public ListWorkflowRunsResponse listWorkflowRuns(UUID id, String status, String mode, OffsetDateTime since, OffsetDateTime until, Integer page, Integer limit) throws ApiException {
+        ApiResponse<ListWorkflowRunsResponse> localVarResp = listWorkflowRunsWithHttpInfo(id, status, mode, since, until, page, limit);
+        return localVarResp.getData();
+    }
+
+    /**
+     * Run history of one workflow, newest first, with per-node status and item counts.
+     * 
+     * @param id Workflow id. (required)
+     * @param status Comma-separated run statuses: queued, running, waiting, succeeded, failed, cancelled. (optional)
+     * @param mode live (triggers), test (editor test run) or dry (safe test: no writes). (optional)
+     * @param since Runs queued at or after this time (ISO 8601). (optional)
+     * @param until Runs queued at or before this time (ISO 8601). (optional)
+     * @param page 1-indexed page. (optional, default to 1)
+     * @param limit Rows per page (1-100). (optional, default to 25)
+     * @return ApiResponse&lt;ListWorkflowRunsResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<ListWorkflowRunsResponse> listWorkflowRunsWithHttpInfo(UUID id, String status, String mode, OffsetDateTime since, OffsetDateTime until, Integer page, Integer limit) throws ApiException {
+        okhttp3.Call localVarCall = listWorkflowRunsValidateBeforeCall(id, status, mode, since, until, page, limit, null);
+        Type localVarReturnType = new TypeToken<ListWorkflowRunsResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Run history of one workflow, newest first, with per-node status and item counts. (asynchronously)
+     * 
+     * @param id Workflow id. (required)
+     * @param status Comma-separated run statuses: queued, running, waiting, succeeded, failed, cancelled. (optional)
+     * @param mode live (triggers), test (editor test run) or dry (safe test: no writes). (optional)
+     * @param since Runs queued at or after this time (ISO 8601). (optional)
+     * @param until Runs queued at or before this time (ISO 8601). (optional)
+     * @param page 1-indexed page. (optional, default to 1)
+     * @param limit Rows per page (1-100). (optional, default to 25)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call listWorkflowRunsAsync(UUID id, String status, String mode, OffsetDateTime since, OffsetDateTime until, Integer page, Integer limit, final ApiCallback<ListWorkflowRunsResponse> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = listWorkflowRunsValidateBeforeCall(id, status, mode, since, until, page, limit, _callback);
+        Type localVarReturnType = new TypeToken<ListWorkflowRunsResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for listWorkflowRuns2
+     * @param workflowId Only runs of this workflow. (optional)
+     * @param status Comma-separated run statuses: queued, running, waiting, succeeded, failed, cancelled. (optional)
+     * @param mode live (triggers), test (editor test run) or dry (safe test: no writes). (optional)
+     * @param since Runs queued at or after this time (ISO 8601). (optional)
+     * @param until Runs queued at or before this time (ISO 8601). (optional)
+     * @param page 1-indexed page. (optional, default to 1)
+     * @param limit Rows per page (1-100). (optional, default to 25)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call listWorkflowRuns2Call(UUID workflowId, String status, String mode, OffsetDateTime since, OffsetDateTime until, Integer page, Integer limit, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/v1/workflow-runs";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        if (workflowId != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("workflowId", workflowId));
+        }
+
+        if (status != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("status", status));
+        }
+
+        if (mode != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("mode", mode));
+        }
+
+        if (since != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("since", since));
+        }
+
+        if (until != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("until", until));
+        }
+
+        if (page != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("page", page));
+        }
+
+        if (limit != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("limit", limit));
+        }
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "PersonalAccessToken" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call listWorkflowRuns2ValidateBeforeCall(UUID workflowId, String status, String mode, OffsetDateTime since, OffsetDateTime until, Integer page, Integer limit, final ApiCallback _callback) throws ApiException {
+        
+
+        okhttp3.Call localVarCall = listWorkflowRuns2Call(workflowId, status, mode, since, until, page, limit, _callback);
+        return localVarCall;
+
+    }
+
+    /**
+     * Runs of every workflow, newest first. Filter by workflow, status, mode and time.
+     * 
+     * @param workflowId Only runs of this workflow. (optional)
+     * @param status Comma-separated run statuses: queued, running, waiting, succeeded, failed, cancelled. (optional)
+     * @param mode live (triggers), test (editor test run) or dry (safe test: no writes). (optional)
+     * @param since Runs queued at or after this time (ISO 8601). (optional)
+     * @param until Runs queued at or before this time (ISO 8601). (optional)
+     * @param page 1-indexed page. (optional, default to 1)
+     * @param limit Rows per page (1-100). (optional, default to 25)
+     * @return ListWorkflowRunsResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public ListWorkflowRunsResponse listWorkflowRuns2(UUID workflowId, String status, String mode, OffsetDateTime since, OffsetDateTime until, Integer page, Integer limit) throws ApiException {
+        ApiResponse<ListWorkflowRunsResponse> localVarResp = listWorkflowRuns2WithHttpInfo(workflowId, status, mode, since, until, page, limit);
+        return localVarResp.getData();
+    }
+
+    /**
+     * Runs of every workflow, newest first. Filter by workflow, status, mode and time.
+     * 
+     * @param workflowId Only runs of this workflow. (optional)
+     * @param status Comma-separated run statuses: queued, running, waiting, succeeded, failed, cancelled. (optional)
+     * @param mode live (triggers), test (editor test run) or dry (safe test: no writes). (optional)
+     * @param since Runs queued at or after this time (ISO 8601). (optional)
+     * @param until Runs queued at or before this time (ISO 8601). (optional)
+     * @param page 1-indexed page. (optional, default to 1)
+     * @param limit Rows per page (1-100). (optional, default to 25)
+     * @return ApiResponse&lt;ListWorkflowRunsResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<ListWorkflowRunsResponse> listWorkflowRuns2WithHttpInfo(UUID workflowId, String status, String mode, OffsetDateTime since, OffsetDateTime until, Integer page, Integer limit) throws ApiException {
+        okhttp3.Call localVarCall = listWorkflowRuns2ValidateBeforeCall(workflowId, status, mode, since, until, page, limit, null);
+        Type localVarReturnType = new TypeToken<ListWorkflowRunsResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Runs of every workflow, newest first. Filter by workflow, status, mode and time. (asynchronously)
+     * 
+     * @param workflowId Only runs of this workflow. (optional)
+     * @param status Comma-separated run statuses: queued, running, waiting, succeeded, failed, cancelled. (optional)
+     * @param mode live (triggers), test (editor test run) or dry (safe test: no writes). (optional)
+     * @param since Runs queued at or after this time (ISO 8601). (optional)
+     * @param until Runs queued at or before this time (ISO 8601). (optional)
+     * @param page 1-indexed page. (optional, default to 1)
+     * @param limit Rows per page (1-100). (optional, default to 25)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call listWorkflowRuns2Async(UUID workflowId, String status, String mode, OffsetDateTime since, OffsetDateTime until, Integer page, Integer limit, final ApiCallback<ListWorkflowRunsResponse> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = listWorkflowRuns2ValidateBeforeCall(workflowId, status, mode, since, until, page, limit, _callback);
+        Type localVarReturnType = new TypeToken<ListWorkflowRunsResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for listWorkflowSaleActive
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call listWorkflowSaleActiveCall(final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/v1/workflows/sales/active";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "PersonalAccessToken" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call listWorkflowSaleActiveValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        
+
+        okhttp3.Call localVarCall = listWorkflowSaleActiveCall(_callback);
+        return localVarCall;
+
+    }
+
+    /**
+     * Every live or upcoming sale (a sales event started by a sale.start node) with the workflow that runs it: percent off, window, and how many listings it applies to.
+     * 
+     * @return ListWorkflowSaleActiveResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public ListWorkflowSaleActiveResponse listWorkflowSaleActive() throws ApiException {
+        ApiResponse<ListWorkflowSaleActiveResponse> localVarResp = listWorkflowSaleActiveWithHttpInfo();
+        return localVarResp.getData();
+    }
+
+    /**
+     * Every live or upcoming sale (a sales event started by a sale.start node) with the workflow that runs it: percent off, window, and how many listings it applies to.
+     * 
+     * @return ApiResponse&lt;ListWorkflowSaleActiveResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<ListWorkflowSaleActiveResponse> listWorkflowSaleActiveWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = listWorkflowSaleActiveValidateBeforeCall(null);
+        Type localVarReturnType = new TypeToken<ListWorkflowSaleActiveResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Every live or upcoming sale (a sales event started by a sale.start node) with the workflow that runs it: percent off, window, and how many listings it applies to. (asynchronously)
      * 
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -964,10 +5343,663 @@ public class WorkflowsApi {
         <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call listWorkflowChainsAsync(final ApiCallback<ListWorkflowChainsResponse> _callback) throws ApiException {
+    public okhttp3.Call listWorkflowSaleActiveAsync(final ApiCallback<ListWorkflowSaleActiveResponse> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = listWorkflowChainsValidateBeforeCall(_callback);
-        Type localVarReturnType = new TypeToken<ListWorkflowChainsResponse>(){}.getType();
+        okhttp3.Call localVarCall = listWorkflowSaleActiveValidateBeforeCall(_callback);
+        Type localVarReturnType = new TypeToken<ListWorkflowSaleActiveResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for listWorkflowTemplates
+     * @param category Exact template category, e.g. \&quot;Sales &amp; markdowns\&quot;. (optional)
+     * @param q Matches name, description, category or tags. (optional)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call listWorkflowTemplatesCall(String category, String q, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/v1/workflows/templates";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        if (category != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("category", category));
+        }
+
+        if (q != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("q", q));
+        }
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "PersonalAccessToken" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call listWorkflowTemplatesValidateBeforeCall(String category, String q, final ApiCallback _callback) throws ApiException {
+        
+
+        okhttp3.Call localVarCall = listWorkflowTemplatesCall(category, q, _callback);
+        return localVarCall;
+
+    }
+
+    /**
+     * Ready-made workflows (weekend sale, stale-listing markdowns, offer responder, ship-by alerts…), each a complete graph plus the setup fields its \&quot;use\&quot; call asks for.
+     * 
+     * @param category Exact template category, e.g. \&quot;Sales &amp; markdowns\&quot;. (optional)
+     * @param q Matches name, description, category or tags. (optional)
+     * @return ListWorkflowTemplatesResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public ListWorkflowTemplatesResponse listWorkflowTemplates(String category, String q) throws ApiException {
+        ApiResponse<ListWorkflowTemplatesResponse> localVarResp = listWorkflowTemplatesWithHttpInfo(category, q);
+        return localVarResp.getData();
+    }
+
+    /**
+     * Ready-made workflows (weekend sale, stale-listing markdowns, offer responder, ship-by alerts…), each a complete graph plus the setup fields its \&quot;use\&quot; call asks for.
+     * 
+     * @param category Exact template category, e.g. \&quot;Sales &amp; markdowns\&quot;. (optional)
+     * @param q Matches name, description, category or tags. (optional)
+     * @return ApiResponse&lt;ListWorkflowTemplatesResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<ListWorkflowTemplatesResponse> listWorkflowTemplatesWithHttpInfo(String category, String q) throws ApiException {
+        okhttp3.Call localVarCall = listWorkflowTemplatesValidateBeforeCall(category, q, null);
+        Type localVarReturnType = new TypeToken<ListWorkflowTemplatesResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Ready-made workflows (weekend sale, stale-listing markdowns, offer responder, ship-by alerts…), each a complete graph plus the setup fields its \&quot;use\&quot; call asks for. (asynchronously)
+     * 
+     * @param category Exact template category, e.g. \&quot;Sales &amp; markdowns\&quot;. (optional)
+     * @param q Matches name, description, category or tags. (optional)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call listWorkflowTemplatesAsync(String category, String q, final ApiCallback<ListWorkflowTemplatesResponse> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = listWorkflowTemplatesValidateBeforeCall(category, q, _callback);
+        Type localVarReturnType = new TypeToken<ListWorkflowTemplatesResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for listWorkflowVersions
+     * @param id Workflow id. (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call listWorkflowVersionsCall(UUID id, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/v1/workflows/{id}/versions"
+            .replaceAll("\\{" + "id" + "\\}", localVarApiClient.escapeString(id.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "PersonalAccessToken" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call listWorkflowVersionsValidateBeforeCall(UUID id, final ApiCallback _callback) throws ApiException {
+        
+        // verify the required parameter 'id' is set
+        if (id == null) {
+            throw new ApiException("Missing the required parameter 'id' when calling listWorkflowVersions(Async)");
+        }
+        
+
+        okhttp3.Call localVarCall = listWorkflowVersionsCall(id, _callback);
+        return localVarCall;
+
+    }
+
+    /**
+     * The saved versions of a workflow, newest first (restore one with POST …/versions/{v}/restore).
+     * 
+     * @param id Workflow id. (required)
+     * @return ListWorkflowVersionsResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public ListWorkflowVersionsResponse listWorkflowVersions(UUID id) throws ApiException {
+        ApiResponse<ListWorkflowVersionsResponse> localVarResp = listWorkflowVersionsWithHttpInfo(id);
+        return localVarResp.getData();
+    }
+
+    /**
+     * The saved versions of a workflow, newest first (restore one with POST …/versions/{v}/restore).
+     * 
+     * @param id Workflow id. (required)
+     * @return ApiResponse&lt;ListWorkflowVersionsResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<ListWorkflowVersionsResponse> listWorkflowVersionsWithHttpInfo(UUID id) throws ApiException {
+        okhttp3.Call localVarCall = listWorkflowVersionsValidateBeforeCall(id, null);
+        Type localVarReturnType = new TypeToken<ListWorkflowVersionsResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * The saved versions of a workflow, newest first (restore one with POST …/versions/{v}/restore). (asynchronously)
+     * 
+     * @param id Workflow id. (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call listWorkflowVersionsAsync(UUID id, final ApiCallback<ListWorkflowVersionsResponse> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = listWorkflowVersionsValidateBeforeCall(id, _callback);
+        Type localVarReturnType = new TypeToken<ListWorkflowVersionsResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for listWorkflows
+     * @param active Only active (true) or paused (false) workflows. (optional)
+     * @param tag Only workflows carrying this tag. (optional)
+     * @param trigger Only workflows started by this trigger node type, e.g. on.listing.sold. (optional)
+     * @param q Name contains (case-insensitive). (optional)
+     * @param legacyRef The workflow an old automation became: rule:&lt;id&gt;, chain:&lt;id&gt; or sale_event:&lt;id&gt;. (optional)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call listWorkflowsCall(String active, String tag, String trigger, String q, String legacyRef, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/v1/workflows";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        if (active != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("active", active));
+        }
+
+        if (tag != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("tag", tag));
+        }
+
+        if (trigger != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("trigger", trigger));
+        }
+
+        if (q != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("q", q));
+        }
+
+        if (legacyRef != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("legacyRef", legacyRef));
+        }
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "PersonalAccessToken" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call listWorkflowsValidateBeforeCall(String active, String tag, String trigger, String q, String legacyRef, final ApiCallback _callback) throws ApiException {
+        
+
+        okhttp3.Call localVarCall = listWorkflowsCall(active, tag, trigger, q, legacyRef, _callback);
+        return localVarCall;
+
+    }
+
+    /**
+     * List workflows, newest change first. A workflow is a graph of nodes: one or more triggers, then actions, lookups and flow nodes (if, switch, wait, approval…). Each row carries its trigger and node types and a 7-day run sparkline, not the graph (GET /v1/workflows/{id} has it).
+     * 
+     * @param active Only active (true) or paused (false) workflows. (optional)
+     * @param tag Only workflows carrying this tag. (optional)
+     * @param trigger Only workflows started by this trigger node type, e.g. on.listing.sold. (optional)
+     * @param q Name contains (case-insensitive). (optional)
+     * @param legacyRef The workflow an old automation became: rule:&lt;id&gt;, chain:&lt;id&gt; or sale_event:&lt;id&gt;. (optional)
+     * @return ListWorkflowsResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public ListWorkflowsResponse listWorkflows(String active, String tag, String trigger, String q, String legacyRef) throws ApiException {
+        ApiResponse<ListWorkflowsResponse> localVarResp = listWorkflowsWithHttpInfo(active, tag, trigger, q, legacyRef);
+        return localVarResp.getData();
+    }
+
+    /**
+     * List workflows, newest change first. A workflow is a graph of nodes: one or more triggers, then actions, lookups and flow nodes (if, switch, wait, approval…). Each row carries its trigger and node types and a 7-day run sparkline, not the graph (GET /v1/workflows/{id} has it).
+     * 
+     * @param active Only active (true) or paused (false) workflows. (optional)
+     * @param tag Only workflows carrying this tag. (optional)
+     * @param trigger Only workflows started by this trigger node type, e.g. on.listing.sold. (optional)
+     * @param q Name contains (case-insensitive). (optional)
+     * @param legacyRef The workflow an old automation became: rule:&lt;id&gt;, chain:&lt;id&gt; or sale_event:&lt;id&gt;. (optional)
+     * @return ApiResponse&lt;ListWorkflowsResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<ListWorkflowsResponse> listWorkflowsWithHttpInfo(String active, String tag, String trigger, String q, String legacyRef) throws ApiException {
+        okhttp3.Call localVarCall = listWorkflowsValidateBeforeCall(active, tag, trigger, q, legacyRef, null);
+        Type localVarReturnType = new TypeToken<ListWorkflowsResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * List workflows, newest change first. A workflow is a graph of nodes: one or more triggers, then actions, lookups and flow nodes (if, switch, wait, approval…). Each row carries its trigger and node types and a 7-day run sparkline, not the graph (GET /v1/workflows/{id} has it). (asynchronously)
+     * 
+     * @param active Only active (true) or paused (false) workflows. (optional)
+     * @param tag Only workflows carrying this tag. (optional)
+     * @param trigger Only workflows started by this trigger node type, e.g. on.listing.sold. (optional)
+     * @param q Name contains (case-insensitive). (optional)
+     * @param legacyRef The workflow an old automation became: rule:&lt;id&gt;, chain:&lt;id&gt; or sale_event:&lt;id&gt;. (optional)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call listWorkflowsAsync(String active, String tag, String trigger, String q, String legacyRef, final ApiCallback<ListWorkflowsResponse> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = listWorkflowsValidateBeforeCall(active, tag, trigger, q, legacyRef, _callback);
+        Type localVarReturnType = new TypeToken<ListWorkflowsResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for updateWorkflow
+     * @param id Workflow id. (required)
+     * @param updateWorkflowRequest  (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call updateWorkflowCall(UUID id, UpdateWorkflowRequest updateWorkflowRequest, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = updateWorkflowRequest;
+
+        // create path and map variables
+        String localVarPath = "/v1/workflows/{id}"
+            .replaceAll("\\{" + "id" + "\\}", localVarApiClient.escapeString(id.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "PersonalAccessToken" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "PUT", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call updateWorkflowValidateBeforeCall(UUID id, UpdateWorkflowRequest updateWorkflowRequest, final ApiCallback _callback) throws ApiException {
+        
+        // verify the required parameter 'id' is set
+        if (id == null) {
+            throw new ApiException("Missing the required parameter 'id' when calling updateWorkflow(Async)");
+        }
+        
+        // verify the required parameter 'updateWorkflowRequest' is set
+        if (updateWorkflowRequest == null) {
+            throw new ApiException("Missing the required parameter 'updateWorkflowRequest' when calling updateWorkflow(Async)");
+        }
+        
+
+        okhttp3.Call localVarCall = updateWorkflowCall(id, updateWorkflowRequest, _callback);
+        return localVarCall;
+
+    }
+
+    /**
+     * Save a workflow. Pass the version you edited: a save over a newer version is 409 version_conflict (re-read and merge). Saving an active workflow validates it like activation does (422 with issues).
+     * 
+     * @param id Workflow id. (required)
+     * @param updateWorkflowRequest  (required)
+     * @return WorkflowResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public WorkflowResponse updateWorkflow(UUID id, UpdateWorkflowRequest updateWorkflowRequest) throws ApiException {
+        ApiResponse<WorkflowResponse> localVarResp = updateWorkflowWithHttpInfo(id, updateWorkflowRequest);
+        return localVarResp.getData();
+    }
+
+    /**
+     * Save a workflow. Pass the version you edited: a save over a newer version is 409 version_conflict (re-read and merge). Saving an active workflow validates it like activation does (422 with issues).
+     * 
+     * @param id Workflow id. (required)
+     * @param updateWorkflowRequest  (required)
+     * @return ApiResponse&lt;WorkflowResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<WorkflowResponse> updateWorkflowWithHttpInfo(UUID id, UpdateWorkflowRequest updateWorkflowRequest) throws ApiException {
+        okhttp3.Call localVarCall = updateWorkflowValidateBeforeCall(id, updateWorkflowRequest, null);
+        Type localVarReturnType = new TypeToken<WorkflowResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Save a workflow. Pass the version you edited: a save over a newer version is 409 version_conflict (re-read and merge). Saving an active workflow validates it like activation does (422 with issues). (asynchronously)
+     * 
+     * @param id Workflow id. (required)
+     * @param updateWorkflowRequest  (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call updateWorkflowAsync(UUID id, UpdateWorkflowRequest updateWorkflowRequest, final ApiCallback<WorkflowResponse> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = updateWorkflowValidateBeforeCall(id, updateWorkflowRequest, _callback);
+        Type localVarReturnType = new TypeToken<WorkflowResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -988,7 +6020,9 @@ public class WorkflowsApi {
         <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
         <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
      </table>
+     * @deprecated
      */
+    @Deprecated
     public okhttp3.Call updateWorkflowChainCall(UUID id, final ApiCallback _callback) throws ApiException {
         String basePath = null;
 
@@ -1036,6 +6070,7 @@ public class WorkflowsApi {
         return localVarApiClient.buildCall(basePath, localVarPath, "PUT", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
+    @Deprecated
     @SuppressWarnings("rawtypes")
     private okhttp3.Call updateWorkflowChainValidateBeforeCall(UUID id, final ApiCallback _callback) throws ApiException {
         
@@ -1052,7 +6087,7 @@ public class WorkflowsApi {
 
     /**
      * Replace a workflow chain wholesale.
-     * 
+     * Deprecated: workflow chains are workflows now. Use /v1/workflows.
      * @param id  (required)
      * @return OkResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -1067,7 +6102,9 @@ public class WorkflowsApi {
         <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
         <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
      </table>
+     * @deprecated
      */
+    @Deprecated
     public OkResponse updateWorkflowChain(UUID id) throws ApiException {
         ApiResponse<OkResponse> localVarResp = updateWorkflowChainWithHttpInfo(id);
         return localVarResp.getData();
@@ -1075,7 +6112,7 @@ public class WorkflowsApi {
 
     /**
      * Replace a workflow chain wholesale.
-     * 
+     * Deprecated: workflow chains are workflows now. Use /v1/workflows.
      * @param id  (required)
      * @return ApiResponse&lt;OkResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -1090,7 +6127,9 @@ public class WorkflowsApi {
         <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
         <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
      </table>
+     * @deprecated
      */
+    @Deprecated
     public ApiResponse<OkResponse> updateWorkflowChainWithHttpInfo(UUID id) throws ApiException {
         okhttp3.Call localVarCall = updateWorkflowChainValidateBeforeCall(id, null);
         Type localVarReturnType = new TypeToken<OkResponse>(){}.getType();
@@ -1099,7 +6138,7 @@ public class WorkflowsApi {
 
     /**
      * Replace a workflow chain wholesale. (asynchronously)
-     * 
+     * Deprecated: workflow chains are workflows now. Use /v1/workflows.
      * @param id  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -1115,7 +6154,9 @@ public class WorkflowsApi {
         <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
         <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
      </table>
+     * @deprecated
      */
+    @Deprecated
     public okhttp3.Call updateWorkflowChainAsync(UUID id, final ApiCallback<OkResponse> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = updateWorkflowChainValidateBeforeCall(id, _callback);

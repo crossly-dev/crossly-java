@@ -42,7 +42,6 @@ import net.crossly.model.automation.ListAutomationRunsResponse;
 import net.crossly.model.common.ListRepriceEventsResponse;
 import net.crossly.model.common.OkResponse;
 import java.util.UUID;
-import net.crossly.model.automation.UpdateAutomationRuleResponse;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
@@ -103,7 +102,9 @@ public class AutomationApi {
         <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
         <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
      </table>
+     * @deprecated
      */
+    @Deprecated
     public okhttp3.Call createAutomationRuleCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
 
@@ -150,6 +151,7 @@ public class AutomationApi {
         return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
+    @Deprecated
     @SuppressWarnings("rawtypes")
     private okhttp3.Call createAutomationRuleValidateBeforeCall(final ApiCallback _callback) throws ApiException {
         
@@ -161,7 +163,7 @@ public class AutomationApi {
 
     /**
      * Create an automation rule.
-     * 
+     * Deprecated: automation rules are workflows now. Use /v1/workflows.
      * @return ListAutomationRulesItem
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -175,7 +177,9 @@ public class AutomationApi {
         <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
         <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
      </table>
+     * @deprecated
      */
+    @Deprecated
     public ListAutomationRulesItem createAutomationRule() throws ApiException {
         ApiResponse<ListAutomationRulesItem> localVarResp = createAutomationRuleWithHttpInfo();
         return localVarResp.getData();
@@ -183,7 +187,7 @@ public class AutomationApi {
 
     /**
      * Create an automation rule.
-     * 
+     * Deprecated: automation rules are workflows now. Use /v1/workflows.
      * @return ApiResponse&lt;ListAutomationRulesItem&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -197,7 +201,9 @@ public class AutomationApi {
         <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
         <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
      </table>
+     * @deprecated
      */
+    @Deprecated
     public ApiResponse<ListAutomationRulesItem> createAutomationRuleWithHttpInfo() throws ApiException {
         okhttp3.Call localVarCall = createAutomationRuleValidateBeforeCall(null);
         Type localVarReturnType = new TypeToken<ListAutomationRulesItem>(){}.getType();
@@ -206,7 +212,7 @@ public class AutomationApi {
 
     /**
      * Create an automation rule. (asynchronously)
-     * 
+     * Deprecated: automation rules are workflows now. Use /v1/workflows.
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -221,7 +227,9 @@ public class AutomationApi {
         <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
         <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
      </table>
+     * @deprecated
      */
+    @Deprecated
     public okhttp3.Call createAutomationRuleAsync(final ApiCallback<ListAutomationRulesItem> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = createAutomationRuleValidateBeforeCall(_callback);
@@ -246,7 +254,9 @@ public class AutomationApi {
         <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
         <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
      </table>
+     * @deprecated
      */
+    @Deprecated
     public okhttp3.Call createAutomationRuleImportCall(Boolean activate, final ApiCallback _callback) throws ApiException {
         String basePath = null;
 
@@ -297,6 +307,7 @@ public class AutomationApi {
         return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
+    @Deprecated
     @SuppressWarnings("rawtypes")
     private okhttp3.Call createAutomationRuleImportValidateBeforeCall(Boolean activate, final ApiCallback _callback) throws ApiException {
         
@@ -308,7 +319,7 @@ public class AutomationApi {
 
     /**
      * Import one or more rules from recipe JSON (single or bundle).
-     * 
+     * Deprecated: automation rules are workflows now. Use /v1/workflows.
      * @param activate  (optional, default to false)
      * @return CreateAutomationRuleImportResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -323,7 +334,9 @@ public class AutomationApi {
         <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
         <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
      </table>
+     * @deprecated
      */
+    @Deprecated
     public CreateAutomationRuleImportResponse createAutomationRuleImport(Boolean activate) throws ApiException {
         ApiResponse<CreateAutomationRuleImportResponse> localVarResp = createAutomationRuleImportWithHttpInfo(activate);
         return localVarResp.getData();
@@ -331,7 +344,7 @@ public class AutomationApi {
 
     /**
      * Import one or more rules from recipe JSON (single or bundle).
-     * 
+     * Deprecated: automation rules are workflows now. Use /v1/workflows.
      * @param activate  (optional, default to false)
      * @return ApiResponse&lt;CreateAutomationRuleImportResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -346,7 +359,9 @@ public class AutomationApi {
         <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
         <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
      </table>
+     * @deprecated
      */
+    @Deprecated
     public ApiResponse<CreateAutomationRuleImportResponse> createAutomationRuleImportWithHttpInfo(Boolean activate) throws ApiException {
         okhttp3.Call localVarCall = createAutomationRuleImportValidateBeforeCall(activate, null);
         Type localVarReturnType = new TypeToken<CreateAutomationRuleImportResponse>(){}.getType();
@@ -355,7 +370,7 @@ public class AutomationApi {
 
     /**
      * Import one or more rules from recipe JSON (single or bundle). (asynchronously)
-     * 
+     * Deprecated: automation rules are workflows now. Use /v1/workflows.
      * @param activate  (optional, default to false)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -371,7 +386,9 @@ public class AutomationApi {
         <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
         <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
      </table>
+     * @deprecated
      */
+    @Deprecated
     public okhttp3.Call createAutomationRuleImportAsync(Boolean activate, final ApiCallback<CreateAutomationRuleImportResponse> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = createAutomationRuleImportValidateBeforeCall(activate, _callback);
@@ -396,7 +413,9 @@ public class AutomationApi {
         <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
         <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
      </table>
+     * @deprecated
      */
+    @Deprecated
     public okhttp3.Call createAutomationRuleRunNowCall(UUID id, final ApiCallback _callback) throws ApiException {
         String basePath = null;
 
@@ -444,6 +463,7 @@ public class AutomationApi {
         return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
+    @Deprecated
     @SuppressWarnings("rawtypes")
     private okhttp3.Call createAutomationRuleRunNowValidateBeforeCall(UUID id, final ApiCallback _callback) throws ApiException {
         
@@ -460,7 +480,7 @@ public class AutomationApi {
 
     /**
      * Fire an automation rule immediately.
-     * 
+     * Deprecated: automation rules are workflows now. Use /v1/workflows.
      * @param id  (required)
      * @return CreateAutomationRuleRunNowResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -475,7 +495,9 @@ public class AutomationApi {
         <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
         <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
      </table>
+     * @deprecated
      */
+    @Deprecated
     public CreateAutomationRuleRunNowResponse createAutomationRuleRunNow(UUID id) throws ApiException {
         ApiResponse<CreateAutomationRuleRunNowResponse> localVarResp = createAutomationRuleRunNowWithHttpInfo(id);
         return localVarResp.getData();
@@ -483,7 +505,7 @@ public class AutomationApi {
 
     /**
      * Fire an automation rule immediately.
-     * 
+     * Deprecated: automation rules are workflows now. Use /v1/workflows.
      * @param id  (required)
      * @return ApiResponse&lt;CreateAutomationRuleRunNowResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -498,7 +520,9 @@ public class AutomationApi {
         <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
         <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
      </table>
+     * @deprecated
      */
+    @Deprecated
     public ApiResponse<CreateAutomationRuleRunNowResponse> createAutomationRuleRunNowWithHttpInfo(UUID id) throws ApiException {
         okhttp3.Call localVarCall = createAutomationRuleRunNowValidateBeforeCall(id, null);
         Type localVarReturnType = new TypeToken<CreateAutomationRuleRunNowResponse>(){}.getType();
@@ -507,7 +531,7 @@ public class AutomationApi {
 
     /**
      * Fire an automation rule immediately. (asynchronously)
-     * 
+     * Deprecated: automation rules are workflows now. Use /v1/workflows.
      * @param id  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -523,7 +547,9 @@ public class AutomationApi {
         <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
         <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
      </table>
+     * @deprecated
      */
+    @Deprecated
     public okhttp3.Call createAutomationRuleRunNowAsync(UUID id, final ApiCallback<CreateAutomationRuleRunNowResponse> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = createAutomationRuleRunNowValidateBeforeCall(id, _callback);
@@ -548,7 +574,9 @@ public class AutomationApi {
         <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
         <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
      </table>
+     * @deprecated
      */
+    @Deprecated
     public okhttp3.Call createAutomationRuleToggleCall(UUID id, final ApiCallback _callback) throws ApiException {
         String basePath = null;
 
@@ -596,6 +624,7 @@ public class AutomationApi {
         return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
+    @Deprecated
     @SuppressWarnings("rawtypes")
     private okhttp3.Call createAutomationRuleToggleValidateBeforeCall(UUID id, final ApiCallback _callback) throws ApiException {
         
@@ -612,9 +641,9 @@ public class AutomationApi {
 
     /**
      * Flip an automation rule between active and inactive.
-     * 
+     * Deprecated: automation rules are workflows now. Use /v1/workflows.
      * @param id  (required)
-     * @return UpdateAutomationRuleResponse
+     * @return GetAutomationRuleResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -627,17 +656,19 @@ public class AutomationApi {
         <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
         <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
      </table>
+     * @deprecated
      */
-    public UpdateAutomationRuleResponse createAutomationRuleToggle(UUID id) throws ApiException {
-        ApiResponse<UpdateAutomationRuleResponse> localVarResp = createAutomationRuleToggleWithHttpInfo(id);
+    @Deprecated
+    public GetAutomationRuleResponse createAutomationRuleToggle(UUID id) throws ApiException {
+        ApiResponse<GetAutomationRuleResponse> localVarResp = createAutomationRuleToggleWithHttpInfo(id);
         return localVarResp.getData();
     }
 
     /**
      * Flip an automation rule between active and inactive.
-     * 
+     * Deprecated: automation rules are workflows now. Use /v1/workflows.
      * @param id  (required)
-     * @return ApiResponse&lt;UpdateAutomationRuleResponse&gt;
+     * @return ApiResponse&lt;GetAutomationRuleResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -650,16 +681,18 @@ public class AutomationApi {
         <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
         <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
      </table>
+     * @deprecated
      */
-    public ApiResponse<UpdateAutomationRuleResponse> createAutomationRuleToggleWithHttpInfo(UUID id) throws ApiException {
+    @Deprecated
+    public ApiResponse<GetAutomationRuleResponse> createAutomationRuleToggleWithHttpInfo(UUID id) throws ApiException {
         okhttp3.Call localVarCall = createAutomationRuleToggleValidateBeforeCall(id, null);
-        Type localVarReturnType = new TypeToken<UpdateAutomationRuleResponse>(){}.getType();
+        Type localVarReturnType = new TypeToken<GetAutomationRuleResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
      * Flip an automation rule between active and inactive. (asynchronously)
-     * 
+     * Deprecated: automation rules are workflows now. Use /v1/workflows.
      * @param id  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -675,11 +708,13 @@ public class AutomationApi {
         <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
         <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
      </table>
+     * @deprecated
      */
-    public okhttp3.Call createAutomationRuleToggleAsync(UUID id, final ApiCallback<UpdateAutomationRuleResponse> _callback) throws ApiException {
+    @Deprecated
+    public okhttp3.Call createAutomationRuleToggleAsync(UUID id, final ApiCallback<GetAutomationRuleResponse> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = createAutomationRuleToggleValidateBeforeCall(id, _callback);
-        Type localVarReturnType = new TypeToken<UpdateAutomationRuleResponse>(){}.getType();
+        Type localVarReturnType = new TypeToken<GetAutomationRuleResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -699,7 +734,9 @@ public class AutomationApi {
         <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
         <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
      </table>
+     * @deprecated
      */
+    @Deprecated
     public okhttp3.Call createAutomationRuleValidateRecipeCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
 
@@ -746,6 +783,7 @@ public class AutomationApi {
         return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
+    @Deprecated
     @SuppressWarnings("rawtypes")
     private okhttp3.Call createAutomationRuleValidateRecipeValidateBeforeCall(final ApiCallback _callback) throws ApiException {
         
@@ -757,7 +795,7 @@ public class AutomationApi {
 
     /**
      * Dry-run validate one or more recipes against the live catalog.
-     * 
+     * Deprecated: automation rules are workflows now. Use /v1/workflows.
      * @return CreateAutomationRuleValidateRecipeResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -771,7 +809,9 @@ public class AutomationApi {
         <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
         <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
      </table>
+     * @deprecated
      */
+    @Deprecated
     public CreateAutomationRuleValidateRecipeResponse createAutomationRuleValidateRecipe() throws ApiException {
         ApiResponse<CreateAutomationRuleValidateRecipeResponse> localVarResp = createAutomationRuleValidateRecipeWithHttpInfo();
         return localVarResp.getData();
@@ -779,7 +819,7 @@ public class AutomationApi {
 
     /**
      * Dry-run validate one or more recipes against the live catalog.
-     * 
+     * Deprecated: automation rules are workflows now. Use /v1/workflows.
      * @return ApiResponse&lt;CreateAutomationRuleValidateRecipeResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -793,7 +833,9 @@ public class AutomationApi {
         <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
         <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
      </table>
+     * @deprecated
      */
+    @Deprecated
     public ApiResponse<CreateAutomationRuleValidateRecipeResponse> createAutomationRuleValidateRecipeWithHttpInfo() throws ApiException {
         okhttp3.Call localVarCall = createAutomationRuleValidateRecipeValidateBeforeCall(null);
         Type localVarReturnType = new TypeToken<CreateAutomationRuleValidateRecipeResponse>(){}.getType();
@@ -802,7 +844,7 @@ public class AutomationApi {
 
     /**
      * Dry-run validate one or more recipes against the live catalog. (asynchronously)
-     * 
+     * Deprecated: automation rules are workflows now. Use /v1/workflows.
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -817,7 +859,9 @@ public class AutomationApi {
         <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
         <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
      </table>
+     * @deprecated
      */
+    @Deprecated
     public okhttp3.Call createAutomationRuleValidateRecipeAsync(final ApiCallback<CreateAutomationRuleValidateRecipeResponse> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = createAutomationRuleValidateRecipeValidateBeforeCall(_callback);
@@ -1146,7 +1190,9 @@ public class AutomationApi {
         <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
         <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
      </table>
+     * @deprecated
      */
+    @Deprecated
     public okhttp3.Call deleteAutomationRuleCall(UUID id, final ApiCallback _callback) throws ApiException {
         String basePath = null;
 
@@ -1194,6 +1240,7 @@ public class AutomationApi {
         return localVarApiClient.buildCall(basePath, localVarPath, "DELETE", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
+    @Deprecated
     @SuppressWarnings("rawtypes")
     private okhttp3.Call deleteAutomationRuleValidateBeforeCall(UUID id, final ApiCallback _callback) throws ApiException {
         
@@ -1210,7 +1257,7 @@ public class AutomationApi {
 
     /**
      * Delete an automation rule.
-     * 
+     * Deprecated: automation rules are workflows now. Use /v1/workflows.
      * @param id  (required)
      * @return OkResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -1225,7 +1272,9 @@ public class AutomationApi {
         <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
         <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
      </table>
+     * @deprecated
      */
+    @Deprecated
     public OkResponse deleteAutomationRule(UUID id) throws ApiException {
         ApiResponse<OkResponse> localVarResp = deleteAutomationRuleWithHttpInfo(id);
         return localVarResp.getData();
@@ -1233,7 +1282,7 @@ public class AutomationApi {
 
     /**
      * Delete an automation rule.
-     * 
+     * Deprecated: automation rules are workflows now. Use /v1/workflows.
      * @param id  (required)
      * @return ApiResponse&lt;OkResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -1248,7 +1297,9 @@ public class AutomationApi {
         <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
         <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
      </table>
+     * @deprecated
      */
+    @Deprecated
     public ApiResponse<OkResponse> deleteAutomationRuleWithHttpInfo(UUID id) throws ApiException {
         okhttp3.Call localVarCall = deleteAutomationRuleValidateBeforeCall(id, null);
         Type localVarReturnType = new TypeToken<OkResponse>(){}.getType();
@@ -1257,7 +1308,7 @@ public class AutomationApi {
 
     /**
      * Delete an automation rule. (asynchronously)
-     * 
+     * Deprecated: automation rules are workflows now. Use /v1/workflows.
      * @param id  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -1273,7 +1324,9 @@ public class AutomationApi {
         <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
         <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
      </table>
+     * @deprecated
      */
+    @Deprecated
     public okhttp3.Call deleteAutomationRuleAsync(UUID id, final ApiCallback<OkResponse> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = deleteAutomationRuleValidateBeforeCall(id, _callback);
@@ -1440,7 +1493,9 @@ public class AutomationApi {
         <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
         <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
      </table>
+     * @deprecated
      */
+    @Deprecated
     public okhttp3.Call getAutomationRuleCall(UUID id, final ApiCallback _callback) throws ApiException {
         String basePath = null;
 
@@ -1488,6 +1543,7 @@ public class AutomationApi {
         return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
+    @Deprecated
     @SuppressWarnings("rawtypes")
     private okhttp3.Call getAutomationRuleValidateBeforeCall(UUID id, final ApiCallback _callback) throws ApiException {
         
@@ -1504,7 +1560,7 @@ public class AutomationApi {
 
     /**
      * Get a single automation rule.
-     * 
+     * Deprecated: automation rules are workflows now. Use /v1/workflows.
      * @param id  (required)
      * @return GetAutomationRuleResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -1519,7 +1575,9 @@ public class AutomationApi {
         <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
         <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
      </table>
+     * @deprecated
      */
+    @Deprecated
     public GetAutomationRuleResponse getAutomationRule(UUID id) throws ApiException {
         ApiResponse<GetAutomationRuleResponse> localVarResp = getAutomationRuleWithHttpInfo(id);
         return localVarResp.getData();
@@ -1527,7 +1585,7 @@ public class AutomationApi {
 
     /**
      * Get a single automation rule.
-     * 
+     * Deprecated: automation rules are workflows now. Use /v1/workflows.
      * @param id  (required)
      * @return ApiResponse&lt;GetAutomationRuleResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -1542,7 +1600,9 @@ public class AutomationApi {
         <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
         <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
      </table>
+     * @deprecated
      */
+    @Deprecated
     public ApiResponse<GetAutomationRuleResponse> getAutomationRuleWithHttpInfo(UUID id) throws ApiException {
         okhttp3.Call localVarCall = getAutomationRuleValidateBeforeCall(id, null);
         Type localVarReturnType = new TypeToken<GetAutomationRuleResponse>(){}.getType();
@@ -1551,7 +1611,7 @@ public class AutomationApi {
 
     /**
      * Get a single automation rule. (asynchronously)
-     * 
+     * Deprecated: automation rules are workflows now. Use /v1/workflows.
      * @param id  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -1567,7 +1627,9 @@ public class AutomationApi {
         <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
         <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
      </table>
+     * @deprecated
      */
+    @Deprecated
     public okhttp3.Call getAutomationRuleAsync(UUID id, final ApiCallback<GetAutomationRuleResponse> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getAutomationRuleValidateBeforeCall(id, _callback);
@@ -1591,7 +1653,9 @@ public class AutomationApi {
         <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
         <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
      </table>
+     * @deprecated
      */
+    @Deprecated
     public okhttp3.Call getAutomationRuleExportCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
 
@@ -1638,6 +1702,7 @@ public class AutomationApi {
         return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
+    @Deprecated
     @SuppressWarnings("rawtypes")
     private okhttp3.Call getAutomationRuleExportValidateBeforeCall(final ApiCallback _callback) throws ApiException {
         
@@ -1649,7 +1714,7 @@ public class AutomationApi {
 
     /**
      * Export the user&#39;s full rule library as a portable recipe bundle.
-     * 
+     * Deprecated: automation rules are workflows now. Use /v1/workflows.
      * @return GetAutomationRuleExportResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -1663,7 +1728,9 @@ public class AutomationApi {
         <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
         <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
      </table>
+     * @deprecated
      */
+    @Deprecated
     public GetAutomationRuleExportResponse getAutomationRuleExport() throws ApiException {
         ApiResponse<GetAutomationRuleExportResponse> localVarResp = getAutomationRuleExportWithHttpInfo();
         return localVarResp.getData();
@@ -1671,7 +1738,7 @@ public class AutomationApi {
 
     /**
      * Export the user&#39;s full rule library as a portable recipe bundle.
-     * 
+     * Deprecated: automation rules are workflows now. Use /v1/workflows.
      * @return ApiResponse&lt;GetAutomationRuleExportResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -1685,7 +1752,9 @@ public class AutomationApi {
         <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
         <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
      </table>
+     * @deprecated
      */
+    @Deprecated
     public ApiResponse<GetAutomationRuleExportResponse> getAutomationRuleExportWithHttpInfo() throws ApiException {
         okhttp3.Call localVarCall = getAutomationRuleExportValidateBeforeCall(null);
         Type localVarReturnType = new TypeToken<GetAutomationRuleExportResponse>(){}.getType();
@@ -1694,7 +1763,7 @@ public class AutomationApi {
 
     /**
      * Export the user&#39;s full rule library as a portable recipe bundle. (asynchronously)
-     * 
+     * Deprecated: automation rules are workflows now. Use /v1/workflows.
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -1709,7 +1778,9 @@ public class AutomationApi {
         <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
         <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
      </table>
+     * @deprecated
      */
+    @Deprecated
     public okhttp3.Call getAutomationRuleExportAsync(final ApiCallback<GetAutomationRuleExportResponse> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getAutomationRuleExportValidateBeforeCall(_callback);
@@ -1734,7 +1805,9 @@ public class AutomationApi {
         <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
         <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
      </table>
+     * @deprecated
      */
+    @Deprecated
     public okhttp3.Call getAutomationRuleExportByIdCall(UUID id, final ApiCallback _callback) throws ApiException {
         String basePath = null;
 
@@ -1782,6 +1855,7 @@ public class AutomationApi {
         return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
+    @Deprecated
     @SuppressWarnings("rawtypes")
     private okhttp3.Call getAutomationRuleExportByIdValidateBeforeCall(UUID id, final ApiCallback _callback) throws ApiException {
         
@@ -1798,7 +1872,7 @@ public class AutomationApi {
 
     /**
      * Export a single automation rule as a portable recipe.
-     * 
+     * Deprecated: automation rules are workflows now. Use /v1/workflows.
      * @param id  (required)
      * @return GetAutomationRuleExportByIdResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -1813,7 +1887,9 @@ public class AutomationApi {
         <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
         <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
      </table>
+     * @deprecated
      */
+    @Deprecated
     public GetAutomationRuleExportByIdResponse getAutomationRuleExportById(UUID id) throws ApiException {
         ApiResponse<GetAutomationRuleExportByIdResponse> localVarResp = getAutomationRuleExportByIdWithHttpInfo(id);
         return localVarResp.getData();
@@ -1821,7 +1897,7 @@ public class AutomationApi {
 
     /**
      * Export a single automation rule as a portable recipe.
-     * 
+     * Deprecated: automation rules are workflows now. Use /v1/workflows.
      * @param id  (required)
      * @return ApiResponse&lt;GetAutomationRuleExportByIdResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -1836,7 +1912,9 @@ public class AutomationApi {
         <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
         <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
      </table>
+     * @deprecated
      */
+    @Deprecated
     public ApiResponse<GetAutomationRuleExportByIdResponse> getAutomationRuleExportByIdWithHttpInfo(UUID id) throws ApiException {
         okhttp3.Call localVarCall = getAutomationRuleExportByIdValidateBeforeCall(id, null);
         Type localVarReturnType = new TypeToken<GetAutomationRuleExportByIdResponse>(){}.getType();
@@ -1845,7 +1923,7 @@ public class AutomationApi {
 
     /**
      * Export a single automation rule as a portable recipe. (asynchronously)
-     * 
+     * Deprecated: automation rules are workflows now. Use /v1/workflows.
      * @param id  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -1861,7 +1939,9 @@ public class AutomationApi {
         <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
         <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
      </table>
+     * @deprecated
      */
+    @Deprecated
     public okhttp3.Call getAutomationRuleExportByIdAsync(UUID id, final ApiCallback<GetAutomationRuleExportByIdResponse> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getAutomationRuleExportByIdValidateBeforeCall(id, _callback);
@@ -1885,7 +1965,9 @@ public class AutomationApi {
         <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
         <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
      </table>
+     * @deprecated
      */
+    @Deprecated
     public okhttp3.Call listAutomationRulesCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
 
@@ -1932,6 +2014,7 @@ public class AutomationApi {
         return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
+    @Deprecated
     @SuppressWarnings("rawtypes")
     private okhttp3.Call listAutomationRulesValidateBeforeCall(final ApiCallback _callback) throws ApiException {
         
@@ -1943,7 +2026,7 @@ public class AutomationApi {
 
     /**
      * List automation rules.
-     * 
+     * Deprecated: automation rules are workflows now. Use /v1/workflows.
      * @return ListAutomationRulesResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -1957,7 +2040,9 @@ public class AutomationApi {
         <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
         <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
      </table>
+     * @deprecated
      */
+    @Deprecated
     public ListAutomationRulesResponse listAutomationRules() throws ApiException {
         ApiResponse<ListAutomationRulesResponse> localVarResp = listAutomationRulesWithHttpInfo();
         return localVarResp.getData();
@@ -1965,7 +2050,7 @@ public class AutomationApi {
 
     /**
      * List automation rules.
-     * 
+     * Deprecated: automation rules are workflows now. Use /v1/workflows.
      * @return ApiResponse&lt;ListAutomationRulesResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -1979,7 +2064,9 @@ public class AutomationApi {
         <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
         <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
      </table>
+     * @deprecated
      */
+    @Deprecated
     public ApiResponse<ListAutomationRulesResponse> listAutomationRulesWithHttpInfo() throws ApiException {
         okhttp3.Call localVarCall = listAutomationRulesValidateBeforeCall(null);
         Type localVarReturnType = new TypeToken<ListAutomationRulesResponse>(){}.getType();
@@ -1988,7 +2075,7 @@ public class AutomationApi {
 
     /**
      * List automation rules. (asynchronously)
-     * 
+     * Deprecated: automation rules are workflows now. Use /v1/workflows.
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -2003,7 +2090,9 @@ public class AutomationApi {
         <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
         <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
      </table>
+     * @deprecated
      */
+    @Deprecated
     public okhttp3.Call listAutomationRulesAsync(final ApiCallback<ListAutomationRulesResponse> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = listAutomationRulesValidateBeforeCall(_callback);
@@ -2030,7 +2119,9 @@ public class AutomationApi {
         <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
         <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
      </table>
+     * @deprecated
      */
+    @Deprecated
     public okhttp3.Call listAutomationRunsCall(UUID ruleId, UUID chainId, Integer limit, final ApiCallback _callback) throws ApiException {
         String basePath = null;
 
@@ -2089,6 +2180,7 @@ public class AutomationApi {
         return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
+    @Deprecated
     @SuppressWarnings("rawtypes")
     private okhttp3.Call listAutomationRunsValidateBeforeCall(UUID ruleId, UUID chainId, Integer limit, final ApiCallback _callback) throws ApiException {
         
@@ -2100,7 +2192,7 @@ public class AutomationApi {
 
     /**
      * Per-fire history for automation rules and workflow chain runs.
-     * 
+     * Deprecated: use /v1/workflow-runs.
      * @param ruleId  (optional)
      * @param chainId  (optional)
      * @param limit  (optional, default to 100)
@@ -2117,7 +2209,9 @@ public class AutomationApi {
         <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
         <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
      </table>
+     * @deprecated
      */
+    @Deprecated
     public ListAutomationRunsResponse listAutomationRuns(UUID ruleId, UUID chainId, Integer limit) throws ApiException {
         ApiResponse<ListAutomationRunsResponse> localVarResp = listAutomationRunsWithHttpInfo(ruleId, chainId, limit);
         return localVarResp.getData();
@@ -2125,7 +2219,7 @@ public class AutomationApi {
 
     /**
      * Per-fire history for automation rules and workflow chain runs.
-     * 
+     * Deprecated: use /v1/workflow-runs.
      * @param ruleId  (optional)
      * @param chainId  (optional)
      * @param limit  (optional, default to 100)
@@ -2142,7 +2236,9 @@ public class AutomationApi {
         <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
         <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
      </table>
+     * @deprecated
      */
+    @Deprecated
     public ApiResponse<ListAutomationRunsResponse> listAutomationRunsWithHttpInfo(UUID ruleId, UUID chainId, Integer limit) throws ApiException {
         okhttp3.Call localVarCall = listAutomationRunsValidateBeforeCall(ruleId, chainId, limit, null);
         Type localVarReturnType = new TypeToken<ListAutomationRunsResponse>(){}.getType();
@@ -2151,7 +2247,7 @@ public class AutomationApi {
 
     /**
      * Per-fire history for automation rules and workflow chain runs. (asynchronously)
-     * 
+     * Deprecated: use /v1/workflow-runs.
      * @param ruleId  (optional)
      * @param chainId  (optional)
      * @param limit  (optional, default to 100)
@@ -2169,7 +2265,9 @@ public class AutomationApi {
         <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
         <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
      </table>
+     * @deprecated
      */
+    @Deprecated
     public okhttp3.Call listAutomationRunsAsync(UUID ruleId, UUID chainId, Integer limit, final ApiCallback<ListAutomationRunsResponse> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = listAutomationRunsValidateBeforeCall(ruleId, chainId, limit, _callback);
@@ -2336,7 +2434,9 @@ public class AutomationApi {
         <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
         <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
      </table>
+     * @deprecated
      */
+    @Deprecated
     public okhttp3.Call updateAutomationRuleCall(UUID id, final ApiCallback _callback) throws ApiException {
         String basePath = null;
 
@@ -2384,6 +2484,7 @@ public class AutomationApi {
         return localVarApiClient.buildCall(basePath, localVarPath, "PUT", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
+    @Deprecated
     @SuppressWarnings("rawtypes")
     private okhttp3.Call updateAutomationRuleValidateBeforeCall(UUID id, final ApiCallback _callback) throws ApiException {
         
@@ -2400,9 +2501,9 @@ public class AutomationApi {
 
     /**
      * Update an automation rule (full replace).
-     * 
+     * Deprecated: automation rules are workflows now. Use /v1/workflows.
      * @param id  (required)
-     * @return UpdateAutomationRuleResponse
+     * @return GetAutomationRuleResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -2415,17 +2516,19 @@ public class AutomationApi {
         <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
         <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
      </table>
+     * @deprecated
      */
-    public UpdateAutomationRuleResponse updateAutomationRule(UUID id) throws ApiException {
-        ApiResponse<UpdateAutomationRuleResponse> localVarResp = updateAutomationRuleWithHttpInfo(id);
+    @Deprecated
+    public GetAutomationRuleResponse updateAutomationRule(UUID id) throws ApiException {
+        ApiResponse<GetAutomationRuleResponse> localVarResp = updateAutomationRuleWithHttpInfo(id);
         return localVarResp.getData();
     }
 
     /**
      * Update an automation rule (full replace).
-     * 
+     * Deprecated: automation rules are workflows now. Use /v1/workflows.
      * @param id  (required)
-     * @return ApiResponse&lt;UpdateAutomationRuleResponse&gt;
+     * @return ApiResponse&lt;GetAutomationRuleResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -2438,16 +2541,18 @@ public class AutomationApi {
         <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
         <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
      </table>
+     * @deprecated
      */
-    public ApiResponse<UpdateAutomationRuleResponse> updateAutomationRuleWithHttpInfo(UUID id) throws ApiException {
+    @Deprecated
+    public ApiResponse<GetAutomationRuleResponse> updateAutomationRuleWithHttpInfo(UUID id) throws ApiException {
         okhttp3.Call localVarCall = updateAutomationRuleValidateBeforeCall(id, null);
-        Type localVarReturnType = new TypeToken<UpdateAutomationRuleResponse>(){}.getType();
+        Type localVarReturnType = new TypeToken<GetAutomationRuleResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
      * Update an automation rule (full replace). (asynchronously)
-     * 
+     * Deprecated: automation rules are workflows now. Use /v1/workflows.
      * @param id  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -2463,11 +2568,13 @@ public class AutomationApi {
         <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
         <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
      </table>
+     * @deprecated
      */
-    public okhttp3.Call updateAutomationRuleAsync(UUID id, final ApiCallback<UpdateAutomationRuleResponse> _callback) throws ApiException {
+    @Deprecated
+    public okhttp3.Call updateAutomationRuleAsync(UUID id, final ApiCallback<GetAutomationRuleResponse> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = updateAutomationRuleValidateBeforeCall(id, _callback);
-        Type localVarReturnType = new TypeToken<UpdateAutomationRuleResponse>(){}.getType();
+        Type localVarReturnType = new TypeToken<GetAutomationRuleResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }

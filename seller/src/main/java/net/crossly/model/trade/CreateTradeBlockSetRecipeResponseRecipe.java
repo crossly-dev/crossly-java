@@ -33,7 +33,7 @@ import org.threeten.bp.OffsetDateTime;
 /**
  * CreateTradeBlockSetRecipeResponseRecipe
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-11T23:44:48.922Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-27T19:42:43.186Z[Etc/UTC]")
 public class CreateTradeBlockSetRecipeResponseRecipe {
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
@@ -55,13 +55,21 @@ public class CreateTradeBlockSetRecipeResponseRecipe {
   @SerializedName(SERIALIZED_NAME_UPDATED_AT)
   private OffsetDateTime updatedAt;
 
-  public static final String SERIALIZED_NAME_NOTE = "note";
-  @SerializedName(SERIALIZED_NAME_NOTE)
-  private String note;
+  public static final String SERIALIZED_NAME_VERSION = "version";
+  @SerializedName(SERIALIZED_NAME_VERSION)
+  private BigDecimal version;
 
   public static final String SERIALIZED_NAME_REVIEWED_AT = "reviewedAt";
   @SerializedName(SERIALIZED_NAME_REVIEWED_AT)
   private OffsetDateTime reviewedAt;
+
+  public static final String SERIALIZED_NAME_NOTE = "note";
+  @SerializedName(SERIALIZED_NAME_NOTE)
+  private String note;
+
+  public static final String SERIALIZED_NAME_MEMBERS = "members";
+  @SerializedName(SERIALIZED_NAME_MEMBERS)
+  private List<CreateTradeBlockSetRecipeResponseRecipeMembers> members = new ArrayList<CreateTradeBlockSetRecipeResponseRecipeMembers>();
 
   public static final String SERIALIZED_NAME_MERCHANT_ID = "merchantId";
   @SerializedName(SERIALIZED_NAME_MERCHANT_ID)
@@ -75,17 +83,9 @@ public class CreateTradeBlockSetRecipeResponseRecipe {
   @SerializedName(SERIALIZED_NAME_OUTPUT_COSMETIC_ID)
   private String outputCosmeticId;
 
-  public static final String SERIALIZED_NAME_VERSION = "version";
-  @SerializedName(SERIALIZED_NAME_VERSION)
-  private BigDecimal version;
-
   public static final String SERIALIZED_NAME_FROZEN_AT = "frozenAt";
   @SerializedName(SERIALIZED_NAME_FROZEN_AT)
   private OffsetDateTime frozenAt;
-
-  public static final String SERIALIZED_NAME_MEMBERS = "members";
-  @SerializedName(SERIALIZED_NAME_MEMBERS)
-  private List<CreateTradeBlockSetRecipeResponseRecipeMembers> members = new ArrayList<CreateTradeBlockSetRecipeResponseRecipeMembers>();
 
   public CreateTradeBlockSetRecipeResponseRecipe() { 
   }
@@ -205,26 +205,26 @@ public class CreateTradeBlockSetRecipeResponseRecipe {
   }
 
 
-  public CreateTradeBlockSetRecipeResponseRecipe note(String note) {
+  public CreateTradeBlockSetRecipeResponseRecipe version(BigDecimal version) {
     
-    this.note = note;
+    this.version = version;
     return this;
   }
 
    /**
-   * Get note
-   * @return note
+   * Get version
+   * @return version
   **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
+  @javax.annotation.Nonnull
+  @ApiModelProperty(required = true, value = "")
 
-  public String getNote() {
-    return note;
+  public BigDecimal getVersion() {
+    return version;
   }
 
 
-  public void setNote(String note) {
-    this.note = note;
+  public void setVersion(BigDecimal version) {
+    this.version = version;
   }
 
 
@@ -248,6 +248,57 @@ public class CreateTradeBlockSetRecipeResponseRecipe {
 
   public void setReviewedAt(OffsetDateTime reviewedAt) {
     this.reviewedAt = reviewedAt;
+  }
+
+
+  public CreateTradeBlockSetRecipeResponseRecipe note(String note) {
+    
+    this.note = note;
+    return this;
+  }
+
+   /**
+   * Get note
+   * @return note
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public String getNote() {
+    return note;
+  }
+
+
+  public void setNote(String note) {
+    this.note = note;
+  }
+
+
+  public CreateTradeBlockSetRecipeResponseRecipe members(List<CreateTradeBlockSetRecipeResponseRecipeMembers> members) {
+    
+    this.members = members;
+    return this;
+  }
+
+  public CreateTradeBlockSetRecipeResponseRecipe addMembersItem(CreateTradeBlockSetRecipeResponseRecipeMembers membersItem) {
+    this.members.add(membersItem);
+    return this;
+  }
+
+   /**
+   * Get members
+   * @return members
+  **/
+  @javax.annotation.Nonnull
+  @ApiModelProperty(required = true, value = "")
+
+  public List<CreateTradeBlockSetRecipeResponseRecipeMembers> getMembers() {
+    return members;
+  }
+
+
+  public void setMembers(List<CreateTradeBlockSetRecipeResponseRecipeMembers> members) {
+    this.members = members;
   }
 
 
@@ -320,29 +371,6 @@ public class CreateTradeBlockSetRecipeResponseRecipe {
   }
 
 
-  public CreateTradeBlockSetRecipeResponseRecipe version(BigDecimal version) {
-    
-    this.version = version;
-    return this;
-  }
-
-   /**
-   * Get version
-   * @return version
-  **/
-  @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "")
-
-  public BigDecimal getVersion() {
-    return version;
-  }
-
-
-  public void setVersion(BigDecimal version) {
-    this.version = version;
-  }
-
-
   public CreateTradeBlockSetRecipeResponseRecipe frozenAt(OffsetDateTime frozenAt) {
     
     this.frozenAt = frozenAt;
@@ -366,34 +394,6 @@ public class CreateTradeBlockSetRecipeResponseRecipe {
   }
 
 
-  public CreateTradeBlockSetRecipeResponseRecipe members(List<CreateTradeBlockSetRecipeResponseRecipeMembers> members) {
-    
-    this.members = members;
-    return this;
-  }
-
-  public CreateTradeBlockSetRecipeResponseRecipe addMembersItem(CreateTradeBlockSetRecipeResponseRecipeMembers membersItem) {
-    this.members.add(membersItem);
-    return this;
-  }
-
-   /**
-   * Get members
-   * @return members
-  **/
-  @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "")
-
-  public List<CreateTradeBlockSetRecipeResponseRecipeMembers> getMembers() {
-    return members;
-  }
-
-
-  public void setMembers(List<CreateTradeBlockSetRecipeResponseRecipeMembers> members) {
-    this.members = members;
-  }
-
-
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -408,14 +408,14 @@ public class CreateTradeBlockSetRecipeResponseRecipe {
         Objects.equals(this.active, createTradeBlockSetRecipeResponseRecipe.active) &&
         Objects.equals(this.createdAt, createTradeBlockSetRecipeResponseRecipe.createdAt) &&
         Objects.equals(this.updatedAt, createTradeBlockSetRecipeResponseRecipe.updatedAt) &&
-        Objects.equals(this.note, createTradeBlockSetRecipeResponseRecipe.note) &&
+        Objects.equals(this.version, createTradeBlockSetRecipeResponseRecipe.version) &&
         Objects.equals(this.reviewedAt, createTradeBlockSetRecipeResponseRecipe.reviewedAt) &&
+        Objects.equals(this.note, createTradeBlockSetRecipeResponseRecipe.note) &&
+        Objects.equals(this.members, createTradeBlockSetRecipeResponseRecipe.members) &&
         Objects.equals(this.merchantId, createTradeBlockSetRecipeResponseRecipe.merchantId) &&
         Objects.equals(this.creatorSubjectId, createTradeBlockSetRecipeResponseRecipe.creatorSubjectId) &&
         Objects.equals(this.outputCosmeticId, createTradeBlockSetRecipeResponseRecipe.outputCosmeticId) &&
-        Objects.equals(this.version, createTradeBlockSetRecipeResponseRecipe.version) &&
-        Objects.equals(this.frozenAt, createTradeBlockSetRecipeResponseRecipe.frozenAt) &&
-        Objects.equals(this.members, createTradeBlockSetRecipeResponseRecipe.members);
+        Objects.equals(this.frozenAt, createTradeBlockSetRecipeResponseRecipe.frozenAt);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -424,7 +424,7 @@ public class CreateTradeBlockSetRecipeResponseRecipe {
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, name, active, createdAt, updatedAt, note, reviewedAt, merchantId, creatorSubjectId, outputCosmeticId, version, frozenAt, members);
+    return Objects.hash(id, name, active, createdAt, updatedAt, version, reviewedAt, note, members, merchantId, creatorSubjectId, outputCosmeticId, frozenAt);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -443,14 +443,14 @@ public class CreateTradeBlockSetRecipeResponseRecipe {
     sb.append("    active: ").append(toIndentedString(active)).append("\n");
     sb.append("    createdAt: ").append(toIndentedString(createdAt)).append("\n");
     sb.append("    updatedAt: ").append(toIndentedString(updatedAt)).append("\n");
-    sb.append("    note: ").append(toIndentedString(note)).append("\n");
+    sb.append("    version: ").append(toIndentedString(version)).append("\n");
     sb.append("    reviewedAt: ").append(toIndentedString(reviewedAt)).append("\n");
+    sb.append("    note: ").append(toIndentedString(note)).append("\n");
+    sb.append("    members: ").append(toIndentedString(members)).append("\n");
     sb.append("    merchantId: ").append(toIndentedString(merchantId)).append("\n");
     sb.append("    creatorSubjectId: ").append(toIndentedString(creatorSubjectId)).append("\n");
     sb.append("    outputCosmeticId: ").append(toIndentedString(outputCosmeticId)).append("\n");
-    sb.append("    version: ").append(toIndentedString(version)).append("\n");
     sb.append("    frozenAt: ").append(toIndentedString(frozenAt)).append("\n");
-    sb.append("    members: ").append(toIndentedString(members)).append("\n");
     sb.append("}");
     return sb.toString();
   }

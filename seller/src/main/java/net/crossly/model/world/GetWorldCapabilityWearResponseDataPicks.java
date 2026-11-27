@@ -28,19 +28,19 @@ import org.openapitools.jackson.nullable.JsonNullable;
 /**
  * GetWorldCapabilityWearResponseDataPicks
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-11T23:44:48.922Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-27T19:42:43.186Z[Etc/UTC]")
 public class GetWorldCapabilityWearResponseDataPicks {
   public static final String SERIALIZED_NAME_BODY = "body";
   @SerializedName(SERIALIZED_NAME_BODY)
   private String body;
 
-  public static final String SERIALIZED_NAME_LEGS = "legs";
-  @SerializedName(SERIALIZED_NAME_LEGS)
-  private String legs;
-
   public static final String SERIALIZED_NAME_HEAD = "head";
   @SerializedName(SERIALIZED_NAME_HEAD)
   private String head;
+
+  public static final String SERIALIZED_NAME_LEGS = "legs";
+  @SerializedName(SERIALIZED_NAME_LEGS)
+  private String legs;
 
   public static final String SERIALIZED_NAME_FEET = "feet";
   @SerializedName(SERIALIZED_NAME_FEET)
@@ -76,29 +76,6 @@ public class GetWorldCapabilityWearResponseDataPicks {
   }
 
 
-  public GetWorldCapabilityWearResponseDataPicks legs(String legs) {
-    
-    this.legs = legs;
-    return this;
-  }
-
-   /**
-   * Get legs
-   * @return legs
-  **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
-
-  public String getLegs() {
-    return legs;
-  }
-
-
-  public void setLegs(String legs) {
-    this.legs = legs;
-  }
-
-
   public GetWorldCapabilityWearResponseDataPicks head(String head) {
     
     this.head = head;
@@ -119,6 +96,29 @@ public class GetWorldCapabilityWearResponseDataPicks {
 
   public void setHead(String head) {
     this.head = head;
+  }
+
+
+  public GetWorldCapabilityWearResponseDataPicks legs(String legs) {
+    
+    this.legs = legs;
+    return this;
+  }
+
+   /**
+   * Get legs
+   * @return legs
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public String getLegs() {
+    return legs;
+  }
+
+
+  public void setLegs(String legs) {
+    this.legs = legs;
   }
 
 
@@ -178,8 +178,8 @@ public class GetWorldCapabilityWearResponseDataPicks {
     }
     GetWorldCapabilityWearResponseDataPicks getWorldCapabilityWearResponseDataPicks = (GetWorldCapabilityWearResponseDataPicks) o;
     return Objects.equals(this.body, getWorldCapabilityWearResponseDataPicks.body) &&
-        Objects.equals(this.legs, getWorldCapabilityWearResponseDataPicks.legs) &&
         Objects.equals(this.head, getWorldCapabilityWearResponseDataPicks.head) &&
+        Objects.equals(this.legs, getWorldCapabilityWearResponseDataPicks.legs) &&
         Objects.equals(this.feet, getWorldCapabilityWearResponseDataPicks.feet) &&
         Objects.equals(this.back, getWorldCapabilityWearResponseDataPicks.back);
   }
@@ -190,7 +190,7 @@ public class GetWorldCapabilityWearResponseDataPicks {
 
   @Override
   public int hashCode() {
-    return Objects.hash(body, legs, head, feet, back);
+    return Objects.hash(body, head, legs, feet, back);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -205,8 +205,8 @@ public class GetWorldCapabilityWearResponseDataPicks {
     StringBuilder sb = new StringBuilder();
     sb.append("class GetWorldCapabilityWearResponseDataPicks {\n");
     sb.append("    body: ").append(toIndentedString(body)).append("\n");
-    sb.append("    legs: ").append(toIndentedString(legs)).append("\n");
     sb.append("    head: ").append(toIndentedString(head)).append("\n");
+    sb.append("    legs: ").append(toIndentedString(legs)).append("\n");
     sb.append("    feet: ").append(toIndentedString(feet)).append("\n");
     sb.append("    back: ").append(toIndentedString(back)).append("\n");
     sb.append("}");

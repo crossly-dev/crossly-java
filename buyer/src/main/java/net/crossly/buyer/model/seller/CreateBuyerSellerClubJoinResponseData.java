@@ -32,8 +32,12 @@ import org.openapitools.jackson.nullable.JsonNullable;
 /**
  * CreateBuyerSellerClubJoinResponseData
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-11T23:47:29.843Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-27T19:58:46.962Z[Etc/UTC]")
 public class CreateBuyerSellerClubJoinResponseData {
+  public static final String SERIALIZED_NAME_SELLER_USER_ID = "sellerUserId";
+  @SerializedName(SERIALIZED_NAME_SELLER_USER_ID)
+  private String sellerUserId;
+
   public static final String SERIALIZED_NAME_NAME = "name";
   @SerializedName(SERIALIZED_NAME_NAME)
   private String name;
@@ -42,20 +46,39 @@ public class CreateBuyerSellerClubJoinResponseData {
   @SerializedName(SERIALIZED_NAME_DESCRIPTION)
   private String description;
 
-  public static final String SERIALIZED_NAME_SELLER_USER_ID = "sellerUserId";
-  @SerializedName(SERIALIZED_NAME_SELLER_USER_ID)
-  private String sellerUserId;
+  public static final String SERIALIZED_NAME_TIERS = "tiers";
+  @SerializedName(SERIALIZED_NAME_TIERS)
+  private List<CreateBuyerSellerClubJoinResponseDataTiers> tiers = new ArrayList<CreateBuyerSellerClubJoinResponseDataTiers>();
 
   public static final String SERIALIZED_NAME_MEMBER = "member";
   @SerializedName(SERIALIZED_NAME_MEMBER)
   private CreateBuyerSellerClubJoinResponseDataMember member;
 
-  public static final String SERIALIZED_NAME_TIERS = "tiers";
-  @SerializedName(SERIALIZED_NAME_TIERS)
-  private List<CreateBuyerSellerClubJoinResponseDataTiers> tiers = new ArrayList<CreateBuyerSellerClubJoinResponseDataTiers>();
-
   public CreateBuyerSellerClubJoinResponseData() { 
   }
+
+  public CreateBuyerSellerClubJoinResponseData sellerUserId(String sellerUserId) {
+    
+    this.sellerUserId = sellerUserId;
+    return this;
+  }
+
+   /**
+   * Get sellerUserId
+   * @return sellerUserId
+  **/
+  @javax.annotation.Nonnull
+  @ApiModelProperty(required = true, value = "")
+
+  public String getSellerUserId() {
+    return sellerUserId;
+  }
+
+
+  public void setSellerUserId(String sellerUserId) {
+    this.sellerUserId = sellerUserId;
+  }
+
 
   public CreateBuyerSellerClubJoinResponseData name(String name) {
     
@@ -103,52 +126,6 @@ public class CreateBuyerSellerClubJoinResponseData {
   }
 
 
-  public CreateBuyerSellerClubJoinResponseData sellerUserId(String sellerUserId) {
-    
-    this.sellerUserId = sellerUserId;
-    return this;
-  }
-
-   /**
-   * Get sellerUserId
-   * @return sellerUserId
-  **/
-  @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "")
-
-  public String getSellerUserId() {
-    return sellerUserId;
-  }
-
-
-  public void setSellerUserId(String sellerUserId) {
-    this.sellerUserId = sellerUserId;
-  }
-
-
-  public CreateBuyerSellerClubJoinResponseData member(CreateBuyerSellerClubJoinResponseDataMember member) {
-    
-    this.member = member;
-    return this;
-  }
-
-   /**
-   * Get member
-   * @return member
-  **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
-
-  public CreateBuyerSellerClubJoinResponseDataMember getMember() {
-    return member;
-  }
-
-
-  public void setMember(CreateBuyerSellerClubJoinResponseDataMember member) {
-    this.member = member;
-  }
-
-
   public CreateBuyerSellerClubJoinResponseData tiers(List<CreateBuyerSellerClubJoinResponseDataTiers> tiers) {
     
     this.tiers = tiers;
@@ -177,6 +154,29 @@ public class CreateBuyerSellerClubJoinResponseData {
   }
 
 
+  public CreateBuyerSellerClubJoinResponseData member(CreateBuyerSellerClubJoinResponseDataMember member) {
+    
+    this.member = member;
+    return this;
+  }
+
+   /**
+   * Get member
+   * @return member
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public CreateBuyerSellerClubJoinResponseDataMember getMember() {
+    return member;
+  }
+
+
+  public void setMember(CreateBuyerSellerClubJoinResponseDataMember member) {
+    this.member = member;
+  }
+
+
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -186,11 +186,11 @@ public class CreateBuyerSellerClubJoinResponseData {
       return false;
     }
     CreateBuyerSellerClubJoinResponseData createBuyerSellerClubJoinResponseData = (CreateBuyerSellerClubJoinResponseData) o;
-    return Objects.equals(this.name, createBuyerSellerClubJoinResponseData.name) &&
+    return Objects.equals(this.sellerUserId, createBuyerSellerClubJoinResponseData.sellerUserId) &&
+        Objects.equals(this.name, createBuyerSellerClubJoinResponseData.name) &&
         Objects.equals(this.description, createBuyerSellerClubJoinResponseData.description) &&
-        Objects.equals(this.sellerUserId, createBuyerSellerClubJoinResponseData.sellerUserId) &&
-        Objects.equals(this.member, createBuyerSellerClubJoinResponseData.member) &&
-        Objects.equals(this.tiers, createBuyerSellerClubJoinResponseData.tiers);
+        Objects.equals(this.tiers, createBuyerSellerClubJoinResponseData.tiers) &&
+        Objects.equals(this.member, createBuyerSellerClubJoinResponseData.member);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -199,7 +199,7 @@ public class CreateBuyerSellerClubJoinResponseData {
 
   @Override
   public int hashCode() {
-    return Objects.hash(name, description, sellerUserId, member, tiers);
+    return Objects.hash(sellerUserId, name, description, tiers, member);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -213,11 +213,11 @@ public class CreateBuyerSellerClubJoinResponseData {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class CreateBuyerSellerClubJoinResponseData {\n");
+    sb.append("    sellerUserId: ").append(toIndentedString(sellerUserId)).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    description: ").append(toIndentedString(description)).append("\n");
-    sb.append("    sellerUserId: ").append(toIndentedString(sellerUserId)).append("\n");
-    sb.append("    member: ").append(toIndentedString(member)).append("\n");
     sb.append("    tiers: ").append(toIndentedString(tiers)).append("\n");
+    sb.append("    member: ").append(toIndentedString(member)).append("\n");
     sb.append("}");
     return sb.toString();
   }

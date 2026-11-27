@@ -23,14 +23,19 @@ import com.google.gson.stream.JsonWriter;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
+import net.crossly.model.vault.ListVaultMarketFollowFollowingItemPerson;
 import net.crossly.model.vault.ListVaultMarketFollowFollowingItemShares;
 import org.openapitools.jackson.nullable.JsonNullable;
 
 /**
  * ListVaultMarketFollowFollowingItem
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-11T23:44:48.922Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-27T19:42:43.186Z[Etc/UTC]")
 public class ListVaultMarketFollowFollowingItem {
+  public static final String SERIALIZED_NAME_PERSON = "person";
+  @SerializedName(SERIALIZED_NAME_PERSON)
+  private ListVaultMarketFollowFollowingItemPerson person;
+
   public static final String SERIALIZED_NAME_SINCE = "since";
   @SerializedName(SERIALIZED_NAME_SINCE)
   private String since;
@@ -45,6 +50,29 @@ public class ListVaultMarketFollowFollowingItem {
 
   public ListVaultMarketFollowFollowingItem() { 
   }
+
+  public ListVaultMarketFollowFollowingItem person(ListVaultMarketFollowFollowingItemPerson person) {
+    
+    this.person = person;
+    return this;
+  }
+
+   /**
+   * Get person
+   * @return person
+  **/
+  @javax.annotation.Nonnull
+  @ApiModelProperty(required = true, value = "")
+
+  public ListVaultMarketFollowFollowingItemPerson getPerson() {
+    return person;
+  }
+
+
+  public void setPerson(ListVaultMarketFollowFollowingItemPerson person) {
+    this.person = person;
+  }
+
 
   public ListVaultMarketFollowFollowingItem since(String since) {
     
@@ -124,7 +152,8 @@ public class ListVaultMarketFollowFollowingItem {
       return false;
     }
     ListVaultMarketFollowFollowingItem listVaultMarketFollowFollowingItem = (ListVaultMarketFollowFollowingItem) o;
-    return Objects.equals(this.since, listVaultMarketFollowFollowingItem.since) &&
+    return Objects.equals(this.person, listVaultMarketFollowFollowingItem.person) &&
+        Objects.equals(this.since, listVaultMarketFollowFollowingItem.since) &&
         Objects.equals(this.shares, listVaultMarketFollowFollowingItem.shares) &&
         Objects.equals(this.copyWatching, listVaultMarketFollowFollowingItem.copyWatching);
   }
@@ -135,7 +164,7 @@ public class ListVaultMarketFollowFollowingItem {
 
   @Override
   public int hashCode() {
-    return Objects.hash(since, shares, copyWatching);
+    return Objects.hash(person, since, shares, copyWatching);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -149,6 +178,7 @@ public class ListVaultMarketFollowFollowingItem {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class ListVaultMarketFollowFollowingItem {\n");
+    sb.append("    person: ").append(toIndentedString(person)).append("\n");
     sb.append("    since: ").append(toIndentedString(since)).append("\n");
     sb.append("    shares: ").append(toIndentedString(shares)).append("\n");
     sb.append("    copyWatching: ").append(toIndentedString(copyWatching)).append("\n");

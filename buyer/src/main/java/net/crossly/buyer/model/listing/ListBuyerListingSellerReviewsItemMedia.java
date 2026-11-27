@@ -27,41 +27,18 @@ import java.io.IOException;
 /**
  * ListBuyerListingSellerReviewsItemMedia
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-11T23:47:29.843Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-27T19:58:46.962Z[Etc/UTC]")
 public class ListBuyerListingSellerReviewsItemMedia {
-  public static final String SERIALIZED_NAME_URL = "url";
-  @SerializedName(SERIALIZED_NAME_URL)
-  private String url;
-
   public static final String SERIALIZED_NAME_KIND = "kind";
   @SerializedName(SERIALIZED_NAME_KIND)
   private String kind;
 
+  public static final String SERIALIZED_NAME_URL = "url";
+  @SerializedName(SERIALIZED_NAME_URL)
+  private String url;
+
   public ListBuyerListingSellerReviewsItemMedia() { 
   }
-
-  public ListBuyerListingSellerReviewsItemMedia url(String url) {
-    
-    this.url = url;
-    return this;
-  }
-
-   /**
-   * Get url
-   * @return url
-  **/
-  @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "")
-
-  public String getUrl() {
-    return url;
-  }
-
-
-  public void setUrl(String url) {
-    this.url = url;
-  }
-
 
   public ListBuyerListingSellerReviewsItemMedia kind(String kind) {
     
@@ -86,6 +63,29 @@ public class ListBuyerListingSellerReviewsItemMedia {
   }
 
 
+  public ListBuyerListingSellerReviewsItemMedia url(String url) {
+    
+    this.url = url;
+    return this;
+  }
+
+   /**
+   * Get url
+   * @return url
+  **/
+  @javax.annotation.Nonnull
+  @ApiModelProperty(required = true, value = "")
+
+  public String getUrl() {
+    return url;
+  }
+
+
+  public void setUrl(String url) {
+    this.url = url;
+  }
+
+
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -95,21 +95,21 @@ public class ListBuyerListingSellerReviewsItemMedia {
       return false;
     }
     ListBuyerListingSellerReviewsItemMedia listBuyerListingSellerReviewsItemMedia = (ListBuyerListingSellerReviewsItemMedia) o;
-    return Objects.equals(this.url, listBuyerListingSellerReviewsItemMedia.url) &&
-        Objects.equals(this.kind, listBuyerListingSellerReviewsItemMedia.kind);
+    return Objects.equals(this.kind, listBuyerListingSellerReviewsItemMedia.kind) &&
+        Objects.equals(this.url, listBuyerListingSellerReviewsItemMedia.url);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(url, kind);
+    return Objects.hash(kind, url);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class ListBuyerListingSellerReviewsItemMedia {\n");
-    sb.append("    url: ").append(toIndentedString(url)).append("\n");
     sb.append("    kind: ").append(toIndentedString(kind)).append("\n");
+    sb.append("    url: ").append(toIndentedString(url)).append("\n");
     sb.append("}");
     return sb.toString();
   }

@@ -30,7 +30,7 @@ import org.openapitools.jackson.nullable.JsonNullable;
  * Where a bid for it would go: the cheapest marked key that meets the target. Null &#x3D; no price yet.
  */
 @ApiModel(description = "Where a bid for it would go: the cheapest marked key that meets the target. Null = no price yet.")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-11T23:44:48.922Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-27T19:42:43.186Z[Etc/UTC]")
 public class GetVaultMarketSetGoalResponsePiecesBid {
   public static final String SERIALIZED_NAME_BOOK_KEY = "bookKey";
   @SerializedName(SERIALIZED_NAME_BOOK_KEY)

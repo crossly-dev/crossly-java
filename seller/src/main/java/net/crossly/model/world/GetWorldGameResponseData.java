@@ -33,15 +33,15 @@ import net.crossly.model.world.GetWorldGameLeaderboardResponseDataScoring;
 import net.crossly.model.world.GetWorldGameResponseDataContests;
 import net.crossly.model.world.GetWorldGameResponseDataPiece;
 import net.crossly.model.world.GetWorldGameResponseDataPlacesItem;
-import net.crossly.model.world.GetWorldGameResponseDataPlayers;
 import net.crossly.model.world.GetWorldGameResponseDataRewards;
 import net.crossly.model.world.GetWorldGameResponseDataStore;
+import net.crossly.model.common.MinMax;
 import org.openapitools.jackson.nullable.JsonNullable;
 
 /**
  * GetWorldGameResponseData
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-11T23:44:48.922Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-27T19:42:43.186Z[Etc/UTC]")
 public class GetWorldGameResponseData {
   public static final String SERIALIZED_NAME_STARS = "stars";
   @SerializedName(SERIALIZED_NAME_STARS)
@@ -130,7 +130,7 @@ public class GetWorldGameResponseData {
 
   public static final String SERIALIZED_NAME_PLAYERS = "players";
   @SerializedName(SERIALIZED_NAME_PLAYERS)
-  private GetWorldGameResponseDataPlayers players;
+  private MinMax players;
 
   public static final String SERIALIZED_NAME_PLACES = "places";
   @SerializedName(SERIALIZED_NAME_PLACES)
@@ -430,7 +430,7 @@ public class GetWorldGameResponseData {
   }
 
 
-  public GetWorldGameResponseData players(GetWorldGameResponseDataPlayers players) {
+  public GetWorldGameResponseData players(MinMax players) {
     
     this.players = players;
     return this;
@@ -443,12 +443,12 @@ public class GetWorldGameResponseData {
   @javax.annotation.Nonnull
   @ApiModelProperty(required = true, value = "")
 
-  public GetWorldGameResponseDataPlayers getPlayers() {
+  public MinMax getPlayers() {
     return players;
   }
 
 
-  public void setPlayers(GetWorldGameResponseDataPlayers players) {
+  public void setPlayers(MinMax players) {
     this.players = players;
   }
 

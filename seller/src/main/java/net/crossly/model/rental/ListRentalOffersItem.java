@@ -24,12 +24,17 @@ import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 import java.math.BigDecimal;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import net.crossly.model.common.StartEnd;
 import org.openapitools.jackson.nullable.JsonNullable;
 
 /**
  * ListRentalOffersItem
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-11T23:44:48.922Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-27T19:42:43.186Z[Etc/UTC]")
 public class ListRentalOffersItem {
   public static final String SERIALIZED_NAME_SLUG = "slug";
   @SerializedName(SERIALIZED_NAME_SLUG)
@@ -59,9 +64,21 @@ public class ListRentalOffersItem {
   @SerializedName(SERIALIZED_NAME_ACTIVE)
   private Boolean active;
 
+  public static final String SERIALIZED_NAME_QUANTITY = "quantity";
+  @SerializedName(SERIALIZED_NAME_QUANTITY)
+  private BigDecimal quantity;
+
   public static final String SERIALIZED_NAME_PLATFORM_LISTING_ID = "platformListingId";
   @SerializedName(SERIALIZED_NAME_PLATFORM_LISTING_ID)
   private String platformListingId;
+
+  public static final String SERIALIZED_NAME_STOREFRONT_ID = "storefrontId";
+  @SerializedName(SERIALIZED_NAME_STOREFRONT_ID)
+  private String storefrontId;
+
+  public static final String SERIALIZED_NAME_OPTIONS = "options";
+  @SerializedName(SERIALIZED_NAME_OPTIONS)
+  private Map<String, Object> options = new HashMap<String, Object>();
 
   public static final String SERIALIZED_NAME_SELLER_USER_ID = "sellerUserId";
   @SerializedName(SERIALIZED_NAME_SELLER_USER_ID)
@@ -71,14 +88,6 @@ public class ListRentalOffersItem {
   @SerializedName(SERIALIZED_NAME_DEPOSIT_CENTS)
   private BigDecimal depositCents;
 
-  public static final String SERIALIZED_NAME_DAILY_CENTS = "dailyCents";
-  @SerializedName(SERIALIZED_NAME_DAILY_CENTS)
-  private BigDecimal dailyCents;
-
-  public static final String SERIALIZED_NAME_WEEKLY_CENTS = "weeklyCents";
-  @SerializedName(SERIALIZED_NAME_WEEKLY_CENTS)
-  private BigDecimal weeklyCents;
-
   public static final String SERIALIZED_NAME_MIN_DAYS = "minDays";
   @SerializedName(SERIALIZED_NAME_MIN_DAYS)
   private BigDecimal minDays;
@@ -86,6 +95,14 @@ public class ListRentalOffersItem {
   public static final String SERIALIZED_NAME_MAX_DAYS = "maxDays";
   @SerializedName(SERIALIZED_NAME_MAX_DAYS)
   private BigDecimal maxDays;
+
+  public static final String SERIALIZED_NAME_DAILY_CENTS = "dailyCents";
+  @SerializedName(SERIALIZED_NAME_DAILY_CENTS)
+  private BigDecimal dailyCents;
+
+  public static final String SERIALIZED_NAME_WEEKLY_CENTS = "weeklyCents";
+  @SerializedName(SERIALIZED_NAME_WEEKLY_CENTS)
+  private BigDecimal weeklyCents;
 
   public static final String SERIALIZED_NAME_BUFFER_DAYS = "bufferDays";
   @SerializedName(SERIALIZED_NAME_BUFFER_DAYS)
@@ -98,6 +115,14 @@ public class ListRentalOffersItem {
   public static final String SERIALIZED_NAME_REQUIRE_APPROVAL = "requireApproval";
   @SerializedName(SERIALIZED_NAME_REQUIRE_APPROVAL)
   private Boolean requireApproval;
+
+  public static final String SERIALIZED_NAME_BLACKOUT_RANGES = "blackoutRanges";
+  @SerializedName(SERIALIZED_NAME_BLACKOUT_RANGES)
+  private List<StartEnd> blackoutRanges = new ArrayList<StartEnd>();
+
+  public static final String SERIALIZED_NAME_RETURN_POLICY = "returnPolicy";
+  @SerializedName(SERIALIZED_NAME_RETURN_POLICY)
+  private String returnPolicy;
 
   public ListRentalOffersItem() { 
   }
@@ -263,6 +288,29 @@ public class ListRentalOffersItem {
   }
 
 
+  public ListRentalOffersItem quantity(BigDecimal quantity) {
+    
+    this.quantity = quantity;
+    return this;
+  }
+
+   /**
+   * Get quantity
+   * @return quantity
+  **/
+  @javax.annotation.Nonnull
+  @ApiModelProperty(required = true, value = "")
+
+  public BigDecimal getQuantity() {
+    return quantity;
+  }
+
+
+  public void setQuantity(BigDecimal quantity) {
+    this.quantity = quantity;
+  }
+
+
   public ListRentalOffersItem platformListingId(String platformListingId) {
     
     this.platformListingId = platformListingId;
@@ -283,6 +331,57 @@ public class ListRentalOffersItem {
 
   public void setPlatformListingId(String platformListingId) {
     this.platformListingId = platformListingId;
+  }
+
+
+  public ListRentalOffersItem storefrontId(String storefrontId) {
+    
+    this.storefrontId = storefrontId;
+    return this;
+  }
+
+   /**
+   * Get storefrontId
+   * @return storefrontId
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public String getStorefrontId() {
+    return storefrontId;
+  }
+
+
+  public void setStorefrontId(String storefrontId) {
+    this.storefrontId = storefrontId;
+  }
+
+
+  public ListRentalOffersItem options(Map<String, Object> options) {
+    
+    this.options = options;
+    return this;
+  }
+
+  public ListRentalOffersItem putOptionsItem(String key, Object optionsItem) {
+    this.options.put(key, optionsItem);
+    return this;
+  }
+
+   /**
+   * Get options
+   * @return options
+  **/
+  @javax.annotation.Nonnull
+  @ApiModelProperty(required = true, value = "")
+
+  public Map<String, Object> getOptions() {
+    return options;
+  }
+
+
+  public void setOptions(Map<String, Object> options) {
+    this.options = options;
   }
 
 
@@ -332,52 +431,6 @@ public class ListRentalOffersItem {
   }
 
 
-  public ListRentalOffersItem dailyCents(BigDecimal dailyCents) {
-    
-    this.dailyCents = dailyCents;
-    return this;
-  }
-
-   /**
-   * Get dailyCents
-   * @return dailyCents
-  **/
-  @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "")
-
-  public BigDecimal getDailyCents() {
-    return dailyCents;
-  }
-
-
-  public void setDailyCents(BigDecimal dailyCents) {
-    this.dailyCents = dailyCents;
-  }
-
-
-  public ListRentalOffersItem weeklyCents(BigDecimal weeklyCents) {
-    
-    this.weeklyCents = weeklyCents;
-    return this;
-  }
-
-   /**
-   * Get weeklyCents
-   * @return weeklyCents
-  **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
-
-  public BigDecimal getWeeklyCents() {
-    return weeklyCents;
-  }
-
-
-  public void setWeeklyCents(BigDecimal weeklyCents) {
-    this.weeklyCents = weeklyCents;
-  }
-
-
   public ListRentalOffersItem minDays(BigDecimal minDays) {
     
     this.minDays = minDays;
@@ -421,6 +474,52 @@ public class ListRentalOffersItem {
 
   public void setMaxDays(BigDecimal maxDays) {
     this.maxDays = maxDays;
+  }
+
+
+  public ListRentalOffersItem dailyCents(BigDecimal dailyCents) {
+    
+    this.dailyCents = dailyCents;
+    return this;
+  }
+
+   /**
+   * Get dailyCents
+   * @return dailyCents
+  **/
+  @javax.annotation.Nonnull
+  @ApiModelProperty(required = true, value = "")
+
+  public BigDecimal getDailyCents() {
+    return dailyCents;
+  }
+
+
+  public void setDailyCents(BigDecimal dailyCents) {
+    this.dailyCents = dailyCents;
+  }
+
+
+  public ListRentalOffersItem weeklyCents(BigDecimal weeklyCents) {
+    
+    this.weeklyCents = weeklyCents;
+    return this;
+  }
+
+   /**
+   * Get weeklyCents
+   * @return weeklyCents
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public BigDecimal getWeeklyCents() {
+    return weeklyCents;
+  }
+
+
+  public void setWeeklyCents(BigDecimal weeklyCents) {
+    this.weeklyCents = weeklyCents;
   }
 
 
@@ -493,6 +592,57 @@ public class ListRentalOffersItem {
   }
 
 
+  public ListRentalOffersItem blackoutRanges(List<StartEnd> blackoutRanges) {
+    
+    this.blackoutRanges = blackoutRanges;
+    return this;
+  }
+
+  public ListRentalOffersItem addBlackoutRangesItem(StartEnd blackoutRangesItem) {
+    this.blackoutRanges.add(blackoutRangesItem);
+    return this;
+  }
+
+   /**
+   * Get blackoutRanges
+   * @return blackoutRanges
+  **/
+  @javax.annotation.Nonnull
+  @ApiModelProperty(required = true, value = "")
+
+  public List<StartEnd> getBlackoutRanges() {
+    return blackoutRanges;
+  }
+
+
+  public void setBlackoutRanges(List<StartEnd> blackoutRanges) {
+    this.blackoutRanges = blackoutRanges;
+  }
+
+
+  public ListRentalOffersItem returnPolicy(String returnPolicy) {
+    
+    this.returnPolicy = returnPolicy;
+    return this;
+  }
+
+   /**
+   * Get returnPolicy
+   * @return returnPolicy
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public String getReturnPolicy() {
+    return returnPolicy;
+  }
+
+
+  public void setReturnPolicy(String returnPolicy) {
+    this.returnPolicy = returnPolicy;
+  }
+
+
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -509,16 +659,21 @@ public class ListRentalOffersItem {
         Objects.equals(this.createdAt, listRentalOffersItem.createdAt) &&
         Objects.equals(this.updatedAt, listRentalOffersItem.updatedAt) &&
         Objects.equals(this.active, listRentalOffersItem.active) &&
+        Objects.equals(this.quantity, listRentalOffersItem.quantity) &&
         Objects.equals(this.platformListingId, listRentalOffersItem.platformListingId) &&
+        Objects.equals(this.storefrontId, listRentalOffersItem.storefrontId) &&
+        Objects.equals(this.options, listRentalOffersItem.options) &&
         Objects.equals(this.sellerUserId, listRentalOffersItem.sellerUserId) &&
         Objects.equals(this.depositCents, listRentalOffersItem.depositCents) &&
-        Objects.equals(this.dailyCents, listRentalOffersItem.dailyCents) &&
-        Objects.equals(this.weeklyCents, listRentalOffersItem.weeklyCents) &&
         Objects.equals(this.minDays, listRentalOffersItem.minDays) &&
         Objects.equals(this.maxDays, listRentalOffersItem.maxDays) &&
+        Objects.equals(this.dailyCents, listRentalOffersItem.dailyCents) &&
+        Objects.equals(this.weeklyCents, listRentalOffersItem.weeklyCents) &&
         Objects.equals(this.bufferDays, listRentalOffersItem.bufferDays) &&
         Objects.equals(this.rentOnly, listRentalOffersItem.rentOnly) &&
-        Objects.equals(this.requireApproval, listRentalOffersItem.requireApproval);
+        Objects.equals(this.requireApproval, listRentalOffersItem.requireApproval) &&
+        Objects.equals(this.blackoutRanges, listRentalOffersItem.blackoutRanges) &&
+        Objects.equals(this.returnPolicy, listRentalOffersItem.returnPolicy);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -527,7 +682,7 @@ public class ListRentalOffersItem {
 
   @Override
   public int hashCode() {
-    return Objects.hash(slug, listingId, title, imageUrl, createdAt, updatedAt, active, platformListingId, sellerUserId, depositCents, dailyCents, weeklyCents, minDays, maxDays, bufferDays, rentOnly, requireApproval);
+    return Objects.hash(slug, listingId, title, imageUrl, createdAt, updatedAt, active, quantity, platformListingId, storefrontId, options, sellerUserId, depositCents, minDays, maxDays, dailyCents, weeklyCents, bufferDays, rentOnly, requireApproval, blackoutRanges, returnPolicy);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -548,16 +703,21 @@ public class ListRentalOffersItem {
     sb.append("    createdAt: ").append(toIndentedString(createdAt)).append("\n");
     sb.append("    updatedAt: ").append(toIndentedString(updatedAt)).append("\n");
     sb.append("    active: ").append(toIndentedString(active)).append("\n");
+    sb.append("    quantity: ").append(toIndentedString(quantity)).append("\n");
     sb.append("    platformListingId: ").append(toIndentedString(platformListingId)).append("\n");
+    sb.append("    storefrontId: ").append(toIndentedString(storefrontId)).append("\n");
+    sb.append("    options: ").append(toIndentedString(options)).append("\n");
     sb.append("    sellerUserId: ").append(toIndentedString(sellerUserId)).append("\n");
     sb.append("    depositCents: ").append(toIndentedString(depositCents)).append("\n");
-    sb.append("    dailyCents: ").append(toIndentedString(dailyCents)).append("\n");
-    sb.append("    weeklyCents: ").append(toIndentedString(weeklyCents)).append("\n");
     sb.append("    minDays: ").append(toIndentedString(minDays)).append("\n");
     sb.append("    maxDays: ").append(toIndentedString(maxDays)).append("\n");
+    sb.append("    dailyCents: ").append(toIndentedString(dailyCents)).append("\n");
+    sb.append("    weeklyCents: ").append(toIndentedString(weeklyCents)).append("\n");
     sb.append("    bufferDays: ").append(toIndentedString(bufferDays)).append("\n");
     sb.append("    rentOnly: ").append(toIndentedString(rentOnly)).append("\n");
     sb.append("    requireApproval: ").append(toIndentedString(requireApproval)).append("\n");
+    sb.append("    blackoutRanges: ").append(toIndentedString(blackoutRanges)).append("\n");
+    sb.append("    returnPolicy: ").append(toIndentedString(returnPolicy)).append("\n");
     sb.append("}");
     return sb.toString();
   }

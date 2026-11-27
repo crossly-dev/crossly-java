@@ -29,7 +29,7 @@ import org.threeten.bp.OffsetDateTime;
 /**
  * CreateBuyerRegistryResponseData
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-11T23:47:29.843Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-27T19:58:46.962Z[Etc/UTC]")
 public class CreateBuyerRegistryResponseData {
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
@@ -43,9 +43,9 @@ public class CreateBuyerRegistryResponseData {
   @SerializedName(SERIALIZED_NAME_UPDATED_AT)
   private OffsetDateTime updatedAt;
 
-  public static final String SERIALIZED_NAME_TOKEN = "token";
-  @SerializedName(SERIALIZED_NAME_TOKEN)
-  private String token;
+  public static final String SERIALIZED_NAME_OWNER_USER_ID = "ownerUserId";
+  @SerializedName(SERIALIZED_NAME_OWNER_USER_ID)
+  private String ownerUserId;
 
   public static final String SERIALIZED_NAME_KIND = "kind";
   @SerializedName(SERIALIZED_NAME_KIND)
@@ -55,13 +55,13 @@ public class CreateBuyerRegistryResponseData {
   @SerializedName(SERIALIZED_NAME_MESSAGE)
   private String message;
 
-  public static final String SERIALIZED_NAME_OWNER_USER_ID = "ownerUserId";
-  @SerializedName(SERIALIZED_NAME_OWNER_USER_ID)
-  private String ownerUserId;
-
   public static final String SERIALIZED_NAME_WISHLIST_ID = "wishlistId";
   @SerializedName(SERIALIZED_NAME_WISHLIST_ID)
   private String wishlistId;
+
+  public static final String SERIALIZED_NAME_TOKEN = "token";
+  @SerializedName(SERIALIZED_NAME_TOKEN)
+  private String token;
 
   public static final String SERIALIZED_NAME_EVENT_DATE = "eventDate";
   @SerializedName(SERIALIZED_NAME_EVENT_DATE)
@@ -143,26 +143,26 @@ public class CreateBuyerRegistryResponseData {
   }
 
 
-  public CreateBuyerRegistryResponseData token(String token) {
+  public CreateBuyerRegistryResponseData ownerUserId(String ownerUserId) {
     
-    this.token = token;
+    this.ownerUserId = ownerUserId;
     return this;
   }
 
    /**
-   * Get token
-   * @return token
+   * Get ownerUserId
+   * @return ownerUserId
   **/
   @javax.annotation.Nonnull
   @ApiModelProperty(required = true, value = "")
 
-  public String getToken() {
-    return token;
+  public String getOwnerUserId() {
+    return ownerUserId;
   }
 
 
-  public void setToken(String token) {
-    this.token = token;
+  public void setOwnerUserId(String ownerUserId) {
+    this.ownerUserId = ownerUserId;
   }
 
 
@@ -212,29 +212,6 @@ public class CreateBuyerRegistryResponseData {
   }
 
 
-  public CreateBuyerRegistryResponseData ownerUserId(String ownerUserId) {
-    
-    this.ownerUserId = ownerUserId;
-    return this;
-  }
-
-   /**
-   * Get ownerUserId
-   * @return ownerUserId
-  **/
-  @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "")
-
-  public String getOwnerUserId() {
-    return ownerUserId;
-  }
-
-
-  public void setOwnerUserId(String ownerUserId) {
-    this.ownerUserId = ownerUserId;
-  }
-
-
   public CreateBuyerRegistryResponseData wishlistId(String wishlistId) {
     
     this.wishlistId = wishlistId;
@@ -255,6 +232,29 @@ public class CreateBuyerRegistryResponseData {
 
   public void setWishlistId(String wishlistId) {
     this.wishlistId = wishlistId;
+  }
+
+
+  public CreateBuyerRegistryResponseData token(String token) {
+    
+    this.token = token;
+    return this;
+  }
+
+   /**
+   * Get token
+   * @return token
+  **/
+  @javax.annotation.Nonnull
+  @ApiModelProperty(required = true, value = "")
+
+  public String getToken() {
+    return token;
+  }
+
+
+  public void setToken(String token) {
+    this.token = token;
   }
 
 
@@ -316,11 +316,11 @@ public class CreateBuyerRegistryResponseData {
     return Objects.equals(this.id, createBuyerRegistryResponseData.id) &&
         Objects.equals(this.createdAt, createBuyerRegistryResponseData.createdAt) &&
         Objects.equals(this.updatedAt, createBuyerRegistryResponseData.updatedAt) &&
-        Objects.equals(this.token, createBuyerRegistryResponseData.token) &&
+        Objects.equals(this.ownerUserId, createBuyerRegistryResponseData.ownerUserId) &&
         Objects.equals(this.kind, createBuyerRegistryResponseData.kind) &&
         Objects.equals(this.message, createBuyerRegistryResponseData.message) &&
-        Objects.equals(this.ownerUserId, createBuyerRegistryResponseData.ownerUserId) &&
         Objects.equals(this.wishlistId, createBuyerRegistryResponseData.wishlistId) &&
+        Objects.equals(this.token, createBuyerRegistryResponseData.token) &&
         Objects.equals(this.eventDate, createBuyerRegistryResponseData.eventDate) &&
         Objects.equals(this.shipAddressId, createBuyerRegistryResponseData.shipAddressId);
   }
@@ -331,7 +331,7 @@ public class CreateBuyerRegistryResponseData {
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, createdAt, updatedAt, token, kind, message, ownerUserId, wishlistId, eventDate, shipAddressId);
+    return Objects.hash(id, createdAt, updatedAt, ownerUserId, kind, message, wishlistId, token, eventDate, shipAddressId);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -348,11 +348,11 @@ public class CreateBuyerRegistryResponseData {
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    createdAt: ").append(toIndentedString(createdAt)).append("\n");
     sb.append("    updatedAt: ").append(toIndentedString(updatedAt)).append("\n");
-    sb.append("    token: ").append(toIndentedString(token)).append("\n");
+    sb.append("    ownerUserId: ").append(toIndentedString(ownerUserId)).append("\n");
     sb.append("    kind: ").append(toIndentedString(kind)).append("\n");
     sb.append("    message: ").append(toIndentedString(message)).append("\n");
-    sb.append("    ownerUserId: ").append(toIndentedString(ownerUserId)).append("\n");
     sb.append("    wishlistId: ").append(toIndentedString(wishlistId)).append("\n");
+    sb.append("    token: ").append(toIndentedString(token)).append("\n");
     sb.append("    eventDate: ").append(toIndentedString(eventDate)).append("\n");
     sb.append("    shipAddressId: ").append(toIndentedString(shipAddressId)).append("\n");
     sb.append("}");

@@ -29,7 +29,7 @@ import org.openapitools.jackson.nullable.JsonNullable;
  * The piece people place (and buy in the decor shop: its COSM SKU).
  */
 @ApiModel(description = "The piece people place (and buy in the decor shop: its COSM SKU).")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-11T23:44:48.922Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-27T19:42:43.186Z[Etc/UTC]")
 public class GetWorldGameResponseDataPiece {
   public static final String SERIALIZED_NAME_MODEL = "model";
   @SerializedName(SERIALIZED_NAME_MODEL)

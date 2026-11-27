@@ -30,7 +30,7 @@ import java.util.Map;
 /**
  * ListWorldCapabilityDeclarationsItemCapabilities
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-11T23:44:48.922Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-27T19:42:43.186Z[Etc/UTC]")
 public class ListWorldCapabilityDeclarationsItemCapabilities {
   /**
    * Gets or Sets kind
@@ -39,11 +39,15 @@ public class ListWorldCapabilityDeclarationsItemCapabilities {
   public enum KindEnum {
     PORTAL("portal"),
     
-    DISPLAY("display"),
+    INTERACTIVE("interactive"),
     
     PLACE("place"),
     
+    DISPLAY("display"),
+    
     BADGE("badge"),
+    
+    PERK("perk"),
     
     WEAR("wear"),
     
@@ -57,11 +61,7 @@ public class ListWorldCapabilityDeclarationsItemCapabilities {
     
     QUEST("quest"),
     
-    GAME_PASS("game_pass"),
-    
-    PERK("perk"),
-    
-    INTERACTIVE("interactive");
+    GAME_PASS("game_pass");
 
     private String value;
 

@@ -27,10 +27,12 @@ import com.google.gson.reflect.TypeToken;
 import java.io.IOException;
 
 
+import net.crossly.model.common.CreateGeoLocationCheckResponse;
+import net.crossly.model.policy.CreatePolicyPresetResponse;
+import net.crossly.model.policy.DeletePolicyPresetResponse;
 import net.crossly.model.common.Error;
-import net.crossly.model.policy.ListPolicyPresetsItem;
+import net.crossly.model.policy.GetPolicyResponse;
 import net.crossly.model.policy.ListPolicyPresetsResponse;
-import net.crossly.model.common.OkResponse;
 import java.util.UUID;
 
 import java.lang.reflect.Type;
@@ -76,6 +78,148 @@ public class PolicyPresetsApi {
         this.localCustomBaseUrl = customBaseUrl;
     }
 
+    /**
+     * Build call for createGeoLocationCheck
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call createGeoLocationCheckCall(final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/v1/geo/location-check";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "PersonalAccessToken" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call createGeoLocationCheckValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        
+
+        okhttp3.Call localVarCall = createGeoLocationCheckCall(_callback);
+        return localVarCall;
+
+    }
+
+    /**
+     * Check whether a shipping policy ships to an address.
+     * Pass an unsaved &#x60;policy&#x60; draft or a &#x60;presetId&#x60; (neither &#x3D; your default shipping policy), an &#x60;address&#x60;, and optionally &#x60;consolidateVia&#x60; (a ship-together hub). Returns &#x60;ships&#x60;, and when it does not: &#x60;reason&#x60;, &#x60;stage&#x60; (buyer | hub), &#x60;message&#x60; and the deciding &#x60;rule&#x60;. &#x60;partial&#x60; means a fuller address (state, ZIP) could change the answer. A draft that is not a valid shipping policy is a 422; a presetId that is not yours is a 404.
+     * @return CreateGeoLocationCheckResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public CreateGeoLocationCheckResponse createGeoLocationCheck() throws ApiException {
+        ApiResponse<CreateGeoLocationCheckResponse> localVarResp = createGeoLocationCheckWithHttpInfo();
+        return localVarResp.getData();
+    }
+
+    /**
+     * Check whether a shipping policy ships to an address.
+     * Pass an unsaved &#x60;policy&#x60; draft or a &#x60;presetId&#x60; (neither &#x3D; your default shipping policy), an &#x60;address&#x60;, and optionally &#x60;consolidateVia&#x60; (a ship-together hub). Returns &#x60;ships&#x60;, and when it does not: &#x60;reason&#x60;, &#x60;stage&#x60; (buyer | hub), &#x60;message&#x60; and the deciding &#x60;rule&#x60;. &#x60;partial&#x60; means a fuller address (state, ZIP) could change the answer. A draft that is not a valid shipping policy is a 422; a presetId that is not yours is a 404.
+     * @return ApiResponse&lt;CreateGeoLocationCheckResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<CreateGeoLocationCheckResponse> createGeoLocationCheckWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = createGeoLocationCheckValidateBeforeCall(null);
+        Type localVarReturnType = new TypeToken<CreateGeoLocationCheckResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Check whether a shipping policy ships to an address. (asynchronously)
+     * Pass an unsaved &#x60;policy&#x60; draft or a &#x60;presetId&#x60; (neither &#x3D; your default shipping policy), an &#x60;address&#x60;, and optionally &#x60;consolidateVia&#x60; (a ship-together hub). Returns &#x60;ships&#x60;, and when it does not: &#x60;reason&#x60;, &#x60;stage&#x60; (buyer | hub), &#x60;message&#x60; and the deciding &#x60;rule&#x60;. &#x60;partial&#x60; means a fuller address (state, ZIP) could change the answer. A draft that is not a valid shipping policy is a 422; a presetId that is not yours is a 404.
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call createGeoLocationCheckAsync(final ApiCallback<CreateGeoLocationCheckResponse> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = createGeoLocationCheckValidateBeforeCall(_callback);
+        Type localVarReturnType = new TypeToken<CreateGeoLocationCheckResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
     /**
      * Build call for createPolicyPreset
      * @param _callback Callback for upload/download progress
@@ -151,7 +295,7 @@ public class PolicyPresetsApi {
     /**
      * Create a return / shipping / payment policy preset.
      * 
-     * @return ListPolicyPresetsItem
+     * @return CreatePolicyPresetResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -165,15 +309,15 @@ public class PolicyPresetsApi {
         <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
      </table>
      */
-    public ListPolicyPresetsItem createPolicyPreset() throws ApiException {
-        ApiResponse<ListPolicyPresetsItem> localVarResp = createPolicyPresetWithHttpInfo();
+    public CreatePolicyPresetResponse createPolicyPreset() throws ApiException {
+        ApiResponse<CreatePolicyPresetResponse> localVarResp = createPolicyPresetWithHttpInfo();
         return localVarResp.getData();
     }
 
     /**
      * Create a return / shipping / payment policy preset.
      * 
-     * @return ApiResponse&lt;ListPolicyPresetsItem&gt;
+     * @return ApiResponse&lt;CreatePolicyPresetResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -187,9 +331,9 @@ public class PolicyPresetsApi {
         <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<ListPolicyPresetsItem> createPolicyPresetWithHttpInfo() throws ApiException {
+    public ApiResponse<CreatePolicyPresetResponse> createPolicyPresetWithHttpInfo() throws ApiException {
         okhttp3.Call localVarCall = createPolicyPresetValidateBeforeCall(null);
-        Type localVarReturnType = new TypeToken<ListPolicyPresetsItem>(){}.getType();
+        Type localVarReturnType = new TypeToken<CreatePolicyPresetResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -211,10 +355,10 @@ public class PolicyPresetsApi {
         <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call createPolicyPresetAsync(final ApiCallback<ListPolicyPresetsItem> _callback) throws ApiException {
+    public okhttp3.Call createPolicyPresetAsync(final ApiCallback<CreatePolicyPresetResponse> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = createPolicyPresetValidateBeforeCall(_callback);
-        Type localVarReturnType = new TypeToken<ListPolicyPresetsItem>(){}.getType();
+        Type localVarReturnType = new TypeToken<CreatePolicyPresetResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -298,10 +442,10 @@ public class PolicyPresetsApi {
     }
 
     /**
-     * Delete a policy preset.
+     * Delete a policy preset. Listings that used it switch to the default preset of its kind.
      * 
      * @param id  (required)
-     * @return OkResponse
+     * @return DeletePolicyPresetResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -315,16 +459,16 @@ public class PolicyPresetsApi {
         <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
      </table>
      */
-    public OkResponse deletePolicyPreset(UUID id) throws ApiException {
-        ApiResponse<OkResponse> localVarResp = deletePolicyPresetWithHttpInfo(id);
+    public DeletePolicyPresetResponse deletePolicyPreset(UUID id) throws ApiException {
+        ApiResponse<DeletePolicyPresetResponse> localVarResp = deletePolicyPresetWithHttpInfo(id);
         return localVarResp.getData();
     }
 
     /**
-     * Delete a policy preset.
+     * Delete a policy preset. Listings that used it switch to the default preset of its kind.
      * 
      * @param id  (required)
-     * @return ApiResponse&lt;OkResponse&gt;
+     * @return ApiResponse&lt;DeletePolicyPresetResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -338,14 +482,14 @@ public class PolicyPresetsApi {
         <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<OkResponse> deletePolicyPresetWithHttpInfo(UUID id) throws ApiException {
+    public ApiResponse<DeletePolicyPresetResponse> deletePolicyPresetWithHttpInfo(UUID id) throws ApiException {
         okhttp3.Call localVarCall = deletePolicyPresetValidateBeforeCall(id, null);
-        Type localVarReturnType = new TypeToken<OkResponse>(){}.getType();
+        Type localVarReturnType = new TypeToken<DeletePolicyPresetResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
-     * Delete a policy preset. (asynchronously)
+     * Delete a policy preset. Listings that used it switch to the default preset of its kind. (asynchronously)
      * 
      * @param id  (required)
      * @param _callback The callback to be executed when the API call finishes
@@ -363,10 +507,152 @@ public class PolicyPresetsApi {
         <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call deletePolicyPresetAsync(UUID id, final ApiCallback<OkResponse> _callback) throws ApiException {
+    public okhttp3.Call deletePolicyPresetAsync(UUID id, final ApiCallback<DeletePolicyPresetResponse> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = deletePolicyPresetValidateBeforeCall(id, _callback);
-        Type localVarReturnType = new TypeToken<OkResponse>(){}.getType();
+        Type localVarReturnType = new TypeToken<DeletePolicyPresetResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for getPolicy
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getPolicyCall(final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/v1/policies";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "PersonalAccessToken" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call getPolicyValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        
+
+        okhttp3.Call localVarCall = getPolicyCall(_callback);
+        return localVarCall;
+
+    }
+
+    /**
+     * The seller&#39;s shipping / return / payment policy presets by kind, with each kind&#39;s default.
+     * Pass a preset &#x60;id&#x60; as &#x60;policies.shippingPresetId&#x60; / &#x60;returnPresetId&#x60; / &#x60;paymentPresetId&#x60; on POST or PATCH /v1/listings (null &#x3D; the marketplace&#39;s own default). A kind you omit uses &#x60;defaultPresetId&#x60;.
+     * @return GetPolicyResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public GetPolicyResponse getPolicy() throws ApiException {
+        ApiResponse<GetPolicyResponse> localVarResp = getPolicyWithHttpInfo();
+        return localVarResp.getData();
+    }
+
+    /**
+     * The seller&#39;s shipping / return / payment policy presets by kind, with each kind&#39;s default.
+     * Pass a preset &#x60;id&#x60; as &#x60;policies.shippingPresetId&#x60; / &#x60;returnPresetId&#x60; / &#x60;paymentPresetId&#x60; on POST or PATCH /v1/listings (null &#x3D; the marketplace&#39;s own default). A kind you omit uses &#x60;defaultPresetId&#x60;.
+     * @return ApiResponse&lt;GetPolicyResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<GetPolicyResponse> getPolicyWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = getPolicyValidateBeforeCall(null);
+        Type localVarReturnType = new TypeToken<GetPolicyResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * The seller&#39;s shipping / return / payment policy presets by kind, with each kind&#39;s default. (asynchronously)
+     * Pass a preset &#x60;id&#x60; as &#x60;policies.shippingPresetId&#x60; / &#x60;returnPresetId&#x60; / &#x60;paymentPresetId&#x60; on POST or PATCH /v1/listings (null &#x3D; the marketplace&#39;s own default). A kind you omit uses &#x60;defaultPresetId&#x60;.
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getPolicyAsync(final ApiCallback<GetPolicyResponse> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = getPolicyValidateBeforeCall(_callback);
+        Type localVarReturnType = new TypeToken<GetPolicyResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -448,7 +734,7 @@ public class PolicyPresetsApi {
     }
 
     /**
-     * List the seller&#39;s return / shipping / payment policy presets.
+     * List the seller&#39;s return / shipping / payment policy presets. meta.migrationNotices lists defaults the policy migration demoted (kind still has no default).
      * 
      * @param kind  (optional)
      * @return ListPolicyPresetsResponse
@@ -471,7 +757,7 @@ public class PolicyPresetsApi {
     }
 
     /**
-     * List the seller&#39;s return / shipping / payment policy presets.
+     * List the seller&#39;s return / shipping / payment policy presets. meta.migrationNotices lists defaults the policy migration demoted (kind still has no default).
      * 
      * @param kind  (optional)
      * @return ApiResponse&lt;ListPolicyPresetsResponse&gt;
@@ -495,7 +781,7 @@ public class PolicyPresetsApi {
     }
 
     /**
-     * List the seller&#39;s return / shipping / payment policy presets. (asynchronously)
+     * List the seller&#39;s return / shipping / payment policy presets. meta.migrationNotices lists defaults the policy migration demoted (kind still has no default). (asynchronously)
      * 
      * @param kind  (optional)
      * @param _callback The callback to be executed when the API call finishes
@@ -603,7 +889,7 @@ public class PolicyPresetsApi {
      * Update a policy preset.
      * 
      * @param id  (required)
-     * @return ListPolicyPresetsItem
+     * @return CreatePolicyPresetResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -617,8 +903,8 @@ public class PolicyPresetsApi {
         <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
      </table>
      */
-    public ListPolicyPresetsItem updatePolicyPreset(UUID id) throws ApiException {
-        ApiResponse<ListPolicyPresetsItem> localVarResp = updatePolicyPresetWithHttpInfo(id);
+    public CreatePolicyPresetResponse updatePolicyPreset(UUID id) throws ApiException {
+        ApiResponse<CreatePolicyPresetResponse> localVarResp = updatePolicyPresetWithHttpInfo(id);
         return localVarResp.getData();
     }
 
@@ -626,7 +912,7 @@ public class PolicyPresetsApi {
      * Update a policy preset.
      * 
      * @param id  (required)
-     * @return ApiResponse&lt;ListPolicyPresetsItem&gt;
+     * @return ApiResponse&lt;CreatePolicyPresetResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -640,9 +926,9 @@ public class PolicyPresetsApi {
         <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<ListPolicyPresetsItem> updatePolicyPresetWithHttpInfo(UUID id) throws ApiException {
+    public ApiResponse<CreatePolicyPresetResponse> updatePolicyPresetWithHttpInfo(UUID id) throws ApiException {
         okhttp3.Call localVarCall = updatePolicyPresetValidateBeforeCall(id, null);
-        Type localVarReturnType = new TypeToken<ListPolicyPresetsItem>(){}.getType();
+        Type localVarReturnType = new TypeToken<CreatePolicyPresetResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -665,10 +951,10 @@ public class PolicyPresetsApi {
         <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call updatePolicyPresetAsync(UUID id, final ApiCallback<ListPolicyPresetsItem> _callback) throws ApiException {
+    public okhttp3.Call updatePolicyPresetAsync(UUID id, final ApiCallback<CreatePolicyPresetResponse> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = updatePolicyPresetValidateBeforeCall(id, _callback);
-        Type localVarReturnType = new TypeToken<ListPolicyPresetsItem>(){}.getType();
+        Type localVarReturnType = new TypeToken<CreatePolicyPresetResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }

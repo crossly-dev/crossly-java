@@ -82,7 +82,7 @@ This endpoint does not need any parameter.
 
 <a name="createBreakCancel"></a>
 # **createBreakCancel**
-> CreateBreakCancelResponse createBreakCancel(id)
+> UpdateGroupBuyResponse createBreakCancel(id)
 
 Cancel a break before any spot is paid for; after that, refund those orders instead (409).
 
@@ -108,7 +108,7 @@ public class Example {
     BreaksApi apiInstance = new BreaksApi(defaultClient);
     String id = "id_example"; // String | 
     try {
-      CreateBreakCancelResponse result = apiInstance.createBreakCancel(id);
+      UpdateGroupBuyResponse result = apiInstance.createBreakCancel(id);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling BreaksApi#createBreakCancel");
@@ -129,7 +129,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**CreateBreakCancelResponse**
+**UpdateGroupBuyResponse**
 
 ### Authorization
 
@@ -224,7 +224,7 @@ Name | Type | Description  | Notes
 
 <a name="createBreakOpened"></a>
 # **createBreakOpened**
-> CreateBreakCancelResponse createBreakOpened(id)
+> UpdateGroupBuyResponse createBreakOpened(id)
 
 Mark the product opened on stream.
 
@@ -250,7 +250,7 @@ public class Example {
     BreaksApi apiInstance = new BreaksApi(defaultClient);
     String id = "id_example"; // String | 
     try {
-      CreateBreakCancelResponse result = apiInstance.createBreakOpened(id);
+      UpdateGroupBuyResponse result = apiInstance.createBreakOpened(id);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling BreaksApi#createBreakOpened");
@@ -271,7 +271,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**CreateBreakCancelResponse**
+**UpdateGroupBuyResponse**
 
 ### Authorization
 
@@ -295,7 +295,7 @@ Name | Type | Description  | Notes
 
 <a name="createBreakSpotHit"></a>
 # **createBreakSpotHit**
-> CreateBreakCancelResponse createBreakSpotHit(id, spotId)
+> UpdateGroupBuyResponse createBreakSpotHit(id, spotId)
 
 Record what a spot pulled.
 
@@ -322,7 +322,7 @@ public class Example {
     String id = "id_example"; // String | 
     String spotId = "spotId_example"; // String | 
     try {
-      CreateBreakCancelResponse result = apiInstance.createBreakSpotHit(id, spotId);
+      UpdateGroupBuyResponse result = apiInstance.createBreakSpotHit(id, spotId);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling BreaksApi#createBreakSpotHit");
@@ -344,7 +344,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**CreateBreakCancelResponse**
+**UpdateGroupBuyResponse**
 
 ### Authorization
 

@@ -30,7 +30,7 @@ import org.openapitools.jackson.nullable.JsonNullable;
  * Rarible takes its own signed order (POST /api/shop/web3/rarible/draft, then /listings).
  */
 @ApiModel(description = "Rarible takes its own signed order (POST /api/shop/web3/rarible/draft, then /listings).")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-11T23:44:48.922Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-27T19:42:43.186Z[Etc/UTC]")
 public class GetWeb3CrosslistQuoteResponseRarible {
   public static final String SERIALIZED_NAME_AVAILABLE = "available";
   @SerializedName(SERIALIZED_NAME_AVAILABLE)

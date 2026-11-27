@@ -29,7 +29,7 @@ import org.openapitools.jackson.nullable.JsonNullable;
 /**
  * GetVaultMarketStatementByMonthResponseOneOf1Holdings
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-11T23:44:48.922Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-27T19:42:43.186Z[Etc/UTC]")
 public class GetVaultMarketStatementByMonthResponseOneOf1Holdings {
   public static final String SERIALIZED_NAME_VAULT_ITEM_ID = "vaultItemId";
   @SerializedName(SERIALIZED_NAME_VAULT_ITEM_ID)
@@ -58,11 +58,11 @@ public class GetVaultMarketStatementByMonthResponseOneOf1Holdings {
   public enum MarkQualityEnum {
     NONE("none"),
     
+    C("C"),
+    
     A("A"),
     
-    B("B"),
-    
-    C("C");
+    B("B");
 
     private String value;
 

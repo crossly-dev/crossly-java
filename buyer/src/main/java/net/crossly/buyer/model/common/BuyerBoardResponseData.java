@@ -31,31 +31,23 @@ import org.openapitools.jackson.nullable.JsonNullable;
 /**
  * BuyerBoardResponseData
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-11T23:47:29.843Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-27T19:58:46.962Z[Etc/UTC]")
 public class BuyerBoardResponseData {
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
   private String id;
 
-  public static final String SERIALIZED_NAME_UPDATED_AT = "updatedAt";
-  @SerializedName(SERIALIZED_NAME_UPDATED_AT)
-  private String updatedAt;
-
-  public static final String SERIALIZED_NAME_IS_PUBLIC = "isPublic";
-  @SerializedName(SERIALIZED_NAME_IS_PUBLIC)
-  private Boolean isPublic;
+  public static final String SERIALIZED_NAME_TITLE = "title";
+  @SerializedName(SERIALIZED_NAME_TITLE)
+  private String title;
 
   public static final String SERIALIZED_NAME_DESCRIPTION = "description";
   @SerializedName(SERIALIZED_NAME_DESCRIPTION)
   private String description;
 
-  public static final String SERIALIZED_NAME_TITLE = "title";
-  @SerializedName(SERIALIZED_NAME_TITLE)
-  private String title;
-
-  public static final String SERIALIZED_NAME_ITEMS = "items";
-  @SerializedName(SERIALIZED_NAME_ITEMS)
-  private List<BuyerBoardResponseDataItems> items = new ArrayList<BuyerBoardResponseDataItems>();
+  public static final String SERIALIZED_NAME_IS_PUBLIC = "isPublic";
+  @SerializedName(SERIALIZED_NAME_IS_PUBLIC)
+  private Boolean isPublic;
 
   public static final String SERIALIZED_NAME_SHARE_TOKEN = "shareToken";
   @SerializedName(SERIALIZED_NAME_SHARE_TOKEN)
@@ -65,13 +57,21 @@ public class BuyerBoardResponseData {
   @SerializedName(SERIALIZED_NAME_COVER_URL)
   private String coverUrl;
 
+  public static final String SERIALIZED_NAME_OWNER_NAME = "ownerName";
+  @SerializedName(SERIALIZED_NAME_OWNER_NAME)
+  private String ownerName;
+
   public static final String SERIALIZED_NAME_MINE = "mine";
   @SerializedName(SERIALIZED_NAME_MINE)
   private Boolean mine;
 
-  public static final String SERIALIZED_NAME_OWNER_NAME = "ownerName";
-  @SerializedName(SERIALIZED_NAME_OWNER_NAME)
-  private String ownerName;
+  public static final String SERIALIZED_NAME_ITEMS = "items";
+  @SerializedName(SERIALIZED_NAME_ITEMS)
+  private List<BuyerBoardResponseDataItems> items = new ArrayList<BuyerBoardResponseDataItems>();
+
+  public static final String SERIALIZED_NAME_UPDATED_AT = "updatedAt";
+  @SerializedName(SERIALIZED_NAME_UPDATED_AT)
+  private String updatedAt;
 
   public BuyerBoardResponseData() { 
   }
@@ -99,49 +99,26 @@ public class BuyerBoardResponseData {
   }
 
 
-  public BuyerBoardResponseData updatedAt(String updatedAt) {
+  public BuyerBoardResponseData title(String title) {
     
-    this.updatedAt = updatedAt;
+    this.title = title;
     return this;
   }
 
    /**
-   * Get updatedAt
-   * @return updatedAt
+   * Get title
+   * @return title
   **/
   @javax.annotation.Nonnull
   @ApiModelProperty(required = true, value = "")
 
-  public String getUpdatedAt() {
-    return updatedAt;
+  public String getTitle() {
+    return title;
   }
 
 
-  public void setUpdatedAt(String updatedAt) {
-    this.updatedAt = updatedAt;
-  }
-
-
-  public BuyerBoardResponseData isPublic(Boolean isPublic) {
-    
-    this.isPublic = isPublic;
-    return this;
-  }
-
-   /**
-   * Get isPublic
-   * @return isPublic
-  **/
-  @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "")
-
-  public Boolean getIsPublic() {
-    return isPublic;
-  }
-
-
-  public void setIsPublic(Boolean isPublic) {
-    this.isPublic = isPublic;
+  public void setTitle(String title) {
+    this.title = title;
   }
 
 
@@ -168,54 +145,26 @@ public class BuyerBoardResponseData {
   }
 
 
-  public BuyerBoardResponseData title(String title) {
+  public BuyerBoardResponseData isPublic(Boolean isPublic) {
     
-    this.title = title;
+    this.isPublic = isPublic;
     return this;
   }
 
    /**
-   * Get title
-   * @return title
+   * Get isPublic
+   * @return isPublic
   **/
   @javax.annotation.Nonnull
   @ApiModelProperty(required = true, value = "")
 
-  public String getTitle() {
-    return title;
+  public Boolean getIsPublic() {
+    return isPublic;
   }
 
 
-  public void setTitle(String title) {
-    this.title = title;
-  }
-
-
-  public BuyerBoardResponseData items(List<BuyerBoardResponseDataItems> items) {
-    
-    this.items = items;
-    return this;
-  }
-
-  public BuyerBoardResponseData addItemsItem(BuyerBoardResponseDataItems itemsItem) {
-    this.items.add(itemsItem);
-    return this;
-  }
-
-   /**
-   * Get items
-   * @return items
-  **/
-  @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "")
-
-  public List<BuyerBoardResponseDataItems> getItems() {
-    return items;
-  }
-
-
-  public void setItems(List<BuyerBoardResponseDataItems> items) {
-    this.items = items;
+  public void setIsPublic(Boolean isPublic) {
+    this.isPublic = isPublic;
   }
 
 
@@ -265,29 +214,6 @@ public class BuyerBoardResponseData {
   }
 
 
-  public BuyerBoardResponseData mine(Boolean mine) {
-    
-    this.mine = mine;
-    return this;
-  }
-
-   /**
-   * Get mine
-   * @return mine
-  **/
-  @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "")
-
-  public Boolean getMine() {
-    return mine;
-  }
-
-
-  public void setMine(Boolean mine) {
-    this.mine = mine;
-  }
-
-
   public BuyerBoardResponseData ownerName(String ownerName) {
     
     this.ownerName = ownerName;
@@ -311,6 +237,80 @@ public class BuyerBoardResponseData {
   }
 
 
+  public BuyerBoardResponseData mine(Boolean mine) {
+    
+    this.mine = mine;
+    return this;
+  }
+
+   /**
+   * Get mine
+   * @return mine
+  **/
+  @javax.annotation.Nonnull
+  @ApiModelProperty(required = true, value = "")
+
+  public Boolean getMine() {
+    return mine;
+  }
+
+
+  public void setMine(Boolean mine) {
+    this.mine = mine;
+  }
+
+
+  public BuyerBoardResponseData items(List<BuyerBoardResponseDataItems> items) {
+    
+    this.items = items;
+    return this;
+  }
+
+  public BuyerBoardResponseData addItemsItem(BuyerBoardResponseDataItems itemsItem) {
+    this.items.add(itemsItem);
+    return this;
+  }
+
+   /**
+   * Get items
+   * @return items
+  **/
+  @javax.annotation.Nonnull
+  @ApiModelProperty(required = true, value = "")
+
+  public List<BuyerBoardResponseDataItems> getItems() {
+    return items;
+  }
+
+
+  public void setItems(List<BuyerBoardResponseDataItems> items) {
+    this.items = items;
+  }
+
+
+  public BuyerBoardResponseData updatedAt(String updatedAt) {
+    
+    this.updatedAt = updatedAt;
+    return this;
+  }
+
+   /**
+   * Get updatedAt
+   * @return updatedAt
+  **/
+  @javax.annotation.Nonnull
+  @ApiModelProperty(required = true, value = "")
+
+  public String getUpdatedAt() {
+    return updatedAt;
+  }
+
+
+  public void setUpdatedAt(String updatedAt) {
+    this.updatedAt = updatedAt;
+  }
+
+
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -321,15 +321,15 @@ public class BuyerBoardResponseData {
     }
     BuyerBoardResponseData buyerBoardResponseData = (BuyerBoardResponseData) o;
     return Objects.equals(this.id, buyerBoardResponseData.id) &&
-        Objects.equals(this.updatedAt, buyerBoardResponseData.updatedAt) &&
-        Objects.equals(this.isPublic, buyerBoardResponseData.isPublic) &&
-        Objects.equals(this.description, buyerBoardResponseData.description) &&
         Objects.equals(this.title, buyerBoardResponseData.title) &&
-        Objects.equals(this.items, buyerBoardResponseData.items) &&
+        Objects.equals(this.description, buyerBoardResponseData.description) &&
+        Objects.equals(this.isPublic, buyerBoardResponseData.isPublic) &&
         Objects.equals(this.shareToken, buyerBoardResponseData.shareToken) &&
         Objects.equals(this.coverUrl, buyerBoardResponseData.coverUrl) &&
+        Objects.equals(this.ownerName, buyerBoardResponseData.ownerName) &&
         Objects.equals(this.mine, buyerBoardResponseData.mine) &&
-        Objects.equals(this.ownerName, buyerBoardResponseData.ownerName);
+        Objects.equals(this.items, buyerBoardResponseData.items) &&
+        Objects.equals(this.updatedAt, buyerBoardResponseData.updatedAt);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -338,7 +338,7 @@ public class BuyerBoardResponseData {
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, updatedAt, isPublic, description, title, items, shareToken, coverUrl, mine, ownerName);
+    return Objects.hash(id, title, description, isPublic, shareToken, coverUrl, ownerName, mine, items, updatedAt);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -353,15 +353,15 @@ public class BuyerBoardResponseData {
     StringBuilder sb = new StringBuilder();
     sb.append("class BuyerBoardResponseData {\n");
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
-    sb.append("    updatedAt: ").append(toIndentedString(updatedAt)).append("\n");
-    sb.append("    isPublic: ").append(toIndentedString(isPublic)).append("\n");
-    sb.append("    description: ").append(toIndentedString(description)).append("\n");
     sb.append("    title: ").append(toIndentedString(title)).append("\n");
-    sb.append("    items: ").append(toIndentedString(items)).append("\n");
+    sb.append("    description: ").append(toIndentedString(description)).append("\n");
+    sb.append("    isPublic: ").append(toIndentedString(isPublic)).append("\n");
     sb.append("    shareToken: ").append(toIndentedString(shareToken)).append("\n");
     sb.append("    coverUrl: ").append(toIndentedString(coverUrl)).append("\n");
-    sb.append("    mine: ").append(toIndentedString(mine)).append("\n");
     sb.append("    ownerName: ").append(toIndentedString(ownerName)).append("\n");
+    sb.append("    mine: ").append(toIndentedString(mine)).append("\n");
+    sb.append("    items: ").append(toIndentedString(items)).append("\n");
+    sb.append("    updatedAt: ").append(toIndentedString(updatedAt)).append("\n");
     sb.append("}");
     return sb.toString();
   }

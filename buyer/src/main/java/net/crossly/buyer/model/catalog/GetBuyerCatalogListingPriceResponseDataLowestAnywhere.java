@@ -25,15 +25,20 @@ import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import org.openapitools.jackson.nullable.JsonNullable;
 
 /**
  * GetBuyerCatalogListingPriceResponseDataLowestAnywhere
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-11T23:47:29.843Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-27T19:58:46.962Z[Etc/UTC]")
 public class GetBuyerCatalogListingPriceResponseDataLowestAnywhere {
   public static final String SERIALIZED_NAME_PLATFORMS = "platforms";
   @SerializedName(SERIALIZED_NAME_PLATFORMS)
   private List<String> platforms = new ArrayList<String>();
+
+  public static final String SERIALIZED_NAME_PLATFORM_NAMES = "platformNames";
+  @SerializedName(SERIALIZED_NAME_PLATFORM_NAMES)
+  private List<String> platformNames = null;
 
   public GetBuyerCatalogListingPriceResponseDataLowestAnywhere() { 
   }
@@ -66,6 +71,37 @@ public class GetBuyerCatalogListingPriceResponseDataLowestAnywhere {
   }
 
 
+  public GetBuyerCatalogListingPriceResponseDataLowestAnywhere platformNames(List<String> platformNames) {
+    
+    this.platformNames = platformNames;
+    return this;
+  }
+
+  public GetBuyerCatalogListingPriceResponseDataLowestAnywhere addPlatformNamesItem(String platformNamesItem) {
+    if (this.platformNames == null) {
+      this.platformNames = new ArrayList<String>();
+    }
+    this.platformNames.add(platformNamesItem);
+    return this;
+  }
+
+   /**
+   * Get platformNames
+   * @return platformNames
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public List<String> getPlatformNames() {
+    return platformNames;
+  }
+
+
+  public void setPlatformNames(List<String> platformNames) {
+    this.platformNames = platformNames;
+  }
+
+
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -75,12 +111,24 @@ public class GetBuyerCatalogListingPriceResponseDataLowestAnywhere {
       return false;
     }
     GetBuyerCatalogListingPriceResponseDataLowestAnywhere getBuyerCatalogListingPriceResponseDataLowestAnywhere = (GetBuyerCatalogListingPriceResponseDataLowestAnywhere) o;
-    return Objects.equals(this.platforms, getBuyerCatalogListingPriceResponseDataLowestAnywhere.platforms);
+    return Objects.equals(this.platforms, getBuyerCatalogListingPriceResponseDataLowestAnywhere.platforms) &&
+        Objects.equals(this.platformNames, getBuyerCatalogListingPriceResponseDataLowestAnywhere.platformNames);
+  }
+
+  private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+    return a == b || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(platforms);
+    return Objects.hash(platforms, platformNames);
+  }
+
+  private static <T> int hashCodeNullable(JsonNullable<T> a) {
+    if (a == null) {
+      return 1;
+    }
+    return a.isPresent() ? Arrays.deepHashCode(new Object[]{a.get()}) : 31;
   }
 
   @Override
@@ -88,6 +136,7 @@ public class GetBuyerCatalogListingPriceResponseDataLowestAnywhere {
     StringBuilder sb = new StringBuilder();
     sb.append("class GetBuyerCatalogListingPriceResponseDataLowestAnywhere {\n");
     sb.append("    platforms: ").append(toIndentedString(platforms)).append("\n");
+    sb.append("    platformNames: ").append(toIndentedString(platformNames)).append("\n");
     sb.append("}");
     return sb.toString();
   }

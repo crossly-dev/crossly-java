@@ -29,13 +29,13 @@ import com.google.gson.stream.JsonWriter;
 @JsonAdapter(GetWorldCapabilityCatalogueResponseDataKindsClientsItem.Adapter.class)
 public enum GetWorldCapabilityCatalogueResponseDataKindsClientsItem {
   
-  WEB("web"),
-  
   APP("app"),
   
-  GODOT("godot"),
-  
   API("api"),
+  
+  WEB("web"),
+  
+  GODOT("godot"),
   
   RUNNER("runner");
 

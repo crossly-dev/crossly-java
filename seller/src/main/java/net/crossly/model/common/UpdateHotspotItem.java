@@ -29,35 +29,11 @@ import org.openapitools.jackson.nullable.JsonNullable;
 /**
  * UpdateHotspotItem
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-11T23:44:48.922Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-27T19:42:43.186Z[Etc/UTC]")
 public class UpdateHotspotItem {
-  public static final String SERIALIZED_NAME_AVAILABLE = "available";
-  @SerializedName(SERIALIZED_NAME_AVAILABLE)
-  private Boolean available;
-
-  public static final String SERIALIZED_NAME_LABEL = "label";
-  @SerializedName(SERIALIZED_NAME_LABEL)
-  private String label;
-
-  public static final String SERIALIZED_NAME_TITLE = "title";
-  @SerializedName(SERIALIZED_NAME_TITLE)
-  private String title;
-
   public static final String SERIALIZED_NAME_PLATFORM_LISTING_ID = "platformListingId";
   @SerializedName(SERIALIZED_NAME_PLATFORM_LISTING_ID)
   private String platformListingId;
-
-  public static final String SERIALIZED_NAME_SLUG = "slug";
-  @SerializedName(SERIALIZED_NAME_SLUG)
-  private String slug;
-
-  public static final String SERIALIZED_NAME_PRICE_CENTS = "priceCents";
-  @SerializedName(SERIALIZED_NAME_PRICE_CENTS)
-  private BigDecimal priceCents;
-
-  public static final String SERIALIZED_NAME_IMAGE_URL = "imageUrl";
-  @SerializedName(SERIALIZED_NAME_IMAGE_URL)
-  private String imageUrl;
 
   public static final String SERIALIZED_NAME_X = "x";
   @SerializedName(SERIALIZED_NAME_X)
@@ -67,77 +43,32 @@ public class UpdateHotspotItem {
   @SerializedName(SERIALIZED_NAME_Y)
   private BigDecimal y;
 
+  public static final String SERIALIZED_NAME_LABEL = "label";
+  @SerializedName(SERIALIZED_NAME_LABEL)
+  private String label;
+
+  public static final String SERIALIZED_NAME_SLUG = "slug";
+  @SerializedName(SERIALIZED_NAME_SLUG)
+  private String slug;
+
+  public static final String SERIALIZED_NAME_TITLE = "title";
+  @SerializedName(SERIALIZED_NAME_TITLE)
+  private String title;
+
+  public static final String SERIALIZED_NAME_PRICE_CENTS = "priceCents";
+  @SerializedName(SERIALIZED_NAME_PRICE_CENTS)
+  private BigDecimal priceCents;
+
+  public static final String SERIALIZED_NAME_IMAGE_URL = "imageUrl";
+  @SerializedName(SERIALIZED_NAME_IMAGE_URL)
+  private String imageUrl;
+
+  public static final String SERIALIZED_NAME_AVAILABLE = "available";
+  @SerializedName(SERIALIZED_NAME_AVAILABLE)
+  private Boolean available;
+
   public UpdateHotspotItem() { 
   }
-
-  public UpdateHotspotItem available(Boolean available) {
-    
-    this.available = available;
-    return this;
-  }
-
-   /**
-   * Get available
-   * @return available
-  **/
-  @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "")
-
-  public Boolean getAvailable() {
-    return available;
-  }
-
-
-  public void setAvailable(Boolean available) {
-    this.available = available;
-  }
-
-
-  public UpdateHotspotItem label(String label) {
-    
-    this.label = label;
-    return this;
-  }
-
-   /**
-   * Get label
-   * @return label
-  **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
-
-  public String getLabel() {
-    return label;
-  }
-
-
-  public void setLabel(String label) {
-    this.label = label;
-  }
-
-
-  public UpdateHotspotItem title(String title) {
-    
-    this.title = title;
-    return this;
-  }
-
-   /**
-   * Get title
-   * @return title
-  **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
-
-  public String getTitle() {
-    return title;
-  }
-
-
-  public void setTitle(String title) {
-    this.title = title;
-  }
-
 
   public UpdateHotspotItem platformListingId(String platformListingId) {
     
@@ -159,75 +90,6 @@ public class UpdateHotspotItem {
 
   public void setPlatformListingId(String platformListingId) {
     this.platformListingId = platformListingId;
-  }
-
-
-  public UpdateHotspotItem slug(String slug) {
-    
-    this.slug = slug;
-    return this;
-  }
-
-   /**
-   * Get slug
-   * @return slug
-  **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
-
-  public String getSlug() {
-    return slug;
-  }
-
-
-  public void setSlug(String slug) {
-    this.slug = slug;
-  }
-
-
-  public UpdateHotspotItem priceCents(BigDecimal priceCents) {
-    
-    this.priceCents = priceCents;
-    return this;
-  }
-
-   /**
-   * Get priceCents
-   * @return priceCents
-  **/
-  @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "")
-
-  public BigDecimal getPriceCents() {
-    return priceCents;
-  }
-
-
-  public void setPriceCents(BigDecimal priceCents) {
-    this.priceCents = priceCents;
-  }
-
-
-  public UpdateHotspotItem imageUrl(String imageUrl) {
-    
-    this.imageUrl = imageUrl;
-    return this;
-  }
-
-   /**
-   * Get imageUrl
-   * @return imageUrl
-  **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
-
-  public String getImageUrl() {
-    return imageUrl;
-  }
-
-
-  public void setImageUrl(String imageUrl) {
-    this.imageUrl = imageUrl;
   }
 
 
@@ -277,6 +139,144 @@ public class UpdateHotspotItem {
   }
 
 
+  public UpdateHotspotItem label(String label) {
+    
+    this.label = label;
+    return this;
+  }
+
+   /**
+   * Get label
+   * @return label
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public String getLabel() {
+    return label;
+  }
+
+
+  public void setLabel(String label) {
+    this.label = label;
+  }
+
+
+  public UpdateHotspotItem slug(String slug) {
+    
+    this.slug = slug;
+    return this;
+  }
+
+   /**
+   * Get slug
+   * @return slug
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public String getSlug() {
+    return slug;
+  }
+
+
+  public void setSlug(String slug) {
+    this.slug = slug;
+  }
+
+
+  public UpdateHotspotItem title(String title) {
+    
+    this.title = title;
+    return this;
+  }
+
+   /**
+   * Get title
+   * @return title
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public String getTitle() {
+    return title;
+  }
+
+
+  public void setTitle(String title) {
+    this.title = title;
+  }
+
+
+  public UpdateHotspotItem priceCents(BigDecimal priceCents) {
+    
+    this.priceCents = priceCents;
+    return this;
+  }
+
+   /**
+   * Get priceCents
+   * @return priceCents
+  **/
+  @javax.annotation.Nonnull
+  @ApiModelProperty(required = true, value = "")
+
+  public BigDecimal getPriceCents() {
+    return priceCents;
+  }
+
+
+  public void setPriceCents(BigDecimal priceCents) {
+    this.priceCents = priceCents;
+  }
+
+
+  public UpdateHotspotItem imageUrl(String imageUrl) {
+    
+    this.imageUrl = imageUrl;
+    return this;
+  }
+
+   /**
+   * Get imageUrl
+   * @return imageUrl
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public String getImageUrl() {
+    return imageUrl;
+  }
+
+
+  public void setImageUrl(String imageUrl) {
+    this.imageUrl = imageUrl;
+  }
+
+
+  public UpdateHotspotItem available(Boolean available) {
+    
+    this.available = available;
+    return this;
+  }
+
+   /**
+   * Get available
+   * @return available
+  **/
+  @javax.annotation.Nonnull
+  @ApiModelProperty(required = true, value = "")
+
+  public Boolean getAvailable() {
+    return available;
+  }
+
+
+  public void setAvailable(Boolean available) {
+    this.available = available;
+  }
+
+
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -286,15 +286,15 @@ public class UpdateHotspotItem {
       return false;
     }
     UpdateHotspotItem updateHotspotItem = (UpdateHotspotItem) o;
-    return Objects.equals(this.available, updateHotspotItem.available) &&
+    return Objects.equals(this.platformListingId, updateHotspotItem.platformListingId) &&
+        Objects.equals(this.x, updateHotspotItem.x) &&
+        Objects.equals(this.y, updateHotspotItem.y) &&
         Objects.equals(this.label, updateHotspotItem.label) &&
-        Objects.equals(this.title, updateHotspotItem.title) &&
-        Objects.equals(this.platformListingId, updateHotspotItem.platformListingId) &&
         Objects.equals(this.slug, updateHotspotItem.slug) &&
+        Objects.equals(this.title, updateHotspotItem.title) &&
         Objects.equals(this.priceCents, updateHotspotItem.priceCents) &&
         Objects.equals(this.imageUrl, updateHotspotItem.imageUrl) &&
-        Objects.equals(this.x, updateHotspotItem.x) &&
-        Objects.equals(this.y, updateHotspotItem.y);
+        Objects.equals(this.available, updateHotspotItem.available);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -303,7 +303,7 @@ public class UpdateHotspotItem {
 
   @Override
   public int hashCode() {
-    return Objects.hash(available, label, title, platformListingId, slug, priceCents, imageUrl, x, y);
+    return Objects.hash(platformListingId, x, y, label, slug, title, priceCents, imageUrl, available);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -317,15 +317,15 @@ public class UpdateHotspotItem {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class UpdateHotspotItem {\n");
-    sb.append("    available: ").append(toIndentedString(available)).append("\n");
-    sb.append("    label: ").append(toIndentedString(label)).append("\n");
-    sb.append("    title: ").append(toIndentedString(title)).append("\n");
     sb.append("    platformListingId: ").append(toIndentedString(platformListingId)).append("\n");
-    sb.append("    slug: ").append(toIndentedString(slug)).append("\n");
-    sb.append("    priceCents: ").append(toIndentedString(priceCents)).append("\n");
-    sb.append("    imageUrl: ").append(toIndentedString(imageUrl)).append("\n");
     sb.append("    x: ").append(toIndentedString(x)).append("\n");
     sb.append("    y: ").append(toIndentedString(y)).append("\n");
+    sb.append("    label: ").append(toIndentedString(label)).append("\n");
+    sb.append("    slug: ").append(toIndentedString(slug)).append("\n");
+    sb.append("    title: ").append(toIndentedString(title)).append("\n");
+    sb.append("    priceCents: ").append(toIndentedString(priceCents)).append("\n");
+    sb.append("    imageUrl: ").append(toIndentedString(imageUrl)).append("\n");
+    sb.append("    available: ").append(toIndentedString(available)).append("\n");
     sb.append("}");
     return sb.toString();
   }

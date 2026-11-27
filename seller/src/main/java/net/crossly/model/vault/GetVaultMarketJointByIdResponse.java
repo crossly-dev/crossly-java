@@ -37,7 +37,7 @@ import net.crossly.model.vault.GetVaultMarketJointByIdResponseUnits;
 /**
  * GetVaultMarketJointByIdResponse
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-11T23:44:48.922Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-27T19:42:43.186Z[Etc/UTC]")
 public class GetVaultMarketJointByIdResponse {
   public static final String SERIALIZED_NAME_GATE = "gate";
   @SerializedName(SERIALIZED_NAME_GATE)

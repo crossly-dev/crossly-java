@@ -27,19 +27,23 @@ import com.google.gson.reflect.TypeToken;
 import java.io.IOException;
 
 
+import net.crossly.model.account.CreateAccountCancelDeletionResponse;
+import net.crossly.model.account.CreateAccountIdentityVerificationStartRequest;
 import net.crossly.model.account.CreateAccountLogoutAllResponse;
+import net.crossly.model.account.CreateAccountReconfirmDeletionResponse;
 import net.crossly.model.account.CreateAccountRequestDeletionResponse;
+import net.crossly.model.world.CreateWorldMatureVerifyResponse;
 import net.crossly.model.common.DeleteAuthSessionResponse;
-import net.crossly.model.drop.DeleteDropResponse;
 import net.crossly.model.common.Error;
+import net.crossly.model.account.GetAccountClosureChecklistResponse;
 import net.crossly.model.account.GetAccountDeletionStatusResponse;
+import net.crossly.model.account.GetAccountIdentityVerificationResponse;
 import net.crossly.model.me.GetMeResponse;
 import net.crossly.model.common.GetMembershipResponse;
 import net.crossly.model.common.ListAuthSessionsResponse;
 import net.crossly.model.common.ListConnectedAppsResponse;
 import net.crossly.model.common.OkResponse;
 import net.crossly.model.common.SuccessResponse;
-import java.util.UUID;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
@@ -159,7 +163,7 @@ public class AccountApi {
     /**
      * Cancel a pending account deletion.
      * 
-     * @return DeleteDropResponse
+     * @return CreateAccountCancelDeletionResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -173,15 +177,15 @@ public class AccountApi {
         <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
      </table>
      */
-    public DeleteDropResponse createAccountCancelDeletion() throws ApiException {
-        ApiResponse<DeleteDropResponse> localVarResp = createAccountCancelDeletionWithHttpInfo();
+    public CreateAccountCancelDeletionResponse createAccountCancelDeletion() throws ApiException {
+        ApiResponse<CreateAccountCancelDeletionResponse> localVarResp = createAccountCancelDeletionWithHttpInfo();
         return localVarResp.getData();
     }
 
     /**
      * Cancel a pending account deletion.
      * 
-     * @return ApiResponse&lt;DeleteDropResponse&gt;
+     * @return ApiResponse&lt;CreateAccountCancelDeletionResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -195,9 +199,9 @@ public class AccountApi {
         <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<DeleteDropResponse> createAccountCancelDeletionWithHttpInfo() throws ApiException {
+    public ApiResponse<CreateAccountCancelDeletionResponse> createAccountCancelDeletionWithHttpInfo() throws ApiException {
         okhttp3.Call localVarCall = createAccountCancelDeletionValidateBeforeCall(null);
-        Type localVarReturnType = new TypeToken<DeleteDropResponse>(){}.getType();
+        Type localVarReturnType = new TypeToken<CreateAccountCancelDeletionResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -219,10 +223,161 @@ public class AccountApi {
         <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call createAccountCancelDeletionAsync(final ApiCallback<DeleteDropResponse> _callback) throws ApiException {
+    public okhttp3.Call createAccountCancelDeletionAsync(final ApiCallback<CreateAccountCancelDeletionResponse> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = createAccountCancelDeletionValidateBeforeCall(_callback);
-        Type localVarReturnType = new TypeToken<DeleteDropResponse>(){}.getType();
+        Type localVarReturnType = new TypeToken<CreateAccountCancelDeletionResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for createAccountIdentityVerificationStart
+     * @param createAccountIdentityVerificationStartRequest  (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call createAccountIdentityVerificationStartCall(CreateAccountIdentityVerificationStartRequest createAccountIdentityVerificationStartRequest, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = createAccountIdentityVerificationStartRequest;
+
+        // create path and map variables
+        String localVarPath = "/v1/account/identity-verification/start";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "PersonalAccessToken" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call createAccountIdentityVerificationStartValidateBeforeCall(CreateAccountIdentityVerificationStartRequest createAccountIdentityVerificationStartRequest, final ApiCallback _callback) throws ApiException {
+        
+        // verify the required parameter 'createAccountIdentityVerificationStartRequest' is set
+        if (createAccountIdentityVerificationStartRequest == null) {
+            throw new ApiException("Missing the required parameter 'createAccountIdentityVerificationStartRequest' when calling createAccountIdentityVerificationStart(Async)");
+        }
+        
+
+        okhttp3.Call localVarCall = createAccountIdentityVerificationStartCall(createAccountIdentityVerificationStartRequest, _callback);
+        return localVarCall;
+
+    }
+
+    /**
+     * Start the identity check (photo ID + selfie). Returns a Stripe-hosted URL the person completes.
+     * alreadyVerified:true when there is nothing to do. Nothing is verified until a person completes the link.
+     * @param createAccountIdentityVerificationStartRequest  (required)
+     * @return CreateWorldMatureVerifyResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public CreateWorldMatureVerifyResponse createAccountIdentityVerificationStart(CreateAccountIdentityVerificationStartRequest createAccountIdentityVerificationStartRequest) throws ApiException {
+        ApiResponse<CreateWorldMatureVerifyResponse> localVarResp = createAccountIdentityVerificationStartWithHttpInfo(createAccountIdentityVerificationStartRequest);
+        return localVarResp.getData();
+    }
+
+    /**
+     * Start the identity check (photo ID + selfie). Returns a Stripe-hosted URL the person completes.
+     * alreadyVerified:true when there is nothing to do. Nothing is verified until a person completes the link.
+     * @param createAccountIdentityVerificationStartRequest  (required)
+     * @return ApiResponse&lt;CreateWorldMatureVerifyResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<CreateWorldMatureVerifyResponse> createAccountIdentityVerificationStartWithHttpInfo(CreateAccountIdentityVerificationStartRequest createAccountIdentityVerificationStartRequest) throws ApiException {
+        okhttp3.Call localVarCall = createAccountIdentityVerificationStartValidateBeforeCall(createAccountIdentityVerificationStartRequest, null);
+        Type localVarReturnType = new TypeToken<CreateWorldMatureVerifyResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Start the identity check (photo ID + selfie). Returns a Stripe-hosted URL the person completes. (asynchronously)
+     * alreadyVerified:true when there is nothing to do. Nothing is verified until a person completes the link.
+     * @param createAccountIdentityVerificationStartRequest  (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call createAccountIdentityVerificationStartAsync(CreateAccountIdentityVerificationStartRequest createAccountIdentityVerificationStartRequest, final ApiCallback<CreateWorldMatureVerifyResponse> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = createAccountIdentityVerificationStartValidateBeforeCall(createAccountIdentityVerificationStartRequest, _callback);
+        Type localVarReturnType = new TypeToken<CreateWorldMatureVerifyResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -369,6 +524,148 @@ public class AccountApi {
         return localVarCall;
     }
     /**
+     * Build call for createAccountReconfirmDeletion
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call createAccountReconfirmDeletionCall(final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/v1/account/reconfirm-deletion";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "PersonalAccessToken" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call createAccountReconfirmDeletionValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        
+
+        okhttp3.Call localVarCall = createAccountReconfirmDeletionCall(_callback);
+        return localVarCall;
+
+    }
+
+    /**
+     * Confirm again a deletion paused because the account was in use.
+     * 
+     * @return CreateAccountReconfirmDeletionResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public CreateAccountReconfirmDeletionResponse createAccountReconfirmDeletion() throws ApiException {
+        ApiResponse<CreateAccountReconfirmDeletionResponse> localVarResp = createAccountReconfirmDeletionWithHttpInfo();
+        return localVarResp.getData();
+    }
+
+    /**
+     * Confirm again a deletion paused because the account was in use.
+     * 
+     * @return ApiResponse&lt;CreateAccountReconfirmDeletionResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<CreateAccountReconfirmDeletionResponse> createAccountReconfirmDeletionWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = createAccountReconfirmDeletionValidateBeforeCall(null);
+        Type localVarReturnType = new TypeToken<CreateAccountReconfirmDeletionResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Confirm again a deletion paused because the account was in use. (asynchronously)
+     * 
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call createAccountReconfirmDeletionAsync(final ApiCallback<CreateAccountReconfirmDeletionResponse> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = createAccountReconfirmDeletionValidateBeforeCall(_callback);
+        Type localVarReturnType = new TypeToken<CreateAccountReconfirmDeletionResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
      * Build call for createAccountRequestDeletion
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -441,7 +738,7 @@ public class AccountApi {
     }
 
     /**
-     * Schedule account deletion after a grace period.
+     * Schedule account deletion after a grace period. Requires confirmEmail.
      * 
      * @return CreateAccountRequestDeletionResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -463,7 +760,7 @@ public class AccountApi {
     }
 
     /**
-     * Schedule account deletion after a grace period.
+     * Schedule account deletion after a grace period. Requires confirmEmail.
      * 
      * @return ApiResponse&lt;CreateAccountRequestDeletionResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -486,7 +783,7 @@ public class AccountApi {
     }
 
     /**
-     * Schedule account deletion after a grace period. (asynchronously)
+     * Schedule account deletion after a grace period. Requires confirmEmail. (asynchronously)
      * 
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -670,7 +967,7 @@ public class AccountApi {
         <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call deleteAuthSessionBySessionIdCall(UUID sessionId, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call deleteAuthSessionBySessionIdCall(String sessionId, final ApiCallback _callback) throws ApiException {
         String basePath = null;
 
         // Operation Servers
@@ -718,7 +1015,7 @@ public class AccountApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call deleteAuthSessionBySessionIdValidateBeforeCall(UUID sessionId, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call deleteAuthSessionBySessionIdValidateBeforeCall(String sessionId, final ApiCallback _callback) throws ApiException {
         
         // verify the required parameter 'sessionId' is set
         if (sessionId == null) {
@@ -749,7 +1046,7 @@ public class AccountApi {
         <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
      </table>
      */
-    public SuccessResponse deleteAuthSessionBySessionId(UUID sessionId) throws ApiException {
+    public SuccessResponse deleteAuthSessionBySessionId(String sessionId) throws ApiException {
         ApiResponse<SuccessResponse> localVarResp = deleteAuthSessionBySessionIdWithHttpInfo(sessionId);
         return localVarResp.getData();
     }
@@ -772,7 +1069,7 @@ public class AccountApi {
         <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<SuccessResponse> deleteAuthSessionBySessionIdWithHttpInfo(UUID sessionId) throws ApiException {
+    public ApiResponse<SuccessResponse> deleteAuthSessionBySessionIdWithHttpInfo(String sessionId) throws ApiException {
         okhttp3.Call localVarCall = deleteAuthSessionBySessionIdValidateBeforeCall(sessionId, null);
         Type localVarReturnType = new TypeToken<SuccessResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
@@ -797,7 +1094,7 @@ public class AccountApi {
         <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call deleteAuthSessionBySessionIdAsync(UUID sessionId, final ApiCallback<SuccessResponse> _callback) throws ApiException {
+    public okhttp3.Call deleteAuthSessionBySessionIdAsync(String sessionId, final ApiCallback<SuccessResponse> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = deleteAuthSessionBySessionIdValidateBeforeCall(sessionId, _callback);
         Type localVarReturnType = new TypeToken<SuccessResponse>(){}.getType();
@@ -957,6 +1254,148 @@ public class AccountApi {
         return localVarCall;
     }
     /**
+     * Build call for getAccountClosureChecklist
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getAccountClosureChecklistCall(final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/v1/account/closure-checklist";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "PersonalAccessToken" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call getAccountClosureChecklistValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        
+
+        okhttp3.Call localVarCall = getAccountClosureChecklistCall(_callback);
+        return localVarCall;
+
+    }
+
+    /**
+     * What closing the account will and will not do, before you request it.
+     * 
+     * @return GetAccountClosureChecklistResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public GetAccountClosureChecklistResponse getAccountClosureChecklist() throws ApiException {
+        ApiResponse<GetAccountClosureChecklistResponse> localVarResp = getAccountClosureChecklistWithHttpInfo();
+        return localVarResp.getData();
+    }
+
+    /**
+     * What closing the account will and will not do, before you request it.
+     * 
+     * @return ApiResponse&lt;GetAccountClosureChecklistResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<GetAccountClosureChecklistResponse> getAccountClosureChecklistWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = getAccountClosureChecklistValidateBeforeCall(null);
+        Type localVarReturnType = new TypeToken<GetAccountClosureChecklistResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * What closing the account will and will not do, before you request it. (asynchronously)
+     * 
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getAccountClosureChecklistAsync(final ApiCallback<GetAccountClosureChecklistResponse> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = getAccountClosureChecklistValidateBeforeCall(_callback);
+        Type localVarReturnType = new TypeToken<GetAccountClosureChecklistResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
      * Build call for getAccountDeletionStatus
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -1095,6 +1534,148 @@ public class AccountApi {
 
         okhttp3.Call localVarCall = getAccountDeletionStatusValidateBeforeCall(_callback);
         Type localVarReturnType = new TypeToken<GetAccountDeletionStatusResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for getAccountIdentityVerification
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getAccountIdentityVerificationCall(final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/v1/account/identity-verification";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "PersonalAccessToken" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call getAccountIdentityVerificationValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        
+
+        okhttp3.Call localVarCall = getAccountIdentityVerificationCall(_callback);
+        return localVarCall;
+
+    }
+
+    /**
+     * Your identity verification: one status for the whole account, read by every feature that needs ID.
+     * status is unverified, requires_input, processing, verified or canceled. requires_input with a lastError { code, reason } is a failed try the person can redo on the same link (start returns it); processing is being reviewed; neither is a decline, only canceled is. attempts counts the failed tries. ageVerified passes the age-restricted checkout gate. message is the next step in words (null once verified).
+     * @return GetAccountIdentityVerificationResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public GetAccountIdentityVerificationResponse getAccountIdentityVerification() throws ApiException {
+        ApiResponse<GetAccountIdentityVerificationResponse> localVarResp = getAccountIdentityVerificationWithHttpInfo();
+        return localVarResp.getData();
+    }
+
+    /**
+     * Your identity verification: one status for the whole account, read by every feature that needs ID.
+     * status is unverified, requires_input, processing, verified or canceled. requires_input with a lastError { code, reason } is a failed try the person can redo on the same link (start returns it); processing is being reviewed; neither is a decline, only canceled is. attempts counts the failed tries. ageVerified passes the age-restricted checkout gate. message is the next step in words (null once verified).
+     * @return ApiResponse&lt;GetAccountIdentityVerificationResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<GetAccountIdentityVerificationResponse> getAccountIdentityVerificationWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = getAccountIdentityVerificationValidateBeforeCall(null);
+        Type localVarReturnType = new TypeToken<GetAccountIdentityVerificationResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Your identity verification: one status for the whole account, read by every feature that needs ID. (asynchronously)
+     * status is unverified, requires_input, processing, verified or canceled. requires_input with a lastError { code, reason } is a failed try the person can redo on the same link (start returns it); processing is being reviewed; neither is a decline, only canceled is. attempts counts the failed tries. ageVerified passes the age-restricted checkout gate. message is the next step in words (null once verified).
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getAccountIdentityVerificationAsync(final ApiCallback<GetAccountIdentityVerificationResponse> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = getAccountIdentityVerificationValidateBeforeCall(_callback);
+        Type localVarReturnType = new TypeToken<GetAccountIdentityVerificationResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }

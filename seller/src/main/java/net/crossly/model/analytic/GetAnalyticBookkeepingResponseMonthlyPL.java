@@ -28,7 +28,7 @@ import java.math.BigDecimal;
 /**
  * GetAnalyticBookkeepingResponseMonthlyPL
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-11T23:44:48.922Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-27T19:42:43.186Z[Etc/UTC]")
 public class GetAnalyticBookkeepingResponseMonthlyPL {
   public static final String SERIALIZED_NAME_MONTH = "month";
   @SerializedName(SERIALIZED_NAME_MONTH)
@@ -49,6 +49,10 @@ public class GetAnalyticBookkeepingResponseMonthlyPL {
   public static final String SERIALIZED_NAME_SHIPPING_COSTS = "shippingCosts";
   @SerializedName(SERIALIZED_NAME_SHIPPING_COSTS)
   private BigDecimal shippingCosts;
+
+  public static final String SERIALIZED_NAME_OTHER_EXPENSES = "otherExpenses";
+  @SerializedName(SERIALIZED_NAME_OTHER_EXPENSES)
+  private BigDecimal otherExpenses;
 
   public static final String SERIALIZED_NAME_NET_PROFIT = "netProfit";
   @SerializedName(SERIALIZED_NAME_NET_PROFIT)
@@ -172,6 +176,29 @@ public class GetAnalyticBookkeepingResponseMonthlyPL {
   }
 
 
+  public GetAnalyticBookkeepingResponseMonthlyPL otherExpenses(BigDecimal otherExpenses) {
+    
+    this.otherExpenses = otherExpenses;
+    return this;
+  }
+
+   /**
+   * Mileage and manual expenses.
+   * @return otherExpenses
+  **/
+  @javax.annotation.Nonnull
+  @ApiModelProperty(required = true, value = "Mileage and manual expenses.")
+
+  public BigDecimal getOtherExpenses() {
+    return otherExpenses;
+  }
+
+
+  public void setOtherExpenses(BigDecimal otherExpenses) {
+    this.otherExpenses = otherExpenses;
+  }
+
+
   public GetAnalyticBookkeepingResponseMonthlyPL netProfit(BigDecimal netProfit) {
     
     this.netProfit = netProfit;
@@ -209,12 +236,13 @@ public class GetAnalyticBookkeepingResponseMonthlyPL {
         Objects.equals(this.cogs, getAnalyticBookkeepingResponseMonthlyPL.cogs) &&
         Objects.equals(this.platformFees, getAnalyticBookkeepingResponseMonthlyPL.platformFees) &&
         Objects.equals(this.shippingCosts, getAnalyticBookkeepingResponseMonthlyPL.shippingCosts) &&
+        Objects.equals(this.otherExpenses, getAnalyticBookkeepingResponseMonthlyPL.otherExpenses) &&
         Objects.equals(this.netProfit, getAnalyticBookkeepingResponseMonthlyPL.netProfit);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(month, revenue, cogs, platformFees, shippingCosts, netProfit);
+    return Objects.hash(month, revenue, cogs, platformFees, shippingCosts, otherExpenses, netProfit);
   }
 
   @Override
@@ -226,6 +254,7 @@ public class GetAnalyticBookkeepingResponseMonthlyPL {
     sb.append("    cogs: ").append(toIndentedString(cogs)).append("\n");
     sb.append("    platformFees: ").append(toIndentedString(platformFees)).append("\n");
     sb.append("    shippingCosts: ").append(toIndentedString(shippingCosts)).append("\n");
+    sb.append("    otherExpenses: ").append(toIndentedString(otherExpenses)).append("\n");
     sb.append("    netProfit: ").append(toIndentedString(netProfit)).append("\n");
     sb.append("}");
     return sb.toString();

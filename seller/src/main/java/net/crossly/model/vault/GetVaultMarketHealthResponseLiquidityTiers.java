@@ -28,18 +28,18 @@ import java.math.BigDecimal;
 /**
  * GetVaultMarketHealthResponseLiquidityTiers
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-11T23:44:48.922Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-27T19:42:43.186Z[Etc/UTC]")
 public class GetVaultMarketHealthResponseLiquidityTiers {
   /**
    * Gets or Sets tier
    */
   @JsonAdapter(TierEnum.Adapter.class)
   public enum TierEnum {
+    C("C"),
+    
     A("A"),
     
     B("B"),
-    
-    C("C"),
     
     D("D"),
     

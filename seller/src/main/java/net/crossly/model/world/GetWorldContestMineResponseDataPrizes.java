@@ -30,7 +30,7 @@ import org.threeten.bp.OffsetDateTime;
 /**
  * GetWorldContestMineResponseDataPrizes
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-11T23:44:48.922Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-27T19:42:43.186Z[Etc/UTC]")
 public class GetWorldContestMineResponseDataPrizes {
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
@@ -107,6 +107,10 @@ public class GetWorldContestMineResponseDataPrizes {
   @SerializedName(SERIALIZED_NAME_STATUS)
   private StatusEnum status;
 
+  public static final String SERIALIZED_NAME_AMOUNT = "amount";
+  @SerializedName(SERIALIZED_NAME_AMOUNT)
+  private BigDecimal amount;
+
   public static final String SERIALIZED_NAME_KIND = "kind";
   @SerializedName(SERIALIZED_NAME_KIND)
   private String kind;
@@ -122,10 +126,6 @@ public class GetWorldContestMineResponseDataPrizes {
   public static final String SERIALIZED_NAME_CONTEST_ID = "contestId";
   @SerializedName(SERIALIZED_NAME_CONTEST_ID)
   private String contestId;
-
-  public static final String SERIALIZED_NAME_AMOUNT = "amount";
-  @SerializedName(SERIALIZED_NAME_AMOUNT)
-  private BigDecimal amount;
 
   public GetWorldContestMineResponseDataPrizes() { 
   }
@@ -245,6 +245,29 @@ public class GetWorldContestMineResponseDataPrizes {
   }
 
 
+  public GetWorldContestMineResponseDataPrizes amount(BigDecimal amount) {
+    
+    this.amount = amount;
+    return this;
+  }
+
+   /**
+   * Get amount
+   * @return amount
+  **/
+  @javax.annotation.Nonnull
+  @ApiModelProperty(required = true, value = "")
+
+  public BigDecimal getAmount() {
+    return amount;
+  }
+
+
+  public void setAmount(BigDecimal amount) {
+    this.amount = amount;
+  }
+
+
   public GetWorldContestMineResponseDataPrizes kind(String kind) {
     
     this.kind = kind;
@@ -337,29 +360,6 @@ public class GetWorldContestMineResponseDataPrizes {
   }
 
 
-  public GetWorldContestMineResponseDataPrizes amount(BigDecimal amount) {
-    
-    this.amount = amount;
-    return this;
-  }
-
-   /**
-   * Get amount
-   * @return amount
-  **/
-  @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "")
-
-  public BigDecimal getAmount() {
-    return amount;
-  }
-
-
-  public void setAmount(BigDecimal amount) {
-    this.amount = amount;
-  }
-
-
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -374,11 +374,11 @@ public class GetWorldContestMineResponseDataPrizes {
         Objects.equals(this.createdAt, getWorldContestMineResponseDataPrizes.createdAt) &&
         Objects.equals(this.userId, getWorldContestMineResponseDataPrizes.userId) &&
         Objects.equals(this.status, getWorldContestMineResponseDataPrizes.status) &&
+        Objects.equals(this.amount, getWorldContestMineResponseDataPrizes.amount) &&
         Objects.equals(this.kind, getWorldContestMineResponseDataPrizes.kind) &&
         Objects.equals(this.note, getWorldContestMineResponseDataPrizes.note) &&
         Objects.equals(this.place, getWorldContestMineResponseDataPrizes.place) &&
-        Objects.equals(this.contestId, getWorldContestMineResponseDataPrizes.contestId) &&
-        Objects.equals(this.amount, getWorldContestMineResponseDataPrizes.amount);
+        Objects.equals(this.contestId, getWorldContestMineResponseDataPrizes.contestId);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -387,7 +387,7 @@ public class GetWorldContestMineResponseDataPrizes {
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, ref, createdAt, userId, status, kind, note, place, contestId, amount);
+    return Objects.hash(id, ref, createdAt, userId, status, amount, kind, note, place, contestId);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -406,11 +406,11 @@ public class GetWorldContestMineResponseDataPrizes {
     sb.append("    createdAt: ").append(toIndentedString(createdAt)).append("\n");
     sb.append("    userId: ").append(toIndentedString(userId)).append("\n");
     sb.append("    status: ").append(toIndentedString(status)).append("\n");
+    sb.append("    amount: ").append(toIndentedString(amount)).append("\n");
     sb.append("    kind: ").append(toIndentedString(kind)).append("\n");
     sb.append("    note: ").append(toIndentedString(note)).append("\n");
     sb.append("    place: ").append(toIndentedString(place)).append("\n");
     sb.append("    contestId: ").append(toIndentedString(contestId)).append("\n");
-    sb.append("    amount: ").append(toIndentedString(amount)).append("\n");
     sb.append("}");
     return sb.toString();
   }

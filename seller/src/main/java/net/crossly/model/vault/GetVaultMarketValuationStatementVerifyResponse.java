@@ -30,7 +30,7 @@ import org.openapitools.jackson.nullable.JsonNullable;
 /**
  * GetVaultMarketValuationStatementVerifyResponse
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-11T23:44:48.922Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-27T19:42:43.186Z[Etc/UTC]")
 public class GetVaultMarketValuationStatementVerifyResponse {
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
@@ -41,9 +41,9 @@ public class GetVaultMarketValuationStatementVerifyResponse {
    */
   @JsonAdapter(PurposeEnum.Adapter.class)
   public enum PurposeEnum {
-    INSURANCE("insurance"),
+    APPRAISAL("appraisal"),
     
-    APPRAISAL("appraisal");
+    INSURANCE("insurance");
 
     private String value;
 
@@ -128,11 +128,11 @@ public class GetVaultMarketValuationStatementVerifyResponse {
    */
   @JsonAdapter(VerdictEnum.Adapter.class)
   public enum VerdictEnum {
-    VALID("valid"),
+    MISMATCH("mismatch"),
     
     ALTERED("altered"),
     
-    MISMATCH("mismatch");
+    VALID("valid");
 
     private String value;
 

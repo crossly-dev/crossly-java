@@ -31,7 +31,7 @@ import org.openapitools.jackson.nullable.JsonNullable;
 /**
  * UpdateSpatialSceneShopLayoutResponseDataSections
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-11T23:44:48.922Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-27T19:42:43.186Z[Etc/UTC]")
 public class UpdateSpatialSceneShopLayoutResponseDataSections {
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
@@ -56,6 +56,14 @@ public class UpdateSpatialSceneShopLayoutResponseDataSections {
   public static final String SERIALIZED_NAME_HIDDEN = "hidden";
   @SerializedName(SERIALIZED_NAME_HIDDEN)
   private Boolean hidden;
+
+  public static final String SERIALIZED_NAME_UNITS = "units";
+  @SerializedName(SERIALIZED_NAME_UNITS)
+  private BigDecimal units;
+
+  public static final String SERIALIZED_NAME_HOLDER = "holder";
+  @SerializedName(SERIALIZED_NAME_HOLDER)
+  private String holder;
 
   public UpdateSpatialSceneShopLayoutResponseDataSections() { 
   }
@@ -206,6 +214,52 @@ public class UpdateSpatialSceneShopLayoutResponseDataSections {
   }
 
 
+  public UpdateSpatialSceneShopLayoutResponseDataSections units(BigDecimal units) {
+    
+    this.units = units;
+    return this;
+  }
+
+   /**
+   * How many units (cases, bays, pages) it stands with, at least; absent &#x3D; as many as its stock needs. Set from the showroom organizer so an empty display has slots to fill (shared showroom/).
+   * @return units
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "How many units (cases, bays, pages) it stands with, at least; absent = as many as its stock needs. Set from the showroom organizer so an empty display has slots to fill (shared showroom/).")
+
+  public BigDecimal getUnits() {
+    return units;
+  }
+
+
+  public void setUnits(BigDecimal units) {
+    this.units = units;
+  }
+
+
+  public UpdateSpatialSceneShopLayoutResponseDataSections holder(String holder) {
+    
+    this.holder = holder;
+    return this;
+  }
+
+   /**
+   * The holder model it stands as (showroom/fixtures.ts FIXTURE_HOLDERS); absent &#x3D; its type&#39;s free holder.
+   * @return holder
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "The holder model it stands as (showroom/fixtures.ts FIXTURE_HOLDERS); absent = its type's free holder.")
+
+  public String getHolder() {
+    return holder;
+  }
+
+
+  public void setHolder(String holder) {
+    this.holder = holder;
+  }
+
+
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -220,7 +274,9 @@ public class UpdateSpatialSceneShopLayoutResponseDataSections {
         Objects.equals(this.position, updateSpatialSceneShopLayoutResponseDataSections.position) &&
         Objects.equals(this.rotationY, updateSpatialSceneShopLayoutResponseDataSections.rotationY) &&
         Objects.equals(this.sign, updateSpatialSceneShopLayoutResponseDataSections.sign) &&
-        Objects.equals(this.hidden, updateSpatialSceneShopLayoutResponseDataSections.hidden);
+        Objects.equals(this.hidden, updateSpatialSceneShopLayoutResponseDataSections.hidden) &&
+        Objects.equals(this.units, updateSpatialSceneShopLayoutResponseDataSections.units) &&
+        Objects.equals(this.holder, updateSpatialSceneShopLayoutResponseDataSections.holder);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -229,7 +285,7 @@ public class UpdateSpatialSceneShopLayoutResponseDataSections {
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, profile, position, rotationY, sign, hidden);
+    return Objects.hash(id, profile, position, rotationY, sign, hidden, units, holder);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -249,6 +305,8 @@ public class UpdateSpatialSceneShopLayoutResponseDataSections {
     sb.append("    rotationY: ").append(toIndentedString(rotationY)).append("\n");
     sb.append("    sign: ").append(toIndentedString(sign)).append("\n");
     sb.append("    hidden: ").append(toIndentedString(hidden)).append("\n");
+    sb.append("    units: ").append(toIndentedString(units)).append("\n");
+    sb.append("    holder: ").append(toIndentedString(holder)).append("\n");
     sb.append("}");
     return sb.toString();
   }

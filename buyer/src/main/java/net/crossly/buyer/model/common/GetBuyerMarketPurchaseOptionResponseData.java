@@ -31,8 +31,12 @@ import net.crossly.buyer.model.common.GetBuyerMarketPurchaseOptionResponseDataGr
 /**
  * GetBuyerMarketPurchaseOptionResponseData
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-11T23:47:29.843Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-27T19:58:46.962Z[Etc/UTC]")
 public class GetBuyerMarketPurchaseOptionResponseData {
+  public static final String SERIALIZED_NAME_VAULT_STOCK = "vaultStock";
+  @SerializedName(SERIALIZED_NAME_VAULT_STOCK)
+  private Boolean vaultStock;
+
   public static final String SERIALIZED_NAME_FAST_SHIP_CENTS = "fastShipCents";
   @SerializedName(SERIALIZED_NAME_FAST_SHIP_CENTS)
   private BigDecimal fastShipCents;
@@ -41,12 +45,31 @@ public class GetBuyerMarketPurchaseOptionResponseData {
   @SerializedName(SERIALIZED_NAME_GRADING_RUNS)
   private List<GetBuyerMarketPurchaseOptionResponseDataGradingRuns> gradingRuns = new ArrayList<GetBuyerMarketPurchaseOptionResponseDataGradingRuns>();
 
-  public static final String SERIALIZED_NAME_VAULT_STOCK = "vaultStock";
-  @SerializedName(SERIALIZED_NAME_VAULT_STOCK)
-  private Boolean vaultStock;
-
   public GetBuyerMarketPurchaseOptionResponseData() { 
   }
+
+  public GetBuyerMarketPurchaseOptionResponseData vaultStock(Boolean vaultStock) {
+    
+    this.vaultStock = vaultStock;
+    return this;
+  }
+
+   /**
+   * Get vaultStock
+   * @return vaultStock
+  **/
+  @javax.annotation.Nonnull
+  @ApiModelProperty(required = true, value = "")
+
+  public Boolean getVaultStock() {
+    return vaultStock;
+  }
+
+
+  public void setVaultStock(Boolean vaultStock) {
+    this.vaultStock = vaultStock;
+  }
+
 
   public GetBuyerMarketPurchaseOptionResponseData fastShipCents(BigDecimal fastShipCents) {
     
@@ -99,29 +122,6 @@ public class GetBuyerMarketPurchaseOptionResponseData {
   }
 
 
-  public GetBuyerMarketPurchaseOptionResponseData vaultStock(Boolean vaultStock) {
-    
-    this.vaultStock = vaultStock;
-    return this;
-  }
-
-   /**
-   * Get vaultStock
-   * @return vaultStock
-  **/
-  @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "")
-
-  public Boolean getVaultStock() {
-    return vaultStock;
-  }
-
-
-  public void setVaultStock(Boolean vaultStock) {
-    this.vaultStock = vaultStock;
-  }
-
-
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -131,23 +131,23 @@ public class GetBuyerMarketPurchaseOptionResponseData {
       return false;
     }
     GetBuyerMarketPurchaseOptionResponseData getBuyerMarketPurchaseOptionResponseData = (GetBuyerMarketPurchaseOptionResponseData) o;
-    return Objects.equals(this.fastShipCents, getBuyerMarketPurchaseOptionResponseData.fastShipCents) &&
-        Objects.equals(this.gradingRuns, getBuyerMarketPurchaseOptionResponseData.gradingRuns) &&
-        Objects.equals(this.vaultStock, getBuyerMarketPurchaseOptionResponseData.vaultStock);
+    return Objects.equals(this.vaultStock, getBuyerMarketPurchaseOptionResponseData.vaultStock) &&
+        Objects.equals(this.fastShipCents, getBuyerMarketPurchaseOptionResponseData.fastShipCents) &&
+        Objects.equals(this.gradingRuns, getBuyerMarketPurchaseOptionResponseData.gradingRuns);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(fastShipCents, gradingRuns, vaultStock);
+    return Objects.hash(vaultStock, fastShipCents, gradingRuns);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class GetBuyerMarketPurchaseOptionResponseData {\n");
+    sb.append("    vaultStock: ").append(toIndentedString(vaultStock)).append("\n");
     sb.append("    fastShipCents: ").append(toIndentedString(fastShipCents)).append("\n");
     sb.append("    gradingRuns: ").append(toIndentedString(gradingRuns)).append("\n");
-    sb.append("    vaultStock: ").append(toIndentedString(vaultStock)).append("\n");
     sb.append("}");
     return sb.toString();
   }

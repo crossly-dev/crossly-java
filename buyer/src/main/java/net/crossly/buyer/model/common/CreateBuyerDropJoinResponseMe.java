@@ -29,7 +29,7 @@ import org.openapitools.jackson.nullable.JsonNullable;
 /**
  * CreateBuyerDropJoinResponseMe
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-11T23:47:29.843Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-27T19:58:46.962Z[Etc/UTC]")
 public class CreateBuyerDropJoinResponseMe {
   public static final String SERIALIZED_NAME_ENTRY_ID = "entryId";
   @SerializedName(SERIALIZED_NAME_ENTRY_ID)
@@ -56,9 +56,9 @@ public class CreateBuyerDropJoinResponseMe {
    */
   @JsonAdapter(OutcomeEnum.Adapter.class)
   public enum OutcomeEnum {
-    WON("won"),
-    
     EXPIRED("expired"),
+    
+    WON("won"),
     
     WAITLIST("waitlist"),
     

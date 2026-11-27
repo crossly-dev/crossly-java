@@ -27,16 +27,21 @@ import java.util.ArrayList;
 import java.util.List;
 import net.crossly.model.vault.GetVaultMarketPortfolioResponseHoldings;
 import net.crossly.model.vault.GetVaultMarketPortfolioResponseOnLoan;
+import net.crossly.model.vault.GetVaultMarketPortfolioResponseShares;
 import net.crossly.model.vault.GetVaultMarketPortfolioResponseTotals;
 
 /**
  * GetVaultMarketPortfolioResponse
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-11T23:44:48.922Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-27T19:42:43.186Z[Etc/UTC]")
 public class GetVaultMarketPortfolioResponse {
   public static final String SERIALIZED_NAME_HOLDINGS = "holdings";
   @SerializedName(SERIALIZED_NAME_HOLDINGS)
   private List<GetVaultMarketPortfolioResponseHoldings> holdings = new ArrayList<GetVaultMarketPortfolioResponseHoldings>();
+
+  public static final String SERIALIZED_NAME_SHARES = "shares";
+  @SerializedName(SERIALIZED_NAME_SHARES)
+  private GetVaultMarketPortfolioResponseShares shares;
 
   public static final String SERIALIZED_NAME_ON_LOAN = "onLoan";
   @SerializedName(SERIALIZED_NAME_ON_LOAN)
@@ -74,6 +79,29 @@ public class GetVaultMarketPortfolioResponse {
 
   public void setHoldings(List<GetVaultMarketPortfolioResponseHoldings> holdings) {
     this.holdings = holdings;
+  }
+
+
+  public GetVaultMarketPortfolioResponse shares(GetVaultMarketPortfolioResponseShares shares) {
+    
+    this.shares = shares;
+    return this;
+  }
+
+   /**
+   * Get shares
+   * @return shares
+  **/
+  @javax.annotation.Nonnull
+  @ApiModelProperty(required = true, value = "")
+
+  public GetVaultMarketPortfolioResponseShares getShares() {
+    return shares;
+  }
+
+
+  public void setShares(GetVaultMarketPortfolioResponseShares shares) {
+    this.shares = shares;
   }
 
 
@@ -138,13 +166,14 @@ public class GetVaultMarketPortfolioResponse {
     }
     GetVaultMarketPortfolioResponse getVaultMarketPortfolioResponse = (GetVaultMarketPortfolioResponse) o;
     return Objects.equals(this.holdings, getVaultMarketPortfolioResponse.holdings) &&
+        Objects.equals(this.shares, getVaultMarketPortfolioResponse.shares) &&
         Objects.equals(this.onLoan, getVaultMarketPortfolioResponse.onLoan) &&
         Objects.equals(this.totals, getVaultMarketPortfolioResponse.totals);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(holdings, onLoan, totals);
+    return Objects.hash(holdings, shares, onLoan, totals);
   }
 
   @Override
@@ -152,6 +181,7 @@ public class GetVaultMarketPortfolioResponse {
     StringBuilder sb = new StringBuilder();
     sb.append("class GetVaultMarketPortfolioResponse {\n");
     sb.append("    holdings: ").append(toIndentedString(holdings)).append("\n");
+    sb.append("    shares: ").append(toIndentedString(shares)).append("\n");
     sb.append("    onLoan: ").append(toIndentedString(onLoan)).append("\n");
     sb.append("    totals: ").append(toIndentedString(totals)).append("\n");
     sb.append("}");

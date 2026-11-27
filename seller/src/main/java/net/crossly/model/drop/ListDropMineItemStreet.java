@@ -30,7 +30,7 @@ import org.openapitools.jackson.nullable.JsonNullable;
  * Where on the street the line stands, when the seller has a street address.
  */
 @ApiModel(description = "Where on the street the line stands, when the seller has a street address.")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-11T23:44:48.922Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-27T19:42:43.186Z[Etc/UTC]")
 public class ListDropMineItemStreet {
   public static final String SERIALIZED_NAME_SLUG = "slug";
   @SerializedName(SERIALIZED_NAME_SLUG)

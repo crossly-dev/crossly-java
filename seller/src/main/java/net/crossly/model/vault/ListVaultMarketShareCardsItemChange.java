@@ -29,7 +29,7 @@ import org.openapitools.jackson.nullable.JsonNullable;
 /**
  * ListVaultMarketShareCardsItemChange
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-11T23:44:48.922Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-27T19:42:43.186Z[Etc/UTC]")
 public class ListVaultMarketShareCardsItemChange {
   public static final String SERIALIZED_NAME_BPS = "bps";
   @SerializedName(SERIALIZED_NAME_BPS)
@@ -40,11 +40,11 @@ public class ListVaultMarketShareCardsItemChange {
    */
   @JsonAdapter(SinceEnum.Adapter.class)
   public enum SinceEnum {
-    FILL("fill"),
-    
     ENTRY("entry"),
     
     COST("cost"),
+    
+    FILL("fill"),
     
     INCEPTION("inception");
 
@@ -105,9 +105,9 @@ public class ListVaultMarketShareCardsItemChange {
     
     CLOSED("closed"),
     
-    HELD("held"),
-    
     SOLD("sold"),
+    
+    HELD("held"),
     
     GONE("gone");
 
@@ -158,9 +158,9 @@ public class ListVaultMarketShareCardsItemChange {
    */
   @JsonAdapter(SideEnum.Adapter.class)
   public enum SideEnum {
-    LONG("long"),
-    
     SHORT("short"),
+    
+    LONG("long"),
     
     OWN("own");
 

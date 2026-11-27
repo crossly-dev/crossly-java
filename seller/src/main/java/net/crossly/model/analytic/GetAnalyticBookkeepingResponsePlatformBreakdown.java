@@ -28,7 +28,7 @@ import java.math.BigDecimal;
 /**
  * GetAnalyticBookkeepingResponsePlatformBreakdown
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-11T23:44:48.922Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-27T19:42:43.186Z[Etc/UTC]")
 public class GetAnalyticBookkeepingResponsePlatformBreakdown {
   public static final String SERIALIZED_NAME_PLATFORM = "platform";
   @SerializedName(SERIALIZED_NAME_PLATFORM)
@@ -49,6 +49,14 @@ public class GetAnalyticBookkeepingResponsePlatformBreakdown {
   public static final String SERIALIZED_NAME_NET_PROFIT = "netProfit";
   @SerializedName(SERIALIZED_NAME_NET_PROFIT)
   private BigDecimal netProfit;
+
+  public static final String SERIALIZED_NAME_REFUNDS = "refunds";
+  @SerializedName(SERIALIZED_NAME_REFUNDS)
+  private BigDecimal refunds;
+
+  public static final String SERIALIZED_NAME_TAX_COLLECTED = "taxCollected";
+  @SerializedName(SERIALIZED_NAME_TAX_COLLECTED)
+  private BigDecimal taxCollected;
 
   public GetAnalyticBookkeepingResponsePlatformBreakdown() { 
   }
@@ -168,6 +176,52 @@ public class GetAnalyticBookkeepingResponsePlatformBreakdown {
   }
 
 
+  public GetAnalyticBookkeepingResponsePlatformBreakdown refunds(BigDecimal refunds) {
+    
+    this.refunds = refunds;
+    return this;
+  }
+
+   /**
+   * Get refunds
+   * @return refunds
+  **/
+  @javax.annotation.Nonnull
+  @ApiModelProperty(required = true, value = "")
+
+  public BigDecimal getRefunds() {
+    return refunds;
+  }
+
+
+  public void setRefunds(BigDecimal refunds) {
+    this.refunds = refunds;
+  }
+
+
+  public GetAnalyticBookkeepingResponsePlatformBreakdown taxCollected(BigDecimal taxCollected) {
+    
+    this.taxCollected = taxCollected;
+    return this;
+  }
+
+   /**
+   * Get taxCollected
+   * @return taxCollected
+  **/
+  @javax.annotation.Nonnull
+  @ApiModelProperty(required = true, value = "")
+
+  public BigDecimal getTaxCollected() {
+    return taxCollected;
+  }
+
+
+  public void setTaxCollected(BigDecimal taxCollected) {
+    this.taxCollected = taxCollected;
+  }
+
+
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -181,12 +235,14 @@ public class GetAnalyticBookkeepingResponsePlatformBreakdown {
         Objects.equals(this.revenue, getAnalyticBookkeepingResponsePlatformBreakdown.revenue) &&
         Objects.equals(this.count, getAnalyticBookkeepingResponsePlatformBreakdown.count) &&
         Objects.equals(this.platformFees, getAnalyticBookkeepingResponsePlatformBreakdown.platformFees) &&
-        Objects.equals(this.netProfit, getAnalyticBookkeepingResponsePlatformBreakdown.netProfit);
+        Objects.equals(this.netProfit, getAnalyticBookkeepingResponsePlatformBreakdown.netProfit) &&
+        Objects.equals(this.refunds, getAnalyticBookkeepingResponsePlatformBreakdown.refunds) &&
+        Objects.equals(this.taxCollected, getAnalyticBookkeepingResponsePlatformBreakdown.taxCollected);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(platform, revenue, count, platformFees, netProfit);
+    return Objects.hash(platform, revenue, count, platformFees, netProfit, refunds, taxCollected);
   }
 
   @Override
@@ -198,6 +254,8 @@ public class GetAnalyticBookkeepingResponsePlatformBreakdown {
     sb.append("    count: ").append(toIndentedString(count)).append("\n");
     sb.append("    platformFees: ").append(toIndentedString(platformFees)).append("\n");
     sb.append("    netProfit: ").append(toIndentedString(netProfit)).append("\n");
+    sb.append("    refunds: ").append(toIndentedString(refunds)).append("\n");
+    sb.append("    taxCollected: ").append(toIndentedString(taxCollected)).append("\n");
     sb.append("}");
     return sb.toString();
   }

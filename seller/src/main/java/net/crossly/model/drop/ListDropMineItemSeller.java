@@ -23,13 +23,13 @@ import com.google.gson.stream.JsonWriter;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
-import net.crossly.model.common.NameSlug;
+import net.crossly.model.common.NameSlug2;
 import org.openapitools.jackson.nullable.JsonNullable;
 
 /**
  * ListDropMineItemSeller
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-11T23:44:48.922Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-27T19:42:43.186Z[Etc/UTC]")
 public class ListDropMineItemSeller {
   public static final String SERIALIZED_NAME_NAME = "name";
   @SerializedName(SERIALIZED_NAME_NAME)
@@ -37,7 +37,7 @@ public class ListDropMineItemSeller {
 
   public static final String SERIALIZED_NAME_SHOP = "shop";
   @SerializedName(SERIALIZED_NAME_SHOP)
-  private NameSlug shop;
+  private NameSlug2 shop;
 
   public ListDropMineItemSeller() { 
   }
@@ -65,7 +65,7 @@ public class ListDropMineItemSeller {
   }
 
 
-  public ListDropMineItemSeller shop(NameSlug shop) {
+  public ListDropMineItemSeller shop(NameSlug2 shop) {
     
     this.shop = shop;
     return this;
@@ -78,12 +78,12 @@ public class ListDropMineItemSeller {
   @javax.annotation.Nullable
   @ApiModelProperty(value = "")
 
-  public NameSlug getShop() {
+  public NameSlug2 getShop() {
     return shop;
   }
 
 
-  public void setShop(NameSlug shop) {
+  public void setShop(NameSlug2 shop) {
     this.shop = shop;
   }
 

@@ -29,7 +29,7 @@ import org.openapitools.jackson.nullable.JsonNullable;
 /**
  * CreateStallBookResponseBookingUnits
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-11T23:44:48.922Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-27T19:42:43.186Z[Etc/UTC]")
 public class CreateStallBookResponseBookingUnits {
   public static final String SERIALIZED_NAME_KEY = "key";
   @SerializedName(SERIALIZED_NAME_KEY)
@@ -50,6 +50,10 @@ public class CreateStallBookResponseBookingUnits {
   public static final String SERIALIZED_NAME_EXTERNAL_ID = "externalId";
   @SerializedName(SERIALIZED_NAME_EXTERNAL_ID)
   private String externalId;
+
+  public static final String SERIALIZED_NAME_PAYMENT_ID = "paymentId";
+  @SerializedName(SERIALIZED_NAME_PAYMENT_ID)
+  private String paymentId;
 
   public CreateStallBookResponseBookingUnits() { 
   }
@@ -169,6 +173,29 @@ public class CreateStallBookResponseBookingUnits {
   }
 
 
+  public CreateStallBookResponseBookingUnits paymentId(String paymentId) {
+    
+    this.paymentId = paymentId;
+    return this;
+  }
+
+   /**
+   * CBX only, booked since gap 6: this unit&#39;s world_payments row (refunds go through refundWorld).
+   * @return paymentId
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "CBX only, booked since gap 6: this unit's world_payments row (refunds go through refundWorld).")
+
+  public String getPaymentId() {
+    return paymentId;
+  }
+
+
+  public void setPaymentId(String paymentId) {
+    this.paymentId = paymentId;
+  }
+
+
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -182,7 +209,8 @@ public class CreateStallBookResponseBookingUnits {
         Objects.equals(this.startsAt, createStallBookResponseBookingUnits.startsAt) &&
         Objects.equals(this.endsAt, createStallBookResponseBookingUnits.endsAt) &&
         Objects.equals(this.cents, createStallBookResponseBookingUnits.cents) &&
-        Objects.equals(this.externalId, createStallBookResponseBookingUnits.externalId);
+        Objects.equals(this.externalId, createStallBookResponseBookingUnits.externalId) &&
+        Objects.equals(this.paymentId, createStallBookResponseBookingUnits.paymentId);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -191,7 +219,7 @@ public class CreateStallBookResponseBookingUnits {
 
   @Override
   public int hashCode() {
-    return Objects.hash(key, startsAt, endsAt, cents, externalId);
+    return Objects.hash(key, startsAt, endsAt, cents, externalId, paymentId);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -210,6 +238,7 @@ public class CreateStallBookResponseBookingUnits {
     sb.append("    endsAt: ").append(toIndentedString(endsAt)).append("\n");
     sb.append("    cents: ").append(toIndentedString(cents)).append("\n");
     sb.append("    externalId: ").append(toIndentedString(externalId)).append("\n");
+    sb.append("    paymentId: ").append(toIndentedString(paymentId)).append("\n");
     sb.append("}");
     return sb.toString();
   }

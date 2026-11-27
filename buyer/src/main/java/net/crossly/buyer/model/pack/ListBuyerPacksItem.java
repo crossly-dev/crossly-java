@@ -33,39 +33,35 @@ import org.openapitools.jackson.nullable.JsonNullable;
 /**
  * ListBuyerPacksItem
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-11T23:47:29.843Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-27T19:58:46.962Z[Etc/UTC]")
 public class ListBuyerPacksItem {
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
   private String id;
 
-  public static final String SERIALIZED_NAME_STATUS = "status";
-  @SerializedName(SERIALIZED_NAME_STATUS)
-  private String status;
-
-  public static final String SERIALIZED_NAME_DESCRIPTION = "description";
-  @SerializedName(SERIALIZED_NAME_DESCRIPTION)
-  private String description;
+  public static final String SERIALIZED_NAME_SLUG = "slug";
+  @SerializedName(SERIALIZED_NAME_SLUG)
+  private String slug;
 
   public static final String SERIALIZED_NAME_TITLE = "title";
   @SerializedName(SERIALIZED_NAME_TITLE)
   private String title;
 
-  public static final String SERIALIZED_NAME_SLUG = "slug";
-  @SerializedName(SERIALIZED_NAME_SLUG)
-  private String slug;
-
-  public static final String SERIALIZED_NAME_PRICE_CENTS = "priceCents";
-  @SerializedName(SERIALIZED_NAME_PRICE_CENTS)
-  private BigDecimal priceCents;
+  public static final String SERIALIZED_NAME_DESCRIPTION = "description";
+  @SerializedName(SERIALIZED_NAME_DESCRIPTION)
+  private String description;
 
   public static final String SERIALIZED_NAME_IMAGE_URL = "imageUrl";
   @SerializedName(SERIALIZED_NAME_IMAGE_URL)
   private String imageUrl;
 
-  public static final String SERIALIZED_NAME_TIERS = "tiers";
-  @SerializedName(SERIALIZED_NAME_TIERS)
-  private List<ListBuyerPacksItemTiers> tiers = new ArrayList<ListBuyerPacksItemTiers>();
+  public static final String SERIALIZED_NAME_PRICE_CENTS = "priceCents";
+  @SerializedName(SERIALIZED_NAME_PRICE_CENTS)
+  private BigDecimal priceCents;
+
+  public static final String SERIALIZED_NAME_STATUS = "status";
+  @SerializedName(SERIALIZED_NAME_STATUS)
+  private String status;
 
   public static final String SERIALIZED_NAME_BUYBACK_BPS = "buybackBps";
   @SerializedName(SERIALIZED_NAME_BUYBACK_BPS)
@@ -74,6 +70,10 @@ public class ListBuyerPacksItem {
   public static final String SERIALIZED_NAME_BUYBACK_DAYS = "buybackDays";
   @SerializedName(SERIALIZED_NAME_BUYBACK_DAYS)
   private BigDecimal buybackDays;
+
+  public static final String SERIALIZED_NAME_TIERS = "tiers";
+  @SerializedName(SERIALIZED_NAME_TIERS)
+  private List<ListBuyerPacksItemTiers> tiers = new ArrayList<ListBuyerPacksItemTiers>();
 
   public static final String SERIALIZED_NAME_EXPECTED_VALUE_CENTS = "expectedValueCents";
   @SerializedName(SERIALIZED_NAME_EXPECTED_VALUE_CENTS)
@@ -113,49 +113,26 @@ public class ListBuyerPacksItem {
   }
 
 
-  public ListBuyerPacksItem status(String status) {
+  public ListBuyerPacksItem slug(String slug) {
     
-    this.status = status;
+    this.slug = slug;
     return this;
   }
 
    /**
-   * Get status
-   * @return status
+   * Get slug
+   * @return slug
   **/
   @javax.annotation.Nonnull
   @ApiModelProperty(required = true, value = "")
 
-  public String getStatus() {
-    return status;
+  public String getSlug() {
+    return slug;
   }
 
 
-  public void setStatus(String status) {
-    this.status = status;
-  }
-
-
-  public ListBuyerPacksItem description(String description) {
-    
-    this.description = description;
-    return this;
-  }
-
-   /**
-   * Get description
-   * @return description
-  **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
-
-  public String getDescription() {
-    return description;
-  }
-
-
-  public void setDescription(String description) {
-    this.description = description;
+  public void setSlug(String slug) {
+    this.slug = slug;
   }
 
 
@@ -182,49 +159,26 @@ public class ListBuyerPacksItem {
   }
 
 
-  public ListBuyerPacksItem slug(String slug) {
+  public ListBuyerPacksItem description(String description) {
     
-    this.slug = slug;
+    this.description = description;
     return this;
   }
 
    /**
-   * Get slug
-   * @return slug
+   * Get description
+   * @return description
   **/
-  @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "")
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
 
-  public String getSlug() {
-    return slug;
+  public String getDescription() {
+    return description;
   }
 
 
-  public void setSlug(String slug) {
-    this.slug = slug;
-  }
-
-
-  public ListBuyerPacksItem priceCents(BigDecimal priceCents) {
-    
-    this.priceCents = priceCents;
-    return this;
-  }
-
-   /**
-   * Get priceCents
-   * @return priceCents
-  **/
-  @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "")
-
-  public BigDecimal getPriceCents() {
-    return priceCents;
-  }
-
-
-  public void setPriceCents(BigDecimal priceCents) {
-    this.priceCents = priceCents;
+  public void setDescription(String description) {
+    this.description = description;
   }
 
 
@@ -251,31 +205,49 @@ public class ListBuyerPacksItem {
   }
 
 
-  public ListBuyerPacksItem tiers(List<ListBuyerPacksItemTiers> tiers) {
+  public ListBuyerPacksItem priceCents(BigDecimal priceCents) {
     
-    this.tiers = tiers;
-    return this;
-  }
-
-  public ListBuyerPacksItem addTiersItem(ListBuyerPacksItemTiers tiersItem) {
-    this.tiers.add(tiersItem);
+    this.priceCents = priceCents;
     return this;
   }
 
    /**
-   * Get tiers
-   * @return tiers
+   * Get priceCents
+   * @return priceCents
   **/
   @javax.annotation.Nonnull
   @ApiModelProperty(required = true, value = "")
 
-  public List<ListBuyerPacksItemTiers> getTiers() {
-    return tiers;
+  public BigDecimal getPriceCents() {
+    return priceCents;
   }
 
 
-  public void setTiers(List<ListBuyerPacksItemTiers> tiers) {
-    this.tiers = tiers;
+  public void setPriceCents(BigDecimal priceCents) {
+    this.priceCents = priceCents;
+  }
+
+
+  public ListBuyerPacksItem status(String status) {
+    
+    this.status = status;
+    return this;
+  }
+
+   /**
+   * Get status
+   * @return status
+  **/
+  @javax.annotation.Nonnull
+  @ApiModelProperty(required = true, value = "")
+
+  public String getStatus() {
+    return status;
+  }
+
+
+  public void setStatus(String status) {
+    this.status = status;
   }
 
 
@@ -322,6 +294,34 @@ public class ListBuyerPacksItem {
 
   public void setBuybackDays(BigDecimal buybackDays) {
     this.buybackDays = buybackDays;
+  }
+
+
+  public ListBuyerPacksItem tiers(List<ListBuyerPacksItemTiers> tiers) {
+    
+    this.tiers = tiers;
+    return this;
+  }
+
+  public ListBuyerPacksItem addTiersItem(ListBuyerPacksItemTiers tiersItem) {
+    this.tiers.add(tiersItem);
+    return this;
+  }
+
+   /**
+   * Get tiers
+   * @return tiers
+  **/
+  @javax.annotation.Nonnull
+  @ApiModelProperty(required = true, value = "")
+
+  public List<ListBuyerPacksItemTiers> getTiers() {
+    return tiers;
+  }
+
+
+  public void setTiers(List<ListBuyerPacksItemTiers> tiers) {
+    this.tiers = tiers;
   }
 
 
@@ -409,15 +409,15 @@ public class ListBuyerPacksItem {
     }
     ListBuyerPacksItem listBuyerPacksItem = (ListBuyerPacksItem) o;
     return Objects.equals(this.id, listBuyerPacksItem.id) &&
-        Objects.equals(this.status, listBuyerPacksItem.status) &&
-        Objects.equals(this.description, listBuyerPacksItem.description) &&
-        Objects.equals(this.title, listBuyerPacksItem.title) &&
         Objects.equals(this.slug, listBuyerPacksItem.slug) &&
-        Objects.equals(this.priceCents, listBuyerPacksItem.priceCents) &&
+        Objects.equals(this.title, listBuyerPacksItem.title) &&
+        Objects.equals(this.description, listBuyerPacksItem.description) &&
         Objects.equals(this.imageUrl, listBuyerPacksItem.imageUrl) &&
-        Objects.equals(this.tiers, listBuyerPacksItem.tiers) &&
+        Objects.equals(this.priceCents, listBuyerPacksItem.priceCents) &&
+        Objects.equals(this.status, listBuyerPacksItem.status) &&
         Objects.equals(this.buybackBps, listBuyerPacksItem.buybackBps) &&
         Objects.equals(this.buybackDays, listBuyerPacksItem.buybackDays) &&
+        Objects.equals(this.tiers, listBuyerPacksItem.tiers) &&
         Objects.equals(this.expectedValueCents, listBuyerPacksItem.expectedValueCents) &&
         Objects.equals(this.openable, listBuyerPacksItem.openable) &&
         Objects.equals(this.chase, listBuyerPacksItem.chase);
@@ -429,7 +429,7 @@ public class ListBuyerPacksItem {
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, status, description, title, slug, priceCents, imageUrl, tiers, buybackBps, buybackDays, expectedValueCents, openable, chase);
+    return Objects.hash(id, slug, title, description, imageUrl, priceCents, status, buybackBps, buybackDays, tiers, expectedValueCents, openable, chase);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -444,15 +444,15 @@ public class ListBuyerPacksItem {
     StringBuilder sb = new StringBuilder();
     sb.append("class ListBuyerPacksItem {\n");
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
-    sb.append("    status: ").append(toIndentedString(status)).append("\n");
-    sb.append("    description: ").append(toIndentedString(description)).append("\n");
-    sb.append("    title: ").append(toIndentedString(title)).append("\n");
     sb.append("    slug: ").append(toIndentedString(slug)).append("\n");
-    sb.append("    priceCents: ").append(toIndentedString(priceCents)).append("\n");
+    sb.append("    title: ").append(toIndentedString(title)).append("\n");
+    sb.append("    description: ").append(toIndentedString(description)).append("\n");
     sb.append("    imageUrl: ").append(toIndentedString(imageUrl)).append("\n");
-    sb.append("    tiers: ").append(toIndentedString(tiers)).append("\n");
+    sb.append("    priceCents: ").append(toIndentedString(priceCents)).append("\n");
+    sb.append("    status: ").append(toIndentedString(status)).append("\n");
     sb.append("    buybackBps: ").append(toIndentedString(buybackBps)).append("\n");
     sb.append("    buybackDays: ").append(toIndentedString(buybackDays)).append("\n");
+    sb.append("    tiers: ").append(toIndentedString(tiers)).append("\n");
     sb.append("    expectedValueCents: ").append(toIndentedString(expectedValueCents)).append("\n");
     sb.append("    openable: ").append(toIndentedString(openable)).append("\n");
     sb.append("    chase: ").append(toIndentedString(chase)).append("\n");

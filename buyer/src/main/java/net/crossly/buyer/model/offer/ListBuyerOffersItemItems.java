@@ -29,7 +29,7 @@ import org.openapitools.jackson.nullable.JsonNullable;
 /**
  * ListBuyerOffersItemItems
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-11T23:47:29.843Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-27T19:58:46.962Z[Etc/UTC]")
 public class ListBuyerOffersItemItems {
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
@@ -39,21 +39,21 @@ public class ListBuyerOffersItemItems {
   @SerializedName(SERIALIZED_NAME_PRICE_CENTS)
   private BigDecimal priceCents;
 
-  public static final String SERIALIZED_NAME_STATUS = "status";
-  @SerializedName(SERIALIZED_NAME_STATUS)
-  private String status;
+  public static final String SERIALIZED_NAME_SLUG = "slug";
+  @SerializedName(SERIALIZED_NAME_SLUG)
+  private String slug;
 
   public static final String SERIALIZED_NAME_TITLE = "title";
   @SerializedName(SERIALIZED_NAME_TITLE)
   private String title;
 
-  public static final String SERIALIZED_NAME_SLUG = "slug";
-  @SerializedName(SERIALIZED_NAME_SLUG)
-  private String slug;
-
   public static final String SERIALIZED_NAME_THUMBNAIL = "thumbnail";
   @SerializedName(SERIALIZED_NAME_THUMBNAIL)
   private String thumbnail;
+
+  public static final String SERIALIZED_NAME_STATUS = "status";
+  @SerializedName(SERIALIZED_NAME_STATUS)
+  private String status;
 
   public ListBuyerOffersItemItems() { 
   }
@@ -104,26 +104,26 @@ public class ListBuyerOffersItemItems {
   }
 
 
-  public ListBuyerOffersItemItems status(String status) {
+  public ListBuyerOffersItemItems slug(String slug) {
     
-    this.status = status;
+    this.slug = slug;
     return this;
   }
 
    /**
-   * Get status
-   * @return status
+   * Get slug
+   * @return slug
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "")
 
-  public String getStatus() {
-    return status;
+  public String getSlug() {
+    return slug;
   }
 
 
-  public void setStatus(String status) {
-    this.status = status;
+  public void setSlug(String slug) {
+    this.slug = slug;
   }
 
 
@@ -150,29 +150,6 @@ public class ListBuyerOffersItemItems {
   }
 
 
-  public ListBuyerOffersItemItems slug(String slug) {
-    
-    this.slug = slug;
-    return this;
-  }
-
-   /**
-   * Get slug
-   * @return slug
-  **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
-
-  public String getSlug() {
-    return slug;
-  }
-
-
-  public void setSlug(String slug) {
-    this.slug = slug;
-  }
-
-
   public ListBuyerOffersItemItems thumbnail(String thumbnail) {
     
     this.thumbnail = thumbnail;
@@ -196,6 +173,29 @@ public class ListBuyerOffersItemItems {
   }
 
 
+  public ListBuyerOffersItemItems status(String status) {
+    
+    this.status = status;
+    return this;
+  }
+
+   /**
+   * Get status
+   * @return status
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public String getStatus() {
+    return status;
+  }
+
+
+  public void setStatus(String status) {
+    this.status = status;
+  }
+
+
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -207,10 +207,10 @@ public class ListBuyerOffersItemItems {
     ListBuyerOffersItemItems listBuyerOffersItemItems = (ListBuyerOffersItemItems) o;
     return Objects.equals(this.id, listBuyerOffersItemItems.id) &&
         Objects.equals(this.priceCents, listBuyerOffersItemItems.priceCents) &&
-        Objects.equals(this.status, listBuyerOffersItemItems.status) &&
-        Objects.equals(this.title, listBuyerOffersItemItems.title) &&
         Objects.equals(this.slug, listBuyerOffersItemItems.slug) &&
-        Objects.equals(this.thumbnail, listBuyerOffersItemItems.thumbnail);
+        Objects.equals(this.title, listBuyerOffersItemItems.title) &&
+        Objects.equals(this.thumbnail, listBuyerOffersItemItems.thumbnail) &&
+        Objects.equals(this.status, listBuyerOffersItemItems.status);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -219,7 +219,7 @@ public class ListBuyerOffersItemItems {
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, priceCents, status, title, slug, thumbnail);
+    return Objects.hash(id, priceCents, slug, title, thumbnail, status);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -235,10 +235,10 @@ public class ListBuyerOffersItemItems {
     sb.append("class ListBuyerOffersItemItems {\n");
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    priceCents: ").append(toIndentedString(priceCents)).append("\n");
-    sb.append("    status: ").append(toIndentedString(status)).append("\n");
-    sb.append("    title: ").append(toIndentedString(title)).append("\n");
     sb.append("    slug: ").append(toIndentedString(slug)).append("\n");
+    sb.append("    title: ").append(toIndentedString(title)).append("\n");
     sb.append("    thumbnail: ").append(toIndentedString(thumbnail)).append("\n");
+    sb.append("    status: ").append(toIndentedString(status)).append("\n");
     sb.append("}");
     return sb.toString();
   }

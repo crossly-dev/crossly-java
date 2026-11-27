@@ -32,7 +32,7 @@ import net.crossly.model.order.GetOrderEvidenceResponseDataPackingClips;
  * The packing video as a whole — one clip or several, and every break between them.
  */
 @ApiModel(description = "The packing video as a whole — one clip or several, and every break between them.")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-11T23:44:48.922Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-27T19:42:43.186Z[Etc/UTC]")
 public class GetOrderEvidenceResponseDataPacking {
   /**
    * Gets or Sets verdict

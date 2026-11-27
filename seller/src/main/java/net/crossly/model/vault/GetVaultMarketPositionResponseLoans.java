@@ -30,7 +30,7 @@ import org.threeten.bp.OffsetDateTime;
 /**
  * GetVaultMarketPositionResponseLoans
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-11T23:44:48.922Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-27T19:42:43.186Z[Etc/UTC]")
 public class GetVaultMarketPositionResponseLoans {
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
@@ -44,6 +44,10 @@ public class GetVaultMarketPositionResponseLoans {
   @SerializedName(SERIALIZED_NAME_CLOSED_AT)
   private OffsetDateTime closedAt;
 
+  public static final String SERIALIZED_NAME_OPENED_AT = "openedAt";
+  @SerializedName(SERIALIZED_NAME_OPENED_AT)
+  private OffsetDateTime openedAt;
+
   public static final String SERIALIZED_NAME_VAULT_ITEM_ID = "vaultItemId";
   @SerializedName(SERIALIZED_NAME_VAULT_ITEM_ID)
   private String vaultItemId;
@@ -52,9 +56,9 @@ public class GetVaultMarketPositionResponseLoans {
   @SerializedName(SERIALIZED_NAME_HOLDER_ACCOUNT_ID)
   private String holderAccountId;
 
-  public static final String SERIALIZED_NAME_OPENED_AT = "openedAt";
-  @SerializedName(SERIALIZED_NAME_OPENED_AT)
-  private OffsetDateTime openedAt;
+  public static final String SERIALIZED_NAME_POSITION_ID = "positionId";
+  @SerializedName(SERIALIZED_NAME_POSITION_ID)
+  private String positionId;
 
   public static final String SERIALIZED_NAME_BOOK_KEY = "bookKey";
   @SerializedName(SERIALIZED_NAME_BOOK_KEY)
@@ -71,10 +75,6 @@ public class GetVaultMarketPositionResponseLoans {
   public static final String SERIALIZED_NAME_LENDER_USER_ID = "lenderUserId";
   @SerializedName(SERIALIZED_NAME_LENDER_USER_ID)
   private String lenderUserId;
-
-  public static final String SERIALIZED_NAME_POSITION_ID = "positionId";
-  @SerializedName(SERIALIZED_NAME_POSITION_ID)
-  private String positionId;
 
   public static final String SERIALIZED_NAME_APR_BPS = "aprBps";
   @SerializedName(SERIALIZED_NAME_APR_BPS)
@@ -180,6 +180,29 @@ public class GetVaultMarketPositionResponseLoans {
   }
 
 
+  public GetVaultMarketPositionResponseLoans openedAt(OffsetDateTime openedAt) {
+    
+    this.openedAt = openedAt;
+    return this;
+  }
+
+   /**
+   * Get openedAt
+   * @return openedAt
+  **/
+  @javax.annotation.Nonnull
+  @ApiModelProperty(required = true, value = "")
+
+  public OffsetDateTime getOpenedAt() {
+    return openedAt;
+  }
+
+
+  public void setOpenedAt(OffsetDateTime openedAt) {
+    this.openedAt = openedAt;
+  }
+
+
   public GetVaultMarketPositionResponseLoans vaultItemId(String vaultItemId) {
     
     this.vaultItemId = vaultItemId;
@@ -226,26 +249,26 @@ public class GetVaultMarketPositionResponseLoans {
   }
 
 
-  public GetVaultMarketPositionResponseLoans openedAt(OffsetDateTime openedAt) {
+  public GetVaultMarketPositionResponseLoans positionId(String positionId) {
     
-    this.openedAt = openedAt;
+    this.positionId = positionId;
     return this;
   }
 
    /**
-   * Get openedAt
-   * @return openedAt
+   * Get positionId
+   * @return positionId
   **/
   @javax.annotation.Nonnull
   @ApiModelProperty(required = true, value = "")
 
-  public OffsetDateTime getOpenedAt() {
-    return openedAt;
+  public String getPositionId() {
+    return positionId;
   }
 
 
-  public void setOpenedAt(OffsetDateTime openedAt) {
-    this.openedAt = openedAt;
+  public void setPositionId(String positionId) {
+    this.positionId = positionId;
   }
 
 
@@ -338,29 +361,6 @@ public class GetVaultMarketPositionResponseLoans {
 
   public void setLenderUserId(String lenderUserId) {
     this.lenderUserId = lenderUserId;
-  }
-
-
-  public GetVaultMarketPositionResponseLoans positionId(String positionId) {
-    
-    this.positionId = positionId;
-    return this;
-  }
-
-   /**
-   * Get positionId
-   * @return positionId
-  **/
-  @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "")
-
-  public String getPositionId() {
-    return positionId;
-  }
-
-
-  public void setPositionId(String positionId) {
-    this.positionId = positionId;
   }
 
 
@@ -560,14 +560,14 @@ public class GetVaultMarketPositionResponseLoans {
     return Objects.equals(this.id, getVaultMarketPositionResponseLoans.id) &&
         Objects.equals(this.status, getVaultMarketPositionResponseLoans.status) &&
         Objects.equals(this.closedAt, getVaultMarketPositionResponseLoans.closedAt) &&
+        Objects.equals(this.openedAt, getVaultMarketPositionResponseLoans.openedAt) &&
         Objects.equals(this.vaultItemId, getVaultMarketPositionResponseLoans.vaultItemId) &&
         Objects.equals(this.holderAccountId, getVaultMarketPositionResponseLoans.holderAccountId) &&
-        Objects.equals(this.openedAt, getVaultMarketPositionResponseLoans.openedAt) &&
+        Objects.equals(this.positionId, getVaultMarketPositionResponseLoans.positionId) &&
         Objects.equals(this.bookKey, getVaultMarketPositionResponseLoans.bookKey) &&
         Objects.equals(this.feesPaidCents, getVaultMarketPositionResponseLoans.feesPaidCents) &&
         Objects.equals(this.latePenaltyPaidCents, getVaultMarketPositionResponseLoans.latePenaltyPaidCents) &&
         Objects.equals(this.lenderUserId, getVaultMarketPositionResponseLoans.lenderUserId) &&
-        Objects.equals(this.positionId, getVaultMarketPositionResponseLoans.positionId) &&
         Objects.equals(this.aprBps, getVaultMarketPositionResponseLoans.aprBps) &&
         Objects.equals(this.markCentsAtOpen, getVaultMarketPositionResponseLoans.markCentsAtOpen) &&
         Objects.equals(this.feesAccruedCents, getVaultMarketPositionResponseLoans.feesAccruedCents) &&
@@ -584,7 +584,7 @@ public class GetVaultMarketPositionResponseLoans {
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, status, closedAt, vaultItemId, holderAccountId, openedAt, bookKey, feesPaidCents, latePenaltyPaidCents, lenderUserId, positionId, aprBps, markCentsAtOpen, feesAccruedCents, lenderStorageCents, recalledAt, recallDueAt, returnedVaultItemId, latePenaltyAccruedCents);
+    return Objects.hash(id, status, closedAt, openedAt, vaultItemId, holderAccountId, positionId, bookKey, feesPaidCents, latePenaltyPaidCents, lenderUserId, aprBps, markCentsAtOpen, feesAccruedCents, lenderStorageCents, recalledAt, recallDueAt, returnedVaultItemId, latePenaltyAccruedCents);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -601,14 +601,14 @@ public class GetVaultMarketPositionResponseLoans {
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    status: ").append(toIndentedString(status)).append("\n");
     sb.append("    closedAt: ").append(toIndentedString(closedAt)).append("\n");
+    sb.append("    openedAt: ").append(toIndentedString(openedAt)).append("\n");
     sb.append("    vaultItemId: ").append(toIndentedString(vaultItemId)).append("\n");
     sb.append("    holderAccountId: ").append(toIndentedString(holderAccountId)).append("\n");
-    sb.append("    openedAt: ").append(toIndentedString(openedAt)).append("\n");
+    sb.append("    positionId: ").append(toIndentedString(positionId)).append("\n");
     sb.append("    bookKey: ").append(toIndentedString(bookKey)).append("\n");
     sb.append("    feesPaidCents: ").append(toIndentedString(feesPaidCents)).append("\n");
     sb.append("    latePenaltyPaidCents: ").append(toIndentedString(latePenaltyPaidCents)).append("\n");
     sb.append("    lenderUserId: ").append(toIndentedString(lenderUserId)).append("\n");
-    sb.append("    positionId: ").append(toIndentedString(positionId)).append("\n");
     sb.append("    aprBps: ").append(toIndentedString(aprBps)).append("\n");
     sb.append("    markCentsAtOpen: ").append(toIndentedString(markCentsAtOpen)).append("\n");
     sb.append("    feesAccruedCents: ").append(toIndentedString(feesAccruedCents)).append("\n");

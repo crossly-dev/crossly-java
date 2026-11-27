@@ -23,130 +23,38 @@ import com.google.gson.stream.JsonWriter;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
-import net.crossly.model.vault.GetVaultAttestationResponseLatestPhysicalCount;
+import net.crossly.model.vault.GetVaultAttestationResponseLatestOther;
 import org.openapitools.jackson.nullable.JsonNullable;
 
 /**
  * GetVaultAttestationResponseLatest
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-11T23:44:48.922Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-27T19:42:43.186Z[Etc/UTC]")
 public class GetVaultAttestationResponseLatest {
+  public static final String SERIALIZED_NAME_OTHER = "other";
+  @SerializedName(SERIALIZED_NAME_OTHER)
+  private GetVaultAttestationResponseLatestOther other;
+
   public static final String SERIALIZED_NAME_PHYSICAL_COUNT = "physical_count";
   @SerializedName(SERIALIZED_NAME_PHYSICAL_COUNT)
-  private GetVaultAttestationResponseLatestPhysicalCount physicalCount;
+  private GetVaultAttestationResponseLatestOther physicalCount;
 
   public static final String SERIALIZED_NAME_INSURANCE_CERTIFICATE = "insurance_certificate";
   @SerializedName(SERIALIZED_NAME_INSURANCE_CERTIFICATE)
-  private GetVaultAttestationResponseLatestPhysicalCount insuranceCertificate;
+  private GetVaultAttestationResponseLatestOther insuranceCertificate;
 
   public static final String SERIALIZED_NAME_SOC1_TYPE2 = "soc1_type2";
   @SerializedName(SERIALIZED_NAME_SOC1_TYPE2)
-  private GetVaultAttestationResponseLatestPhysicalCount soc1Type2;
+  private GetVaultAttestationResponseLatestOther soc1Type2;
 
   public static final String SERIALIZED_NAME_SOC2 = "soc2";
   @SerializedName(SERIALIZED_NAME_SOC2)
-  private GetVaultAttestationResponseLatestPhysicalCount soc2;
-
-  public static final String SERIALIZED_NAME_OTHER = "other";
-  @SerializedName(SERIALIZED_NAME_OTHER)
-  private GetVaultAttestationResponseLatestPhysicalCount other;
+  private GetVaultAttestationResponseLatestOther soc2;
 
   public GetVaultAttestationResponseLatest() { 
   }
 
-  public GetVaultAttestationResponseLatest physicalCount(GetVaultAttestationResponseLatestPhysicalCount physicalCount) {
-    
-    this.physicalCount = physicalCount;
-    return this;
-  }
-
-   /**
-   * Get physicalCount
-   * @return physicalCount
-  **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
-
-  public GetVaultAttestationResponseLatestPhysicalCount getPhysicalCount() {
-    return physicalCount;
-  }
-
-
-  public void setPhysicalCount(GetVaultAttestationResponseLatestPhysicalCount physicalCount) {
-    this.physicalCount = physicalCount;
-  }
-
-
-  public GetVaultAttestationResponseLatest insuranceCertificate(GetVaultAttestationResponseLatestPhysicalCount insuranceCertificate) {
-    
-    this.insuranceCertificate = insuranceCertificate;
-    return this;
-  }
-
-   /**
-   * Get insuranceCertificate
-   * @return insuranceCertificate
-  **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
-
-  public GetVaultAttestationResponseLatestPhysicalCount getInsuranceCertificate() {
-    return insuranceCertificate;
-  }
-
-
-  public void setInsuranceCertificate(GetVaultAttestationResponseLatestPhysicalCount insuranceCertificate) {
-    this.insuranceCertificate = insuranceCertificate;
-  }
-
-
-  public GetVaultAttestationResponseLatest soc1Type2(GetVaultAttestationResponseLatestPhysicalCount soc1Type2) {
-    
-    this.soc1Type2 = soc1Type2;
-    return this;
-  }
-
-   /**
-   * Get soc1Type2
-   * @return soc1Type2
-  **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
-
-  public GetVaultAttestationResponseLatestPhysicalCount getSoc1Type2() {
-    return soc1Type2;
-  }
-
-
-  public void setSoc1Type2(GetVaultAttestationResponseLatestPhysicalCount soc1Type2) {
-    this.soc1Type2 = soc1Type2;
-  }
-
-
-  public GetVaultAttestationResponseLatest soc2(GetVaultAttestationResponseLatestPhysicalCount soc2) {
-    
-    this.soc2 = soc2;
-    return this;
-  }
-
-   /**
-   * Get soc2
-   * @return soc2
-  **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
-
-  public GetVaultAttestationResponseLatestPhysicalCount getSoc2() {
-    return soc2;
-  }
-
-
-  public void setSoc2(GetVaultAttestationResponseLatestPhysicalCount soc2) {
-    this.soc2 = soc2;
-  }
-
-
-  public GetVaultAttestationResponseLatest other(GetVaultAttestationResponseLatestPhysicalCount other) {
+  public GetVaultAttestationResponseLatest other(GetVaultAttestationResponseLatestOther other) {
     
     this.other = other;
     return this;
@@ -159,13 +67,105 @@ public class GetVaultAttestationResponseLatest {
   @javax.annotation.Nullable
   @ApiModelProperty(value = "")
 
-  public GetVaultAttestationResponseLatestPhysicalCount getOther() {
+  public GetVaultAttestationResponseLatestOther getOther() {
     return other;
   }
 
 
-  public void setOther(GetVaultAttestationResponseLatestPhysicalCount other) {
+  public void setOther(GetVaultAttestationResponseLatestOther other) {
     this.other = other;
+  }
+
+
+  public GetVaultAttestationResponseLatest physicalCount(GetVaultAttestationResponseLatestOther physicalCount) {
+    
+    this.physicalCount = physicalCount;
+    return this;
+  }
+
+   /**
+   * Get physicalCount
+   * @return physicalCount
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public GetVaultAttestationResponseLatestOther getPhysicalCount() {
+    return physicalCount;
+  }
+
+
+  public void setPhysicalCount(GetVaultAttestationResponseLatestOther physicalCount) {
+    this.physicalCount = physicalCount;
+  }
+
+
+  public GetVaultAttestationResponseLatest insuranceCertificate(GetVaultAttestationResponseLatestOther insuranceCertificate) {
+    
+    this.insuranceCertificate = insuranceCertificate;
+    return this;
+  }
+
+   /**
+   * Get insuranceCertificate
+   * @return insuranceCertificate
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public GetVaultAttestationResponseLatestOther getInsuranceCertificate() {
+    return insuranceCertificate;
+  }
+
+
+  public void setInsuranceCertificate(GetVaultAttestationResponseLatestOther insuranceCertificate) {
+    this.insuranceCertificate = insuranceCertificate;
+  }
+
+
+  public GetVaultAttestationResponseLatest soc1Type2(GetVaultAttestationResponseLatestOther soc1Type2) {
+    
+    this.soc1Type2 = soc1Type2;
+    return this;
+  }
+
+   /**
+   * Get soc1Type2
+   * @return soc1Type2
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public GetVaultAttestationResponseLatestOther getSoc1Type2() {
+    return soc1Type2;
+  }
+
+
+  public void setSoc1Type2(GetVaultAttestationResponseLatestOther soc1Type2) {
+    this.soc1Type2 = soc1Type2;
+  }
+
+
+  public GetVaultAttestationResponseLatest soc2(GetVaultAttestationResponseLatestOther soc2) {
+    
+    this.soc2 = soc2;
+    return this;
+  }
+
+   /**
+   * Get soc2
+   * @return soc2
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public GetVaultAttestationResponseLatestOther getSoc2() {
+    return soc2;
+  }
+
+
+  public void setSoc2(GetVaultAttestationResponseLatestOther soc2) {
+    this.soc2 = soc2;
   }
 
 
@@ -178,11 +178,11 @@ public class GetVaultAttestationResponseLatest {
       return false;
     }
     GetVaultAttestationResponseLatest getVaultAttestationResponseLatest = (GetVaultAttestationResponseLatest) o;
-    return Objects.equals(this.physicalCount, getVaultAttestationResponseLatest.physicalCount) &&
+    return Objects.equals(this.other, getVaultAttestationResponseLatest.other) &&
+        Objects.equals(this.physicalCount, getVaultAttestationResponseLatest.physicalCount) &&
         Objects.equals(this.insuranceCertificate, getVaultAttestationResponseLatest.insuranceCertificate) &&
         Objects.equals(this.soc1Type2, getVaultAttestationResponseLatest.soc1Type2) &&
-        Objects.equals(this.soc2, getVaultAttestationResponseLatest.soc2) &&
-        Objects.equals(this.other, getVaultAttestationResponseLatest.other);
+        Objects.equals(this.soc2, getVaultAttestationResponseLatest.soc2);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -191,7 +191,7 @@ public class GetVaultAttestationResponseLatest {
 
   @Override
   public int hashCode() {
-    return Objects.hash(physicalCount, insuranceCertificate, soc1Type2, soc2, other);
+    return Objects.hash(other, physicalCount, insuranceCertificate, soc1Type2, soc2);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -205,11 +205,11 @@ public class GetVaultAttestationResponseLatest {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class GetVaultAttestationResponseLatest {\n");
+    sb.append("    other: ").append(toIndentedString(other)).append("\n");
     sb.append("    physicalCount: ").append(toIndentedString(physicalCount)).append("\n");
     sb.append("    insuranceCertificate: ").append(toIndentedString(insuranceCertificate)).append("\n");
     sb.append("    soc1Type2: ").append(toIndentedString(soc1Type2)).append("\n");
     sb.append("    soc2: ").append(toIndentedString(soc2)).append("\n");
-    sb.append("    other: ").append(toIndentedString(other)).append("\n");
     sb.append("}");
     return sb.toString();
   }

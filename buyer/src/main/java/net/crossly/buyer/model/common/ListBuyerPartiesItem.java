@@ -27,31 +27,31 @@ import java.io.IOException;
 /**
  * ListBuyerPartiesItem
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-11T23:47:29.843Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-27T19:58:46.962Z[Etc/UTC]")
 public class ListBuyerPartiesItem {
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
   private String id;
 
-  public static final String SERIALIZED_NAME_STATUS = "status";
-  @SerializedName(SERIALIZED_NAME_STATUS)
-  private String status;
-
-  public static final String SERIALIZED_NAME_ENDS_AT = "endsAt";
-  @SerializedName(SERIALIZED_NAME_ENDS_AT)
-  private String endsAt;
-
   public static final String SERIALIZED_NAME_SLUG = "slug";
   @SerializedName(SERIALIZED_NAME_SLUG)
   private String slug;
+
+  public static final String SERIALIZED_NAME_THEME = "theme";
+  @SerializedName(SERIALIZED_NAME_THEME)
+  private String theme;
 
   public static final String SERIALIZED_NAME_STARTS_AT = "startsAt";
   @SerializedName(SERIALIZED_NAME_STARTS_AT)
   private String startsAt;
 
-  public static final String SERIALIZED_NAME_THEME = "theme";
-  @SerializedName(SERIALIZED_NAME_THEME)
-  private String theme;
+  public static final String SERIALIZED_NAME_ENDS_AT = "endsAt";
+  @SerializedName(SERIALIZED_NAME_ENDS_AT)
+  private String endsAt;
+
+  public static final String SERIALIZED_NAME_STATUS = "status";
+  @SerializedName(SERIALIZED_NAME_STATUS)
+  private String status;
 
   public ListBuyerPartiesItem() { 
   }
@@ -79,52 +79,6 @@ public class ListBuyerPartiesItem {
   }
 
 
-  public ListBuyerPartiesItem status(String status) {
-    
-    this.status = status;
-    return this;
-  }
-
-   /**
-   * Get status
-   * @return status
-  **/
-  @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "")
-
-  public String getStatus() {
-    return status;
-  }
-
-
-  public void setStatus(String status) {
-    this.status = status;
-  }
-
-
-  public ListBuyerPartiesItem endsAt(String endsAt) {
-    
-    this.endsAt = endsAt;
-    return this;
-  }
-
-   /**
-   * Get endsAt
-   * @return endsAt
-  **/
-  @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "")
-
-  public String getEndsAt() {
-    return endsAt;
-  }
-
-
-  public void setEndsAt(String endsAt) {
-    this.endsAt = endsAt;
-  }
-
-
   public ListBuyerPartiesItem slug(String slug) {
     
     this.slug = slug;
@@ -145,29 +99,6 @@ public class ListBuyerPartiesItem {
 
   public void setSlug(String slug) {
     this.slug = slug;
-  }
-
-
-  public ListBuyerPartiesItem startsAt(String startsAt) {
-    
-    this.startsAt = startsAt;
-    return this;
-  }
-
-   /**
-   * Get startsAt
-   * @return startsAt
-  **/
-  @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "")
-
-  public String getStartsAt() {
-    return startsAt;
-  }
-
-
-  public void setStartsAt(String startsAt) {
-    this.startsAt = startsAt;
   }
 
 
@@ -194,6 +125,75 @@ public class ListBuyerPartiesItem {
   }
 
 
+  public ListBuyerPartiesItem startsAt(String startsAt) {
+    
+    this.startsAt = startsAt;
+    return this;
+  }
+
+   /**
+   * Get startsAt
+   * @return startsAt
+  **/
+  @javax.annotation.Nonnull
+  @ApiModelProperty(required = true, value = "")
+
+  public String getStartsAt() {
+    return startsAt;
+  }
+
+
+  public void setStartsAt(String startsAt) {
+    this.startsAt = startsAt;
+  }
+
+
+  public ListBuyerPartiesItem endsAt(String endsAt) {
+    
+    this.endsAt = endsAt;
+    return this;
+  }
+
+   /**
+   * Get endsAt
+   * @return endsAt
+  **/
+  @javax.annotation.Nonnull
+  @ApiModelProperty(required = true, value = "")
+
+  public String getEndsAt() {
+    return endsAt;
+  }
+
+
+  public void setEndsAt(String endsAt) {
+    this.endsAt = endsAt;
+  }
+
+
+  public ListBuyerPartiesItem status(String status) {
+    
+    this.status = status;
+    return this;
+  }
+
+   /**
+   * Get status
+   * @return status
+  **/
+  @javax.annotation.Nonnull
+  @ApiModelProperty(required = true, value = "")
+
+  public String getStatus() {
+    return status;
+  }
+
+
+  public void setStatus(String status) {
+    this.status = status;
+  }
+
+
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -204,16 +204,16 @@ public class ListBuyerPartiesItem {
     }
     ListBuyerPartiesItem listBuyerPartiesItem = (ListBuyerPartiesItem) o;
     return Objects.equals(this.id, listBuyerPartiesItem.id) &&
-        Objects.equals(this.status, listBuyerPartiesItem.status) &&
-        Objects.equals(this.endsAt, listBuyerPartiesItem.endsAt) &&
         Objects.equals(this.slug, listBuyerPartiesItem.slug) &&
+        Objects.equals(this.theme, listBuyerPartiesItem.theme) &&
         Objects.equals(this.startsAt, listBuyerPartiesItem.startsAt) &&
-        Objects.equals(this.theme, listBuyerPartiesItem.theme);
+        Objects.equals(this.endsAt, listBuyerPartiesItem.endsAt) &&
+        Objects.equals(this.status, listBuyerPartiesItem.status);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, status, endsAt, slug, startsAt, theme);
+    return Objects.hash(id, slug, theme, startsAt, endsAt, status);
   }
 
   @Override
@@ -221,11 +221,11 @@ public class ListBuyerPartiesItem {
     StringBuilder sb = new StringBuilder();
     sb.append("class ListBuyerPartiesItem {\n");
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
-    sb.append("    status: ").append(toIndentedString(status)).append("\n");
-    sb.append("    endsAt: ").append(toIndentedString(endsAt)).append("\n");
     sb.append("    slug: ").append(toIndentedString(slug)).append("\n");
-    sb.append("    startsAt: ").append(toIndentedString(startsAt)).append("\n");
     sb.append("    theme: ").append(toIndentedString(theme)).append("\n");
+    sb.append("    startsAt: ").append(toIndentedString(startsAt)).append("\n");
+    sb.append("    endsAt: ").append(toIndentedString(endsAt)).append("\n");
+    sb.append("    status: ").append(toIndentedString(status)).append("\n");
     sb.append("}");
     return sb.toString();
   }

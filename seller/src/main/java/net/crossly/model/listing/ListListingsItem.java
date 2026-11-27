@@ -26,14 +26,15 @@ import java.io.IOException;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
-import net.crossly.model.grading.ListGradingSubmissionsItemGrading;
+import net.crossly.model.bulk.CreateBulkBatchItemResponseGrading;
+import net.crossly.model.listing.ListListingsItemPricing;
 import org.openapitools.jackson.nullable.JsonNullable;
 import org.threeten.bp.OffsetDateTime;
 
 /**
  * ListListingsItem
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-11T23:44:48.922Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-27T19:42:43.186Z[Etc/UTC]")
 public class ListListingsItem {
   public static final String SERIALIZED_NAME_AI_MEDIA = "aiMedia";
   @SerializedName(SERIALIZED_NAME_AI_MEDIA)
@@ -42,6 +43,10 @@ public class ListListingsItem {
   public static final String SERIALIZED_NAME_AI_MEDIA_DETECTED = "aiMediaDetected";
   @SerializedName(SERIALIZED_NAME_AI_MEDIA_DETECTED)
   private Boolean aiMediaDetected;
+
+  public static final String SERIALIZED_NAME_PRICING = "pricing";
+  @SerializedName(SERIALIZED_NAME_PRICING)
+  private ListListingsItemPricing pricing;
 
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
@@ -66,6 +71,18 @@ public class ListListingsItem {
   public static final String SERIALIZED_NAME_USER_ID = "userId";
   @SerializedName(SERIALIZED_NAME_USER_ID)
   private String userId;
+
+  public static final String SERIALIZED_NAME_DESCRIPTION = "description";
+  @SerializedName(SERIALIZED_NAME_DESCRIPTION)
+  private String description;
+
+  public static final String SERIALIZED_NAME_STATUS = "status";
+  @SerializedName(SERIALIZED_NAME_STATUS)
+  private String status;
+
+  public static final String SERIALIZED_NAME_SOURCE = "source";
+  @SerializedName(SERIALIZED_NAME_SOURCE)
+  private String source;
 
   public static final String SERIALIZED_NAME_SKU = "sku";
   @SerializedName(SERIALIZED_NAME_SKU)
@@ -137,7 +154,7 @@ public class ListListingsItem {
 
   public static final String SERIALIZED_NAME_GRADING = "grading";
   @SerializedName(SERIALIZED_NAME_GRADING)
-  private ListGradingSubmissionsItemGrading grading;
+  private CreateBulkBatchItemResponseGrading grading;
 
   public static final String SERIALIZED_NAME_PRICE_FLOOR_CENTS = "priceFloorCents";
   @SerializedName(SERIALIZED_NAME_PRICE_FLOOR_CENTS)
@@ -166,18 +183,6 @@ public class ListListingsItem {
   public static final String SERIALIZED_NAME_DIMENSION_H_IN = "dimensionHIn";
   @SerializedName(SERIALIZED_NAME_DIMENSION_H_IN)
   private String dimensionHIn;
-
-  public static final String SERIALIZED_NAME_STATUS = "status";
-  @SerializedName(SERIALIZED_NAME_STATUS)
-  private String status;
-
-  public static final String SERIALIZED_NAME_SOURCE = "source";
-  @SerializedName(SERIALIZED_NAME_SOURCE)
-  private String source;
-
-  public static final String SERIALIZED_NAME_DESCRIPTION = "description";
-  @SerializedName(SERIALIZED_NAME_DESCRIPTION)
-  private String description;
 
   public static final String SERIALIZED_NAME_TITLE = "title";
   @SerializedName(SERIALIZED_NAME_TITLE)
@@ -296,6 +301,14 @@ public class ListListingsItem {
   @SerializedName(SERIALIZED_NAME_AUTOMATION_BLOCKED_CHAIN_IDS)
   private List<String> automationBlockedChainIds = new ArrayList<String>();
 
+  public static final String SERIALIZED_NAME_WORKFLOW_BLOCKED_IDS = "workflowBlockedIds";
+  @SerializedName(SERIALIZED_NAME_WORKFLOW_BLOCKED_IDS)
+  private List<String> workflowBlockedIds = new ArrayList<String>();
+
+  public static final String SERIALIZED_NAME_WORKFLOW_ASSIGNED_IDS = "workflowAssignedIds";
+  @SerializedName(SERIALIZED_NAME_WORKFLOW_ASSIGNED_IDS)
+  private List<String> workflowAssignedIds = new ArrayList<String>();
+
   public static final String SERIALIZED_NAME_HS_CODE = "hsCode";
   @SerializedName(SERIALIZED_NAME_HS_CODE)
   private String hsCode;
@@ -323,6 +336,18 @@ public class ListListingsItem {
   public static final String SERIALIZED_NAME_CLIENT_DRAFT_ID = "clientDraftId";
   @SerializedName(SERIALIZED_NAME_CLIENT_DRAFT_ID)
   private String clientDraftId;
+
+  public static final String SERIALIZED_NAME_ATTRIBUTED_OAUTH_APP_ID = "attributedOauthAppId";
+  @SerializedName(SERIALIZED_NAME_ATTRIBUTED_OAUTH_APP_ID)
+  private String attributedOauthAppId;
+
+  public static final String SERIALIZED_NAME_ATTRIBUTED_GRANT_ID = "attributedGrantId";
+  @SerializedName(SERIALIZED_NAME_ATTRIBUTED_GRANT_ID)
+  private String attributedGrantId;
+
+  public static final String SERIALIZED_NAME_QUOTA_BUCKET = "quotaBucket";
+  @SerializedName(SERIALIZED_NAME_QUOTA_BUCKET)
+  private String quotaBucket;
 
   public ListListingsItem() { 
   }
@@ -370,6 +395,29 @@ public class ListListingsItem {
 
   public void setAiMediaDetected(Boolean aiMediaDetected) {
     this.aiMediaDetected = aiMediaDetected;
+  }
+
+
+  public ListListingsItem pricing(ListListingsItemPricing pricing) {
+    
+    this.pricing = pricing;
+    return this;
+  }
+
+   /**
+   * Get pricing
+   * @return pricing
+  **/
+  @javax.annotation.Nonnull
+  @ApiModelProperty(required = true, value = "")
+
+  public ListListingsItemPricing getPricing() {
+    return pricing;
+  }
+
+
+  public void setPricing(ListListingsItemPricing pricing) {
+    this.pricing = pricing;
   }
 
 
@@ -508,6 +556,75 @@ public class ListListingsItem {
 
   public void setUserId(String userId) {
     this.userId = userId;
+  }
+
+
+  public ListListingsItem description(String description) {
+    
+    this.description = description;
+    return this;
+  }
+
+   /**
+   * Get description
+   * @return description
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public String getDescription() {
+    return description;
+  }
+
+
+  public void setDescription(String description) {
+    this.description = description;
+  }
+
+
+  public ListListingsItem status(String status) {
+    
+    this.status = status;
+    return this;
+  }
+
+   /**
+   * Get status
+   * @return status
+  **/
+  @javax.annotation.Nonnull
+  @ApiModelProperty(required = true, value = "")
+
+  public String getStatus() {
+    return status;
+  }
+
+
+  public void setStatus(String status) {
+    this.status = status;
+  }
+
+
+  public ListListingsItem source(String source) {
+    
+    this.source = source;
+    return this;
+  }
+
+   /**
+   * Get source
+   * @return source
+  **/
+  @javax.annotation.Nonnull
+  @ApiModelProperty(required = true, value = "")
+
+  public String getSource() {
+    return source;
+  }
+
+
+  public void setSource(String source) {
+    this.source = source;
   }
 
 
@@ -920,7 +1037,7 @@ public class ListListingsItem {
   }
 
 
-  public ListListingsItem grading(ListGradingSubmissionsItemGrading grading) {
+  public ListListingsItem grading(CreateBulkBatchItemResponseGrading grading) {
     
     this.grading = grading;
     return this;
@@ -933,12 +1050,12 @@ public class ListListingsItem {
   @javax.annotation.Nullable
   @ApiModelProperty(value = "")
 
-  public ListGradingSubmissionsItemGrading getGrading() {
+  public CreateBulkBatchItemResponseGrading getGrading() {
     return grading;
   }
 
 
-  public void setGrading(ListGradingSubmissionsItemGrading grading) {
+  public void setGrading(CreateBulkBatchItemResponseGrading grading) {
     this.grading = grading;
   }
 
@@ -1101,75 +1218,6 @@ public class ListListingsItem {
 
   public void setDimensionHIn(String dimensionHIn) {
     this.dimensionHIn = dimensionHIn;
-  }
-
-
-  public ListListingsItem status(String status) {
-    
-    this.status = status;
-    return this;
-  }
-
-   /**
-   * Get status
-   * @return status
-  **/
-  @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "")
-
-  public String getStatus() {
-    return status;
-  }
-
-
-  public void setStatus(String status) {
-    this.status = status;
-  }
-
-
-  public ListListingsItem source(String source) {
-    
-    this.source = source;
-    return this;
-  }
-
-   /**
-   * Get source
-   * @return source
-  **/
-  @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "")
-
-  public String getSource() {
-    return source;
-  }
-
-
-  public void setSource(String source) {
-    this.source = source;
-  }
-
-
-  public ListListingsItem description(String description) {
-    
-    this.description = description;
-    return this;
-  }
-
-   /**
-   * Get description
-   * @return description
-  **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
-
-  public String getDescription() {
-    return description;
-  }
-
-
-  public void setDescription(String description) {
-    this.description = description;
   }
 
 
@@ -1602,6 +1650,62 @@ public class ListListingsItem {
   }
 
 
+  public ListListingsItem workflowBlockedIds(List<String> workflowBlockedIds) {
+    
+    this.workflowBlockedIds = workflowBlockedIds;
+    return this;
+  }
+
+  public ListListingsItem addWorkflowBlockedIdsItem(String workflowBlockedIdsItem) {
+    this.workflowBlockedIds.add(workflowBlockedIdsItem);
+    return this;
+  }
+
+   /**
+   * Get workflowBlockedIds
+   * @return workflowBlockedIds
+  **/
+  @javax.annotation.Nonnull
+  @ApiModelProperty(required = true, value = "")
+
+  public List<String> getWorkflowBlockedIds() {
+    return workflowBlockedIds;
+  }
+
+
+  public void setWorkflowBlockedIds(List<String> workflowBlockedIds) {
+    this.workflowBlockedIds = workflowBlockedIds;
+  }
+
+
+  public ListListingsItem workflowAssignedIds(List<String> workflowAssignedIds) {
+    
+    this.workflowAssignedIds = workflowAssignedIds;
+    return this;
+  }
+
+  public ListListingsItem addWorkflowAssignedIdsItem(String workflowAssignedIdsItem) {
+    this.workflowAssignedIds.add(workflowAssignedIdsItem);
+    return this;
+  }
+
+   /**
+   * Get workflowAssignedIds
+   * @return workflowAssignedIds
+  **/
+  @javax.annotation.Nonnull
+  @ApiModelProperty(required = true, value = "")
+
+  public List<String> getWorkflowAssignedIds() {
+    return workflowAssignedIds;
+  }
+
+
+  public void setWorkflowAssignedIds(List<String> workflowAssignedIds) {
+    this.workflowAssignedIds = workflowAssignedIds;
+  }
+
+
   public ListListingsItem hsCode(String hsCode) {
     
     this.hsCode = hsCode;
@@ -1763,6 +1867,75 @@ public class ListListingsItem {
   }
 
 
+  public ListListingsItem attributedOauthAppId(String attributedOauthAppId) {
+    
+    this.attributedOauthAppId = attributedOauthAppId;
+    return this;
+  }
+
+   /**
+   * Get attributedOauthAppId
+   * @return attributedOauthAppId
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public String getAttributedOauthAppId() {
+    return attributedOauthAppId;
+  }
+
+
+  public void setAttributedOauthAppId(String attributedOauthAppId) {
+    this.attributedOauthAppId = attributedOauthAppId;
+  }
+
+
+  public ListListingsItem attributedGrantId(String attributedGrantId) {
+    
+    this.attributedGrantId = attributedGrantId;
+    return this;
+  }
+
+   /**
+   * Get attributedGrantId
+   * @return attributedGrantId
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public String getAttributedGrantId() {
+    return attributedGrantId;
+  }
+
+
+  public void setAttributedGrantId(String attributedGrantId) {
+    this.attributedGrantId = attributedGrantId;
+  }
+
+
+  public ListListingsItem quotaBucket(String quotaBucket) {
+    
+    this.quotaBucket = quotaBucket;
+    return this;
+  }
+
+   /**
+   * Get quotaBucket
+   * @return quotaBucket
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public String getQuotaBucket() {
+    return quotaBucket;
+  }
+
+
+  public void setQuotaBucket(String quotaBucket) {
+    this.quotaBucket = quotaBucket;
+  }
+
+
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -1774,12 +1947,16 @@ public class ListListingsItem {
     ListListingsItem listListingsItem = (ListListingsItem) o;
     return Objects.equals(this.aiMedia, listListingsItem.aiMedia) &&
         Objects.equals(this.aiMediaDetected, listListingsItem.aiMediaDetected) &&
+        Objects.equals(this.pricing, listListingsItem.pricing) &&
         Objects.equals(this.id, listListingsItem.id) &&
         Objects.equals(this.brand, listListingsItem.brand) &&
         Objects.equals(this.name, listListingsItem.name) &&
         Objects.equals(this.createdAt, listListingsItem.createdAt) &&
         Objects.equals(this.updatedAt, listListingsItem.updatedAt) &&
         Objects.equals(this.userId, listListingsItem.userId) &&
+        Objects.equals(this.description, listListingsItem.description) &&
+        Objects.equals(this.status, listListingsItem.status) &&
+        Objects.equals(this.source, listListingsItem.source) &&
         Objects.equals(this.sku, listListingsItem.sku) &&
         Objects.equals(this.quantity, listListingsItem.quantity) &&
         Objects.equals(this.quantityAvailable, listListingsItem.quantityAvailable) &&
@@ -1805,9 +1982,6 @@ public class ListListingsItem {
         Objects.equals(this.dimensionLIn, listListingsItem.dimensionLIn) &&
         Objects.equals(this.dimensionWIn, listListingsItem.dimensionWIn) &&
         Objects.equals(this.dimensionHIn, listListingsItem.dimensionHIn) &&
-        Objects.equals(this.status, listListingsItem.status) &&
-        Objects.equals(this.source, listListingsItem.source) &&
-        Objects.equals(this.description, listListingsItem.description) &&
         Objects.equals(this.title, listListingsItem.title) &&
         Objects.equals(this.descriptionHtml, listListingsItem.descriptionHtml) &&
         Objects.equals(this.price, listListingsItem.price) &&
@@ -1825,13 +1999,18 @@ public class ListListingsItem {
         Objects.equals(this.automationBlockedRuleIds, listListingsItem.automationBlockedRuleIds) &&
         Objects.equals(this.automationAssignedChainIds, listListingsItem.automationAssignedChainIds) &&
         Objects.equals(this.automationBlockedChainIds, listListingsItem.automationBlockedChainIds) &&
+        Objects.equals(this.workflowBlockedIds, listListingsItem.workflowBlockedIds) &&
+        Objects.equals(this.workflowAssignedIds, listListingsItem.workflowAssignedIds) &&
         Objects.equals(this.hsCode, listListingsItem.hsCode) &&
         Objects.equals(this.countryOfOrigin, listListingsItem.countryOfOrigin) &&
         Objects.equals(this.delistedAt, listListingsItem.delistedAt) &&
         Objects.equals(this.soldAt, listListingsItem.soldAt) &&
         Objects.equals(this.ebayAttributesEnrichedAt, listListingsItem.ebayAttributesEnrichedAt) &&
         Objects.equals(this.duplicateOfListingId, listListingsItem.duplicateOfListingId) &&
-        Objects.equals(this.clientDraftId, listListingsItem.clientDraftId);
+        Objects.equals(this.clientDraftId, listListingsItem.clientDraftId) &&
+        Objects.equals(this.attributedOauthAppId, listListingsItem.attributedOauthAppId) &&
+        Objects.equals(this.attributedGrantId, listListingsItem.attributedGrantId) &&
+        Objects.equals(this.quotaBucket, listListingsItem.quotaBucket);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -1840,7 +2019,7 @@ public class ListListingsItem {
 
   @Override
   public int hashCode() {
-    return Objects.hash(aiMedia, aiMediaDetected, id, brand, name, createdAt, updatedAt, userId, sku, quantity, quantityAvailable, condition, size, material, style, pattern, department, gender, itemType, sizeSystem, color, images, videoUrl, tags, gradeKey, grading, priceFloorCents, floorIsNet, weightLb, weightOz, dimensionLIn, dimensionWIn, dimensionHIn, status, source, description, title, descriptionHtml, price, currency, aiMediaUrls, aiMediaDeclared, aiMediaDetectedUrls, isDigital, publishAt, scheduledPlatforms, parentListingId, groupKind, isBundle, automationAssignedRuleIds, automationBlockedRuleIds, automationAssignedChainIds, automationBlockedChainIds, hsCode, countryOfOrigin, delistedAt, soldAt, ebayAttributesEnrichedAt, duplicateOfListingId, clientDraftId);
+    return Objects.hash(aiMedia, aiMediaDetected, pricing, id, brand, name, createdAt, updatedAt, userId, description, status, source, sku, quantity, quantityAvailable, condition, size, material, style, pattern, department, gender, itemType, sizeSystem, color, images, videoUrl, tags, gradeKey, grading, priceFloorCents, floorIsNet, weightLb, weightOz, dimensionLIn, dimensionWIn, dimensionHIn, title, descriptionHtml, price, currency, aiMediaUrls, aiMediaDeclared, aiMediaDetectedUrls, isDigital, publishAt, scheduledPlatforms, parentListingId, groupKind, isBundle, automationAssignedRuleIds, automationBlockedRuleIds, automationAssignedChainIds, automationBlockedChainIds, workflowBlockedIds, workflowAssignedIds, hsCode, countryOfOrigin, delistedAt, soldAt, ebayAttributesEnrichedAt, duplicateOfListingId, clientDraftId, attributedOauthAppId, attributedGrantId, quotaBucket);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -1856,12 +2035,16 @@ public class ListListingsItem {
     sb.append("class ListListingsItem {\n");
     sb.append("    aiMedia: ").append(toIndentedString(aiMedia)).append("\n");
     sb.append("    aiMediaDetected: ").append(toIndentedString(aiMediaDetected)).append("\n");
+    sb.append("    pricing: ").append(toIndentedString(pricing)).append("\n");
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    brand: ").append(toIndentedString(brand)).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    createdAt: ").append(toIndentedString(createdAt)).append("\n");
     sb.append("    updatedAt: ").append(toIndentedString(updatedAt)).append("\n");
     sb.append("    userId: ").append(toIndentedString(userId)).append("\n");
+    sb.append("    description: ").append(toIndentedString(description)).append("\n");
+    sb.append("    status: ").append(toIndentedString(status)).append("\n");
+    sb.append("    source: ").append(toIndentedString(source)).append("\n");
     sb.append("    sku: ").append(toIndentedString(sku)).append("\n");
     sb.append("    quantity: ").append(toIndentedString(quantity)).append("\n");
     sb.append("    quantityAvailable: ").append(toIndentedString(quantityAvailable)).append("\n");
@@ -1887,9 +2070,6 @@ public class ListListingsItem {
     sb.append("    dimensionLIn: ").append(toIndentedString(dimensionLIn)).append("\n");
     sb.append("    dimensionWIn: ").append(toIndentedString(dimensionWIn)).append("\n");
     sb.append("    dimensionHIn: ").append(toIndentedString(dimensionHIn)).append("\n");
-    sb.append("    status: ").append(toIndentedString(status)).append("\n");
-    sb.append("    source: ").append(toIndentedString(source)).append("\n");
-    sb.append("    description: ").append(toIndentedString(description)).append("\n");
     sb.append("    title: ").append(toIndentedString(title)).append("\n");
     sb.append("    descriptionHtml: ").append(toIndentedString(descriptionHtml)).append("\n");
     sb.append("    price: ").append(toIndentedString(price)).append("\n");
@@ -1907,6 +2087,8 @@ public class ListListingsItem {
     sb.append("    automationBlockedRuleIds: ").append(toIndentedString(automationBlockedRuleIds)).append("\n");
     sb.append("    automationAssignedChainIds: ").append(toIndentedString(automationAssignedChainIds)).append("\n");
     sb.append("    automationBlockedChainIds: ").append(toIndentedString(automationBlockedChainIds)).append("\n");
+    sb.append("    workflowBlockedIds: ").append(toIndentedString(workflowBlockedIds)).append("\n");
+    sb.append("    workflowAssignedIds: ").append(toIndentedString(workflowAssignedIds)).append("\n");
     sb.append("    hsCode: ").append(toIndentedString(hsCode)).append("\n");
     sb.append("    countryOfOrigin: ").append(toIndentedString(countryOfOrigin)).append("\n");
     sb.append("    delistedAt: ").append(toIndentedString(delistedAt)).append("\n");
@@ -1914,6 +2096,9 @@ public class ListListingsItem {
     sb.append("    ebayAttributesEnrichedAt: ").append(toIndentedString(ebayAttributesEnrichedAt)).append("\n");
     sb.append("    duplicateOfListingId: ").append(toIndentedString(duplicateOfListingId)).append("\n");
     sb.append("    clientDraftId: ").append(toIndentedString(clientDraftId)).append("\n");
+    sb.append("    attributedOauthAppId: ").append(toIndentedString(attributedOauthAppId)).append("\n");
+    sb.append("    attributedGrantId: ").append(toIndentedString(attributedGrantId)).append("\n");
+    sb.append("    quotaBucket: ").append(toIndentedString(quotaBucket)).append("\n");
     sb.append("}");
     return sb.toString();
   }

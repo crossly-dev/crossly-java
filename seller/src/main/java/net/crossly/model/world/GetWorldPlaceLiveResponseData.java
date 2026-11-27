@@ -23,14 +23,14 @@ import com.google.gson.stream.JsonWriter;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
-import net.crossly.model.world.GetWorldPlaceLiveResponseDataLot;
+import net.crossly.model.main.GetMainStageResponseStreamLot;
 import net.crossly.model.world.GetWorldPlaceLiveResponseDataStream;
 import org.openapitools.jackson.nullable.JsonNullable;
 
 /**
  * GetWorldPlaceLiveResponseData
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-11T23:44:48.922Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-27T19:42:43.186Z[Etc/UTC]")
 public class GetWorldPlaceLiveResponseData {
   public static final String SERIALIZED_NAME_STREAM = "stream";
   @SerializedName(SERIALIZED_NAME_STREAM)
@@ -38,7 +38,7 @@ public class GetWorldPlaceLiveResponseData {
 
   public static final String SERIALIZED_NAME_LOT = "lot";
   @SerializedName(SERIALIZED_NAME_LOT)
-  private GetWorldPlaceLiveResponseDataLot lot;
+  private GetMainStageResponseStreamLot lot;
 
   public GetWorldPlaceLiveResponseData() { 
   }
@@ -66,7 +66,7 @@ public class GetWorldPlaceLiveResponseData {
   }
 
 
-  public GetWorldPlaceLiveResponseData lot(GetWorldPlaceLiveResponseDataLot lot) {
+  public GetWorldPlaceLiveResponseData lot(GetMainStageResponseStreamLot lot) {
     
     this.lot = lot;
     return this;
@@ -79,12 +79,12 @@ public class GetWorldPlaceLiveResponseData {
   @javax.annotation.Nullable
   @ApiModelProperty(value = "")
 
-  public GetWorldPlaceLiveResponseDataLot getLot() {
+  public GetMainStageResponseStreamLot getLot() {
     return lot;
   }
 
 
-  public void setLot(GetWorldPlaceLiveResponseDataLot lot) {
+  public void setLot(GetMainStageResponseStreamLot lot) {
     this.lot = lot;
   }
 

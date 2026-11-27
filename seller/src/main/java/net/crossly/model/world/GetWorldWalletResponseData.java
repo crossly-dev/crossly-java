@@ -24,15 +24,25 @@ import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 import java.math.BigDecimal;
+import net.crossly.model.world.GetWorldWalletResponseDataCbx;
+import net.crossly.model.world.GetWorldWalletResponseDataCosm;
 
 /**
  * GetWorldWalletResponseData
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-11T23:44:48.922Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-27T19:42:43.186Z[Etc/UTC]")
 public class GetWorldWalletResponseData {
   public static final String SERIALIZED_NAME_BUCKS_CENTS = "bucksCents";
   @SerializedName(SERIALIZED_NAME_BUCKS_CENTS)
   private BigDecimal bucksCents;
+
+  public static final String SERIALIZED_NAME_CBX = "cbx";
+  @SerializedName(SERIALIZED_NAME_CBX)
+  private GetWorldWalletResponseDataCbx cbx;
+
+  public static final String SERIALIZED_NAME_COSM = "cosm";
+  @SerializedName(SERIALIZED_NAME_COSM)
+  private GetWorldWalletResponseDataCosm cosm;
 
   public GetWorldWalletResponseData() { 
   }
@@ -60,6 +70,52 @@ public class GetWorldWalletResponseData {
   }
 
 
+  public GetWorldWalletResponseData cbx(GetWorldWalletResponseDataCbx cbx) {
+    
+    this.cbx = cbx;
+    return this;
+  }
+
+   /**
+   * Get cbx
+   * @return cbx
+  **/
+  @javax.annotation.Nonnull
+  @ApiModelProperty(required = true, value = "")
+
+  public GetWorldWalletResponseDataCbx getCbx() {
+    return cbx;
+  }
+
+
+  public void setCbx(GetWorldWalletResponseDataCbx cbx) {
+    this.cbx = cbx;
+  }
+
+
+  public GetWorldWalletResponseData cosm(GetWorldWalletResponseDataCosm cosm) {
+    
+    this.cosm = cosm;
+    return this;
+  }
+
+   /**
+   * Get cosm
+   * @return cosm
+  **/
+  @javax.annotation.Nonnull
+  @ApiModelProperty(required = true, value = "")
+
+  public GetWorldWalletResponseDataCosm getCosm() {
+    return cosm;
+  }
+
+
+  public void setCosm(GetWorldWalletResponseDataCosm cosm) {
+    this.cosm = cosm;
+  }
+
+
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -69,12 +125,14 @@ public class GetWorldWalletResponseData {
       return false;
     }
     GetWorldWalletResponseData getWorldWalletResponseData = (GetWorldWalletResponseData) o;
-    return Objects.equals(this.bucksCents, getWorldWalletResponseData.bucksCents);
+    return Objects.equals(this.bucksCents, getWorldWalletResponseData.bucksCents) &&
+        Objects.equals(this.cbx, getWorldWalletResponseData.cbx) &&
+        Objects.equals(this.cosm, getWorldWalletResponseData.cosm);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(bucksCents);
+    return Objects.hash(bucksCents, cbx, cosm);
   }
 
   @Override
@@ -82,6 +140,8 @@ public class GetWorldWalletResponseData {
     StringBuilder sb = new StringBuilder();
     sb.append("class GetWorldWalletResponseData {\n");
     sb.append("    bucksCents: ").append(toIndentedString(bucksCents)).append("\n");
+    sb.append("    cbx: ").append(toIndentedString(cbx)).append("\n");
+    sb.append("    cosm: ").append(toIndentedString(cosm)).append("\n");
     sb.append("}");
     return sb.toString();
   }

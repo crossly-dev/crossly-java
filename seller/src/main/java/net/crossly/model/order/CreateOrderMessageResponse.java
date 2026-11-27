@@ -23,11 +23,12 @@ import com.google.gson.stream.JsonWriter;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
+import org.openapitools.jackson.nullable.JsonNullable;
 
 /**
  * CreateOrderMessageResponse
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-11T23:44:48.922Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-27T19:42:43.186Z[Etc/UTC]")
 public class CreateOrderMessageResponse {
   public static final String SERIALIZED_NAME_ORDER_ID = "orderId";
   @SerializedName(SERIALIZED_NAME_ORDER_ID)
@@ -36,6 +37,14 @@ public class CreateOrderMessageResponse {
   public static final String SERIALIZED_NAME_SENT = "sent";
   @SerializedName(SERIALIZED_NAME_SENT)
   private Boolean sent;
+
+  public static final String SERIALIZED_NAME_RELAYED = "relayed";
+  @SerializedName(SERIALIZED_NAME_RELAYED)
+  private Boolean relayed;
+
+  public static final String SERIALIZED_NAME_COMMAND_ID = "commandId";
+  @SerializedName(SERIALIZED_NAME_COMMAND_ID)
+  private String commandId;
 
   public static final String SERIALIZED_NAME_PLATFORM_CONVERSATION_ID = "platformConversationId";
   @SerializedName(SERIALIZED_NAME_PLATFORM_CONVERSATION_ID)
@@ -90,6 +99,52 @@ public class CreateOrderMessageResponse {
   }
 
 
+  public CreateOrderMessageResponse relayed(Boolean relayed) {
+    
+    this.relayed = relayed;
+    return this;
+  }
+
+   /**
+   * True when the managing app was asked to send it (action authority).
+   * @return relayed
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "True when the managing app was asked to send it (action authority).")
+
+  public Boolean getRelayed() {
+    return relayed;
+  }
+
+
+  public void setRelayed(Boolean relayed) {
+    this.relayed = relayed;
+  }
+
+
+  public CreateOrderMessageResponse commandId(String commandId) {
+    
+    this.commandId = commandId;
+    return this;
+  }
+
+   /**
+   * The managing-app command id, on a relay.
+   * @return commandId
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "The managing-app command id, on a relay.")
+
+  public String getCommandId() {
+    return commandId;
+  }
+
+
+  public void setCommandId(String commandId) {
+    this.commandId = commandId;
+  }
+
+
   public CreateOrderMessageResponse platformConversationId(String platformConversationId) {
     
     this.platformConversationId = platformConversationId;
@@ -100,8 +155,8 @@ public class CreateOrderMessageResponse {
    * Get platformConversationId
    * @return platformConversationId
   **/
-  @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "")
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
 
   public String getPlatformConversationId() {
     return platformConversationId;
@@ -124,12 +179,25 @@ public class CreateOrderMessageResponse {
     CreateOrderMessageResponse createOrderMessageResponse = (CreateOrderMessageResponse) o;
     return Objects.equals(this.orderId, createOrderMessageResponse.orderId) &&
         Objects.equals(this.sent, createOrderMessageResponse.sent) &&
+        Objects.equals(this.relayed, createOrderMessageResponse.relayed) &&
+        Objects.equals(this.commandId, createOrderMessageResponse.commandId) &&
         Objects.equals(this.platformConversationId, createOrderMessageResponse.platformConversationId);
+  }
+
+  private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+    return a == b || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(orderId, sent, platformConversationId);
+    return Objects.hash(orderId, sent, relayed, commandId, platformConversationId);
+  }
+
+  private static <T> int hashCodeNullable(JsonNullable<T> a) {
+    if (a == null) {
+      return 1;
+    }
+    return a.isPresent() ? Arrays.deepHashCode(new Object[]{a.get()}) : 31;
   }
 
   @Override
@@ -138,6 +206,8 @@ public class CreateOrderMessageResponse {
     sb.append("class CreateOrderMessageResponse {\n");
     sb.append("    orderId: ").append(toIndentedString(orderId)).append("\n");
     sb.append("    sent: ").append(toIndentedString(sent)).append("\n");
+    sb.append("    relayed: ").append(toIndentedString(relayed)).append("\n");
+    sb.append("    commandId: ").append(toIndentedString(commandId)).append("\n");
     sb.append("    platformConversationId: ").append(toIndentedString(platformConversationId)).append("\n");
     sb.append("}");
     return sb.toString();

@@ -27,12 +27,14 @@ import java.util.ArrayList;
 import java.util.List;
 import net.crossly.model.vault.CreateVaultMarketPortfolioMarginEnrollResponseOneOfAccount;
 import net.crossly.model.vault.GetVaultMarketNavResponseHoldings;
+import net.crossly.model.vault.GetVaultMarketNavResponseOptions;
 import net.crossly.model.vault.GetVaultMarketNavResponseTotals;
+import org.openapitools.jackson.nullable.JsonNullable;
 
 /**
  * GetVaultMarketNavResponse
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-11T23:44:48.922Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-27T19:42:43.186Z[Etc/UTC]")
 public class GetVaultMarketNavResponse {
   public static final String SERIALIZED_NAME_ACCOUNT = "account";
   @SerializedName(SERIALIZED_NAME_ACCOUNT)
@@ -53,6 +55,10 @@ public class GetVaultMarketNavResponse {
   public static final String SERIALIZED_NAME_HOLDINGS = "holdings";
   @SerializedName(SERIALIZED_NAME_HOLDINGS)
   private List<GetVaultMarketNavResponseHoldings> holdings = new ArrayList<GetVaultMarketNavResponseHoldings>();
+
+  public static final String SERIALIZED_NAME_OPTIONS = "options";
+  @SerializedName(SERIALIZED_NAME_OPTIONS)
+  private GetVaultMarketNavResponseOptions options;
 
   public static final String SERIALIZED_NAME_POLICY = "policy";
   @SerializedName(SERIALIZED_NAME_POLICY)
@@ -181,6 +187,29 @@ public class GetVaultMarketNavResponse {
   }
 
 
+  public GetVaultMarketNavResponse options(GetVaultMarketNavResponseOptions options) {
+    
+    this.options = options;
+    return this;
+  }
+
+   /**
+   * Get options
+   * @return options
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public GetVaultMarketNavResponseOptions getOptions() {
+    return options;
+  }
+
+
+  public void setOptions(GetVaultMarketNavResponseOptions options) {
+    this.options = options;
+  }
+
+
   public GetVaultMarketNavResponse policy(List<String> policy) {
     
     this.policy = policy;
@@ -223,12 +252,24 @@ public class GetVaultMarketNavResponse {
         Objects.equals(this.currency, getVaultMarketNavResponse.currency) &&
         Objects.equals(this.totals, getVaultMarketNavResponse.totals) &&
         Objects.equals(this.holdings, getVaultMarketNavResponse.holdings) &&
+        Objects.equals(this.options, getVaultMarketNavResponse.options) &&
         Objects.equals(this.policy, getVaultMarketNavResponse.policy);
+  }
+
+  private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+    return a == b || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(account, asOf, currency, totals, holdings, policy);
+    return Objects.hash(account, asOf, currency, totals, holdings, options, policy);
+  }
+
+  private static <T> int hashCodeNullable(JsonNullable<T> a) {
+    if (a == null) {
+      return 1;
+    }
+    return a.isPresent() ? Arrays.deepHashCode(new Object[]{a.get()}) : 31;
   }
 
   @Override
@@ -240,6 +281,7 @@ public class GetVaultMarketNavResponse {
     sb.append("    currency: ").append(toIndentedString(currency)).append("\n");
     sb.append("    totals: ").append(toIndentedString(totals)).append("\n");
     sb.append("    holdings: ").append(toIndentedString(holdings)).append("\n");
+    sb.append("    options: ").append(toIndentedString(options)).append("\n");
     sb.append("    policy: ").append(toIndentedString(policy)).append("\n");
     sb.append("}");
     return sb.toString();

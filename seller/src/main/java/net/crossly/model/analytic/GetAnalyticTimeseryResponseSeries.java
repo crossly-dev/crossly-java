@@ -28,7 +28,7 @@ import java.math.BigDecimal;
 /**
  * GetAnalyticTimeseryResponseSeries
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-11T23:44:48.922Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-27T19:42:43.186Z[Etc/UTC]")
 public class GetAnalyticTimeseryResponseSeries {
   public static final String SERIALIZED_NAME_DAY = "day";
   @SerializedName(SERIALIZED_NAME_DAY)
@@ -41,6 +41,14 @@ public class GetAnalyticTimeseryResponseSeries {
   public static final String SERIALIZED_NAME_REVENUE = "revenue";
   @SerializedName(SERIALIZED_NAME_REVENUE)
   private BigDecimal revenue;
+
+  public static final String SERIALIZED_NAME_NET_SALES_CENTS = "netSalesCents";
+  @SerializedName(SERIALIZED_NAME_NET_SALES_CENTS)
+  private BigDecimal netSalesCents;
+
+  public static final String SERIALIZED_NAME_NET_PROFIT_CENTS = "netProfitCents";
+  @SerializedName(SERIALIZED_NAME_NET_PROFIT_CENTS)
+  private BigDecimal netProfitCents;
 
   public GetAnalyticTimeseryResponseSeries() { 
   }
@@ -114,6 +122,52 @@ public class GetAnalyticTimeseryResponseSeries {
   }
 
 
+  public GetAnalyticTimeseryResponseSeries netSalesCents(BigDecimal netSalesCents) {
+    
+    this.netSalesCents = netSalesCents;
+    return this;
+  }
+
+   /**
+   * Get netSalesCents
+   * @return netSalesCents
+  **/
+  @javax.annotation.Nonnull
+  @ApiModelProperty(required = true, value = "")
+
+  public BigDecimal getNetSalesCents() {
+    return netSalesCents;
+  }
+
+
+  public void setNetSalesCents(BigDecimal netSalesCents) {
+    this.netSalesCents = netSalesCents;
+  }
+
+
+  public GetAnalyticTimeseryResponseSeries netProfitCents(BigDecimal netProfitCents) {
+    
+    this.netProfitCents = netProfitCents;
+    return this;
+  }
+
+   /**
+   * Get netProfitCents
+   * @return netProfitCents
+  **/
+  @javax.annotation.Nonnull
+  @ApiModelProperty(required = true, value = "")
+
+  public BigDecimal getNetProfitCents() {
+    return netProfitCents;
+  }
+
+
+  public void setNetProfitCents(BigDecimal netProfitCents) {
+    this.netProfitCents = netProfitCents;
+  }
+
+
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -125,12 +179,14 @@ public class GetAnalyticTimeseryResponseSeries {
     GetAnalyticTimeseryResponseSeries getAnalyticTimeseryResponseSeries = (GetAnalyticTimeseryResponseSeries) o;
     return Objects.equals(this.day, getAnalyticTimeseryResponseSeries.day) &&
         Objects.equals(this.sales, getAnalyticTimeseryResponseSeries.sales) &&
-        Objects.equals(this.revenue, getAnalyticTimeseryResponseSeries.revenue);
+        Objects.equals(this.revenue, getAnalyticTimeseryResponseSeries.revenue) &&
+        Objects.equals(this.netSalesCents, getAnalyticTimeseryResponseSeries.netSalesCents) &&
+        Objects.equals(this.netProfitCents, getAnalyticTimeseryResponseSeries.netProfitCents);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(day, sales, revenue);
+    return Objects.hash(day, sales, revenue, netSalesCents, netProfitCents);
   }
 
   @Override
@@ -140,6 +196,8 @@ public class GetAnalyticTimeseryResponseSeries {
     sb.append("    day: ").append(toIndentedString(day)).append("\n");
     sb.append("    sales: ").append(toIndentedString(sales)).append("\n");
     sb.append("    revenue: ").append(toIndentedString(revenue)).append("\n");
+    sb.append("    netSalesCents: ").append(toIndentedString(netSalesCents)).append("\n");
+    sb.append("    netProfitCents: ").append(toIndentedString(netProfitCents)).append("\n");
     sb.append("}");
     return sb.toString();
   }

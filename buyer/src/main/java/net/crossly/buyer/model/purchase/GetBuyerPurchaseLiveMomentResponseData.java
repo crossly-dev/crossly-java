@@ -29,59 +29,59 @@ import org.openapitools.jackson.nullable.JsonNullable;
 /**
  * GetBuyerPurchaseLiveMomentResponseData
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-11T23:47:29.843Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-27T19:58:46.962Z[Etc/UTC]")
 public class GetBuyerPurchaseLiveMomentResponseData {
-  public static final String SERIALIZED_NAME_STATUS = "status";
-  @SerializedName(SERIALIZED_NAME_STATUS)
-  private String status;
+  public static final String SERIALIZED_NAME_STREAM_ID = "streamId";
+  @SerializedName(SERIALIZED_NAME_STREAM_ID)
+  private String streamId;
 
   public static final String SERIALIZED_NAME_TITLE = "title";
   @SerializedName(SERIALIZED_NAME_TITLE)
   private String title;
 
-  public static final String SERIALIZED_NAME_SOLD_AT = "soldAt";
-  @SerializedName(SERIALIZED_NAME_SOLD_AT)
-  private String soldAt;
-
   public static final String SERIALIZED_NAME_SELLER_USER_ID = "sellerUserId";
   @SerializedName(SERIALIZED_NAME_SELLER_USER_ID)
   private String sellerUserId;
+
+  public static final String SERIALIZED_NAME_STATUS = "status";
+  @SerializedName(SERIALIZED_NAME_STATUS)
+  private String status;
 
   public static final String SERIALIZED_NAME_REPLAY_URL = "replayUrl";
   @SerializedName(SERIALIZED_NAME_REPLAY_URL)
   private String replayUrl;
 
-  public static final String SERIALIZED_NAME_STREAM_ID = "streamId";
-  @SerializedName(SERIALIZED_NAME_STREAM_ID)
-  private String streamId;
-
   public static final String SERIALIZED_NAME_OFFSET_SECONDS = "offsetSeconds";
   @SerializedName(SERIALIZED_NAME_OFFSET_SECONDS)
   private BigDecimal offsetSeconds;
 
+  public static final String SERIALIZED_NAME_SOLD_AT = "soldAt";
+  @SerializedName(SERIALIZED_NAME_SOLD_AT)
+  private String soldAt;
+
   public GetBuyerPurchaseLiveMomentResponseData() { 
   }
 
-  public GetBuyerPurchaseLiveMomentResponseData status(String status) {
+  public GetBuyerPurchaseLiveMomentResponseData streamId(String streamId) {
     
-    this.status = status;
+    this.streamId = streamId;
     return this;
   }
 
    /**
-   * Get status
-   * @return status
+   * Get streamId
+   * @return streamId
   **/
   @javax.annotation.Nonnull
   @ApiModelProperty(required = true, value = "")
 
-  public String getStatus() {
-    return status;
+  public String getStreamId() {
+    return streamId;
   }
 
 
-  public void setStatus(String status) {
-    this.status = status;
+  public void setStreamId(String streamId) {
+    this.streamId = streamId;
   }
 
 
@@ -108,29 +108,6 @@ public class GetBuyerPurchaseLiveMomentResponseData {
   }
 
 
-  public GetBuyerPurchaseLiveMomentResponseData soldAt(String soldAt) {
-    
-    this.soldAt = soldAt;
-    return this;
-  }
-
-   /**
-   * Get soldAt
-   * @return soldAt
-  **/
-  @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "")
-
-  public String getSoldAt() {
-    return soldAt;
-  }
-
-
-  public void setSoldAt(String soldAt) {
-    this.soldAt = soldAt;
-  }
-
-
   public GetBuyerPurchaseLiveMomentResponseData sellerUserId(String sellerUserId) {
     
     this.sellerUserId = sellerUserId;
@@ -151,6 +128,29 @@ public class GetBuyerPurchaseLiveMomentResponseData {
 
   public void setSellerUserId(String sellerUserId) {
     this.sellerUserId = sellerUserId;
+  }
+
+
+  public GetBuyerPurchaseLiveMomentResponseData status(String status) {
+    
+    this.status = status;
+    return this;
+  }
+
+   /**
+   * Get status
+   * @return status
+  **/
+  @javax.annotation.Nonnull
+  @ApiModelProperty(required = true, value = "")
+
+  public String getStatus() {
+    return status;
+  }
+
+
+  public void setStatus(String status) {
+    this.status = status;
   }
 
 
@@ -177,29 +177,6 @@ public class GetBuyerPurchaseLiveMomentResponseData {
   }
 
 
-  public GetBuyerPurchaseLiveMomentResponseData streamId(String streamId) {
-    
-    this.streamId = streamId;
-    return this;
-  }
-
-   /**
-   * Get streamId
-   * @return streamId
-  **/
-  @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "")
-
-  public String getStreamId() {
-    return streamId;
-  }
-
-
-  public void setStreamId(String streamId) {
-    this.streamId = streamId;
-  }
-
-
   public GetBuyerPurchaseLiveMomentResponseData offsetSeconds(BigDecimal offsetSeconds) {
     
     this.offsetSeconds = offsetSeconds;
@@ -223,6 +200,29 @@ public class GetBuyerPurchaseLiveMomentResponseData {
   }
 
 
+  public GetBuyerPurchaseLiveMomentResponseData soldAt(String soldAt) {
+    
+    this.soldAt = soldAt;
+    return this;
+  }
+
+   /**
+   * Get soldAt
+   * @return soldAt
+  **/
+  @javax.annotation.Nonnull
+  @ApiModelProperty(required = true, value = "")
+
+  public String getSoldAt() {
+    return soldAt;
+  }
+
+
+  public void setSoldAt(String soldAt) {
+    this.soldAt = soldAt;
+  }
+
+
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -232,13 +232,13 @@ public class GetBuyerPurchaseLiveMomentResponseData {
       return false;
     }
     GetBuyerPurchaseLiveMomentResponseData getBuyerPurchaseLiveMomentResponseData = (GetBuyerPurchaseLiveMomentResponseData) o;
-    return Objects.equals(this.status, getBuyerPurchaseLiveMomentResponseData.status) &&
+    return Objects.equals(this.streamId, getBuyerPurchaseLiveMomentResponseData.streamId) &&
         Objects.equals(this.title, getBuyerPurchaseLiveMomentResponseData.title) &&
-        Objects.equals(this.soldAt, getBuyerPurchaseLiveMomentResponseData.soldAt) &&
         Objects.equals(this.sellerUserId, getBuyerPurchaseLiveMomentResponseData.sellerUserId) &&
+        Objects.equals(this.status, getBuyerPurchaseLiveMomentResponseData.status) &&
         Objects.equals(this.replayUrl, getBuyerPurchaseLiveMomentResponseData.replayUrl) &&
-        Objects.equals(this.streamId, getBuyerPurchaseLiveMomentResponseData.streamId) &&
-        Objects.equals(this.offsetSeconds, getBuyerPurchaseLiveMomentResponseData.offsetSeconds);
+        Objects.equals(this.offsetSeconds, getBuyerPurchaseLiveMomentResponseData.offsetSeconds) &&
+        Objects.equals(this.soldAt, getBuyerPurchaseLiveMomentResponseData.soldAt);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -247,7 +247,7 @@ public class GetBuyerPurchaseLiveMomentResponseData {
 
   @Override
   public int hashCode() {
-    return Objects.hash(status, title, soldAt, sellerUserId, replayUrl, streamId, offsetSeconds);
+    return Objects.hash(streamId, title, sellerUserId, status, replayUrl, offsetSeconds, soldAt);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -261,13 +261,13 @@ public class GetBuyerPurchaseLiveMomentResponseData {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class GetBuyerPurchaseLiveMomentResponseData {\n");
-    sb.append("    status: ").append(toIndentedString(status)).append("\n");
-    sb.append("    title: ").append(toIndentedString(title)).append("\n");
-    sb.append("    soldAt: ").append(toIndentedString(soldAt)).append("\n");
-    sb.append("    sellerUserId: ").append(toIndentedString(sellerUserId)).append("\n");
-    sb.append("    replayUrl: ").append(toIndentedString(replayUrl)).append("\n");
     sb.append("    streamId: ").append(toIndentedString(streamId)).append("\n");
+    sb.append("    title: ").append(toIndentedString(title)).append("\n");
+    sb.append("    sellerUserId: ").append(toIndentedString(sellerUserId)).append("\n");
+    sb.append("    status: ").append(toIndentedString(status)).append("\n");
+    sb.append("    replayUrl: ").append(toIndentedString(replayUrl)).append("\n");
     sb.append("    offsetSeconds: ").append(toIndentedString(offsetSeconds)).append("\n");
+    sb.append("    soldAt: ").append(toIndentedString(soldAt)).append("\n");
     sb.append("}");
     return sb.toString();
   }

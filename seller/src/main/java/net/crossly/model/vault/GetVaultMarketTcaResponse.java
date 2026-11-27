@@ -27,12 +27,13 @@ import java.util.ArrayList;
 import java.util.List;
 import net.crossly.model.common.AccountIdLabel;
 import net.crossly.model.vault.GetVaultMarketTcaResponseItems;
+import net.crossly.model.vault.GetVaultMarketTcaResponseOptions;
 import net.crossly.model.vault.GetVaultMarketTcaResponseSummary;
 
 /**
  * GetVaultMarketTcaResponse
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-11T23:44:48.922Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-27T19:42:43.186Z[Etc/UTC]")
 public class GetVaultMarketTcaResponse {
   public static final String SERIALIZED_NAME_ACCOUNT = "account";
   @SerializedName(SERIALIZED_NAME_ACCOUNT)
@@ -53,6 +54,10 @@ public class GetVaultMarketTcaResponse {
   public static final String SERIALIZED_NAME_ITEMS = "items";
   @SerializedName(SERIALIZED_NAME_ITEMS)
   private List<GetVaultMarketTcaResponseItems> items = new ArrayList<GetVaultMarketTcaResponseItems>();
+
+  public static final String SERIALIZED_NAME_OPTIONS = "options";
+  @SerializedName(SERIALIZED_NAME_OPTIONS)
+  private GetVaultMarketTcaResponseOptions options;
 
   public static final String SERIALIZED_NAME_NOTE = "note";
   @SerializedName(SERIALIZED_NAME_NOTE)
@@ -181,6 +186,29 @@ public class GetVaultMarketTcaResponse {
   }
 
 
+  public GetVaultMarketTcaResponse options(GetVaultMarketTcaResponseOptions options) {
+    
+    this.options = options;
+    return this;
+  }
+
+   /**
+   * Get options
+   * @return options
+  **/
+  @javax.annotation.Nonnull
+  @ApiModelProperty(required = true, value = "")
+
+  public GetVaultMarketTcaResponseOptions getOptions() {
+    return options;
+  }
+
+
+  public void setOptions(GetVaultMarketTcaResponseOptions options) {
+    this.options = options;
+  }
+
+
   public GetVaultMarketTcaResponse note(String note) {
     
     this.note = note;
@@ -218,12 +246,13 @@ public class GetVaultMarketTcaResponse {
         Objects.equals(this.to, getVaultMarketTcaResponse.to) &&
         Objects.equals(this.summary, getVaultMarketTcaResponse.summary) &&
         Objects.equals(this.items, getVaultMarketTcaResponse.items) &&
+        Objects.equals(this.options, getVaultMarketTcaResponse.options) &&
         Objects.equals(this.note, getVaultMarketTcaResponse.note);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(account, from, to, summary, items, note);
+    return Objects.hash(account, from, to, summary, items, options, note);
   }
 
   @Override
@@ -235,6 +264,7 @@ public class GetVaultMarketTcaResponse {
     sb.append("    to: ").append(toIndentedString(to)).append("\n");
     sb.append("    summary: ").append(toIndentedString(summary)).append("\n");
     sb.append("    items: ").append(toIndentedString(items)).append("\n");
+    sb.append("    options: ").append(toIndentedString(options)).append("\n");
     sb.append("    note: ").append(toIndentedString(note)).append("\n");
     sb.append("}");
     return sb.toString();

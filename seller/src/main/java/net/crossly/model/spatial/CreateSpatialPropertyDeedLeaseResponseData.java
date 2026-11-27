@@ -30,7 +30,7 @@ import org.threeten.bp.OffsetDateTime;
 /**
  * CreateSpatialPropertyDeedLeaseResponseData
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-11T23:44:48.922Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-27T19:42:43.186Z[Etc/UTC]")
 public class CreateSpatialPropertyDeedLeaseResponseData {
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
@@ -44,25 +44,25 @@ public class CreateSpatialPropertyDeedLeaseResponseData {
   @SerializedName(SERIALIZED_NAME_STATUS)
   private String status;
 
-  public static final String SERIALIZED_NAME_ENDED_AT = "endedAt";
-  @SerializedName(SERIALIZED_NAME_ENDED_AT)
-  private OffsetDateTime endedAt;
-
   public static final String SERIALIZED_NAME_OWNER_USER_ID = "ownerUserId";
   @SerializedName(SERIALIZED_NAME_OWNER_USER_ID)
   private String ownerUserId;
 
-  public static final String SERIALIZED_NAME_END_REASON = "endReason";
-  @SerializedName(SERIALIZED_NAME_END_REASON)
-  private String endReason;
+  public static final String SERIALIZED_NAME_ENDED_AT = "endedAt";
+  @SerializedName(SERIALIZED_NAME_ENDED_AT)
+  private OffsetDateTime endedAt;
 
-  public static final String SERIALIZED_NAME_PAID_THROUGH = "paidThrough";
-  @SerializedName(SERIALIZED_NAME_PAID_THROUGH)
-  private OffsetDateTime paidThrough;
+  public static final String SERIALIZED_NAME_RAIL = "rail";
+  @SerializedName(SERIALIZED_NAME_RAIL)
+  private String rail;
 
   public static final String SERIALIZED_NAME_PLOT_ID = "plotId";
   @SerializedName(SERIALIZED_NAME_PLOT_ID)
   private String plotId;
+
+  public static final String SERIALIZED_NAME_PAID_THROUGH = "paidThrough";
+  @SerializedName(SERIALIZED_NAME_PAID_THROUGH)
+  private OffsetDateTime paidThrough;
 
   public static final String SERIALIZED_NAME_DEED_ID = "deedId";
   @SerializedName(SERIALIZED_NAME_DEED_ID)
@@ -83,6 +83,14 @@ public class CreateSpatialPropertyDeedLeaseResponseData {
   public static final String SERIALIZED_NAME_TERMS_FROZEN_AT = "termsFrozenAt";
   @SerializedName(SERIALIZED_NAME_TERMS_FROZEN_AT)
   private OffsetDateTime termsFrozenAt;
+
+  public static final String SERIALIZED_NAME_END_REASON = "endReason";
+  @SerializedName(SERIALIZED_NAME_END_REASON)
+  private String endReason;
+
+  public static final String SERIALIZED_NAME_AUTOPAY = "autopay";
+  @SerializedName(SERIALIZED_NAME_AUTOPAY)
+  private Boolean autopay;
 
   public CreateSpatialPropertyDeedLeaseResponseData() { 
   }
@@ -156,29 +164,6 @@ public class CreateSpatialPropertyDeedLeaseResponseData {
   }
 
 
-  public CreateSpatialPropertyDeedLeaseResponseData endedAt(OffsetDateTime endedAt) {
-    
-    this.endedAt = endedAt;
-    return this;
-  }
-
-   /**
-   * Get endedAt
-   * @return endedAt
-  **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
-
-  public OffsetDateTime getEndedAt() {
-    return endedAt;
-  }
-
-
-  public void setEndedAt(OffsetDateTime endedAt) {
-    this.endedAt = endedAt;
-  }
-
-
   public CreateSpatialPropertyDeedLeaseResponseData ownerUserId(String ownerUserId) {
     
     this.ownerUserId = ownerUserId;
@@ -202,49 +187,49 @@ public class CreateSpatialPropertyDeedLeaseResponseData {
   }
 
 
-  public CreateSpatialPropertyDeedLeaseResponseData endReason(String endReason) {
+  public CreateSpatialPropertyDeedLeaseResponseData endedAt(OffsetDateTime endedAt) {
     
-    this.endReason = endReason;
+    this.endedAt = endedAt;
     return this;
   }
 
    /**
-   * Get endReason
-   * @return endReason
+   * Get endedAt
+   * @return endedAt
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "")
 
-  public String getEndReason() {
-    return endReason;
+  public OffsetDateTime getEndedAt() {
+    return endedAt;
   }
 
 
-  public void setEndReason(String endReason) {
-    this.endReason = endReason;
+  public void setEndedAt(OffsetDateTime endedAt) {
+    this.endedAt = endedAt;
   }
 
 
-  public CreateSpatialPropertyDeedLeaseResponseData paidThrough(OffsetDateTime paidThrough) {
+  public CreateSpatialPropertyDeedLeaseResponseData rail(String rail) {
     
-    this.paidThrough = paidThrough;
+    this.rail = rail;
     return this;
   }
 
    /**
-   * Get paidThrough
-   * @return paidThrough
+   * Get rail
+   * @return rail
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "")
 
-  public OffsetDateTime getPaidThrough() {
-    return paidThrough;
+  public String getRail() {
+    return rail;
   }
 
 
-  public void setPaidThrough(OffsetDateTime paidThrough) {
-    this.paidThrough = paidThrough;
+  public void setRail(String rail) {
+    this.rail = rail;
   }
 
 
@@ -268,6 +253,29 @@ public class CreateSpatialPropertyDeedLeaseResponseData {
 
   public void setPlotId(String plotId) {
     this.plotId = plotId;
+  }
+
+
+  public CreateSpatialPropertyDeedLeaseResponseData paidThrough(OffsetDateTime paidThrough) {
+    
+    this.paidThrough = paidThrough;
+    return this;
+  }
+
+   /**
+   * Get paidThrough
+   * @return paidThrough
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public OffsetDateTime getPaidThrough() {
+    return paidThrough;
+  }
+
+
+  public void setPaidThrough(OffsetDateTime paidThrough) {
+    this.paidThrough = paidThrough;
   }
 
 
@@ -386,6 +394,52 @@ public class CreateSpatialPropertyDeedLeaseResponseData {
   }
 
 
+  public CreateSpatialPropertyDeedLeaseResponseData endReason(String endReason) {
+    
+    this.endReason = endReason;
+    return this;
+  }
+
+   /**
+   * Get endReason
+   * @return endReason
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public String getEndReason() {
+    return endReason;
+  }
+
+
+  public void setEndReason(String endReason) {
+    this.endReason = endReason;
+  }
+
+
+  public CreateSpatialPropertyDeedLeaseResponseData autopay(Boolean autopay) {
+    
+    this.autopay = autopay;
+    return this;
+  }
+
+   /**
+   * Get autopay
+   * @return autopay
+  **/
+  @javax.annotation.Nonnull
+  @ApiModelProperty(required = true, value = "")
+
+  public Boolean getAutopay() {
+    return autopay;
+  }
+
+
+  public void setAutopay(Boolean autopay) {
+    this.autopay = autopay;
+  }
+
+
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -398,16 +452,18 @@ public class CreateSpatialPropertyDeedLeaseResponseData {
     return Objects.equals(this.id, createSpatialPropertyDeedLeaseResponseData.id) &&
         Objects.equals(this.createdAt, createSpatialPropertyDeedLeaseResponseData.createdAt) &&
         Objects.equals(this.status, createSpatialPropertyDeedLeaseResponseData.status) &&
-        Objects.equals(this.endedAt, createSpatialPropertyDeedLeaseResponseData.endedAt) &&
         Objects.equals(this.ownerUserId, createSpatialPropertyDeedLeaseResponseData.ownerUserId) &&
-        Objects.equals(this.endReason, createSpatialPropertyDeedLeaseResponseData.endReason) &&
-        Objects.equals(this.paidThrough, createSpatialPropertyDeedLeaseResponseData.paidThrough) &&
+        Objects.equals(this.endedAt, createSpatialPropertyDeedLeaseResponseData.endedAt) &&
+        Objects.equals(this.rail, createSpatialPropertyDeedLeaseResponseData.rail) &&
         Objects.equals(this.plotId, createSpatialPropertyDeedLeaseResponseData.plotId) &&
+        Objects.equals(this.paidThrough, createSpatialPropertyDeedLeaseResponseData.paidThrough) &&
         Objects.equals(this.deedId, createSpatialPropertyDeedLeaseResponseData.deedId) &&
         Objects.equals(this.tenantUserId, createSpatialPropertyDeedLeaseResponseData.tenantUserId) &&
         Objects.equals(this.tenantSceneId, createSpatialPropertyDeedLeaseResponseData.tenantSceneId) &&
         Objects.equals(this.rentWeeklyCents, createSpatialPropertyDeedLeaseResponseData.rentWeeklyCents) &&
-        Objects.equals(this.termsFrozenAt, createSpatialPropertyDeedLeaseResponseData.termsFrozenAt);
+        Objects.equals(this.termsFrozenAt, createSpatialPropertyDeedLeaseResponseData.termsFrozenAt) &&
+        Objects.equals(this.endReason, createSpatialPropertyDeedLeaseResponseData.endReason) &&
+        Objects.equals(this.autopay, createSpatialPropertyDeedLeaseResponseData.autopay);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -416,7 +472,7 @@ public class CreateSpatialPropertyDeedLeaseResponseData {
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, createdAt, status, endedAt, ownerUserId, endReason, paidThrough, plotId, deedId, tenantUserId, tenantSceneId, rentWeeklyCents, termsFrozenAt);
+    return Objects.hash(id, createdAt, status, ownerUserId, endedAt, rail, plotId, paidThrough, deedId, tenantUserId, tenantSceneId, rentWeeklyCents, termsFrozenAt, endReason, autopay);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -433,16 +489,18 @@ public class CreateSpatialPropertyDeedLeaseResponseData {
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    createdAt: ").append(toIndentedString(createdAt)).append("\n");
     sb.append("    status: ").append(toIndentedString(status)).append("\n");
-    sb.append("    endedAt: ").append(toIndentedString(endedAt)).append("\n");
     sb.append("    ownerUserId: ").append(toIndentedString(ownerUserId)).append("\n");
-    sb.append("    endReason: ").append(toIndentedString(endReason)).append("\n");
-    sb.append("    paidThrough: ").append(toIndentedString(paidThrough)).append("\n");
+    sb.append("    endedAt: ").append(toIndentedString(endedAt)).append("\n");
+    sb.append("    rail: ").append(toIndentedString(rail)).append("\n");
     sb.append("    plotId: ").append(toIndentedString(plotId)).append("\n");
+    sb.append("    paidThrough: ").append(toIndentedString(paidThrough)).append("\n");
     sb.append("    deedId: ").append(toIndentedString(deedId)).append("\n");
     sb.append("    tenantUserId: ").append(toIndentedString(tenantUserId)).append("\n");
     sb.append("    tenantSceneId: ").append(toIndentedString(tenantSceneId)).append("\n");
     sb.append("    rentWeeklyCents: ").append(toIndentedString(rentWeeklyCents)).append("\n");
     sb.append("    termsFrozenAt: ").append(toIndentedString(termsFrozenAt)).append("\n");
+    sb.append("    endReason: ").append(toIndentedString(endReason)).append("\n");
+    sb.append("    autopay: ").append(toIndentedString(autopay)).append("\n");
     sb.append("}");
     return sb.toString();
   }

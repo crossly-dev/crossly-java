@@ -29,7 +29,7 @@ import java.util.List;
 /**
  * CreateEmbedKeyRequest
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-11T23:44:48.922Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-27T19:42:43.186Z[Etc/UTC]")
 public class CreateEmbedKeyRequest {
   public static final String SERIALIZED_NAME_NAME = "name";
   @SerializedName(SERIALIZED_NAME_NAME)
@@ -40,7 +40,7 @@ public class CreateEmbedKeyRequest {
   private List<String> allowedOrigins = null;
 
   /**
-   * Gets or Sets environment
+   * Omit for this server&#39;s own: live on crossly.net, test on sandbox.crossly.net. The other one is refused.
    */
   @JsonAdapter(EnvironmentEnum.Adapter.class)
   public enum EnvironmentEnum {
@@ -88,7 +88,7 @@ public class CreateEmbedKeyRequest {
 
   public static final String SERIALIZED_NAME_ENVIRONMENT = "environment";
   @SerializedName(SERIALIZED_NAME_ENVIRONMENT)
-  private EnvironmentEnum environment = EnvironmentEnum.LIVE;
+  private EnvironmentEnum environment;
 
   public CreateEmbedKeyRequest() { 
   }
@@ -154,11 +154,11 @@ public class CreateEmbedKeyRequest {
   }
 
    /**
-   * Get environment
+   * Omit for this server&#39;s own: live on crossly.net, test on sandbox.crossly.net. The other one is refused.
    * @return environment
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "Omit for this server's own: live on crossly.net, test on sandbox.crossly.net. The other one is refused.")
 
   public EnvironmentEnum getEnvironment() {
     return environment;

@@ -29,7 +29,7 @@ import org.threeten.bp.OffsetDateTime;
 /**
  * CreateBuyerCatalogListingVideoRequestResponseData
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-11T23:47:29.843Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-27T19:58:46.962Z[Etc/UTC]")
 public class CreateBuyerCatalogListingVideoRequestResponseData {
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
@@ -39,25 +39,25 @@ public class CreateBuyerCatalogListingVideoRequestResponseData {
   @SerializedName(SERIALIZED_NAME_CREATED_AT)
   private OffsetDateTime createdAt;
 
-  public static final String SERIALIZED_NAME_VIDEO_URL = "videoUrl";
-  @SerializedName(SERIALIZED_NAME_VIDEO_URL)
-  private String videoUrl;
-
   public static final String SERIALIZED_NAME_STATUS = "status";
   @SerializedName(SERIALIZED_NAME_STATUS)
   private String status;
+
+  public static final String SERIALIZED_NAME_VIDEO_URL = "videoUrl";
+  @SerializedName(SERIALIZED_NAME_VIDEO_URL)
+  private String videoUrl;
 
   public static final String SERIALIZED_NAME_PLATFORM_LISTING_ID = "platformListingId";
   @SerializedName(SERIALIZED_NAME_PLATFORM_LISTING_ID)
   private String platformListingId;
 
-  public static final String SERIALIZED_NAME_SELLER_USER_ID = "sellerUserId";
-  @SerializedName(SERIALIZED_NAME_SELLER_USER_ID)
-  private String sellerUserId;
-
   public static final String SERIALIZED_NAME_BUYER_USER_ID = "buyerUserId";
   @SerializedName(SERIALIZED_NAME_BUYER_USER_ID)
   private String buyerUserId;
+
+  public static final String SERIALIZED_NAME_SELLER_USER_ID = "sellerUserId";
+  @SerializedName(SERIALIZED_NAME_SELLER_USER_ID)
+  private String sellerUserId;
 
   public static final String SERIALIZED_NAME_NOTE = "note";
   @SerializedName(SERIALIZED_NAME_NOTE)
@@ -120,29 +120,6 @@ public class CreateBuyerCatalogListingVideoRequestResponseData {
   }
 
 
-  public CreateBuyerCatalogListingVideoRequestResponseData videoUrl(String videoUrl) {
-    
-    this.videoUrl = videoUrl;
-    return this;
-  }
-
-   /**
-   * Get videoUrl
-   * @return videoUrl
-  **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
-
-  public String getVideoUrl() {
-    return videoUrl;
-  }
-
-
-  public void setVideoUrl(String videoUrl) {
-    this.videoUrl = videoUrl;
-  }
-
-
   public CreateBuyerCatalogListingVideoRequestResponseData status(String status) {
     
     this.status = status;
@@ -163,6 +140,29 @@ public class CreateBuyerCatalogListingVideoRequestResponseData {
 
   public void setStatus(String status) {
     this.status = status;
+  }
+
+
+  public CreateBuyerCatalogListingVideoRequestResponseData videoUrl(String videoUrl) {
+    
+    this.videoUrl = videoUrl;
+    return this;
+  }
+
+   /**
+   * Get videoUrl
+   * @return videoUrl
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public String getVideoUrl() {
+    return videoUrl;
+  }
+
+
+  public void setVideoUrl(String videoUrl) {
+    this.videoUrl = videoUrl;
   }
 
 
@@ -189,29 +189,6 @@ public class CreateBuyerCatalogListingVideoRequestResponseData {
   }
 
 
-  public CreateBuyerCatalogListingVideoRequestResponseData sellerUserId(String sellerUserId) {
-    
-    this.sellerUserId = sellerUserId;
-    return this;
-  }
-
-   /**
-   * Get sellerUserId
-   * @return sellerUserId
-  **/
-  @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "")
-
-  public String getSellerUserId() {
-    return sellerUserId;
-  }
-
-
-  public void setSellerUserId(String sellerUserId) {
-    this.sellerUserId = sellerUserId;
-  }
-
-
   public CreateBuyerCatalogListingVideoRequestResponseData buyerUserId(String buyerUserId) {
     
     this.buyerUserId = buyerUserId;
@@ -232,6 +209,29 @@ public class CreateBuyerCatalogListingVideoRequestResponseData {
 
   public void setBuyerUserId(String buyerUserId) {
     this.buyerUserId = buyerUserId;
+  }
+
+
+  public CreateBuyerCatalogListingVideoRequestResponseData sellerUserId(String sellerUserId) {
+    
+    this.sellerUserId = sellerUserId;
+    return this;
+  }
+
+   /**
+   * Get sellerUserId
+   * @return sellerUserId
+  **/
+  @javax.annotation.Nonnull
+  @ApiModelProperty(required = true, value = "")
+
+  public String getSellerUserId() {
+    return sellerUserId;
+  }
+
+
+  public void setSellerUserId(String sellerUserId) {
+    this.sellerUserId = sellerUserId;
   }
 
 
@@ -315,11 +315,11 @@ public class CreateBuyerCatalogListingVideoRequestResponseData {
     CreateBuyerCatalogListingVideoRequestResponseData createBuyerCatalogListingVideoRequestResponseData = (CreateBuyerCatalogListingVideoRequestResponseData) o;
     return Objects.equals(this.id, createBuyerCatalogListingVideoRequestResponseData.id) &&
         Objects.equals(this.createdAt, createBuyerCatalogListingVideoRequestResponseData.createdAt) &&
-        Objects.equals(this.videoUrl, createBuyerCatalogListingVideoRequestResponseData.videoUrl) &&
         Objects.equals(this.status, createBuyerCatalogListingVideoRequestResponseData.status) &&
+        Objects.equals(this.videoUrl, createBuyerCatalogListingVideoRequestResponseData.videoUrl) &&
         Objects.equals(this.platformListingId, createBuyerCatalogListingVideoRequestResponseData.platformListingId) &&
-        Objects.equals(this.sellerUserId, createBuyerCatalogListingVideoRequestResponseData.sellerUserId) &&
         Objects.equals(this.buyerUserId, createBuyerCatalogListingVideoRequestResponseData.buyerUserId) &&
+        Objects.equals(this.sellerUserId, createBuyerCatalogListingVideoRequestResponseData.sellerUserId) &&
         Objects.equals(this.note, createBuyerCatalogListingVideoRequestResponseData.note) &&
         Objects.equals(this.answeredAt, createBuyerCatalogListingVideoRequestResponseData.answeredAt) &&
         Objects.equals(this.sellerNote, createBuyerCatalogListingVideoRequestResponseData.sellerNote);
@@ -331,7 +331,7 @@ public class CreateBuyerCatalogListingVideoRequestResponseData {
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, createdAt, videoUrl, status, platformListingId, sellerUserId, buyerUserId, note, answeredAt, sellerNote);
+    return Objects.hash(id, createdAt, status, videoUrl, platformListingId, buyerUserId, sellerUserId, note, answeredAt, sellerNote);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -347,11 +347,11 @@ public class CreateBuyerCatalogListingVideoRequestResponseData {
     sb.append("class CreateBuyerCatalogListingVideoRequestResponseData {\n");
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    createdAt: ").append(toIndentedString(createdAt)).append("\n");
-    sb.append("    videoUrl: ").append(toIndentedString(videoUrl)).append("\n");
     sb.append("    status: ").append(toIndentedString(status)).append("\n");
+    sb.append("    videoUrl: ").append(toIndentedString(videoUrl)).append("\n");
     sb.append("    platformListingId: ").append(toIndentedString(platformListingId)).append("\n");
-    sb.append("    sellerUserId: ").append(toIndentedString(sellerUserId)).append("\n");
     sb.append("    buyerUserId: ").append(toIndentedString(buyerUserId)).append("\n");
+    sb.append("    sellerUserId: ").append(toIndentedString(sellerUserId)).append("\n");
     sb.append("    note: ").append(toIndentedString(note)).append("\n");
     sb.append("    answeredAt: ").append(toIndentedString(answeredAt)).append("\n");
     sb.append("    sellerNote: ").append(toIndentedString(sellerNote)).append("\n");

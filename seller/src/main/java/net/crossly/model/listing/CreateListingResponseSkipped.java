@@ -23,11 +23,12 @@ import com.google.gson.stream.JsonWriter;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
+import org.openapitools.jackson.nullable.JsonNullable;
 
 /**
  * CreateListingResponseSkipped
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-11T23:44:48.922Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-27T19:42:43.186Z[Etc/UTC]")
 public class CreateListingResponseSkipped {
   public static final String SERIALIZED_NAME_PLATFORM = "platform";
   @SerializedName(SERIALIZED_NAME_PLATFORM)
@@ -36,6 +37,10 @@ public class CreateListingResponseSkipped {
   public static final String SERIALIZED_NAME_REASON = "reason";
   @SerializedName(SERIALIZED_NAME_REASON)
   private String reason;
+
+  public static final String SERIALIZED_NAME_CODE = "code";
+  @SerializedName(SERIALIZED_NAME_CODE)
+  private String code;
 
   public CreateListingResponseSkipped() { 
   }
@@ -86,6 +91,29 @@ public class CreateListingResponseSkipped {
   }
 
 
+  public CreateListingResponseSkipped code(String code) {
+    
+    this.code = code;
+    return this;
+  }
+
+   /**
+   * Get code
+   * @return code
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public String getCode() {
+    return code;
+  }
+
+
+  public void setCode(String code) {
+    this.code = code;
+  }
+
+
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -96,12 +124,24 @@ public class CreateListingResponseSkipped {
     }
     CreateListingResponseSkipped createListingResponseSkipped = (CreateListingResponseSkipped) o;
     return Objects.equals(this.platform, createListingResponseSkipped.platform) &&
-        Objects.equals(this.reason, createListingResponseSkipped.reason);
+        Objects.equals(this.reason, createListingResponseSkipped.reason) &&
+        Objects.equals(this.code, createListingResponseSkipped.code);
+  }
+
+  private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+    return a == b || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(platform, reason);
+    return Objects.hash(platform, reason, code);
+  }
+
+  private static <T> int hashCodeNullable(JsonNullable<T> a) {
+    if (a == null) {
+      return 1;
+    }
+    return a.isPresent() ? Arrays.deepHashCode(new Object[]{a.get()}) : 31;
   }
 
   @Override
@@ -110,6 +150,7 @@ public class CreateListingResponseSkipped {
     sb.append("class CreateListingResponseSkipped {\n");
     sb.append("    platform: ").append(toIndentedString(platform)).append("\n");
     sb.append("    reason: ").append(toIndentedString(reason)).append("\n");
+    sb.append("    code: ").append(toIndentedString(code)).append("\n");
     sb.append("}");
     return sb.toString();
   }

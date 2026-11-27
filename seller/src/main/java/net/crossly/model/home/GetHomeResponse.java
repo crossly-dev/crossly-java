@@ -31,6 +31,7 @@ import net.crossly.model.home.GetHomeResponseGiftShelf;
 import net.crossly.model.home.GetHomeResponseGuestbook;
 import net.crossly.model.home.GetHomeResponseLayout;
 import net.crossly.model.home.GetHomeResponsePinCase;
+import net.crossly.model.home.GetHomeResponsePullsShelf;
 import net.crossly.model.home.GetHomeResponseRoom;
 import net.crossly.model.home.GetHomeResponseSetWall;
 import net.crossly.model.home.GetHomeResponseVaultWall;
@@ -40,7 +41,7 @@ import org.openapitools.jackson.nullable.JsonNullable;
 /**
  * GetHomeResponse
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-11T23:44:48.922Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-27T19:42:43.186Z[Etc/UTC]")
 public class GetHomeResponse {
   public static final String SERIALIZED_NAME_SLUG = "slug";
   @SerializedName(SERIALIZED_NAME_SLUG)
@@ -61,9 +62,9 @@ public class GetHomeResponse {
   public enum PrivacyEnum {
     OPEN("open"),
     
-    LOCKED("locked"),
+    FRIENDS("friends"),
     
-    FRIENDS("friends");
+    LOCKED("locked");
 
     private String value;
 
@@ -112,15 +113,15 @@ public class GetHomeResponse {
    */
   @JsonAdapter(ThemeEnum.Adapter.class)
   public enum ThemeEnum {
-    STORYBOOK("storybook"),
-    
     STUDIO("studio"),
     
     NOIR("noir"),
     
     DAYLIGHT("daylight"),
     
-    VITRINE("vitrine");
+    VITRINE("vitrine"),
+    
+    STORYBOOK("storybook");
 
     private String value;
 
@@ -191,6 +192,10 @@ public class GetHomeResponse {
   public static final String SERIALIZED_NAME_GIFT_SHELF = "giftShelf";
   @SerializedName(SERIALIZED_NAME_GIFT_SHELF)
   private GetHomeResponseGiftShelf giftShelf;
+
+  public static final String SERIALIZED_NAME_PULLS_SHELF = "pullsShelf";
+  @SerializedName(SERIALIZED_NAME_PULLS_SHELF)
+  private GetHomeResponsePullsShelf pullsShelf;
 
   public static final String SERIALIZED_NAME_PIN_CASE = "pinCase";
   @SerializedName(SERIALIZED_NAME_PIN_CASE)
@@ -501,6 +506,29 @@ public class GetHomeResponse {
   }
 
 
+  public GetHomeResponse pullsShelf(GetHomeResponsePullsShelf pullsShelf) {
+    
+    this.pullsShelf = pullsShelf;
+    return this;
+  }
+
+   /**
+   * Get pullsShelf
+   * @return pullsShelf
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public GetHomeResponsePullsShelf getPullsShelf() {
+    return pullsShelf;
+  }
+
+
+  public void setPullsShelf(GetHomeResponsePullsShelf pullsShelf) {
+    this.pullsShelf = pullsShelf;
+  }
+
+
   public GetHomeResponse pinCase(List<GetHomeResponsePinCase> pinCase) {
     
     this.pinCase = pinCase;
@@ -645,6 +673,7 @@ public class GetHomeResponse {
         Objects.equals(this.layout, getHomeResponse.layout) &&
         Objects.equals(this.guestbook, getHomeResponse.guestbook) &&
         Objects.equals(this.giftShelf, getHomeResponse.giftShelf) &&
+        Objects.equals(this.pullsShelf, getHomeResponse.pullsShelf) &&
         Objects.equals(this.pinCase, getHomeResponse.pinCase) &&
         Objects.equals(this.vaultWall, getHomeResponse.vaultWall) &&
         Objects.equals(this.setWall, getHomeResponse.setWall) &&
@@ -658,7 +687,7 @@ public class GetHomeResponse {
 
   @Override
   public int hashCode() {
-    return Objects.hash(slug, presenceSlug, owner, privacy, theme, decor, isOwner, canBuild, room, layout, guestbook, giftShelf, pinCase, vaultWall, setWall, here, updatedAt);
+    return Objects.hash(slug, presenceSlug, owner, privacy, theme, decor, isOwner, canBuild, room, layout, guestbook, giftShelf, pullsShelf, pinCase, vaultWall, setWall, here, updatedAt);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -684,6 +713,7 @@ public class GetHomeResponse {
     sb.append("    layout: ").append(toIndentedString(layout)).append("\n");
     sb.append("    guestbook: ").append(toIndentedString(guestbook)).append("\n");
     sb.append("    giftShelf: ").append(toIndentedString(giftShelf)).append("\n");
+    sb.append("    pullsShelf: ").append(toIndentedString(pullsShelf)).append("\n");
     sb.append("    pinCase: ").append(toIndentedString(pinCase)).append("\n");
     sb.append("    vaultWall: ").append(toIndentedString(vaultWall)).append("\n");
     sb.append("    setWall: ").append(toIndentedString(setWall)).append("\n");

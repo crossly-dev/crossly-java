@@ -23,51 +23,158 @@ import com.google.gson.stream.JsonWriter;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import net.crossly.model.order.CreateOrderCancelResponseRefund;
+import org.openapitools.jackson.nullable.JsonNullable;
 
 /**
  * CreateOrderCancelResponse
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-11T23:44:48.922Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-27T19:42:43.186Z[Etc/UTC]")
 public class CreateOrderCancelResponse {
-  public static final String SERIALIZED_NAME_ORDER_ID = "orderId";
-  @SerializedName(SERIALIZED_NAME_ORDER_ID)
-  private String orderId;
+  /**
+   * The marketplace outcome, or already_cancelled when the order was cancelled before this call.
+   */
+  @JsonAdapter(PlatformCancelEnum.Adapter.class)
+  public enum PlatformCancelEnum {
+    SENT("sent"),
+    
+    FAILED("failed"),
+    
+    QUEUED("queued"),
+    
+    RELAYED("relayed"),
+    
+    UNSUPPORTED("unsupported"),
+    
+    NO_PLATFORM_ORDER_ID("no_platform_order_id"),
+    
+    RECORDED_ONLY("recorded_only"),
+    
+    ALREADY_CANCELLED("already_cancelled");
+
+    private String value;
+
+    PlatformCancelEnum(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    @Override
+    public String toString() {
+      return String.valueOf(value);
+    }
+
+    public static PlatformCancelEnum fromValue(String value) {
+      for (PlatformCancelEnum b : PlatformCancelEnum.values()) {
+        if (b.value.equals(value)) {
+          return b;
+        }
+      }
+      throw new IllegalArgumentException("Unexpected value '" + value + "'");
+    }
+
+    public static class Adapter extends TypeAdapter<PlatformCancelEnum> {
+      @Override
+      public void write(final JsonWriter jsonWriter, final PlatformCancelEnum enumeration) throws IOException {
+        jsonWriter.value(enumeration.getValue());
+      }
+
+      @Override
+      public PlatformCancelEnum read(final JsonReader jsonReader) throws IOException {
+        String value =  jsonReader.nextString();
+        return PlatformCancelEnum.fromValue(value);
+      }
+    }
+  }
+
+  public static final String SERIALIZED_NAME_PLATFORM_CANCEL = "platformCancel";
+  @SerializedName(SERIALIZED_NAME_PLATFORM_CANCEL)
+  private PlatformCancelEnum platformCancel;
+
+  public static final String SERIALIZED_NAME_REFUND = "refund";
+  @SerializedName(SERIALIZED_NAME_REFUND)
+  private CreateOrderCancelResponseRefund refund;
 
   public static final String SERIALIZED_NAME_PLATFORM = "platform";
   @SerializedName(SERIALIZED_NAME_PLATFORM)
   private String platform;
 
+  public static final String SERIALIZED_NAME_ORDER_ID = "orderId";
+  @SerializedName(SERIALIZED_NAME_ORDER_ID)
+  private String orderId;
+
+  public static final String SERIALIZED_NAME_ERROR = "error";
+  @SerializedName(SERIALIZED_NAME_ERROR)
+  private String error;
+
+  public static final String SERIALIZED_NAME_JOB_ID = "jobId";
+  @SerializedName(SERIALIZED_NAME_JOB_ID)
+  private String jobId;
+
   public static final String SERIALIZED_NAME_CANCELLED_IN_CROSSLY = "cancelledInCrossly";
   @SerializedName(SERIALIZED_NAME_CANCELLED_IN_CROSSLY)
   private Boolean cancelledInCrossly;
 
-  public static final String SERIALIZED_NAME_PLATFORM_CANCEL = "platformCancel";
-  @SerializedName(SERIALIZED_NAME_PLATFORM_CANCEL)
-  private String platformCancel;
+  public static final String SERIALIZED_NAME_COMMAND_ID = "commandId";
+  @SerializedName(SERIALIZED_NAME_COMMAND_ID)
+  private String commandId;
+
+  public static final String SERIALIZED_NAME_PLATFORM_RESULT = "platformResult";
+  @SerializedName(SERIALIZED_NAME_PLATFORM_RESULT)
+  private Map<String, Object> platformResult = null;
 
   public CreateOrderCancelResponse() { 
   }
 
-  public CreateOrderCancelResponse orderId(String orderId) {
+  public CreateOrderCancelResponse platformCancel(PlatformCancelEnum platformCancel) {
     
-    this.orderId = orderId;
+    this.platformCancel = platformCancel;
     return this;
   }
 
    /**
-   * Get orderId
-   * @return orderId
+   * The marketplace outcome, or already_cancelled when the order was cancelled before this call.
+   * @return platformCancel
   **/
   @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "")
+  @ApiModelProperty(required = true, value = "The marketplace outcome, or already_cancelled when the order was cancelled before this call.")
 
-  public String getOrderId() {
-    return orderId;
+  public PlatformCancelEnum getPlatformCancel() {
+    return platformCancel;
   }
 
 
-  public void setOrderId(String orderId) {
-    this.orderId = orderId;
+  public void setPlatformCancel(PlatformCancelEnum platformCancel) {
+    this.platformCancel = platformCancel;
+  }
+
+
+  public CreateOrderCancelResponse refund(CreateOrderCancelResponseRefund refund) {
+    
+    this.refund = refund;
+    return this;
+  }
+
+   /**
+   * Get refund
+   * @return refund
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public CreateOrderCancelResponseRefund getRefund() {
+    return refund;
+  }
+
+
+  public void setRefund(CreateOrderCancelResponseRefund refund) {
+    this.refund = refund;
   }
 
 
@@ -94,6 +201,75 @@ public class CreateOrderCancelResponse {
   }
 
 
+  public CreateOrderCancelResponse orderId(String orderId) {
+    
+    this.orderId = orderId;
+    return this;
+  }
+
+   /**
+   * Get orderId
+   * @return orderId
+  **/
+  @javax.annotation.Nonnull
+  @ApiModelProperty(required = true, value = "")
+
+  public String getOrderId() {
+    return orderId;
+  }
+
+
+  public void setOrderId(String orderId) {
+    this.orderId = orderId;
+  }
+
+
+  public CreateOrderCancelResponse error(String error) {
+    
+    this.error = error;
+    return this;
+  }
+
+   /**
+   * The platform&#39;s error, VERBATIM. Deliberately not summarised — the marketplace names what it objected to, and summarising throws that away. eBay reason codes are now fetched per order via checkCancelEligibility rather than guessed, but a rejection can still happen (order state changed between the probe and the cancel), and this is how it gets diagnosed.
+   * @return error
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "The platform's error, VERBATIM. Deliberately not summarised — the marketplace names what it objected to, and summarising throws that away. eBay reason codes are now fetched per order via checkCancelEligibility rather than guessed, but a rejection can still happen (order state changed between the probe and the cancel), and this is how it gets diagnosed.")
+
+  public String getError() {
+    return error;
+  }
+
+
+  public void setError(String error) {
+    this.error = error;
+  }
+
+
+  public CreateOrderCancelResponse jobId(String jobId) {
+    
+    this.jobId = jobId;
+    return this;
+  }
+
+   /**
+   * Cookie track only.
+   * @return jobId
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "Cookie track only.")
+
+  public String getJobId() {
+    return jobId;
+  }
+
+
+  public void setJobId(String jobId) {
+    this.jobId = jobId;
+  }
+
+
   public CreateOrderCancelResponse cancelledInCrossly(Boolean cancelledInCrossly) {
     
     this.cancelledInCrossly = cancelledInCrossly;
@@ -101,11 +277,11 @@ public class CreateOrderCancelResponse {
   }
 
    /**
-   * Get cancelledInCrossly
+   * True unless the cancel was relayed to the managing app (then false until it completes).
    * @return cancelledInCrossly
   **/
   @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "")
+  @ApiModelProperty(required = true, value = "True unless the cancel was relayed to the managing app (then false until it completes).")
 
   public Boolean getCancelledInCrossly() {
     return cancelledInCrossly;
@@ -117,26 +293,57 @@ public class CreateOrderCancelResponse {
   }
 
 
-  public CreateOrderCancelResponse platformCancel(String platformCancel) {
+  public CreateOrderCancelResponse commandId(String commandId) {
     
-    this.platformCancel = platformCancel;
+    this.commandId = commandId;
     return this;
   }
 
    /**
-   * Get platformCancel
-   * @return platformCancel
+   * platformCancel &#39;relayed&#39;: the app command tracking it.
+   * @return commandId
   **/
-  @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "")
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "platformCancel 'relayed': the app command tracking it.")
 
-  public String getPlatformCancel() {
-    return platformCancel;
+  public String getCommandId() {
+    return commandId;
   }
 
 
-  public void setPlatformCancel(String platformCancel) {
-    this.platformCancel = platformCancel;
+  public void setCommandId(String commandId) {
+    this.commandId = commandId;
+  }
+
+
+  public CreateOrderCancelResponse platformResult(Map<String, Object> platformResult) {
+    
+    this.platformResult = platformResult;
+    return this;
+  }
+
+  public CreateOrderCancelResponse putPlatformResultItem(String key, Object platformResultItem) {
+    if (this.platformResult == null) {
+      this.platformResult = new HashMap<String, Object>();
+    }
+    this.platformResult.put(key, platformResultItem);
+    return this;
+  }
+
+   /**
+   * Platform payload (e.g. eBay&#39;s cancellationId) when it answered.
+   * @return platformResult
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "Platform payload (e.g. eBay's cancellationId) when it answered.")
+
+  public Map<String, Object> getPlatformResult() {
+    return platformResult;
+  }
+
+
+  public void setPlatformResult(Map<String, Object> platformResult) {
+    this.platformResult = platformResult;
   }
 
 
@@ -149,25 +356,46 @@ public class CreateOrderCancelResponse {
       return false;
     }
     CreateOrderCancelResponse createOrderCancelResponse = (CreateOrderCancelResponse) o;
-    return Objects.equals(this.orderId, createOrderCancelResponse.orderId) &&
+    return Objects.equals(this.platformCancel, createOrderCancelResponse.platformCancel) &&
+        Objects.equals(this.refund, createOrderCancelResponse.refund) &&
         Objects.equals(this.platform, createOrderCancelResponse.platform) &&
+        Objects.equals(this.orderId, createOrderCancelResponse.orderId) &&
+        Objects.equals(this.error, createOrderCancelResponse.error) &&
+        Objects.equals(this.jobId, createOrderCancelResponse.jobId) &&
         Objects.equals(this.cancelledInCrossly, createOrderCancelResponse.cancelledInCrossly) &&
-        Objects.equals(this.platformCancel, createOrderCancelResponse.platformCancel);
+        Objects.equals(this.commandId, createOrderCancelResponse.commandId) &&
+        Objects.equals(this.platformResult, createOrderCancelResponse.platformResult);
+  }
+
+  private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+    return a == b || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(orderId, platform, cancelledInCrossly, platformCancel);
+    return Objects.hash(platformCancel, refund, platform, orderId, error, jobId, cancelledInCrossly, commandId, platformResult);
+  }
+
+  private static <T> int hashCodeNullable(JsonNullable<T> a) {
+    if (a == null) {
+      return 1;
+    }
+    return a.isPresent() ? Arrays.deepHashCode(new Object[]{a.get()}) : 31;
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class CreateOrderCancelResponse {\n");
-    sb.append("    orderId: ").append(toIndentedString(orderId)).append("\n");
-    sb.append("    platform: ").append(toIndentedString(platform)).append("\n");
-    sb.append("    cancelledInCrossly: ").append(toIndentedString(cancelledInCrossly)).append("\n");
     sb.append("    platformCancel: ").append(toIndentedString(platformCancel)).append("\n");
+    sb.append("    refund: ").append(toIndentedString(refund)).append("\n");
+    sb.append("    platform: ").append(toIndentedString(platform)).append("\n");
+    sb.append("    orderId: ").append(toIndentedString(orderId)).append("\n");
+    sb.append("    error: ").append(toIndentedString(error)).append("\n");
+    sb.append("    jobId: ").append(toIndentedString(jobId)).append("\n");
+    sb.append("    cancelledInCrossly: ").append(toIndentedString(cancelledInCrossly)).append("\n");
+    sb.append("    commandId: ").append(toIndentedString(commandId)).append("\n");
+    sb.append("    platformResult: ").append(toIndentedString(platformResult)).append("\n");
     sb.append("}");
     return sb.toString();
   }

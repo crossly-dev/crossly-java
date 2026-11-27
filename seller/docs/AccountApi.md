@@ -5,12 +5,16 @@ All URIs are relative to *https://crossly.net/api*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**createAccountCancelDeletion**](AccountApi.md#createAccountCancelDeletion) | **POST** /v1/account/cancel-deletion | Cancel a pending account deletion.
+[**createAccountIdentityVerificationStart**](AccountApi.md#createAccountIdentityVerificationStart) | **POST** /v1/account/identity-verification/start | Start the identity check (photo ID + selfie). Returns a Stripe-hosted URL the person completes.
 [**createAccountLogoutAll**](AccountApi.md#createAccountLogoutAll) | **POST** /v1/account/logout-all | Revoke every browser auth session for this user.
-[**createAccountRequestDeletion**](AccountApi.md#createAccountRequestDeletion) | **POST** /v1/account/request-deletion | Schedule account deletion after a grace period.
+[**createAccountReconfirmDeletion**](AccountApi.md#createAccountReconfirmDeletion) | **POST** /v1/account/reconfirm-deletion | Confirm again a deletion paused because the account was in use.
+[**createAccountRequestDeletion**](AccountApi.md#createAccountRequestDeletion) | **POST** /v1/account/request-deletion | Schedule account deletion after a grace period. Requires confirmEmail.
 [**deleteAuthSession**](AccountApi.md#deleteAuthSession) | **DELETE** /v1/auth/sessions | Revoke all active browser sessions.
 [**deleteAuthSessionBySessionId**](AccountApi.md#deleteAuthSessionBySessionId) | **DELETE** /v1/auth/sessions/{sessionId} | Revoke a single browser session by id.
 [**deleteConnectedApp**](AccountApi.md#deleteConnectedApp) | **DELETE** /v1/connected-apps/{grantId} | Disconnect a third-party app. Its tokens stop working immediately.
+[**getAccountClosureChecklist**](AccountApi.md#getAccountClosureChecklist) | **GET** /v1/account/closure-checklist | What closing the account will and will not do, before you request it.
 [**getAccountDeletionStatus**](AccountApi.md#getAccountDeletionStatus) | **GET** /v1/account/deletion-status | Get the currently-pending deletion request, if any.
+[**getAccountIdentityVerification**](AccountApi.md#getAccountIdentityVerification) | **GET** /v1/account/identity-verification | Your identity verification: one status for the whole account, read by every feature that needs ID.
 [**getMe**](AccountApi.md#getMe) | **GET** /v1/me | Identity check — authenticated user + PAT scopes + account state.
 [**getMembership**](AccountApi.md#getMembership) | **GET** /v1/membership | The caller&#39;s Crossly One membership status and benefits.
 [**listAuthSessions**](AccountApi.md#listAuthSessions) | **GET** /v1/auth/sessions | List active browser auth sessions.
@@ -19,7 +23,7 @@ Method | HTTP request | Description
 
 <a name="createAccountCancelDeletion"></a>
 # **createAccountCancelDeletion**
-> DeleteDropResponse createAccountCancelDeletion()
+> CreateAccountCancelDeletionResponse createAccountCancelDeletion()
 
 Cancel a pending account deletion.
 
@@ -44,7 +48,7 @@ public class Example {
 
     AccountApi apiInstance = new AccountApi(defaultClient);
     try {
-      DeleteDropResponse result = apiInstance.createAccountCancelDeletion();
+      CreateAccountCancelDeletionResponse result = apiInstance.createAccountCancelDeletion();
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling AccountApi#createAccountCancelDeletion");
@@ -62,7 +66,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-**DeleteDropResponse**
+**CreateAccountCancelDeletionResponse**
 
 ### Authorization
 
@@ -71,6 +75,79 @@ This endpoint does not need any parameter.
 ### HTTP request headers
 
  - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**400** | Error |  -  |
+**401** | Error |  -  |
+**403** | Error |  -  |
+**404** | Error |  -  |
+**429** | Error |  -  |
+**500** | Error |  -  |
+
+<a name="createAccountIdentityVerificationStart"></a>
+# **createAccountIdentityVerificationStart**
+> CreateWorldMatureVerifyResponse createAccountIdentityVerificationStart(createAccountIdentityVerificationStartRequest)
+
+Start the identity check (photo ID + selfie). Returns a Stripe-hosted URL the person completes.
+
+alreadyVerified:true when there is nothing to do. Nothing is verified until a person completes the link.
+
+### Example
+```java
+// Import classes:
+import net.crossly.ApiClient;
+import net.crossly.ApiException;
+import net.crossly.Configuration;
+import net.crossly.auth.*;
+import net.crossly.models.*;
+import net.crossly.api.AccountApi;
+
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("https://crossly.net/api");
+    
+    // Configure HTTP bearer authorization: PersonalAccessToken
+    HttpBearerAuth PersonalAccessToken = (HttpBearerAuth) defaultClient.getAuthentication("PersonalAccessToken");
+    PersonalAccessToken.setBearerToken("BEARER TOKEN");
+
+    AccountApi apiInstance = new AccountApi(defaultClient);
+    CreateAccountIdentityVerificationStartRequest createAccountIdentityVerificationStartRequest = new CreateAccountIdentityVerificationStartRequest(); // CreateAccountIdentityVerificationStartRequest | 
+    try {
+      CreateWorldMatureVerifyResponse result = apiInstance.createAccountIdentityVerificationStart(createAccountIdentityVerificationStartRequest);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling AccountApi#createAccountIdentityVerificationStart");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **createAccountIdentityVerificationStartRequest** | **CreateAccountIdentityVerificationStartRequest**|  |
+
+### Return type
+
+**CreateWorldMatureVerifyResponse**
+
+### Authorization
+
+[PersonalAccessToken](../README.md#PersonalAccessToken)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 ### HTTP response details
@@ -151,11 +228,78 @@ This endpoint does not need any parameter.
 **429** | Error |  -  |
 **500** | Error |  -  |
 
+<a name="createAccountReconfirmDeletion"></a>
+# **createAccountReconfirmDeletion**
+> CreateAccountReconfirmDeletionResponse createAccountReconfirmDeletion()
+
+Confirm again a deletion paused because the account was in use.
+
+### Example
+```java
+// Import classes:
+import net.crossly.ApiClient;
+import net.crossly.ApiException;
+import net.crossly.Configuration;
+import net.crossly.auth.*;
+import net.crossly.models.*;
+import net.crossly.api.AccountApi;
+
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("https://crossly.net/api");
+    
+    // Configure HTTP bearer authorization: PersonalAccessToken
+    HttpBearerAuth PersonalAccessToken = (HttpBearerAuth) defaultClient.getAuthentication("PersonalAccessToken");
+    PersonalAccessToken.setBearerToken("BEARER TOKEN");
+
+    AccountApi apiInstance = new AccountApi(defaultClient);
+    try {
+      CreateAccountReconfirmDeletionResponse result = apiInstance.createAccountReconfirmDeletion();
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling AccountApi#createAccountReconfirmDeletion");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+### Parameters
+This endpoint does not need any parameter.
+
+### Return type
+
+**CreateAccountReconfirmDeletionResponse**
+
+### Authorization
+
+[PersonalAccessToken](../README.md#PersonalAccessToken)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**400** | Error |  -  |
+**401** | Error |  -  |
+**403** | Error |  -  |
+**404** | Error |  -  |
+**429** | Error |  -  |
+**500** | Error |  -  |
+
 <a name="createAccountRequestDeletion"></a>
 # **createAccountRequestDeletion**
 > CreateAccountRequestDeletionResponse createAccountRequestDeletion()
 
-Schedule account deletion after a grace period.
+Schedule account deletion after a grace period. Requires confirmEmail.
 
 ### Example
 ```java
@@ -311,7 +455,7 @@ public class Example {
     PersonalAccessToken.setBearerToken("BEARER TOKEN");
 
     AccountApi apiInstance = new AccountApi(defaultClient);
-    UUID sessionId = UUID.randomUUID(); // UUID | 
+    String sessionId = "sessionId_example"; // String | 
     try {
       SuccessResponse result = apiInstance.deleteAuthSessionBySessionId(sessionId);
       System.out.println(result);
@@ -330,7 +474,7 @@ public class Example {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **sessionId** | **UUID**|  |
+ **sessionId** | **String**|  |
 
 ### Return type
 
@@ -427,6 +571,73 @@ Name | Type | Description  | Notes
 **429** | Error |  -  |
 **500** | Error |  -  |
 
+<a name="getAccountClosureChecklist"></a>
+# **getAccountClosureChecklist**
+> GetAccountClosureChecklistResponse getAccountClosureChecklist()
+
+What closing the account will and will not do, before you request it.
+
+### Example
+```java
+// Import classes:
+import net.crossly.ApiClient;
+import net.crossly.ApiException;
+import net.crossly.Configuration;
+import net.crossly.auth.*;
+import net.crossly.models.*;
+import net.crossly.api.AccountApi;
+
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("https://crossly.net/api");
+    
+    // Configure HTTP bearer authorization: PersonalAccessToken
+    HttpBearerAuth PersonalAccessToken = (HttpBearerAuth) defaultClient.getAuthentication("PersonalAccessToken");
+    PersonalAccessToken.setBearerToken("BEARER TOKEN");
+
+    AccountApi apiInstance = new AccountApi(defaultClient);
+    try {
+      GetAccountClosureChecklistResponse result = apiInstance.getAccountClosureChecklist();
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling AccountApi#getAccountClosureChecklist");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+### Parameters
+This endpoint does not need any parameter.
+
+### Return type
+
+**GetAccountClosureChecklistResponse**
+
+### Authorization
+
+[PersonalAccessToken](../README.md#PersonalAccessToken)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**400** | Error |  -  |
+**401** | Error |  -  |
+**403** | Error |  -  |
+**404** | Error |  -  |
+**429** | Error |  -  |
+**500** | Error |  -  |
+
 <a name="getAccountDeletionStatus"></a>
 # **getAccountDeletionStatus**
 > GetAccountDeletionStatusResponse getAccountDeletionStatus()
@@ -473,6 +684,75 @@ This endpoint does not need any parameter.
 ### Return type
 
 **GetAccountDeletionStatusResponse**
+
+### Authorization
+
+[PersonalAccessToken](../README.md#PersonalAccessToken)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**400** | Error |  -  |
+**401** | Error |  -  |
+**403** | Error |  -  |
+**404** | Error |  -  |
+**429** | Error |  -  |
+**500** | Error |  -  |
+
+<a name="getAccountIdentityVerification"></a>
+# **getAccountIdentityVerification**
+> GetAccountIdentityVerificationResponse getAccountIdentityVerification()
+
+Your identity verification: one status for the whole account, read by every feature that needs ID.
+
+status is unverified, requires_input, processing, verified or canceled. requires_input with a lastError { code, reason } is a failed try the person can redo on the same link (start returns it); processing is being reviewed; neither is a decline, only canceled is. attempts counts the failed tries. ageVerified passes the age-restricted checkout gate. message is the next step in words (null once verified).
+
+### Example
+```java
+// Import classes:
+import net.crossly.ApiClient;
+import net.crossly.ApiException;
+import net.crossly.Configuration;
+import net.crossly.auth.*;
+import net.crossly.models.*;
+import net.crossly.api.AccountApi;
+
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("https://crossly.net/api");
+    
+    // Configure HTTP bearer authorization: PersonalAccessToken
+    HttpBearerAuth PersonalAccessToken = (HttpBearerAuth) defaultClient.getAuthentication("PersonalAccessToken");
+    PersonalAccessToken.setBearerToken("BEARER TOKEN");
+
+    AccountApi apiInstance = new AccountApi(defaultClient);
+    try {
+      GetAccountIdentityVerificationResponse result = apiInstance.getAccountIdentityVerification();
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling AccountApi#getAccountIdentityVerification");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+### Parameters
+This endpoint does not need any parameter.
+
+### Return type
+
+**GetAccountIdentityVerificationResponse**
 
 ### Authorization
 

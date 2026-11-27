@@ -32,7 +32,7 @@ import org.openapitools.jackson.nullable.JsonNullable;
 /**
  * GetVaultMarketAdvanceQuoteResponse
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-11T23:44:48.922Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-27T19:42:43.186Z[Etc/UTC]")
 public class GetVaultMarketAdvanceQuoteResponse {
   public static final String SERIALIZED_NAME_POOL_APR_BPS = "poolAprBps";
   @SerializedName(SERIALIZED_NAME_POOL_APR_BPS)

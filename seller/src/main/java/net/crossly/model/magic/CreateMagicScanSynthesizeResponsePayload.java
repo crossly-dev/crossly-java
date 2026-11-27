@@ -28,16 +28,16 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import net.crossly.model.bulk.CreateBulkBatchItemResponseGrading;
 import net.crossly.model.magic.CreateMagicScanSynthesizeResponsePayloadCategory;
 import net.crossly.model.magic.CreateMagicScanSynthesizeResponsePayloadDimensions;
 import net.crossly.model.magic.CreateMagicScanSynthesizeResponsePayloadSectionApplicability;
-import net.crossly.model.grading.ListGradingSubmissionsItemGrading;
 import org.openapitools.jackson.nullable.JsonNullable;
 
 /**
  * CreateMagicScanSynthesizeResponsePayload
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-11T23:44:48.922Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-27T19:42:43.186Z[Etc/UTC]")
 public class CreateMagicScanSynthesizeResponsePayload {
   public static final String SERIALIZED_NAME_TITLE = "title";
   @SerializedName(SERIALIZED_NAME_TITLE)
@@ -58,9 +58,9 @@ public class CreateMagicScanSynthesizeResponsePayload {
   public enum ConditionEnum {
     NEW("new"),
     
-    FAIR("fair"),
-    
     GOOD("good"),
+    
+    FAIR("fair"),
     
     LIKE_NEW("like_new"),
     
@@ -112,7 +112,7 @@ public class CreateMagicScanSynthesizeResponsePayload {
 
   public static final String SERIALIZED_NAME_GRADING = "grading";
   @SerializedName(SERIALIZED_NAME_GRADING)
-  private ListGradingSubmissionsItemGrading grading;
+  private CreateBulkBatchItemResponseGrading grading;
 
   public static final String SERIALIZED_NAME_COLOR = "color";
   @SerializedName(SERIALIZED_NAME_COLOR)
@@ -274,9 +274,9 @@ public class CreateMagicScanSynthesizeResponsePayload {
    */
   @JsonAdapter(ReturnsAcceptedEnum.Adapter.class)
   public enum ReturnsAcceptedEnum {
-    YES("yes"),
+    NO("no"),
     
-    NO("no");
+    YES("yes");
 
     private String value;
 
@@ -443,7 +443,7 @@ public class CreateMagicScanSynthesizeResponsePayload {
   }
 
 
-  public CreateMagicScanSynthesizeResponsePayload grading(ListGradingSubmissionsItemGrading grading) {
+  public CreateMagicScanSynthesizeResponsePayload grading(CreateBulkBatchItemResponseGrading grading) {
     
     this.grading = grading;
     return this;
@@ -456,12 +456,12 @@ public class CreateMagicScanSynthesizeResponsePayload {
   @javax.annotation.Nullable
   @ApiModelProperty(value = "")
 
-  public ListGradingSubmissionsItemGrading getGrading() {
+  public CreateBulkBatchItemResponseGrading getGrading() {
     return grading;
   }
 
 
-  public void setGrading(ListGradingSubmissionsItemGrading grading) {
+  public void setGrading(CreateBulkBatchItemResponseGrading grading) {
     this.grading = grading;
   }
 

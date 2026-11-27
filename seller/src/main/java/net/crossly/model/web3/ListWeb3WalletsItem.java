@@ -29,7 +29,7 @@ import org.threeten.bp.OffsetDateTime;
 /**
  * ListWeb3WalletsItem
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-11T23:44:48.922Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-27T19:42:43.186Z[Etc/UTC]")
 public class ListWeb3WalletsItem {
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
@@ -40,9 +40,9 @@ public class ListWeb3WalletsItem {
    */
   @JsonAdapter(FamilyEnum.Adapter.class)
   public enum FamilyEnum {
-    EVM("evm"),
+    SOLANA("solana"),
     
-    SOLANA("solana");
+    EVM("evm");
 
     private String value;
 
@@ -101,6 +101,10 @@ public class ListWeb3WalletsItem {
   public static final String SERIALIZED_NAME_LAST_SYNCED_AT = "lastSyncedAt";
   @SerializedName(SERIALIZED_NAME_LAST_SYNCED_AT)
   private OffsetDateTime lastSyncedAt;
+
+  public static final String SERIALIZED_NAME_AUTO_IMPORT = "autoImport";
+  @SerializedName(SERIALIZED_NAME_AUTO_IMPORT)
+  private Boolean autoImport;
 
   public static final String SERIALIZED_NAME_CREATED_AT = "createdAt";
   @SerializedName(SERIALIZED_NAME_CREATED_AT)
@@ -247,6 +251,29 @@ public class ListWeb3WalletsItem {
   }
 
 
+  public ListWeb3WalletsItem autoImport(Boolean autoImport) {
+    
+    this.autoImport = autoImport;
+    return this;
+  }
+
+   /**
+   * A sync adds new NFTs to inventory (migration 0740); off, it only refreshes the ones already there.
+   * @return autoImport
+  **/
+  @javax.annotation.Nonnull
+  @ApiModelProperty(required = true, value = "A sync adds new NFTs to inventory (migration 0740); off, it only refreshes the ones already there.")
+
+  public Boolean getAutoImport() {
+    return autoImport;
+  }
+
+
+  public void setAutoImport(Boolean autoImport) {
+    this.autoImport = autoImport;
+  }
+
+
   public ListWeb3WalletsItem createdAt(OffsetDateTime createdAt) {
     
     this.createdAt = createdAt;
@@ -285,6 +312,7 @@ public class ListWeb3WalletsItem {
         Objects.equals(this.label, listWeb3WalletsItem.label) &&
         Objects.equals(this.verifiedAt, listWeb3WalletsItem.verifiedAt) &&
         Objects.equals(this.lastSyncedAt, listWeb3WalletsItem.lastSyncedAt) &&
+        Objects.equals(this.autoImport, listWeb3WalletsItem.autoImport) &&
         Objects.equals(this.createdAt, listWeb3WalletsItem.createdAt);
   }
 
@@ -294,7 +322,7 @@ public class ListWeb3WalletsItem {
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, family, address, label, verifiedAt, lastSyncedAt, createdAt);
+    return Objects.hash(id, family, address, label, verifiedAt, lastSyncedAt, autoImport, createdAt);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -314,6 +342,7 @@ public class ListWeb3WalletsItem {
     sb.append("    label: ").append(toIndentedString(label)).append("\n");
     sb.append("    verifiedAt: ").append(toIndentedString(verifiedAt)).append("\n");
     sb.append("    lastSyncedAt: ").append(toIndentedString(lastSyncedAt)).append("\n");
+    sb.append("    autoImport: ").append(toIndentedString(autoImport)).append("\n");
     sb.append("    createdAt: ").append(toIndentedString(createdAt)).append("\n");
     sb.append("}");
     return sb.toString();

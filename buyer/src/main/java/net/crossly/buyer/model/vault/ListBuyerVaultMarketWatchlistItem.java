@@ -32,7 +32,7 @@ import org.openapitools.jackson.nullable.JsonNullable;
 /**
  * ListBuyerVaultMarketWatchlistItem
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-11T23:47:29.843Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-27T19:58:46.962Z[Etc/UTC]")
 public class ListBuyerVaultMarketWatchlistItem {
   public static final String SERIALIZED_NAME_ADDED_AT = "addedAt";
   @SerializedName(SERIALIZED_NAME_ADDED_AT)
@@ -45,11 +45,11 @@ public class ListBuyerVaultMarketWatchlistItem {
   public enum MarkQualityEnum {
     NONE("none"),
     
+    C("C"),
+    
     A("A"),
     
-    B("B"),
-    
-    C("C");
+    B("B");
 
     private String value;
 

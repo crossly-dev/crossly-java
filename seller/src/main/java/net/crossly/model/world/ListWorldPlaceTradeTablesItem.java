@@ -24,23 +24,23 @@ import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 import java.math.BigDecimal;
+import net.crossly.model.world.GetWorldExperiencePlaceCollabOpResponseDataFramesBy;
 import net.crossly.model.world.ListWorldPlaceTradeTablesItemCash;
 import net.crossly.model.world.ListWorldPlaceTradeTablesItemLine;
 import net.crossly.model.world.ListWorldPlaceTradeTablesItemMat;
 import net.crossly.model.world.ListWorldPlaceTradeTablesItemShook;
 import net.crossly.model.world.ListWorldPlaceTradeTablesItemTotals;
-import net.crossly.model.world.ListWorldPlaceTradeTablesItemVisitor;
 import net.crossly.model.common.UserIdName;
 import org.openapitools.jackson.nullable.JsonNullable;
 
 /**
  * ListWorldPlaceTradeTablesItem
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-11T23:44:48.922Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-27T19:42:43.186Z[Etc/UTC]")
 public class ListWorldPlaceTradeTablesItem {
   public static final String SERIALIZED_NAME_VISITOR = "visitor";
   @SerializedName(SERIALIZED_NAME_VISITOR)
-  private ListWorldPlaceTradeTablesItemVisitor visitor;
+  private GetWorldExperiencePlaceCollabOpResponseDataFramesBy visitor;
 
   public static final String SERIALIZED_NAME_TOTALS = "totals";
   @SerializedName(SERIALIZED_NAME_TOTALS)
@@ -136,9 +136,9 @@ public class ListWorldPlaceTradeTablesItem {
   public enum StatusEnum {
     OPEN("open"),
     
-    DONE("done"),
+    CLOSED("closed"),
     
-    CLOSED("closed");
+    DONE("done");
 
     private String value;
 
@@ -193,7 +193,7 @@ public class ListWorldPlaceTradeTablesItem {
   public ListWorldPlaceTradeTablesItem() { 
   }
 
-  public ListWorldPlaceTradeTablesItem visitor(ListWorldPlaceTradeTablesItemVisitor visitor) {
+  public ListWorldPlaceTradeTablesItem visitor(GetWorldExperiencePlaceCollabOpResponseDataFramesBy visitor) {
     
     this.visitor = visitor;
     return this;
@@ -206,12 +206,12 @@ public class ListWorldPlaceTradeTablesItem {
   @javax.annotation.Nullable
   @ApiModelProperty(value = "")
 
-  public ListWorldPlaceTradeTablesItemVisitor getVisitor() {
+  public GetWorldExperiencePlaceCollabOpResponseDataFramesBy getVisitor() {
     return visitor;
   }
 
 
-  public void setVisitor(ListWorldPlaceTradeTablesItemVisitor visitor) {
+  public void setVisitor(GetWorldExperiencePlaceCollabOpResponseDataFramesBy visitor) {
     this.visitor = visitor;
   }
 

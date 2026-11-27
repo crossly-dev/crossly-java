@@ -30,7 +30,7 @@ import org.openapitools.jackson.nullable.JsonNullable;
  * Only when the owner turned amounts on.
  */
 @ApiModel(description = "Only when the owner turned amounts on.")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-11T23:44:48.922Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-27T19:42:43.186Z[Etc/UTC]")
 public class ListVaultMarketShareCardsItemAmounts {
   public static final String SERIALIZED_NAME_FILL_CENTS = "fillCents";
   @SerializedName(SERIALIZED_NAME_FILL_CENTS)

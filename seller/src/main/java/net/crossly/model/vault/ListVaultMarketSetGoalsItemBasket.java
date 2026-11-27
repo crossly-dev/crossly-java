@@ -28,7 +28,7 @@ import java.math.BigDecimal;
 /**
  * ListVaultMarketSetGoalsItemBasket
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-11T23:44:48.922Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-27T19:42:43.186Z[Etc/UTC]")
 public class ListVaultMarketSetGoalsItemBasket {
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
@@ -39,13 +39,13 @@ public class ListVaultMarketSetGoalsItemBasket {
    */
   @JsonAdapter(StatusEnum.Adapter.class)
   public enum StatusEnum {
+    COMPLETED("completed"),
+    
     CANCELLED("cancelled"),
     
     ENDED("ended"),
     
-    WORKING("working"),
-    
-    COMPLETED("completed");
+    WORKING("working");
 
     private String value;
 

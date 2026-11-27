@@ -24,12 +24,17 @@ import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 import java.math.BigDecimal;
+import org.openapitools.jackson.nullable.JsonNullable;
 
 /**
  * GetAnalyticSummaryResponse
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-11T23:44:48.922Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-27T19:42:43.186Z[Etc/UTC]")
 public class GetAnalyticSummaryResponse {
+  public static final String SERIALIZED_NAME_DAYS = "days";
+  @SerializedName(SERIALIZED_NAME_DAYS)
+  private BigDecimal days;
+
   public static final String SERIALIZED_NAME_SALES = "sales";
   @SerializedName(SERIALIZED_NAME_SALES)
   private BigDecimal sales;
@@ -42,12 +47,51 @@ public class GetAnalyticSummaryResponse {
   @SerializedName(SERIALIZED_NAME_FEES)
   private BigDecimal fees;
 
-  public static final String SERIALIZED_NAME_DAYS = "days";
-  @SerializedName(SERIALIZED_NAME_DAYS)
-  private BigDecimal days;
+  public static final String SERIALIZED_NAME_PENDING_DETAILS_COUNT = "pendingDetailsCount";
+  @SerializedName(SERIALIZED_NAME_PENDING_DETAILS_COUNT)
+  private BigDecimal pendingDetailsCount;
+
+  public static final String SERIALIZED_NAME_UNITS_SOLD = "unitsSold";
+  @SerializedName(SERIALIZED_NAME_UNITS_SOLD)
+  private BigDecimal unitsSold;
+
+  public static final String SERIALIZED_NAME_NET_SALES_CENTS = "netSalesCents";
+  @SerializedName(SERIALIZED_NAME_NET_SALES_CENTS)
+  private BigDecimal netSalesCents;
+
+  public static final String SERIALIZED_NAME_FEES_CENTS = "feesCents";
+  @SerializedName(SERIALIZED_NAME_FEES_CENTS)
+  private BigDecimal feesCents;
+
+  public static final String SERIALIZED_NAME_NET_PROFIT_CENTS = "netProfitCents";
+  @SerializedName(SERIALIZED_NAME_NET_PROFIT_CENTS)
+  private BigDecimal netProfitCents;
 
   public GetAnalyticSummaryResponse() { 
   }
+
+  public GetAnalyticSummaryResponse days(BigDecimal days) {
+    
+    this.days = days;
+    return this;
+  }
+
+   /**
+   * Get days
+   * @return days
+  **/
+  @javax.annotation.Nonnull
+  @ApiModelProperty(required = true, value = "")
+
+  public BigDecimal getDays() {
+    return days;
+  }
+
+
+  public void setDays(BigDecimal days) {
+    this.days = days;
+  }
+
 
   public GetAnalyticSummaryResponse sales(BigDecimal sales) {
     
@@ -118,26 +162,118 @@ public class GetAnalyticSummaryResponse {
   }
 
 
-  public GetAnalyticSummaryResponse days(BigDecimal days) {
+  public GetAnalyticSummaryResponse pendingDetailsCount(BigDecimal pendingDetailsCount) {
     
-    this.days = days;
+    this.pendingDetailsCount = pendingDetailsCount;
     return this;
   }
 
    /**
-   * Get days
-   * @return days
+   * Get pendingDetailsCount
+   * @return pendingDetailsCount
   **/
   @javax.annotation.Nonnull
   @ApiModelProperty(required = true, value = "")
 
-  public BigDecimal getDays() {
-    return days;
+  public BigDecimal getPendingDetailsCount() {
+    return pendingDetailsCount;
   }
 
 
-  public void setDays(BigDecimal days) {
-    this.days = days;
+  public void setPendingDetailsCount(BigDecimal pendingDetailsCount) {
+    this.pendingDetailsCount = pendingDetailsCount;
+  }
+
+
+  public GetAnalyticSummaryResponse unitsSold(BigDecimal unitsSold) {
+    
+    this.unitsSold = unitsSold;
+    return this;
+  }
+
+   /**
+   * Get unitsSold
+   * @return unitsSold
+  **/
+  @javax.annotation.Nonnull
+  @ApiModelProperty(required = true, value = "")
+
+  public BigDecimal getUnitsSold() {
+    return unitsSold;
+  }
+
+
+  public void setUnitsSold(BigDecimal unitsSold) {
+    this.unitsSold = unitsSold;
+  }
+
+
+  public GetAnalyticSummaryResponse netSalesCents(BigDecimal netSalesCents) {
+    
+    this.netSalesCents = netSalesCents;
+    return this;
+  }
+
+   /**
+   * Get netSalesCents
+   * @return netSalesCents
+  **/
+  @javax.annotation.Nonnull
+  @ApiModelProperty(required = true, value = "")
+
+  public BigDecimal getNetSalesCents() {
+    return netSalesCents;
+  }
+
+
+  public void setNetSalesCents(BigDecimal netSalesCents) {
+    this.netSalesCents = netSalesCents;
+  }
+
+
+  public GetAnalyticSummaryResponse feesCents(BigDecimal feesCents) {
+    
+    this.feesCents = feesCents;
+    return this;
+  }
+
+   /**
+   * Get feesCents
+   * @return feesCents
+  **/
+  @javax.annotation.Nonnull
+  @ApiModelProperty(required = true, value = "")
+
+  public BigDecimal getFeesCents() {
+    return feesCents;
+  }
+
+
+  public void setFeesCents(BigDecimal feesCents) {
+    this.feesCents = feesCents;
+  }
+
+
+  public GetAnalyticSummaryResponse netProfitCents(BigDecimal netProfitCents) {
+    
+    this.netProfitCents = netProfitCents;
+    return this;
+  }
+
+   /**
+   * Get netProfitCents
+   * @return netProfitCents
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public BigDecimal getNetProfitCents() {
+    return netProfitCents;
+  }
+
+
+  public void setNetProfitCents(BigDecimal netProfitCents) {
+    this.netProfitCents = netProfitCents;
   }
 
 
@@ -150,25 +286,46 @@ public class GetAnalyticSummaryResponse {
       return false;
     }
     GetAnalyticSummaryResponse getAnalyticSummaryResponse = (GetAnalyticSummaryResponse) o;
-    return Objects.equals(this.sales, getAnalyticSummaryResponse.sales) &&
+    return Objects.equals(this.days, getAnalyticSummaryResponse.days) &&
+        Objects.equals(this.sales, getAnalyticSummaryResponse.sales) &&
         Objects.equals(this.revenue, getAnalyticSummaryResponse.revenue) &&
         Objects.equals(this.fees, getAnalyticSummaryResponse.fees) &&
-        Objects.equals(this.days, getAnalyticSummaryResponse.days);
+        Objects.equals(this.pendingDetailsCount, getAnalyticSummaryResponse.pendingDetailsCount) &&
+        Objects.equals(this.unitsSold, getAnalyticSummaryResponse.unitsSold) &&
+        Objects.equals(this.netSalesCents, getAnalyticSummaryResponse.netSalesCents) &&
+        Objects.equals(this.feesCents, getAnalyticSummaryResponse.feesCents) &&
+        Objects.equals(this.netProfitCents, getAnalyticSummaryResponse.netProfitCents);
+  }
+
+  private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+    return a == b || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(sales, revenue, fees, days);
+    return Objects.hash(days, sales, revenue, fees, pendingDetailsCount, unitsSold, netSalesCents, feesCents, netProfitCents);
+  }
+
+  private static <T> int hashCodeNullable(JsonNullable<T> a) {
+    if (a == null) {
+      return 1;
+    }
+    return a.isPresent() ? Arrays.deepHashCode(new Object[]{a.get()}) : 31;
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class GetAnalyticSummaryResponse {\n");
+    sb.append("    days: ").append(toIndentedString(days)).append("\n");
     sb.append("    sales: ").append(toIndentedString(sales)).append("\n");
     sb.append("    revenue: ").append(toIndentedString(revenue)).append("\n");
     sb.append("    fees: ").append(toIndentedString(fees)).append("\n");
-    sb.append("    days: ").append(toIndentedString(days)).append("\n");
+    sb.append("    pendingDetailsCount: ").append(toIndentedString(pendingDetailsCount)).append("\n");
+    sb.append("    unitsSold: ").append(toIndentedString(unitsSold)).append("\n");
+    sb.append("    netSalesCents: ").append(toIndentedString(netSalesCents)).append("\n");
+    sb.append("    feesCents: ").append(toIndentedString(feesCents)).append("\n");
+    sb.append("    netProfitCents: ").append(toIndentedString(netProfitCents)).append("\n");
     sb.append("}");
     return sb.toString();
   }

@@ -26,6 +26,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import net.crossly.model.vault.GetVaultMarketHealthResponseConcentration;
+import net.crossly.model.vault.GetVaultMarketHealthResponseHedges;
 import net.crossly.model.vault.GetVaultMarketHealthResponseItems;
 import net.crossly.model.vault.GetVaultMarketHealthResponseLiquidity;
 import net.crossly.model.vault.GetVaultMarketHealthResponseMarks;
@@ -35,7 +36,7 @@ import net.crossly.model.vault.GetVaultMarketHealthResponseTotals;
 /**
  * GetVaultMarketHealthResponse
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-11T23:44:48.922Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-27T19:42:43.186Z[Etc/UTC]")
 public class GetVaultMarketHealthResponse {
   public static final String SERIALIZED_NAME_AS_OF = "asOf";
   @SerializedName(SERIALIZED_NAME_AS_OF)
@@ -72,6 +73,10 @@ public class GetVaultMarketHealthResponse {
   public static final String SERIALIZED_NAME_ITEMS = "items";
   @SerializedName(SERIALIZED_NAME_ITEMS)
   private List<GetVaultMarketHealthResponseItems> items = new ArrayList<GetVaultMarketHealthResponseItems>();
+
+  public static final String SERIALIZED_NAME_HEDGES = "hedges";
+  @SerializedName(SERIALIZED_NAME_HEDGES)
+  private GetVaultMarketHealthResponseHedges hedges;
 
   public GetVaultMarketHealthResponse() { 
   }
@@ -293,6 +298,29 @@ public class GetVaultMarketHealthResponse {
   }
 
 
+  public GetVaultMarketHealthResponse hedges(GetVaultMarketHealthResponseHedges hedges) {
+    
+    this.hedges = hedges;
+    return this;
+  }
+
+   /**
+   * Get hedges
+   * @return hedges
+  **/
+  @javax.annotation.Nonnull
+  @ApiModelProperty(required = true, value = "")
+
+  public GetVaultMarketHealthResponseHedges getHedges() {
+    return hedges;
+  }
+
+
+  public void setHedges(GetVaultMarketHealthResponseHedges hedges) {
+    this.hedges = hedges;
+  }
+
+
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -310,12 +338,13 @@ public class GetVaultMarketHealthResponse {
         Objects.equals(this.stress, getVaultMarketHealthResponse.stress) &&
         Objects.equals(this.marks, getVaultMarketHealthResponse.marks) &&
         Objects.equals(this.notes, getVaultMarketHealthResponse.notes) &&
-        Objects.equals(this.items, getVaultMarketHealthResponse.items);
+        Objects.equals(this.items, getVaultMarketHealthResponse.items) &&
+        Objects.equals(this.hedges, getVaultMarketHealthResponse.hedges);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(asOf, disclosure, totals, concentration, liquidity, stress, marks, notes, items);
+    return Objects.hash(asOf, disclosure, totals, concentration, liquidity, stress, marks, notes, items, hedges);
   }
 
   @Override
@@ -331,6 +360,7 @@ public class GetVaultMarketHealthResponse {
     sb.append("    marks: ").append(toIndentedString(marks)).append("\n");
     sb.append("    notes: ").append(toIndentedString(notes)).append("\n");
     sb.append("    items: ").append(toIndentedString(items)).append("\n");
+    sb.append("    hedges: ").append(toIndentedString(hedges)).append("\n");
     sb.append("}");
     return sb.toString();
   }

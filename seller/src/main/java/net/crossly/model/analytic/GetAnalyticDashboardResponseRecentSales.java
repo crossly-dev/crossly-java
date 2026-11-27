@@ -25,12 +25,11 @@ import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 import java.math.BigDecimal;
 import org.openapitools.jackson.nullable.JsonNullable;
-import org.threeten.bp.OffsetDateTime;
 
 /**
  * GetAnalyticDashboardResponseRecentSales
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-11T23:44:48.922Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-27T19:42:43.186Z[Etc/UTC]")
 public class GetAnalyticDashboardResponseRecentSales {
   public static final String SERIALIZED_NAME_SALE_ID = "saleId";
   @SerializedName(SERIALIZED_NAME_SALE_ID)
@@ -43,6 +42,10 @@ public class GetAnalyticDashboardResponseRecentSales {
   public static final String SERIALIZED_NAME_PLATFORM_ORDER_ID = "platformOrderId";
   @SerializedName(SERIALIZED_NAME_PLATFORM_ORDER_ID)
   private String platformOrderId;
+
+  public static final String SERIALIZED_NAME_DETAILS_PENDING = "detailsPending";
+  @SerializedName(SERIALIZED_NAME_DETAILS_PENDING)
+  private Boolean detailsPending;
 
   public static final String SERIALIZED_NAME_SALE_PRICE = "salePrice";
   @SerializedName(SERIALIZED_NAME_SALE_PRICE)
@@ -63,14 +66,6 @@ public class GetAnalyticDashboardResponseRecentSales {
   public static final String SERIALIZED_NAME_NET_PROFIT = "netProfit";
   @SerializedName(SERIALIZED_NAME_NET_PROFIT)
   private BigDecimal netProfit;
-
-  public static final String SERIALIZED_NAME_DETECTED_BY = "detectedBy";
-  @SerializedName(SERIALIZED_NAME_DETECTED_BY)
-  private String detectedBy;
-
-  public static final String SERIALIZED_NAME_DETECTED_AT = "detectedAt";
-  @SerializedName(SERIALIZED_NAME_DETECTED_AT)
-  private OffsetDateTime detectedAt;
 
   public static final String SERIALIZED_NAME_ITEM_TITLE = "itemTitle";
   @SerializedName(SERIALIZED_NAME_ITEM_TITLE)
@@ -149,6 +144,29 @@ public class GetAnalyticDashboardResponseRecentSales {
 
   public void setPlatformOrderId(String platformOrderId) {
     this.platformOrderId = platformOrderId;
+  }
+
+
+  public GetAnalyticDashboardResponseRecentSales detailsPending(Boolean detailsPending) {
+    
+    this.detailsPending = detailsPending;
+    return this;
+  }
+
+   /**
+   * Get detailsPending
+   * @return detailsPending
+  **/
+  @javax.annotation.Nonnull
+  @ApiModelProperty(required = true, value = "")
+
+  public Boolean getDetailsPending() {
+    return detailsPending;
+  }
+
+
+  public void setDetailsPending(Boolean detailsPending) {
+    this.detailsPending = detailsPending;
   }
 
 
@@ -267,52 +285,6 @@ public class GetAnalyticDashboardResponseRecentSales {
   }
 
 
-  public GetAnalyticDashboardResponseRecentSales detectedBy(String detectedBy) {
-    
-    this.detectedBy = detectedBy;
-    return this;
-  }
-
-   /**
-   * Get detectedBy
-   * @return detectedBy
-  **/
-  @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "")
-
-  public String getDetectedBy() {
-    return detectedBy;
-  }
-
-
-  public void setDetectedBy(String detectedBy) {
-    this.detectedBy = detectedBy;
-  }
-
-
-  public GetAnalyticDashboardResponseRecentSales detectedAt(OffsetDateTime detectedAt) {
-    
-    this.detectedAt = detectedAt;
-    return this;
-  }
-
-   /**
-   * Get detectedAt
-   * @return detectedAt
-  **/
-  @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "")
-
-  public OffsetDateTime getDetectedAt() {
-    return detectedAt;
-  }
-
-
-  public void setDetectedAt(OffsetDateTime detectedAt) {
-    this.detectedAt = detectedAt;
-  }
-
-
   public GetAnalyticDashboardResponseRecentSales itemTitle(String itemTitle) {
     
     this.itemTitle = itemTitle;
@@ -346,8 +318,8 @@ public class GetAnalyticDashboardResponseRecentSales {
    * Get itemImage
    * @return itemImage
   **/
-  @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "")
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
 
   public String getItemImage() {
     return itemImage;
@@ -371,13 +343,12 @@ public class GetAnalyticDashboardResponseRecentSales {
     return Objects.equals(this.saleId, getAnalyticDashboardResponseRecentSales.saleId) &&
         Objects.equals(this.platform, getAnalyticDashboardResponseRecentSales.platform) &&
         Objects.equals(this.platformOrderId, getAnalyticDashboardResponseRecentSales.platformOrderId) &&
+        Objects.equals(this.detailsPending, getAnalyticDashboardResponseRecentSales.detailsPending) &&
         Objects.equals(this.salePrice, getAnalyticDashboardResponseRecentSales.salePrice) &&
         Objects.equals(this.platformFee, getAnalyticDashboardResponseRecentSales.platformFee) &&
         Objects.equals(this.shippingCost, getAnalyticDashboardResponseRecentSales.shippingCost) &&
         Objects.equals(this.costOfGoods, getAnalyticDashboardResponseRecentSales.costOfGoods) &&
         Objects.equals(this.netProfit, getAnalyticDashboardResponseRecentSales.netProfit) &&
-        Objects.equals(this.detectedBy, getAnalyticDashboardResponseRecentSales.detectedBy) &&
-        Objects.equals(this.detectedAt, getAnalyticDashboardResponseRecentSales.detectedAt) &&
         Objects.equals(this.itemTitle, getAnalyticDashboardResponseRecentSales.itemTitle) &&
         Objects.equals(this.itemImage, getAnalyticDashboardResponseRecentSales.itemImage);
   }
@@ -388,7 +359,7 @@ public class GetAnalyticDashboardResponseRecentSales {
 
   @Override
   public int hashCode() {
-    return Objects.hash(saleId, platform, platformOrderId, salePrice, platformFee, shippingCost, costOfGoods, netProfit, detectedBy, detectedAt, itemTitle, itemImage);
+    return Objects.hash(saleId, platform, platformOrderId, detailsPending, salePrice, platformFee, shippingCost, costOfGoods, netProfit, itemTitle, itemImage);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -405,13 +376,12 @@ public class GetAnalyticDashboardResponseRecentSales {
     sb.append("    saleId: ").append(toIndentedString(saleId)).append("\n");
     sb.append("    platform: ").append(toIndentedString(platform)).append("\n");
     sb.append("    platformOrderId: ").append(toIndentedString(platformOrderId)).append("\n");
+    sb.append("    detailsPending: ").append(toIndentedString(detailsPending)).append("\n");
     sb.append("    salePrice: ").append(toIndentedString(salePrice)).append("\n");
     sb.append("    platformFee: ").append(toIndentedString(platformFee)).append("\n");
     sb.append("    shippingCost: ").append(toIndentedString(shippingCost)).append("\n");
     sb.append("    costOfGoods: ").append(toIndentedString(costOfGoods)).append("\n");
     sb.append("    netProfit: ").append(toIndentedString(netProfit)).append("\n");
-    sb.append("    detectedBy: ").append(toIndentedString(detectedBy)).append("\n");
-    sb.append("    detectedAt: ").append(toIndentedString(detectedAt)).append("\n");
     sb.append("    itemTitle: ").append(toIndentedString(itemTitle)).append("\n");
     sb.append("    itemImage: ").append(toIndentedString(itemImage)).append("\n");
     sb.append("}");

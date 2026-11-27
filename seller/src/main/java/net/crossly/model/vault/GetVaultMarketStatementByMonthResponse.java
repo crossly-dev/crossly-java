@@ -31,11 +31,12 @@ import net.crossly.model.vault.GetVaultMarketStatementByMonthResponseOneOf1Fees;
 import net.crossly.model.vault.GetVaultMarketStatementByMonthResponseOneOf1Holdings;
 import net.crossly.model.vault.GetVaultMarketStatementByMonthResponseOneOf1Summary;
 import net.crossly.model.vault.ListVaultMarketConfirmationsItem;
+import org.openapitools.jackson.nullable.JsonNullable;
 
 /**
  * GetVaultMarketStatementByMonthResponse
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-11T23:44:48.922Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-27T19:42:43.186Z[Etc/UTC]")
 public class GetVaultMarketStatementByMonthResponse {
   public static final String SERIALIZED_NAME_FROZEN = "frozen";
   @SerializedName(SERIALIZED_NAME_FROZEN)
@@ -100,6 +101,10 @@ public class GetVaultMarketStatementByMonthResponse {
   public static final String SERIALIZED_NAME_FEES = "fees";
   @SerializedName(SERIALIZED_NAME_FEES)
   private GetVaultMarketStatementByMonthResponseOneOf1Fees fees;
+
+  public static final String SERIALIZED_NAME_CASH = "cash";
+  @SerializedName(SERIALIZED_NAME_CASH)
+  private Object cash = null;
 
   public static final String SERIALIZED_NAME_NOTES = "notes";
   @SerializedName(SERIALIZED_NAME_NOTES)
@@ -516,6 +521,29 @@ public class GetVaultMarketStatementByMonthResponse {
   }
 
 
+  public GetVaultMarketStatementByMonthResponse cash(Object cash) {
+    
+    this.cash = cash;
+    return this;
+  }
+
+   /**
+   * Get cash
+   * @return cash
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public Object getCash() {
+    return cash;
+  }
+
+
+  public void setCash(Object cash) {
+    this.cash = cash;
+  }
+
+
   public GetVaultMarketStatementByMonthResponse notes(List<String> notes) {
     
     this.notes = notes;
@@ -572,12 +600,24 @@ public class GetVaultMarketStatementByMonthResponse {
         Objects.equals(this.pledges, getVaultMarketStatementByMonthResponse.pledges) &&
         Objects.equals(this.activity, getVaultMarketStatementByMonthResponse.activity) &&
         Objects.equals(this.fees, getVaultMarketStatementByMonthResponse.fees) &&
+        Objects.equals(this.cash, getVaultMarketStatementByMonthResponse.cash) &&
         Objects.equals(this.notes, getVaultMarketStatementByMonthResponse.notes);
+  }
+
+  private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+    return a == b || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(frozen, hash, generatedAt, account, month, from, to, holdingsAsOf, provisional, summary, holdings, loansOut, positions, pledges, activity, fees, notes);
+    return Objects.hash(frozen, hash, generatedAt, account, month, from, to, holdingsAsOf, provisional, summary, holdings, loansOut, positions, pledges, activity, fees, cash, notes);
+  }
+
+  private static <T> int hashCodeNullable(JsonNullable<T> a) {
+    if (a == null) {
+      return 1;
+    }
+    return a.isPresent() ? Arrays.deepHashCode(new Object[]{a.get()}) : 31;
   }
 
   @Override
@@ -600,6 +640,7 @@ public class GetVaultMarketStatementByMonthResponse {
     sb.append("    pledges: ").append(toIndentedString(pledges)).append("\n");
     sb.append("    activity: ").append(toIndentedString(activity)).append("\n");
     sb.append("    fees: ").append(toIndentedString(fees)).append("\n");
+    sb.append("    cash: ").append(toIndentedString(cash)).append("\n");
     sb.append("    notes: ").append(toIndentedString(notes)).append("\n");
     sb.append("}");
     return sb.toString();

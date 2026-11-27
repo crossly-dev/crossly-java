@@ -24,11 +24,12 @@ import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 import net.crossly.model.account.GetAccountDeletionStatusResponsePending;
+import org.openapitools.jackson.nullable.JsonNullable;
 
 /**
  * GetAccountDeletionStatusResponse
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-11T23:44:48.922Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-27T19:42:43.186Z[Etc/UTC]")
 public class GetAccountDeletionStatusResponse {
   public static final String SERIALIZED_NAME_PENDING = "pending";
   @SerializedName(SERIALIZED_NAME_PENDING)
@@ -47,8 +48,8 @@ public class GetAccountDeletionStatusResponse {
    * Get pending
    * @return pending
   **/
-  @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "")
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
 
   public GetAccountDeletionStatusResponsePending getPending() {
     return pending;
@@ -72,9 +73,20 @@ public class GetAccountDeletionStatusResponse {
     return Objects.equals(this.pending, getAccountDeletionStatusResponse.pending);
   }
 
+  private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+    return a == b || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
+  }
+
   @Override
   public int hashCode() {
     return Objects.hash(pending);
+  }
+
+  private static <T> int hashCodeNullable(JsonNullable<T> a) {
+    if (a == null) {
+      return 1;
+    }
+    return a.isPresent() ? Arrays.deepHashCode(new Object[]{a.get()}) : 31;
   }
 
   @Override

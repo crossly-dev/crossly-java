@@ -28,16 +28,8 @@ import java.math.BigDecimal;
 /**
  * CreateBuyerAuctionBidResponseData
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-11T23:47:29.843Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-27T19:58:46.962Z[Etc/UTC]")
 public class CreateBuyerAuctionBidResponseData {
-  public static final String SERIALIZED_NAME_ENDS_AT = "endsAt";
-  @SerializedName(SERIALIZED_NAME_ENDS_AT)
-  private String endsAt;
-
-  public static final String SERIALIZED_NAME_CURRENT_BID_CENTS = "currentBidCents";
-  @SerializedName(SERIALIZED_NAME_CURRENT_BID_CENTS)
-  private BigDecimal currentBidCents;
-
   public static final String SERIALIZED_NAME_OK = "ok";
   @SerializedName(SERIALIZED_NAME_OK)
   private Boolean ok;
@@ -46,54 +38,16 @@ public class CreateBuyerAuctionBidResponseData {
   @SerializedName(SERIALIZED_NAME_LEADING)
   private Boolean leading;
 
+  public static final String SERIALIZED_NAME_CURRENT_BID_CENTS = "currentBidCents";
+  @SerializedName(SERIALIZED_NAME_CURRENT_BID_CENTS)
+  private BigDecimal currentBidCents;
+
+  public static final String SERIALIZED_NAME_ENDS_AT = "endsAt";
+  @SerializedName(SERIALIZED_NAME_ENDS_AT)
+  private String endsAt;
+
   public CreateBuyerAuctionBidResponseData() { 
   }
-
-  public CreateBuyerAuctionBidResponseData endsAt(String endsAt) {
-    
-    this.endsAt = endsAt;
-    return this;
-  }
-
-   /**
-   * Possibly extended by anti-sniping.
-   * @return endsAt
-  **/
-  @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "Possibly extended by anti-sniping.")
-
-  public String getEndsAt() {
-    return endsAt;
-  }
-
-
-  public void setEndsAt(String endsAt) {
-    this.endsAt = endsAt;
-  }
-
-
-  public CreateBuyerAuctionBidResponseData currentBidCents(BigDecimal currentBidCents) {
-    
-    this.currentBidCents = currentBidCents;
-    return this;
-  }
-
-   /**
-   * The price now, in cents, after proxy bidding resolved.
-   * @return currentBidCents
-  **/
-  @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "The price now, in cents, after proxy bidding resolved.")
-
-  public BigDecimal getCurrentBidCents() {
-    return currentBidCents;
-  }
-
-
-  public void setCurrentBidCents(BigDecimal currentBidCents) {
-    this.currentBidCents = currentBidCents;
-  }
-
 
   public CreateBuyerAuctionBidResponseData ok(Boolean ok) {
     
@@ -141,6 +95,52 @@ public class CreateBuyerAuctionBidResponseData {
   }
 
 
+  public CreateBuyerAuctionBidResponseData currentBidCents(BigDecimal currentBidCents) {
+    
+    this.currentBidCents = currentBidCents;
+    return this;
+  }
+
+   /**
+   * The price now, in cents, after proxy bidding resolved.
+   * @return currentBidCents
+  **/
+  @javax.annotation.Nonnull
+  @ApiModelProperty(required = true, value = "The price now, in cents, after proxy bidding resolved.")
+
+  public BigDecimal getCurrentBidCents() {
+    return currentBidCents;
+  }
+
+
+  public void setCurrentBidCents(BigDecimal currentBidCents) {
+    this.currentBidCents = currentBidCents;
+  }
+
+
+  public CreateBuyerAuctionBidResponseData endsAt(String endsAt) {
+    
+    this.endsAt = endsAt;
+    return this;
+  }
+
+   /**
+   * Possibly extended by anti-sniping.
+   * @return endsAt
+  **/
+  @javax.annotation.Nonnull
+  @ApiModelProperty(required = true, value = "Possibly extended by anti-sniping.")
+
+  public String getEndsAt() {
+    return endsAt;
+  }
+
+
+  public void setEndsAt(String endsAt) {
+    this.endsAt = endsAt;
+  }
+
+
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -150,25 +150,25 @@ public class CreateBuyerAuctionBidResponseData {
       return false;
     }
     CreateBuyerAuctionBidResponseData createBuyerAuctionBidResponseData = (CreateBuyerAuctionBidResponseData) o;
-    return Objects.equals(this.endsAt, createBuyerAuctionBidResponseData.endsAt) &&
+    return Objects.equals(this.ok, createBuyerAuctionBidResponseData.ok) &&
+        Objects.equals(this.leading, createBuyerAuctionBidResponseData.leading) &&
         Objects.equals(this.currentBidCents, createBuyerAuctionBidResponseData.currentBidCents) &&
-        Objects.equals(this.ok, createBuyerAuctionBidResponseData.ok) &&
-        Objects.equals(this.leading, createBuyerAuctionBidResponseData.leading);
+        Objects.equals(this.endsAt, createBuyerAuctionBidResponseData.endsAt);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(endsAt, currentBidCents, ok, leading);
+    return Objects.hash(ok, leading, currentBidCents, endsAt);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class CreateBuyerAuctionBidResponseData {\n");
-    sb.append("    endsAt: ").append(toIndentedString(endsAt)).append("\n");
-    sb.append("    currentBidCents: ").append(toIndentedString(currentBidCents)).append("\n");
     sb.append("    ok: ").append(toIndentedString(ok)).append("\n");
     sb.append("    leading: ").append(toIndentedString(leading)).append("\n");
+    sb.append("    currentBidCents: ").append(toIndentedString(currentBidCents)).append("\n");
+    sb.append("    endsAt: ").append(toIndentedString(endsAt)).append("\n");
     sb.append("}");
     return sb.toString();
   }

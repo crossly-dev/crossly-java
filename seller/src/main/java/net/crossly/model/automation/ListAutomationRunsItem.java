@@ -24,29 +24,44 @@ import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 import java.math.BigDecimal;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 import org.openapitools.jackson.nullable.JsonNullable;
 import org.threeten.bp.OffsetDateTime;
 
 /**
  * ListAutomationRunsItem
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-11T23:44:48.922Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-27T19:42:43.186Z[Etc/UTC]")
 public class ListAutomationRunsItem {
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
   private String id;
 
-  public static final String SERIALIZED_NAME_CREATED_AT = "createdAt";
-  @SerializedName(SERIALIZED_NAME_CREATED_AT)
-  private OffsetDateTime createdAt;
-
   public static final String SERIALIZED_NAME_USER_ID = "userId";
   @SerializedName(SERIALIZED_NAME_USER_ID)
   private String userId;
 
+  public static final String SERIALIZED_NAME_RULE_ID = "ruleId";
+  @SerializedName(SERIALIZED_NAME_RULE_ID)
+  private String ruleId;
+
+  public static final String SERIALIZED_NAME_CHAIN_ID = "chainId";
+  @SerializedName(SERIALIZED_NAME_CHAIN_ID)
+  private String chainId;
+
   public static final String SERIALIZED_NAME_STATUS = "status";
   @SerializedName(SERIALIZED_NAME_STATUS)
   private String status;
+
+  public static final String SERIALIZED_NAME_ACTION_TYPE = "actionType";
+  @SerializedName(SERIALIZED_NAME_ACTION_TYPE)
+  private String actionType;
+
+  public static final String SERIALIZED_NAME_SUMMARY = "summary";
+  @SerializedName(SERIALIZED_NAME_SUMMARY)
+  private Map<String, Object> summary = new HashMap<String, Object>();
 
   public static final String SERIALIZED_NAME_ERROR_MESSAGE = "errorMessage";
   @SerializedName(SERIALIZED_NAME_ERROR_MESSAGE)
@@ -56,17 +71,13 @@ public class ListAutomationRunsItem {
   @SerializedName(SERIALIZED_NAME_DURATION_MS)
   private BigDecimal durationMs;
 
-  public static final String SERIALIZED_NAME_RULE_ID = "ruleId";
-  @SerializedName(SERIALIZED_NAME_RULE_ID)
-  private String ruleId;
+  public static final String SERIALIZED_NAME_CREATED_AT = "createdAt";
+  @SerializedName(SERIALIZED_NAME_CREATED_AT)
+  private OffsetDateTime createdAt;
 
-  public static final String SERIALIZED_NAME_ACTION_TYPE = "actionType";
-  @SerializedName(SERIALIZED_NAME_ACTION_TYPE)
-  private String actionType;
-
-  public static final String SERIALIZED_NAME_CHAIN_ID = "chainId";
-  @SerializedName(SERIALIZED_NAME_CHAIN_ID)
-  private String chainId;
+  public static final String SERIALIZED_NAME_WORKFLOW_RUN_ID = "workflowRunId";
+  @SerializedName(SERIALIZED_NAME_WORKFLOW_RUN_ID)
+  private String workflowRunId;
 
   public ListAutomationRunsItem() { 
   }
@@ -94,29 +105,6 @@ public class ListAutomationRunsItem {
   }
 
 
-  public ListAutomationRunsItem createdAt(OffsetDateTime createdAt) {
-    
-    this.createdAt = createdAt;
-    return this;
-  }
-
-   /**
-   * Get createdAt
-   * @return createdAt
-  **/
-  @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "")
-
-  public OffsetDateTime getCreatedAt() {
-    return createdAt;
-  }
-
-
-  public void setCreatedAt(OffsetDateTime createdAt) {
-    this.createdAt = createdAt;
-  }
-
-
   public ListAutomationRunsItem userId(String userId) {
     
     this.userId = userId;
@@ -140,6 +128,52 @@ public class ListAutomationRunsItem {
   }
 
 
+  public ListAutomationRunsItem ruleId(String ruleId) {
+    
+    this.ruleId = ruleId;
+    return this;
+  }
+
+   /**
+   * Get ruleId
+   * @return ruleId
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public String getRuleId() {
+    return ruleId;
+  }
+
+
+  public void setRuleId(String ruleId) {
+    this.ruleId = ruleId;
+  }
+
+
+  public ListAutomationRunsItem chainId(String chainId) {
+    
+    this.chainId = chainId;
+    return this;
+  }
+
+   /**
+   * Get chainId
+   * @return chainId
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public String getChainId() {
+    return chainId;
+  }
+
+
+  public void setChainId(String chainId) {
+    this.chainId = chainId;
+  }
+
+
   public ListAutomationRunsItem status(String status) {
     
     this.status = status;
@@ -160,6 +194,57 @@ public class ListAutomationRunsItem {
 
   public void setStatus(String status) {
     this.status = status;
+  }
+
+
+  public ListAutomationRunsItem actionType(String actionType) {
+    
+    this.actionType = actionType;
+    return this;
+  }
+
+   /**
+   * Get actionType
+   * @return actionType
+  **/
+  @javax.annotation.Nonnull
+  @ApiModelProperty(required = true, value = "")
+
+  public String getActionType() {
+    return actionType;
+  }
+
+
+  public void setActionType(String actionType) {
+    this.actionType = actionType;
+  }
+
+
+  public ListAutomationRunsItem summary(Map<String, Object> summary) {
+    
+    this.summary = summary;
+    return this;
+  }
+
+  public ListAutomationRunsItem putSummaryItem(String key, Object summaryItem) {
+    this.summary.put(key, summaryItem);
+    return this;
+  }
+
+   /**
+   * Get summary
+   * @return summary
+  **/
+  @javax.annotation.Nonnull
+  @ApiModelProperty(required = true, value = "")
+
+  public Map<String, Object> getSummary() {
+    return summary;
+  }
+
+
+  public void setSummary(Map<String, Object> summary) {
+    this.summary = summary;
   }
 
 
@@ -209,72 +294,49 @@ public class ListAutomationRunsItem {
   }
 
 
-  public ListAutomationRunsItem ruleId(String ruleId) {
+  public ListAutomationRunsItem createdAt(OffsetDateTime createdAt) {
     
-    this.ruleId = ruleId;
+    this.createdAt = createdAt;
     return this;
   }
 
    /**
-   * Get ruleId
-   * @return ruleId
-  **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
-
-  public String getRuleId() {
-    return ruleId;
-  }
-
-
-  public void setRuleId(String ruleId) {
-    this.ruleId = ruleId;
-  }
-
-
-  public ListAutomationRunsItem actionType(String actionType) {
-    
-    this.actionType = actionType;
-    return this;
-  }
-
-   /**
-   * Get actionType
-   * @return actionType
+   * Get createdAt
+   * @return createdAt
   **/
   @javax.annotation.Nonnull
   @ApiModelProperty(required = true, value = "")
 
-  public String getActionType() {
-    return actionType;
+  public OffsetDateTime getCreatedAt() {
+    return createdAt;
   }
 
 
-  public void setActionType(String actionType) {
-    this.actionType = actionType;
+  public void setCreatedAt(OffsetDateTime createdAt) {
+    this.createdAt = createdAt;
   }
 
 
-  public ListAutomationRunsItem chainId(String chainId) {
+  public ListAutomationRunsItem workflowRunId(String workflowRunId) {
     
-    this.chainId = chainId;
+    this.workflowRunId = workflowRunId;
     return this;
   }
 
    /**
-   * Get chainId
-   * @return chainId
+   * Set for runs of the converted workflow.
+   * @return workflowRunId
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "Set for runs of the converted workflow.")
 
-  public String getChainId() {
-    return chainId;
+  public String getWorkflowRunId() {
+    return workflowRunId;
   }
 
 
-  public void setChainId(String chainId) {
-    this.chainId = chainId;
+  public void setWorkflowRunId(String workflowRunId) {
+    this.workflowRunId = workflowRunId;
   }
 
 
@@ -288,14 +350,16 @@ public class ListAutomationRunsItem {
     }
     ListAutomationRunsItem listAutomationRunsItem = (ListAutomationRunsItem) o;
     return Objects.equals(this.id, listAutomationRunsItem.id) &&
-        Objects.equals(this.createdAt, listAutomationRunsItem.createdAt) &&
         Objects.equals(this.userId, listAutomationRunsItem.userId) &&
+        Objects.equals(this.ruleId, listAutomationRunsItem.ruleId) &&
+        Objects.equals(this.chainId, listAutomationRunsItem.chainId) &&
         Objects.equals(this.status, listAutomationRunsItem.status) &&
+        Objects.equals(this.actionType, listAutomationRunsItem.actionType) &&
+        Objects.equals(this.summary, listAutomationRunsItem.summary) &&
         Objects.equals(this.errorMessage, listAutomationRunsItem.errorMessage) &&
         Objects.equals(this.durationMs, listAutomationRunsItem.durationMs) &&
-        Objects.equals(this.ruleId, listAutomationRunsItem.ruleId) &&
-        Objects.equals(this.actionType, listAutomationRunsItem.actionType) &&
-        Objects.equals(this.chainId, listAutomationRunsItem.chainId);
+        Objects.equals(this.createdAt, listAutomationRunsItem.createdAt) &&
+        Objects.equals(this.workflowRunId, listAutomationRunsItem.workflowRunId);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -304,7 +368,7 @@ public class ListAutomationRunsItem {
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, createdAt, userId, status, errorMessage, durationMs, ruleId, actionType, chainId);
+    return Objects.hash(id, userId, ruleId, chainId, status, actionType, summary, errorMessage, durationMs, createdAt, workflowRunId);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -319,14 +383,16 @@ public class ListAutomationRunsItem {
     StringBuilder sb = new StringBuilder();
     sb.append("class ListAutomationRunsItem {\n");
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
-    sb.append("    createdAt: ").append(toIndentedString(createdAt)).append("\n");
     sb.append("    userId: ").append(toIndentedString(userId)).append("\n");
+    sb.append("    ruleId: ").append(toIndentedString(ruleId)).append("\n");
+    sb.append("    chainId: ").append(toIndentedString(chainId)).append("\n");
     sb.append("    status: ").append(toIndentedString(status)).append("\n");
+    sb.append("    actionType: ").append(toIndentedString(actionType)).append("\n");
+    sb.append("    summary: ").append(toIndentedString(summary)).append("\n");
     sb.append("    errorMessage: ").append(toIndentedString(errorMessage)).append("\n");
     sb.append("    durationMs: ").append(toIndentedString(durationMs)).append("\n");
-    sb.append("    ruleId: ").append(toIndentedString(ruleId)).append("\n");
-    sb.append("    actionType: ").append(toIndentedString(actionType)).append("\n");
-    sb.append("    chainId: ").append(toIndentedString(chainId)).append("\n");
+    sb.append("    createdAt: ").append(toIndentedString(createdAt)).append("\n");
+    sb.append("    workflowRunId: ").append(toIndentedString(workflowRunId)).append("\n");
     sb.append("}");
     return sb.toString();
   }

@@ -32,7 +32,7 @@ import org.openapitools.jackson.nullable.JsonNullable;
 /**
  * GetVaultMarketUnitStoryResponseEvents
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-11T23:44:48.922Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-27T19:42:43.186Z[Etc/UTC]")
 public class GetVaultMarketUnitStoryResponseEvents {
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
@@ -47,27 +47,27 @@ public class GetVaultMarketUnitStoryResponseEvents {
    */
   @JsonAdapter(KindEnum.Adapter.class)
   public enum KindEnum {
-    TRANSFER("transfer"),
-    
-    EVIDENCE("evidence"),
-    
     SALE("sale"),
-    
-    GRADED("graded"),
-    
-    PLEDGED("pledged"),
-    
-    RELEASED("released"),
-    
-    RECEIVED("received"),
     
     RECEIPT("receipt"),
     
+    RECEIVED("received"),
+    
+    RELEASED("released"),
+    
+    EVIDENCE("evidence"),
+    
+    GRADED("graded"),
+    
+    TRANSFER("transfer"),
+    
+    PLEDGED("pledged"),
+    
     LENT("lent"),
     
-    RECALLED("recalled"),
-    
     FORECLOSED("foreclosed"),
+    
+    RECALLED("recalled"),
     
     SENT_IN("sent_in"),
     
@@ -138,21 +138,21 @@ public class GetVaultMarketUnitStoryResponseEvents {
    */
   @JsonAdapter(GroupEnum.Adapter.class)
   public enum GroupEnum {
-    TOKEN("token"),
-    
     GRADE("grade"),
     
-    LOAN("loan"),
-    
-    HALL("hall"),
+    TOKEN("token"),
     
     RECEIPT("receipt"),
     
-    INTAKE("intake"),
-    
     OWNER("owner"),
     
-    CUSTODY("custody");
+    HALL("hall"),
+    
+    INTAKE("intake"),
+    
+    CUSTODY("custody"),
+    
+    LOAN("loan");
 
     private String value;
 

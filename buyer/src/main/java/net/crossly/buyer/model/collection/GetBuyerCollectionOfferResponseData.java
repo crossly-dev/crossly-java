@@ -31,11 +31,11 @@ import org.openapitools.jackson.nullable.JsonNullable;
 /**
  * GetBuyerCollectionOfferResponseData
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-11T23:47:29.843Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-27T19:58:46.962Z[Etc/UTC]")
 public class GetBuyerCollectionOfferResponseData {
-  public static final String SERIALIZED_NAME_PENDING = "pending";
-  @SerializedName(SERIALIZED_NAME_PENDING)
-  private GetBuyerCollectionOfferResponseDataPending pending;
+  public static final String SERIALIZED_NAME_PORTFOLIO_ID = "portfolioId";
+  @SerializedName(SERIALIZED_NAME_PORTFOLIO_ID)
+  private String portfolioId;
 
   public static final String SERIALIZED_NAME_TITLE = "title";
   @SerializedName(SERIALIZED_NAME_TITLE)
@@ -45,45 +45,45 @@ public class GetBuyerCollectionOfferResponseData {
   @SerializedName(SERIALIZED_NAME_LAST_SALE_CENTS)
   private BigDecimal lastSaleCents;
 
+  public static final String SERIALIZED_NAME_TOP_BID_CENTS = "topBidCents";
+  @SerializedName(SERIALIZED_NAME_TOP_BID_CENTS)
+  private BigDecimal topBidCents;
+
   public static final String SERIALIZED_NAME_SKU_ID = "skuId";
   @SerializedName(SERIALIZED_NAME_SKU_ID)
   private String skuId;
-
-  public static final String SERIALIZED_NAME_PORTFOLIO_ID = "portfolioId";
-  @SerializedName(SERIALIZED_NAME_PORTFOLIO_ID)
-  private String portfolioId;
 
   public static final String SERIALIZED_NAME_OFFER = "offer";
   @SerializedName(SERIALIZED_NAME_OFFER)
   private GetBuyerCollectionOfferResponseDataOffer offer;
 
-  public static final String SERIALIZED_NAME_TOP_BID_CENTS = "topBidCents";
-  @SerializedName(SERIALIZED_NAME_TOP_BID_CENTS)
-  private BigDecimal topBidCents;
+  public static final String SERIALIZED_NAME_PENDING = "pending";
+  @SerializedName(SERIALIZED_NAME_PENDING)
+  private GetBuyerCollectionOfferResponseDataPending pending;
 
   public GetBuyerCollectionOfferResponseData() { 
   }
 
-  public GetBuyerCollectionOfferResponseData pending(GetBuyerCollectionOfferResponseDataPending pending) {
+  public GetBuyerCollectionOfferResponseData portfolioId(String portfolioId) {
     
-    this.pending = pending;
+    this.portfolioId = portfolioId;
     return this;
   }
 
    /**
-   * Get pending
-   * @return pending
+   * Get portfolioId
+   * @return portfolioId
   **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
+  @javax.annotation.Nonnull
+  @ApiModelProperty(required = true, value = "")
 
-  public GetBuyerCollectionOfferResponseDataPending getPending() {
-    return pending;
+  public String getPortfolioId() {
+    return portfolioId;
   }
 
 
-  public void setPending(GetBuyerCollectionOfferResponseDataPending pending) {
-    this.pending = pending;
+  public void setPortfolioId(String portfolioId) {
+    this.portfolioId = portfolioId;
   }
 
 
@@ -133,6 +133,29 @@ public class GetBuyerCollectionOfferResponseData {
   }
 
 
+  public GetBuyerCollectionOfferResponseData topBidCents(BigDecimal topBidCents) {
+    
+    this.topBidCents = topBidCents;
+    return this;
+  }
+
+   /**
+   * Get topBidCents
+   * @return topBidCents
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public BigDecimal getTopBidCents() {
+    return topBidCents;
+  }
+
+
+  public void setTopBidCents(BigDecimal topBidCents) {
+    this.topBidCents = topBidCents;
+  }
+
+
   public GetBuyerCollectionOfferResponseData skuId(String skuId) {
     
     this.skuId = skuId;
@@ -153,29 +176,6 @@ public class GetBuyerCollectionOfferResponseData {
 
   public void setSkuId(String skuId) {
     this.skuId = skuId;
-  }
-
-
-  public GetBuyerCollectionOfferResponseData portfolioId(String portfolioId) {
-    
-    this.portfolioId = portfolioId;
-    return this;
-  }
-
-   /**
-   * Get portfolioId
-   * @return portfolioId
-  **/
-  @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "")
-
-  public String getPortfolioId() {
-    return portfolioId;
-  }
-
-
-  public void setPortfolioId(String portfolioId) {
-    this.portfolioId = portfolioId;
   }
 
 
@@ -202,26 +202,26 @@ public class GetBuyerCollectionOfferResponseData {
   }
 
 
-  public GetBuyerCollectionOfferResponseData topBidCents(BigDecimal topBidCents) {
+  public GetBuyerCollectionOfferResponseData pending(GetBuyerCollectionOfferResponseDataPending pending) {
     
-    this.topBidCents = topBidCents;
+    this.pending = pending;
     return this;
   }
 
    /**
-   * Get topBidCents
-   * @return topBidCents
+   * Get pending
+   * @return pending
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "")
 
-  public BigDecimal getTopBidCents() {
-    return topBidCents;
+  public GetBuyerCollectionOfferResponseDataPending getPending() {
+    return pending;
   }
 
 
-  public void setTopBidCents(BigDecimal topBidCents) {
-    this.topBidCents = topBidCents;
+  public void setPending(GetBuyerCollectionOfferResponseDataPending pending) {
+    this.pending = pending;
   }
 
 
@@ -234,13 +234,13 @@ public class GetBuyerCollectionOfferResponseData {
       return false;
     }
     GetBuyerCollectionOfferResponseData getBuyerCollectionOfferResponseData = (GetBuyerCollectionOfferResponseData) o;
-    return Objects.equals(this.pending, getBuyerCollectionOfferResponseData.pending) &&
+    return Objects.equals(this.portfolioId, getBuyerCollectionOfferResponseData.portfolioId) &&
         Objects.equals(this.title, getBuyerCollectionOfferResponseData.title) &&
         Objects.equals(this.lastSaleCents, getBuyerCollectionOfferResponseData.lastSaleCents) &&
+        Objects.equals(this.topBidCents, getBuyerCollectionOfferResponseData.topBidCents) &&
         Objects.equals(this.skuId, getBuyerCollectionOfferResponseData.skuId) &&
-        Objects.equals(this.portfolioId, getBuyerCollectionOfferResponseData.portfolioId) &&
         Objects.equals(this.offer, getBuyerCollectionOfferResponseData.offer) &&
-        Objects.equals(this.topBidCents, getBuyerCollectionOfferResponseData.topBidCents);
+        Objects.equals(this.pending, getBuyerCollectionOfferResponseData.pending);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -249,7 +249,7 @@ public class GetBuyerCollectionOfferResponseData {
 
   @Override
   public int hashCode() {
-    return Objects.hash(pending, title, lastSaleCents, skuId, portfolioId, offer, topBidCents);
+    return Objects.hash(portfolioId, title, lastSaleCents, topBidCents, skuId, offer, pending);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -263,13 +263,13 @@ public class GetBuyerCollectionOfferResponseData {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class GetBuyerCollectionOfferResponseData {\n");
-    sb.append("    pending: ").append(toIndentedString(pending)).append("\n");
+    sb.append("    portfolioId: ").append(toIndentedString(portfolioId)).append("\n");
     sb.append("    title: ").append(toIndentedString(title)).append("\n");
     sb.append("    lastSaleCents: ").append(toIndentedString(lastSaleCents)).append("\n");
-    sb.append("    skuId: ").append(toIndentedString(skuId)).append("\n");
-    sb.append("    portfolioId: ").append(toIndentedString(portfolioId)).append("\n");
-    sb.append("    offer: ").append(toIndentedString(offer)).append("\n");
     sb.append("    topBidCents: ").append(toIndentedString(topBidCents)).append("\n");
+    sb.append("    skuId: ").append(toIndentedString(skuId)).append("\n");
+    sb.append("    offer: ").append(toIndentedString(offer)).append("\n");
+    sb.append("    pending: ").append(toIndentedString(pending)).append("\n");
     sb.append("}");
     return sb.toString();
   }

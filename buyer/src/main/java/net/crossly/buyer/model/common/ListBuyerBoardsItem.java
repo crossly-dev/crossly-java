@@ -29,27 +29,19 @@ import org.openapitools.jackson.nullable.JsonNullable;
 /**
  * ListBuyerBoardsItem
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-11T23:47:29.843Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-27T19:58:46.962Z[Etc/UTC]")
 public class ListBuyerBoardsItem {
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
   private String id;
 
-  public static final String SERIALIZED_NAME_UPDATED_AT = "updatedAt";
-  @SerializedName(SERIALIZED_NAME_UPDATED_AT)
-  private String updatedAt;
+  public static final String SERIALIZED_NAME_TITLE = "title";
+  @SerializedName(SERIALIZED_NAME_TITLE)
+  private String title;
 
   public static final String SERIALIZED_NAME_IS_PUBLIC = "isPublic";
   @SerializedName(SERIALIZED_NAME_IS_PUBLIC)
   private Boolean isPublic;
-
-  public static final String SERIALIZED_NAME_ITEM_COUNT = "itemCount";
-  @SerializedName(SERIALIZED_NAME_ITEM_COUNT)
-  private BigDecimal itemCount;
-
-  public static final String SERIALIZED_NAME_TITLE = "title";
-  @SerializedName(SERIALIZED_NAME_TITLE)
-  private String title;
 
   public static final String SERIALIZED_NAME_SHARE_TOKEN = "shareToken";
   @SerializedName(SERIALIZED_NAME_SHARE_TOKEN)
@@ -58,6 +50,14 @@ public class ListBuyerBoardsItem {
   public static final String SERIALIZED_NAME_COVER_URL = "coverUrl";
   @SerializedName(SERIALIZED_NAME_COVER_URL)
   private String coverUrl;
+
+  public static final String SERIALIZED_NAME_ITEM_COUNT = "itemCount";
+  @SerializedName(SERIALIZED_NAME_ITEM_COUNT)
+  private BigDecimal itemCount;
+
+  public static final String SERIALIZED_NAME_UPDATED_AT = "updatedAt";
+  @SerializedName(SERIALIZED_NAME_UPDATED_AT)
+  private String updatedAt;
 
   public ListBuyerBoardsItem() { 
   }
@@ -85,26 +85,26 @@ public class ListBuyerBoardsItem {
   }
 
 
-  public ListBuyerBoardsItem updatedAt(String updatedAt) {
+  public ListBuyerBoardsItem title(String title) {
     
-    this.updatedAt = updatedAt;
+    this.title = title;
     return this;
   }
 
    /**
-   * Get updatedAt
-   * @return updatedAt
+   * Get title
+   * @return title
   **/
   @javax.annotation.Nonnull
   @ApiModelProperty(required = true, value = "")
 
-  public String getUpdatedAt() {
-    return updatedAt;
+  public String getTitle() {
+    return title;
   }
 
 
-  public void setUpdatedAt(String updatedAt) {
-    this.updatedAt = updatedAt;
+  public void setTitle(String title) {
+    this.title = title;
   }
 
 
@@ -128,52 +128,6 @@ public class ListBuyerBoardsItem {
 
   public void setIsPublic(Boolean isPublic) {
     this.isPublic = isPublic;
-  }
-
-
-  public ListBuyerBoardsItem itemCount(BigDecimal itemCount) {
-    
-    this.itemCount = itemCount;
-    return this;
-  }
-
-   /**
-   * Get itemCount
-   * @return itemCount
-  **/
-  @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "")
-
-  public BigDecimal getItemCount() {
-    return itemCount;
-  }
-
-
-  public void setItemCount(BigDecimal itemCount) {
-    this.itemCount = itemCount;
-  }
-
-
-  public ListBuyerBoardsItem title(String title) {
-    
-    this.title = title;
-    return this;
-  }
-
-   /**
-   * Get title
-   * @return title
-  **/
-  @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "")
-
-  public String getTitle() {
-    return title;
-  }
-
-
-  public void setTitle(String title) {
-    this.title = title;
   }
 
 
@@ -223,6 +177,52 @@ public class ListBuyerBoardsItem {
   }
 
 
+  public ListBuyerBoardsItem itemCount(BigDecimal itemCount) {
+    
+    this.itemCount = itemCount;
+    return this;
+  }
+
+   /**
+   * Get itemCount
+   * @return itemCount
+  **/
+  @javax.annotation.Nonnull
+  @ApiModelProperty(required = true, value = "")
+
+  public BigDecimal getItemCount() {
+    return itemCount;
+  }
+
+
+  public void setItemCount(BigDecimal itemCount) {
+    this.itemCount = itemCount;
+  }
+
+
+  public ListBuyerBoardsItem updatedAt(String updatedAt) {
+    
+    this.updatedAt = updatedAt;
+    return this;
+  }
+
+   /**
+   * Get updatedAt
+   * @return updatedAt
+  **/
+  @javax.annotation.Nonnull
+  @ApiModelProperty(required = true, value = "")
+
+  public String getUpdatedAt() {
+    return updatedAt;
+  }
+
+
+  public void setUpdatedAt(String updatedAt) {
+    this.updatedAt = updatedAt;
+  }
+
+
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -233,12 +233,12 @@ public class ListBuyerBoardsItem {
     }
     ListBuyerBoardsItem listBuyerBoardsItem = (ListBuyerBoardsItem) o;
     return Objects.equals(this.id, listBuyerBoardsItem.id) &&
-        Objects.equals(this.updatedAt, listBuyerBoardsItem.updatedAt) &&
-        Objects.equals(this.isPublic, listBuyerBoardsItem.isPublic) &&
-        Objects.equals(this.itemCount, listBuyerBoardsItem.itemCount) &&
         Objects.equals(this.title, listBuyerBoardsItem.title) &&
+        Objects.equals(this.isPublic, listBuyerBoardsItem.isPublic) &&
         Objects.equals(this.shareToken, listBuyerBoardsItem.shareToken) &&
-        Objects.equals(this.coverUrl, listBuyerBoardsItem.coverUrl);
+        Objects.equals(this.coverUrl, listBuyerBoardsItem.coverUrl) &&
+        Objects.equals(this.itemCount, listBuyerBoardsItem.itemCount) &&
+        Objects.equals(this.updatedAt, listBuyerBoardsItem.updatedAt);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -247,7 +247,7 @@ public class ListBuyerBoardsItem {
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, updatedAt, isPublic, itemCount, title, shareToken, coverUrl);
+    return Objects.hash(id, title, isPublic, shareToken, coverUrl, itemCount, updatedAt);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -262,12 +262,12 @@ public class ListBuyerBoardsItem {
     StringBuilder sb = new StringBuilder();
     sb.append("class ListBuyerBoardsItem {\n");
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
-    sb.append("    updatedAt: ").append(toIndentedString(updatedAt)).append("\n");
-    sb.append("    isPublic: ").append(toIndentedString(isPublic)).append("\n");
-    sb.append("    itemCount: ").append(toIndentedString(itemCount)).append("\n");
     sb.append("    title: ").append(toIndentedString(title)).append("\n");
+    sb.append("    isPublic: ").append(toIndentedString(isPublic)).append("\n");
     sb.append("    shareToken: ").append(toIndentedString(shareToken)).append("\n");
     sb.append("    coverUrl: ").append(toIndentedString(coverUrl)).append("\n");
+    sb.append("    itemCount: ").append(toIndentedString(itemCount)).append("\n");
+    sb.append("    updatedAt: ").append(toIndentedString(updatedAt)).append("\n");
     sb.append("}");
     return sb.toString();
   }

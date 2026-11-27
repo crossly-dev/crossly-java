@@ -27,10 +27,12 @@ import com.google.gson.reflect.TypeToken;
 import java.io.IOException;
 
 
-import net.crossly.model.common.CreateWebhookResponse;
-import net.crossly.model.common.CreateWebhookTestResponse;
+import net.crossly.model.webhook.CreateWebhookDeliveryRedeliverResponse;
+import net.crossly.model.webhook.CreateWebhookResponse;
+import net.crossly.model.webhook.CreateWebhookTestResponse;
 import net.crossly.model.common.Error;
-import net.crossly.model.common.ListWebhooksResponse;
+import net.crossly.model.webhook.ListWebhookDeliveriesResponse;
+import net.crossly.model.webhook.ListWebhooksResponse;
 import net.crossly.model.common.OkResponse;
 import java.util.UUID;
 
@@ -220,6 +222,168 @@ public class WebhooksApi {
         return localVarCall;
     }
     /**
+     * Build call for createWebhookDeliveryRedeliver
+     * @param id  (required)
+     * @param deliveryId  (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call createWebhookDeliveryRedeliverCall(UUID id, UUID deliveryId, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/v1/webhooks/{id}/deliveries/{deliveryId}/redeliver"
+            .replaceAll("\\{" + "id" + "\\}", localVarApiClient.escapeString(id.toString()))
+            .replaceAll("\\{" + "deliveryId" + "\\}", localVarApiClient.escapeString(deliveryId.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "PersonalAccessToken" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call createWebhookDeliveryRedeliverValidateBeforeCall(UUID id, UUID deliveryId, final ApiCallback _callback) throws ApiException {
+        
+        // verify the required parameter 'id' is set
+        if (id == null) {
+            throw new ApiException("Missing the required parameter 'id' when calling createWebhookDeliveryRedeliver(Async)");
+        }
+        
+        // verify the required parameter 'deliveryId' is set
+        if (deliveryId == null) {
+            throw new ApiException("Missing the required parameter 'deliveryId' when calling createWebhookDeliveryRedeliver(Async)");
+        }
+        
+
+        okhttp3.Call localVarCall = createWebhookDeliveryRedeliverCall(id, deliveryId, _callback);
+        return localVarCall;
+
+    }
+
+    /**
+     * Redeliver one past delivery: a new delivery (new Crossly-Delivery-Id) of the same event id and payload.
+     * 
+     * @param id  (required)
+     * @param deliveryId  (required)
+     * @return CreateWebhookDeliveryRedeliverResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public CreateWebhookDeliveryRedeliverResponse createWebhookDeliveryRedeliver(UUID id, UUID deliveryId) throws ApiException {
+        ApiResponse<CreateWebhookDeliveryRedeliverResponse> localVarResp = createWebhookDeliveryRedeliverWithHttpInfo(id, deliveryId);
+        return localVarResp.getData();
+    }
+
+    /**
+     * Redeliver one past delivery: a new delivery (new Crossly-Delivery-Id) of the same event id and payload.
+     * 
+     * @param id  (required)
+     * @param deliveryId  (required)
+     * @return ApiResponse&lt;CreateWebhookDeliveryRedeliverResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<CreateWebhookDeliveryRedeliverResponse> createWebhookDeliveryRedeliverWithHttpInfo(UUID id, UUID deliveryId) throws ApiException {
+        okhttp3.Call localVarCall = createWebhookDeliveryRedeliverValidateBeforeCall(id, deliveryId, null);
+        Type localVarReturnType = new TypeToken<CreateWebhookDeliveryRedeliverResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Redeliver one past delivery: a new delivery (new Crossly-Delivery-Id) of the same event id and payload. (asynchronously)
+     * 
+     * @param id  (required)
+     * @param deliveryId  (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call createWebhookDeliveryRedeliverAsync(UUID id, UUID deliveryId, final ApiCallback<CreateWebhookDeliveryRedeliverResponse> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = createWebhookDeliveryRedeliverValidateBeforeCall(id, deliveryId, _callback);
+        Type localVarReturnType = new TypeToken<CreateWebhookDeliveryRedeliverResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
      * Build call for createWebhookTest
      * @param id  (required)
      * @param _callback Callback for upload/download progress
@@ -299,7 +463,7 @@ public class WebhooksApi {
     }
 
     /**
-     * Fire a synthetic test.ping delivery to one webhook.
+     * Fire a test delivery to one webhook: test.ping, or a sample of any event (body {\&quot;event\&quot;:\&quot;order.created\&quot;}, payload marked test: true).
      * 
      * @param id  (required)
      * @return CreateWebhookTestResponse
@@ -322,7 +486,7 @@ public class WebhooksApi {
     }
 
     /**
-     * Fire a synthetic test.ping delivery to one webhook.
+     * Fire a test delivery to one webhook: test.ping, or a sample of any event (body {\&quot;event\&quot;:\&quot;order.created\&quot;}, payload marked test: true).
      * 
      * @param id  (required)
      * @return ApiResponse&lt;CreateWebhookTestResponse&gt;
@@ -346,7 +510,7 @@ public class WebhooksApi {
     }
 
     /**
-     * Fire a synthetic test.ping delivery to one webhook. (asynchronously)
+     * Fire a test delivery to one webhook: test.ping, or a sample of any event (body {\&quot;event\&quot;:\&quot;order.created\&quot;}, payload marked test: true). (asynchronously)
      * 
      * @param id  (required)
      * @param _callback The callback to be executed when the API call finishes
@@ -662,6 +826,174 @@ public class WebhooksApi {
 
         okhttp3.Call localVarCall = getWebhookStreamValidateBeforeCall(_callback);
         Type localVarReturnType = new TypeToken<String>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for listWebhookDeliveries
+     * @param id  (required)
+     * @param status  (optional)
+     * @param limit  (optional, default to 25)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call listWebhookDeliveriesCall(UUID id, String status, Integer limit, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/v1/webhooks/{id}/deliveries"
+            .replaceAll("\\{" + "id" + "\\}", localVarApiClient.escapeString(id.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        if (status != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("status", status));
+        }
+
+        if (limit != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("limit", limit));
+        }
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "PersonalAccessToken" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call listWebhookDeliveriesValidateBeforeCall(UUID id, String status, Integer limit, final ApiCallback _callback) throws ApiException {
+        
+        // verify the required parameter 'id' is set
+        if (id == null) {
+            throw new ApiException("Missing the required parameter 'id' when calling listWebhookDeliveries(Async)");
+        }
+        
+
+        okhttp3.Call localVarCall = listWebhookDeliveriesCall(id, status, limit, _callback);
+        return localVarCall;
+
+    }
+
+    /**
+     * List deliveries to one webhook (30 days, newest first): event, status, attempts, last HTTP status and error, payload.
+     * 
+     * @param id  (required)
+     * @param status  (optional)
+     * @param limit  (optional, default to 25)
+     * @return ListWebhookDeliveriesResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public ListWebhookDeliveriesResponse listWebhookDeliveries(UUID id, String status, Integer limit) throws ApiException {
+        ApiResponse<ListWebhookDeliveriesResponse> localVarResp = listWebhookDeliveriesWithHttpInfo(id, status, limit);
+        return localVarResp.getData();
+    }
+
+    /**
+     * List deliveries to one webhook (30 days, newest first): event, status, attempts, last HTTP status and error, payload.
+     * 
+     * @param id  (required)
+     * @param status  (optional)
+     * @param limit  (optional, default to 25)
+     * @return ApiResponse&lt;ListWebhookDeliveriesResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<ListWebhookDeliveriesResponse> listWebhookDeliveriesWithHttpInfo(UUID id, String status, Integer limit) throws ApiException {
+        okhttp3.Call localVarCall = listWebhookDeliveriesValidateBeforeCall(id, status, limit, null);
+        Type localVarReturnType = new TypeToken<ListWebhookDeliveriesResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * List deliveries to one webhook (30 days, newest first): event, status, attempts, last HTTP status and error, payload. (asynchronously)
+     * 
+     * @param id  (required)
+     * @param status  (optional)
+     * @param limit  (optional, default to 25)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call listWebhookDeliveriesAsync(UUID id, String status, Integer limit, final ApiCallback<ListWebhookDeliveriesResponse> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = listWebhookDeliveriesValidateBeforeCall(id, status, limit, _callback);
+        Type localVarReturnType = new TypeToken<ListWebhookDeliveriesResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }

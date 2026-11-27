@@ -27,15 +27,30 @@ import com.google.gson.reflect.TypeToken;
 import java.io.IOException;
 
 
+import net.crossly.model.common.AnalyticExperimentResponse;
+import net.crossly.model.common.DeleteStoryResponse;
 import net.crossly.model.common.Error;
 import net.crossly.model.analytic.GetAnalyticBookkeepingResponse;
 import net.crossly.model.analytic.GetAnalyticByPlatformResponse;
+import net.crossly.model.analytic.GetAnalyticCompareResponse;
 import net.crossly.model.analytic.GetAnalyticDashboardResponse;
+import net.crossly.model.analytic.GetAnalyticExperimentByIdResponse;
+import net.crossly.model.analytic.GetAnalyticExperimentResponse;
+import net.crossly.model.analytic.GetAnalyticInventoryResponse;
+import net.crossly.model.analytic.GetAnalyticItemByListingIdResponse;
 import net.crossly.model.analytic.GetAnalyticItemResponse;
+import net.crossly.model.analytic.GetAnalyticMarketplaceByPlatformResponse;
+import net.crossly.model.analytic.GetAnalyticMarketplaceResponse;
+import net.crossly.model.analytic.GetAnalyticOverviewResponse;
+import net.crossly.model.analytic.GetAnalyticPerformanceResponse;
+import net.crossly.model.analytic.GetAnalyticProgramResponse;
+import net.crossly.model.analytic.GetAnalyticSegmentByKeyResponse;
+import net.crossly.model.analytic.GetAnalyticSegmentResponse;
 import net.crossly.model.analytic.GetAnalyticSummaryResponse;
 import net.crossly.model.analytic.GetAnalyticTimeseryResponse;
 import net.crossly.model.analytic.GetAnalyticTodayResponse;
 import net.crossly.model.common.ListInsightByPlatformResponse;
+import org.threeten.bp.LocalDate;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
@@ -80,6 +95,604 @@ public class AnalyticsApi {
         this.localCustomBaseUrl = customBaseUrl;
     }
 
+    /**
+     * Build call for createAnalyticExperiment
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call createAnalyticExperimentCall(final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/v1/analytics/experiments";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "PersonalAccessToken" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call createAnalyticExperimentValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        
+
+        okhttp3.Call localVarCall = createAnalyticExperimentCall(_callback);
+        return localVarCall;
+
+    }
+
+    /**
+     * Start a listing experiment. split: 2-4 live platform listings observed over the same window; sequential: one platform listing, before vs after changeAt (optionally applying a new price).
+     * 
+     * @return AnalyticExperimentResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public AnalyticExperimentResponse createAnalyticExperiment() throws ApiException {
+        ApiResponse<AnalyticExperimentResponse> localVarResp = createAnalyticExperimentWithHttpInfo();
+        return localVarResp.getData();
+    }
+
+    /**
+     * Start a listing experiment. split: 2-4 live platform listings observed over the same window; sequential: one platform listing, before vs after changeAt (optionally applying a new price).
+     * 
+     * @return ApiResponse&lt;AnalyticExperimentResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<AnalyticExperimentResponse> createAnalyticExperimentWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = createAnalyticExperimentValidateBeforeCall(null);
+        Type localVarReturnType = new TypeToken<AnalyticExperimentResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Start a listing experiment. split: 2-4 live platform listings observed over the same window; sequential: one platform listing, before vs after changeAt (optionally applying a new price). (asynchronously)
+     * 
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call createAnalyticExperimentAsync(final ApiCallback<AnalyticExperimentResponse> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = createAnalyticExperimentValidateBeforeCall(_callback);
+        Type localVarReturnType = new TypeToken<AnalyticExperimentResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for createAnalyticExperimentDeclare
+     * @param id The experiment id (a uuid; any other id is a 404). (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call createAnalyticExperimentDeclareCall(String id, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/v1/analytics/experiments/{id}/declare"
+            .replaceAll("\\{" + "id" + "\\}", localVarApiClient.escapeString(id.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "PersonalAccessToken" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call createAnalyticExperimentDeclareValidateBeforeCall(String id, final ApiCallback _callback) throws ApiException {
+        
+        // verify the required parameter 'id' is set
+        if (id == null) {
+            throw new ApiException("Missing the required parameter 'id' when calling createAnalyticExperimentDeclare(Async)");
+        }
+        
+
+        okhttp3.Call localVarCall = createAnalyticExperimentDeclareCall(id, _callback);
+        return localVarCall;
+
+    }
+
+    /**
+     * Record the outcome: a winning arm, no difference, or inconclusive. Concludes the experiment.
+     * 
+     * @param id The experiment id (a uuid; any other id is a 404). (required)
+     * @return AnalyticExperimentResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public AnalyticExperimentResponse createAnalyticExperimentDeclare(String id) throws ApiException {
+        ApiResponse<AnalyticExperimentResponse> localVarResp = createAnalyticExperimentDeclareWithHttpInfo(id);
+        return localVarResp.getData();
+    }
+
+    /**
+     * Record the outcome: a winning arm, no difference, or inconclusive. Concludes the experiment.
+     * 
+     * @param id The experiment id (a uuid; any other id is a 404). (required)
+     * @return ApiResponse&lt;AnalyticExperimentResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<AnalyticExperimentResponse> createAnalyticExperimentDeclareWithHttpInfo(String id) throws ApiException {
+        okhttp3.Call localVarCall = createAnalyticExperimentDeclareValidateBeforeCall(id, null);
+        Type localVarReturnType = new TypeToken<AnalyticExperimentResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Record the outcome: a winning arm, no difference, or inconclusive. Concludes the experiment. (asynchronously)
+     * 
+     * @param id The experiment id (a uuid; any other id is a 404). (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call createAnalyticExperimentDeclareAsync(String id, final ApiCallback<AnalyticExperimentResponse> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = createAnalyticExperimentDeclareValidateBeforeCall(id, _callback);
+        Type localVarReturnType = new TypeToken<AnalyticExperimentResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for createAnalyticExperimentStop
+     * @param id The experiment id (a uuid; any other id is a 404). (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call createAnalyticExperimentStopCall(String id, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/v1/analytics/experiments/{id}/stop"
+            .replaceAll("\\{" + "id" + "\\}", localVarApiClient.escapeString(id.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "PersonalAccessToken" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call createAnalyticExperimentStopValidateBeforeCall(String id, final ApiCallback _callback) throws ApiException {
+        
+        // verify the required parameter 'id' is set
+        if (id == null) {
+            throw new ApiException("Missing the required parameter 'id' when calling createAnalyticExperimentStop(Async)");
+        }
+        
+
+        okhttp3.Call localVarCall = createAnalyticExperimentStopCall(id, _callback);
+        return localVarCall;
+
+    }
+
+    /**
+     * Stop an experiment: no more data is counted after now.
+     * 
+     * @param id The experiment id (a uuid; any other id is a 404). (required)
+     * @return AnalyticExperimentResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public AnalyticExperimentResponse createAnalyticExperimentStop(String id) throws ApiException {
+        ApiResponse<AnalyticExperimentResponse> localVarResp = createAnalyticExperimentStopWithHttpInfo(id);
+        return localVarResp.getData();
+    }
+
+    /**
+     * Stop an experiment: no more data is counted after now.
+     * 
+     * @param id The experiment id (a uuid; any other id is a 404). (required)
+     * @return ApiResponse&lt;AnalyticExperimentResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<AnalyticExperimentResponse> createAnalyticExperimentStopWithHttpInfo(String id) throws ApiException {
+        okhttp3.Call localVarCall = createAnalyticExperimentStopValidateBeforeCall(id, null);
+        Type localVarReturnType = new TypeToken<AnalyticExperimentResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Stop an experiment: no more data is counted after now. (asynchronously)
+     * 
+     * @param id The experiment id (a uuid; any other id is a 404). (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call createAnalyticExperimentStopAsync(String id, final ApiCallback<AnalyticExperimentResponse> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = createAnalyticExperimentStopValidateBeforeCall(id, _callback);
+        Type localVarReturnType = new TypeToken<AnalyticExperimentResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for deleteAnalyticExperiment
+     * @param id The experiment id (a uuid; any other id is a 404). (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call deleteAnalyticExperimentCall(String id, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/v1/analytics/experiments/{id}"
+            .replaceAll("\\{" + "id" + "\\}", localVarApiClient.escapeString(id.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "PersonalAccessToken" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "DELETE", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call deleteAnalyticExperimentValidateBeforeCall(String id, final ApiCallback _callback) throws ApiException {
+        
+        // verify the required parameter 'id' is set
+        if (id == null) {
+            throw new ApiException("Missing the required parameter 'id' when calling deleteAnalyticExperiment(Async)");
+        }
+        
+
+        okhttp3.Call localVarCall = deleteAnalyticExperimentCall(id, _callback);
+        return localVarCall;
+
+    }
+
+    /**
+     * Delete an experiment. The listings are untouched.
+     * 
+     * @param id The experiment id (a uuid; any other id is a 404). (required)
+     * @return DeleteStoryResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public DeleteStoryResponse deleteAnalyticExperiment(String id) throws ApiException {
+        ApiResponse<DeleteStoryResponse> localVarResp = deleteAnalyticExperimentWithHttpInfo(id);
+        return localVarResp.getData();
+    }
+
+    /**
+     * Delete an experiment. The listings are untouched.
+     * 
+     * @param id The experiment id (a uuid; any other id is a 404). (required)
+     * @return ApiResponse&lt;DeleteStoryResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<DeleteStoryResponse> deleteAnalyticExperimentWithHttpInfo(String id) throws ApiException {
+        okhttp3.Call localVarCall = deleteAnalyticExperimentValidateBeforeCall(id, null);
+        Type localVarReturnType = new TypeToken<DeleteStoryResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Delete an experiment. The listings are untouched. (asynchronously)
+     * 
+     * @param id The experiment id (a uuid; any other id is a 404). (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call deleteAnalyticExperimentAsync(String id, final ApiCallback<DeleteStoryResponse> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = deleteAnalyticExperimentValidateBeforeCall(id, _callback);
+        Type localVarReturnType = new TypeToken<DeleteStoryResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
     /**
      * Build call for getAnalyticBookkeeping
      * @param _callback Callback for upload/download progress
@@ -224,6 +837,8 @@ public class AnalyticsApi {
     }
     /**
      * Build call for getAnalyticByPlatform
+     * @param days Calendar days back, today included. Larger values are clamped to 365. (optional, default to 30)
+     * @param tz IANA time zone for day boundaries. Default UTC. (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -239,7 +854,7 @@ public class AnalyticsApi {
         <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getAnalyticByPlatformCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getAnalyticByPlatformCall(Integer days, String tz, final ApiCallback _callback) throws ApiException {
         String basePath = null;
 
         // Operation Servers
@@ -265,6 +880,14 @@ public class AnalyticsApi {
         Map<String, String> localVarCookieParams = new HashMap<String, String>();
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
+        if (days != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("days", days));
+        }
+
+        if (tz != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("tz", tz));
+        }
+
         final String[] localVarAccepts = {
             "application/json"
         };
@@ -286,17 +909,19 @@ public class AnalyticsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getAnalyticByPlatformValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getAnalyticByPlatformValidateBeforeCall(Integer days, String tz, final ApiCallback _callback) throws ApiException {
         
 
-        okhttp3.Call localVarCall = getAnalyticByPlatformCall(_callback);
+        okhttp3.Call localVarCall = getAnalyticByPlatformCall(days, tz, _callback);
         return localVarCall;
 
     }
 
     /**
-     * Sales + revenue grouped by platform for the last N days.
+     * Sales, net sales, fees and net profit by platform for the last N days.
      * 
+     * @param days Calendar days back, today included. Larger values are clamped to 365. (optional, default to 30)
+     * @param tz IANA time zone for day boundaries. Default UTC. (optional)
      * @return GetAnalyticByPlatformResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -311,14 +936,16 @@ public class AnalyticsApi {
         <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
      </table>
      */
-    public GetAnalyticByPlatformResponse getAnalyticByPlatform() throws ApiException {
-        ApiResponse<GetAnalyticByPlatformResponse> localVarResp = getAnalyticByPlatformWithHttpInfo();
+    public GetAnalyticByPlatformResponse getAnalyticByPlatform(Integer days, String tz) throws ApiException {
+        ApiResponse<GetAnalyticByPlatformResponse> localVarResp = getAnalyticByPlatformWithHttpInfo(days, tz);
         return localVarResp.getData();
     }
 
     /**
-     * Sales + revenue grouped by platform for the last N days.
+     * Sales, net sales, fees and net profit by platform for the last N days.
      * 
+     * @param days Calendar days back, today included. Larger values are clamped to 365. (optional, default to 30)
+     * @param tz IANA time zone for day boundaries. Default UTC. (optional)
      * @return ApiResponse&lt;GetAnalyticByPlatformResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -333,15 +960,17 @@ public class AnalyticsApi {
         <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<GetAnalyticByPlatformResponse> getAnalyticByPlatformWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = getAnalyticByPlatformValidateBeforeCall(null);
+    public ApiResponse<GetAnalyticByPlatformResponse> getAnalyticByPlatformWithHttpInfo(Integer days, String tz) throws ApiException {
+        okhttp3.Call localVarCall = getAnalyticByPlatformValidateBeforeCall(days, tz, null);
         Type localVarReturnType = new TypeToken<GetAnalyticByPlatformResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
-     * Sales + revenue grouped by platform for the last N days. (asynchronously)
+     * Sales, net sales, fees and net profit by platform for the last N days. (asynchronously)
      * 
+     * @param days Calendar days back, today included. Larger values are clamped to 365. (optional, default to 30)
+     * @param tz IANA time zone for day boundaries. Default UTC. (optional)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -357,10 +986,189 @@ public class AnalyticsApi {
         <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getAnalyticByPlatformAsync(final ApiCallback<GetAnalyticByPlatformResponse> _callback) throws ApiException {
+    public okhttp3.Call getAnalyticByPlatformAsync(Integer days, String tz, final ApiCallback<GetAnalyticByPlatformResponse> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getAnalyticByPlatformValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = getAnalyticByPlatformValidateBeforeCall(days, tz, _callback);
         Type localVarReturnType = new TypeToken<GetAnalyticByPlatformResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for getAnalyticCompare
+     * @param ids Comma-separated listing ids, 2 to 4. The first is arm A. (required)
+     * @param align age &#x3D; x is days since first listed (default); calendar &#x3D; x is the date. (optional)
+     * @param platform Restrict engagement to one channel (platform id). (optional)
+     * @param tz IANA time zone. Default UTC. (optional)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getAnalyticCompareCall(String ids, String align, String platform, String tz, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/v1/analytics/compare";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        if (ids != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("ids", ids));
+        }
+
+        if (align != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("align", align));
+        }
+
+        if (platform != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("platform", platform));
+        }
+
+        if (tz != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("tz", tz));
+        }
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "PersonalAccessToken" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call getAnalyticCompareValidateBeforeCall(String ids, String align, String platform, String tz, final ApiCallback _callback) throws ApiException {
+        
+        // verify the required parameter 'ids' is set
+        if (ids == null) {
+            throw new ApiException("Missing the required parameter 'ids' when calling getAnalyticCompare(Async)");
+        }
+        
+
+        okhttp3.Call localVarCall = getAnalyticCompareCall(ids, align, platform, tz, _callback);
+        return localVarCall;
+
+    }
+
+    /**
+     * Compare 2-4 of your listings: columns of price, quality, channels, views, favorites, offers and outcome, engagement curves, the fields that differ, and observational tests of favorite rate, view-to-offer rate and views per day.
+     * 
+     * @param ids Comma-separated listing ids, 2 to 4. The first is arm A. (required)
+     * @param align age &#x3D; x is days since first listed (default); calendar &#x3D; x is the date. (optional)
+     * @param platform Restrict engagement to one channel (platform id). (optional)
+     * @param tz IANA time zone. Default UTC. (optional)
+     * @return GetAnalyticCompareResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public GetAnalyticCompareResponse getAnalyticCompare(String ids, String align, String platform, String tz) throws ApiException {
+        ApiResponse<GetAnalyticCompareResponse> localVarResp = getAnalyticCompareWithHttpInfo(ids, align, platform, tz);
+        return localVarResp.getData();
+    }
+
+    /**
+     * Compare 2-4 of your listings: columns of price, quality, channels, views, favorites, offers and outcome, engagement curves, the fields that differ, and observational tests of favorite rate, view-to-offer rate and views per day.
+     * 
+     * @param ids Comma-separated listing ids, 2 to 4. The first is arm A. (required)
+     * @param align age &#x3D; x is days since first listed (default); calendar &#x3D; x is the date. (optional)
+     * @param platform Restrict engagement to one channel (platform id). (optional)
+     * @param tz IANA time zone. Default UTC. (optional)
+     * @return ApiResponse&lt;GetAnalyticCompareResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<GetAnalyticCompareResponse> getAnalyticCompareWithHttpInfo(String ids, String align, String platform, String tz) throws ApiException {
+        okhttp3.Call localVarCall = getAnalyticCompareValidateBeforeCall(ids, align, platform, tz, null);
+        Type localVarReturnType = new TypeToken<GetAnalyticCompareResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Compare 2-4 of your listings: columns of price, quality, channels, views, favorites, offers and outcome, engagement curves, the fields that differ, and observational tests of favorite rate, view-to-offer rate and views per day. (asynchronously)
+     * 
+     * @param ids Comma-separated listing ids, 2 to 4. The first is arm A. (required)
+     * @param align age &#x3D; x is days since first listed (default); calendar &#x3D; x is the date. (optional)
+     * @param platform Restrict engagement to one channel (platform id). (optional)
+     * @param tz IANA time zone. Default UTC. (optional)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getAnalyticCompareAsync(String ids, String align, String platform, String tz, final ApiCallback<GetAnalyticCompareResponse> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = getAnalyticCompareValidateBeforeCall(ids, align, platform, tz, _callback);
+        Type localVarReturnType = new TypeToken<GetAnalyticCompareResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -507,6 +1315,562 @@ public class AnalyticsApi {
         return localVarCall;
     }
     /**
+     * Build call for getAnalyticExperiment
+     * @param status Default all. (optional)
+     * @param page 1-indexed page. Default 1. (optional)
+     * @param size Rows per page. Default 20. (optional)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getAnalyticExperimentCall(String status, Integer page, Integer size, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/v1/analytics/experiments";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        if (status != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("status", status));
+        }
+
+        if (page != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("page", page));
+        }
+
+        if (size != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("size", size));
+        }
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "PersonalAccessToken" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call getAnalyticExperimentValidateBeforeCall(String status, Integer page, Integer size, final ApiCallback _callback) throws ApiException {
+        
+
+        okhttp3.Call localVarCall = getAnalyticExperimentCall(status, page, size, _callback);
+        return localVarCall;
+
+    }
+
+    /**
+     * Your listing A/B experiments, newest first, with status, days running and the current verdict.
+     * 
+     * @param status Default all. (optional)
+     * @param page 1-indexed page. Default 1. (optional)
+     * @param size Rows per page. Default 20. (optional)
+     * @return GetAnalyticExperimentResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public GetAnalyticExperimentResponse getAnalyticExperiment(String status, Integer page, Integer size) throws ApiException {
+        ApiResponse<GetAnalyticExperimentResponse> localVarResp = getAnalyticExperimentWithHttpInfo(status, page, size);
+        return localVarResp.getData();
+    }
+
+    /**
+     * Your listing A/B experiments, newest first, with status, days running and the current verdict.
+     * 
+     * @param status Default all. (optional)
+     * @param page 1-indexed page. Default 1. (optional)
+     * @param size Rows per page. Default 20. (optional)
+     * @return ApiResponse&lt;GetAnalyticExperimentResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<GetAnalyticExperimentResponse> getAnalyticExperimentWithHttpInfo(String status, Integer page, Integer size) throws ApiException {
+        okhttp3.Call localVarCall = getAnalyticExperimentValidateBeforeCall(status, page, size, null);
+        Type localVarReturnType = new TypeToken<GetAnalyticExperimentResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Your listing A/B experiments, newest first, with status, days running and the current verdict. (asynchronously)
+     * 
+     * @param status Default all. (optional)
+     * @param page 1-indexed page. Default 1. (optional)
+     * @param size Rows per page. Default 20. (optional)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getAnalyticExperimentAsync(String status, Integer page, Integer size, final ApiCallback<GetAnalyticExperimentResponse> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = getAnalyticExperimentValidateBeforeCall(status, page, size, _callback);
+        Type localVarReturnType = new TypeToken<GetAnalyticExperimentResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for getAnalyticExperimentById
+     * @param id The experiment id (a uuid). (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getAnalyticExperimentByIdCall(String id, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/v1/analytics/experiments/{id}"
+            .replaceAll("\\{" + "id" + "\\}", localVarApiClient.escapeString(id.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "PersonalAccessToken" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call getAnalyticExperimentByIdValidateBeforeCall(String id, final ApiCallback _callback) throws ApiException {
+        
+        // verify the required parameter 'id' is set
+        if (id == null) {
+            throw new ApiException("Missing the required parameter 'id' when calling getAnalyticExperimentById(Async)");
+        }
+        
+
+        okhttp3.Call localVarCall = getAnalyticExperimentByIdCall(id, _callback);
+        return localVarCall;
+
+    }
+
+    /**
+     * One experiment: arms with their windows, exposure and rates, the primary-metric test per arm against A, guardrail tests, the daily series and what to do next.
+     * 
+     * @param id The experiment id (a uuid). (required)
+     * @return GetAnalyticExperimentByIdResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public GetAnalyticExperimentByIdResponse getAnalyticExperimentById(String id) throws ApiException {
+        ApiResponse<GetAnalyticExperimentByIdResponse> localVarResp = getAnalyticExperimentByIdWithHttpInfo(id);
+        return localVarResp.getData();
+    }
+
+    /**
+     * One experiment: arms with their windows, exposure and rates, the primary-metric test per arm against A, guardrail tests, the daily series and what to do next.
+     * 
+     * @param id The experiment id (a uuid). (required)
+     * @return ApiResponse&lt;GetAnalyticExperimentByIdResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<GetAnalyticExperimentByIdResponse> getAnalyticExperimentByIdWithHttpInfo(String id) throws ApiException {
+        okhttp3.Call localVarCall = getAnalyticExperimentByIdValidateBeforeCall(id, null);
+        Type localVarReturnType = new TypeToken<GetAnalyticExperimentByIdResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * One experiment: arms with their windows, exposure and rates, the primary-metric test per arm against A, guardrail tests, the daily series and what to do next. (asynchronously)
+     * 
+     * @param id The experiment id (a uuid). (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getAnalyticExperimentByIdAsync(String id, final ApiCallback<GetAnalyticExperimentByIdResponse> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = getAnalyticExperimentByIdValidateBeforeCall(id, _callback);
+        Type localVarReturnType = new TypeToken<GetAnalyticExperimentByIdResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for getAnalyticInventory
+     * @param range Reporting window. Default 30d. custom needs from and to. (optional)
+     * @param from YYYY-MM-DD, inclusive, in tz. Only with range&#x3D;custom. (optional)
+     * @param to YYYY-MM-DD, inclusive, in tz. Only with range&#x3D;custom. (optional)
+     * @param compare Comparison window for deltas: prev (same length just before), yoy, none, custom (cmpFrom/cmpTo). (optional)
+     * @param cmpFrom YYYY-MM-DD. Only with compare&#x3D;custom. (optional)
+     * @param cmpTo YYYY-MM-DD. Only with compare&#x3D;custom. (optional)
+     * @param labels Comma-separated inventory labels (any of them). (optional)
+     * @param platforms Comma-separated platform ids. (optional)
+     * @param category Canonical main-category key. (optional)
+     * @param brand Brand name. (optional)
+     * @param tz IANA time zone for day boundaries. Default UTC. An invalid name is a 400. (optional)
+     * @param maturity Days an item has to sell within to count as sold in the cohort. Default 30. (optional)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getAnalyticInventoryCall(String range, String from, String to, String compare, String cmpFrom, String cmpTo, String labels, String platforms, String category, String brand, String tz, Integer maturity, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/v1/analytics/inventory";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        if (range != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("range", range));
+        }
+
+        if (from != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("from", from));
+        }
+
+        if (to != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("to", to));
+        }
+
+        if (compare != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("compare", compare));
+        }
+
+        if (cmpFrom != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("cmpFrom", cmpFrom));
+        }
+
+        if (cmpTo != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("cmpTo", cmpTo));
+        }
+
+        if (labels != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("labels", labels));
+        }
+
+        if (platforms != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("platforms", platforms));
+        }
+
+        if (category != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("category", category));
+        }
+
+        if (brand != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("brand", brand));
+        }
+
+        if (tz != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("tz", tz));
+        }
+
+        if (maturity != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("maturity", maturity));
+        }
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "PersonalAccessToken" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call getAnalyticInventoryValidateBeforeCall(String range, String from, String to, String compare, String cmpFrom, String cmpTo, String labels, String platforms, String category, String brand, String tz, Integer maturity, final ApiCallback _callback) throws ApiException {
+        
+
+        okhttp3.Call localVarCall = getAnalyticInventoryCall(range, from, to, compare, cmpFrom, cmpTo, labels, platforms, category, brand, tz, maturity, _callback);
+        return localVarCall;
+
+    }
+
+    /**
+     * Unsold stock: aging buckets with cost, listed value and market value, the 20 listings most in need of attention, shelf value over time, cohort sell-through at the chosen maturity, listed vs sold velocity and data health.
+     * 
+     * @param range Reporting window. Default 30d. custom needs from and to. (optional)
+     * @param from YYYY-MM-DD, inclusive, in tz. Only with range&#x3D;custom. (optional)
+     * @param to YYYY-MM-DD, inclusive, in tz. Only with range&#x3D;custom. (optional)
+     * @param compare Comparison window for deltas: prev (same length just before), yoy, none, custom (cmpFrom/cmpTo). (optional)
+     * @param cmpFrom YYYY-MM-DD. Only with compare&#x3D;custom. (optional)
+     * @param cmpTo YYYY-MM-DD. Only with compare&#x3D;custom. (optional)
+     * @param labels Comma-separated inventory labels (any of them). (optional)
+     * @param platforms Comma-separated platform ids. (optional)
+     * @param category Canonical main-category key. (optional)
+     * @param brand Brand name. (optional)
+     * @param tz IANA time zone for day boundaries. Default UTC. An invalid name is a 400. (optional)
+     * @param maturity Days an item has to sell within to count as sold in the cohort. Default 30. (optional)
+     * @return GetAnalyticInventoryResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public GetAnalyticInventoryResponse getAnalyticInventory(String range, String from, String to, String compare, String cmpFrom, String cmpTo, String labels, String platforms, String category, String brand, String tz, Integer maturity) throws ApiException {
+        ApiResponse<GetAnalyticInventoryResponse> localVarResp = getAnalyticInventoryWithHttpInfo(range, from, to, compare, cmpFrom, cmpTo, labels, platforms, category, brand, tz, maturity);
+        return localVarResp.getData();
+    }
+
+    /**
+     * Unsold stock: aging buckets with cost, listed value and market value, the 20 listings most in need of attention, shelf value over time, cohort sell-through at the chosen maturity, listed vs sold velocity and data health.
+     * 
+     * @param range Reporting window. Default 30d. custom needs from and to. (optional)
+     * @param from YYYY-MM-DD, inclusive, in tz. Only with range&#x3D;custom. (optional)
+     * @param to YYYY-MM-DD, inclusive, in tz. Only with range&#x3D;custom. (optional)
+     * @param compare Comparison window for deltas: prev (same length just before), yoy, none, custom (cmpFrom/cmpTo). (optional)
+     * @param cmpFrom YYYY-MM-DD. Only with compare&#x3D;custom. (optional)
+     * @param cmpTo YYYY-MM-DD. Only with compare&#x3D;custom. (optional)
+     * @param labels Comma-separated inventory labels (any of them). (optional)
+     * @param platforms Comma-separated platform ids. (optional)
+     * @param category Canonical main-category key. (optional)
+     * @param brand Brand name. (optional)
+     * @param tz IANA time zone for day boundaries. Default UTC. An invalid name is a 400. (optional)
+     * @param maturity Days an item has to sell within to count as sold in the cohort. Default 30. (optional)
+     * @return ApiResponse&lt;GetAnalyticInventoryResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<GetAnalyticInventoryResponse> getAnalyticInventoryWithHttpInfo(String range, String from, String to, String compare, String cmpFrom, String cmpTo, String labels, String platforms, String category, String brand, String tz, Integer maturity) throws ApiException {
+        okhttp3.Call localVarCall = getAnalyticInventoryValidateBeforeCall(range, from, to, compare, cmpFrom, cmpTo, labels, platforms, category, brand, tz, maturity, null);
+        Type localVarReturnType = new TypeToken<GetAnalyticInventoryResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Unsold stock: aging buckets with cost, listed value and market value, the 20 listings most in need of attention, shelf value over time, cohort sell-through at the chosen maturity, listed vs sold velocity and data health. (asynchronously)
+     * 
+     * @param range Reporting window. Default 30d. custom needs from and to. (optional)
+     * @param from YYYY-MM-DD, inclusive, in tz. Only with range&#x3D;custom. (optional)
+     * @param to YYYY-MM-DD, inclusive, in tz. Only with range&#x3D;custom. (optional)
+     * @param compare Comparison window for deltas: prev (same length just before), yoy, none, custom (cmpFrom/cmpTo). (optional)
+     * @param cmpFrom YYYY-MM-DD. Only with compare&#x3D;custom. (optional)
+     * @param cmpTo YYYY-MM-DD. Only with compare&#x3D;custom. (optional)
+     * @param labels Comma-separated inventory labels (any of them). (optional)
+     * @param platforms Comma-separated platform ids. (optional)
+     * @param category Canonical main-category key. (optional)
+     * @param brand Brand name. (optional)
+     * @param tz IANA time zone for day boundaries. Default UTC. An invalid name is a 400. (optional)
+     * @param maturity Days an item has to sell within to count as sold in the cohort. Default 30. (optional)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getAnalyticInventoryAsync(String range, String from, String to, String compare, String cmpFrom, String cmpTo, String labels, String platforms, String category, String brand, String tz, Integer maturity, final ApiCallback<GetAnalyticInventoryResponse> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = getAnalyticInventoryValidateBeforeCall(range, from, to, compare, cmpFrom, cmpTo, labels, platforms, category, brand, tz, maturity, _callback);
+        Type localVarReturnType = new TypeToken<GetAnalyticInventoryResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
      * Build call for getAnalyticItem
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -649,8 +2013,10 @@ public class AnalyticsApi {
         return localVarCall;
     }
     /**
-     * Build call for getAnalyticSummary
-     * @param days  (optional, default to 30)
+     * Build call for getAnalyticItemByListingId
+     * @param listingId A listings.id you own (or an inventory item id with by&#x3D;inventory). (required)
+     * @param by inventory &#x3D; the id is an inventory item id; the answer is { redirectListingId }. Default listing. (optional)
+     * @param tz IANA time zone for day boundaries. Default UTC. (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -666,7 +2032,1888 @@ public class AnalyticsApi {
         <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getAnalyticSummaryCall(Integer days, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getAnalyticItemByListingIdCall(String listingId, String by, String tz, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/v1/analytics/items/{listingId}"
+            .replaceAll("\\{" + "listingId" + "\\}", localVarApiClient.escapeString(listingId.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        if (by != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("by", by));
+        }
+
+        if (tz != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("tz", tz));
+        }
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "PersonalAccessToken" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call getAnalyticItemByListingIdValidateBeforeCall(String listingId, String by, String tz, final ApiCallback _callback) throws ApiException {
+        
+        // verify the required parameter 'listingId' is set
+        if (listingId == null) {
+            throw new ApiException("Missing the required parameter 'listingId' when calling getAnalyticItemByListingId(Async)");
+        }
+        
+
+        okhttp3.Call localVarCall = getAnalyticItemByListingIdCall(listingId, by, tz, _callback);
+        return localVarCall;
+
+    }
+
+    /**
+     * One listing in depth: channels with views, favorites and offers, the merged timeline, engagement series, price history, comps, money waterfall, days on market, offers, messages, experiments and suggestions.
+     * 
+     * @param listingId A listings.id you own (or an inventory item id with by&#x3D;inventory). (required)
+     * @param by inventory &#x3D; the id is an inventory item id; the answer is { redirectListingId }. Default listing. (optional)
+     * @param tz IANA time zone for day boundaries. Default UTC. (optional)
+     * @return GetAnalyticItemByListingIdResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public GetAnalyticItemByListingIdResponse getAnalyticItemByListingId(String listingId, String by, String tz) throws ApiException {
+        ApiResponse<GetAnalyticItemByListingIdResponse> localVarResp = getAnalyticItemByListingIdWithHttpInfo(listingId, by, tz);
+        return localVarResp.getData();
+    }
+
+    /**
+     * One listing in depth: channels with views, favorites and offers, the merged timeline, engagement series, price history, comps, money waterfall, days on market, offers, messages, experiments and suggestions.
+     * 
+     * @param listingId A listings.id you own (or an inventory item id with by&#x3D;inventory). (required)
+     * @param by inventory &#x3D; the id is an inventory item id; the answer is { redirectListingId }. Default listing. (optional)
+     * @param tz IANA time zone for day boundaries. Default UTC. (optional)
+     * @return ApiResponse&lt;GetAnalyticItemByListingIdResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<GetAnalyticItemByListingIdResponse> getAnalyticItemByListingIdWithHttpInfo(String listingId, String by, String tz) throws ApiException {
+        okhttp3.Call localVarCall = getAnalyticItemByListingIdValidateBeforeCall(listingId, by, tz, null);
+        Type localVarReturnType = new TypeToken<GetAnalyticItemByListingIdResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * One listing in depth: channels with views, favorites and offers, the merged timeline, engagement series, price history, comps, money waterfall, days on market, offers, messages, experiments and suggestions. (asynchronously)
+     * 
+     * @param listingId A listings.id you own (or an inventory item id with by&#x3D;inventory). (required)
+     * @param by inventory &#x3D; the id is an inventory item id; the answer is { redirectListingId }. Default listing. (optional)
+     * @param tz IANA time zone for day boundaries. Default UTC. (optional)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getAnalyticItemByListingIdAsync(String listingId, String by, String tz, final ApiCallback<GetAnalyticItemByListingIdResponse> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = getAnalyticItemByListingIdValidateBeforeCall(listingId, by, tz, _callback);
+        Type localVarReturnType = new TypeToken<GetAnalyticItemByListingIdResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for getAnalyticMarketplace
+     * @param range Reporting window. Default 30d. custom needs from and to. (optional)
+     * @param from YYYY-MM-DD, inclusive, in tz. Only with range&#x3D;custom. (optional)
+     * @param to YYYY-MM-DD, inclusive, in tz. Only with range&#x3D;custom. (optional)
+     * @param compare Comparison window for deltas: prev (same length just before), yoy, none, custom (cmpFrom/cmpTo). (optional)
+     * @param cmpFrom YYYY-MM-DD. Only with compare&#x3D;custom. (optional)
+     * @param cmpTo YYYY-MM-DD. Only with compare&#x3D;custom. (optional)
+     * @param labels Comma-separated inventory labels (any of them). (optional)
+     * @param platforms Comma-separated platform ids. (optional)
+     * @param category Canonical main-category key. (optional)
+     * @param brand Brand name. (optional)
+     * @param tz IANA time zone for day boundaries. Default UTC. An invalid name is a 400. (optional)
+     * @param vs Comma-separated 2-3 platform ids for the head-to-head. (optional)
+     * @param sort Default netSales. (optional)
+     * @param dir Default desc. (optional)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getAnalyticMarketplaceCall(String range, String from, String to, String compare, String cmpFrom, String cmpTo, String labels, String platforms, String category, String brand, String tz, String vs, String sort, String dir, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/v1/analytics/marketplaces";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        if (range != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("range", range));
+        }
+
+        if (from != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("from", from));
+        }
+
+        if (to != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("to", to));
+        }
+
+        if (compare != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("compare", compare));
+        }
+
+        if (cmpFrom != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("cmpFrom", cmpFrom));
+        }
+
+        if (cmpTo != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("cmpTo", cmpTo));
+        }
+
+        if (labels != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("labels", labels));
+        }
+
+        if (platforms != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("platforms", platforms));
+        }
+
+        if (category != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("category", category));
+        }
+
+        if (brand != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("brand", brand));
+        }
+
+        if (tz != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("tz", tz));
+        }
+
+        if (vs != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("vs", vs));
+        }
+
+        if (sort != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("sort", sort));
+        }
+
+        if (dir != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("dir", dir));
+        }
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "PersonalAccessToken" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call getAnalyticMarketplaceValidateBeforeCall(String range, String from, String to, String compare, String cmpFrom, String cmpTo, String labels, String platforms, String category, String brand, String tz, String vs, String sort, String dir, final ApiCallback _callback) throws ApiException {
+        
+
+        okhttp3.Call localVarCall = getAnalyticMarketplaceCall(range, from, to, compare, cmpFrom, cmpTo, labels, platforms, category, brand, tz, vs, sort, dir, _callback);
+        return localVarCall;
+
+    }
+
+    /**
+     * Every marketplace side by side: net sales and profit, units, ASP, take rate, margin, shipping subsidy, days to sell, sell-through, cancel and return rates, offers and engagement; with vs&#x3D;2-3 platforms, a head-to-head over listings live on all of them.
+     * 
+     * @param range Reporting window. Default 30d. custom needs from and to. (optional)
+     * @param from YYYY-MM-DD, inclusive, in tz. Only with range&#x3D;custom. (optional)
+     * @param to YYYY-MM-DD, inclusive, in tz. Only with range&#x3D;custom. (optional)
+     * @param compare Comparison window for deltas: prev (same length just before), yoy, none, custom (cmpFrom/cmpTo). (optional)
+     * @param cmpFrom YYYY-MM-DD. Only with compare&#x3D;custom. (optional)
+     * @param cmpTo YYYY-MM-DD. Only with compare&#x3D;custom. (optional)
+     * @param labels Comma-separated inventory labels (any of them). (optional)
+     * @param platforms Comma-separated platform ids. (optional)
+     * @param category Canonical main-category key. (optional)
+     * @param brand Brand name. (optional)
+     * @param tz IANA time zone for day boundaries. Default UTC. An invalid name is a 400. (optional)
+     * @param vs Comma-separated 2-3 platform ids for the head-to-head. (optional)
+     * @param sort Default netSales. (optional)
+     * @param dir Default desc. (optional)
+     * @return GetAnalyticMarketplaceResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public GetAnalyticMarketplaceResponse getAnalyticMarketplace(String range, String from, String to, String compare, String cmpFrom, String cmpTo, String labels, String platforms, String category, String brand, String tz, String vs, String sort, String dir) throws ApiException {
+        ApiResponse<GetAnalyticMarketplaceResponse> localVarResp = getAnalyticMarketplaceWithHttpInfo(range, from, to, compare, cmpFrom, cmpTo, labels, platforms, category, brand, tz, vs, sort, dir);
+        return localVarResp.getData();
+    }
+
+    /**
+     * Every marketplace side by side: net sales and profit, units, ASP, take rate, margin, shipping subsidy, days to sell, sell-through, cancel and return rates, offers and engagement; with vs&#x3D;2-3 platforms, a head-to-head over listings live on all of them.
+     * 
+     * @param range Reporting window. Default 30d. custom needs from and to. (optional)
+     * @param from YYYY-MM-DD, inclusive, in tz. Only with range&#x3D;custom. (optional)
+     * @param to YYYY-MM-DD, inclusive, in tz. Only with range&#x3D;custom. (optional)
+     * @param compare Comparison window for deltas: prev (same length just before), yoy, none, custom (cmpFrom/cmpTo). (optional)
+     * @param cmpFrom YYYY-MM-DD. Only with compare&#x3D;custom. (optional)
+     * @param cmpTo YYYY-MM-DD. Only with compare&#x3D;custom. (optional)
+     * @param labels Comma-separated inventory labels (any of them). (optional)
+     * @param platforms Comma-separated platform ids. (optional)
+     * @param category Canonical main-category key. (optional)
+     * @param brand Brand name. (optional)
+     * @param tz IANA time zone for day boundaries. Default UTC. An invalid name is a 400. (optional)
+     * @param vs Comma-separated 2-3 platform ids for the head-to-head. (optional)
+     * @param sort Default netSales. (optional)
+     * @param dir Default desc. (optional)
+     * @return ApiResponse&lt;GetAnalyticMarketplaceResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<GetAnalyticMarketplaceResponse> getAnalyticMarketplaceWithHttpInfo(String range, String from, String to, String compare, String cmpFrom, String cmpTo, String labels, String platforms, String category, String brand, String tz, String vs, String sort, String dir) throws ApiException {
+        okhttp3.Call localVarCall = getAnalyticMarketplaceValidateBeforeCall(range, from, to, compare, cmpFrom, cmpTo, labels, platforms, category, brand, tz, vs, sort, dir, null);
+        Type localVarReturnType = new TypeToken<GetAnalyticMarketplaceResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Every marketplace side by side: net sales and profit, units, ASP, take rate, margin, shipping subsidy, days to sell, sell-through, cancel and return rates, offers and engagement; with vs&#x3D;2-3 platforms, a head-to-head over listings live on all of them. (asynchronously)
+     * 
+     * @param range Reporting window. Default 30d. custom needs from and to. (optional)
+     * @param from YYYY-MM-DD, inclusive, in tz. Only with range&#x3D;custom. (optional)
+     * @param to YYYY-MM-DD, inclusive, in tz. Only with range&#x3D;custom. (optional)
+     * @param compare Comparison window for deltas: prev (same length just before), yoy, none, custom (cmpFrom/cmpTo). (optional)
+     * @param cmpFrom YYYY-MM-DD. Only with compare&#x3D;custom. (optional)
+     * @param cmpTo YYYY-MM-DD. Only with compare&#x3D;custom. (optional)
+     * @param labels Comma-separated inventory labels (any of them). (optional)
+     * @param platforms Comma-separated platform ids. (optional)
+     * @param category Canonical main-category key. (optional)
+     * @param brand Brand name. (optional)
+     * @param tz IANA time zone for day boundaries. Default UTC. An invalid name is a 400. (optional)
+     * @param vs Comma-separated 2-3 platform ids for the head-to-head. (optional)
+     * @param sort Default netSales. (optional)
+     * @param dir Default desc. (optional)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getAnalyticMarketplaceAsync(String range, String from, String to, String compare, String cmpFrom, String cmpTo, String labels, String platforms, String category, String brand, String tz, String vs, String sort, String dir, final ApiCallback<GetAnalyticMarketplaceResponse> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = getAnalyticMarketplaceValidateBeforeCall(range, from, to, compare, cmpFrom, cmpTo, labels, platforms, category, brand, tz, vs, sort, dir, _callback);
+        Type localVarReturnType = new TypeToken<GetAnalyticMarketplaceResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for getAnalyticMarketplaceByPlatform
+     * @param platform A platform id, e.g. ebay, poshmark. (required)
+     * @param range Reporting window. Default 30d. custom needs from and to. (optional)
+     * @param from YYYY-MM-DD, inclusive, in tz. Only with range&#x3D;custom. (optional)
+     * @param to YYYY-MM-DD, inclusive, in tz. Only with range&#x3D;custom. (optional)
+     * @param compare Comparison window for deltas: prev (same length just before), yoy, none, custom (cmpFrom/cmpTo). (optional)
+     * @param cmpFrom YYYY-MM-DD. Only with compare&#x3D;custom. (optional)
+     * @param cmpTo YYYY-MM-DD. Only with compare&#x3D;custom. (optional)
+     * @param labels Comma-separated inventory labels (any of them). (optional)
+     * @param platforms Comma-separated platform ids. (optional)
+     * @param category Canonical main-category key. (optional)
+     * @param brand Brand name. (optional)
+     * @param tz IANA time zone for day boundaries. Default UTC. An invalid name is a 400. (optional)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getAnalyticMarketplaceByPlatformCall(String platform, String range, String from, String to, String compare, String cmpFrom, String cmpTo, String labels, String platforms, String category, String brand, String tz, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/v1/analytics/marketplaces/{platform}"
+            .replaceAll("\\{" + "platform" + "\\}", localVarApiClient.escapeString(platform.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        if (range != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("range", range));
+        }
+
+        if (from != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("from", from));
+        }
+
+        if (to != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("to", to));
+        }
+
+        if (compare != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("compare", compare));
+        }
+
+        if (cmpFrom != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("cmpFrom", cmpFrom));
+        }
+
+        if (cmpTo != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("cmpTo", cmpTo));
+        }
+
+        if (labels != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("labels", labels));
+        }
+
+        if (platforms != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("platforms", platforms));
+        }
+
+        if (category != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("category", category));
+        }
+
+        if (brand != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("brand", brand));
+        }
+
+        if (tz != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("tz", tz));
+        }
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "PersonalAccessToken" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call getAnalyticMarketplaceByPlatformValidateBeforeCall(String platform, String range, String from, String to, String compare, String cmpFrom, String cmpTo, String labels, String platforms, String category, String brand, String tz, final ApiCallback _callback) throws ApiException {
+        
+        // verify the required parameter 'platform' is set
+        if (platform == null) {
+            throw new ApiException("Missing the required parameter 'platform' when calling getAnalyticMarketplaceByPlatform(Async)");
+        }
+        
+
+        okhttp3.Call localVarCall = getAnalyticMarketplaceByPlatformCall(platform, range, from, to, compare, cmpFrom, cmpTo, labels, platforms, category, brand, tz, _callback);
+        return localVarCall;
+
+    }
+
+    /**
+     * One marketplace in depth: its row, the money series, fee breakdown, days-to-sell and price-realization histograms, categories, top items, at-risk listings, a day-by-hour sales heatmap and offer stats.
+     * 
+     * @param platform A platform id, e.g. ebay, poshmark. (required)
+     * @param range Reporting window. Default 30d. custom needs from and to. (optional)
+     * @param from YYYY-MM-DD, inclusive, in tz. Only with range&#x3D;custom. (optional)
+     * @param to YYYY-MM-DD, inclusive, in tz. Only with range&#x3D;custom. (optional)
+     * @param compare Comparison window for deltas: prev (same length just before), yoy, none, custom (cmpFrom/cmpTo). (optional)
+     * @param cmpFrom YYYY-MM-DD. Only with compare&#x3D;custom. (optional)
+     * @param cmpTo YYYY-MM-DD. Only with compare&#x3D;custom. (optional)
+     * @param labels Comma-separated inventory labels (any of them). (optional)
+     * @param platforms Comma-separated platform ids. (optional)
+     * @param category Canonical main-category key. (optional)
+     * @param brand Brand name. (optional)
+     * @param tz IANA time zone for day boundaries. Default UTC. An invalid name is a 400. (optional)
+     * @return GetAnalyticMarketplaceByPlatformResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public GetAnalyticMarketplaceByPlatformResponse getAnalyticMarketplaceByPlatform(String platform, String range, String from, String to, String compare, String cmpFrom, String cmpTo, String labels, String platforms, String category, String brand, String tz) throws ApiException {
+        ApiResponse<GetAnalyticMarketplaceByPlatformResponse> localVarResp = getAnalyticMarketplaceByPlatformWithHttpInfo(platform, range, from, to, compare, cmpFrom, cmpTo, labels, platforms, category, brand, tz);
+        return localVarResp.getData();
+    }
+
+    /**
+     * One marketplace in depth: its row, the money series, fee breakdown, days-to-sell and price-realization histograms, categories, top items, at-risk listings, a day-by-hour sales heatmap and offer stats.
+     * 
+     * @param platform A platform id, e.g. ebay, poshmark. (required)
+     * @param range Reporting window. Default 30d. custom needs from and to. (optional)
+     * @param from YYYY-MM-DD, inclusive, in tz. Only with range&#x3D;custom. (optional)
+     * @param to YYYY-MM-DD, inclusive, in tz. Only with range&#x3D;custom. (optional)
+     * @param compare Comparison window for deltas: prev (same length just before), yoy, none, custom (cmpFrom/cmpTo). (optional)
+     * @param cmpFrom YYYY-MM-DD. Only with compare&#x3D;custom. (optional)
+     * @param cmpTo YYYY-MM-DD. Only with compare&#x3D;custom. (optional)
+     * @param labels Comma-separated inventory labels (any of them). (optional)
+     * @param platforms Comma-separated platform ids. (optional)
+     * @param category Canonical main-category key. (optional)
+     * @param brand Brand name. (optional)
+     * @param tz IANA time zone for day boundaries. Default UTC. An invalid name is a 400. (optional)
+     * @return ApiResponse&lt;GetAnalyticMarketplaceByPlatformResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<GetAnalyticMarketplaceByPlatformResponse> getAnalyticMarketplaceByPlatformWithHttpInfo(String platform, String range, String from, String to, String compare, String cmpFrom, String cmpTo, String labels, String platforms, String category, String brand, String tz) throws ApiException {
+        okhttp3.Call localVarCall = getAnalyticMarketplaceByPlatformValidateBeforeCall(platform, range, from, to, compare, cmpFrom, cmpTo, labels, platforms, category, brand, tz, null);
+        Type localVarReturnType = new TypeToken<GetAnalyticMarketplaceByPlatformResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * One marketplace in depth: its row, the money series, fee breakdown, days-to-sell and price-realization histograms, categories, top items, at-risk listings, a day-by-hour sales heatmap and offer stats. (asynchronously)
+     * 
+     * @param platform A platform id, e.g. ebay, poshmark. (required)
+     * @param range Reporting window. Default 30d. custom needs from and to. (optional)
+     * @param from YYYY-MM-DD, inclusive, in tz. Only with range&#x3D;custom. (optional)
+     * @param to YYYY-MM-DD, inclusive, in tz. Only with range&#x3D;custom. (optional)
+     * @param compare Comparison window for deltas: prev (same length just before), yoy, none, custom (cmpFrom/cmpTo). (optional)
+     * @param cmpFrom YYYY-MM-DD. Only with compare&#x3D;custom. (optional)
+     * @param cmpTo YYYY-MM-DD. Only with compare&#x3D;custom. (optional)
+     * @param labels Comma-separated inventory labels (any of them). (optional)
+     * @param platforms Comma-separated platform ids. (optional)
+     * @param category Canonical main-category key. (optional)
+     * @param brand Brand name. (optional)
+     * @param tz IANA time zone for day boundaries. Default UTC. An invalid name is a 400. (optional)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getAnalyticMarketplaceByPlatformAsync(String platform, String range, String from, String to, String compare, String cmpFrom, String cmpTo, String labels, String platforms, String category, String brand, String tz, final ApiCallback<GetAnalyticMarketplaceByPlatformResponse> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = getAnalyticMarketplaceByPlatformValidateBeforeCall(platform, range, from, to, compare, cmpFrom, cmpTo, labels, platforms, category, brand, tz, _callback);
+        Type localVarReturnType = new TypeToken<GetAnalyticMarketplaceByPlatformResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for getAnalyticOverview
+     * @param range Reporting window. Default 30d. custom needs from and to. (optional)
+     * @param from YYYY-MM-DD, inclusive, in tz. Only with range&#x3D;custom. (optional)
+     * @param to YYYY-MM-DD, inclusive, in tz. Only with range&#x3D;custom. (optional)
+     * @param compare Comparison window for deltas: prev (same length just before), yoy, none, custom (cmpFrom/cmpTo). (optional)
+     * @param cmpFrom YYYY-MM-DD. Only with compare&#x3D;custom. (optional)
+     * @param cmpTo YYYY-MM-DD. Only with compare&#x3D;custom. (optional)
+     * @param labels Comma-separated inventory labels (any of them). (optional)
+     * @param platforms Comma-separated platform ids. (optional)
+     * @param category Canonical main-category key. (optional)
+     * @param brand Brand name. (optional)
+     * @param tz IANA time zone for day boundaries. Default UTC. An invalid name is a 400. (optional)
+     * @param stores Comma-separated store ids. (optional)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getAnalyticOverviewCall(String range, String from, String to, String compare, String cmpFrom, String cmpTo, String labels, String platforms, String category, String brand, String tz, String stores, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/v1/analytics/overview";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        if (range != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("range", range));
+        }
+
+        if (from != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("from", from));
+        }
+
+        if (to != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("to", to));
+        }
+
+        if (compare != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("compare", compare));
+        }
+
+        if (cmpFrom != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("cmpFrom", cmpFrom));
+        }
+
+        if (cmpTo != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("cmpTo", cmpTo));
+        }
+
+        if (labels != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("labels", labels));
+        }
+
+        if (platforms != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("platforms", platforms));
+        }
+
+        if (category != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("category", category));
+        }
+
+        if (brand != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("brand", brand));
+        }
+
+        if (tz != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("tz", tz));
+        }
+
+        if (stores != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("stores", stores));
+        }
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "PersonalAccessToken" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call getAnalyticOverviewValidateBeforeCall(String range, String from, String to, String compare, String cmpFrom, String cmpTo, String labels, String platforms, String category, String brand, String tz, String stores, final ApiCallback _callback) throws ApiException {
+        
+
+        okhttp3.Call localVarCall = getAnalyticOverviewCall(range, from, to, compare, cmpFrom, cmpTo, labels, platforms, category, brand, tz, stores, _callback);
+        return localVarCall;
+
+    }
+
+    /**
+     * KPIs with deltas (net sales, net profit, units, ASP, margin, sell-through, median days to sell, active listings, take rate), the trend series, by-marketplace split, top categories, brands and items, sell-through cohort, data health and insights.
+     * 
+     * @param range Reporting window. Default 30d. custom needs from and to. (optional)
+     * @param from YYYY-MM-DD, inclusive, in tz. Only with range&#x3D;custom. (optional)
+     * @param to YYYY-MM-DD, inclusive, in tz. Only with range&#x3D;custom. (optional)
+     * @param compare Comparison window for deltas: prev (same length just before), yoy, none, custom (cmpFrom/cmpTo). (optional)
+     * @param cmpFrom YYYY-MM-DD. Only with compare&#x3D;custom. (optional)
+     * @param cmpTo YYYY-MM-DD. Only with compare&#x3D;custom. (optional)
+     * @param labels Comma-separated inventory labels (any of them). (optional)
+     * @param platforms Comma-separated platform ids. (optional)
+     * @param category Canonical main-category key. (optional)
+     * @param brand Brand name. (optional)
+     * @param tz IANA time zone for day boundaries. Default UTC. An invalid name is a 400. (optional)
+     * @param stores Comma-separated store ids. (optional)
+     * @return GetAnalyticOverviewResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public GetAnalyticOverviewResponse getAnalyticOverview(String range, String from, String to, String compare, String cmpFrom, String cmpTo, String labels, String platforms, String category, String brand, String tz, String stores) throws ApiException {
+        ApiResponse<GetAnalyticOverviewResponse> localVarResp = getAnalyticOverviewWithHttpInfo(range, from, to, compare, cmpFrom, cmpTo, labels, platforms, category, brand, tz, stores);
+        return localVarResp.getData();
+    }
+
+    /**
+     * KPIs with deltas (net sales, net profit, units, ASP, margin, sell-through, median days to sell, active listings, take rate), the trend series, by-marketplace split, top categories, brands and items, sell-through cohort, data health and insights.
+     * 
+     * @param range Reporting window. Default 30d. custom needs from and to. (optional)
+     * @param from YYYY-MM-DD, inclusive, in tz. Only with range&#x3D;custom. (optional)
+     * @param to YYYY-MM-DD, inclusive, in tz. Only with range&#x3D;custom. (optional)
+     * @param compare Comparison window for deltas: prev (same length just before), yoy, none, custom (cmpFrom/cmpTo). (optional)
+     * @param cmpFrom YYYY-MM-DD. Only with compare&#x3D;custom. (optional)
+     * @param cmpTo YYYY-MM-DD. Only with compare&#x3D;custom. (optional)
+     * @param labels Comma-separated inventory labels (any of them). (optional)
+     * @param platforms Comma-separated platform ids. (optional)
+     * @param category Canonical main-category key. (optional)
+     * @param brand Brand name. (optional)
+     * @param tz IANA time zone for day boundaries. Default UTC. An invalid name is a 400. (optional)
+     * @param stores Comma-separated store ids. (optional)
+     * @return ApiResponse&lt;GetAnalyticOverviewResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<GetAnalyticOverviewResponse> getAnalyticOverviewWithHttpInfo(String range, String from, String to, String compare, String cmpFrom, String cmpTo, String labels, String platforms, String category, String brand, String tz, String stores) throws ApiException {
+        okhttp3.Call localVarCall = getAnalyticOverviewValidateBeforeCall(range, from, to, compare, cmpFrom, cmpTo, labels, platforms, category, brand, tz, stores, null);
+        Type localVarReturnType = new TypeToken<GetAnalyticOverviewResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * KPIs with deltas (net sales, net profit, units, ASP, margin, sell-through, median days to sell, active listings, take rate), the trend series, by-marketplace split, top categories, brands and items, sell-through cohort, data health and insights. (asynchronously)
+     * 
+     * @param range Reporting window. Default 30d. custom needs from and to. (optional)
+     * @param from YYYY-MM-DD, inclusive, in tz. Only with range&#x3D;custom. (optional)
+     * @param to YYYY-MM-DD, inclusive, in tz. Only with range&#x3D;custom. (optional)
+     * @param compare Comparison window for deltas: prev (same length just before), yoy, none, custom (cmpFrom/cmpTo). (optional)
+     * @param cmpFrom YYYY-MM-DD. Only with compare&#x3D;custom. (optional)
+     * @param cmpTo YYYY-MM-DD. Only with compare&#x3D;custom. (optional)
+     * @param labels Comma-separated inventory labels (any of them). (optional)
+     * @param platforms Comma-separated platform ids. (optional)
+     * @param category Canonical main-category key. (optional)
+     * @param brand Brand name. (optional)
+     * @param tz IANA time zone for day boundaries. Default UTC. An invalid name is a 400. (optional)
+     * @param stores Comma-separated store ids. (optional)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getAnalyticOverviewAsync(String range, String from, String to, String compare, String cmpFrom, String cmpTo, String labels, String platforms, String category, String brand, String tz, String stores, final ApiCallback<GetAnalyticOverviewResponse> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = getAnalyticOverviewValidateBeforeCall(range, from, to, compare, cmpFrom, cmpTo, labels, platforms, category, brand, tz, stores, _callback);
+        Type localVarReturnType = new TypeToken<GetAnalyticOverviewResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for getAnalyticPerformance
+     * @param range Reporting window. Default 30d. custom needs from and to. (optional)
+     * @param from YYYY-MM-DD, inclusive, in tz. Only with range&#x3D;custom. (optional)
+     * @param to YYYY-MM-DD, inclusive, in tz. Only with range&#x3D;custom. (optional)
+     * @param compare Comparison window for deltas: prev (same length just before), yoy, none, custom (cmpFrom/cmpTo). (optional)
+     * @param cmpFrom YYYY-MM-DD. Only with compare&#x3D;custom. (optional)
+     * @param cmpTo YYYY-MM-DD. Only with compare&#x3D;custom. (optional)
+     * @param labels Comma-separated inventory labels (any of them). (optional)
+     * @param platforms Comma-separated platform ids. (optional)
+     * @param category Canonical main-category key. (optional)
+     * @param brand Brand name. (optional)
+     * @param tz IANA time zone for day boundaries. Default UTC. An invalid name is a 400. (optional)
+     * @param status unsold &#x3D; listed at least minDays with no completed sale. (optional)
+     * @param q Title, SKU or brand contains. (optional)
+     * @param sort Default lastActivity. (optional)
+     * @param dir Default desc. (optional)
+     * @param page 1-indexed page. Default 1. (optional)
+     * @param size Rows per page. Default 50. (optional)
+     * @param minDays Minimum days listed (for status&#x3D;unsold). Default 0. (optional)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getAnalyticPerformanceCall(String range, String from, String to, String compare, String cmpFrom, String cmpTo, String labels, String platforms, String category, String brand, String tz, String status, String q, String sort, String dir, Integer page, Integer size, Integer minDays, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/v1/analytics/performance";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        if (range != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("range", range));
+        }
+
+        if (from != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("from", from));
+        }
+
+        if (to != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("to", to));
+        }
+
+        if (compare != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("compare", compare));
+        }
+
+        if (cmpFrom != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("cmpFrom", cmpFrom));
+        }
+
+        if (cmpTo != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("cmpTo", cmpTo));
+        }
+
+        if (labels != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("labels", labels));
+        }
+
+        if (platforms != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("platforms", platforms));
+        }
+
+        if (category != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("category", category));
+        }
+
+        if (brand != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("brand", brand));
+        }
+
+        if (tz != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("tz", tz));
+        }
+
+        if (status != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("status", status));
+        }
+
+        if (q != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("q", q));
+        }
+
+        if (sort != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("sort", sort));
+        }
+
+        if (dir != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("dir", dir));
+        }
+
+        if (page != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("page", page));
+        }
+
+        if (size != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("size", size));
+        }
+
+        if (minDays != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("minDays", minDays));
+        }
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "PersonalAccessToken" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call getAnalyticPerformanceValidateBeforeCall(String range, String from, String to, String compare, String cmpFrom, String cmpTo, String labels, String platforms, String category, String brand, String tz, String status, String q, String sort, String dir, Integer page, Integer size, Integer minDays, final ApiCallback _callback) throws ApiException {
+        
+
+        okhttp3.Call localVarCall = getAnalyticPerformanceCall(range, from, to, compare, cmpFrom, cmpTo, labels, platforms, category, brand, tz, status, q, sort, dir, page, size, minDays, _callback);
+        return localVarCall;
+
+    }
+
+    /**
+     * Per-listing performance: channels, views, favorites, offers and conversations in the period, units sold, net sales and profit, margin, days to sell and a 0-100 health score, paged and sortable.
+     * 
+     * @param range Reporting window. Default 30d. custom needs from and to. (optional)
+     * @param from YYYY-MM-DD, inclusive, in tz. Only with range&#x3D;custom. (optional)
+     * @param to YYYY-MM-DD, inclusive, in tz. Only with range&#x3D;custom. (optional)
+     * @param compare Comparison window for deltas: prev (same length just before), yoy, none, custom (cmpFrom/cmpTo). (optional)
+     * @param cmpFrom YYYY-MM-DD. Only with compare&#x3D;custom. (optional)
+     * @param cmpTo YYYY-MM-DD. Only with compare&#x3D;custom. (optional)
+     * @param labels Comma-separated inventory labels (any of them). (optional)
+     * @param platforms Comma-separated platform ids. (optional)
+     * @param category Canonical main-category key. (optional)
+     * @param brand Brand name. (optional)
+     * @param tz IANA time zone for day boundaries. Default UTC. An invalid name is a 400. (optional)
+     * @param status unsold &#x3D; listed at least minDays with no completed sale. (optional)
+     * @param q Title, SKU or brand contains. (optional)
+     * @param sort Default lastActivity. (optional)
+     * @param dir Default desc. (optional)
+     * @param page 1-indexed page. Default 1. (optional)
+     * @param size Rows per page. Default 50. (optional)
+     * @param minDays Minimum days listed (for status&#x3D;unsold). Default 0. (optional)
+     * @return GetAnalyticPerformanceResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public GetAnalyticPerformanceResponse getAnalyticPerformance(String range, String from, String to, String compare, String cmpFrom, String cmpTo, String labels, String platforms, String category, String brand, String tz, String status, String q, String sort, String dir, Integer page, Integer size, Integer minDays) throws ApiException {
+        ApiResponse<GetAnalyticPerformanceResponse> localVarResp = getAnalyticPerformanceWithHttpInfo(range, from, to, compare, cmpFrom, cmpTo, labels, platforms, category, brand, tz, status, q, sort, dir, page, size, minDays);
+        return localVarResp.getData();
+    }
+
+    /**
+     * Per-listing performance: channels, views, favorites, offers and conversations in the period, units sold, net sales and profit, margin, days to sell and a 0-100 health score, paged and sortable.
+     * 
+     * @param range Reporting window. Default 30d. custom needs from and to. (optional)
+     * @param from YYYY-MM-DD, inclusive, in tz. Only with range&#x3D;custom. (optional)
+     * @param to YYYY-MM-DD, inclusive, in tz. Only with range&#x3D;custom. (optional)
+     * @param compare Comparison window for deltas: prev (same length just before), yoy, none, custom (cmpFrom/cmpTo). (optional)
+     * @param cmpFrom YYYY-MM-DD. Only with compare&#x3D;custom. (optional)
+     * @param cmpTo YYYY-MM-DD. Only with compare&#x3D;custom. (optional)
+     * @param labels Comma-separated inventory labels (any of them). (optional)
+     * @param platforms Comma-separated platform ids. (optional)
+     * @param category Canonical main-category key. (optional)
+     * @param brand Brand name. (optional)
+     * @param tz IANA time zone for day boundaries. Default UTC. An invalid name is a 400. (optional)
+     * @param status unsold &#x3D; listed at least minDays with no completed sale. (optional)
+     * @param q Title, SKU or brand contains. (optional)
+     * @param sort Default lastActivity. (optional)
+     * @param dir Default desc. (optional)
+     * @param page 1-indexed page. Default 1. (optional)
+     * @param size Rows per page. Default 50. (optional)
+     * @param minDays Minimum days listed (for status&#x3D;unsold). Default 0. (optional)
+     * @return ApiResponse&lt;GetAnalyticPerformanceResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<GetAnalyticPerformanceResponse> getAnalyticPerformanceWithHttpInfo(String range, String from, String to, String compare, String cmpFrom, String cmpTo, String labels, String platforms, String category, String brand, String tz, String status, String q, String sort, String dir, Integer page, Integer size, Integer minDays) throws ApiException {
+        okhttp3.Call localVarCall = getAnalyticPerformanceValidateBeforeCall(range, from, to, compare, cmpFrom, cmpTo, labels, platforms, category, brand, tz, status, q, sort, dir, page, size, minDays, null);
+        Type localVarReturnType = new TypeToken<GetAnalyticPerformanceResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Per-listing performance: channels, views, favorites, offers and conversations in the period, units sold, net sales and profit, margin, days to sell and a 0-100 health score, paged and sortable. (asynchronously)
+     * 
+     * @param range Reporting window. Default 30d. custom needs from and to. (optional)
+     * @param from YYYY-MM-DD, inclusive, in tz. Only with range&#x3D;custom. (optional)
+     * @param to YYYY-MM-DD, inclusive, in tz. Only with range&#x3D;custom. (optional)
+     * @param compare Comparison window for deltas: prev (same length just before), yoy, none, custom (cmpFrom/cmpTo). (optional)
+     * @param cmpFrom YYYY-MM-DD. Only with compare&#x3D;custom. (optional)
+     * @param cmpTo YYYY-MM-DD. Only with compare&#x3D;custom. (optional)
+     * @param labels Comma-separated inventory labels (any of them). (optional)
+     * @param platforms Comma-separated platform ids. (optional)
+     * @param category Canonical main-category key. (optional)
+     * @param brand Brand name. (optional)
+     * @param tz IANA time zone for day boundaries. Default UTC. An invalid name is a 400. (optional)
+     * @param status unsold &#x3D; listed at least minDays with no completed sale. (optional)
+     * @param q Title, SKU or brand contains. (optional)
+     * @param sort Default lastActivity. (optional)
+     * @param dir Default desc. (optional)
+     * @param page 1-indexed page. Default 1. (optional)
+     * @param size Rows per page. Default 50. (optional)
+     * @param minDays Minimum days listed (for status&#x3D;unsold). Default 0. (optional)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getAnalyticPerformanceAsync(String range, String from, String to, String compare, String cmpFrom, String cmpTo, String labels, String platforms, String category, String brand, String tz, String status, String q, String sort, String dir, Integer page, Integer size, Integer minDays, final ApiCallback<GetAnalyticPerformanceResponse> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = getAnalyticPerformanceValidateBeforeCall(range, from, to, compare, cmpFrom, cmpTo, labels, platforms, category, brand, tz, status, q, sort, dir, page, size, minDays, _callback);
+        Type localVarReturnType = new TypeToken<GetAnalyticPerformanceResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for getAnalyticProgram
+     * @param program  (required)
+     * @param from First UTC day (YYYY-MM-DD), inclusive. (optional)
+     * @param to Last UTC day (YYYY-MM-DD), inclusive. Default today. (optional)
+     * @param by Breakdown dimension, when the program offers one (worlds: showroom, property, event). (optional)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getAnalyticProgramCall(String program, LocalDate from, LocalDate to, String by, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/v1/analytics/programs/{program}"
+            .replaceAll("\\{" + "program" + "\\}", localVarApiClient.escapeString(program.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        if (from != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("from", from));
+        }
+
+        if (to != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("to", to));
+        }
+
+        if (by != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("by", by));
+        }
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "PersonalAccessToken" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call getAnalyticProgramValidateBeforeCall(String program, LocalDate from, LocalDate to, String by, final ApiCallback _callback) throws ApiException {
+        
+        // verify the required parameter 'program' is set
+        if (program == null) {
+            throw new ApiException("Missing the required parameter 'program' when calling getAnalyticProgram(Async)");
+        }
+        
+
+        okhttp3.Call localVarCall = getAnalyticProgramCall(program, from, to, by, _callback);
+        return localVarCall;
+
+    }
+
+    /**
+     * One program&#39;s report over a date range (default the last 30 days, at most 366): KPIs, a daily trend and a breakdown table. Money in integer cents.
+     * 
+     * @param program  (required)
+     * @param from First UTC day (YYYY-MM-DD), inclusive. (optional)
+     * @param to Last UTC day (YYYY-MM-DD), inclusive. Default today. (optional)
+     * @param by Breakdown dimension, when the program offers one (worlds: showroom, property, event). (optional)
+     * @return GetAnalyticProgramResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public GetAnalyticProgramResponse getAnalyticProgram(String program, LocalDate from, LocalDate to, String by) throws ApiException {
+        ApiResponse<GetAnalyticProgramResponse> localVarResp = getAnalyticProgramWithHttpInfo(program, from, to, by);
+        return localVarResp.getData();
+    }
+
+    /**
+     * One program&#39;s report over a date range (default the last 30 days, at most 366): KPIs, a daily trend and a breakdown table. Money in integer cents.
+     * 
+     * @param program  (required)
+     * @param from First UTC day (YYYY-MM-DD), inclusive. (optional)
+     * @param to Last UTC day (YYYY-MM-DD), inclusive. Default today. (optional)
+     * @param by Breakdown dimension, when the program offers one (worlds: showroom, property, event). (optional)
+     * @return ApiResponse&lt;GetAnalyticProgramResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<GetAnalyticProgramResponse> getAnalyticProgramWithHttpInfo(String program, LocalDate from, LocalDate to, String by) throws ApiException {
+        okhttp3.Call localVarCall = getAnalyticProgramValidateBeforeCall(program, from, to, by, null);
+        Type localVarReturnType = new TypeToken<GetAnalyticProgramResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * One program&#39;s report over a date range (default the last 30 days, at most 366): KPIs, a daily trend and a breakdown table. Money in integer cents. (asynchronously)
+     * 
+     * @param program  (required)
+     * @param from First UTC day (YYYY-MM-DD), inclusive. (optional)
+     * @param to Last UTC day (YYYY-MM-DD), inclusive. Default today. (optional)
+     * @param by Breakdown dimension, when the program offers one (worlds: showroom, property, event). (optional)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getAnalyticProgramAsync(String program, LocalDate from, LocalDate to, String by, final ApiCallback<GetAnalyticProgramResponse> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = getAnalyticProgramValidateBeforeCall(program, from, to, by, _callback);
+        Type localVarReturnType = new TypeToken<GetAnalyticProgramResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for getAnalyticSegment
+     * @param range Reporting window. Default 30d. custom needs from and to. (optional)
+     * @param from YYYY-MM-DD, inclusive, in tz. Only with range&#x3D;custom. (optional)
+     * @param to YYYY-MM-DD, inclusive, in tz. Only with range&#x3D;custom. (optional)
+     * @param compare Comparison window for deltas: prev (same length just before), yoy, none, custom (cmpFrom/cmpTo). (optional)
+     * @param cmpFrom YYYY-MM-DD. Only with compare&#x3D;custom. (optional)
+     * @param cmpTo YYYY-MM-DD. Only with compare&#x3D;custom. (optional)
+     * @param labels Comma-separated inventory labels (any of them). (optional)
+     * @param platforms Comma-separated platform ids. (optional)
+     * @param category Canonical main-category key. (optional)
+     * @param brand Brand name. (optional)
+     * @param tz IANA time zone for day boundaries. Default UTC. An invalid name is a 400. (optional)
+     * @param dim category &#x3D; main category; subcategory &#x3D; main &gt; sub; brand; condition; size; source &#x3D; where you acquired it; department; priceBand &#x3D; ask in &lt;$10, $10-25, $25-50, $50-100, $100-250, $250+; ageBand &#x3D; days live at sale or now (&lt;7, 7-30, 30-90, 90+). (optional)
+     * @param sort Default netSales. (optional)
+     * @param dir Default desc. (optional)
+     * @param minN Minimum sample for a row to count as a winner or loser. Default 3. (optional)
+     * @param q Segment label contains. (optional)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getAnalyticSegmentCall(String range, String from, String to, String compare, String cmpFrom, String cmpTo, String labels, String platforms, String category, String brand, String tz, String dim, String sort, String dir, Integer minN, String q, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/v1/analytics/segments";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        if (range != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("range", range));
+        }
+
+        if (from != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("from", from));
+        }
+
+        if (to != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("to", to));
+        }
+
+        if (compare != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("compare", compare));
+        }
+
+        if (cmpFrom != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("cmpFrom", cmpFrom));
+        }
+
+        if (cmpTo != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("cmpTo", cmpTo));
+        }
+
+        if (labels != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("labels", labels));
+        }
+
+        if (platforms != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("platforms", platforms));
+        }
+
+        if (category != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("category", category));
+        }
+
+        if (brand != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("brand", brand));
+        }
+
+        if (tz != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("tz", tz));
+        }
+
+        if (dim != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("dim", dim));
+        }
+
+        if (sort != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("sort", sort));
+        }
+
+        if (dir != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("dir", dir));
+        }
+
+        if (minN != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("minN", minN));
+        }
+
+        if (q != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("q", q));
+        }
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "PersonalAccessToken" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call getAnalyticSegmentValidateBeforeCall(String range, String from, String to, String compare, String cmpFrom, String cmpTo, String labels, String platforms, String category, String brand, String tz, String dim, String sort, String dir, Integer minN, String q, final ApiCallback _callback) throws ApiException {
+        
+
+        okhttp3.Call localVarCall = getAnalyticSegmentCall(range, from, to, compare, cmpFrom, cmpTo, labels, platforms, category, brand, tz, dim, sort, dir, minN, q, _callback);
+        return localVarCall;
+
+    }
+
+    /**
+     * Niches along one dimension: listed and active counts, units sold, cohort sell-through, median days to sell, net sales and profit, margin, ROI, ASP and discount from ask; rows under minN are flagged lowSample.
+     * 
+     * @param range Reporting window. Default 30d. custom needs from and to. (optional)
+     * @param from YYYY-MM-DD, inclusive, in tz. Only with range&#x3D;custom. (optional)
+     * @param to YYYY-MM-DD, inclusive, in tz. Only with range&#x3D;custom. (optional)
+     * @param compare Comparison window for deltas: prev (same length just before), yoy, none, custom (cmpFrom/cmpTo). (optional)
+     * @param cmpFrom YYYY-MM-DD. Only with compare&#x3D;custom. (optional)
+     * @param cmpTo YYYY-MM-DD. Only with compare&#x3D;custom. (optional)
+     * @param labels Comma-separated inventory labels (any of them). (optional)
+     * @param platforms Comma-separated platform ids. (optional)
+     * @param category Canonical main-category key. (optional)
+     * @param brand Brand name. (optional)
+     * @param tz IANA time zone for day boundaries. Default UTC. An invalid name is a 400. (optional)
+     * @param dim category &#x3D; main category; subcategory &#x3D; main &gt; sub; brand; condition; size; source &#x3D; where you acquired it; department; priceBand &#x3D; ask in &lt;$10, $10-25, $25-50, $50-100, $100-250, $250+; ageBand &#x3D; days live at sale or now (&lt;7, 7-30, 30-90, 90+). (optional)
+     * @param sort Default netSales. (optional)
+     * @param dir Default desc. (optional)
+     * @param minN Minimum sample for a row to count as a winner or loser. Default 3. (optional)
+     * @param q Segment label contains. (optional)
+     * @return GetAnalyticSegmentResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public GetAnalyticSegmentResponse getAnalyticSegment(String range, String from, String to, String compare, String cmpFrom, String cmpTo, String labels, String platforms, String category, String brand, String tz, String dim, String sort, String dir, Integer minN, String q) throws ApiException {
+        ApiResponse<GetAnalyticSegmentResponse> localVarResp = getAnalyticSegmentWithHttpInfo(range, from, to, compare, cmpFrom, cmpTo, labels, platforms, category, brand, tz, dim, sort, dir, minN, q);
+        return localVarResp.getData();
+    }
+
+    /**
+     * Niches along one dimension: listed and active counts, units sold, cohort sell-through, median days to sell, net sales and profit, margin, ROI, ASP and discount from ask; rows under minN are flagged lowSample.
+     * 
+     * @param range Reporting window. Default 30d. custom needs from and to. (optional)
+     * @param from YYYY-MM-DD, inclusive, in tz. Only with range&#x3D;custom. (optional)
+     * @param to YYYY-MM-DD, inclusive, in tz. Only with range&#x3D;custom. (optional)
+     * @param compare Comparison window for deltas: prev (same length just before), yoy, none, custom (cmpFrom/cmpTo). (optional)
+     * @param cmpFrom YYYY-MM-DD. Only with compare&#x3D;custom. (optional)
+     * @param cmpTo YYYY-MM-DD. Only with compare&#x3D;custom. (optional)
+     * @param labels Comma-separated inventory labels (any of them). (optional)
+     * @param platforms Comma-separated platform ids. (optional)
+     * @param category Canonical main-category key. (optional)
+     * @param brand Brand name. (optional)
+     * @param tz IANA time zone for day boundaries. Default UTC. An invalid name is a 400. (optional)
+     * @param dim category &#x3D; main category; subcategory &#x3D; main &gt; sub; brand; condition; size; source &#x3D; where you acquired it; department; priceBand &#x3D; ask in &lt;$10, $10-25, $25-50, $50-100, $100-250, $250+; ageBand &#x3D; days live at sale or now (&lt;7, 7-30, 30-90, 90+). (optional)
+     * @param sort Default netSales. (optional)
+     * @param dir Default desc. (optional)
+     * @param minN Minimum sample for a row to count as a winner or loser. Default 3. (optional)
+     * @param q Segment label contains. (optional)
+     * @return ApiResponse&lt;GetAnalyticSegmentResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<GetAnalyticSegmentResponse> getAnalyticSegmentWithHttpInfo(String range, String from, String to, String compare, String cmpFrom, String cmpTo, String labels, String platforms, String category, String brand, String tz, String dim, String sort, String dir, Integer minN, String q) throws ApiException {
+        okhttp3.Call localVarCall = getAnalyticSegmentValidateBeforeCall(range, from, to, compare, cmpFrom, cmpTo, labels, platforms, category, brand, tz, dim, sort, dir, minN, q, null);
+        Type localVarReturnType = new TypeToken<GetAnalyticSegmentResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Niches along one dimension: listed and active counts, units sold, cohort sell-through, median days to sell, net sales and profit, margin, ROI, ASP and discount from ask; rows under minN are flagged lowSample. (asynchronously)
+     * 
+     * @param range Reporting window. Default 30d. custom needs from and to. (optional)
+     * @param from YYYY-MM-DD, inclusive, in tz. Only with range&#x3D;custom. (optional)
+     * @param to YYYY-MM-DD, inclusive, in tz. Only with range&#x3D;custom. (optional)
+     * @param compare Comparison window for deltas: prev (same length just before), yoy, none, custom (cmpFrom/cmpTo). (optional)
+     * @param cmpFrom YYYY-MM-DD. Only with compare&#x3D;custom. (optional)
+     * @param cmpTo YYYY-MM-DD. Only with compare&#x3D;custom. (optional)
+     * @param labels Comma-separated inventory labels (any of them). (optional)
+     * @param platforms Comma-separated platform ids. (optional)
+     * @param category Canonical main-category key. (optional)
+     * @param brand Brand name. (optional)
+     * @param tz IANA time zone for day boundaries. Default UTC. An invalid name is a 400. (optional)
+     * @param dim category &#x3D; main category; subcategory &#x3D; main &gt; sub; brand; condition; size; source &#x3D; where you acquired it; department; priceBand &#x3D; ask in &lt;$10, $10-25, $25-50, $50-100, $100-250, $250+; ageBand &#x3D; days live at sale or now (&lt;7, 7-30, 30-90, 90+). (optional)
+     * @param sort Default netSales. (optional)
+     * @param dir Default desc. (optional)
+     * @param minN Minimum sample for a row to count as a winner or loser. Default 3. (optional)
+     * @param q Segment label contains. (optional)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getAnalyticSegmentAsync(String range, String from, String to, String compare, String cmpFrom, String cmpTo, String labels, String platforms, String category, String brand, String tz, String dim, String sort, String dir, Integer minN, String q, final ApiCallback<GetAnalyticSegmentResponse> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = getAnalyticSegmentValidateBeforeCall(range, from, to, compare, cmpFrom, cmpTo, labels, platforms, category, brand, tz, dim, sort, dir, minN, q, _callback);
+        Type localVarReturnType = new TypeToken<GetAnalyticSegmentResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for getAnalyticSegmentByKey
+     * @param dim One of category, subcategory, brand, condition, size, source, department, priceBand, ageBand. category &#x3D; main category; subcategory &#x3D; main &gt; sub; brand; condition; size; source &#x3D; where you acquired it; department; priceBand &#x3D; ask in &lt;$10, $10-25, $25-50, $50-100, $100-250, $250+; ageBand &#x3D; days live at sale or now (&lt;7, 7-30, 30-90, 90+). (required)
+     * @param key The segment key from a segments row (URL-encoded). A key with no data in scope is a 404. (required)
+     * @param range Reporting window. Default 30d. custom needs from and to. (optional)
+     * @param from YYYY-MM-DD, inclusive, in tz. Only with range&#x3D;custom. (optional)
+     * @param to YYYY-MM-DD, inclusive, in tz. Only with range&#x3D;custom. (optional)
+     * @param compare Comparison window for deltas: prev (same length just before), yoy, none, custom (cmpFrom/cmpTo). (optional)
+     * @param cmpFrom YYYY-MM-DD. Only with compare&#x3D;custom. (optional)
+     * @param cmpTo YYYY-MM-DD. Only with compare&#x3D;custom. (optional)
+     * @param labels Comma-separated inventory labels (any of them). (optional)
+     * @param platforms Comma-separated platform ids. (optional)
+     * @param category Canonical main-category key. (optional)
+     * @param brand Brand name. (optional)
+     * @param tz IANA time zone for day boundaries. Default UTC. An invalid name is a 400. (optional)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getAnalyticSegmentByKeyCall(String dim, String key, String range, String from, String to, String compare, String cmpFrom, String cmpTo, String labels, String platforms, String category, String brand, String tz, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/v1/analytics/segments/{dim}/{key}"
+            .replaceAll("\\{" + "dim" + "\\}", localVarApiClient.escapeString(dim.toString()))
+            .replaceAll("\\{" + "key" + "\\}", localVarApiClient.escapeString(key.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        if (range != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("range", range));
+        }
+
+        if (from != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("from", from));
+        }
+
+        if (to != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("to", to));
+        }
+
+        if (compare != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("compare", compare));
+        }
+
+        if (cmpFrom != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("cmpFrom", cmpFrom));
+        }
+
+        if (cmpTo != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("cmpTo", cmpTo));
+        }
+
+        if (labels != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("labels", labels));
+        }
+
+        if (platforms != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("platforms", platforms));
+        }
+
+        if (category != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("category", category));
+        }
+
+        if (brand != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("brand", brand));
+        }
+
+        if (tz != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("tz", tz));
+        }
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "PersonalAccessToken" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call getAnalyticSegmentByKeyValidateBeforeCall(String dim, String key, String range, String from, String to, String compare, String cmpFrom, String cmpTo, String labels, String platforms, String category, String brand, String tz, final ApiCallback _callback) throws ApiException {
+        
+        // verify the required parameter 'dim' is set
+        if (dim == null) {
+            throw new ApiException("Missing the required parameter 'dim' when calling getAnalyticSegmentByKey(Async)");
+        }
+        
+        // verify the required parameter 'key' is set
+        if (key == null) {
+            throw new ApiException("Missing the required parameter 'key' when calling getAnalyticSegmentByKey(Async)");
+        }
+        
+
+        okhttp3.Call localVarCall = getAnalyticSegmentByKeyCall(dim, key, range, from, to, compare, cmpFrom, cmpTo, labels, platforms, category, brand, tz, _callback);
+        return localVarCall;
+
+    }
+
+    /**
+     * One niche in depth: its row, series, by-marketplace split, days-to-sell histogram, price bands, top items and the 10 oldest unsold listings in it.
+     * 
+     * @param dim One of category, subcategory, brand, condition, size, source, department, priceBand, ageBand. category &#x3D; main category; subcategory &#x3D; main &gt; sub; brand; condition; size; source &#x3D; where you acquired it; department; priceBand &#x3D; ask in &lt;$10, $10-25, $25-50, $50-100, $100-250, $250+; ageBand &#x3D; days live at sale or now (&lt;7, 7-30, 30-90, 90+). (required)
+     * @param key The segment key from a segments row (URL-encoded). A key with no data in scope is a 404. (required)
+     * @param range Reporting window. Default 30d. custom needs from and to. (optional)
+     * @param from YYYY-MM-DD, inclusive, in tz. Only with range&#x3D;custom. (optional)
+     * @param to YYYY-MM-DD, inclusive, in tz. Only with range&#x3D;custom. (optional)
+     * @param compare Comparison window for deltas: prev (same length just before), yoy, none, custom (cmpFrom/cmpTo). (optional)
+     * @param cmpFrom YYYY-MM-DD. Only with compare&#x3D;custom. (optional)
+     * @param cmpTo YYYY-MM-DD. Only with compare&#x3D;custom. (optional)
+     * @param labels Comma-separated inventory labels (any of them). (optional)
+     * @param platforms Comma-separated platform ids. (optional)
+     * @param category Canonical main-category key. (optional)
+     * @param brand Brand name. (optional)
+     * @param tz IANA time zone for day boundaries. Default UTC. An invalid name is a 400. (optional)
+     * @return GetAnalyticSegmentByKeyResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public GetAnalyticSegmentByKeyResponse getAnalyticSegmentByKey(String dim, String key, String range, String from, String to, String compare, String cmpFrom, String cmpTo, String labels, String platforms, String category, String brand, String tz) throws ApiException {
+        ApiResponse<GetAnalyticSegmentByKeyResponse> localVarResp = getAnalyticSegmentByKeyWithHttpInfo(dim, key, range, from, to, compare, cmpFrom, cmpTo, labels, platforms, category, brand, tz);
+        return localVarResp.getData();
+    }
+
+    /**
+     * One niche in depth: its row, series, by-marketplace split, days-to-sell histogram, price bands, top items and the 10 oldest unsold listings in it.
+     * 
+     * @param dim One of category, subcategory, brand, condition, size, source, department, priceBand, ageBand. category &#x3D; main category; subcategory &#x3D; main &gt; sub; brand; condition; size; source &#x3D; where you acquired it; department; priceBand &#x3D; ask in &lt;$10, $10-25, $25-50, $50-100, $100-250, $250+; ageBand &#x3D; days live at sale or now (&lt;7, 7-30, 30-90, 90+). (required)
+     * @param key The segment key from a segments row (URL-encoded). A key with no data in scope is a 404. (required)
+     * @param range Reporting window. Default 30d. custom needs from and to. (optional)
+     * @param from YYYY-MM-DD, inclusive, in tz. Only with range&#x3D;custom. (optional)
+     * @param to YYYY-MM-DD, inclusive, in tz. Only with range&#x3D;custom. (optional)
+     * @param compare Comparison window for deltas: prev (same length just before), yoy, none, custom (cmpFrom/cmpTo). (optional)
+     * @param cmpFrom YYYY-MM-DD. Only with compare&#x3D;custom. (optional)
+     * @param cmpTo YYYY-MM-DD. Only with compare&#x3D;custom. (optional)
+     * @param labels Comma-separated inventory labels (any of them). (optional)
+     * @param platforms Comma-separated platform ids. (optional)
+     * @param category Canonical main-category key. (optional)
+     * @param brand Brand name. (optional)
+     * @param tz IANA time zone for day boundaries. Default UTC. An invalid name is a 400. (optional)
+     * @return ApiResponse&lt;GetAnalyticSegmentByKeyResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<GetAnalyticSegmentByKeyResponse> getAnalyticSegmentByKeyWithHttpInfo(String dim, String key, String range, String from, String to, String compare, String cmpFrom, String cmpTo, String labels, String platforms, String category, String brand, String tz) throws ApiException {
+        okhttp3.Call localVarCall = getAnalyticSegmentByKeyValidateBeforeCall(dim, key, range, from, to, compare, cmpFrom, cmpTo, labels, platforms, category, brand, tz, null);
+        Type localVarReturnType = new TypeToken<GetAnalyticSegmentByKeyResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * One niche in depth: its row, series, by-marketplace split, days-to-sell histogram, price bands, top items and the 10 oldest unsold listings in it. (asynchronously)
+     * 
+     * @param dim One of category, subcategory, brand, condition, size, source, department, priceBand, ageBand. category &#x3D; main category; subcategory &#x3D; main &gt; sub; brand; condition; size; source &#x3D; where you acquired it; department; priceBand &#x3D; ask in &lt;$10, $10-25, $25-50, $50-100, $100-250, $250+; ageBand &#x3D; days live at sale or now (&lt;7, 7-30, 30-90, 90+). (required)
+     * @param key The segment key from a segments row (URL-encoded). A key with no data in scope is a 404. (required)
+     * @param range Reporting window. Default 30d. custom needs from and to. (optional)
+     * @param from YYYY-MM-DD, inclusive, in tz. Only with range&#x3D;custom. (optional)
+     * @param to YYYY-MM-DD, inclusive, in tz. Only with range&#x3D;custom. (optional)
+     * @param compare Comparison window for deltas: prev (same length just before), yoy, none, custom (cmpFrom/cmpTo). (optional)
+     * @param cmpFrom YYYY-MM-DD. Only with compare&#x3D;custom. (optional)
+     * @param cmpTo YYYY-MM-DD. Only with compare&#x3D;custom. (optional)
+     * @param labels Comma-separated inventory labels (any of them). (optional)
+     * @param platforms Comma-separated platform ids. (optional)
+     * @param category Canonical main-category key. (optional)
+     * @param brand Brand name. (optional)
+     * @param tz IANA time zone for day boundaries. Default UTC. An invalid name is a 400. (optional)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getAnalyticSegmentByKeyAsync(String dim, String key, String range, String from, String to, String compare, String cmpFrom, String cmpTo, String labels, String platforms, String category, String brand, String tz, final ApiCallback<GetAnalyticSegmentByKeyResponse> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = getAnalyticSegmentByKeyValidateBeforeCall(dim, key, range, from, to, compare, cmpFrom, cmpTo, labels, platforms, category, brand, tz, _callback);
+        Type localVarReturnType = new TypeToken<GetAnalyticSegmentByKeyResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for getAnalyticSummary
+     * @param days Calendar days back, today included. Larger values are clamped to 365. (optional, default to 30)
+     * @param tz IANA time zone for day boundaries. Default UTC. (optional)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getAnalyticSummaryCall(Integer days, String tz, final ApiCallback _callback) throws ApiException {
         String basePath = null;
 
         // Operation Servers
@@ -696,6 +3943,10 @@ public class AnalyticsApi {
             localVarQueryParams.addAll(localVarApiClient.parameterToPair("days", days));
         }
 
+        if (tz != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("tz", tz));
+        }
+
         final String[] localVarAccepts = {
             "application/json"
         };
@@ -717,18 +3968,19 @@ public class AnalyticsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getAnalyticSummaryValidateBeforeCall(Integer days, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getAnalyticSummaryValidateBeforeCall(Integer days, String tz, final ApiCallback _callback) throws ApiException {
         
 
-        okhttp3.Call localVarCall = getAnalyticSummaryCall(days, _callback);
+        okhttp3.Call localVarCall = getAnalyticSummaryCall(days, tz, _callback);
         return localVarCall;
 
     }
 
     /**
-     * Headline KPIs for the last N days.
+     * Headline KPIs for the last N days (the same numbers as the analytics overview).
      * 
-     * @param days  (optional, default to 30)
+     * @param days Calendar days back, today included. Larger values are clamped to 365. (optional, default to 30)
+     * @param tz IANA time zone for day boundaries. Default UTC. (optional)
      * @return GetAnalyticSummaryResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -743,15 +3995,16 @@ public class AnalyticsApi {
         <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
      </table>
      */
-    public GetAnalyticSummaryResponse getAnalyticSummary(Integer days) throws ApiException {
-        ApiResponse<GetAnalyticSummaryResponse> localVarResp = getAnalyticSummaryWithHttpInfo(days);
+    public GetAnalyticSummaryResponse getAnalyticSummary(Integer days, String tz) throws ApiException {
+        ApiResponse<GetAnalyticSummaryResponse> localVarResp = getAnalyticSummaryWithHttpInfo(days, tz);
         return localVarResp.getData();
     }
 
     /**
-     * Headline KPIs for the last N days.
+     * Headline KPIs for the last N days (the same numbers as the analytics overview).
      * 
-     * @param days  (optional, default to 30)
+     * @param days Calendar days back, today included. Larger values are clamped to 365. (optional, default to 30)
+     * @param tz IANA time zone for day boundaries. Default UTC. (optional)
      * @return ApiResponse&lt;GetAnalyticSummaryResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -766,16 +4019,17 @@ public class AnalyticsApi {
         <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<GetAnalyticSummaryResponse> getAnalyticSummaryWithHttpInfo(Integer days) throws ApiException {
-        okhttp3.Call localVarCall = getAnalyticSummaryValidateBeforeCall(days, null);
+    public ApiResponse<GetAnalyticSummaryResponse> getAnalyticSummaryWithHttpInfo(Integer days, String tz) throws ApiException {
+        okhttp3.Call localVarCall = getAnalyticSummaryValidateBeforeCall(days, tz, null);
         Type localVarReturnType = new TypeToken<GetAnalyticSummaryResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
-     * Headline KPIs for the last N days. (asynchronously)
+     * Headline KPIs for the last N days (the same numbers as the analytics overview). (asynchronously)
      * 
-     * @param days  (optional, default to 30)
+     * @param days Calendar days back, today included. Larger values are clamped to 365. (optional, default to 30)
+     * @param tz IANA time zone for day boundaries. Default UTC. (optional)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -791,15 +4045,17 @@ public class AnalyticsApi {
         <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getAnalyticSummaryAsync(Integer days, final ApiCallback<GetAnalyticSummaryResponse> _callback) throws ApiException {
+    public okhttp3.Call getAnalyticSummaryAsync(Integer days, String tz, final ApiCallback<GetAnalyticSummaryResponse> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getAnalyticSummaryValidateBeforeCall(days, _callback);
+        okhttp3.Call localVarCall = getAnalyticSummaryValidateBeforeCall(days, tz, _callback);
         Type localVarReturnType = new TypeToken<GetAnalyticSummaryResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
      * Build call for getAnalyticTimesery
+     * @param days Calendar days back, today included. Larger values are clamped to 365. (optional, default to 30)
+     * @param tz IANA time zone for day boundaries. Default UTC. (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -815,7 +4071,7 @@ public class AnalyticsApi {
         <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getAnalyticTimeseryCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getAnalyticTimeseryCall(Integer days, String tz, final ApiCallback _callback) throws ApiException {
         String basePath = null;
 
         // Operation Servers
@@ -841,6 +4097,14 @@ public class AnalyticsApi {
         Map<String, String> localVarCookieParams = new HashMap<String, String>();
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
+        if (days != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("days", days));
+        }
+
+        if (tz != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("tz", tz));
+        }
+
         final String[] localVarAccepts = {
             "application/json"
         };
@@ -862,17 +4126,19 @@ public class AnalyticsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getAnalyticTimeseryValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getAnalyticTimeseryValidateBeforeCall(Integer days, String tz, final ApiCallback _callback) throws ApiException {
         
 
-        okhttp3.Call localVarCall = getAnalyticTimeseryCall(_callback);
+        okhttp3.Call localVarCall = getAnalyticTimeseryCall(days, tz, _callback);
         return localVarCall;
 
     }
 
     /**
-     * Daily sales + revenue series for the last N days.
+     * Sales and net sales over the last N days, zero-filled, one row per calendar day.
      * 
+     * @param days Calendar days back, today included. Larger values are clamped to 365. (optional, default to 30)
+     * @param tz IANA time zone for day boundaries. Default UTC. (optional)
      * @return GetAnalyticTimeseryResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -887,14 +4153,16 @@ public class AnalyticsApi {
         <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
      </table>
      */
-    public GetAnalyticTimeseryResponse getAnalyticTimesery() throws ApiException {
-        ApiResponse<GetAnalyticTimeseryResponse> localVarResp = getAnalyticTimeseryWithHttpInfo();
+    public GetAnalyticTimeseryResponse getAnalyticTimesery(Integer days, String tz) throws ApiException {
+        ApiResponse<GetAnalyticTimeseryResponse> localVarResp = getAnalyticTimeseryWithHttpInfo(days, tz);
         return localVarResp.getData();
     }
 
     /**
-     * Daily sales + revenue series for the last N days.
+     * Sales and net sales over the last N days, zero-filled, one row per calendar day.
      * 
+     * @param days Calendar days back, today included. Larger values are clamped to 365. (optional, default to 30)
+     * @param tz IANA time zone for day boundaries. Default UTC. (optional)
      * @return ApiResponse&lt;GetAnalyticTimeseryResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -909,15 +4177,17 @@ public class AnalyticsApi {
         <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<GetAnalyticTimeseryResponse> getAnalyticTimeseryWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = getAnalyticTimeseryValidateBeforeCall(null);
+    public ApiResponse<GetAnalyticTimeseryResponse> getAnalyticTimeseryWithHttpInfo(Integer days, String tz) throws ApiException {
+        okhttp3.Call localVarCall = getAnalyticTimeseryValidateBeforeCall(days, tz, null);
         Type localVarReturnType = new TypeToken<GetAnalyticTimeseryResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
-     * Daily sales + revenue series for the last N days. (asynchronously)
+     * Sales and net sales over the last N days, zero-filled, one row per calendar day. (asynchronously)
      * 
+     * @param days Calendar days back, today included. Larger values are clamped to 365. (optional, default to 30)
+     * @param tz IANA time zone for day boundaries. Default UTC. (optional)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -933,9 +4203,9 @@ public class AnalyticsApi {
         <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getAnalyticTimeseryAsync(final ApiCallback<GetAnalyticTimeseryResponse> _callback) throws ApiException {
+    public okhttp3.Call getAnalyticTimeseryAsync(Integer days, String tz, final ApiCallback<GetAnalyticTimeseryResponse> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getAnalyticTimeseryValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = getAnalyticTimeseryValidateBeforeCall(days, tz, _callback);
         Type localVarReturnType = new TypeToken<GetAnalyticTimeseryResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -1084,6 +4354,7 @@ public class AnalyticsApi {
     }
     /**
      * Build call for listInsightByPlatform
+     * @param tz IANA time zone for day boundaries. Default UTC. (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -1099,7 +4370,7 @@ public class AnalyticsApi {
         <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call listInsightByPlatformCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call listInsightByPlatformCall(String tz, final ApiCallback _callback) throws ApiException {
         String basePath = null;
 
         // Operation Servers
@@ -1125,6 +4396,10 @@ public class AnalyticsApi {
         Map<String, String> localVarCookieParams = new HashMap<String, String>();
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
+        if (tz != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("tz", tz));
+        }
+
         final String[] localVarAccepts = {
             "application/json"
         };
@@ -1146,17 +4421,18 @@ public class AnalyticsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call listInsightByPlatformValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call listInsightByPlatformValidateBeforeCall(String tz, final ApiCallback _callback) throws ApiException {
         
 
-        okhttp3.Call localVarCall = listInsightByPlatformCall(_callback);
+        okhttp3.Call localVarCall = listInsightByPlatformCall(tz, _callback);
         return localVarCall;
 
     }
 
     /**
-     * Platform velocity + margin insight (90-day window).
+     * Platform velocity + margin insight (90-day window): units, net sales, median days to sell, ASP and net after the real marketplace fees.
      * 
+     * @param tz IANA time zone for day boundaries. Default UTC. (optional)
      * @return ListInsightByPlatformResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -1171,14 +4447,15 @@ public class AnalyticsApi {
         <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
      </table>
      */
-    public ListInsightByPlatformResponse listInsightByPlatform() throws ApiException {
-        ApiResponse<ListInsightByPlatformResponse> localVarResp = listInsightByPlatformWithHttpInfo();
+    public ListInsightByPlatformResponse listInsightByPlatform(String tz) throws ApiException {
+        ApiResponse<ListInsightByPlatformResponse> localVarResp = listInsightByPlatformWithHttpInfo(tz);
         return localVarResp.getData();
     }
 
     /**
-     * Platform velocity + margin insight (90-day window).
+     * Platform velocity + margin insight (90-day window): units, net sales, median days to sell, ASP and net after the real marketplace fees.
      * 
+     * @param tz IANA time zone for day boundaries. Default UTC. (optional)
      * @return ApiResponse&lt;ListInsightByPlatformResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -1193,15 +4470,16 @@ public class AnalyticsApi {
         <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<ListInsightByPlatformResponse> listInsightByPlatformWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = listInsightByPlatformValidateBeforeCall(null);
+    public ApiResponse<ListInsightByPlatformResponse> listInsightByPlatformWithHttpInfo(String tz) throws ApiException {
+        okhttp3.Call localVarCall = listInsightByPlatformValidateBeforeCall(tz, null);
         Type localVarReturnType = new TypeToken<ListInsightByPlatformResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
-     * Platform velocity + margin insight (90-day window). (asynchronously)
+     * Platform velocity + margin insight (90-day window): units, net sales, median days to sell, ASP and net after the real marketplace fees. (asynchronously)
      * 
+     * @param tz IANA time zone for day boundaries. Default UTC. (optional)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -1217,10 +4495,162 @@ public class AnalyticsApi {
         <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call listInsightByPlatformAsync(final ApiCallback<ListInsightByPlatformResponse> _callback) throws ApiException {
+    public okhttp3.Call listInsightByPlatformAsync(String tz, final ApiCallback<ListInsightByPlatformResponse> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = listInsightByPlatformValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = listInsightByPlatformValidateBeforeCall(tz, _callback);
         Type localVarReturnType = new TypeToken<ListInsightByPlatformResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for updateAnalyticExperiment
+     * @param id The experiment id (a uuid; any other id is a 404). (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call updateAnalyticExperimentCall(String id, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/v1/analytics/experiments/{id}"
+            .replaceAll("\\{" + "id" + "\\}", localVarApiClient.escapeString(id.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "PersonalAccessToken" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "PATCH", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call updateAnalyticExperimentValidateBeforeCall(String id, final ApiCallback _callback) throws ApiException {
+        
+        // verify the required parameter 'id' is set
+        if (id == null) {
+            throw new ApiException("Missing the required parameter 'id' when calling updateAnalyticExperiment(Async)");
+        }
+        
+
+        okhttp3.Call localVarCall = updateAnalyticExperimentCall(id, _callback);
+        return localVarCall;
+
+    }
+
+    /**
+     * Rename an experiment or change its hypothesis, notes or planned end.
+     * 
+     * @param id The experiment id (a uuid; any other id is a 404). (required)
+     * @return AnalyticExperimentResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public AnalyticExperimentResponse updateAnalyticExperiment(String id) throws ApiException {
+        ApiResponse<AnalyticExperimentResponse> localVarResp = updateAnalyticExperimentWithHttpInfo(id);
+        return localVarResp.getData();
+    }
+
+    /**
+     * Rename an experiment or change its hypothesis, notes or planned end.
+     * 
+     * @param id The experiment id (a uuid; any other id is a 404). (required)
+     * @return ApiResponse&lt;AnalyticExperimentResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<AnalyticExperimentResponse> updateAnalyticExperimentWithHttpInfo(String id) throws ApiException {
+        okhttp3.Call localVarCall = updateAnalyticExperimentValidateBeforeCall(id, null);
+        Type localVarReturnType = new TypeToken<AnalyticExperimentResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Rename an experiment or change its hypothesis, notes or planned end. (asynchronously)
+     * 
+     * @param id The experiment id (a uuid; any other id is a 404). (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Error </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call updateAnalyticExperimentAsync(String id, final ApiCallback<AnalyticExperimentResponse> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = updateAnalyticExperimentValidateBeforeCall(id, _callback);
+        Type localVarReturnType = new TypeToken<AnalyticExperimentResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }

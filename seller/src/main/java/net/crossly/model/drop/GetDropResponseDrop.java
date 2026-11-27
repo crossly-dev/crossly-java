@@ -34,7 +34,7 @@ import org.openapitools.jackson.nullable.JsonNullable;
 /**
  * GetDropResponseDrop
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-11T23:44:48.922Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-27T19:42:43.186Z[Etc/UTC]")
 public class GetDropResponseDrop {
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
@@ -49,15 +49,15 @@ public class GetDropResponseDrop {
    */
   @JsonAdapter(StatusEnum.Adapter.class)
   public enum StatusEnum {
-    SCHEDULED("scheduled"),
-    
     CANCELLED("cancelled"),
+    
+    SCHEDULED("scheduled"),
     
     CLOSED("closed"),
     
-    RELEASED("released"),
+    LINE_OPEN("line_open"),
     
-    LINE_OPEN("line_open");
+    RELEASED("released");
 
     private String value;
 

@@ -30,7 +30,7 @@ import org.openapitools.jackson.nullable.JsonNullable;
  * eBay-imposed monthly selling cap (quantity + $$) fetched from Trading API GetMyeBaySelling. These are HARD blocks — past them, &#x60;publishOffer&#x60; returns an error. Distinct from the free-tier &#x60;limit&#x60; (which is just a fee threshold). Null when seller has no caps (established accounts) or the Trading call failed.
  */
 @ApiModel(description = "eBay-imposed monthly selling cap (quantity + $$) fetched from Trading API GetMyeBaySelling. These are HARD blocks — past them, `publishOffer` returns an error. Distinct from the free-tier `limit` (which is just a fee threshold). Null when seller has no caps (established accounts) or the Trading call failed.")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-11T23:44:48.922Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-27T19:42:43.186Z[Etc/UTC]")
 public class GetPlatformLimitResponseEbaySellingCap {
   public static final String SERIALIZED_NAME_AMOUNT_LIMIT = "amountLimit";
   @SerializedName(SERIALIZED_NAME_AMOUNT_LIMIT)

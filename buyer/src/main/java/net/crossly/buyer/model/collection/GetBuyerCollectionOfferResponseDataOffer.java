@@ -28,19 +28,19 @@ import java.math.BigDecimal;
 /**
  * GetBuyerCollectionOfferResponseDataOffer
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-11T23:47:29.843Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-27T19:58:46.962Z[Etc/UTC]")
 public class GetBuyerCollectionOfferResponseDataOffer {
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
   private String id;
 
-  public static final String SERIALIZED_NAME_EXPIRES_AT = "expiresAt";
-  @SerializedName(SERIALIZED_NAME_EXPIRES_AT)
-  private String expiresAt;
-
   public static final String SERIALIZED_NAME_CENTS = "cents";
   @SerializedName(SERIALIZED_NAME_CENTS)
   private BigDecimal cents;
+
+  public static final String SERIALIZED_NAME_EXPIRES_AT = "expiresAt";
+  @SerializedName(SERIALIZED_NAME_EXPIRES_AT)
+  private String expiresAt;
 
   public GetBuyerCollectionOfferResponseDataOffer() { 
   }
@@ -68,29 +68,6 @@ public class GetBuyerCollectionOfferResponseDataOffer {
   }
 
 
-  public GetBuyerCollectionOfferResponseDataOffer expiresAt(String expiresAt) {
-    
-    this.expiresAt = expiresAt;
-    return this;
-  }
-
-   /**
-   * Get expiresAt
-   * @return expiresAt
-  **/
-  @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "")
-
-  public String getExpiresAt() {
-    return expiresAt;
-  }
-
-
-  public void setExpiresAt(String expiresAt) {
-    this.expiresAt = expiresAt;
-  }
-
-
   public GetBuyerCollectionOfferResponseDataOffer cents(BigDecimal cents) {
     
     this.cents = cents;
@@ -114,6 +91,29 @@ public class GetBuyerCollectionOfferResponseDataOffer {
   }
 
 
+  public GetBuyerCollectionOfferResponseDataOffer expiresAt(String expiresAt) {
+    
+    this.expiresAt = expiresAt;
+    return this;
+  }
+
+   /**
+   * Get expiresAt
+   * @return expiresAt
+  **/
+  @javax.annotation.Nonnull
+  @ApiModelProperty(required = true, value = "")
+
+  public String getExpiresAt() {
+    return expiresAt;
+  }
+
+
+  public void setExpiresAt(String expiresAt) {
+    this.expiresAt = expiresAt;
+  }
+
+
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -124,13 +124,13 @@ public class GetBuyerCollectionOfferResponseDataOffer {
     }
     GetBuyerCollectionOfferResponseDataOffer getBuyerCollectionOfferResponseDataOffer = (GetBuyerCollectionOfferResponseDataOffer) o;
     return Objects.equals(this.id, getBuyerCollectionOfferResponseDataOffer.id) &&
-        Objects.equals(this.expiresAt, getBuyerCollectionOfferResponseDataOffer.expiresAt) &&
-        Objects.equals(this.cents, getBuyerCollectionOfferResponseDataOffer.cents);
+        Objects.equals(this.cents, getBuyerCollectionOfferResponseDataOffer.cents) &&
+        Objects.equals(this.expiresAt, getBuyerCollectionOfferResponseDataOffer.expiresAt);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, expiresAt, cents);
+    return Objects.hash(id, cents, expiresAt);
   }
 
   @Override
@@ -138,8 +138,8 @@ public class GetBuyerCollectionOfferResponseDataOffer {
     StringBuilder sb = new StringBuilder();
     sb.append("class GetBuyerCollectionOfferResponseDataOffer {\n");
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
-    sb.append("    expiresAt: ").append(toIndentedString(expiresAt)).append("\n");
     sb.append("    cents: ").append(toIndentedString(cents)).append("\n");
+    sb.append("    expiresAt: ").append(toIndentedString(expiresAt)).append("\n");
     sb.append("}");
     return sb.toString();
   }
